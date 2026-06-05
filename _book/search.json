@@ -1,0 +1,32 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced Engineering Mathematics",
+    "section": "",
+    "text": "1 Advanced Engineering Mathematics\nDigital version of the book by Erwin Kreyszig.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Advanced Engineering Mathematics</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-first-order-odes.html",
+    "href": "chapters/01-first-order-odes.html",
+    "title": "2  First-Order ODEs",
+    "section": "",
+    "text": "2.1 Basic Concepts. Modeling\nChapter 1 begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem.\nThe simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives.\nUnderstanding the basics of ODEs requires solving problems by hand (paper and pencil, or typing on your computer, but first without the aid of a CAS).\nPrerequisite: Integral calculus.\nSections that may be omitted in a shorter course: 1.6, 1.7.\nIf we want to solve an engineering problem (usually of a physical nature), we first have to formulate the problem as a mathematical expression in terms of variables, functions, and equations.\nSuch an expression is known as a mathematical model of the given problem.\nThe process of\nis called mathematical modeling.\nModeling needs experience, which we shall gain by discussing various examples and problems.\nNow many physical concepts, such as velocity and acceleration, are derivatives. Hence a model is very often an equation containing derivatives of an unknown function.\nSuch a model is called a differential equation.\nAn ordinary differential equation (ODE) is an equation that contains one or several derivatives of an unknown function, which we usually call (y(x)) (or sometimes (y(t)) if the independent variable is time).\nFor example\n[ y’ = x ]\n[ y’’ + 9y = e^{-2x} ]\n[ y’’’ - y^2 = 0 ]\nare ordinary differential equations.\nThe term ordinary distinguishes them from partial differential equations (PDEs), which involve partial derivatives of an unknown function of two or more variables.\nFor instance,\n[ + = 0 ]\nis a PDE.\nAn ODE is said to be of order (n) if the (n)-th derivative of the unknown function is the highest derivative appearing in the equation.\nThus:\nFor first-order ODEs we write\n[ F(x,y,y’) = 0 ]\nor explicitly as\n[ y’ = f(x,y) ]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First-Order ODEs</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01-first-order-odes.html#sec-basic-concepts",
+    "href": "chapters/01-first-order-odes.html#sec-basic-concepts",
+    "title": "2  First-Order ODEs",
+    "section": "",
+    "text": "Figure 2.1: Modeling process\n\n\n\n\n\n\n\nsetting up a model,\nsolving it mathematically,\ninterpreting the result,\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.2: Some applications of differential equations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEquation (1) is first order.\nEquation (2) is second order.\nEquation (3) is third order.\n\n\n\n\n\n\n2.1.1 Concept of Solution\nA function\n[ y = h(x) ]\nis called a solution of a given ODE if it satisfies the equation throughout an interval.\nThe graph of (h(x)) is called a solution curve.\n\n\n2.1.2 Example 1: Verification of Solution\nVerify that\n[ y = ]\nis a solution of\n[ xy’ + y = 0, x . ]\nDifferentiating gives\n[ y’ = -. ]\nMultiplying by (x),\n[ xy’ = -. ]\nSince\n[ y = , ]\nwe obtain\n[ xy’ + y = 0. ]\nHence the given function is a solution.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First-Order ODEs</span>"
+    ]
+  }
+]

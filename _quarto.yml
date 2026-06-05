@@ -1,0 +1,12 @@
+project:
+  type: book
+
+book:
+  title: "Advanced Engineering Mathematics"
+  chapters:
+    - index.qmd
+    - chapters/01-first-order-odes.qmd
+
+format:
+  html:
+    theme: cosmo
