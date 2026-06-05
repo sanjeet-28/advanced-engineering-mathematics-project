@@ -88,5 +88,95 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Advanced Engineering Mathematics</span>"
     ]
+  },
+  {
+    "objectID": "chapters/contents.html",
+    "href": "chapters/contents.html",
+    "title": "2  Contents",
+    "section": "",
+    "text": "Contents",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-a",
+    "href": "chapters/contents.html#part-a",
+    "title": "2  Contents",
+    "section": "PART A   Ordinary Differential Equations (ODEs)   1",
+    "text": "PART A   Ordinary Differential Equations (ODEs)   1\n\nCHAPTER 1   First-Order ODEs   2\n\n1.1   Basic Concepts. Modeling   2\n1.2   Geometric Meaning of \\(y' = f(x, y)\\). Direction Fields, Euler’s Method   9\n1.3   Separable ODEs. Modeling   12\n1.4   Exact ODEs. Integrating Factors   20\n1.5   Linear ODEs. Bernoulli Equation. Population Dynamics   27\n1.6   Orthogonal Trajectories. Optional   36\n1.7   Existence and Uniqueness of Solutions for Initial Value Problems   38\n\nChapter 1 Review Questions and Problems   43\nSummary of Chapter 1   44\n\n\n\nCHAPTER 2   Second-Order Linear ODEs   46\n\n2.1   Homogeneous Linear ODEs of Second Order   46\n2.2   Homogeneous Linear ODEs with Constant Coefficients   53\n2.3   Differential Operators. Optional   60\n2.4   Modeling of Free Oscillations of a Mass–Spring System   62\n2.5   Euler–Cauchy Equations   71\n2.6   Existence and Uniqueness of Solutions. Wronskian   74\n2.7   Nonhomogeneous ODEs   79\n2.8   Modeling: Forced Oscillations. Resonance   85\n2.9   Modeling: Electric Circuits   93\n2.10   Solution by Variation of Parameters   99\n\nChapter 2 Review Questions and Problems   102\nSummary of Chapter 2   103\n\n\n\nCHAPTER 3   Higher Order Linear ODEs   105\n\n3.1   Homogeneous Linear ODEs   105\n3.2   Homogeneous Linear ODEs with Constant Coefficients   111\n3.3   Nonhomogeneous Linear ODEs   116\n\nChapter 3 Review Questions and Problems   122\nSummary of Chapter 3   123\n\n\n\nCHAPTER 4   Systems of ODEs. Phase Plane. Qualitative Methods   124\n\n4.0   For Reference: Basics of Matrices and Vectors   124\n4.1   Systems of ODEs as Models in Engineering Applications   130\n4.2   Basic Theory of Systems of ODEs. Wronskian   137\n4.3   Constant-Coefficient Systems. Phase Plane Method   140\n4.4   Criteria for Critical Points. Stability   148\n4.5   Qualitative Methods for Nonlinear Systems   152\n4.6   Nonhomogeneous Linear Systems of ODEs   160\n\nChapter 4 Review Questions and Problems   164\nSummary of Chapter 4   165\n\n\n\nCHAPTER 5   Series Solutions of ODEs. Special Functions   167\n\n5.1   Power Series Method   167\n5.2   Legendre’s Equation. Legendre Polynomials \\(P_n(x)\\)   175\n5.3   Extended Power Series Method: Frobenius Method   180\n5.4   Bessel’s Equation. Bessel Functions \\(J_\\nu(x)\\)   187\n5.5   Bessel Functions of the \\(Y_\\nu(x)\\). General Solution   196\n\nChapter 5 Review Questions and Problems   200\nSummary of Chapter 5   201\n\n\n\nCHAPTER 6   Laplace Transforms   203\n\n6.1   Laplace Transform. Linearity. First Shifting Theorem (\\(s\\)-Shifting)   204\n6.2   Transforms of Derivatives and Integrals. ODEs   211\n6.3   Unit Step Function (Heaviside Function). Second Shifting Theorem (\\(t\\)-Shifting)   217\n6.4   Short Impulses. Dirac’s Delta Function. Partial Fractions   225\n6.5   Convolution. Integral Equations   232\n6.6   Differentiation and Integration of Transforms. ODEs with Variable Coefficients   238\n6.7   Systems of ODEs   242\n6.8   Laplace Transform: General Formulas   248\n6.9   Table of Laplace Transforms   249\n\nChapter 6 Review Questions and Problems   251\nSummary of Chapter 6   253",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-b",
+    "href": "chapters/contents.html#part-b",
+    "title": "2  Contents",
+    "section": "PART B   Linear Algebra. Vector Calculus   255",
+    "text": "PART B   Linear Algebra. Vector Calculus   255\n\nCHAPTER 7   Linear Algebra: Matrices, Vectors, Determinants. Linear Systems   256\n\n7.1   Matrices, Vectors: Addition and Scalar Multiplication   257\n7.2   Matrix Multiplication   263\n7.3   Linear Systems of Equations. Gauss Elimination   272\n7.4   Linear Independence. Rank of a Matrix. Vector Space   282\n7.5   Solutions of Linear Systems: Existence, Uniqueness   288\n7.6   For Reference: Second- and Third-Order Determinants   291\n7.7   Determinants. Cramer’s Rule   293\n7.8   Inverse of a Matrix. Gauss–Jordan Elimination   301\n7.9   Vector Spaces, Inner Product Spaces. Linear Transformations. Optional   309\n\nChapter 7 Review Questions and Problems   318\nSummary of Chapter 7   320\n\n\n\nCHAPTER 8   Linear Algebra: Matrix Eigenvalue Problems   322\n\n8.1   The Matrix Eigenvalue Problem. Determining Eigenvalues and Eigenvectors   323\n8.2   Some Applications of Eigenvalue Problems   329\n8.3   Symmetric, Skew-Symmetric, and Orthogonal Matrices   334\n8.4   Eigenbases. Diagonalization. Quadratic Forms   339\n8.5   Complex Matrices and Forms. Optional   346\n\nChapter 8 Review Questions and Problems   352\nSummary of Chapter 8   353\n\n\n\nCHAPTER 9   Vector Differential Calculus. Grad, Div, Curl   354\n\n9.1   Vectors in 2-Space and 3-Space   354\n9.2   Inner Product (Dot Product)   361\n9.3   Vector Product (Cross Product)   368\n9.4   Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives   375\n9.5   Curves. Arc Length. Curvature. Torsion   381\n9.6   Calculus Review: Functions of Several Variables. Optional   392\n9.7   Gradient of a Scalar Field. Directional Derivative   395\n9.8   Divergence of a Vector Field   402\n9.9   Curl of a Vector Field   406\n\nChapter 9 Review Questions and Problems   409\nSummary of Chapter 9   410\n\n\n\nCHAPTER 10   Vector Integral Calculus. Integral Theorems   413\n\n10.1   Line Integrals   413\n10.2   Path Independence of Line Integrals   419\n10.3   Calculus Review: Double Integrals. Optional   426\n10.4   Green’s Theorem in the Plane   433\n10.5   Surfaces for Surface Integrals   439\n10.6   Surface Integrals   443\n10.7   Triple Integrals. Divergence Theorem of Gauss   452\n10.8   Further Applications of the Divergence Theorem   458\n10.9   Stokes’s Theorem   463\n\nChapter 10 Review Questions and Problems   469\nSummary of Chapter 10   470",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-c",
+    "href": "chapters/contents.html#part-c",
+    "title": "2  Contents",
+    "section": "PART C   Fourier Analysis. Partial Differential Equations (PDEs)   473",
+    "text": "PART C   Fourier Analysis. Partial Differential Equations (PDEs)   473\n\nCHAPTER 11   Fourier Analysis   474\n\n11.1   Fourier Series   474\n11.2   Arbitrary Period. Even and Odd Functions. Half-Range Expansions   483\n11.3   Forced Oscillations   492\n11.4   Approximation by Trigonometric Polynomials   495\n11.5   Sturm–Liouville Problems. Orthogonal Functions   498\n11.6   Orthogonal Series. Generalized Fourier Series   504\n11.7   Fourier Integral   510\n11.8   Fourier Cosine and Sine Transforms   518\n11.9   Fourier Transform. Discrete and Fast Fourier Transforms   522\n11.10   Tables of Transforms   534\n\nChapter 11 Review Questions and Problems   537\nSummary of Chapter 11   538\n\n\n\nCHAPTER 12   Partial Differential Equations (PDEs)   540\n\n12.1   Basic Concepts of PDEs   540\n12.2   Modeling: Vibrating String. Wave Equation   543\n12.3   Solution by Separating Variables. Use of Fourier Series   545\n12.4   D’Alembert’s Solution of the Wave Equation. Characteristics   553\n12.5   Modeling: Heat Flow from a Body in Space. Heat Equation   557\n12.6   Heat Equation: Solution by Fourier Series. Steady Two-Dimensional Heat Problems. Dirichlet Problem   558\n12.7   Heat Equation: Modeling Very Long Bars. Solution by Fourier Integrals and Transforms   568\n12.8   Modeling: Membrane, Two-Dimensional Wave Equation   575\n12.9   Rectangular Membrane. Double Fourier Series   577\n12.10   Laplacian in Polar Coordinates. Circular Membrane. Fourier–Bessel Series   585\n12.11   Laplace’s Equation in Cylindrical and Spherical Coordinates. Potential   593\n12.12   Solution of PDEs by Laplace Transforms   600\n\nChapter 12 Review Questions and Problems   603\nSummary of Chapter 12   604",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-d",
+    "href": "chapters/contents.html#part-d",
+    "title": "2  Contents",
+    "section": "PART D   Complex Analysis   607",
+    "text": "PART D   Complex Analysis   607\n\nCHAPTER 13   Complex Numbers and Functions. Complex Differentiation   608\n\n13.1   Complex Numbers and Their Geometric Representation   608\n13.2   Polar Form of Complex Numbers. Powers and Roots   613\n13.3   Derivative. Analytic Function   619\n13.4   Cauchy–Riemann Equations. Laplace’s Equation   625\n13.5   Exponential Function   630\n13.6   Trigonometric and Hyperbolic Functions. Euler’s Formula   633\n13.7   Logarithm. General Power. Principal Value   636\n\nChapter 13 Review Questions and Problems   641\nSummary of Chapter 13   641\n\n\n\nCHAPTER 14   Complex Integration   643\n\n14.1   Line Integral in the Complex Plane   643\n14.2   Cauchy’s Integral Theorem   652\n14.3   Cauchy’s Integral Formula   660\n14.4   Derivatives of Analytic Functions   664\n\nChapter 14 Review Questions and Problems   668\nSummary of Chapter 14   669\n\n\n\nCHAPTER 15   Power Series, Taylor Series   671\n\n15.1   Sequences, Series, Convergence Tests   671\n15.2   Power Series   680\n15.3   Functions Given by Power Series   685\n15.4   Taylor and Maclaurin Series   690\n15.5   Uniform Convergence. Optional   698\n\nChapter 15 Review Questions and Problems   706\nSummary of Chapter 15   706\n\n\n\nCHAPTER 16   Laurent Series, Residue Integration   708\n\n16.1   Laurent Series   708\n16.2   Singularities and Zeros. Infinity   715\n16.3   Residue Integration Method   719\n16.4   Residue Integration of Real Integrals   725\n\nChapter 16 Review Questions and Problems   733\nSummary of Chapter 16   734\n\n\n\nCHAPTER 17   Conformal Mapping   736\n\n17.1   Geometry of Analytic Functions: Conformal Mapping   737\n17.2   Linear Fractional Transformations (Möbius Transformations)   742\n17.3   Special Linear Fractional Transformations   746\n17.4   Conformal Mapping by Other Functions   750\n17.5   Riemann Surfaces. Optional   754\n\nChapter 17 Review Questions and Problems   756\nSummary of Chapter 17   757\n\n\n\nCHAPTER 18   Complex Analysis and Potential Theory   758\n\n18.1   Electrostatic Fields   759\n18.2   Use of Conformal Mapping. Modeling   763\n18.3   Heat Problems   767\n18.4   Fluid Flow   771\n18.5   Poisson’s Integral Formula for Potentials   777\n18.6   General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem   781\n\nChapter 18 Review Questions and Problems   785\nSummary of Chapter 18   786",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-e",
+    "href": "chapters/contents.html#part-e",
+    "title": "2  Contents",
+    "section": "PART E   Numeric Analysis   787",
+    "text": "PART E   Numeric Analysis   787\nSoftware   788\n\nCHAPTER 19   Numerics in General   790\n\n19.1   Introduction   790\n19.2   Solution of Equations by Iteration   798\n19.3   Interpolation   808\n19.4   Spline Interpolation   820\n19.5   Numeric Integration and Differentiation   827\n\nChapter 19 Review Questions and Problems   841\nSummary of Chapter 19   842\n\n\n\nCHAPTER 20   Numeric Linear Algebra   844\n\n20.1   Linear Systems: Gauss Elimination   844\n20.2   Linear Systems: LU-Factorization, Matrix Inversion   852\n20.3   Linear Systems: Solution by Iteration   858\n20.4   Linear Systems: Ill-Conditioning, Norms   864\n20.5   Least Squares Method   872\n20.6   Matrix Eigenvalue Problems: Introduction   876\n20.7   Inclusion of Matrix Eigenvalues   879\n20.8   Power Method for Eigenvalues   885\n20.9   Tridiagonalization and QR-Factorization   888\n\nChapter 20 Review Questions and Problems   896\nSummary of Chapter 20   898\n\n\n\nCHAPTER 21   Numerics for ODEs and PDEs   900\n\n21.1   Methods for First-Order ODEs   901\n21.2   Multistep Methods   911\n21.3   Methods for Systems and Higher Order ODEs   915\n21.4   Methods for Elliptic PDEs   922\n21.5   Neumann and Mixed Problems. Irregular Boundary   931\n21.6   Methods for Parabolic PDEs   936\n21.7   Method for Hyperbolic PDEs   942\n\nChapter 21 Review Questions and Problems   945\nSummary of Chapter 21   946",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-f",
+    "href": "chapters/contents.html#part-f",
+    "title": "2  Contents",
+    "section": "PART F   Optimization, Graphs   949",
+    "text": "PART F   Optimization, Graphs   949\n\nCHAPTER 22   Unconstrained Optimization. Linear Programming   950\n\n22.1   Basic Concepts. Unconstrained Optimization: Method of Steepest Descent   951\n22.2   Linear Programming   954\n22.3   Simplex Method   958\n22.4   Simplex Method: Difficulties   962\n\nChapter 22 Review Questions and Problems   968\nSummary of Chapter 22   969\n\n\n\nCHAPTER 23   Graphs. Combinatorial Optimization   970\n\n23.1   Graphs and Digraphs   970\n23.2   Shortest Path Problems. Complexity   975\n23.3   Bellman’s Principle. Dijkstra’s Algorithm   980\n23.4   Shortest Spanning Trees: Greedy Algorithm   984\n23.5   Shortest Spanning Trees: Prim’s Algorithm   988\n23.6   Flows in Networks   991\n23.7   Maximum Flow: Ford–Fulkerson Algorithm   998\n23.8   Bipartite Graphs. Assignment Problems   1001\n\nChapter 23 Review Questions and Problems   1006\nSummary of Chapter 23   1007",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#part-g",
+    "href": "chapters/contents.html#part-g",
+    "title": "2  Contents",
+    "section": "PART G   Probability, Statistics   1009",
+    "text": "PART G   Probability, Statistics   1009\nSoftware   1009\n\nCHAPTER 24   Data Analysis. Probability Theory   1011\n\n24.1   Data Representation. Average. Spread   1011\n24.2   Experiments, Outcomes, Events   1015\n24.3   Probability   1018\n24.4   Permutations and Combinations   1024\n24.5   Random Variables. Probability Distributions   1029\n24.6   Mean and Variance of a Distribution   1035\n24.7   Binomial, Poisson, and Hypergeometric Distributions   1039\n24.8   Normal Distribution   1045\n24.9   Distributions of Several Random Variables   1051\n\nChapter 24 Review Questions and Problems   1060\nSummary of Chapter 24   1060\n\n\n\nCHAPTER 25   Mathematical Statistics   1063\n\n25.1   Introduction. Random Sampling   1063\n25.2   Point Estimation of Parameters   1065\n25.3   Confidence Intervals   1068\n25.4   Testing Hypotheses. Decisions   1077\n25.5   Quality Control   1087\n25.6   Acceptance Sampling   1092\n25.7   Goodness of Fit. \\(\\chi^2\\)-Test   1096\n25.8   Nonparametric Tests   1100\n25.9   Regression. Fitting Straight Lines. Correlation   1103\n\nChapter 25 Review Questions and Problems   1111\nSummary of Chapter 25   1112",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/contents.html#toc-appendices",
+    "href": "chapters/contents.html#toc-appendices",
+    "title": "2  Contents",
+    "section": "Appendices",
+    "text": "Appendices\nAPPENDIX 1   References   A1\nAPPENDIX 2   Answers to Odd-Numbered Problems   A4\nAPPENDIX 3   Auxiliary Material   A63\n\nA3.1   Formulas for Special Functions   A63\nA3.2   Partial Derivatives   A69\nA3.3   Sequences and Series   A72\nA3.4   Grad, Div, Curl, \\(\\nabla^2\\) in Curvilinear Coordinates   A74\n\nAPPENDIX 4   Additional Proofs   A77\nAPPENDIX 5   Tables   A97\nINDEX   I1\nPHOTO CREDITS   P1",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Contents</span>"
+    ]
   }
 ]

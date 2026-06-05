@@ -1,0 +1,446 @@
+---
+title: "Contents"
+---
+
+# Contents {#sec-contents .unnumbered}
+
+## PART A &emsp; Ordinary Differential Equations (ODEs) &emsp; 1 {#part-a .unnumbered}
+
+### CHAPTER 1 &emsp; First-Order ODEs &emsp; 2 {#toc-ch1 .unnumbered}
+
+- 1.1 &ensp; Basic Concepts. Modeling &ensp; 2
+- 1.2 &ensp; Geometric Meaning of $y' = f(x, y)$. Direction Fields, Euler's Method &ensp; 9
+- 1.3 &ensp; Separable ODEs. Modeling &ensp; 12
+- 1.4 &ensp; Exact ODEs. Integrating Factors &ensp; 20
+- 1.5 &ensp; Linear ODEs. Bernoulli Equation. Population Dynamics &ensp; 27
+- 1.6 &ensp; Orthogonal Trajectories. *Optional* &ensp; 36
+- 1.7 &ensp; Existence and Uniqueness of Solutions for Initial Value Problems &ensp; 38
+
+Chapter 1 Review Questions and Problems &ensp; 43
+
+Summary of Chapter 1 &ensp; 44
+
+---
+
+### CHAPTER 2 &emsp; Second-Order Linear ODEs &emsp; 46 {#toc-ch2 .unnumbered}
+
+- 2.1 &ensp; Homogeneous Linear ODEs of Second Order &ensp; 46
+- 2.2 &ensp; Homogeneous Linear ODEs with Constant Coefficients &ensp; 53
+- 2.3 &ensp; Differential Operators. *Optional* &ensp; 60
+- 2.4 &ensp; Modeling of Free Oscillations of a Mass–Spring System &ensp; 62
+- 2.5 &ensp; Euler–Cauchy Equations &ensp; 71
+- 2.6 &ensp; Existence and Uniqueness of Solutions. Wronskian &ensp; 74
+- 2.7 &ensp; Nonhomogeneous ODEs &ensp; 79
+- 2.8 &ensp; Modeling: Forced Oscillations. Resonance &ensp; 85
+- 2.9 &ensp; Modeling: Electric Circuits &ensp; 93
+- 2.10 &ensp; Solution by Variation of Parameters &ensp; 99
+
+Chapter 2 Review Questions and Problems &ensp; 102
+
+Summary of Chapter 2 &ensp; 103
+
+---
+
+### CHAPTER 3 &emsp; Higher Order Linear ODEs &emsp; 105 {#toc-ch3 .unnumbered}
+
+- 3.1 &ensp; Homogeneous Linear ODEs &ensp; 105
+- 3.2 &ensp; Homogeneous Linear ODEs with Constant Coefficients &ensp; 111
+- 3.3 &ensp; Nonhomogeneous Linear ODEs &ensp; 116
+
+Chapter 3 Review Questions and Problems &ensp; 122
+
+Summary of Chapter 3 &ensp; 123
+
+---
+
+### CHAPTER 4 &emsp; Systems of ODEs. Phase Plane. Qualitative Methods &emsp; 124 {#toc-ch4 .unnumbered}
+
+- 4.0 &ensp; For Reference: Basics of Matrices and Vectors &ensp; 124
+- 4.1 &ensp; Systems of ODEs as Models in Engineering Applications &ensp; 130
+- 4.2 &ensp; Basic Theory of Systems of ODEs. Wronskian &ensp; 137
+- 4.3 &ensp; Constant-Coefficient Systems. Phase Plane Method &ensp; 140
+- 4.4 &ensp; Criteria for Critical Points. Stability &ensp; 148
+- 4.5 &ensp; Qualitative Methods for Nonlinear Systems &ensp; 152
+- 4.6 &ensp; Nonhomogeneous Linear Systems of ODEs &ensp; 160
+
+Chapter 4 Review Questions and Problems &ensp; 164
+
+Summary of Chapter 4 &ensp; 165
+
+---
+
+### CHAPTER 5 &emsp; Series Solutions of ODEs. Special Functions &emsp; 167 {#toc-ch5 .unnumbered}
+
+- 5.1 &ensp; Power Series Method &ensp; 167
+- 5.2 &ensp; Legendre's Equation. Legendre Polynomials $P_n(x)$ &ensp; 175
+- 5.3 &ensp; Extended Power Series Method: Frobenius Method &ensp; 180
+- 5.4 &ensp; Bessel's Equation. Bessel Functions $J_\nu(x)$ &ensp; 187
+- 5.5 &ensp; Bessel Functions of the $Y_\nu(x)$. General Solution &ensp; 196
+
+Chapter 5 Review Questions and Problems &ensp; 200
+
+Summary of Chapter 5 &ensp; 201
+
+---
+
+### CHAPTER 6 &emsp; Laplace Transforms &emsp; 203 {#toc-ch6 .unnumbered}
+
+- 6.1 &ensp; Laplace Transform. Linearity. First Shifting Theorem ($s$-Shifting) &ensp; 204
+- 6.2 &ensp; Transforms of Derivatives and Integrals. ODEs &ensp; 211
+- 6.3 &ensp; Unit Step Function (Heaviside Function). Second Shifting Theorem ($t$-Shifting) &ensp; 217
+- 6.4 &ensp; Short Impulses. Dirac's Delta Function. Partial Fractions &ensp; 225
+- 6.5 &ensp; Convolution. Integral Equations &ensp; 232
+- 6.6 &ensp; Differentiation and Integration of Transforms. ODEs with Variable Coefficients &ensp; 238
+- 6.7 &ensp; Systems of ODEs &ensp; 242
+- 6.8 &ensp; Laplace Transform: General Formulas &ensp; 248
+- 6.9 &ensp; Table of Laplace Transforms &ensp; 249
+
+Chapter 6 Review Questions and Problems &ensp; 251
+
+Summary of Chapter 6 &ensp; 253
+
+---
+
+## PART B &emsp; Linear Algebra. Vector Calculus &emsp; 255 {#part-b .unnumbered}
+
+### CHAPTER 7 &emsp; Linear Algebra: Matrices, Vectors, Determinants. Linear Systems &emsp; 256 {#toc-ch7 .unnumbered}
+
+- 7.1 &ensp; Matrices, Vectors: Addition and Scalar Multiplication &ensp; 257
+- 7.2 &ensp; Matrix Multiplication &ensp; 263
+- 7.3 &ensp; Linear Systems of Equations. Gauss Elimination &ensp; 272
+- 7.4 &ensp; Linear Independence. Rank of a Matrix. Vector Space &ensp; 282
+- 7.5 &ensp; Solutions of Linear Systems: Existence, Uniqueness &ensp; 288
+- 7.6 &ensp; For Reference: Second- and Third-Order Determinants &ensp; 291
+- 7.7 &ensp; Determinants. Cramer's Rule &ensp; 293
+- 7.8 &ensp; Inverse of a Matrix. Gauss–Jordan Elimination &ensp; 301
+- 7.9 &ensp; Vector Spaces, Inner Product Spaces. Linear Transformations. *Optional* &ensp; 309
+
+Chapter 7 Review Questions and Problems &ensp; 318
+
+Summary of Chapter 7 &ensp; 320
+
+---
+
+### CHAPTER 8 &emsp; Linear Algebra: Matrix Eigenvalue Problems &emsp; 322 {#toc-ch8 .unnumbered}
+
+- 8.1 &ensp; The Matrix Eigenvalue Problem. Determining Eigenvalues and Eigenvectors &ensp; 323
+- 8.2 &ensp; Some Applications of Eigenvalue Problems &ensp; 329
+- 8.3 &ensp; Symmetric, Skew-Symmetric, and Orthogonal Matrices &ensp; 334
+- 8.4 &ensp; Eigenbases. Diagonalization. Quadratic Forms &ensp; 339
+- 8.5 &ensp; Complex Matrices and Forms. *Optional* &ensp; 346
+
+Chapter 8 Review Questions and Problems &ensp; 352
+
+Summary of Chapter 8 &ensp; 353
+
+---
+
+### CHAPTER 9 &emsp; Vector Differential Calculus. Grad, Div, Curl &emsp; 354 {#toc-ch9 .unnumbered}
+
+- 9.1 &ensp; Vectors in 2-Space and 3-Space &ensp; 354
+- 9.2 &ensp; Inner Product (Dot Product) &ensp; 361
+- 9.3 &ensp; Vector Product (Cross Product) &ensp; 368
+- 9.4 &ensp; Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives &ensp; 375
+- 9.5 &ensp; Curves. Arc Length. Curvature. Torsion &ensp; 381
+- 9.6 &ensp; Calculus Review: Functions of Several Variables. *Optional* &ensp; 392
+- 9.7 &ensp; Gradient of a Scalar Field. Directional Derivative &ensp; 395
+- 9.8 &ensp; Divergence of a Vector Field &ensp; 402
+- 9.9 &ensp; Curl of a Vector Field &ensp; 406
+
+Chapter 9 Review Questions and Problems &ensp; 409
+
+Summary of Chapter 9 &ensp; 410
+
+---
+
+### CHAPTER 10 &emsp; Vector Integral Calculus. Integral Theorems &emsp; 413 {#toc-ch10 .unnumbered}
+
+- 10.1 &ensp; Line Integrals &ensp; 413
+- 10.2 &ensp; Path Independence of Line Integrals &ensp; 419
+- 10.3 &ensp; Calculus Review: Double Integrals. *Optional* &ensp; 426
+- 10.4 &ensp; Green's Theorem in the Plane &ensp; 433
+- 10.5 &ensp; Surfaces for Surface Integrals &ensp; 439
+- 10.6 &ensp; Surface Integrals &ensp; 443
+- 10.7 &ensp; Triple Integrals. Divergence Theorem of Gauss &ensp; 452
+- 10.8 &ensp; Further Applications of the Divergence Theorem &ensp; 458
+- 10.9 &ensp; Stokes's Theorem &ensp; 463
+
+Chapter 10 Review Questions and Problems &ensp; 469
+
+Summary of Chapter 10 &ensp; 470
+
+---
+
+## PART C &emsp; Fourier Analysis. Partial Differential Equations (PDEs) &emsp; 473 {#part-c .unnumbered}
+
+### CHAPTER 11 &emsp; Fourier Analysis &emsp; 474 {#toc-ch11 .unnumbered}
+
+- 11.1 &ensp; Fourier Series &ensp; 474
+- 11.2 &ensp; Arbitrary Period. Even and Odd Functions. Half-Range Expansions &ensp; 483
+- 11.3 &ensp; Forced Oscillations &ensp; 492
+- 11.4 &ensp; Approximation by Trigonometric Polynomials &ensp; 495
+- 11.5 &ensp; Sturm–Liouville Problems. Orthogonal Functions &ensp; 498
+- 11.6 &ensp; Orthogonal Series. Generalized Fourier Series &ensp; 504
+- 11.7 &ensp; Fourier Integral &ensp; 510
+- 11.8 &ensp; Fourier Cosine and Sine Transforms &ensp; 518
+- 11.9 &ensp; Fourier Transform. Discrete and Fast Fourier Transforms &ensp; 522
+- 11.10 &ensp; Tables of Transforms &ensp; 534
+
+Chapter 11 Review Questions and Problems &ensp; 537
+
+Summary of Chapter 11 &ensp; 538
+
+---
+
+### CHAPTER 12 &emsp; Partial Differential Equations (PDEs) &emsp; 540 {#toc-ch12 .unnumbered}
+
+- 12.1 &ensp; Basic Concepts of PDEs &ensp; 540
+- 12.2 &ensp; Modeling: Vibrating String. Wave Equation &ensp; 543
+- 12.3 &ensp; Solution by Separating Variables. Use of Fourier Series &ensp; 545
+- 12.4 &ensp; D'Alembert's Solution of the Wave Equation. Characteristics &ensp; 553
+- 12.5 &ensp; Modeling: Heat Flow from a Body in Space. Heat Equation &ensp; 557
+- 12.6 &ensp; Heat Equation: Solution by Fourier Series. Steady Two-Dimensional Heat Problems. Dirichlet Problem &ensp; 558
+- 12.7 &ensp; Heat Equation: Modeling Very Long Bars. Solution by Fourier Integrals and Transforms &ensp; 568
+- 12.8 &ensp; Modeling: Membrane, Two-Dimensional Wave Equation &ensp; 575
+- 12.9 &ensp; Rectangular Membrane. Double Fourier Series &ensp; 577
+- 12.10 &ensp; Laplacian in Polar Coordinates. Circular Membrane. Fourier–Bessel Series &ensp; 585
+- 12.11 &ensp; Laplace's Equation in Cylindrical and Spherical Coordinates. Potential &ensp; 593
+- 12.12 &ensp; Solution of PDEs by Laplace Transforms &ensp; 600
+
+Chapter 12 Review Questions and Problems &ensp; 603
+
+Summary of Chapter 12 &ensp; 604
+
+---
+
+## PART D &emsp; Complex Analysis &emsp; 607 {#part-d .unnumbered}
+
+### CHAPTER 13 &emsp; Complex Numbers and Functions. Complex Differentiation &emsp; 608 {#toc-ch13 .unnumbered}
+
+- 13.1 &ensp; Complex Numbers and Their Geometric Representation &ensp; 608
+- 13.2 &ensp; Polar Form of Complex Numbers. Powers and Roots &ensp; 613
+- 13.3 &ensp; Derivative. Analytic Function &ensp; 619
+- 13.4 &ensp; Cauchy–Riemann Equations. Laplace's Equation &ensp; 625
+- 13.5 &ensp; Exponential Function &ensp; 630
+- 13.6 &ensp; Trigonometric and Hyperbolic Functions. Euler's Formula &ensp; 633
+- 13.7 &ensp; Logarithm. General Power. Principal Value &ensp; 636
+
+Chapter 13 Review Questions and Problems &ensp; 641
+
+Summary of Chapter 13 &ensp; 641
+
+---
+
+### CHAPTER 14 &emsp; Complex Integration &emsp; 643 {#toc-ch14 .unnumbered}
+
+- 14.1 &ensp; Line Integral in the Complex Plane &ensp; 643
+- 14.2 &ensp; Cauchy's Integral Theorem &ensp; 652
+- 14.3 &ensp; Cauchy's Integral Formula &ensp; 660
+- 14.4 &ensp; Derivatives of Analytic Functions &ensp; 664
+
+Chapter 14 Review Questions and Problems &ensp; 668
+
+Summary of Chapter 14 &ensp; 669
+
+---
+
+### CHAPTER 15 &emsp; Power Series, Taylor Series &emsp; 671 {#toc-ch15 .unnumbered}
+
+- 15.1 &ensp; Sequences, Series, Convergence Tests &ensp; 671
+- 15.2 &ensp; Power Series &ensp; 680
+- 15.3 &ensp; Functions Given by Power Series &ensp; 685
+- 15.4 &ensp; Taylor and Maclaurin Series &ensp; 690
+- 15.5 &ensp; Uniform Convergence. *Optional* &ensp; 698
+
+Chapter 15 Review Questions and Problems &ensp; 706
+
+Summary of Chapter 15 &ensp; 706
+
+---
+
+### CHAPTER 16 &emsp; Laurent Series, Residue Integration &emsp; 708 {#toc-ch16 .unnumbered}
+
+- 16.1 &ensp; Laurent Series &ensp; 708
+- 16.2 &ensp; Singularities and Zeros. Infinity &ensp; 715
+- 16.3 &ensp; Residue Integration Method &ensp; 719
+- 16.4 &ensp; Residue Integration of Real Integrals &ensp; 725
+
+Chapter 16 Review Questions and Problems &ensp; 733
+
+Summary of Chapter 16 &ensp; 734
+
+---
+
+### CHAPTER 17 &emsp; Conformal Mapping &emsp; 736 {#toc-ch17 .unnumbered}
+
+- 17.1 &ensp; Geometry of Analytic Functions: Conformal Mapping &ensp; 737
+- 17.2 &ensp; Linear Fractional Transformations (Möbius Transformations) &ensp; 742
+- 17.3 &ensp; Special Linear Fractional Transformations &ensp; 746
+- 17.4 &ensp; Conformal Mapping by Other Functions &ensp; 750
+- 17.5 &ensp; Riemann Surfaces. *Optional* &ensp; 754
+
+Chapter 17 Review Questions and Problems &ensp; 756
+
+Summary of Chapter 17 &ensp; 757
+
+---
+
+### CHAPTER 18 &emsp; Complex Analysis and Potential Theory &emsp; 758 {#toc-ch18 .unnumbered}
+
+- 18.1 &ensp; Electrostatic Fields &ensp; 759
+- 18.2 &ensp; Use of Conformal Mapping. Modeling &ensp; 763
+- 18.3 &ensp; Heat Problems &ensp; 767
+- 18.4 &ensp; Fluid Flow &ensp; 771
+- 18.5 &ensp; Poisson's Integral Formula for Potentials &ensp; 777
+- 18.6 &ensp; General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem &ensp; 781
+
+Chapter 18 Review Questions and Problems &ensp; 785
+
+Summary of Chapter 18 &ensp; 786
+
+---
+
+## PART E &emsp; Numeric Analysis &emsp; 787 {#part-e .unnumbered}
+
+**Software** &emsp; 788
+
+### CHAPTER 19 &emsp; Numerics in General &emsp; 790 {#toc-ch19 .unnumbered}
+
+- 19.1 &ensp; Introduction &ensp; 790
+- 19.2 &ensp; Solution of Equations by Iteration &ensp; 798
+- 19.3 &ensp; Interpolation &ensp; 808
+- 19.4 &ensp; Spline Interpolation &ensp; 820
+- 19.5 &ensp; Numeric Integration and Differentiation &ensp; 827
+
+Chapter 19 Review Questions and Problems &ensp; 841
+
+Summary of Chapter 19 &ensp; 842
+
+---
+
+### CHAPTER 20 &emsp; Numeric Linear Algebra &emsp; 844 {#toc-ch20 .unnumbered}
+
+- 20.1 &ensp; Linear Systems: Gauss Elimination &ensp; 844
+- 20.2 &ensp; Linear Systems: LU-Factorization, Matrix Inversion &ensp; 852
+- 20.3 &ensp; Linear Systems: Solution by Iteration &ensp; 858
+- 20.4 &ensp; Linear Systems: Ill-Conditioning, Norms &ensp; 864
+- 20.5 &ensp; Least Squares Method &ensp; 872
+- 20.6 &ensp; Matrix Eigenvalue Problems: Introduction &ensp; 876
+- 20.7 &ensp; Inclusion of Matrix Eigenvalues &ensp; 879
+- 20.8 &ensp; Power Method for Eigenvalues &ensp; 885
+- 20.9 &ensp; Tridiagonalization and QR-Factorization &ensp; 888
+
+Chapter 20 Review Questions and Problems &ensp; 896
+
+Summary of Chapter 20 &ensp; 898
+
+---
+
+### CHAPTER 21 &emsp; Numerics for ODEs and PDEs &emsp; 900 {#toc-ch21 .unnumbered}
+
+- 21.1 &ensp; Methods for First-Order ODEs &ensp; 901
+- 21.2 &ensp; Multistep Methods &ensp; 911
+- 21.3 &ensp; Methods for Systems and Higher Order ODEs &ensp; 915
+- 21.4 &ensp; Methods for Elliptic PDEs &ensp; 922
+- 21.5 &ensp; Neumann and Mixed Problems. Irregular Boundary &ensp; 931
+- 21.6 &ensp; Methods for Parabolic PDEs &ensp; 936
+- 21.7 &ensp; Method for Hyperbolic PDEs &ensp; 942
+
+Chapter 21 Review Questions and Problems &ensp; 945
+
+Summary of Chapter 21 &ensp; 946
+
+---
+
+## PART F &emsp; Optimization, Graphs &emsp; 949 {#part-f .unnumbered}
+
+### CHAPTER 22 &emsp; Unconstrained Optimization. Linear Programming &emsp; 950 {#toc-ch22 .unnumbered}
+
+- 22.1 &ensp; Basic Concepts. Unconstrained Optimization: Method of Steepest Descent &ensp; 951
+- 22.2 &ensp; Linear Programming &ensp; 954
+- 22.3 &ensp; Simplex Method &ensp; 958
+- 22.4 &ensp; Simplex Method: Difficulties &ensp; 962
+
+Chapter 22 Review Questions and Problems &ensp; 968
+
+Summary of Chapter 22 &ensp; 969
+
+---
+
+### CHAPTER 23 &emsp; Graphs. Combinatorial Optimization &emsp; 970 {#toc-ch23 .unnumbered}
+
+- 23.1 &ensp; Graphs and Digraphs &ensp; 970
+- 23.2 &ensp; Shortest Path Problems. Complexity &ensp; 975
+- 23.3 &ensp; Bellman's Principle. Dijkstra's Algorithm &ensp; 980
+- 23.4 &ensp; Shortest Spanning Trees: Greedy Algorithm &ensp; 984
+- 23.5 &ensp; Shortest Spanning Trees: Prim's Algorithm &ensp; 988
+- 23.6 &ensp; Flows in Networks &ensp; 991
+- 23.7 &ensp; Maximum Flow: Ford–Fulkerson Algorithm &ensp; 998
+- 23.8 &ensp; Bipartite Graphs. Assignment Problems &ensp; 1001
+
+Chapter 23 Review Questions and Problems &ensp; 1006
+
+Summary of Chapter 23 &ensp; 1007
+
+---
+
+## PART G &emsp; Probability, Statistics &emsp; 1009 {#part-g .unnumbered}
+
+**Software** &emsp; 1009
+
+### CHAPTER 24 &emsp; Data Analysis. Probability Theory &emsp; 1011 {#toc-ch24 .unnumbered}
+
+- 24.1 &ensp; Data Representation. Average. Spread &ensp; 1011
+- 24.2 &ensp; Experiments, Outcomes, Events &ensp; 1015
+- 24.3 &ensp; Probability &ensp; 1018
+- 24.4 &ensp; Permutations and Combinations &ensp; 1024
+- 24.5 &ensp; Random Variables. Probability Distributions &ensp; 1029
+- 24.6 &ensp; Mean and Variance of a Distribution &ensp; 1035
+- 24.7 &ensp; Binomial, Poisson, and Hypergeometric Distributions &ensp; 1039
+- 24.8 &ensp; Normal Distribution &ensp; 1045
+- 24.9 &ensp; Distributions of Several Random Variables &ensp; 1051
+
+Chapter 24 Review Questions and Problems &ensp; 1060
+
+Summary of Chapter 24 &ensp; 1060
+
+---
+
+### CHAPTER 25 &emsp; Mathematical Statistics &emsp; 1063 {#toc-ch25 .unnumbered}
+
+- 25.1 &ensp; Introduction. Random Sampling &ensp; 1063
+- 25.2 &ensp; Point Estimation of Parameters &ensp; 1065
+- 25.3 &ensp; Confidence Intervals &ensp; 1068
+- 25.4 &ensp; Testing Hypotheses. Decisions &ensp; 1077
+- 25.5 &ensp; Quality Control &ensp; 1087
+- 25.6 &ensp; Acceptance Sampling &ensp; 1092
+- 25.7 &ensp; Goodness of Fit. $\chi^2$-Test &ensp; 1096
+- 25.8 &ensp; Nonparametric Tests &ensp; 1100
+- 25.9 &ensp; Regression. Fitting Straight Lines. Correlation &ensp; 1103
+
+Chapter 25 Review Questions and Problems &ensp; 1111
+
+Summary of Chapter 25 &ensp; 1112
+
+---
+
+## Appendices {#toc-appendices .unnumbered}
+
+**APPENDIX 1** &emsp; References &emsp; A1
+
+**APPENDIX 2** &emsp; Answers to Odd-Numbered Problems &emsp; A4
+
+**APPENDIX 3** &emsp; Auxiliary Material &emsp; A63
+
+- A3.1 &ensp; Formulas for Special Functions &ensp; A63
+- A3.2 &ensp; Partial Derivatives &ensp; A69
+- A3.3 &ensp; Sequences and Series &ensp; A72
+- A3.4 &ensp; Grad, Div, Curl, $\nabla^2$ in Curvilinear Coordinates &ensp; A74
+
+**APPENDIX 4** &emsp; Additional Proofs &emsp; A77
+
+**APPENDIX 5** &emsp; Tables &emsp; A97
+
+**INDEX** &emsp; I1
+
+**PHOTO CREDITS** &emsp; P1
