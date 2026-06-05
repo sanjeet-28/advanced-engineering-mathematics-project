@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Erwin Kreyszig">
 
-<title>2&nbsp; First-Order ODEs – Advanced Engineering Mathematics</title>
+<title>2&nbsp; Advanced Engineering Mathematics – Advanced Engineering Mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,6 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/01-first-order-odes.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -72,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -84,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-first-order-odes.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CHAPTER 01: First-Order ODEs</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -117,8 +148,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01-first-order-odes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CHAPTER 01: First-Order ODEs</span></span></a>
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-first-order-odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First-Order ODEs</span></span></a>
   </div>
 </li>
     </ul>
@@ -131,11 +168,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-basic-concepts" id="toc-sec-basic-concepts" class="nav-link active" data-scroll-target="#sec-basic-concepts"><span class="header-section-number">2.1</span> Basic Concepts. Modeling</a>
-  <ul class="collapse">
-  <li><a href="#sec-concept-solution" id="toc-sec-concept-solution" class="nav-link" data-scroll-target="#sec-concept-solution"><span class="header-section-number">2.1.1</span> Concept of Solution</a></li>
-  <li><a href="#ex-verification" id="toc-ex-verification" class="nav-link" data-scroll-target="#ex-verification"><span class="header-section-number">2.1.2</span> Example 1: Verification of Solution</a></li>
-  </ul></li>
+  <li><a href="#sec-units" id="toc-sec-units" class="nav-link active" data-scroll-target="#sec-units"><span class="header-section-number">2.1</span> Systems of Units. Some Important Conversion Factors</a></li>
+  <li><a href="#sec-diff-int" id="toc-sec-diff-int" class="nav-link" data-scroll-target="#sec-diff-int"><span class="header-section-number">2.2</span> Differentiation and Integration Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -144,13 +178,20 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="chap-first-order-odes" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First-Order ODEs</span></span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></h1>
+<p class="subtitle lead">Tenth Edition</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Erwin Kreyszig </p>
+          </div>
+  </div>
     
   
     
@@ -161,104 +202,225 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Chapter 1 begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem.</p>
-<p>The simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives.</p>
-<p>Understanding the basics of ODEs requires solving problems by hand (paper and pencil, or typing on your computer, but first without the aid of a CAS).</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Numerics for first-order ODEs can be studied immediately after this chapter. See Sections 21.1–21.2.</p>
-</div>
-</div>
-<p><strong>Prerequisite:</strong> Integral calculus.</p>
-<p><strong>Sections that may be omitted in a shorter course:</strong> 1.6, 1.7.</p>
-<section id="sec-basic-concepts" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-basic-concepts"><span class="header-section-number">2.1</span> Basic Concepts. Modeling</h2>
-<div id="fig-modeling" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-cover" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-modeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-1-1.png" class="img-fluid figure-img">
+<div aria-describedby="fig-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/cover.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-modeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Modeling process
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Book Cover
 </figcaption>
 </figure>
 </div>
-<p>If we want to solve an engineering problem (usually of a physical nature), we first have to formulate the problem as a mathematical expression in terms of variables, functions, and equations.</p>
-<p>Such an expression is known as a <strong>mathematical model</strong> of the given problem.</p>
-<p>The process of</p>
-<ol type="1">
-<li>setting up a model,</li>
-<li>solving it mathematically,</li>
-<li>interpreting the result,</li>
-</ol>
-<p>is called <strong>mathematical modeling</strong>.</p>
-<p>Modeling needs experience, which we shall gain by discussing various examples and problems.</p>
-<p>Now many physical concepts, such as velocity and acceleration, are derivatives. Hence a model is very often an equation containing derivatives of an unknown function.</p>
-<p>Such a model is called a <strong>differential equation</strong>.</p>
-<div id="fig-applications" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-applications-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-1-2.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-applications-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Some applications of differential equations
-</figcaption>
-</figure>
-</div>
-<p>An <strong>ordinary differential equation (ODE)</strong> is an equation that contains one or several derivatives of an unknown function, which we usually call (y(x)) (or sometimes (y(t)) if the independent variable is time).</p>
-<p>For example</p>
-<p>[ y’ = x ]</p>
-<p>[ y’’ + 9y = e^{-2x} ]</p>
-<p>[ y’’’ - y^2 = 0 ]</p>
-<p>are ordinary differential equations.</p>
-<p>The term <em>ordinary</em> distinguishes them from <strong>partial differential equations (PDEs)</strong>, which involve partial derivatives of an unknown function of two or more variables.</p>
-<p>For instance,</p>
-<p>[ + = 0 ]</p>
-<p>is a PDE.</p>
-<p>An ODE is said to be of <strong>order (n)</strong> if the (n)-th derivative of the unknown function is the highest derivative appearing in the equation.</p>
-<p>Thus:</p>
-<ul>
-<li>Equation (1) is first order.</li>
-<li>Equation (2) is second order.</li>
-<li>Equation (3) is third order.</li>
-</ul>
-<p>For first-order ODEs we write</p>
-<p>[ F(x,y,y’) = 0 ]</p>
-<p>or explicitly as</p>
-<p>[ y’ = f(x,y) ]</p>
-<section id="sec-concept-solution" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-concept-solution"><span class="header-section-number">2.1.1</span> Concept of Solution</h3>
-<p>A function</p>
-<p>[ y = h(x) ]</p>
-<p>is called a <strong>solution</strong> of a given ODE if it satisfies the equation throughout an interval.</p>
-<p>The graph of (h(x)) is called a <strong>solution curve</strong>.</p>
+<hr>
+<section id="sec-units" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-units"><span class="header-section-number">2.1</span> Systems of Units. Some Important Conversion Factors</h2>
+<p>The most important systems of units are shown in the table below. The mks system is also known as the <em>International System of Units</em> (abbreviated <em>SI</em>), and the abbreviations sec (instead of s), gm (instead of g), and nt (instead of N) are also used.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 19%">
+<col style="width: 15%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System of units</th>
+<th>Length</th>
+<th>Mass</th>
+<th>Time</th>
+<th>Force</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cgs system</td>
+<td>centimeter (cm)</td>
+<td>gram (g)</td>
+<td>second (s)</td>
+<td>dyne</td>
+</tr>
+<tr class="even">
+<td>mks system</td>
+<td>meter (m)</td>
+<td>kilogram (kg)</td>
+<td>second (s)</td>
+<td>newton (nt)</td>
+</tr>
+<tr class="odd">
+<td>Engineering system</td>
+<td>foot (ft)</td>
+<td>slug</td>
+<td>second (s)</td>
+<td>pound (lb)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>1 inch (in.) <span class="math inline">\(= 2.540000\)</span> cm <span class="math inline">\(\hspace{4cm}\)</span> 1 foot (ft) <span class="math inline">\(= 12\)</span> in. <span class="math inline">\(= 30.480000\)</span> cm</p>
+<p>1 yard (yd) <span class="math inline">\(= 3\)</span> ft <span class="math inline">\(= 91.440000\)</span> cm <span class="math inline">\(\hspace{2.5cm}\)</span> 1 statute mile (mi) <span class="math inline">\(= 5280\)</span> ft <span class="math inline">\(= 1.609344\)</span> km</p>
+<p>1 nautical mile <span class="math inline">\(= 6080\)</span> ft <span class="math inline">\(= 1.853184\)</span> km</p>
+<p>1 acre <span class="math inline">\(= 4840\)</span> yd<span class="math inline">\(^2 = 4046.8564\)</span> m<span class="math inline">\(^2\)</span> <span class="math inline">\(\hspace{2.5cm}\)</span> 1 mi<span class="math inline">\(^2\)</span> <span class="math inline">\(= 640\)</span> acres <span class="math inline">\(= 2.5899881\)</span> km<span class="math inline">\(^2\)</span></p>
+<p>1 fluid ounce <span class="math inline">\(= 1/128\)</span> U.S. gallon <span class="math inline">\(= 231/128\)</span> in.<span class="math inline">\(^3 = 29.573730\)</span> cm<span class="math inline">\(^3\)</span></p>
+<p>1 U.S. gallon <span class="math inline">\(= 4\)</span> quarts (liq) <span class="math inline">\(= 8\)</span> pints (liq) <span class="math inline">\(= 128\)</span> fl oz <span class="math inline">\(= 3785.4118\)</span> cm<span class="math inline">\(^3\)</span></p>
+<p>1 British Imperial and Canadian gallon <span class="math inline">\(= 1.200949\)</span> U.S. gallons <span class="math inline">\(= 4546.087\)</span> cm<span class="math inline">\(^3\)</span></p>
+<p>1 slug <span class="math inline">\(= 14.59390\)</span> kg</p>
+<p>1 pound (lb) <span class="math inline">\(= 4.448444\)</span> nt <span class="math inline">\(\hspace{4cm}\)</span> 1 newton (nt) <span class="math inline">\(= 10^5\)</span> dynes</p>
+<p>1 British thermal unit (Btu) <span class="math inline">\(= 1054.35\)</span> joules <span class="math inline">\(\hspace{1.5cm}\)</span> 1 joule <span class="math inline">\(= 10^7\)</span> ergs</p>
+<p>1 calorie (cal) <span class="math inline">\(= 4.1840\)</span> joules</p>
+<p>1 kilowatt-hour (kWh) <span class="math inline">\(= 3414.4\)</span> Btu <span class="math inline">\(= 3.6 \cdot 10^6\)</span> joules</p>
+<p>1 horsepower (hp) <span class="math inline">\(= 2542.48\)</span> Btu/h <span class="math inline">\(= 178.298\)</span> cal/sec <span class="math inline">\(= 0.74570\)</span> kW</p>
+<p>1 kilowatt (kW) <span class="math inline">\(= 1000\)</span> watts <span class="math inline">\(= 3414.43\)</span> Btu/h <span class="math inline">\(= 238.662\)</span> cal/s</p>
+<p><span class="math display">\[{}^\circ\text{F} = {}^\circ\text{C} \cdot 1.8 + 32 \hspace{4cm} 1^\circ = 60' = 3600'' = 0.017453293 \text{ radian}\]</span></p>
+<hr>
+<p>For further details see, for example, D. Halliday, R. Resnick, and J. Walker, <em>Fundamentals of Physics</em>, 9th ed., Hoboken, N. J: Wiley, 2011. See also AN American National Standard, ASTM/IEEE Standard Metric Practice, Institute of Electrical and Electronics Engineers, Inc.&nbsp;(IEEE), 445 Hoes Lane, Piscataway, N. J. 08854, website at www.ieee.org.</p>
+<hr>
 </section>
-<section id="ex-verification" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="ex-verification"><span class="header-section-number">2.1.2</span> Example 1: Verification of Solution</h3>
-<p>Verify that</p>
-<p>[ y = ]</p>
-<p>is a solution of</p>
-<p>[ xy’ + y = 0, x . ]</p>
-<p>Differentiating gives</p>
-<p>[ y’ = -. ]</p>
-<p>Multiplying by (x),</p>
-<p>[ xy’ = -. ]</p>
-<p>Since</p>
-<p>[ y = , ]</p>
-<p>we obtain</p>
-<p>[ xy’ + y = 0. ]</p>
-<p>Hence the given function is a solution.</p>
+<section id="sec-diff-int" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-diff-int"><span class="header-section-number">2.2</span> Differentiation and Integration Reference</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<section id="sec-differentiation" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="sec-differentiation"><span class="header-section-number">2.2.1</span> Differentiation</h3>
+<p><span class="math display">\[
+(cu)' = cu' \quad (c \text{ constant})
+\]</span></p>
+<p><span class="math display">\[
+(u + v)' = u' + v'
+\]</span></p>
+<p><span class="math display">\[
+(uv)' = u'v + uv'
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}
+\]</span></p>
+<p><span class="math display">\[
+\frac{du}{dx} = \frac{du}{dy}\frac{dy}{dx} \quad \text{(Chain rule)}
+\]</span></p>
+<hr>
+<p><span class="math display">\[
+(x^n)' = nx^{n-1}
+\]</span></p>
+<p><span class="math display">\[
+(e^x)' = e^x
+\]</span></p>
+<p><span class="math display">\[
+(e^{ax})' = ae^{ax}
+\]</span></p>
+<p><span class="math display">\[
+(a^x)' = a^x \ln a
+\]</span></p>
+<p><span class="math display">\[
+(\sin x)' = \cos x
+\]</span></p>
+<p><span class="math display">\[
+(\cos x)' = -\sin x
+\]</span></p>
+<p><span class="math display">\[
+(\tan x)' = \sec^2 x
+\]</span></p>
+<p><span class="math display">\[
+(\cot x)' = -\csc^2 x
+\]</span></p>
+<p><span class="math display">\[
+(\sinh x)' = \cosh x
+\]</span></p>
+<p><span class="math display">\[
+(\cosh x)' = \sinh x
+\]</span></p>
+<p><span class="math display">\[
+(\ln x)' = \frac{1}{x}
+\]</span></p>
+<p><span class="math display">\[
+(\log_a x)' = \frac{\log_a e}{x}
+\]</span></p>
+<p><span class="math display">\[
+(\arcsin x)' = \frac{1}{\sqrt{1 - x^2}}
+\]</span></p>
+<p><span class="math display">\[
+(\arccos x)' = -\frac{1}{\sqrt{1 - x^2}}
+\]</span></p>
+<p><span class="math display">\[
+(\arctan x)' = \frac{1}{1 + x^2}
+\]</span></p>
+<p><span class="math display">\[
+(\text{arccot}\, x)' = -\frac{1}{1 + x^2}
+\]</span></p>
+</section>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<section id="sec-integration" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-integration"><span class="header-section-number">2.2.2</span> Integration</h3>
+<p><span class="math display">\[
+\int uv'\,dx = uv - \int u'v\,dx \quad \text{(by parts)}
+\]</span></p>
+<p><span class="math display">\[
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + c \quad (n \neq -1)
+\]</span></p>
+<p><span class="math display">\[
+\int \frac{1}{x}\,dx = \ln|x| + c
+\]</span></p>
+<p><span class="math display">\[
+\int e^{ax}\,dx = \frac{1}{a}e^{ax} + c
+\]</span></p>
+<p><span class="math display">\[
+\int \sin x\,dx = -\cos x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \cos x\,dx = \sin x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \tan x\,dx = -\ln|\cos x| + c
+\]</span></p>
+<p><span class="math display">\[
+\int \cot x\,dx = \ln|\sin x| + c
+\]</span></p>
+<p><span class="math display">\[
+\int \sec x\,dx = \ln|\sec x + \tan x| + c
+\]</span></p>
+<p><span class="math display">\[
+\int \csc x\,dx = \ln|\csc x - \cot x| + c
+\]</span></p>
+<p><span class="math display">\[
+\int \frac{dx}{x^2 + a^2} = \frac{1}{a}\arctan\frac{x}{a} + c
+\]</span></p>
+<p><span class="math display">\[
+\int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin\frac{x}{a} + c
+\]</span></p>
+<p><span class="math display">\[
+\int \frac{dx}{\sqrt{x^2 + a^2}} = \text{arcsinh}\,\frac{x}{a} + c
+\]</span></p>
+<p><span class="math display">\[
+\int \frac{dx}{\sqrt{x^2 - a^2}} = \text{arccosh}\,\frac{x}{a} + c
+\]</span></p>
+<p><span class="math display">\[
+\int \sin^2 x\,dx = \tfrac{1}{2}x - \tfrac{1}{4}\sin 2x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \cos^2 x\,dx = \tfrac{1}{2}x + \tfrac{1}{4}\sin 2x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \tan^2 x\,dx = \tan x - x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \cot^2 x\,dx = -\cot x - x + c
+\]</span></p>
+<p><span class="math display">\[
+\int \ln x\,dx = x\ln x - x + c
+\]</span></p>
+<p><span class="math display">\[
+\int e^{ax}\sin bx\,dx = \frac{e^{ax}}{a^2 + b^2}(a\sin bx - b\cos bx) + c
+\]</span></p>
+<p><span class="math display">\[
+\int e^{ax}\cos bx\,dx = \frac{e^{ax}}{a^2 + b^2}(a\cos bx + b\sin bx) + c
+\]</span></p>
+</section>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -669,6 +831,9 @@ Figure&nbsp;2.2: Some applications of differential equations
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapters/01-first-order-odes.html" class="pagination-link" aria-label="First-Order ODEs">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First-Order ODEs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

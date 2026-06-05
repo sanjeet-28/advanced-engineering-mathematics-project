@@ -1,4 +1,4 @@
-# First-Order ODEs {#chap-first-order-odes}
+# CHAPTER 01: First-Order ODEs {#chap-first-order-odes}
 
 Chapter 1 begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem.
 

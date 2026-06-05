@@ -5,6 +5,7 @@ book:
   title: "Advanced Engineering Mathematics"
   chapters:
     - index.qmd
+    - chapters/contents.qmd
     - chapters/01-first-order-odes.qmd
 
 format:
