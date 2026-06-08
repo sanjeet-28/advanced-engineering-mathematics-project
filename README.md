@@ -15,3 +15,6 @@ Key objectives include:
 * Scalable content architecture supporting future extensions and collaborative contributions.
 
 The long-term vision is to create an open, extensible engineering mathematics ecosystem that serves students, researchers, and practitioners as both a learning resource and a computational reference platform.
+   
+
+   
