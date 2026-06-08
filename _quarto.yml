@@ -7,6 +7,8 @@ book:
     - index.qmd
     - chapters/contents.qmd
     - chapters/01-first-order-odes.qmd
+    - chapters/intro.qmd
+
 
 format:
   html:

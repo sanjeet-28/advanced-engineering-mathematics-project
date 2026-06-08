@@ -1,0 +1,248 @@
+---
+title: "gutka"
+subtitle: "Tenth Edition"
+author: "Erwin Kreyszig"
+---
+
+![Book Cover](images/cover.png){#fig-cover}
+
+---
+
+## Systems of Units. Some Important Conversion Factors {#sec-units}
+
+The most important systems of units are shown in the table below. The mks system is also known as the *International System of Units* (abbreviated *SI*), and the abbreviations sec (instead of s), gm (instead of g), and nt (instead of N) are also used.
+
+| System of units    | Length          | Mass          | Time       | Force       |
+|--------------------|-----------------|---------------|------------|-------------|
+| cgs system         | centimeter (cm) | gram (g)      | second (s) | dyne        |
+| mks system         | meter (m)       | kilogram (kg) | second (s) | newton (nt) |
+| Engineering system | foot (ft)       | slug          | second (s) | pound (lb)  |
+
+---
+
+1 inch (in.) $= 2.540000$ cm $\hspace{4cm}$ 1 foot (ft) $= 12$ in. $= 30.480000$ cm
+
+1 yard (yd) $= 3$ ft $= 91.440000$ cm $\hspace{2.5cm}$ 1 statute mile (mi) $= 5280$ ft $= 1.609344$ km
+
+1 nautical mile $= 6080$ ft $= 1.853184$ km
+
+1 acre $= 4840$ yd$^2 = 4046.8564$ m$^2$ $\hspace{2.5cm}$ 1 mi$^2$ $= 640$ acres $= 2.5899881$ km$^2$
+
+1 fluid ounce $= 1/128$ U.S. gallon $= 231/128$ in.$^3 = 29.573730$ cm$^3$
+
+1 U.S. gallon $= 4$ quarts (liq) $= 8$ pints (liq) $= 128$ fl oz $= 3785.4118$ cm$^3$
+
+1 British Imperial and Canadian gallon $= 1.200949$ U.S. gallons $= 4546.087$ cm$^3$
+
+1 slug $= 14.59390$ kg
+
+1 pound (lb) $= 4.448444$ nt $\hspace{4cm}$ 1 newton (nt) $= 10^5$ dynes
+
+1 British thermal unit (Btu) $= 1054.35$ joules $\hspace{1.5cm}$ 1 joule $= 10^7$ ergs
+
+1 calorie (cal) $= 4.1840$ joules
+
+1 kilowatt-hour (kWh) $= 3414.4$ Btu $= 3.6 \cdot 10^6$ joules
+
+1 horsepower (hp) $= 2542.48$ Btu/h $= 178.298$ cal/sec $= 0.74570$ kW
+
+1 kilowatt (kW) $= 1000$ watts $= 3414.43$ Btu/h $= 238.662$ cal/s
+
+$${}^\circ\text{F} = {}^\circ\text{C} \cdot 1.8 + 32 \hspace{4cm} 1^\circ = 60' = 3600'' = 0.017453293 \text{ radian}$$
+
+---
+
+For further details see, for example, D. Halliday, R. Resnick, and J. Walker, *Fundamentals of Physics*, 9th ed., Hoboken, N. J: Wiley, 2011. See also AN American National Standard, ASTM/IEEE Standard Metric Practice, Institute of Electrical and Electronics Engineers, Inc. (IEEE), 445 Hoes Lane, Piscataway, N. J. 08854, website at www.ieee.org.
+
+---
+
+## Differentiation and Integration Reference {#sec-diff-int}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+### Differentiation {#sec-differentiation}
+
+$$
+(cu)' = cu' \quad (c \text{ constant})
+$$
+
+$$
+(u + v)' = u' + v'
+$$
+
+$$
+(uv)' = u'v + uv'
+$$
+
+$$
+\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}
+$$
+
+$$
+\frac{du}{dx} = \frac{du}{dy}\frac{dy}{dx} \quad \text{(Chain rule)}
+$$
+
+---
+
+$$
+(x^n)' = nx^{n-1}
+$$
+
+$$
+(e^x)' = e^x
+$$
+
+$$
+(e^{ax})' = ae^{ax}
+$$
+
+$$
+(a^x)' = a^x \ln a
+$$
+
+$$
+(\sin x)' = \cos x
+$$
+
+$$
+(\cos x)' = -\sin x
+$$
+
+$$
+(\tan x)' = \sec^2 x
+$$
+
+$$
+(\cot x)' = -\csc^2 x
+$$
+
+$$
+(\sinh x)' = \cosh x
+$$
+
+$$
+(\cosh x)' = \sinh x
+$$
+
+$$
+(\ln x)' = \frac{1}{x}
+$$
+
+$$
+(\log_a x)' = \frac{\log_a e}{x}
+$$
+
+$$
+(\arcsin x)' = \frac{1}{\sqrt{1 - x^2}}
+$$
+
+$$
+(\arccos x)' = -\frac{1}{\sqrt{1 - x^2}}
+$$
+
+$$
+(\arctan x)' = \frac{1}{1 + x^2}
+$$
+
+$$
+(\text{arccot}\, x)' = -\frac{1}{1 + x^2}
+$$
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+
+### Integration {#sec-integration}
+
+$$
+\int uv'\,dx = uv - \int u'v\,dx \quad \text{(by parts)}
+$$
+
+$$
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + c \quad (n \neq -1)
+$$
+
+$$
+\int \frac{1}{x}\,dx = \ln|x| + c
+$$
+
+$$
+\int e^{ax}\,dx = \frac{1}{a}e^{ax} + c
+$$
+
+$$
+\int \sin x\,dx = -\cos x + c
+$$
+
+$$
+\int \cos x\,dx = \sin x + c
+$$
+
+$$
+\int \tan x\,dx = -\ln|\cos x| + c
+$$
+
+$$
+\int \cot x\,dx = \ln|\sin x| + c
+$$
+
+$$
+\int \sec x\,dx = \ln|\sec x + \tan x| + c
+$$
+
+$$
+\int \csc x\,dx = \ln|\csc x - \cot x| + c
+$$
+
+$$
+\int \frac{dx}{x^2 + a^2} = \frac{1}{a}\arctan\frac{x}{a} + c
+$$
+
+$$
+\int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin\frac{x}{a} + c
+$$
+
+$$
+\int \frac{dx}{\sqrt{x^2 + a^2}} = \text{arcsinh}\,\frac{x}{a} + c
+$$
+
+$$
+\int \frac{dx}{\sqrt{x^2 - a^2}} = \text{arccosh}\,\frac{x}{a} + c
+$$
+
+$$
+\int \sin^2 x\,dx = \tfrac{1}{2}x - \tfrac{1}{4}\sin 2x + c
+$$
+
+$$
+\int \cos^2 x\,dx = \tfrac{1}{2}x + \tfrac{1}{4}\sin 2x + c
+$$
+
+$$
+\int \tan^2 x\,dx = \tan x - x + c
+$$
+
+$$
+\int \cot^2 x\,dx = -\cot x - x + c
+$$
+
+$$
+\int \ln x\,dx = x\ln x - x + c
+$$
+
+$$
+\int e^{ax}\sin bx\,dx = \frac{e^{ax}}{a^2 + b^2}(a\sin bx - b\cos bx) + c
+$$
+
+$$
+\int e^{ax}\cos bx\,dx = \frac{e^{ax}}{a^2 + b^2}(a\cos bx + b\sin bx) + c
+$$
+
+:::
+
+::::
