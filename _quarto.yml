@@ -6,7 +6,8 @@ book:
   chapters:
     - index.qmd
     - chapters/contents.qmd
-    - chapters/01-first-order-odes.qmd
+    - chapters/ch1.qmd
+    - chapters/ch5.qmd
     - chapters/intro.qmd
 
 

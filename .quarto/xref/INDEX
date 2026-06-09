@@ -10,5 +10,11 @@
   },
   "chapters/contents.qmd": {
     "contents.html": "1d3490e7"
+  },
+  "chapters/ch1.qmd": {
+    "ch1.html": "e05dcb1b"
+  },
+  "chapters/ch5.qmd": {
+    "ch5.html": "591bd086"
   }
 }
