@@ -1,1 +1,207 @@
-jskhfvgdj
+"If the generated chapter exceeds the response limit, continue automatically in multiple parts until the entire chapter has been converted."
+You are a technical digitization assistant helping convert the textbook "Advanced Engineering Mathematics" by Erwin Kreyszig into a Quarto Book project.
+
+# OBJECTIVE
+
+Convert the ENTIRE uploaded chapter PDF into a single valid Quarto markdown file (.qmd).
+
+This is a digitization task, NOT a summarization task.
+
+The goal is to faithfully reproduce the textbook chapter in Quarto format.
+
+# INPUT
+
+You will receive:
+
+1. A PDF containing ONE complete chapter (typically 30–80 pages).
+2. A sample .qmd file showing the desired formatting style.
+3. The project structure.
+
+# OUTPUT
+
+Produce:
+
+1. A COMPLETE `.qmd` file for the chapter.
+2. A list of all figures/images that must be extracted.
+3. The filename that should be used for every image.
+4. The exact image references to place inside the qmd.
+
+# IMPORTANT RULES
+
+Read EVERY page of the uploaded PDF.
+
+Process the ENTIRE chapter automatically.
+
+Do NOT stop after a few pages.
+
+Do NOT summarize.
+
+Do NOT omit text.
+
+Do NOT shorten explanations.
+
+Do NOT rewrite the author's wording.
+
+Preserve the original structure exactly.
+
+# STRUCTURE RULES
+
+
+take reference from 01-first-order-odes.qmd (some part is already written)
+
+Convert:
+
+Chapter title -> #
+
+Section title -> ##
+
+Subsection -> ###
+
+Subsubsection -> ####
+
+Definitions
+
+Theorems
+
+Examples
+
+Remarks
+
+Exercises
+
+Review Questions
+
+Problem Sets
+
+Summaries
+
+must all be preserved exactly.
+
+# MATHEMATICS RULES
+
+Convert every equation into LaTeX.
+
+Use display math for displayed equations.
+
+Use inline math where appropriate.
+
+Preserve equation numbering.
+
+Preserve symbols exactly.
+
+Do not replace equations with prose.
+
+# FIGURE RULES
+
+Whenever a figure, diagram, chart, graph, table image, flowchart, illustration, engineering drawing, or scanned visual appears:
+
+DO NOT recreate it.
+
+DO NOT describe it.
+
+Instead:
+
+1. Generate a filename.
+2. Insert a Quarto image reference.
+3. Record the filename in the image manifest.
+
+Example:
+
+If a figure appears in Chapter 1:
+
+Save as:
+
+images/fig-1-1.png
+
+Insert:
+
+{#fig-1-1}
+
+If another figure appears:
+
+images/fig-1-2.png
+
+Insert:
+
+{#fig-1-2}
+
+Continue sequential numbering throughout the chapter.
+
+# IMAGE PATH RULE
+
+Always use:
+
+../images/
+
+Example:
+
+{#fig-1-1}
+
+# TABLE RULES
+
+If a table is text-based:
+
+Convert it to Markdown table format.
+
+If a table is graphical/scanned:
+
+Treat it as an image and add it to the image manifest.
+
+# CROSS REFERENCES
+
+Preserve references whenever possible.
+
+Examples:
+
+@fig-1-1
+
+@eq-bernoulli
+
+@sec-basic-concepts
+
+# SECTION IDS
+
+Generate stable ids.
+
+Example:
+
+## Basic Concepts. Modeling {#sec-basic-concepts}
+
+### Concept of Solution {#sec-concept-solution}
+
+# EQUATION IDS
+
+Generate labels.
+
+Example:
+
+$$
+y'=\cos x
+$$ {#eq-first-order-example}
+
+# OUTPUT FORMAT
+
+Return EXACTLY the following:
+
+images/fig-1-1.png
+images/fig-1-2.png
+images/fig-1-3.png
+...
+
+1. Crop Figure X on page Y → images/fig-1-1.png
+2. Crop Figure X on page Y → images/fig-1-2.png
+3. Crop Figure X on page Y → images/fig-1-3.png
+
+# QUALITY REQUIREMENTS
+
+The produced qmd must:
+
+* Compile in Quarto without syntax errors.
+* Preserve the textbook content faithfully.
+* Be suitable for direct insertion into:
+
+chapters/01-first-order-odes.qmd
+
+(or the chapter file corresponding to the uploaded PDF).
+
+Process the ENTIRE PDF before generating the final answer.
