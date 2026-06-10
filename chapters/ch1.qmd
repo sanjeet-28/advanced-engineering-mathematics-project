@@ -1028,6 +1028,31 @@ Test for exactness. If exact, solve. If not, use an integrating factor as given 
 14. $(a + 1)y \, dx + (b + 1)x \, dy = 0, \quad y(1) = 1, \quad F = x^a y^b$
 15. **Exactness.** Under what conditions for the constants $a, b, k, l$ is $(ax + by) \, dx + (kx + ly) \, dy = 0$ exact? Solve the exact ODE.
 
+16. **TEAM PROJECT. Solution by Several Methods.** Show this as indicated. Compare the amount of work.
+    (a) $e^y(\sinh x \, dx + \cosh x \, dy) = 0$ as an exact ODE and by separation.
+    (b) $(1 - 2x) \cos y \, dx + dy/\cos y = 0$ by Theorem 2 and by separation.
+    (c) $(x^2 + y^2) \, dx - 2xy \, dy = 0$ by Theorem 1 or 2 and by separation with $v = y/x$.
+    (d) $3x^2 y \, dx + 4x^3 \, dy = 0$ by Theorems 1 and 2 and by separation.
+    (e) Search the text and the problems for further ODEs that can be solved by more than one of the methods discussed so far. Make a list of these ODEs. Find further cases of your own.
+
+17. **WRITING PROJECT. Working Backward.** Working backward from the solution to the problem is useful in many areas. Euler, Lagrange, and other great masters did it. To get additional insight into the idea of integrating factors, start from a $u(x, y)$ of your choice, find $du = 0$, destroy exactness by division by some $F(x, y)$, and see what ODEs solvable by integrating factors you can get. Can you proceed systematically, beginning with the simplest $F(x, y)$?
+
+18. **CAS PROJECT. Graphing Particular Solutions.** Graph particular solutions of the following ODE, proceeding as explained.
+
+    $$
+    dy - y^2 \sin x \, dx = 0
+    $$ {#eq-sec14-21}
+
+    (a) Show that (@eq-sec14-21) is not exact. Find an integrating factor using either Theorem 1 or 2. Solve (@eq-sec14-21).
+    (b) Solve (@eq-sec14-21) by separating variables. Is this simpler than (a)?
+    (c) Graph the seven particular solutions satisfying the following initial conditions (see figure below).
+
+        $y(0) = 1, \quad y(\frac{1}{2}\pi) = \frac{1}{2}, \quad y(\pi) = \frac{1}{3}, \quad y(\frac{3}{2}\pi) = \frac{2}{5}, \quad y(2\pi) = \frac{1}{2}, \quad y(\frac{5}{2}\pi) = \frac{2}{3}, \quad y(3\pi) = 1$
+
+    (d) Which solution of (@eq-sec14-21) do we not get in (a) or (b)?
+
+    ![Particular solutions in CAS Project 18](../images/fig-1-29.png){#fig-1-29}
+
 ## 1.5 Linear ODEs. Bernoulli Equation. Population Dynamics {#sec-linear-odes}
 
 Linear ODEs or ODEs that can be transformed to linear form are models of various phenomena, for instance, in physics, biology, population dynamics, and ecology, as we shall see. A first-order ODE is said to be **linear** if it can be brought into the form
@@ -1429,4 +1454,329 @@ Explain the effect of the transformation by writing it as $y = Y + v$, $v = 1/u$
     ![Fig. 23. Fish population in Problem 38](../images/fig-1-23.png){#fig-1-23}
 
 39. **Extinction vs. unlimited growth.** If in a population the death rate is proportional to the population, and the birth rate is proportional to the chance encounters of meeting mates for reproduction, what will the model be? Without solving, find out what will eventually happen to a small initial population. To a large one. Then solve the model.
-40. **Air circulation.** In a room containing $20,000\text{ ft}^3$ of air, $600\text{ ft}^3$ of fresh air flows in per minute, and the mixture (made practically uniform by circulating fans) is exhausted at a rate of 600 cubic feet per minute (cfm). What is the amount of fresh air $y(t)$ at any time if $y(0) = 0$? After what time will 90% of the air be fresh?
+40. **Air circulation.** In a room containing $20,000\text{ ft}^3$ of air, $600\text{ ft}^3$ of fresh air flows in per minute, and the mixture (made practically uniform by circulating fans) is exhausted at a rate of 600 cubic feet per minute (cfm). What is the amount of fresh air $y(t)$ at any time if $y(0) = 0$? After what time will 90% of the air be fresh?
+
+## 1.6 Orthogonal Trajectories. Optional {#sec-orthogonal-trajectories}
+
+An important type of problem in physics or geometry is to find a family of curves that intersects a given family of curves at right angles. The new curves are called **orthogonal trajectories** of the given curves (and conversely). Examples are curves of equal temperature (isotherms) and curves of heat flow, curves of equal altitude (contour lines) on a map and curves of steepest descent on that map, curves of equal potential (equipotential curves, curves of equal voltage—the ellipses in Fig. 24) and curves of electric force (the parabolas in Fig. 24).
+
+Here the angle of intersection between two curves is defined to be the angle between the tangents of the curves at the intersection point. Orthogonal is another word for perpendicular.
+
+In many cases orthogonal trajectories can be found using ODEs. In general, if we consider $G(x, y, c) = 0$ to be a given family of curves in the $xy$-plane, then each value of $c$ gives a particular curve. Since $c$ is one parameter, such a family is called a **one-parameter family of curves**.
+
+In detail, let us explain this method by a family of ellipses
+
+$$
+\frac{1}{2}x^2 + y^2 = c \qquad (c > 0)
+$$ {#eq-sec16-1}
+
+and illustrated in Fig. 24. We assume that this family of ellipses represents electric equipotential curves between the two black ellipses (equipotential surfaces between two elliptic cylinders in space, of which Fig. 24 shows a cross-section). We seek the orthogonal trajectories, the curves of electric force. Equation (@eq-sec16-1) is a one-parameter family with parameter $c$. Each value of $c$ corresponds to one of these ellipses.
+
+**Step 1. Find an ODE for which the given family is a general solution.** Of course, this ODE must no longer contain the parameter $c$. Differentiating (@eq-sec16-1), we have $x + 2yy' = 0$. Hence the ODE of the given curves is
+
+$$
+y' = f(x, y) = -\frac{x}{2y}.
+$$ {#eq-sec16-2}
+
+**Step 2. Find an ODE for the orthogonal trajectories.** This ODE is
+
+$$
+\tilde{y}' = -\frac{1}{f(x, \tilde{y})} = +\frac{2\tilde{y}}{x}
+$$ {#eq-sec16-3}
+
+with the same $f$ as in (@eq-sec16-2). Why? Well, a given curve passing through a point $(x_0, y_0)$ has slope $f(x_0, y_0)$ at that point, by (@eq-sec16-2). The trajectory through $(x_0, y_0)$ has slope $-1/f(x_0, y_0)$ by (@eq-sec16-3). The product of these slopes is $-1$, as we see. From calculus it is known that this is the condition for orthogonality (perpendicularity) of two straight lines (the tangents at $(x_0, y_0)$), hence of the curve and its orthogonal trajectory at $(x_0, y_0)$.
+
+**Step 3. Solve (@eq-sec16-3)** by separating variables, integrating, and taking exponents:
+
+$$
+\frac{d\tilde{y}}{\tilde{y}} = \frac{2 \, dx}{x}, \qquad \ln |\tilde{y}| = 2\ln x + c, \qquad \tilde{y} = c^* x^2.
+$$
+
+This is the family of orthogonal trajectories, the quadratic parabolas along which electrons or other charged particles (of very small mass) would move in the electric field between the black ellipses (elliptic cylinders).
+
+![Fig. 24. Electrostatic field between two ellipses (elliptic cylinders in space): Elliptic equipotential curves (equipotential surfaces) and orthogonal trajectories (parabolas)](../images/fig-1-24.png){#fig-1-24}
+
+## PROBLEM SET 1.6
+
+### 1–3 FAMILIES OF CURVES
+Represent the given family of curves in the form $G(x, y; c) = 0$ and sketch some of the curves.
+
+1. All ellipses with foci $-3$ and $3$ on the $x$-axis.
+2. All circles with centers on the cubic parabola $y = x^3$ and passing through the origin $(0, 0)$.
+3. The catenaries obtained by translating the catenary $y = \cosh x$ in the direction of the straight line $y = -2x + c$.
+
+### 4–10 ORTHOGONAL TRAJECTORIES (OTs)
+Sketch or graph some of the given curves. Guess what their OTs may look like. Find these OTs.
+
+4. $y = cx$
+5. $y = x^2 + c$
+6. $y = ce^{x^2}$
+7. $xy = c$
+8. $y = x + c$
+9. $x^2 + (y - c)^2 = c^2$
+10. $y = c \cosh x$
+
+### 11–16 APPLICATIONS, EXTENSIONS
+
+11. **Electric field.** Let the electric equipotential lines (curves of constant potential) between two concentric cylinders with the $z$-axis in space be given by $u(x, y) = x^2 + y^2 = c$ (these are circular cylinders in the $xyz$-space). Using the method in the text, find their orthogonal trajectories (the curves of electric force).
+12. **Electric field.** The lines of electric force of two opposite charges of the same strength at $(-1, 0)$ and $(1, 0)$ are the circles through $(-1, 0)$ and $(1, 0)$. Show that these circles are given by $x^2 + (y - c)^2 = 1 + c^2$. Show that the equipotential lines (which are orthogonal trajectories of those circles) are the circles given by $(x + c^*)^2 + y^2 = c^{*2} - 1$ (dashed in Fig. 25).
+
+    ![Fig. 25. Electric field in Problem 12](../images/fig-1-25.png){#fig-1-25}
+
+13. **Temperature field.** Let the isotherms (curves of constant temperature) in a body in the upper half-plane be given by $4x^2 + 9y^2 = c \ (y > 0)$. Find the orthogonal trajectories (the curves along which heat will flow in regions filled with heat-conducting material and free of heat sources or heat sinks).
+14. **Conic sections.** Find the conditions under which the orthogonal trajectories of families of ellipses $x^2/a^2 + y^2/b^2 = c$ are again conic sections. Illustrate your result graphically by sketches or by using your CAS. What happens if $a = 0$? If $b = 0$?
+15. **Cauchy–Riemann equations.** Show that for a family $u(x, y) = c = \text{const}$ the orthogonal trajectories $v(x, y) = c^* = \text{const}$ can be obtained from the following Cauchy–Riemann equations (which are basic in complex analysis in Chap. 13) and use them to find the orthogonal trajectories of $e^x \sin y = \text{const}$. (Here, subscripts denote partial derivatives.)
+    $$
+    u_x = v_y, \qquad u_y = -v_x.
+    $$
+16. **Congruent OTs.** If $y' = f(x)$ with $f$ independent of $y$, show that the curves of the corresponding family are congruent, and so are their OTs.
+
+## 1.7 Existence and Uniqueness of Solutions for Initial Value Problems {#sec-existence-uniqueness}
+
+The initial value problem $|y'| + |y| = 0, \ y(0) = 1$ has no solution because $y = 0$ (that is, $y(x) = 0$ for all $x$) is the only solution of the ODE.
+
+The initial value problem $y' = 2x, \ y(0) = 1$ has precisely one solution, namely, $y = x^2 + 1$. The initial value problem $y' = y - 1, \ y(0) = 1$ has infinitely many solutions, namely, $y = 1 + cx$, where $c$ is an arbitrary constant because $y(0) = 1$ for all $c$.
+
+From these examples we see that an initial value problem
+
+$$
+y' = f(x, y), \qquad y(x_0) = y_0
+$$ {#eq-sec17-1}
+
+may have no solution, precisely one solution, or more than one solution. This fact leads to the following two fundamental questions.
+
+**Problem of Existence**
+
+Under what conditions does an initial value problem of the form (@eq-sec17-1) have at least one solution (hence one or several solutions)?
+
+**Problem of Uniqueness**
+
+Under what conditions does that problem have at most one solution (hence excluding the case that it has more than one solution)?
+
+Theorems that state such conditions are called **existence theorems** and **uniqueness theorems**, respectively.
+
+Of course, for our simple examples, we need no theorems because we can solve these examples by inspection; however, for complicated ODEs such theorems may be of considerable practical importance. Even when you are sure that your physical or other system behaves uniquely, occasionally your model may be oversimplified and may not give a faithful picture of reality.
+
+### THEOREM 1 Existence Theorem
+
+Let the right side $f(x, y)$ of the ODE in the initial value problem
+
+$$
+y' = f(x, y), \qquad y(x_0) = y_0
+$$
+
+be continuous at all points $(x, y)$ in some rectangle
+
+$$
+R: \quad |x - x_0| < a, \qquad |y - y_0| < b
+$$
+
+(Fig. 26) and bounded in $R$; that is, there is a number $K$ such that
+
+$$
+|f(x, y)| \le K \qquad \text{for all } (x, y) \text{ in } R.
+$$ {#eq-sec17-2}
+
+Then the initial value problem (@eq-sec17-1) has at least one solution $y(x)$. This solution exists at least for all $x$ in the subinterval $|x - x_0| < \alpha$ of the interval $|x - x_0| < a$; here, $\alpha$ is the smaller of the two numbers $a$ and $b/K$.
+
+![Fig. 26. Rectangle R in the existence and uniqueness theorems](../images/fig-1-26.png){#fig-1-26}
+
+(Example of Boundedness. The function $f(x, y) = x^2 + y^2$ is bounded (with $K = 2$) in the square $|x| \le 1, |y| \le 1$. The function $f(x, y) = \tan(x + y)$ is not bounded for $|x + y| \le \pi/2$. Explain!)
+
+### THEOREM 2 Uniqueness Theorem
+
+Let $f$ and its partial derivative $\partial f/\partial y$ be continuous for all $(x, y)$ in the rectangle $R$ (Fig. 26) and bounded, say,
+
+$$
+\text{(a)} \quad |f(x, y)| \le K, \qquad \text{(b)} \quad \left|\frac{\partial f}{\partial y}(x, y)\right| \le M \qquad \text{for all } (x, y) \text{ in } R.
+$$ {#eq-sec17-3}
+
+Then the initial value problem (@eq-sec17-1) has at most one solution $y(x)$. Thus, by Theorem 1, the problem has precisely one solution. This solution exists at least for all $x$ in that subinterval $|x - x_0| < \alpha$.
+
+### Understanding These Theorems
+
+These two theorems take care of almost all practical cases. Theorem 1 says that if $f(x, y)$ is continuous in some region in the $xy$-plane containing the point $(x_0, y_0)$, then the initial value problem (@eq-sec17-1) has at least one solution.
+
+Theorem 2 says that if, moreover, the partial derivative of $f$ with respect to $y$ exists and is continuous in that region, then (@eq-sec17-1) can have at most one solution; hence, by Theorem 1, it has precisely one solution.
+
+Read again what you have just read—these are entirely new ideas in our discussion.
+
+Proofs of these theorems are beyond the level of this book (see Ref. [A11] in App. 1); however, the following remarks and examples may help you to a good understanding of the theorems.
+
+Since $y' = f(x, y)$, the condition (@eq-sec17-2) implies that $|y'| \le K$; that is, the slope of any solution curve $y(x)$ in $R$ is at least $-K$ and at most $K$. Hence a solution curve that passes through the point $(x_0, y_0)$ must lie in the colored region in Fig. 27 bounded by the lines $l_1$ and $l_2$ whose slopes are $-K$ and $K$, respectively. Depending on the form of $R$, two different cases may arise. In the first case, shown in Fig. 27a, we have $b/K \ge a$ and therefore $\alpha = a$ in the existence theorem, which then asserts that the solution exists for all $x$ between $x_0 - a$ and $x_0 + a$. In the second case, shown in Fig. 27b, we have $b/K < a$. Therefore, $\alpha = b/K < a$ and all we can conclude from the theorems is that the solution exists for all $x$ between $x_0 - b/K$ and $x_0 + b/K$. For larger or smaller $x$'s the solution curve may leave the rectangle $R$, and since nothing is assumed about $f$ outside $R$, nothing can be concluded about the solution for those larger or smaller $x$'s; that is, for such $x$'s the solution may or may not exist—we don't know.
+
+![Fig. 27. The condition (2) of the existence theorem. (a) First case. (b) Second case](../images/fig-1-27.png){#fig-1-27}
+
+Let us illustrate our discussion with a simple example. We shall see that our choice of a rectangle $R$ with a large base (a long $x$-interval) will lead to the case in Fig. 27b.
+
+### EXAMPLE 1 Choice of a Rectangle
+
+Consider the initial value problem $y' = 1 + y^2, \ y(0) = 0$ and take the rectangle $R; |x| < 5, |y| < 3$. Then $|f(x, y)| = |1 + y^2| \le K = 10$, and
+
+$$
+\left|\frac{\partial f}{\partial y}\right| = |2y| \le M = 6.
+$$
+
+Indeed, the solution of the problem is $y = \tan x$ (see Sec. 1.3, Example 1). This solution is discontinuous at $\pm \pi/2$, and there is no continuous solution valid in the entire interval $|x| < 5$ from which we started.
+
+The conditions in the two theorems are sufficient conditions rather than necessary ones, and can be lessened. In particular, by the mean value theorem of differential calculus we have
+
+$$
+f(x, y_2) - f(x, y_1) = (y_2 - y_1)\frac{\partial f}{\partial y}\bigg|_{y = \tilde{y}}
+$$
+
+where $(x, y_1)$ and $(x, y_2)$ are assumed to be in $R$, and $\tilde{y}$ is a suitable value between $y_1$ and $y_2$. From this and (@eq-sec17-3)b it follows that
+
+$$
+|f(x, y_2) - f(x, y_1)| \le M |y_2 - y_1|.
+$$ {#eq-sec17-4}
+
+It can be shown that (@eq-sec17-3)b may be replaced by the weaker condition (@eq-sec17-4), which is known as a **Lipschitz condition**.^[RUDOLF LIPSCHITZ (1832–1903), German mathematician. Lipschitz and similar conditions are important in modern theories, for instance, in partial differential equations.] However, continuity of $f(x, y)$ is not enough to guarantee the uniqueness of the solution. This may be illustrated by the following example.
+
+### EXAMPLE 2 Nonuniqueness
+
+The initial value problem $y' = 2\sqrt{|y|}, \ y(0) = 0$ has the two solutions
+
+$$
+y = 0 \qquad \text{and} \qquad y^* = \begin{cases} x^2/4 & \text{if } x \ge 0 \\ -x^2/4 & \text{if } x < 0 \end{cases}
+$$
+
+although $f(x, y) = 2\sqrt{|y|}$ is continuous for all $y$. The Lipschitz condition (@eq-sec17-4) is violated in any region that includes the line $y = 0$, because for $y_1 = 0$ and $y_2 > 0$ we have
+
+$$
+\frac{|f(x, y_2) - f(x, y_1)|}{|y_2 - y_1|} = \frac{2\sqrt{y_2}}{y_2} = \frac{2}{\sqrt{y_2}},
+$$ {#eq-sec17-5}
+
+and this can be made as large as we please by choosing $y_2$ sufficiently small, whereas (@eq-sec17-4) requires that the quotient on the left side of (@eq-sec17-5) should not exceed a fixed constant $M$. $\blacksquare$
+
+## PROBLEM SET 1.7
+
+1. **Linear ODE.** If $p$ and $r$ in $y' + p(x)y = r(x)$ are continuous for all $x$ in an interval $|x - x_0| \le a$, show that in this ODE $f(x, y)$ satisfies the conditions of our present theorems, so that a corresponding initial value problem has a unique solution. Do you actually need these theorems for this ODE?
+2. **Existence?** Does the initial value problem $(x - 2)y' = y, \ y(2) = 1$ have a solution? Does your result contradict our present theorems?
+3. **Vertical strip.** If the assumptions of Theorems 1 and 2 are satisfied not merely in a rectangle but in a vertical infinite strip $|x - x_0| < a$, in what interval will the solution of (@eq-sec17-1) exist?
+4. **Change of initial condition.** What happens in Prob. 2 if you replace $y(2) = 1$ with $y(2) = k$?
+5. **Length of $x$-interval.** In most cases the solution of an initial value problem (@eq-sec17-1) exists in an $x$-interval larger than that guaranteed by the present theorems. Show this fact for $y' = 2y^2, \ y(1) = 1$ by finding the best possible $\alpha$ (choosing $b$ optimally) and comparing the result with the actual solution.
+6. **CAS PROJECT. Picard Iteration.** (a) Show that by integrating the ODE in (@eq-sec17-1) and observing the initial condition you obtain
+
+    $$
+    y(x) = y_0 + \int_{x_0}^{x} f(t, y(t)) \, dt.
+    $$ {#eq-sec17-6}
+
+    This form (@eq-sec17-6) of (@eq-sec17-1) suggests **Picard's Iteration Method**^[EMILE PICARD (1856–1941), French mathematician, also known for his important contributions to complex analysis (see Sec. 16.2 for his famous theorem). Picard used his method to prove Theorems 1 and 2 as well as the convergence of the sequence (@eq-sec17-7) to the solution of (@eq-sec17-1). In precomputer times, the iteration was of little practical value because of the integrations.] which is defined by
+
+    $$
+    y_n(x) = y_0 + \int_{x_0}^{x} f(t, y_{n-1}(t)) \, dt, \qquad n = 1, 2, \ldots.
+    $$ {#eq-sec17-7}
+
+    It gives approximations $y_1, y_2, y_3, \ldots$ of the unknown solution $y$ of (@eq-sec17-1). Indeed, you obtain $y_1$ by substituting $y = y_0$ on the right and integrating—this is the first step—then $y_2$ by substituting $y = y_1$ on the right and integrating—this is the second step—and so on. Write a program of the iteration that gives a printout of the first $y_0, y_1, \ldots, y_N$ approximations as well as their graphs on common axes. Try your program on two initial value problems of your own choice.
+    (b) Apply the iteration to $y' = x + y, \ y(0) = 0$. Also solve the problem exactly.
+    (c) Apply the iteration to $y' = 2y^2, \ y(0) = 1$. Also solve the problem exactly.
+    (d) Find all solutions of $y' = 2\sqrt{y}, \ y(1) = 0$. Which of them does Picard's iteration approximate?
+    (e) Experiment with the conjecture that Picard's iteration converges to the solution of the problem for any initial choice of $y$ in the integrand in (@eq-sec17-7) (leaving $y_0$ outside the integral as it is). Begin with a simple ODE and see what happens. When you are reasonably sure, take a slightly more complicated ODE and give it a try.
+7. **Maximum $\alpha$.** What is the largest possible $\alpha$ in Example 1 in the text?
+8. **Lipschitz condition.** Show that for a linear ODE $y' + p(x)y = r(x)$ with continuous $p$ and $r$ in $|x - x_0| \le a$ a Lipschitz condition holds. This is remarkable because it means that for a linear ODE the continuity of $f(x, y)$ guarantees not only the existence but also the uniqueness of the solution of an initial value problem. (Of course, this also follows directly from (4) in Sec. 1.5.)
+9. **Common points.** Can two solution curves of the same ODE have a common point in a rectangle in which the assumptions of the present theorems are satisfied?
+10. **Three possible cases.** Find all initial conditions such that $(x^2 - x)y' = (2x - 1)y$ has no solution, precisely one solution, and more than one solution.
+
+## CHAPTER 1 REVIEW QUESTIONS AND PROBLEMS {#sec-ch1-review}
+
+1. Explain the basic concepts ordinary and partial differential equations (ODEs, PDEs), order, general and particular solutions, initial value problems (IVPs). Give examples.
+2. What is a linear ODE? Why is it easier to solve than a nonlinear ODE?
+3. Does every first-order ODE have a solution? A solution formula? Give examples.
+4. What is a direction field? A numeric method for first-order ODEs?
+5. What is an exact ODE? Is $f(x) \, dx + g(y) \, dy = 0$ always exact?
+6. Explain the idea of an integrating factor. Give two examples.
+7. What other solution methods did we consider in this chapter?
+8. Can an ODE sometimes be solved by several methods? Give three examples.
+9. What does modeling mean? Can a CAS solve a model given by a first-order ODE? Can a CAS set up a model?
+10. Give problems from mechanics, heat conduction, and population dynamics that can be modeled by first-order ODEs.
+
+### 11–16 DIRECTION FIELD: NUMERIC SOLUTION
+Graph a direction field (by a CAS or by hand) and sketch some solution curves. Solve the ODE exactly and compare. In Prob. 16 use Euler's method.
+
+11. $y' + 2y = 0$
+12. $y' = 1 - y^2$
+13. $y' = y - 4y^2$
+14. $xy' = y + x^2$
+15. $y' + y = 1.01\cos 10x$
+16. Solve by Euler's method $y' = y - y^2, \ y(0) = 0.2$ (10 steps, $h = 0.1$). Solve exactly and compute the error.
+
+### 17–21 GENERAL SOLUTION
+Find the general solution. Indicate which method in this chapter you are using. Show the details of your work.
+
+17. $y' - 0.4y = 29\sin x$
+18. $y' + 2.5y = 1.6x$
+19. $25yy' - 4x = 0$
+20. $y' = ay + by^2 \quad (a \ne 0)$
+21. $(3xe^y + 2y) \, dx + (x^2e^y + x) \, dy = 0$
+
+### 22–26 INITIAL VALUE PROBLEM (IVP)
+Solve the IVP. Indicate the method used. Show the details of your work.
+
+22. $y' + 4xy = e^{-2x^2}, \quad y(0) = -4.3$
+23. $y' = \sqrt{1 - y^2}, \quad y(0) = 1/\sqrt{2}$
+24. $y' + \frac{1}{2}y = y^3, \quad y(0) = \frac{1}{3}$
+25. $3\sec x \, dy + 3\sec y \, dx = 0, \quad y(0) = 0$
+26. $x \sinh y \, dy = \cosh y \, dx, \quad y(3) = 0$
+
+### 27–30 MODELING, APPLICATIONS
+
+27. **Exponential growth.** If the growth rate of a culture of bacteria is proportional to the number of bacteria present and after 1 day is 1.25 times the original number, within what interval of time will the number of bacteria (a) double, (b) triple?
+28. **Mixing problem.** The tank in Fig. 28 contains 80 lb of salt dissolved in 500 gal of water. The inflow per minute is 20 lb of salt dissolved in 20 gal of water. The outflow is 20 gal/min of the uniform mixture. Find $y(t)$ and the time when the salt content in the tank reaches 95% of its limiting value (as $t \to \infty$).
+
+    ![Fig. 28. Tank in Problem 28](../images/fig-1-28.png){#fig-1-28}
+
+29. **Half-life.** If in a reactor, uranium ${}^{237}_{\ 97}\text{U}$ loses 10% of its weight within one day, what is its half-life? How long would it take for 99% of the original amount to disappear?
+30. **Newton's law of cooling.** A metal bar whose temperature is $20°\text{C}$ is placed in boiling water. How long does it take to heat the bar to practically $100°\text{C}$, say, to $99.9°\text{C}$, if the temperature of the bar after 1 min of heating is $51.5°\text{C}$? First guess, then calculate.
+
+## SUMMARY OF CHAPTER 1 {#sec-ch1-summary}
+
+### First-Order ODEs
+
+This chapter concerns ordinary differential equations (ODEs) of first order and their applications. These are equations of the form
+
+$$
+F(x, y, y') = 0 \qquad \text{or in explicit form} \qquad y' = f(x, y)
+$$ {#eq-summary-1}
+
+involving the derivative $y' = dy/dx$ of an unknown function $y$, given functions of $x$, and, perhaps, $y$ itself. If the independent variable $x$ is time, we denote it by $t$.
+
+In Sec. 1.1 we explained the basic concepts and the process of modeling, that is, of expressing a physical or other problem in some mathematical form and solving it. Then we discussed the method of direction fields (Sec. 1.2), solution methods and models (Secs. 1.3–1.6), and, finally, ideas on existence and uniqueness of solutions (Sec. 1.7).
+
+A first-order ODE usually has a **general solution**, that is, a solution involving an arbitrary constant, which we denote by $c$. In applications we usually have to find a unique solution by determining a value of $c$ from an **initial condition** $y(x_0) = y_0$. Together with the ODE this is called an **initial value problem**
+
+$$
+y' = f(x, y), \qquad y(x_0) = y_0 \qquad (x_0, y_0 \text{ given numbers})
+$$ {#eq-summary-2}
+
+and its solution is a **particular solution** of the ODE. Geometrically, a general solution represents a family of curves, which can be graphed by using direction fields (Sec. 1.2). And each particular solution corresponds to one of these curves.
+
+A **separable ODE** is one that we can put into the form
+
+$$
+g(y) \, dy = f(x) \, dx \qquad \text{(Sec. 1.3)}
+$$ {#eq-summary-3}
+
+by algebraic manipulations (possibly combined with transformations, such as $y/x = u$) and solve by integrating on both sides.
+
+An **exact ODE** is of the form
+
+$$
+M(x, y) \, dx + N(x, y) \, dy = 0 \qquad \text{(Sec. 1.4)}
+$$ {#eq-summary-4}
+
+where $M \, dx + N \, dy = du$ is the differential of a function $u(x, y)$, so that from $du = 0$ we immediately get the implicit general solution $u(x, y) = c$. This method extends to nonexact ODEs that can be made exact by multiplying them by some function $F(x, y)$, called an **integrating factor** (Sec. 1.4).
+
+**Linear ODEs**
+
+$$
+y' + p(x)y = r(x)
+$$ {#eq-summary-5}
+
+are very important. Their solutions are given by the integral formula (4), Sec. 1.5. Certain nonlinear ODEs can be transformed to linear form in terms of new variables. This holds for the **Bernoulli equation** $y' + p(x)y = g(x)y^a$ (Sec. 1.5).
+
+Applications and modeling are discussed throughout the chapter, in particular in Secs. 1.1, 1.3, 1.5 (population dynamics, etc.), and 1.6 (trajectories).
+
+**Picard's existence and uniqueness theorems** are explained in Sec. 1.7 (and Picard's iteration in Problem Set 1.7).
+
+Numeric methods for first-order ODEs can be studied in Secs. 21.1 and 21.2 immediately after this chapter, as indicated in the chapter opening.
