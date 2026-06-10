@@ -1,0 +1,3785 @@
+=== PAGE 2 ===
+c07.qxd 10/28/10 7:30 PM Page 256
+7
+C H A P T E R
+Linear Algebra: Matrices,
+Vectors, Determinants.
+Linear Systems
+Linear algebrais a fairly extensive subject that covers vectors and matrices, determinants,
+systems of linear equations, vector spaces and linear transformations, eigenvalue problems,
+and other topics. As an area of study it has a broad appeal in that it has many applications
+in engineering, physics, geometry, computer science, economics, and other areas. It also
+contributes to a deeper understanding of mathematics itself.
+Matrices, which are rectangular arrays of numbers or functions, and vectors are the
+main tools of linear algebra. Matrices are important because they let us express large
+amounts of data and functions in an organized and concise form. Furthermore, since
+matrices are single objects, we denote them by single letters and calculate with them
+directly. All these features have made matrices and vectors very popular for expressing
+scientific and mathematical ideas.
+The chapter keeps a good mix between applications (electric networks, Markov
+processes, traffic flow, etc.) and theory. Chapter 7 is structured as follows: Sections 7.1
+and 7.2 provide an intuitive introduction to matrices and vectors and their operations,
+including matrix multiplication. The next block of sections, that is, Secs. 7.3–7.5 provide
+the most important method for solving systems of linear equations by the Gauss
+elimination method. This method is a cornerstone of linear algebra, and the method
+itself and variants of it appear in different areas of mathematics and in many applications.
+It leads to a consideration of the behavior of solutions and concepts such as rank of a
+matrix, linear independence, and bases. We shift to determinants, a topic that has
+declined in importance, in Secs. 7.6 and 7.7. Section 7.8 covers inverses of matrices.
+The chapter ends with vector spaces, inner product spaces, linear transformations, and
+composition of linear transformations. Eigenvalue problems follow in Chap. 8.
+COMMENT. Numeric linear algebra (Secs. 20.1–20.5) can be studied immediately
+after this chapter.
+Prerequisite: None.
+Sections that may be omitted in a short course: 7.5, 7.9.
+References and Answers to Problems: App. 1 Part B, and App. 2.
+256
+
+=== PAGE 3 ===
+c07.qxd 10/28/10 7:30 PM Page 257
+SEC. 7.1 Matrices, Vectors: Addition and Scalar Multiplication 257
+7.1
+Matrices, Vectors:
+Addition and Scalar Multiplication
+The basic concepts and rules of matrix and vector algebra are introduced in Secs. 7.1 and
+7.2 and are followed by linear systems(systems of linear equations), a main application,
+in Sec. 7.3.
+Let us first take a leisurely look at matrices before we formalize our discussion. A matrix
+is a rectangular array of numbers or functions which we will enclose in brackets. For example,
+a a a
+11 12 13
+0.3 1 (cid:4)5
+, a a a ,
+c 0 (cid:4)0.2 16 d 21 22 23
+(1)
+a a a
+31 32 33
+e (cid:2)x 2x2 4
+D T
+, [a a a ],
+ce6x 4x d 1 2 3 c1d
+2
+are matrices. The numbers (or functions) are called entries or, less commonly, elements
+of the matrix. The first matrix in (1) has two rows,which are the horizontal lines of entries.
+Furthermore, it has three columns, which are the vertical lines of entries. The second and
+third matrices are square matrices, which means that each has as many rows as columns—
+3 and 2, respectively. The entries of the second matrix have two indices, signifying their
+location within the matrix. The first index is the number of the row and the second is the
+number of the column, so that together the entry’s position is uniquely identified. For
+example, a (read a two three) is in Row 2 and Column 3, etc. The notation is standard
+23
+and applies to all matrices, including those that are not square.
+Matrices having just a single row or column are called vectors. Thus, the fourth matrix
+in (1) has just one row and is called a row vector. The last matrix in (1) has just one
+column and is called a column vector. Because the goal of the indexing of entries was
+to uniquely identify the position of an element within a matrix, one index suffices for
+vectors, whether they are row or column vectors. Thus, the third entry of the row vector
+in (1) is denoted by a .
+3
+Matrices are handy for storing and processing data in applications. Consider the
+following two common examples.
+EXAMPLE 1 Linear Systems, a Major Application of Matrices
+We are given a system of linear equations, briefly a linear system, such as
+4x (cid:3)6x (cid:3)9x (cid:2) 6
+1 2 3
+6x (cid:4)2x (cid:2)20
+1 3
+5x (cid:4)8x (cid:3) x (cid:2)10
+1 2 3
+where x , x , x are the unknowns. We form the coefficient matrix, call it A,by listing the coefficients of the
+1 2 3
+unknowns in the position in which they appear in the linear equations. In the second equation, there is no
+unknown x ,which means that the coefficient of x is 0 and hence in matrix A, a (cid:2)0,Thus,
+2 2 22
+
+=== PAGE 4 ===
+c07.qxd 10/28/10 7:30 PM Page 258
+258 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+4 6 9 4 6 9 6
+~
+A(cid:2) 6 0 (cid:4)2 . We form another matrix A (cid:2) 6 0 (cid:4)2 20
+5 (cid:4)8 1 5 (cid:4)8 1 10
+by augmenting AwiDth the right sideTs of the linear system and call it the aDugmented matrix of Tthe system.
+~ ~
+Since we can go back and recapture the system of linear equations directly from the augmented matrix A, A
+contains all the information of the system and can thus be used to solve the linear system. This means that we
+can just use the augmented matrix to do the calculations needed to solve the system. We shall explain this in
+detail in Sec. 7.3. Meanwhile you may verify by substitution that the solution is x (cid:2)3, x (cid:2)1, x (cid:2)(cid:4)1.
+1 2 2 3
+The notation x , x , x for the unknowns is practical but not essential; we could choose x, y, zor some other
+1 2 3 (cid:2)
+letters.
+EXAMPLE 2 Sales Figures in Matrix Form
+Á
+Sales figures for three products I, II, III in a store on Monday (Mon), Tuesday (Tues), may for each week
+be arranged in a matrix
+Mon Tues Wed Thur Fri Sat Sun
+40 33 81 0 21 47 33 I
+#
+A(cid:2) 0 12 78 50 50 96 90 II
+10 0 0 27 43 78 56 III
+If the company has 10 stores, wDe can set up 10 such matrices, one for each storeT. Then, by adding corresponding
+entries of these matrices, we can get a matrix showing the total sales of each product on each day. Can you think
+of other data which can be stored in matrix form? For instance, in transportation or storage problems? Or in
+(cid:2)
+listing distances in a network of roads?
+General Concepts and Notations
+Let us formalize what we just have discussed. We shall denote matrices by capital boldface
+letters A, B, C, Á , or by writing the general entry in brackets; thus A(cid:2)[a ], and so
+jk
+on. By an m(cid:3)n matrix (read m by n matrix) we mean a matrix with m rows and n
+columns—rows always come first! m(cid:5)nis called the sizeof the matrix. Thus an m(cid:5)n
+matrix is of the form
+Á
+a a a
+11 12 1n
+Á
+a a a
+21 22 2n
+(2) A(cid:2) a (cid:2) .
+3 jk4 # # Á #
+Á
+a a a
+m1 m2 mn
+E U
+The matrices in (1) are of sizes 2(cid:5)3, 3(cid:5)3, 2(cid:5)2, 1(cid:5)3, and 2(cid:5)1, respectively.
+Each entry in (2) has two subscripts. The first is the row numberand the second is the
+column number. Thus a is the entry in Row 2 and Column 1.
+21
+If m(cid:2)n,we call Aan n(cid:5)nsquare matrix. Then its diagonal containing the entries
+Á
+a , a , , a is called the main diagonal of A. Thus the main diagonals of the two
+11 22 nn
+square matrices in (1) are a , a , a and e
+(cid:2)x,
+4x, respectively.
+11 22 33
+Square matrices are particularly important, as we shall see. A matrix of any size m(cid:5)n
+is called a rectangular matrix; this includes square matrices as a special case.
+
+=== PAGE 5 ===
+c07.qxd 10/28/10 7:30 PM Page 259
+SEC. 7.1 Matrices, Vectors: Addition and Scalar Multiplication 259
+Vectors
+A vectoris a matrix with only one row or column. Its entries are called the components
+Á
+of the vector. We shall denote vectors by lowercase boldface letters a, b, or by its
+general component in brackets, a(cid:2) a , and so on. Our special vectors in (1) suggest
+3 j4
+that a (general) row vector is of the form
+a(cid:2) a a Á a . For instance, a(cid:2) (cid:4)2 5 0.8 0 1 .
+3 1 2 n4 3 4
+A column vector is of the form
+b
+1
+4
+b
+2
+b(cid:2) . . For instance, b(cid:2) 0 .
+.
+. (cid:4)7
+b
+m
+D T
+E U
+Addition and Scalar Multiplication
+of Matrices and Vectors
+What makes matrices and vectors really useful and particularly suitable for computers is
+the fact that we can calculate with them almost as easily as with numbers. Indeed, we
+now introduce rules for addition and for scalar multiplication (multiplication by numbers)
+that were suggested by practical applications. (Multiplication of matrices by matrices
+follows in the next section.) We first need the concept of equality.
+DEFINITION Equality of Matrices
+Two matrices A(cid:2) a and B(cid:2) b are equal, written A(cid:2)B, if and only if
+3 jk4 3 jk4
+they have the same size and the corresponding entries are equal, that is, a (cid:2)b ,
+11 11
+a (cid:2)b ,and so on. Matrices that are not equal are called different.Thus, matrices
+12 12
+of different sizes are always different.
+EXAMPLE 3 Equality of Matrices
+Let
+a a 4 0
+A(cid:2) 11 12 and B(cid:2) .
+ca a d c3 (cid:4)1d
+21 22
+Then
+a (cid:2)4, a (cid:2) 0,
+A(cid:2)B if and only if 11 12
+a (cid:2)3, a (cid:2)(cid:4)1.
+21 22
+The following matrices are all different. Explain!
+1 3 4 2 4 1 1 3 0 0 1 3
+(cid:2)
+c4 2d c1 3d c2 3d c4 2 0d c0 4 2d
+
+=== PAGE 6 ===
+c07.qxd 10/28/10 7:30 PM Page 260
+260 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+DEFINITION Addition of Matrices
+The sum of two matrices A(cid:2) a and B(cid:2) b of the same size is written
+3 jk4 3 jk4
+A(cid:3)B and has the entries a (cid:3)b obtained by adding the corresponding entries
+jk jk
+of A and B. Matrices of different sizes cannot be added.
+As a special case, the sum a (cid:3) b of two row vectors or two column vectors, which
+must have the same number of components, is obtained by adding the corresponding
+components.
+EXAMPLE 4 Addition of Matrices and Vectors
+(cid:4)4 6 3 5 (cid:4)1 0 1 5 3
+If A(cid:2) and B(cid:2) , then A(cid:3)B(cid:2) .
+c 0 1 2d c3 1 0d c3 2 2d
+A in Example 3 and our present A cannot be added. If a(cid:2) 5 7 2 and b(cid:2) (cid:4)6 2 0 , then
+3 4 3 4
+a(cid:3)b(cid:2) (cid:4)1 9 2 .
+3 4 (cid:2)
+An application of matrix addition was suggested in Example 2. Many others will follow.
+DEFINITION Scalar Multiplication (Multiplication by a Number)
+The productof anym(cid:5)nmatrix A(cid:2) a and any scalarc(number c) is written
+3 jk4
+cA and is the m(cid:5)n matrix cA(cid:2) ca obtained by multiplying each entry of A
+3 jk4
+by c.
+Here ((cid:4)1)A is simply written (cid:4)A and is called the negative of A. Similarly, ((cid:4)k)A is
+written (cid:4)kA. Also, A(cid:3)((cid:4)B)is written A(cid:4)Band is called the differenceof Aand B
+(which must have the same size!).
+EXAMPLE 5 Scalar Multiplication
+2.7 (cid:4)1.8 (cid:4)2.7 1.8 3 (cid:4)2 0 0
+10
+If A(cid:2) 0 0.9 , then (cid:4)A(cid:2) 0 (cid:4)0.9 , A(cid:2) 0 1 , 0A(cid:2) 0 0 .
+9
+9.0 (cid:4)4.5 (cid:4)9.0 4.5 10 (cid:4)5 0 0
+If a matrixD Bshows thTe distances betweenD some cities inT miles, 1.609DBgives thTese distanceDs in kiTlometers. (cid:2)
+Rules for Matrix Addition and Scalar Multiplication. From the familiar laws for the
+addition of numbers we obtain similar laws for the addition of matrices of the same size
+m(cid:5)n, namely,
+(a) A(cid:3)B(cid:2)B(cid:3)A
+(b) (A(cid:3)B)(cid:3)C(cid:2)A(cid:3)(B (cid:3)C) (written A(cid:3)B(cid:3)C)
+(3)
+(c) A(cid:3)0(cid:2)A
+(d) A(cid:3)((cid:4)A)(cid:2)0.
+Here 0denotes the zero matrix(of size m(cid:5)n), that is, the m(cid:5)nmatrix with all entries
+zero. If m(cid:2)1 or n(cid:2)1, this is a vector, called a zero vector.
+
+=== PAGE 7 ===
+c07.qxd 10/28/10 7:30 PM Page 261
+SEC. 7.1 Matrices, Vectors: Addition and Scalar Multiplication 261
+Hence matrix addition is commutative and associative [by (3a) and (3b)].
+Similarly, for scalar multiplication we obtain the rules
+(a) c(A(cid:3)B)(cid:2)cA(cid:3)cB
+(b) (c(cid:3)k)A(cid:2)cA(cid:3)kA
+(4)
+(c) c(kA)(cid:2)(ck)A (written ckA)
+(d) 1A(cid:2)A.
+PROBLEM SET 7.1
+1–7 GENERAL QUESTIONS 0 2
+1. Equality. Give reasons why the five matrices in
+E(cid:2) 3 4
+Example 3 are all different.
+2. Double subscript notation. If you write the matrix in 3 (cid:4)1
+Example 2 in the form A(cid:2) a , what is a ? a ?
+3 jk4 31 13 1.5 (cid:4)1 (cid:4)5
+a ? a ? D T
+26 33
+3. Sizes. What sizes do the matrices in Examples 1, 2, 3, u(cid:2) 0 , v(cid:2) 3 , w(cid:2) (cid:4)30 .
+and 5 have?
+(cid:4)3.0 2 10
+4. Main diagonal. What is the main diagonal of A in
+Example 1? Of Aand Bin Example 3? Find the D follow T ing express D ions T , indicating D which T of the
+rules in (3) or (4) they illustrate, or give reasons why they
+5. Scalar multiplication. If A in Example 2 shows the
+are not defined.
+number of items sold, what is the matrix Bof units sold
+if a unit consists of (a) 5 items and (b) 10 items? 8. 2A(cid:3)4B, 4B(cid:3)2A, 0A(cid:3)B, 0.4B(cid:4)4.2A
+6. If a 12(cid:5)12 matrix A shows the distances between 9. 3A, 0.5B, 3A(cid:3)0.5B, 3A(cid:3)0.5B(cid:3)C
+12cities in kilometers, how can you obtain from Athe #
+10. (4 3)A, 4(3A), 14B(cid:4)3B, 11B
+matrix Bshowing these distances in miles?
+7. Addition of vectors. Can you add: A row and
+11. 8C(cid:3)10D, 2(5D(cid:3)4C), 0.6C(cid:4)0.6D,
+0.6(C(cid:4)D)
+a column vector with different numbers of compo-
+nents? With the same number of components? Two 12. (C(cid:3)D)(cid:3)E, (D(cid:3)E)(cid:3)C, 0(C(cid:4)E)(cid:3)4D,
+row vectors with the same number of components A(cid:4)0C
+but different numbers of zeros? A vector and a 13. (2 # 7)C, 2(7C), (cid:4)D(cid:3)0E, E(cid:4)D(cid:3)C(cid:3)u
+scalar? A vector with four components and a 2 (cid:5) 2
+matrix? 14.
+E
+(5u
+(cid:4)
+(cid:3)
+(u
+5
+(cid:3)
+v)
+v
+(cid:4)
+),
+1 2 w
+1
+,
+0 (u
+(cid:4)
+(cid:3)
+20
+v
+(u
+)(cid:3)
+(cid:3)
+w
+v)(cid:3)2w,
+8–16 ADDITION AND SCALAR
+15. (u(cid:3)v)(cid:4)w, u(cid:3)(v(cid:4)w), C(cid:3)0w,
+MULTIPLICATION OF MATRICES
+0E(cid:3)u(cid:4)v
+AND VECTORS
+16. 15v(cid:4)3w(cid:4)0u, (cid:4)3w(cid:3)15v, D(cid:4)u(cid:3)3C,
+Let 8.5w(cid:4)11.1u(cid:3)0.4v
+0 2 4 0 5 2
+17. Resultant of forces. If the above vectors u, v, w
+A(cid:2) 6 5 5 , B(cid:2) 5 3 4 represent forces in space, their sum is called their
+resultant. Calculate it.
+1 0 (cid:4)3 (cid:4)2 4 (cid:4)2
+18. Equilibrium. By definition, forces are in equilibrium
+5 2 (cid:4)4 1 if their resultant is the zero vector. Find a force psuch
+D T D T
+that the above u,v,w, and pare in equilibrium.
+C(cid:2) (cid:4)2 4 , D(cid:2) 5 0 ,
+19. General rules. Prove (3) and (4) for general 2(cid:5)3
+1 0 2 (cid:4)1 matrices and scalars cand k.
+D T D T
+
+=== PAGE 8 ===
+c07.qxd 10/28/10 7:30 PM Page 262
+262 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+20. TEAM PROJECT. Matrices for Networks. Matrices (c) Sketch the three networks corresponding to the
+have various engineering applications, as we shall see. nodal incidence matrices
+For instance, they can be used to characterize connections
+in electrical networks, in nets of roads, in production 1 0 0 1 1 (cid:4)1 0 0 1
+processes, etc., as follows.
+(cid:4)1 1 0 0 , (cid:4)1 1 (cid:4)1 1 0 ,
+(a) Nodal Incidence Matrix.The network in Fig. 155
+consists of six branches(connections) and four nodes 0 (cid:4)1 1 0 0 0 1 (cid:4)1 0
+(points where two or more branches come together).
+One node is the referencenode(grounded node, whose D 1 0 1 0T 0D T
+voltage is zero). We number the other nodes and
+number and direct the branches. This we do arbitrarily. (cid:4)1 1 0 1 0 .
+The network can now be described by a matrix 0 (cid:4)1 (cid:4)1 0 1
+A(cid:2) a , where
+3 jk4
+(Dd) Mesh Incidence MatrTix. A network can also be
+(cid:3)1 if branch k leaves node j
+characterized by the mesh incidence matrixM(cid:2) m ,
+3 jk4
+a (cid:2) (cid:4)1 if branch k enters node j where
+jk
+0 if branch k does not touch node j .
+(cid:3)1 if branch kis in mesh j
+Ais calledd the nodal incidence matrix of the network. and has the same orientation
+Show that for the network in Fig. 155 the matrix A has
+the given form. m jk (cid:2) (cid:4)1 if branch kis in mesh j
+and has the opposite orientation
+3
+0 if branch kis not in mesh j
+f
+1 2 3
+2 5 and a mesh is a loop with no branch in its interior (or
+in its exterior). Here, the meshes are numbered and
+1 4 6
+directed (oriented) in an arbitrary fashion. Show that
+for the network in Fig. 157, the matrix Mhas the given
+form, where Row 1 corresponds to mesh 1, etc.
+(Reference node)
+3
+4
+Branch 1 2 3 4 5 6
+3
+2 5
+Node 1 1 –1 –1 0 0 0
+Node 2 0 1 0 1 1 0 1 2
+Node 3 0 0 1 0 –1 –1 4
+1 6
+Fig. 155. Network and nodal incidence
+matrix in Team Project 20(a)
+(b) Find the nodal incidence matrices of the networks
+in Fig. 156. 1 1 0 –1 0 0
+0 0 0 1 –1 1
+1
+M =
+1 2 0 –1 1 0 1 0
+2 3
+7 1 0 1 0 0 1
+5 5 2
+1 2 3 6 Fig. 157. Network and matrix Min
+Team Project 20(d)
+4 4 3
+1
+4 3
+Fig. 156. Electrical networks in Team Project 20(b)
+
+=== PAGE 9 ===
+c07.qxd 10/28/10 7:30 PM Page 263
+SEC. 7.2 Matrix Multiplication 263
+7.2
+Matrix Multiplication
+Matrix multiplication means that one multiplies matrices by matrices. Its definition is
+standard but it looks artificial. Thus you have to study matrix multiplication carefully,
+multiply a few matrices together for practice until you can understand how to do it. Here
+then is the definition. (Motivation follows later.)
+DEFINITION Multiplication of a Matrix by a Matrix
+The product C(cid:2)AB(in this order) of anm(cid:5)nmatrix A(cid:2) a times anr(cid:5)p
+3 jk4
+matrix B(cid:2) b is defined if and only if r(cid:2)n and is then the m(cid:5)p matrix
+3 jk4
+C(cid:2) c with entries
+3 jk4
+n j(cid:2)1, Á , m
+(1) c jk (cid:2) a a jl b lk (cid:2)a j1 b 1k (cid:3)a j2 b 2k (cid:3) Á (cid:3)a jn b nk k(cid:2)1, Á , p.
+l(cid:2)1
+The condition r(cid:2)nmeans that the second factor, B, must have as many rows as the first
+factor has columns, namely n. A diagram of sizes that shows when matrix multiplication
+is possible is as follows:
+A B (cid:2) C
+m(cid:5)n n(cid:5)p (cid:2) m(cid:5)p .
+3 43 4 3 4
+The entry c in (1) is obtained by multiplying each entry in the jth row of A by the
+jk
+corresponding entry in the kth column of Band then adding these nproducts. For instance,
+c (cid:2)a b (cid:3)a b (cid:3) Á (cid:3)a b ,and so on. One calls this briefly a multiplication
+21 21 11 22 21 2n n1
+of rows into columns. For n(cid:2)3, this is illustrated by
+n = 3 p = 2 p = 2
+a a a b b c c
+11 12 13 11 12 11 12
+a 21 a 22 a 23 b 21 b 22 = c 21 c 22
+m = 4 a a a b b c c m = 4
+31 32 33 31 32 31 32
+a a a c c
+41 42 43 41 42
+Notations in a product AB(cid:2)C
+where we shaded the entries that contribute to the calculation of entry c just discussed.
+21
+Matrix multiplication will be motivated by its use in linear transformations in this
+section and more fully in Sec. 7.9.
+Let us illustrate the main points of matrix multiplication by some examples. Note that
+matrix multiplication also includes multiplying a matrix by a vector, since, after all,
+a vector is a special matrix.
+EXAMPLE 1 Matrix Multiplication
+3 5 (cid:4)1 2 (cid:4)2 3 1 22 (cid:4)2 43 42
+AB(cid:2) 4 0 2 5 0 7 8 (cid:2) 26 (cid:4)16 14 6
+(cid:4)6 (cid:4)3 2 9 (cid:4)4 1 1 (cid:4)9 4 (cid:4)37 (cid:4)28
+# # # # # #
+Here c
+11
+(cid:2)3 2(cid:3)5D5(cid:3)((cid:4)1) 9(cid:2) T2D2,and so on. The entryT in thDe box is c
+23
+(cid:2)4 3(cid:3)0 T7(cid:3)2 1(cid:2)1
+(cid:2)
+4.
+The product BAis not defined.
+
+=== PAGE 10 ===
+c07.qxd 10/28/10 7:30 PM Page 264
+264 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+EXAMPLE 2 Multiplication of a Matrix and a Vector
+# #
+4 2 3 4 3(cid:3)2 5 22 3 4 2
+(cid:2) (cid:2) whereas is undefined. (cid:2)
+c1 8d c5d c1 # 3(cid:3)8 # 5d c43d c5d c1 8d
+EXAMPLE 3 Products of Row and Column Vectors
+1 1 3 6 1
+3 6 1 2 (cid:2) 19 , 2 3 6 1 (cid:2) 6 12 2 . (cid:2)
+3 4 3 4 3 4
+4 4 12 24 4
+D T D T D T
+EXAMPLE 4 CAUTION!Matrix Multiplication Is Not Commutative, AB(cid:4)BAin General
+This is illustrated by Examples 1 and 2, where one of the two products is not even defined, and by Example 3,
+where the two products have different sizes. But it also holds for square matrices. For instance,
+1 1 (cid:4)1 1 0 0 (cid:4)1 1 1 1 99 99
+(cid:2) but (cid:2) .
+c100 100d c 1 (cid:4)1d c0 0d c 1 (cid:4)1d c100 100d c(cid:4)99 (cid:4)99d
+It is interesting that this also shows that AB(cid:2)0does notnecessarily imply BA(cid:2)0or A(cid:2)0or B(cid:2)0. We
+(cid:2)
+shall discuss this further in Sec. 7.8, along with reasons when this happens.
+Our examples show that in matrix products theorder of factorsmust always be observed
+very carefully. Otherwise matrix multiplication satisfies rules similar to those for numbers,
+namely.
+(a) (kA)B(cid:2)k(AB)(cid:2)A(kB) written kAB or AkB
+(b) A(BC)(cid:2)(AB)C written ABC
+(2)
+(c) (A(cid:3)B)C(cid:2)AC (cid:3)BC
+(d) C(A(cid:3)B)(cid:2)CA (cid:3)CB
+provided A, B, and Care such that the expressions on the left are defined; here, kis any
+scalar. (2b) is called the associative law. (2c) and (2d) are called the distributive laws.
+Since matrix multiplication is a multiplication of rows into columns, we can write the
+defining formula (1) more compactly as
+(3) c (cid:2)ab , j(cid:2)1, Á , m; k(cid:2)1, Á , p,
+jk j k
+where a is the jth row vector of A and b is the kth column vector of B, so that in
+j k
+agreement with (1),
+b
+1k
+ab (cid:2) a a Á a . . (cid:2)a b (cid:3)a b (cid:3) Á (cid:3)a b .
+j k 3 j1 j2 jn4 . j1 1k j2 2k jn nk
+b
+nk
+D T
+
+=== PAGE 11 ===
+c07.qxd 10/28/10 7:30 PM Page 265
+SEC. 7.2 Matrix Multiplication 265
+EXAMPLE 5 Product in Terms of Row and Column Vectors
+If A(cid:2) a is of size 3(cid:5)3and B(cid:2) b is of size 3(cid:5)4,then
+3 jk4 3 jk4
+a b a b a b a b
+1 1 1 2 1 3 1 4
+(4) AB(cid:2) a b a b a b a b .
+2 1 2 2 2 3 2 4
+a b a b a b a b
+3 1 3 2 3 3 3 4
+Taking a (cid:2) 3 5 (cid:4)1 , a (cid:2) 4 0 2D,etc., verify (4) for the prodTuct in Example 1. (cid:2)
+1 3 4 2 3 4
+Parallel processing of products on the computer is facilitated by a variant of (3) for
+computing C(cid:2)AB, which is used by standard algorithms (such as in Lapack). In this
+method, A is used as given, B is taken in terms of its column vectors, and the product is
+computed columnwise; thus,
+(5) AB (cid:2)A b b Á b (cid:2) Ab Ab Á Ab .
+3 1 2 p4 3 1 2 p4
+Columns of B are then assigned to different processors (individually or several to
+each processor), which simultaneously compute the columns of the product matrix
+Ab , Ab , etc.
+1 2
+EXAMPLE 6 Computing Products Columnwise by (5)
+To obtain
+4 1 3 0 7 11 4 34
+AB(cid:2) (cid:2)
+c(cid:4)5 2d c(cid:4)1 4 6d c(cid:4)17 8 (cid:4)23d
+from (5), calculate the columns
+4 1 3 11 4 1 0 4 4 1 7 34
+(cid:2) , (cid:2) , (cid:2)
+c(cid:4)5 2d c(cid:4)1d c(cid:4)17d c(cid:4)5 2d c 4d c8d c(cid:4)5 2dc6d c(cid:4)23d
+(cid:2)
+of ABand then write them as a single matrix, as shown in the first formula on the right.
+Motivation of Multiplication
+by Linear Transformations
+Let us now motivate the “unnatural” matrix multiplication by its use in linear
+transformations. For n(cid:2)2 variables these transformations are of the form
+y (cid:2)a x (cid:3)a x
+1 11 1 12 2
+(6*)
+y (cid:2)a x (cid:3)a x
+2 21 1 22 2
+and suffice to explain the idea. (For general n they will be discussed in Sec. 7.9.) For
+instance, (6*) may relate an x x -coordinate system to a y y -coordinate system in the
+1 2 1 2
+plane. In vectorial form we can write (6*) as
+y a a x a x (cid:3)a x
+1 11 12 1 11 1 12 2
+(6) y(cid:2) (cid:2)Ax (cid:2) (cid:2) .
+cy d ca a d cx d ca x (cid:3)a x d
+2 21 22 2 21 1 22 2
+
+=== PAGE 12 ===
+c07.qxd 10/28/10 7:30 PM Page 266
+266 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Now suppose further that the x x -system is related to a w w -system by another linear
+1 2 1 2
+transformation, say,
+x b b w b w (cid:3)b w
+1 11 12 1 11 1 12 2
+(7) x(cid:2) (cid:2)Bw(cid:2) (cid:2) .
+cx d cb b d cw d cb w (cid:3)b w d
+2 21 22 2 21 1 22 2
+Then the y y -system is related to the w w -system indirectly via the x x -system, and
+1 2 1 2 1 2
+we wish to express this relation directly. Substitution will show that this direct relation is
+a linear transformation, too, say,
+c c w c w (cid:3)c w
+11 12 1 11 1 12 2
+(8) y(cid:2)Cw (cid:2) (cid:2) .
+cc c d cw d cc w (cid:3)c w d
+21 22 2 21 1 22 2
+Indeed, substituting (7) into (6), we obtain
+y (cid:2)a (b w (cid:3)b w )(cid:3)a (b w (cid:3)b w )
+1 11 11 1 12 2 12 21 1 22 2
+(cid:2)(a b (cid:3)a b )w (cid:3)(a b (cid:3)a b )w
+11 11 12 21 1 11 12 12 22 2
+y (cid:2)a (b w (cid:3)b w )(cid:3)a (b w (cid:3)b w )
+2 21 11 1 12 2 22 21 1 22 2
+(cid:2)(a b (cid:3)a b )w (cid:3)(a b (cid:3)a b )w .
+21 11 22 21 1 21 12 22 22 2
+Comparing this with (8), we see that
+c (cid:2)a b (cid:3)a b c (cid:2)a b (cid:3)a b
+11 11 11 12 21 12 11 12 12 22
+c (cid:2)a b (cid:3)a b c (cid:2)a b (cid:3)a b .
+21 21 11 22 21 22 21 12 22 22
+This proves that C(cid:2)AB with the product defined as in (1). For larger matrix sizes the
+idea and result are exactly the same. Only the number of variables changes. We then have
+m variables y and n variables x and p variables w. The matrices A, B, and C(cid:2) AB then
+have sizes m(cid:5)n, n(cid:5)p, and m(cid:5)p, respectively. And the requirement that C be the
+product ABleads to formula (1) in its general form. This motivates matrix multiplication.
+Transposition
+We obtain the transpose of a matrix by writing its rows as columns (or equivalently its
+columns as rows). This also applies to the transpose of vectors. Thus, a row vector becomes
+a column vector and vice versa. In addition, for square matrices, we can also “reflect”
+the elements along the main diagonal, that is, interchange entries that are symmetrically
+positioned with respect to the main diagonal to obtain the transpose. Hence a becomes
+12
+a , a becomes a ,and so forth. Example 7 illustrates these ideas. Also note that, if A
+21 31 13
+is the given matrix, then we denote its transpose by AT.
+EXAMPLE 7 Transposition of Matrices and Vectors
+5 4
+5 (cid:4)8 1
+If A(cid:2) , then AT(cid:2) (cid:4)8 0 .
+c4 0 0d
+1 0
+D T
+
+=== PAGE 13 ===
+c07.qxd 10/28/10 7:30 PM Page 267
+SEC. 7.2 Matrix Multiplication 267
+A little more compactly, we can write
+5 4 3 0 7 T 3 8 1
+5 (cid:4)8 1 T
+(cid:2) (cid:4)8 0 , 8 (cid:4)1 5 (cid:2) 0 (cid:4)1 (cid:4)9 ,
+c4 0 0d
+1 0 1 (cid:4)9 4 7 5 4
+Furthermore, the transpose 6 2 3 TDof the rowT vectDor 6 2 3 iTs the cDolumn vector T
+3 4 3 4
+6 6 T
+6 2 3 T(cid:2) 2 # Conversely, 2 (cid:2) 6 2 3 . (cid:2)
+3 4 3 4
+3 3
+D T D T
+DEFINITION Transposition of Matrices and Vectors
+The transpose of an m(cid:5)n matrix A(cid:2) a is the n(cid:5)m matrix AT (read A
+3 jk4
+transpose) that has the firstrowof Aas its first column, the second rowof Aas its
+second column, and so on. Thus the transpose of Ain (2) is AT(cid:2) a ,written out
+3 kj4
+Á
+a a a
+11 21 m1
+Á
+a a a
+12 22 m2
+(9) AT(cid:2) a (cid:2) .
+3 kj4 # # Á #
+Á
+a a a
+1n 2n mn
+E U
+As a special case, transposition converts row vectors to column vectors and conversely.
+Transposition gives us a choice in that we can work either with the matrix or its
+transpose, whichever is more convenient.
+Rules for transposition are
+(a) (AT)T(cid:2)A
+(b) (A(cid:3)B)T(cid:2)AT(cid:3)BT
+(10)
+(c) (cA)T(cid:2)cAT
+(d) (AB)T(cid:2)BTAT.
+CAUTION! Note that in (10d) the transposed matrices are in reversed order.We leave
+the proofs as an exercise in Probs. 9 and 10.
+Special Matrices
+Certain kinds of matrices will occur quite frequently in our work, and we now list the
+most important ones of them.
+Symmetric and Skew-Symmetric Matrices. Transposition gives rise to two useful
+classes of matrices. Symmetricmatrices are square matrices whose transpose equals the
+
+=== PAGE 14 ===
+c07.qxd 10/28/10 7:30 PM Page 268
+268 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+matrix itself. Skew-symmetric matrices are square matrices whose transpose equals
+minus the matrix. Both cases are defined in (11) and illustrated by Example 8.
+(11) AT(cid:2)A (thus a (cid:2)a ), AT(cid:2)(cid:4)A (thus a (cid:2)(cid:4)a , hence a (cid:2)0).
+kj jk kj jk jj
+Symmetric Matrix Skew-Symmetric Matrix
+EXAMPLE 8 Symmetric and Skew-Symmetric Matrices
+20 120 200 0 1 (cid:4)3
+A(cid:2) 120 10 150 is symmetric, and B(cid:2) (cid:4)1 0 (cid:4)2 is skew-symmetric.
+200 150 30 3 2 0
+For instanDce, if a company hasT three building supply centers C ,D C , C ,then AcTould show costs, say, a for
+1 2 3 jj
+handling 1000 bags of cement at center C, and a (j(cid:6)k)the cost of shipping 1000 bags from C to C . Clearly,
+j jk j k
+a (cid:2)a if we assume shipping in the opposite direction will cost the same.
+jk kj
+Symmetric matrices have several general properties which make them important. This will be seen as we
+(cid:2)
+proceed.
+Triangular Matrices. Upper triangular matricesare square matrices that can have nonzero
+entries only on and abovethe main diagonal, whereas any entry below the diagonal must be
+zero. Similarly, lower triangular matricescan have nonzero entries only on and belowthe
+main diagonal. Any entry on the main diagonal of a triangular matrix may be zero or not.
+EXAMPLE 9 Upper and Lower Triangular Matrices
+3 0 0 0
+1 4 2 2 0 0
+1 3 9 (cid:4)3 0 0
+, 0 3 2 , 8 (cid:4)1 0 , . (cid:2)
+c0 2d 1 0 2 0
+0 0 6 7 6 8
+1 9 3 6
+UppeDr triangular T D LoweTr triaEngular U
+Diagonal Matrices. These are square matrices that can have nonzero entries only on
+the main diagonal. Any entry above or below the main diagonal must be zero.
+If all the diagonal entries of a diagonal matrix S are equal, say, c, we call S a scalar
+matrixbecause multiplication of any square matrix Aof the same size by Shas the same
+effect as the multiplication by a scalar, that is,
+(12) AS (cid:2)SA (cid:2)cA.
+In particular, a scalar matrix, whose entries on the main diagonal are all 1, is called a unit
+matrix(or identity matrix) and is denoted by I or simply by I. For I, formula (12) becomes
+n
+(13) AI(cid:2)IA(cid:2)A.
+EXAMPLE 10 Diagonal Matrix D. Scalar Matrix S. Unit Matrix I
+2 0 0 c 0 0 1 0 0
+D(cid:2) 0 (cid:4)3 0 , S(cid:2) 0 c 0 , I(cid:2) 0 1 0 (cid:2)
+0 0 0 0 0 c 0 0 1
+D T D T D T
+
+=== PAGE 15 ===
+c07.qxd 10/28/10 7:30 PM Page 269
+SEC. 7.2 Matrix Multiplication 269
+Some Applications of Matrix Multiplication
+EXAMPLE 11 Computer Production. Matrix Times Matrix
+Supercomp Ltd produces two computer models PC1086 and PC1186. The matrix Ashows the cost per computer
+(in thousands of dollars) and Bthe production figures for the year 2010 (in multiples of 10,000 units.) Find a
+matrix Cthat shows the shareholders the cost per quarter (in millions of dollars) for raw material, labor, and
+miscellaneous.
+Quarter
+PC1086 PC1186 1 2 3 4
+1.2 1.6 Raw Components
+3 8 6 9 PC1086
+A(cid:2) 0.3 0.4 Labor B(cid:2)
+c6 2 4 3d PC1186
+0.5 0.6 Miscellaneous
+Solution. D T
+Quarter
+1 2 3 4
+13.2 12.8 13.6 15.6 Raw Components
+C(cid:2)AB(cid:2) 3.3 3.2 3.4 3.9 Labor
+5.1 5.2 5.4 6.3 Miscellaneous
+Since cost is given in multiples of $D1000 and production in mTultiples of 10,000 units, the entries of C are
+multiples of $10millions; thus c (cid:2)13.2means $132million, etc. (cid:2)
+11
+EXAMPLE 12 Weight Watching. Matrix Times Vector
+Suppose that in a weight-watching program, a person of 185 lb burns 350 cal/hr in walking (3 mph), 500 in
+bicycling (13 mph), and 950 in jogging (5.5 mph). Bill, weighing 185 lb, plans to exercise according to the
+matrix shown. Verify the calculations W(cid:2)Walking, B(cid:2)Bicycling, J(cid:2)Jogging .
+1 2
+W B J
+MON 1.0 0 0.5 825 MON
+350
+WED 1.0 1.0 0.5 1325 WED
+500 (cid:2)
+FRI 1.5 0 0.5 1000 FRI
+950
+(cid:2)
+SAT 2.0 1.5 1.0 2400 SAT
+D T
+E U E U
+EXAMPLE 13 Markov Process. Powers of a Matrix. Stochastic Matrix
+Suppose that the 2004 state of land use in a city of 60 mi2of built-up area is
+C: Commercially Used 25% I: Industrially Used 20% R: Residentially Used 55%.
+Find the states in 2009, 2014, and 2019, assuming that the transition probabilities for 5-year intervals are given
+by the matrix Aand remain practically the same over the time considered.
+From C From I From R
+0.7 0.1 0 To C
+A(cid:2) 0.2 0.9 0.2 To I
+0.1 0 0.8 To R
+D T
+
+=== PAGE 16 ===
+c07.qxd 10/28/10 7:30 PM Page 270
+270 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Ais a stochastic matrix, that is, a square matrix with all entries nonnegative and all column sums equal to 1.
+Our example concerns a Markov process,1that is, a process for which the probability of entering a certain state
+depends only on the last state occupied (and the matrix A), not on any earlier state.
+Solution. From the matrix Aand the 2004 state we can compute the 2009 state,
+# # #
+C 0.7 25(cid:3)0.1 20(cid:3)0 55 0.7 0.1 0 25 19.5
+# # #
+I 0.2 25(cid:3)0.9 20(cid:3)0.2 55 (cid:2) 0.2 0.9 0.2 20 (cid:2) 34.0 .
+# # #
+R 0.1 25(cid:3) 0 20(cid:3)0.8 55 0.1 0 0.8 55 46.5
+To explain: The 2009 fDigure for C equals 25%times thTe prDobability 0.7 thatT CD goeTs intDo C, pTlus 20%times the
+probability 0.1 that I goes into C, plus 55%times the probability 0 that R goes into C. Together,
+# # # # # #
+25 0.7(cid:3)20 0.1(cid:3)55 0(cid:2)19.5 % . Also 25 0.2(cid:3)20 0.9(cid:3)55 0.2(cid:2)34 % .
+3 4 3 4
+Similarly, the new R is 46.5%. We see that the 2009 state vector is the column vector
+y(cid:2) 19.5 34.0 46.5 T(cid:2)Ax(cid:2)A 25 20 55 T
+3 4 3 4
+where the column vector x(cid:2) 25 20 55 Tis the given 2004 state vector. Note that the sum of the entries of
+3 4
+yis 100 % . Similarly, you may verify that for 2014 and 2019 we get the state vectors
+3 4
+z(cid:2)Ay(cid:2)A(Ax)(cid:2)A2x(cid:2) 17.05 43.80 39.15 T
+3 4
+u(cid:2)Az(cid:2)A2y(cid:2)A3x(cid:2) 16.315 50.660 33.025 T.
+3 4
+Answer. In 2009 the commercial area will be 19.5% (11.7 mi2), the industrial 34% (20.4 mi2), and the
+residential 46.5% (27.9 mi2). For 2014 the corresponding figures are 17.05%, 43.80%,and 39.15%. For 2019
+they are 16.315%, 50.660%,and 33.025%. (In Sec. 8.2 we shall see what happens in the limit, assuming that
+(cid:2)
+those probabilities remain the same. In the meantime, can you experiment or guess?)
+PROBLEM SET 7.2
+1–10 GENERAL QUESTIONS 8. Nilpotent matrix, defined by Bm(cid:2)0 for some m.
+Can you find three 2(cid:5)2nilpotent matrices?
+1. Multiplication. Why is multiplication of matrices
+restricted by conditions on the factors? 9. Transposition. Can you prove (10a)–(10c) for 3(cid:5)3
+2. Square matrix. What form does a 3(cid:5)3matrix have matrices? For m(cid:5)nmatrices?
+if it is symmetric as well as skew-symmetric? 10. Transposition. (a) Illustrate (10d) by simple examples.
+(b) Prove (10d).
+3. Product of vectors. Can every 3(cid:5)3 matrix be
+represented by two vectors as in Example 3? 11–20 MULTIPLICATION, ADDITION, AND
+4. Skew-symmetric matrix. How many different entries TRANSPOSITION OF MATRICES AND
+can a 4(cid:5)4 skew-symmetric matrix have? An n(cid:5)n VECTORS
+skew-symmetric matrix?
+Let
+5. Same questions as in Prob. 4 for symmetric matrices.
+4 (cid:4)2 3 1 (cid:4)3 0
+6. Triangular matrix. If U , U are upper triangular and
+1 2
+L
+1
+, L
+2
+are lower triangular, which of the following are A(cid:2) (cid:4)2 1 6 , B(cid:2) (cid:4)3 1 0
+triangular?
+1 2 2 0 0 (cid:4)2
+U (cid:3)U , U U , U2, U (cid:3)L , U L ,
+1 2 1 2 1 1 1 1 1 0 1 3
+L (cid:3)L D T D T
+1 2
+C(cid:2) 3 2 , a(cid:2) 1 (cid:4)2 0 , b(cid:2) 1 .
+7. Idempotent matrix, defined by A2(cid:2)A.Can you find 3 4
+four 2(cid:5)2idempotent matrices? (cid:4)2 0 (cid:4)1
+1ANDREI ANDREJEVITCH MARKOV (1856–19 D 22), Russia T n mathematician, known for his w D ork T in
+probability theory.
+
+=== PAGE 17 ===
+c07.qxd 10/28/10 7:30 PM Page 271
+SEC. 7.2 Matrix Multiplication 271
+Showing all intermediate results, calculate the following If today there is no trouble, what is the probability of
+expressions or give reasons why they are undefined: Ntwo days after today? Three days after today?
+11. AB, ABT, BA, BTA 27. CAS Experiment. Markov Process. Write a program
+12. AAT, A2, BBT, B2 for a Markov process. Use it to calculate further steps
+13. CCT, BC, CB, CTB in Example 13 of the text. Experiment with other
+stochastic 3(cid:5)3matrices, also using different starting
+14. 3A(cid:4)2B, (3A(cid:4)2B)T, 3AT(cid:4)2BT,
+values.
+(3A(cid:4)2B)TaT
+28. Concert subscription. In a community of 100,000
+15. Aa, AaT, (Ab)T, bTAT
+adults, subscribers to a concert series tend to renew their
+16. BC, BCT, Bb, bTB
+subscription with probability 90%and persons presently
+17. ABC, ABa, ABb, CaT not subscribing will subscribe for the next season with
+18. ab, ba, aA, Bb probability 0.2%. If the present number of subscribers
+19. 1.5a(cid:3)3.0b, 1.5aT(cid:3)3.0b, (A(cid:4)B)b, Ab(cid:4)Bb is 1200, can one predict an increase, decrease, or no
+change over each of the next three seasons?
+20. bTAb, aBaT, aCCT, CTba
+29. Profit vector. Two factory outlets F and F in New
+21. General rules. Prove (2) for 2(cid:5)2matrices A(cid:2) a , 1 2
+3 jk4 York and Los Angeles sell sofas (S), chairs (C), and
+B(cid:2) b , C(cid:2) c ,and a general scalar.
+3 jk4 3 jk4 tables (T) with a profit of $35, $62, and $30, respectively.
+22. Product. Write AB in Prob. 11 in terms of row and
+Let the sales in a certain week be given by the matrix
+column vectors.
+23. Product. Calculate AB in Prob. 11 columnwise. See S C T
+Example 1.
+400 60 240 F
+1
+24. Commutativity. Find all 2(cid:5)2 matrices A(cid:2) a A(cid:2)
+that commute with B(cid:2) 3 b jk4 , where b jk (cid:2)j(cid:3)k 3 . jk4 c100 120 500d F 2
+25. TEAM PROJECT. Symmetric and Skew-Symmetric Introduce a “profit vector” psuch that the components
+Matrices. These matrices occur quite frequently in of v(cid:2)Apgive the total profits of F and F .
+1 2
+applications, so it is worthwhile to study some of their
+30. TEAM PROJECT. Special Linear Transformations.
+most important properties.
+Rotations have various applications. We show in this
+(a) Verify the claims in (11) that a kj (cid:2)a jk for a project how they can be handled by matrices.
+symmetric matrix, and a (cid:2)(cid:4)a for a skew-
+kj jk (a) Rotation in the plane. Show that the linear
+symmetric matrix. Give examples. transformation y(cid:2)Axwith
+(b) Show that for every square matrix C the matrix
+C(cid:3)CTis symmetric and C(cid:4)CTis skew-symmetric. cos u (cid:4)sin u x 1 y 1
+Write Cin the form C(cid:2)S(cid:3)T, where Sis symmetric A(cid:2) csin u cos ud , x(cid:2) cx d , y(cid:2) cy d
+and T is skew-symmetric and find S and T in terms 2 2
+ofC. Represent Aand Bin Probs. 11–20 in this form. is a counterclockwise rotation of the Cartesian x x -
+1 2
+Á
+(c) A linear combinationof matrices A,B,C, , M coordinate system in the plane about the origin, where
+of the same size is an expression of the form uis the angle of rotation.
+(14)
+aA(cid:3)bB(cid:3)cC(cid:3)Á(cid:3)mM, (b) Rotation through n(cid:5). Show that in (a)
+cos nu (cid:4)sin nu
+Á
+where a, , m are any scalars. Show that if these An(cid:2) .
+matrices are square and symmetric, so is (14); similarly, csin nu cos nud
+if they are skew-symmetric, so is (14).
+Is this plausible? Explain this in words.
+(d) Show that ABwith symmetric Aand Bis symmetric
+(c) Addition formulas for cosine and sine. By
+if and only if Aand Bcommute,that is, AB(cid:2)BA.
+geometry we should have
+(e) Under what condition is the product of skew-
+symmetric matrices skew-symmetric? cos a (cid:4)sin a cos b (cid:4)sin b
+csin a cos adcsin b cos bd
+26–30 FURTHER APPLICATIONS
+26. Production. In a production process, let Nmean “no cos (a(cid:3)b) (cid:4)sin (a(cid:3)b)
+(cid:2) .
+trouble” and T“trouble.” Let the transition probabilities csin (a(cid:3)b) cos (a(cid:3)b)d
+from one day to the next be 0.8 for N : N, hence 0.2
+for N : T, and 0.5 for T : N, hence 0.5 for T : T. Derive from this the addition formulas (6) in App. A3.1.
+
+=== PAGE 18 ===
+c07.qxd 10/28/10 7:30 PM Page 272
+272 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+(d) Computer graphics. To visualize a three- (e) Rotations in space. Explain y(cid:2)Axgeometrically
+dimensional object with plane faces (e.g., a cube), we when Ais one of the three matrices
+may store the position vectors of the vertices with
+1 0 0
+respect to a suitable x x x -coordinate system (and a
+1 2 3
+list of the connecting edges) and then obtain a two- 0 cos u (cid:4)sin u ,
+dimensional image on a video screen by projecting
+the object onto a coordinate plane, for instance, onto 0 sin u cos u
+the x x -plane by setting x (cid:2)0. To change the
+1 2 3 cos (cid:7) 0D (cid:4)sin (cid:7) cos c T (cid:4)sin c 0
+appearance of the image, we can impose a linear
+transformation on the position vectors stored. Show 0 1 0 , sin c cos c 0 .
+that a diagonal matrix Dwith main diagonal entries 3,
+1, 1 gives from an x(cid:2) x the new position vector sin (cid:7) 0 cos (cid:7) 0 0 1
+2 3 j4
+y(cid:2)Dx, where y (cid:2)3x (stretch in the x -direction
+by a factor 3), y
+1
+(cid:2)x (
+1
+unchanged), y (cid:2)
+1
+1x (con-
+WhaDt effect would these traTnsforDmations have in situatioTns
+2 2 3 2 3 such as that described in (d)?
+traction in the x -direction). What effect would a scalar
+3
+matrix have?
+7.3
+Linear Systems of Equations.
+Gauss Elimination
+We now come to one of the most important use of matrices, that is, using matrices to
+solve systems of linear equations. We showed informally, in Example 1 of Sec. 7.1, how
+to represent the information contained in a system of linear equations by a matrix, called
+the augmented matrix. This matrix will then be used in solving the linear system of
+equations. Our approach to solving linear systems is called the Gauss elimination method.
+Since this method is so fundamental to linear algebra, the student should be alert.
+A shorter term for systems of linear equations is just linear systems. Linear systems
+model many applications in engineering, economics, statistics, and many other areas.
+Electrical networks, traffic flow, and commodity markets may serve as specific examples
+of applications.
+Linear System, Coefficient Matrix, Augmented Matrix
+Á
+A linear system of m equations in n unknowns x , , x is a set of equations of
+1 n
+the form
+a x (cid:3) Á (cid:3)a x (cid:2)b
+11 1 1n n 1
+a x (cid:3) Á (cid:3)a x (cid:2)b
+21 1 2n n 2
+(1)
+. . . . . . . . . . . . . . . . . . . . . . .
+a x (cid:3) Á (cid:3)a x (cid:2)b .
+m1 1 mn n m
+The system is called linear because each variable x appears in the first power only, just
+j
+Á
+as in the equation of a straight line. a , , a are given numbers, called the coefficients
+11 mn
+Á
+of the system. b , , b on the right are also given numbers. If all the b are zero, then
+1 m j
+(1) is called a homogeneous system. If at least one b is not zero, then (1) is called a
+j
+nonhomogeneous system.
+
+=== PAGE 19 ===
+c07.qxd 10/28/10 7:30 PM Page 273
+SEC. 7.3 Linear Systems of Equations. Gauss Elimination 273
+Á
+A solution of (1) is a set of numbers x , , x that satisfies all the m equations.
+1 n
+A solution vector of (1) is a vector x whose components form a solution of (1). If the
+system (1) is homogeneous, it always has at least the trivial solutionx (cid:2)0, Á , x (cid:2)0.
+1 n
+Matrix Form of the Linear System (1). From the definition of matrix multiplication
+we see that the m equations of (1) may be written as a single vector equation
+(2) Ax (cid:2)b
+where the coefficient matrix A(cid:2) a is the m(cid:5)n matrix
+3 jk4
+x
+Á 1
+a a a
+11 12 1n #
+b
+Á 1
+a a a
+21 22 2n # .
+A(cid:2) , and x(cid:2) and b(cid:2) .
+# # Á # .
+#
+b
+Á m
+a a a
+m1 m2 mn
+E U
+Gx nW D T
+are column vectors. We assume that the coefficients a are not all zero, so that A is
+jk
+not a zero matrix. Note that x has n components, whereas b has m components. The
+matrix
+a 11
+Á
+a 1n | b 1
+# Á # | #
+A ~ (cid:2) |
+# Á #
+|
+#
+|
+a
+Á
+a b
+m1 mn | m
+E U
+is called the augmented matrix of the system (1). The dashed vertical line could be
+~
+omitted, as we shall do later. It is merely a reminder that the last column of A did not
+come from matrix A but came from vector b. Thus, we augmented the matrix A.
+~
+Note that the augmented matrix A determines the system (1) completely because it
+contains all the given numbers appearing in (1).
+EXAMPLE 1 Geometric Interpretation. Existence and Uniqueness of Solutions
+If m(cid:2)n(cid:2)2,we have two equations in two unknowns x , x
+1 2
+a x (cid:3)a x (cid:2)b
+11 1 12 2 1
+a x (cid:3)a x (cid:2)b.
+21 1 22 2 2
+If we interpret x , x as coordinates in the x x -plane, then each of the two equations represents a straight line,
+1 2 1 2
+and (x , x )is a solution if and only if the point Pwith coordinates x , x lies on both lines. Hence there are
+1 2 1 2
+three possible cases (see Fig. 158 on next page):
+(a) Precisely one solution if the lines intersect
+(b) Infinitely many solutions if the lines coincide
+(c) No solution if the lines are parallel
+
+=== PAGE 20 ===
+c07.qxd 10/28/10 7:30 PM Page 274
+274 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+For instance,
+x + x = 1 x + x = 1 x + x = 1
+1 2 1 2 1 2
+2x – x = 0 2x + 2x = 2 x + x = 0
+1 2 1 2 1 2
+Case (a) Case (b) Case (c)
+x x x
+Unique solution 2 2 2
+2 P
+3
+1 1 x 1 x 1 x
+3 1 1 1
+If the system is homogenous, Case (c) cannot happen, because then those two straight lines pass through the
+origin, whose coordinates (0, 0)constitute the trivial solution. Similarly, our present discussion can be extended
+from two equations in two unknowns to three equations in three unknowns. We give the geometric interpretation
+of three possible cases concerning solutions in Fig. 158. Instead of straight lines we have planes and the solution
+depends on the positioning of these planes in space relative to each other. The student may wish to come up
+Infinitely (cid:2)
+with some specific examples.
+many solutions
+Our simple example illustrated that a system (1) may have no solution. This leads to such
+questions as: Does a given system (1) have a solution? Under what conditions does it have
+precisely one solution? If it has more than one solution, how can we characterize the set
+of all solutions? We shall consider such questions in Sec. 7.5.
+First, however, let us discuss an important systematic method for solving linear systems.
+Gauss Elimination and Back Substitution
+The Gauss elimination method can be motivated as follows. Consider a linear system that
+is in triangular form (in full, upper triangular form) such as
+2x (cid:3)5x (cid:2) 2
+1 2
+13x (cid:2)(cid:4)26
+2
+(Triangular means that all the nonzero entries of the corresponding coefficient matrix lie
+above the diagonal and form an upside-down 90° triangle.) Then we can solve the system
+by back substitution, that is, we solve the last equation for the variable, x (cid:2)(cid:4)26 13(cid:2)(cid:4)2,
+2 >
+No solution and then work backward, substituting x (cid:2)(cid:4)2into the first equation and solving it for x ,
+2# 1
+Fig. 158. Three obtaining x 1 (cid:2)1 2 (2 (cid:4)5x 2 )(cid:2)1 2 (2 (cid:4)5 ((cid:4)2))(cid:2)6.This gives us the idea of first reducing
+equations in a general system to triangular form. For instance, let the given system be
+three unknowns
+interpreted as 2x (cid:3)5x (cid:2) 2 2 5 2
+1 2
+planes in space Its augmented matrix is .
+(cid:4)4x (cid:3)3x (cid:2)(cid:4)30. c(cid:4)4 3 (cid:4)30 d
+1 2
+We leave the first equation as it is. We eliminate x from the second equation, to get a
+1
+triangular system. For this we add twice the first equation to the second, and we do the same
+
+=== PAGE 21 ===
+c07.qxd 10/28/10 7:30 PM Page 275
+SEC. 7.3 Linear Systems of Equations. Gauss Elimination 275
+operation on the rowsof the augmented matrix. This gives (cid:4)4x (cid:3)4x (cid:3)3x (cid:3)10x (cid:2)
+# 1 1 2 2
+(cid:4)30(cid:3)2 2,that is,
+2x (cid:3)5x (cid:2) 2 2 5 2
+1 2
+13x (cid:2)(cid:4)26 Row 2(cid:3)2 Row 1 c 0 13 (cid:4)26 d
+2
+where Row 2(cid:3)2 Row 1means “Add twice Row 1 to Row 2”in the original matrix. This
+is the Gauss elimination(for 2 equations in 2 unknowns) giving the triangular form, from
+which back substitution now yields x (cid:2)(cid:4)2 and x (cid:2)6, as before.
+2 1
+Since a linear system is completely determined by its augmented matrix, Gauss
+elimination can be done by merely considering the matrices, as we have just indicated.
+We do this again in the next example, emphasizing the matrices by writing them first and
+the equations behind them, just as a help in order not to lose track.
+EXAMPLE 2 Gauss Elimination. Electrical Network
+Solve the linear system
+x (cid:4) x (cid:3) x (cid:2) 0
+1 2 3
+(cid:4)x (cid:3) x (cid:4) x (cid:2) 0
+1 2 3
+10x (cid:3)25x (cid:2)90
+2 3
+20x (cid:3)10x (cid:2)80.
+1 2
+Derivation from the circuit in Fig. 159 (Optional). This is the system for the unknown currents
+x (cid:2)i ,x (cid:2)i , x (cid:2)i in the electrical network in Fig. 159. To obtain it, we label the currents as shown,
+1 1 2 2 3 3
+choosing directions arbitrarily; if a current will come out negative, this will simply mean that the current flows
+against the direction of our arrow. The current entering each battery will be the same as the current leaving it.
+The equations for the currents result from Kirchhoff’s laws:
+Kirchhoff’s Current Law (KCL).At any point of a circuit, the sum of the inflowing currents equals the sum
+of the outflowing currents.
+Kirchhoff’s Voltage Law (KVL). In any closed loop, the sum of all voltage drops equals the impressed
+electromotive force.
+Node P gives the first equation, node Q the second, the right loop the third, and the left loop the fourth, as
+indicated in the figure.
+20 Ω 10 Ω
+Q Node P: i – i + i = 0
+1 2 3
+i i
+1 3
+Node Q: –i + i – i = 0
+1 2 3
+80 V 10 Ω 90 V
+Right loop: 10i + 25i = 90
+i 2 3
+2
+P 15 Ω Left loop: 20i 1 + 10i 2 = 80
+Fig. 159. Network in Example 2 and equations relating the currents
+Solution by Gauss Elimination. This system could be solved rather quickly by noticing its particular
+form. But this is not the point. The point is that the Gauss elimination is systematic and will work in general,
+
+=== PAGE 22 ===
+c07.qxd 10/29/10 11:01 PM Page 276
+276 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+also for large systems. We apply it to our system and then do back substitution. As indicated, let us write the
+augmented matrix of the system first and then the system itself:
+~
+Augmented Matrix A Equations
+Pivot 1wwö 1 (cid:3)1 1 | 0 Pivot 1 wwö x (cid:3) x (cid:4) x (cid:2) 0
+1 2 3
+|
+(cid:3)1 1 (cid:3)1 | 0 (cid:3)x (cid:4) x (cid:3) x (cid:2) 0
+1 2 3
+|
+Eliminate wwö 0 10 25 | 90 Eliminate wwö 10x (cid:4)25x (cid:2)90
+2 3
+|
+20 10 0 | 80 20x (cid:4)10x (cid:2)80.
+1 2
+E U
+Step 1. Elimination of x
+1
+Call the first row of A the pivot row and the first equation the pivot equation. Call the coefficient 1 of its
+x -term the pivotin this step. Use this equation to eliminate x (get rid of x )in the other equations. For this, do:
+1 1 1
+Add 1 times the pivot equation to the second equation.
+Add (cid:3)20times the pivot equation to the fourth equation.
+This corresponds to row operationson the augmented matrix as indicated in BLUEbehind the new matrixin
+(3). So the operations are performed on the preceding matrix. The result is
+1 (cid:3)1 1 | 0 x (cid:3) x (cid:4) x (cid:2) 0
+| 1 2 3
+0 0 0 | | 0 Row 2 (cid:4)Row 1 0(cid:2) 0
+(3) |
+0 10 25 | 90 10x (cid:4)25x (cid:2)90
+| 2 3
+0 30 (cid:3)20 | | 80 Row 4 (cid:3)20 Row 1 30x 2 (cid:3)20x 3 (cid:2)80.
+E U
+Step 2. Elimination of x
+2
+The first equation remains as it is. We want the new second equation to serve as the next pivot equation. But
+since it has no x-term (in fact, it is 0(cid:2)0), we must first change the order of the equations and the corresponding
+2
+rows of the new matrix. We put 0(cid:2)0at the end and move the third equation and the fourth equation one place
+up. This is called partial pivoting (as opposed to the rarely used total pivoting, in which the order of the
+unknowns is also changed). It gives
+1 (cid:3)1 1 | 0 x (cid:3) x (cid:4) x (cid:2) 0
+1 2 3
+|
+Pivot 10 wwö 0 10 25 | 90 Pivot 10 wwwö 10x (cid:4)25x (cid:2)90
+2 3
+|
+Eliminate 30 wwö 0 30 (cid:3)20 | 80 Eliminate 30x wwö 30x (cid:3)20x (cid:2)80
+2 2 3
+|
+0 0 0 | 0 0(cid:2) 0.
+E U
+To eliminate x , do:
+2
+Add (cid:3)3times the pivot equation to the third equation.
+The result is
+1 (cid:3)1 1 | 0 x (cid:3) x (cid:4) x (cid:2) 0
+1 2 3
+|
+0 10 25 | 90 10x (cid:4)25x (cid:2) 90
+2 3
+(4) |
+0 0 (cid:3)95 | (cid:3)190 Row 3(cid:3)3 Row 2 (cid:3)95x (cid:2)(cid:3)190
+3
+|
+0 0 0 | 0 0(cid:2) 0.
+E U
+Back Substitution. Determination of x , x , x (in this order)
+3 2 1
+Working backward from the last to the first equation of this “triangular” system (4), we can now readily find
+x , then x , and then x :
+3 2 1
+(cid:3)95x (cid:2)(cid:3)190 x (cid:2)i (cid:2)2 A
+3 3 3 3 4
+10x (cid:4)25x (cid:2) 90 x (cid:2) 1(90(cid:3)25x )(cid:2)i (cid:2)4 A
+2 3 2 10 3 2 3 4
+x (cid:3) x (cid:4) x (cid:2) 0 x (cid:2)x (cid:3)x (cid:2)i (cid:2)2 A
+1 2 3 1 2 3 1 3 4
+(cid:2)
+where A stands for “amperes.” This is the answer to our problem. The solution is unique.
+
+=== PAGE 23 ===
+c07.qxd 10/28/10 7:30 PM Page 277
+SEC. 7.3 Linear Systems of Equations. Gauss Elimination 277
+Elementary Row Operations. Row-Equivalent Systems
+Example 2 illustrates the operations of the Gauss elimination. These are the first two of
+three operations, which are called
+Elementary Row Operations for Matrices:
+Interchange of two rows
+Addition of a constant multiple of one row to another row
+Multiplication of a row by a nonzero constant c
+CAUTION! These operations are for rows, not for columns! They correspond to the
+following
+Elementary Operations for Equations:
+Interchange of two equations
+Addition of a constant multiple of one equation to another equation
+Multiplication of an equation by a nonzero constant c
+Clearly, the interchange of two equations does not alter the solution set. Neither does their
+addition because we can undo it by a corresponding subtraction. Similarly for their
+multiplication, which we can undo by multiplying the new equation by 1 c(since c(cid:6)0),
+>
+producing the original equation.
+We now call a linear system S row-equivalent to a linear system S if S can be
+1 2 1
+obtained from S by (finitely many!) row operations. This justifies Gauss elimination and
+2
+establishes the following result.
+THEOREM 1 Row-Equivalent Systems
+Row-equivalent linear systems have the same set of solutions.
+Because of this theorem, systems having the same solution sets are often called
+equivalent systems. But note well that we are dealing with row operations. No column
+operations on the augmented matrix are permitted in this context because they would
+generally alter the solution set.
+A linear system (1) is called overdeterminedif it has more equations than unknowns,
+as in Example 2, determinedif m(cid:2)n, as in Example 1, and underdeterminedif it has
+fewer equations than unknowns.
+Furthermore, a system (1) is called consistent if it has at least one solution (thus, one
+solution or infinitely many solutions), but inconsistent if it has no solutions at all, as
+x (cid:3)x (cid:2)1, x (cid:3)x (cid:2)0 in Example 1, Case (c).
+1 2 1 2
+Gauss Elimination: The Three Possible
+Cases of Systems
+We have seen, in Example 2, that Gauss elimination can solve linear systems that have a
+unique solution. This leaves us to apply Gauss elimination to a system with infinitely
+many solutions (in Example 3) and one with no solution (in Example 4).
+
+=== PAGE 24 ===
+c07.qxd 10/28/10 7:30 PM Page 278
+278 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+EXAMPLE 3 Gauss Elimination if Infinitely Many Solutions Exist
+Solve the following linear system of three equations in four unknowns whose augmented matrix is
+3.0 2.0 2.0 (cid:4)5.0 | 8.0 3.0x (cid:3)2.0x (cid:3)2.0x (cid:4)5.0x (cid:2)8.0
+1 2 3 4
+|
+(5) 0.6 1.5 1.5 (cid:4)5.4 | 2.7 . Thus, 0.6x
+1
+(cid:3)1.5x
+2
+(cid:3)1.5x
+3
+(cid:4)5.4x
+4
+(cid:2)2.7
+|
+1.2 (cid:4)0.3 (cid:4)0.3 2.4 | 2.1 1.2x (cid:4)0.3x (cid:4)0.3x (cid:3)2.4x (cid:2)2.1.
+1 2 3 4
+SolutioDn.
+As in the previous example,
+T
+we circle pivots and box terms of equations and corresponding
+entries to be eliminated. We indicate the operations in terms of equations and operate on both equations and
+matrices.
+Step 1. Elimination of x from the second and third equations by adding
+1
+(cid:4)0.6 3.0(cid:2)(cid:4)0.2times the first equation to the second equation,
+>
+(cid:4)1.2 3.0(cid:2)(cid:4)0.4times the first equation to the third equation.
+>
+This gives the following, in which the pivot of the next step is circled.
+3.0 2.0 2.0 (cid:4)5.0 | 8.0 3.0x (cid:3)2.0x (cid:3)2.0x (cid:4)5.0x (cid:2) 8.0
+1 2 3 4
+|
+(6) 0 1.1 1.1 (cid:4)4.4 | 1.1 Row 2 (cid:4)0.2 Row 1 1.1x (cid:3)1.1x (cid:4)4.4x (cid:2) 1.1
+2 3 4
+|
+0 (cid:4)1.1 (cid:4)1.1 4.4 | (cid:4)1.1 Row 3 (cid:4)0.4 Row 1 (cid:4)1.1x (cid:4)1.1x (cid:3)4.4x (cid:2)(cid:4)1.1.
+2 3 4
+D T
+Step 2. Elimination of x from the third equation of (6) by adding
+2
+1.1 1.1(cid:2)1times the second equation to the third equation.
+>
+This gives
+3.0 2.0 2.0 (cid:4)5.0 | 8.0 3.0x (cid:3)2.0x (cid:3)2.0x (cid:4)5.0x (cid:2)8.0
+1 2 3 4
+|
+(7) 0 1.1 1.1 (cid:4)4.4 | 1.1 1.1x (cid:3)1.1x (cid:4)4.4x (cid:2)1.1
+2 3 4
+|
+0 0 0 0 | 0 Row 3 (cid:3)Row 2 0(cid:2)0.
+Back SubstDitution. From the second equ T ation, x (cid:2)1(cid:4)x (cid:3)4x . From this and the first equation,
+2 3 4
+x (cid:2)2(cid:4)x . Since x and x remain arbitrary, we have infinitely many solutions. If we choose a value of x
+1 4 3 4 3
+and a value of x , then the corresponding values of x and x are uniquely determined.
+4 1 2
+On Notation. If unknowns remain arbitrary, it is also customary to denote them by other letters t , t , Á .
+1 2
+In this example we may thus write x (cid:2)2(cid:4)x (cid:2)2(cid:4)t , x (cid:2)1(cid:4)x (cid:3)4x (cid:2)1(cid:4)t (cid:3)4t , x (cid:2)t (first
+arbitrary unknown), x (cid:2)t (second 1 arbitrary 4 unknown) 2 . 2 3 4 1 2 3 1 (cid:2)
+4 2
+EXAMPLE 4 Gauss Elimination if no Solution Exists
+What will happen if we apply the Gauss elimination to a linear system that has no solution? The answer is that
+in this case the method will show this fact by producing a contradiction. For instance, consider
+3 2 1 | 3 3x 1 (cid:3)2x 2 (cid:3) x 3 (cid:2)3
+|
+2 1 1 | 0 2x (cid:3) x (cid:3) x (cid:2)0
+1 2 3
+|
+6 2 4 | 6 6x (cid:3)2x (cid:3)4x (cid:2)6.
+1 2 3
+D T
+Step 1. Elimination of x from the second and third equations by adding
+1
+(cid:4)2times the first equation to the second equation,
+3
+(cid:4)6(cid:2)(cid:4)2times the first equation to the third equation.
+3
+
+=== PAGE 25 ===
+SEC. 7.3 Linear Systems of Equations. Gauss Elimination 279
+This gives
+3 2 1 | 3 3x (cid:3)2x (cid:3) x (cid:2) 3
+1 2 3
+|
+0 (cid:4)1 1 | (cid:4)2 Row 2 (cid:4)_2Row 1 (cid:4)1x (cid:3)1x (cid:2)(cid:4)2
+3 3 3 3 2 3 3
+|
+0 (cid:4)2 2 | 0 Row 3 (cid:4)2 Row 1 (cid:4)2x (cid:3)2x (cid:2) 0.
+2 3
+Step 2. EliminatiDon of x from the thirdT equation gives
+2
+3 2 1 | 3 3x 1 (cid:3)2x 2 (cid:3) x 3 (cid:2) 3
+|
+0 (cid:4)1
+3 3
+1 | (cid:4)2 (cid:4)1
+3
+x
+2
+(cid:3)1
+3
+x
+3
+(cid:2)(cid:4) 2
+|
+0 0 0 | 12 Row 3 (cid:4)6 Row 2 0(cid:2) 12.
+The false statemeDnt 0(cid:2)12shows that tThe system has no solution. (cid:2)
+Row Echelon Form and Information From It
+At the end of the Gauss elimination the form of the coefficient matrix, the augmented
+matrix, and the system itself are called the row echelon form. In it, rows of zeros, if
+present, are the last rows, and, in each nonzero row, the leftmost nonzero entry is farther
+to the right than in the previous row. For instance, in Example 4 the coefficient matrix
+and its augmented in row echelon form are
+3 2 1 3 2 1 | 3
+|
+(8) 0 (cid:4)1 1 and 0 (cid:4)1 1 | (cid:4)2 .
+3 3 3 3 |
+|
+0 0 0 0 0 0 | 12
+Note that we do noDt require thaTt the leftmost nDonzero entries be 1 sTince this would have
+no theoretic or numeric advantage. (The so-called reduced echelon form, in which those
+entries are 1, will be discussed in Sec. 7.8.)
+The original system of m equations in nunknowns has augmented matrix A|b . This
+3 4
+is to be row reduced to matrix R|f . The two systems Ax (cid:2)band Rx(cid:2)fare equivalent:
+3 4
+if either one has a solution, so does the other, and the solutions are identical.
+At the end of the Gauss elimination (before the back substitution), the row echelon form
+of the augmented matrix will be
+. . . . . .
+.
+.
+.
+. . .
+...
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+c07.qxd 10/28/10 7:30 PM Page 279
+r r r f
+11 12 1n 1
+r 22 r 2n f 2 X
+(9) X r r f .
+rr rn r
+f
+r+1
+f
+m
+Here, r(cid:8)m, r (cid:6)0, and all entries in the blue triangle and blue rectangle are zero.
+11
+The number of nonzero rows, r, in the row-reduced coefficient matrix R is called the
+rank of R and also the rank of A. Here is the method for determining whether Ax(cid:2)b
+has solutions and what they are:
+(a) No solution. If r is less than m (meaning that R actually has at least one row of
+Á
+all 0s) and at least one of the numbers f , f , , f is not zero, then the system
+r(cid:3)1 r(cid:3)2 m
+
+=== PAGE 26 ===
+c07.qxd 10/28/10 7:30 PM Page 280
+280 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Rx (cid:2)f is inconsistent: No solution is possible. Therefore the system Ax (cid:2)b is
+inconsistent as well. See Example 4, where r(cid:2)2(cid:9)m(cid:2)3 and f (cid:2)f (cid:2)12.
+r(cid:3)1 3
+If the system is consistent (either r(cid:2)m,or r(cid:9)mandall the numbers f , f , Á , f
+r(cid:3)1 r(cid:3)2 m
+are zero), then there are solutions.
+(b) Unique solution. If the system is consistent and r(cid:2)n, there is exactly one
+solution, which can be found by back substitution. See Example 2, where r(cid:2)n(cid:2)3
+and m(cid:2)4.
+(c) Infinitely many solutions. To obtain any of these solutions, choose values of
+Á
+x , , x arbitrarily. Then solve the rth equation for x (in terms of those
+r(cid:3)1 n r
+arbitrary values), then the (r (cid:4)1)st equation for x , and so on up the line. See
+r(cid:2)1
+Example 3.
+Orientation. Gauss elimination is reasonable in computing time and storage demand.
+We shall consider those aspects in Sec. 20.1 in the chapter on numeric linear algebra.
+Section 7.4 develops fundamental concepts of linear algebra such as linear independence
+and rank of a matrix. These in turn will be used in Sec. 7.5 to fully characterize the
+behavior of linear systems in terms of existence and uniqueness of solutions.
+PROBLEM SET 7.3
+1–14 GAUSS ELIMINATION 12. 2 (cid:4)2 4 0 0
+Solve the linear system given explicitly or by its augmented
+(cid:4)3 3 (cid:4)6 5 15
+matrix. Show details.
+1. 4x(cid:4)6y(cid:2)(cid:4)11 2. 3.0 (cid:4)0.5 0.6 1 (cid:4)1 2 0 0
+(cid:4)3x(cid:3)8y(cid:2) 10 c1.5 4.5 6.0d 13. D 10x(cid:3) 4y(cid:4) 2z(cid:2)(cid:4) T 4
+(cid:4)3w(cid:4)17x(cid:3) y(cid:3) 2z(cid:2) 2
+3. x(cid:3) y(cid:4) z(cid:2) 9 4. 4 1 0 4
+w(cid:3) x(cid:3) y (cid:2) 6
+8y(cid:3)6z(cid:2)(cid:4)6 5 (cid:4)3 1 2 8w(cid:4)34x(cid:3)16y(cid:4)10z(cid:2) 4
+(cid:4)2x(cid:3)4y(cid:4)6z(cid:2) 40 (cid:4)9 2 (cid:4)1 5 14. 2 3 1 (cid:4)11 1
+5. 13 12 (cid:4)6 6. D 4 (cid:4)8 3 1 T 6 5 (cid:4)2 5 (cid:4)4 5
+(cid:4)4 7 (cid:4)73 (cid:4)1 2 (cid:4)5 (cid:4)21 1 (cid:4)1 3 (cid:4)3 3
+11 (cid:4)13 157 3 (cid:4)6 1 7 3 4 (cid:4)7 2 (cid:4)7
+7.
+D 2 4 1 T 0
+8.
+D
+4y(cid:3)3z(cid:2)8
+T
+15. EEquivalence relation. By dUefinition, an equivalence
+relationon a set is a relation satisfying three conditions:
+2x (cid:4) z(cid:2)2
+(cid:4)1 1 (cid:4)2 0 (named as indicated)
+3x(cid:3)2y (cid:2)5
+(i) Each element A of the set is equivalent to itself
+4 0 6 0
+(Reflexivity).
+9. D (cid:4)2y(cid:4)2z(cid:2)(cid:4)8 T 10. 5 (cid:4)7 3 17 (ii) If Ais equivalent to B, then Bis equivalent to A
+3x(cid:3)4y(cid:4)5z(cid:2)13 c(cid:4)15 21 (cid:4)9 50d (Symmetry).
+(iii) If A is equivalent to B and B is equivalent to C,
+11. 0 5 5 (cid:4)10 0 then Ais equivalent to C(Transitivity).
+2 (cid:4)3 (cid:4)3 6 2 Show that row equivalence of matrices satisfies these
+three conditions. Hint. Show that for each of the three
+4 1 1 (cid:4)2 4 elementary row operations these conditions hold.
+D T
+
+=== PAGE 27 ===
+c07.qxd 10/28/10 7:30 PM Page 281
+SEC. 7.3 Linear Systems of Equations. Gauss Elimination 281
+16. CAS PROJECT. Gauss Elimination and Back the analog of Kirchhoff’s Current Law, find the traffic
+Substitution. Write a program for Gauss elimination flow (cars per hour) in the net of one-way streets (in
+and back substitution (a)that does not include pivoting the directions indicated by the arrows) shown in the
+and (b)that does include pivoting. Apply the programs figure. Is the solution unique?
+to Probs. 11–14 and to some larger systems of your
+22. Models of markets. Determine the equilibrium
+choice. solution (D (cid:2)S , D (cid:2)S ) of the two-commodity
+1 1 2 2
+17–21 MODELS OF NETWORKS market with linear model (D, S, P(cid:2)demand, supply,
+price; index 1(cid:2)first commodity, index 2(cid:2)second
+In Probs. 17–19, using Kirchhoff’s laws (see Example 2)
+commodity)
+and showing the details, find the currents:
+17. 16 V D 1 (cid:2)40(cid:4)2P 1 (cid:4)P 2 , S 1 (cid:2)4P 1 (cid:4)P 2 (cid:3)4,
+I
+1
+D (cid:2)5P (cid:4)2P (cid:3)16, S (cid:2)3P (cid:4)4.
+2 1 2 2 2
+2 Ω 2 Ω
+1 Ω 23. Balancing a chemical equation x C H (cid:3)x O :
+1 3 8 2 2
+x CO (cid:3)x H Omeans finding integer x , x , x , x
+I 3 2 4 2 1 2 3 4
+4 Ω 3 I 2 such that the numbers of atoms of carbon (C), hydrogen
+(H), and oxygen (O) are the same on both sides of this
+reaction, in which propane C H and O give carbon
+32 V 3 8 2
+dioxide and water. Find the smallest positive integers
+18. Á
+x , , x .
+1 4
+4 Ω 12 Ω 8 Ω 24. PROJECT. Elementary Matrices. The idea is that
+elementary operations can be accomplished by matrix
+12 V 24 V multiplication. If A is an m(cid:5)n matrix on which we
+I
+2 want to do an elementary operation, then there is a
+I 1 I 3 matrix E such that EA is the new matrix after the
+19. I I operation. Such an Eis called an elementary matrix.
+1 3 This idea can be helpful, for instance, in the design
+ofalgorithms. (Computationally, it is generally prefer-
+I
+2
+able to do row operations directly, rather than by
+E 0 V R Ω R 2 Ω multiplication by E.)
+1
+(a) Show that the following are elementary matrices,
+for interchanging Rows 2 and 3, for adding (cid:4)5times
+20. Wheatstone bridge. Show that if R R (cid:2)R R in the first row to the third, and for multiplying the fourth
+x> 3 1> 2
+the figure, then I(cid:2)0. (R is the resistance of the row by 8.
+0
+instrument by which I is measured.) This bridge is a
+1 0 0 0
+method for determining R . R , R , R are known. R
+x 1 2 3 3
+is variable. To get R x , make I(cid:2)0by varying R 3 . Then 0 0 1 0
+calculate R (cid:2)R R R . E (cid:2) ,
+x 3 1> 2 1
+0 1 0 0
+400 800
+Rx R
+3 x
+0 0 0 1
+1 E U
+1 0 0 0
+600 800
+R x x
+0 4 2 0 1 0 0
+E (cid:2) ,
+2
+R 1 R 2 1000 x 3 1200 (cid:4)5 0 1 0
+0 0 0 1
+600 1000
+E U
+1 0 0 0
+Wheatstone bridge Net of one-way streets
+0 1 0 0
+Problem 20 Problem 21 E (cid:2) .
+3
+0 0 1 0
+21. Traffic flow. Methods of electrical circuit analysis
+have applications to other fields. For instance, applying 0 0 0 8
+E U
+
+=== PAGE 28 ===
+c07.qxd 10/28/10 7:30 PM Page 282
+282 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Apply E , E , E to a vector and to a 4(cid:5)3matrix of unit matrix. Prove that ifMis obtained fromAby an
+1 2 3
+your choice. Find B(cid:2)E E E A, where A(cid:2) a is elementary row operation, then
+3 2 1 3 jk4
+the general 4(cid:5)2matrix. Is Bequal to C(cid:2)E
+1
+E
+2
+E
+3
+A? M(cid:2)EA,
+(b) Conclude that E , E , E are obtained by doing whereEis obtained from the n(cid:5)nunit matrix I by
+1 2 3 n
+the corresponding elementary operations on the 4(cid:5)4 the same row operation.
+7.4
+Linear Independence. Rank of a Matrix.
+Vector Space
+Since our next goal is to fully characterize the behavior of linear systems in terms
+of existence and uniqueness of solutions (Sec. 7.5), we have to introduce new
+fundamental linear algebraic concepts that will aid us in doing so. Foremost among
+these are linear independence and the rank of a matrix. Keep in mind that these
+concepts are intimately linked with the important Gauss elimination method and how
+it works.
+Linear Independence and Dependence of Vectors
+Á
+Given any set of mvectors a , , a (with the same number of components), a linear
+(1) (m)
+combination of these vectors is an expression of the form
+c a (cid:3)c a (cid:3) Á (cid:3)c a
+1 (1) 2 (2) m (m)
+Á
+where c , c , , c are any scalars. Now consider the equation
+1 2 m
+(1) c a (cid:3)c a (cid:3) Á (cid:3)c a (cid:2)0.
+1 (1) 2 (2) m (m)
+Clearly, this vector equation (1) holds if we choose all c’s zero, because then it becomes
+j
+0(cid:2)0. If this is the only m-tuple of scalars for which (1) holds, then our vectors
+Á
+a , , a are said to form a linearly independent set or, more briefly, we call them
+(1) (m)
+linearly independent. Otherwise, if (1) also holds with scalars not all zero, we call these
+vectors linearly dependent. This means that we can express at least one of the vectors
+as a linear combination of the other vectors. For instance, if (1) holds with, say,
+c (cid:6)0, we can solve (1) for a :
+1 (1)
+a (cid:2)k a (cid:3) Á (cid:3)k a where k (cid:2)(cid:4)c c .
+(1) 2 (2) m (m) j j> 1
+(Some k ’s may be zero. Or even all of them, namely, if a (cid:2)0.)
+j (1)
+Why is linear independence important? Well, if a set of vectors is linearly
+dependent, then we can get rid of at least one or perhaps more of the vectors until we
+get a linearly independent set. This set is then the smallest “truly essential” set with
+which we can work. Thus, we cannot express any of the vectors, of this set, linearly
+in terms of the others.
+
+=== PAGE 29 ===
+c07.qxd 10/28/10 7:30 PM Page 283
+SEC. 7.4 Linear Independence. Rank of a Matrix. Vector Space 283
+EXAMPLE 1 Linear Independence and Dependence
+The three vectors
+a (cid:2) 3 0 2 2
+(1) 3 4
+a (cid:2) (cid:4)6 42 24 54
+(2) 3 4
+a (cid:2) 21 (cid:4)21 0 (cid:4)15
+(3) 3 4
+are linearly dependent because
+6a (cid:4)1a (cid:4)a (cid:2)0.
+(1) 2 (2) (3)
+Although this is easily checked by vector arithmetic (do it!), it is not so easy to discover. However, a systematic
+method for finding out about linear independence and dependence follows below.
+The first two of the three vectors are linearly independent because c a (cid:3)c a (cid:2)0implies c (cid:2)0(from
+the second components) and then c (cid:2)0(from any other component o 1 f ( a 1) . 2 (2) 2 (cid:2)
+1 (1)
+Rank of a Matrix
+DEFINITION The rankof a matrix Ais the maximum number of linearly independent row vectors
+of A. It is denoted by rank A.
+Our further discussion will show that the rank of a matrix is an important key concept for
+understanding general properties of matrices and linear systems of equations.
+EXAMPLE 2 Rank
+The matrix
+3 0 2 2
+(2) A(cid:2) (cid:4)6 42 24 54
+21 (cid:4)21 0 (cid:4)15
+has rank 2, because Example 1 shows that thDe first two row vectors areT linearly independent, whereas all three
+row vectors are linearly dependent.
+Note further that rank A(cid:2)0if and only if A(cid:2)0.This follows directly from the definition. (cid:2)
+We call a matrix A row-equivalent to a matrix A if A can be obtained from A by
+1 2 1 2
+(finitely many!) elementary row operations.
+Now the maximum number of linearly independent row vectors of a matrix does not
+change if we change the order of rows or multiply a row by a nonzero c or take a linear
+combination by adding a multiple of a row to another row. This shows that rank is
+invariant under elementary row operations:
+THEOREM 1 Row-Equivalent Matrices
+Row-equivalent matrices have the same rank.
+Hence we can determine the rank of a matrix by reducing the matrix to row-echelon
+form, as was done in Sec. 7.3. Once the matrix is in row-echelon form, we count the
+number of nonzero rows, which is precisely the rank of the matrix.
+
+=== PAGE 30 ===
+c07.qxd 10/28/10 7:30 PM Page 284
+284 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+EXAMPLE 3 Determination of Rank
+For the matrix in Example 2 we obtain successively
+3 0 2 2
+A(cid:2) (cid:4)6 42 24 54 (given)
+21 (cid:4)21 0 (cid:4)15
+D 3 0 2 2T
+0 42 28 58 Row 2(cid:3)2 Row 1
+0 (cid:4)21 (cid:4)14 (cid:4)29 Row 3(cid:4)7 Row 1
+D 3 0 2 2T
+0 42 28 58
+0 0 0 0 Row 3(cid:3)1Row 2.
+2
+The last matrix is in row-echelonD form and has two nonzero Trows. Hence rank A(cid:2)2,as before. (cid:2)
+Examples 1–3 illustrate the following useful theorem (with p(cid:2)3,n(cid:2)3,and the rank of
+the matrix (cid:2)2).
+THEOREM 2 Linear Independence and Dependence of Vectors
+Consider p vectors that each have n components. Then these vectors are linearly
+independent if the matrix formed, with these vectors as row vectors, has rank p.
+However, these vectors are linearly dependent if that matrix has rank less than p.
+Further important properties will result from the basic
+THEOREM 3 Rank in Terms of Column Vectors
+The rank r of a matrix A equals the maximum number of linearly independent
+column vectors of A.
+Hence A and its transpose AT have the same rank.
+PROOF In this proof we write simply “rows” and “columns” for row and column vectors. Let A
+be an m(cid:5)nmatrix of rank A(cid:2)r.Then by definition of rank, Ahas rlinearly independent
+Á
+rows which we denote by v , , v (regardless of their position in A), and all the rows
+(1) (r)
+Á
+a , , a of A are linear combinations of those, say,
+(1) (m)
+a (cid:2)c v (cid:3)c v (cid:3) Á (cid:3)c v
+(1) 11 (1) 12 (2) 1r (r)
+a (cid:2)c v (cid:3)c v (cid:3) Á (cid:3)c v
+(2) 21 (1) 22 (2) 2r (r)
+(3) . . . .
+. . . .
+. . . .
+a (cid:2)c v (cid:3)c v (cid:3) Á (cid:3)c v .
+(m) m1 (1) m2 (2) mr (r)
+
+=== PAGE 31 ===
+c07.qxd 10/28/10 7:30 PM Page 285
+SEC. 7.4 Linear Independence. Rank of a Matrix. Vector Space 285
+These are vector equations for rows. To switch to columns, we write (3) in terms of
+components as n such systems, with k(cid:2)1, Á , n,
+a (cid:2) c v (cid:3) c v (cid:3) Á (cid:3)c v
+1k 11 1k 12 2k 1r rk
+a (cid:2) c v (cid:3) c v (cid:3) Á(cid:3)c v
+2k 21 1k 22 2k 2r rk
+(4) . . . .
+. . . .
+. . . .
+a (cid:2)c v (cid:3)c v (cid:3)Á(cid:3)c v
+mk m1 1k m2 2k mr rk
+and collect components in columns. Indeed, we can write (4) as
+a c c c
+1k 11 12 1r
+a c c c
+(5) 2 . k (cid:2)v 2 . 1 (cid:3)v 2 . 2 (cid:3) Á (cid:3)v 2 . r
+1k 2k rk
+. . . .
+. . . .
+a c c c
+mk m1 m2 mr
+where k(cid:2)1, Á , E n.N U ow the ve E ctor U on the lef E t is th U e kth column ve E ctor U of A. We see that
+each of these ncolumns is a linear combination of the same rcolumns on the right. Hence
+Acannot have more linearly independent columns than rows, whose number is rank A(cid:2)r.
+Now rows of Aare columns of the transpose AT. For ATour conclusion is that ATcannot
+have more linearly independent columns than rows, so that A cannot have more linearly
+independent rows than columns. Together, the number of linearly independent columns
+of A must be r, the rank of A. This completes the proof. (cid:2)
+EXAMPLE 4 Illustration of Theorem 3
+The matrix in (2) has rank 2. From Example 3 we see that the first two row vectors are linearly independent
+and by “working backward” we can verify that Row 3(cid:2)6 Row 1(cid:4)1Row 2.Similarly, the first two columns
+2
+are linearly independent, and by reducing the last matrix in Example 3 by columns we find that
+Column 3(cid:2)2Column 1(cid:3)2Column 2 and Column 4(cid:2)2Column 1(cid:3)29Column 2. (cid:2)
+3 3 3 21
+Combining Theorems 2 and 3 we obtain
+THEOREM 4 Linear Dependence of Vectors
+Consider p vectors each having n components. If n(cid:9)p, then these vectors are
+linearly dependent.
+PROOF The matrix Awith those pvectors as row vectors has prows and n(cid:9)p columns; hence
+by Theorem 3 it has rank A(cid:8)n(cid:9)p,which implies linear dependence by Theorem 2. (cid:2)
+Vector Space
+The following related concepts are of general interest in linear algebra. In the present
+context they provide a clarification of essential properties of matrices and their role in
+connection with linear systems.
+
+=== PAGE 32 ===
+c07.qxd 10/28/10 7:30 PM Page 286
+286 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Consider a nonempty set V of vectors where each vector has the same number of
+components.If, for any two vectors aand bin V,we have that all their linear combinations
+aa(cid:3)bb (a, bany real numbers) are also elements of V, and if, furthermore, a and b satisfy
+the laws (3a), (3c), (3d), and (4) in Sec. 7.1, as well as any vectors a,b,cin Vsatisfy (3b)
+then Vis a vector space. Note that here we wrote laws (3) and (4) of Sec.7.1 in lowercase
+letters a, b, c, which is our notation for vectors. More on vector spaces in Sec. 7.9.
+The maximum number of linearly independent vectors in Vis called the dimensionof
+Vand is denoted by dim V. Here we assume the dimension to be finite; infinite dimension
+will be defined in Sec. 7.9.
+A linearly independent set in V consisting of a maximum possible number of vectors
+in Vis called a basisfor V. In other words, any largest possible set of independent vectors
+in V forms basis for V. That means, if we add one or more vector to that set, the set will
+be linearly dependent. (See also the beginning of Sec. 7.4 on linear independence and
+dependence of vectors.) Thus, the number of vectors of a basis for V equals dim V.
+Á
+The set of all linear combinations of given vectors a , , a with the same number
+(1) (p)
+of components is called the spanof these vectors. Obviously, a span is a vector space. If
+Á
+in addition, the given vectors a , , a are linearly independent, then they form a basis
+(1) (p)
+for that vector space.
+This then leads to another equivalent definition of basis. A set of vectors is a basis for
+a vector space Vif (1) the vectors in the set are linearly independent, and if (2) any vector
+in V can be expressed as a linear combination of the vectors in the set. If (2) holds, we
+also say that the set of vectors spans the vector space V.
+By a subspaceof a vector space Vwe mean a nonempty subset of V(including Vitself)
+that forms a vector space with respect to the two algebraic operations (addition and scalar
+multiplication) defined for the vectors of V.
+EXAMPLE 5 Vector Space, Dimension, Basis
+The span of the three vectors in Example 1 is a vector space of dimension 2. A basis of this vector space consists
+(cid:2)
+of any two of those three vectors, for instance, a , a ,or a , a ,etc.
+(1) (2) (1) (3)
+We further note the simple
+THEOREM 5 Vector Space Rn
+The vector space Rn consisting of all vectors with n components (n real numbers)
+has dimension n.
+PROOF A basis of n vectors is a (cid:2) 1 0 Á 0 , a (cid:2) 0 1 0 Á 0 , Á ,
+a (cid:2) 0 Á 0 1 . (1) 3 4 (2) 3 4 (cid:2)
+(n) 3 4
+For a matrix A, we call the span of the row vectors the row space of A. Similarly, the
+span of the column vectors of A is called the column space of A.
+Now, Theorem 3 shows that a matrix A has as many linearly independent rows as
+columns. By the definition of dimension, their number is the dimension of the row space
+or the column space of A. This proves
+THEOREM 6 Row Space and Column Space
+The row space and the column space of a matrixAhave the same dimension, equal
+to rank A.
+
+=== PAGE 33 ===
+c07.qxd 10/28/10 7:30 PM Page 287
+SEC. 7.4 Linear Independence. Rank of a Matrix. Vector Space 287
+Finally, for a given matrix A the solution set of the homogeneous system Ax (cid:2)0 is a
+vector space, called the null space of A, and its dimension is called the nullity of A. In
+the next section we motivate and prove the basic relation
+(6) rank A (cid:3)nullity A(cid:2)Number of columns of A.
+PROBLEM SET 7.4
+1–10 RANK, ROW SPACE, COLUMN SPACE 12–16 GENERAL PROPERTIES OF RANK
+Find the rank. Find a basis for the row space. Find a basis Show the following:
+for the column space. Hint.Row-reduce the matrix and its 12. rank BTAT(cid:2)rank AB.(Note the order!)
+transpose. (You may omit obvious factors from the vectors
+of these bases.) 13. rank A(cid:2)rank B does not imply rank A2(cid:2)rank B2.
+(Give a counterexample.)
+4 (cid:4)2 6 a b 14. If Ais not square, either the row vectors or the column
+1. 2.
+c(cid:4)2 1 (cid:4)3d cb ad vectors of Aare linearly dependent.
+15. If the row vectors of a square matrix are linearly
+0 3 5 6 (cid:4)4 0 independent, so are the column vectors, and conversely.
+3. 3 5 0 4. (cid:4)4 0 2 16. Give examples showing that the rank of a product of
+matrices cannot exceed the rank of either factor.
+5 0 10 0 2 6
+D0.2 (cid:4)0.1 T 0.4 D 0 1 0T 17–25 LINEAR INDEPENDENCE
+Are the following sets of vectors linearly independent?
+5. 0 1.1 (cid:4)0.3 6. (cid:4)1 0 (cid:4)4 Show the details of your work.
+0.1 0 (cid:4)2.1 0 4 0 17. 3 4 0 2 , 2 (cid:4)1 3 7 ,
+3 4 3 4
+1 16 (cid:4)12 (cid:4)22
+3 4
+D T D 2 4 8 T16
+18. 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ,
+8 0 4 0 3 2 3 44 32 3 4 54 33 4 5 64
+16 8 4 2 1 1 1 1
+7. 0 2 0 4 8.
+34 5 6 74
+4 8 16 2 19. 3 0 1 1 4 , 3 1 1 1 4 , 3 0 0 1 4
+4 0 2 0
+20. 1 2 3 4 , 2 3 4 5 , 3 4 5 6 ,
+2 16 8 4 3 4 3 4 3 4
+4 5 6 7
+D T 3 4
+9 0 1 0 E 5 (cid:4)2 1 U 0 21. 2 0 0 7 , 2 0 0 8 , 2 0 0 9 ,
+3 4 3 4 3 4
+2 0 1 0
+0 0 1 0 (cid:4)2 0 (cid:4)4 1 3 4
+9. 10. 22. 0.4 (cid:4)0.2 0.2 , 0 0 0 , 3.0 (cid:4)0.6 1.5
+1 1 1 1 1 (cid:4)4 (cid:4)11 2 3 4 3 4 3 4
+23. 9 8 7 6 5 , 9 7 5 3 1
+3 4 3 4
+0 0 1 0 0 1 2 0 24. 4 (cid:4)1 3 , 0 8 1 , 1 3 (cid:4)5 ,
+3 4 3 4 3 4
+E U E U 2 6 1
+11. CAS Experiment. Rank. (a) Show experimentally 3 4
+that the n(cid:5)nmatrix A(cid:2) a with a (cid:2)j(cid:3)k(cid:4)1 25. 6 0 (cid:4)1 3], 2 2 5 0 ,
+3 jk4 jk 3 3 4
+has rank 2 for any n. (Problem 20 shows n(cid:2)4.) Try (cid:4)4 (cid:4)4 (cid:4)4 (cid:4)4
+3 4
+to prove it.
+26. Linearly independent subset. Beginning with the
+(b) Do the same when a jk (cid:2)j(cid:3)k(cid:3)c, where cis any last of the vectors 3 0 1 2 , 6 1 0 0 ,
+3 4 3 4
+positive integer. 12 1 2 4 , 6 0 2 4 , and [9 0 1 2],
+(c) What is rank Aif a (cid:2)2j(cid:3)k(cid:2)2? Try to find other 3 omit one afte 4 r 3 another unti 4 l you get a linearly
+jk
+large matrices of low rank independent of n. independent set.
+
+=== PAGE 34 ===
+c07.qxd 10/28/10 7:30 PM Page 288
+288 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+27–35 VECTOR SPACE 31. All vectors in R5with positive components
+Is the given set of vectors a vector space? Give reasons. If 32. All vectors in R3with 3v (cid:4)2v (cid:3)v (cid:2)0,
+1 2 3
+your answer is yes, determine the dimension and find a 4v (cid:3)5v (cid:2)0
+Á 1 2
+basis. (v , v , denote components.)
+27. All v 1 ect 2 ors in R3with v (cid:4)v (cid:3)2v (cid:2)0 33. All vectors in R3with 3v 1 (cid:4)v 3 (cid:2)0,
+1 2 3 2v (cid:3)3v (cid:4)4v (cid:2)0
+28. All vectors in R3with 3v (cid:3)v (cid:2)k 1 2 3
+29. All vectors in R2with v 2 (cid:10)v 3 34. All vectors in Rnwith ƒv j ƒ (cid:2)1for j(cid:2)1, Á , n
+1 2
+30. All vectors in Rnwith the first n(cid:4)2components zero 35. All vectors in R4with v (cid:2)2v (cid:2)3v (cid:2)4v
+1 2 3 4
+7.5
+Solutions of Linear Systems:
+Existence, Uniqueness
+Rank, as just defined, gives complete information about existence, uniqueness, and general
+structure of the solution set of linear systems as follows.
+A linear system of equations in n unknowns has a unique solution if the coefficient
+matrix and the augmented matrix have the same rank n, and infinitely many solutions if
+that common rank is less than n. The system has no solution if those two matrices have
+different rank.
+To state this precisely and prove it, we shall use the generally important concept of a
+submatrixof A. By this we mean any matrix obtained from Aby omitting some rows or
+columns (or both). By definition this includes Aitself (as the matrix obtained by omitting
+no rows or columns); this is practical.
+THEOREM 1 Fundamental Theorem for Linear Systems
+Á
+(a) Existence. A linear system of m equations in n unknowns x , ,x
+1 n
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+11 1 12 2 1n n 1
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+21 1 22 2 2n n 2
+(1)
+# # # # # # # # # # # # # # # ## ################
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+m1 1 m2 2 mn n m
+is consistent, that is, has solutions, if and only if the coefficient matrix A and the
+(cid:2)
+augmented matrix A have the same rank. Here,
+Á Á
+a a a a b
+11 1n 11 1n 1
+# Á # # Á # #
+(cid:2)
+A(cid:2) and A (cid:2)
+# Á # # Á # #
+Á Á
+a a a a b
+m1 mn m1 mn m
+E U E U
+(b) Uniqueness. The system (1) has precisely one solution if and only if this
+(cid:2)
+common rank r of A and A equals n.
+
+=== PAGE 35 ===
+c07.qxd 10/28/10 7:30 PM Page 289
+SEC. 7.5 Solutions of Linear Systems: Existence, Uniqueness 289
+(c) Infinitely many solutions. If this common rank r is less than n, the system
+(1) has infinitely many solutions. All of these solutions are obtained by determining
+r suitable unknowns(whose submatrix of coefficients must have rank r) in terms of
+the remaining n(cid:4)r unknowns, to which arbitrary values can be assigned. (See
+Example 3 in Sec. 7.3.)
+(d) Gauss elimination (Sec. 7.3). If solutions exist, they can all be obtained by
+the Gauss elimination. (This method will automatically reveal whether or not
+solutions exist; see Sec. 7.3.)
+PROOF (a) We can write the system (1) in vector form Ax(cid:2)b or in terms of column vectors
+Á
+c , , c of A:
+(1) (n)
+(2) c x (cid:3)c x (cid:3) Á (cid:3)c x (cid:2)b.
+(1) 1 (2) 2 (n) n
+(cid:2)
+A is obtained by augmenting A by a single column b. Hence, by Theorem 3 in Sec. 7.4,
+(cid:2)
+rank A equals rank A or rank A(cid:3)1. Now if (1) has a solution x, then (2) shows that b
+(cid:2)
+must be a linear combination of those column vectors, so that A and A have the same
+maximum number of linearly independent column vectors and thus the same rank.
+(cid:2)
+Conversely, if rank A (cid:2) rank A, then b must be a linear combination of the column
+vectors of A, say,
+(2*) b(cid:2)a c (cid:3) Á (cid:3)a c
+1 (1) n (n)
+(cid:2)
+since otherwise rank A (cid:2)rank A(cid:3)1. But (2*) means that (1) has a solution, namely,
+x (cid:2)a , Á , x (cid:2)a , as can be seen by comparing (2*) and (2).
+1 1 n n
+(b) If rank A(cid:2)n,the n column vectors in (2) are linearly independent by Theorem 3
+in Sec. 7.4. We claim that then the representation (2) of b is unique because otherwise
+c x (cid:3) Á (cid:3)c x (cid:2)c (cid:2) x (cid:3) Á (cid:3)c (cid:2) x .
+(1) 1 (n) n (1) 1 (n) n
+This would imply (take all terms to the left, with a minus sign)
+(x (cid:4) (cid:2) x )c (cid:3) Á (cid:3)(x (cid:4) (cid:2) x )c (cid:2)0
+1 1 (1) n n (n)
+and x (cid:4) (cid:2) x (cid:2)0, Á , x (cid:4) (cid:2) x (cid:2)0by linear independence. But this means that the scalars
+1 1 n n
+Á
+x , , x in (2) are uniquely determined, that is, the solution of (1) is unique.
+1 n (cid:2)
+(c) If rank A(cid:2)rank A (cid:2)r(cid:9)n, then by Theorem 3 in Sec. 7.4 there is a linearly
+independent set K of r column vectors of A such that the other n(cid:4)r column vectors of
+A are linear combinations of those vectors. We renumber the columns and unknowns,
+Á
+denoting the renumbered quantities byˆ, so that {cˆ , , cˆ }is that linearly independent
+(1) (r)
+set K. Then (2) becomes
+cˆ xˆ (cid:3) Á (cid:3)cˆ xˆ (cid:3)cˆ xˆ (cid:3) Á (cid:3)cˆ xˆ (cid:2)b,
+(1) 1 (r) r (r(cid:3)1) r(cid:3)1 (n) n
+Á
+cˆ , , cˆ are linear combinations of the vectors of K, and so are the vectors
+(r(cid:3)1) (n)
+Á
+xˆ r(cid:3)1 cˆ (r(cid:3)1) , , xˆ n cˆ (n) . Expressing these vectors in terms of the vectors of K and collect-
+ing terms, we can thus write the system in the form
+(3) cˆ y (cid:3) Á (cid:3)cˆ y (cid:2)b
+(1) 1 (r) r
+
+=== PAGE 36 ===
+c07.qxd 10/28/10 7:30 PM Page 290
+290 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+w j(cid:2) ith 1 y , j Á (cid:2) , xˆ r. j (cid:3) Sin b c j e , w th h e e r s e y s b te j m re s h u a l s t s a fr s o o m lu ti t o h n e , n th (cid:4) ere r a te r r e m y s , cˆ Á(r(cid:3) , 1 y ) xˆ r s (cid:3) a 1 ti , s Á fyi , n c g ˆ ( n ( ) 3 xˆ ) n . ; T h h e e r s e e ,
+1 r
+Á
+scalars are unique since Kis linearly independent. Choosing xˆ , , xˆ fixes the b and
+corresponding xˆ (cid:2)y (cid:4)b, where j(cid:2)1, Á , r. r(cid:3)1 n j
+j j j
+(d) This was discussed in Sec. 7.3 and is restated here as a reminder. (cid:2)
+The theorem is illustrated in Sec. 7.3. In Example 2 there is a unique solution since rank
+(cid:2)
+A (cid:2)rank A (cid:2)n(cid:2)3 (as can be seen from the last matrix in the example). In Example 3
+(cid:2)
+we have rank A (cid:2)rank A (cid:2)2(cid:9)n(cid:2)4 and can choose x and x arbitrarily. In
+(cid:2) 3 4
+Example 4 there is no solution because rank A(cid:2)2(cid:9)rank A (cid:2)3.
+Homogeneous Linear System
+Recall from Sec. 7.3 that a linear system (1) is called homogeneous if all the b’s are
+j
+zero, and nonhomogeneous if one or several b’s are not zero. For the homogeneous
+j
+system we obtain from the Fundamental Theorem the following results.
+THEOREM 2 Homogeneous Linear System
+A homogeneous linear system
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)0
+11 1 12 2 1n n
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)0
+21 1 22 2 2n n
+(4)
+# # # # # # # # # # # # # # # #
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)0
+m1 1 m2 2 mn n
+always has thetrivial solutionx (cid:2)0, Á , x (cid:2)0. Nontrivial solutions exist if and
+1 n
+only if rankA (cid:9)n.Ifrank A(cid:2)r(cid:9)n,these solutions, together withx(cid:2)0,form a
+vector space (see Sec. 7.4) of dimension n(cid:4)r called the solution spaceof (4).
+In particular, if x and x are solution vectors of (4), then x(cid:2)c x (cid:3)c x
+(1) (2) 1 (1) 2 (2)
+with any scalars c and c is a solution vector of (4). (This does not hold for
+1 2
+nonhomogeneous systems. Also, the term solution space is used for homogeneous
+systems only.)
+PROOF The first proposition can be seen directly from the system. It agrees with the fact that
+(cid:2)
+b(cid:2)0implies that rank A (cid:2)rank A, so that a homogeneous system is always consistent.
+If rank A(cid:2)n, the trivial solution is the unique solution according to (b) in Theorem 1.
+If rank A(cid:9)n,there are nontrivial solutions according to (c) in Theorem 1. The solutions
+form a vector space because if x and x are any of them, then Ax (cid:2)0, Ax (cid:2)0,
+(1) (2) (1) (2)
+and this implies A(x (cid:3)x )(cid:2)Ax (cid:3)Ax (cid:2)0 as well as A(cx )(cid:2)cAx (cid:2)0,
+(1) (2) (1) (2) (1) (1)
+where cis arbitrary. If rank A(cid:2)r(cid:9)n,Theorem 1 (c) implies that we can choose n(cid:4)r
+Á
+suitable unknowns,call them x , , x , in an arbitrary fashion, and every solution is
+r(cid:3)1 n
+obtained in this way. Hence a basis for the solution space, briefly called a basis of
+Á
+solutions of (4), is y , , y , where the basis vector y is obtained by choosing
+(1) (n(cid:2)r) (j)
+x (cid:2)1 and the other x , Á , x zero; the corresponding first r components of this
+r(cid:3)j r(cid:3)1 n
+solution vector are then determined. Thus the solution space of (4) has dimension n(cid:4)r.
+This proves Theorem 2. (cid:2)
+
+=== PAGE 37 ===
+c07.qxd 10/28/10 7:30 PM Page 291
+SEC. 7.6 For Reference: Second- and Third-Order Determinants 291
+The solution space of (4) is also called the null space of A because Ax (cid:2)0 for every x in
+the solution space of (4). Its dimension is called the nullityof A. Hence Theorem 2 states that
+(5) rank A (cid:3)nullity A(cid:2)n
+where n is the number of unknowns (number of columns of A).
+Furthermore, by the definition of rank we have rank A(cid:8)m in (4). Hence if m(cid:9)n,
+then rank A(cid:9)n. By Theorem 2 this gives the practically important
+Homogeneous Linear System with Fewer Equations Than Unknowns
+THEOREM 3
+A homogeneous linear system with fewer equations than unknowns always has
+nontrivial solutions.
+Nonhomogeneous Linear Systems
+The characterization of all solutions of the linear system (1) is now quite simple, as follows.
+THEOREM 4 Nonhomogeneous Linear System
+If a nonhomogeneous linear system (1) is consistent, then all of its solutions are
+obtained as
+(6) x(cid:2)x (cid:3)x
+0 h
+where x is any (fixed) solution of (1) and x runs through all the solutions of the
+0 h
+corresponding homogeneous system (4).
+PROOF The difference x (cid:2)x(cid:4)x of any two solutions of (1) is a solution of (4) because
+h 0
+Ax (cid:2)A(x(cid:4)x )(cid:2)Ax(cid:4)Ax (cid:2)b(cid:4)b(cid:2)0. Since x is any solution of (1), we get all
+h 0 0
+the solutions of (1) if in (6) we take any solution x of (1) and let x vary throughout the
+0 h
+solution space of (4). (cid:2)
+This covers a main part of our discussion of characterizing the solutions of systems of
+linear equations. Our next main topic is determinants and their role in linear equations.
+7.6
+For Reference:
+Second- and Third-Order Determinants
+We created this section as a quick general reference section on second- and third-order
+determinants. It is completely independent of the theory in Sec. 7.7 and suffices as a
+reference for many of our examples and problems. Since this section is for reference, go
+on to the next section, consulting this material only when needed.
+A determinant of second order is denoted and defined by
+a a
+11 12
+(1) D(cid:2)det A (cid:2) (cid:2)a a (cid:4)a a .
+11 22 12 21
+a a
+21 22
+So here we have bars (whereas a matrix has brackets).
+2 2
+
+=== PAGE 38 ===
+c07.qxd 10/28/10 7:30 PM Page 292
+292 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Cramer’s rule for solving linear systems of two equations in two unknowns
+(a) a x (cid:3)a x (cid:2)b
+11 1 12 2 1
+(2)
+(b) a x (cid:3)a x (cid:2)b
+21 1 22 2 2
+is
+b a
+1 12
+b a b a (cid:4)a b
+x (cid:2) 2 22 (cid:2) 1 22 12 2 ,
+1 D D
+(3)
+a b
+2 11 12
+a b a b (cid:4)b a
+x (cid:2) 21 2 (cid:2) 11 2 1 21
+2 D D
+with D as in (1), provided 2 2
+D(cid:6)0.
+The value D(cid:2)0 appears for homogeneous systems with nontrivial solutions.
+PROOF We prove (3). To eliminate x multiply (2a) by a and (2b) by (cid:4)a and add,
+2 22 12
+(a a (cid:4)a a )x (cid:2)b a (cid:4)a b .
+11 22 12 21 1 1 22 12 2
+Similarly, to eliminate x multiply (2a) by (cid:4)a and (2b) by a and add,
+1 21 11
+(a a (cid:4)a a )x (cid:2)a b (cid:4)b a .
+11 22 12 21 2 11 2 1 21
+Assuming that D(cid:2)a a (cid:4)a a (cid:6)0, dividing, and writing the right sides of these
+11 22 12 21
+two equations as determinants, we obtain (3). (cid:2)
+EXAMPLE 1 Cramer’s Rule for Two Equations
+12 3 4 12
+If 4x 1 (cid:3)3x 2 (cid:2)12 then x (cid:2) (cid:4)8 5 (cid:2) 84 (cid:2)6, x (cid:2) 2 (cid:4)8 (cid:2) (cid:4)56 (cid:2)(cid:4)4. (cid:2)
+2x (cid:3)5x (cid:2)(cid:4)8 1 4 3 14 2 4 3 14
+1 2
+2 2 52 22 52
+2 2 2 2
+Third-Order Determinants
+A determinant of third order can be defined by
+a a a
+11 12 13
+a a a a a a
+22 23 12 13 12 13
+(4) D(cid:2) a a a (cid:2)a (cid:4)a (cid:3)a .
+21 22 23 11 21 31
+a a a a a a
+32 33 32 33 22 23
+a a a
+31 32 33
+3 3 2 2 2 2 2 2
+
+=== PAGE 39 ===
+c07.qxd 10/28/10 7:30 PM Page 293
+SEC. 7.7 Determinants. Cramer’s Rule 293
+Note the following. The signs on the right are (cid:3)(cid:4)(cid:3). Each of the three terms on the
+right is an entry in the first column of D times its minor, that is, the second-order
+determinant obtained from D by deleting the row and column of that entry; thus, for a
+11
+delete the first row and first column, and so on.
+If we write out the minors in (4), we obtain
+(4*) D(cid:2)a a a (cid:4)a a a (cid:3)a a a (cid:4)a a a (cid:3)a a a (cid:4)a a a .
+11 22 33 11 23 32 21 13 32 21 12 33 31 12 23 31 13 22
+Cramer’s Rule for Linear Systems of Three Equations
+a x (cid:3)a x (cid:3)a x (cid:2)b
+11 1 12 2 13 3 1
+(5) a x (cid:3)a x (cid:3)a x (cid:2)b
+21 1 22 2 23 3 2
+a x (cid:3)a x (cid:3)a x (cid:2)b
+31 1 32 2 33 3 3
+is
+D D D
+(6) x (cid:2) 1 , x (cid:2) 2 , x (cid:2) 3 (D(cid:6)0)
+1 D 2 D 3 D
+with the determinant D of the system given by (4) and
+b a a a b a a a b
+1 12 13 11 1 13 11 12 1
+D (cid:2) b a a , D (cid:2) a b a , D (cid:2) a a b .
+1 2 22 23 2 21 2 23 3 21 22 2
+b a a a b a a a b
+3 32 33 31 3 33 31 32 3
+Note that D , D , D are obtained by replacing Columns 1, 2, 3, respectively, by the
+13 2 3 3 3 3 3 3
+column of the right sides of (5).
+Cramer’s rule (6) can be derived by eliminations similar to those for (3), but it also
+follows from the general case (Theorem 4) in the next section.
+7.7
+Determinants. Cramer’s Rule
+Determinants were originally introduced for solving linear systems. Although impractical
+in computations, they have important engineering applications in eigenvalue problems
+(Sec. 8.1), differential equations, vector algebra (Sec. 9.3), and in other areas. They can
+be introduced in several equivalent ways. Our definition is particularly for dealing with
+linear systems.
+A determinant of ordernis a scalar associated with an n(cid:5)n(hence square!) matrix
+A(cid:2) a , and is denoted by
+3 jk4
+Á
+a a a
+11 12 1n
+Á
+a a a
+21 22 2n
+(1) D(cid:2)det A (cid:2) # # Á # .
+# # Á #
+Á
+7a a a 7
+n1 n2 nn
+
+=== PAGE 40 ===
+c07.qxd 10/28/10 7:30 PM Page 294
+294 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+For n(cid:2)1, this determinant is defined by
+(2) D(cid:2)a .
+11
+For n (cid:10) 2 by
+(3a) D(cid:2)a C (cid:3)a C (cid:3) Á (cid:3)a C (j(cid:2)1, 2, Á , or n)
+j1 j1 j2 j2 jn jn
+or
+(3b) D(cid:2)a C (cid:3)a C (cid:3) Á (cid:3)a C (k(cid:2)1, 2, Á , or n).
+1k 1k 2k 2k nk nk
+Here,
+C
+(cid:2)((cid:4)1)j(cid:3)kM
+jk jk
+and M is a determinant of order n(cid:4)1, namely, the determinant of the submatrix of A
+jk
+obtained from Aby omitting the row and column of the entry a , that is, the jth row and
+jk
+the kth column.
+In this way, Dis defined in terms of ndeterminants of order n(cid:4)1, each of which is,
+in turn, defined in terms of n(cid:4)1 determinants of order n(cid:4)2, and so on—until we
+finally arrive at second-order determinants, in which those submatrices consist of single
+entries whose determinant is defined to be the entry itself.
+From the definition it follows that we mayexpandD by any row or column, that is, choose
+in (3) the entries in any row or column, similarly when expanding the C ’s in (3), and so on.
+jk
+This definition is unambiguous, that is, it yields the same value for Dno matter which
+columns or rows we choose in expanding. A proof is given in App. 4.
+Terms used in connection with determinants are taken from matrices. In Dwe have n2
+Á
+entriesa ,also nrowsand ncolumns,and a main diagonalon which a , a , , a
+jk 11 22 nn
+stand. Two terms are new:
+M is called the minor of a in D, and C the cofactor of a in D.
+jk jk jk jk
+For later use we note that (3) may also be written in terms of minors
+n
+(4a) D(cid:2) a((cid:4)1) j(cid:3)ka
+jk
+M
+jk
+( j(cid:2)1, 2, Á , or n)
+k(cid:2)1
+n
+(4b) D(cid:2) a((cid:4)1) j(cid:3)ka
+jk
+M
+jk
+(k(cid:2)1, 2, Á , or n).
+j(cid:2)1
+EXAMPLE 1 Minors and Cofactors of a Third-Order Determinant
+In (4) of the previous section the minors and cofactors of the entries in the first column can be seen directly.
+For the entries in the second row the minors are
+a a a a a a
+M (cid:2) 12 13 , M (cid:2) 11 13 , M (cid:2) 11 12
+21 22 23
+a a a a a a
+32 33 31 33 31 32
+and the cofactors are C (cid:2)(cid:4)M , C (cid:2)(cid:3)M , and C (cid:2)(cid:4)M .Similarly for the third row—write these
+21 21 22 22 23 23
+down yourself. And verify th2at the signs2 in C form a2 checkerb2oard pattern2 2
+jk
+(cid:3) (cid:4) (cid:3)
+(cid:4) (cid:3) (cid:4)
+(cid:3) (cid:4) (cid:3) (cid:2)
+
+=== PAGE 41 ===
+c07.qxd 10/28/10 7:30 PM Page 295
+SEC. 7.7 Determinants. Cramer’s Rule 295
+EXAMPLE 2 Expansions of a Third-Order Determinant
+1 3 0
+6 4 2 4 2 6
+D(cid:2) 2 6 4 (cid:2)1 (cid:4)3 (cid:3)0
+0 2 (cid:4)1 2 (cid:4)1 0
+(cid:4)1 0 2
+3 (cid:2) 3 1(122 (cid:4)0)(cid:4) 23(4(cid:3) 2 4)(cid:3)0(02 (cid:3)6)2 (cid:2)(cid:4)12. 2
+This is the expansion by the first row. The expansion by the third column is
+2 6 1 3 1 3
+D(cid:2)0 (cid:4)4 (cid:3)2 (cid:2)0(cid:4)12(cid:3)0(cid:2)(cid:4)12.
+(cid:4)1 0 (cid:4)1 0 2 6
+Verify that the other four expansions also give the value (cid:4)12. (cid:2)
+2 2 2 2 2 2
+EXAMPLE 3 Determinant of a Triangular Matrix
+(cid:4)3 0 0
+4 0
+# #
+6 4 0 (cid:2)(cid:4)3 (cid:2)(cid:4)3 4 5(cid:2)(cid:4)60.
+2 5
+(cid:4)1 2 5
+Inspired by this, can you 3formulate a littl3e theore2m on d2eterminants of triangular matrices? Of diagonal
+(cid:2)
+matrices?
+General Properties of Determinants
+There is an attractive way of finding determinants (1) that consists of applying elementary
+row operations to (1). By doing so we obtain an “upper triangular” determinant (see
+Sec.7.1, for definition with “matrix” replaced by “determinant”) whose value is then very
+easy to compute, being just the product of its diagonal entries. This approach is similar
+(but not the same!) to what we did to matrices in Sec. 7.3. In particular, be aware that
+interchanging two rows in a determinant introduces a multiplicative factor of (cid:4)1 to the
+value of the determinant! Details are as follows.
+THEOREM 1 Behavior of an nth-Order Determinant under Elementary Row Operations
+(a) Interchange of two rows multiplies the value of the determinant by (cid:4)1.
+(b) Addition of a multiple of a row to another row does not alter the value of the
+determinant.
+(c) Multiplication of a row by a nonzero constant c multiplies the value of the
+determinant by c. (This holds also when c(cid:2)0, but no longer gives an elementary
+row operation.)
+PROOF (a) By induction. The statement holds for n(cid:2)2 because
+a b c d
+(cid:2)ad(cid:4)bc, but (cid:2)bc(cid:4)ad.
+c d a b
+2 2 2 2
+
+=== PAGE 42 ===
+c07.qxd 10/28/10 7:30 PM Page 296
+296 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+We now make the induction hypothesis that (a) holds for determinants of order n(cid:4)1 (cid:10) 2
+and show that it then holds for determinants of order n. Let D be of order n. Let E be
+obtained from D by the interchange of two rows. Expand D and E by a row that is not
+one of those interchanged, call it the jth row. Then by (4a),
+n n
+(5) D(cid:2) a((cid:4)1) j(cid:3)ka
+jk
+M
+jk
+, E(cid:2) a((cid:4)1) j(cid:3)ka
+jk
+N
+jk
+k(cid:2)1 k(cid:2)1
+where N is obtained from the minor M of a in D by the interchange of those two
+jk jk jk
+rows which have been interchanged in D (and which N must both contain because we
+jk
+expand by another row!). Now these minors are of order n(cid:4)1. Hence the induction
+hypothesis applies and gives N (cid:2)(cid:4)M . Thus E(cid:2)(cid:4)D by (5).
+jk jk(cid:2)
+(b) Add c times Row i to Row j. Let D be the new determinant. Its entries in Row j
+(cid:2)
+are a (cid:3)ca . If we expand D by this Row j, we see that we can write it as
+(cid:2) jk ik
+D (cid:2)D (cid:3)cD , where D (cid:2)D has in Row j the a , whereas D has in that Row j the
+1 2 1 jk 2
+a from the addition. Hence D has a in both Row i and Row j. Interchanging these
+jk 2 jk
+two rows gives D back, but on the other hand it gives (cid:4)D by (a). Together
+2 (cid:2) 2
+D (cid:2)(cid:4)D (cid:2)0, so that D (cid:2)D (cid:2)D.
+2 2 1
+(c) Expand the determinant by the row that has been multiplied.
+CAUTION! det(cA) (cid:2) cndetA (not cdetA). Explain why. (cid:2)
+EXAMPLE 4 Evaluation of Determinants by Reduction to Triangular Form
+Because of Theorem 1 we may evaluate determinants by reduction to triangular form, as in the Gauss elimination
+for a matrix. For instance (with the blue explanations always referring to the preceding determinant)
+2 0 (cid:4)4 6
+4 5 1 0
+D(cid:2)
+0 2 6 (cid:4)1
+(cid:4)3 8 9 1
+5 5
+2 0 (cid:4)4 6
+0 5 9 (cid:4)12 Row 2(cid:4)2 Row 1
+(cid:2)
+0 2 6 (cid:4)1
+0 8 3 10 Row 4(cid:3)1.5 Row 1
+5 5
+2 0 (cid:4)4 6
+0 5 9 (cid:4)12
+(cid:2)
+0 0 2.4 3.8 Row 3(cid:4)0.4 Row 2
+0 0 (cid:4)11.4 29.2 Row 4(cid:4)1.6 Row 2
+5 5
+2 0 (cid:4)4 6
+0 5 9 (cid:4)12
+(cid:2)
+0 0 2.4 3.8
+0 0 (cid:4)0 47.25 Row 4(cid:3)4.75 Row 3
+(cid:2)2 5 # 5 # 2.4 # 47.25(cid:2)1134. 5 (cid:2)
+
+=== PAGE 43 ===
+c07.qxd 10/28/10 7:30 PM Page 297
+SEC. 7.7 Determinants. Cramer’s Rule 297
+THEOREM 2 Further Properties of nth-Order Determinants
+(a)–(c) in Theorem 1 hold also for columns.
+(d) Transposition leaves the value of a determinant unaltered.
+(e) A zero row or column renders the value of a determinant zero.
+(f) Proportional rows or columns render the value of a determinant zero. In
+particular, a determinant with two identical rows or columns has the value zero.
+PROOF (a)–(e) follow directly from the fact that a determinant can be expanded by any row
+column. In (d), transposition is defined as for matrices, that is, the jth row becomes the
+jth column of the transpose.
+(f) If Row j(cid:2)c times Row i, then D(cid:2)cD , where D has Row j(cid:2)Row i. Hence
+1 1
+an interchange of these rows reproduces D , but it also gives (cid:4)D by Theorem 1(a).
+1 1
+Hence D (cid:2)0 and D(cid:2)cD (cid:2)0. Similarly for columns. (cid:2)
+1 1
+It is quite remarkable that the important concept of the rank of a matrix A, which is the
+maximum number of linearly independent row or column vectors of A(see Sec. 7.4), can
+be related to determinants. Here we may assume that rank A(cid:11)0because the only matrices
+with rank 0 are the zero matrices (see Sec. 7.4).
+THEOREM 3 Rank in Terms of Determinants
+Consider an m(cid:5)n matrix A(cid:2) a :
+3 jk4
+(1) A has rank r (cid:10) 1 if and only if A has an r(cid:5)r submatrix with a nonzero
+determinant.
+(2) The determinant of any square submatrix with more than r rows, contained
+in A (if such a matrix exists!) has a value equal to zero.
+Furthermore, if m(cid:2)n, we have:
+(3) An n(cid:5)n square matrix A has rank n if and only if
+det A (cid:6)0.
+PROOF The key idea is that elementary row operations (Sec. 7.3) alter neither rank (by Theorem
+1 in Sec. 7.4) nor the property of a determinant being nonzero (by Theorem 1 in this
+section). The echelon form Â of A (see Sec. 7.3) has r nonzero row vectors (which are
+the first r row vectors) if and only if rank A(cid:2)r. Without loss of generality, we can
+assume that r (cid:10) 1. Let Rˆ be the r(cid:5)r submatrix in the left upper corner of Â (so that
+the entries of Rˆ are in both the first r rows and r columns of Â). Now Rˆ is triangular,
+with all diagonal entries r nonzero. Thus, det Rˆ (cid:2)r Á r (cid:6)0.Also det R(cid:6)0 for
+jj 11 rr
+the corresponding r(cid:5)r submatrix R of A because Rˆ results from R by elementary row
+operations. This proves part (1).
+Similarly, det S (cid:2)0 for any square submatrix S of r(cid:3)1 or more rows perhaps
+contained in A because the corresponding submatrix Sˆ of Â must contain a row of zeros
+(otherwise we would have rank A (cid:10) r(cid:3)1), so that det Sˆ (cid:2)0 by Theorem 2. This proves
+part (2). Furthermore, we have proven the theorem for an m(cid:5)n matrix.
+
+=== PAGE 44 ===
+c07.qxd 10/28/10 7:30 PM Page 298
+298 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+For an n(cid:5)n square matrix A we proceed as follows. To prove (3), we apply part (1)
+(already proven!). This gives us that rank A(cid:2)n (cid:10) 1if and only if Acontains an n(cid:5)n
+submatrix with nonzero determinant. But the only such submatrix contained in our square
+matrix A, is A itself, hence det A (cid:6)0. This proves part (3). (cid:2)
+Cramer’s Rule
+Theorem 3 opens the way to the classical solution formula for linear systems known as
+Cramer’s rule,2which gives solutions as quotients of determinants. Cramer’s rule is not
+practical in computationsfor which the methods in Secs. 7.3 and 20.1–20.3 are suitable.
+However, Cramer’s rule is of theoretical interestin differential equations (Secs. 2.10 and
+3.3) and in other theoretical work that has engineering applications.
+THEOREM 4 Cramer’s Theorem (Solution of Linear Systems by Determinants)
+Á
+(a) If a linear system of n equations in the same number of unknowns x , , x
+1 n
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+11 1 12 2 1n n 1
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+21 1 22 2 2n n 2
+(6)
+# # # # # # # # # # # # # # # # #
+a x (cid:3)a x (cid:3) Á (cid:3)a x (cid:2)b
+n1 1 n2 2 nn n n
+has a nonzero coefficient determinant D(cid:2)det A, the system has precisely one
+solution. This solution is given by the formulas
+D D D
+(7) x (cid:2) 1 , x (cid:2) 2 , Á , x (cid:2) n (Cramer’s rule)
+1 D 2 D n D
+where D is the determinant obtained from D by replacing in D the kth column by
+k
+Á
+the column with the entries b , , b .
+1 n
+(b) Hence if the system (6) is homogeneous and D(cid:6)0, it has only the trivial
+solution x (cid:2)0, x (cid:2)0, Á , x (cid:2)0. If D(cid:2)0, the homogeneous system also has
+1 2 n
+nontrivial solutions.
+(cid:2)
+PROOF The augmented matrix A of the system (6) is of size n(cid:5)(n(cid:3)1). Hence its rank can be
+at most n. Now if
+Á
+a a
+11 1n
+# Á #
+(8) D(cid:2)det A (cid:2) (cid:6)0,
+# Á #
+Á
+a a
+n1 nn
+5 5
+2GABRIEL CRAMER (1704–1752), Swiss mathematician.
+
+=== PAGE 45 ===
+c07.qxd 10/28/10 7:30 PM Page 299
+SEC. 7.7 Determinants. Cramer’s Rule 299
+~
+then rank A(cid:2)n by Theorem 3. Thus rank A(cid:2)rank A. Hence, by the Fundamental
+Theorem in Sec. 7.5, the system (6) has a unique solution.
+Let us now prove (7). Expanding D by its kth column, we obtain
+(9) D(cid:2)a C (cid:3)a C (cid:3) Á (cid:3)a C ,
+1k 1k 2k 2k nk nk
+where C is the cofactor of entry a in D. If we replace the entries in the kth column of
+ik ik
+D by any other numbers, we obtain a new determinant, say, Dˆ. Clearly, its expansion by
+Á
+the kth column will be of the form (9), with a , , a replaced by those new numbers
+1k nk
+and the cofactors C as before. In particular, if we choose as new numbers the entries
+ik
+a , Á , a of the lth column of D (where l(cid:6)k), we have a new determinant Dˆ which
+1l nl
+has the column a Á a Ttwice, once as its lth column, and once as its kth because
+of the replacem 3 en 1 t l . Hence Dˆ n (cid:2) l4 0 by Theorem 2(f). If we now expand Dˆ by the column
+that has been replaced (the kth column), we thus obtain
+(10) a C (cid:3)a C (cid:3) Á (cid:3)a C (cid:2)0 (l(cid:6)k).
+1l 1k 2l 2k nl nk
+Á
+We now multiply the first equation in (6) by C on both sides, the second by C , ,
+1k 2k
+the last by C , and add the resulting equations. This gives
+nk
+C (a x (cid:3)Á (cid:3)a x )(cid:3)Á(cid:3)C (a x (cid:3) Á (cid:3)a x )
+1k 11 1 1n n nk n1 1 nn n
+(11)
+(cid:2)b C (cid:3) Á (cid:3)b C .
+1 1k n nk
+Collecting terms with the same x, we can write the left side as
+j
+x (a C (cid:3)a C (cid:3)Á(cid:3)a C )(cid:3)Á(cid:3)x (a C (cid:3)a C (cid:3)Á(cid:3)a C ).
+1 11 1k 21 2k n1 nk n 1n 1k 2n 2k nn nk
+From this we see that x is multiplied by
+k
+a C (cid:3)a C (cid:3) Á (cid:3)a C .
+1k 1k 2k 2k nk nk
+Equation (9) shows that this equals D. Similarly, x is multiplied by
+1
+a C (cid:3)a C (cid:3) Á (cid:3)a C .
+1l 1k 2l 2k nl nk
+Equation (10) shows that this is zero when l(cid:6)k.Accordingly, the left side of (11) equals
+simply x D, so that (11) becomes
+k
+x D(cid:2)b C (cid:3)b C (cid:3) Á (cid:3)b C .
+k 1 1k 2 2k n nk
+Now the right side of this is D as defined in the theorem, expanded by its kth column,
+k
+so that division by D gives (7). This proves Cramer’s rule.
+If (6) is homogeneous and D(cid:6)0, then each D has a column of zeros, so that D (cid:2)0
+k k
+by Theorem 2(e), and (7) gives the trivial solution.
+Finally, if (6) is homogeneous and D(cid:2)0, then rank A(cid:9)n by Theorem 3, so that
+nontrivial solutions exist by Theorem 2 in Sec. 7.5. (cid:2)
+EXAMPLE 5 Illustration of Cramer’s Rule (Theorem 4)
+For n(cid:2)2, see Example 1 of Sec. 7.6. Also, at the end of that section, we give Cramer’s rule for a general
+(cid:2)
+linear system of three equations.
+
+=== PAGE 46 ===
+c07.qxd 10/28/10 7:30 PM Page 300
+300 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Finally, an important application for Cramer’s rule dealing with inverse matrices will
+be given in the next section.
+PROBLEM SET 7.7
+1–6 GENERAL PROBLEMS 1 2 0 0
+1. General Properties of Determinants.Illustrate each 2 4 2 0
+statement in Theorems 1 and 2 with an example of 15.
+your choice. 0 2 9 2
+2. Second-Order Determinant. Expand a general 0 0 2 16
+6 6
+second-order determinant in four possible ways and
+16. CAS EXPERIMENT. Determinant of Zeros and
+show that the results agree.
+Ones. Find the value of the determinant of the n(cid:5)n
+3. Third-Order Determinant. Do the task indicated in matrix A with main diagonal entries all 0 and all
+n
+Theorem 2. Also evaluate Dby reduction to triangular others1. Try to find a formula for this. Try to prove it
+form. by induction. Interpret A and A as incidence matrices
+3 4
+(as in Problem Set 7.1 but without the minuses) of a
+4. Expansion Numerically Impractical. Show that the
+triangle and a tetrahedron, respectively; similarly for an
+computation of an nth-order determinant by expansion n-simplex,having nvertices and n(n(cid:4)1) 2edges (and
+involves n! multiplications, which if a multiplication spanning Rn(cid:2)1, n(cid:2)5, 6, Á ). >
+takes 10(cid:2)9sec would take these times:
+n 10 15 20 25 17–19 RANK BY DETERMINANTS
+0.004 22 77 0.5 # 109 Find the rank by Theorem 3 (which is not very practical)
+Time and check by row reduction. Show details.
+sec min years years
+4 9 0 4 (cid:4)6
+5. Multiplication by Scalar. Show that det (kA)(cid:2) 17. (cid:4)8 (cid:4)6 18. 4 0 10
+kn det A(not kdet A). Give an example.
+16 12 (cid:4)6 10 0
+6. Minors,cofactors. Complete the list in Example 1.
+D1 5 T2 2 D T
+7–15 EVALUATION OF DETERMINANTS
+19. 1 3 2 6
+Showing the details, evaluate:
+4 0 8 48
+cos a sin a 0.4 4.9
+7.
+sin b cos b
+8.
+1.5 (cid:4)1.3
+20. T
+D
+EAM PROJECT
+T
+. Geometric Applications: Curves
+and Surfaces Through Given Points. The idea is to
+cos nu sin nu cosh t sinh t get an equation from the vanishing of the determinant
+9. 10. of a homogeneous linear system as thecondition for a
+2(cid:4)sin nu cos 2nu 2sinh t cos2h t nontrivial solution in Cramer’s theorem. We explain
+4 (cid:4)1 8 a b c the trick for obtaining such asystem for the case of
+a line L through two given points P: (x , y ) and
+1 1 1
+11. 2 0 2 3 2 12. 2 c a b 2 P
+2
+: (x
+2
+, y
+2
+). The unknown line is
+#
+ax (cid:3) by (cid:2) (cid:4)c,
+say. We write it as ax(cid:3)by(cid:3)c 1(cid:2)0. To get a
+0 0 5 b c a
+nontrivial solution a, b, c, the determinant of the
+0 4 (cid:4)1 5 4 7 0 0 “coefficients” x, y, 1 must be zero. The system is
+3 3 3 3
+(cid:4)4 0 3 (cid:4)2 2 8 0 0 #
+ax(cid:3)by (cid:3)c 1(cid:2)0 (Line L)
+13. 14.
+1 (cid:4)3 0 1 0 0 1 5 (12) ax (cid:3)by (cid:3)c # 1(cid:2)0 (P on L)
+1 1 1
+#
+(cid:4)5 2 (cid:4)1 0 0 0 (cid:4)2 2 ax (cid:3)by (cid:3)c 1(cid:2)0 (P on L).
+6 6 6 6 2 2 2
+
+=== PAGE 47 ===
+c07.qxd 10/28/10 7:30 PM Page 301
+SEC. 7.8 Inverse of a Matrix. Gauss–Jordan Elimination 301
+(a) Line through two points. Derive from D(cid:2)0 in 21–25 CRAMER’S RULE
+(12) the familiar formula
+Solve by Cramer’s rule. Check by Gauss elimination and
+x(cid:4)x y(cid:4)y back substitution. Show details.
+x 1 (cid:4)x 1 2 (cid:2) y 1 (cid:4)y 1 2 . 21. 3x(cid:4) 5y(cid:2)15.5 22. 2x(cid:4)4y(cid:2)(cid:4)24
+(b) Plane.Find the analog of (12) for a plane through
+6x(cid:3)16y(cid:2) 5.0 5x(cid:3)2y(cid:2) 0
+three given points. Apply it when the points are
+(1, 1, 1), (3, 2, 6), (5, 0, 5). 23. 3y(cid:4)4z(cid:2) 16 24. 3x(cid:4)2y(cid:3) z(cid:2) 13
+(c) Circle. Find a similar formula for a circle in the
+plane through three given points. Find and sketch the 2x(cid:4)5y(cid:3)7z(cid:2)(cid:4)27 (cid:4)2x(cid:3) y(cid:3)4z(cid:2) 11
+circle through (2, 6), (6, 4), (7, 1).
+(cid:4)x (cid:4)9z(cid:2) 9 x(cid:3)4y(cid:4)5z(cid:2)(cid:4)31
+(d) Sphere.Find the analog of the formula in (c) for
+a sphere through four given points. Find the sphere 25. (cid:4)4w(cid:3) x(cid:3) y (cid:2)(cid:4)10
+through (0, 0, 5), (4, 0, 1), (0, 4, 1), (0, 0, (cid:4)3) by this
+formula or by inspection. w(cid:4)4x (cid:3) z(cid:2) 1
+(e) General conic section. Find a formula for a w (cid:4)4y(cid:3) z(cid:2) (cid:4)7
+general conic section (the vanishing of a determinant
+of 6th order). Try it out for a quadratic parabola and x(cid:3) y(cid:4)4z(cid:2) 10
+for a more general conic section of your own choice.
+7.8
+Inverse of a Matrix.
+Gauss–Jordan Elimination
+In this section we consider square matrices exclusively.
+The inverse of an n(cid:5)n matrix A(cid:2) a is denoted by A (cid:2)1 and is an n(cid:5)n matrix
+3 jk4
+such that
+(1) AA
+(cid:2)1(cid:2)A (cid:2)1A(cid:2)I
+where I is the n(cid:5)n unit matrix (see Sec. 7.2).
+If A has an inverse, then A is called a nonsingular matrix. If A has no inverse, then
+A is called a singular matrix.
+If A has an inverse, the inverse is unique.
+Indeed, if both Band Care inverses of A,then AB(cid:2)Iand CA (cid:2)I, so that we obtain
+the uniqueness from
+B(cid:2)IB(cid:2)(CA)B(cid:2)C(AB)(cid:2)CI (cid:2)C.
+We prove next that A has an inverse (is nonsingular) if and only if it has maximum
+possible rank n. The proof will also show that Ax (cid:2)b implies x(cid:2)A (cid:2)1b provided A (cid:2)1
+exists, and will thus give a motivation for the inverse as well as a relation to linear systems.
+(But this will notgive a good method of solving Ax (cid:2)bnumericallybecause the Gauss
+elimination in Sec. 7.3 requires fewer computations.)
+THEOREM 1 Existence of the Inverse
+The inverse A (cid:2)1 of an n(cid:5)n matrix A exists if and only if rank A (cid:2)n, thus (by
+Theorem 3, Sec. 7.7) if and only ifdet A (cid:6)0. HenceAis nonsingular ifrank A (cid:2)n,
+and is singular if rank A (cid:9)n.
+
+=== PAGE 48 ===
+c07.qxd 10/28/10 7:30 PM Page 302
+302 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+PROOF Let A be a given n(cid:5)n matrix and consider the linear system
+(2) Ax (cid:2)b.
+If the inverse A
+(cid:2)1
+exists, then multiplication from the left on both sides and use of (1)
+gives
+A (cid:2)1Ax (cid:2)x(cid:2)A (cid:2)1b.
+This shows that (2) has a solution x,which is unique because, for another solution u,we
+have Au (cid:2)b, so that u(cid:2)A (cid:2)1b(cid:2)x. Hence A must have rank n by the Fundamental
+Theorem in Sec. 7.5.
+Conversely, let rank A(cid:2)n. Then by the same theorem, the system (2) has a unique
+solution xfor any b. Now the back substitution following the Gauss elimination (Sec. 7.3)
+shows that the components x of x are linear combinations of those of b. Hence we can
+j
+write
+(3) x(cid:2)Bb
+with B to be determined. Substitution into (2) gives
+Ax (cid:2)A(Bb)(cid:2)(AB)b(cid:2)Cb (cid:2)b (C (cid:2)AB)
+for any b. Hence C(cid:2)AB (cid:2)I,the unit matrix. Similarly, if we substitute (2) into (3) we get
+x(cid:2)Bb(cid:2)B(Ax)(cid:2)(BA)x
+for any x (and b(cid:2)Ax). Hence BA(cid:2)I. Together, B(cid:2)A (cid:2)1 exists. (cid:2)
+Determination of the Inverse by the
+Gauss–Jordan Method
+To actually determine the inverse A (cid:2)1 of a nonsingular n(cid:5)n matrix A, we can use a
+variant of the Gauss elimination (Sec. 7.3), called the Gauss–Jordan elimination.3 The
+idea of the method is as follows.
+Using A, we form n linear systems
+Ax (cid:2)e , Á , Ax (cid:2)e
+(1) (1) (n) (n)
+where the vectors e , Á , e are the columns of the n(cid:5)n unit matrix I; thus,
+(1) (n)
+e (cid:2) 1 0 Á 0 T, e (cid:2) 0 1 0 Á 0 T, etc. These are nvector equations
+(1) 3 4 (2) Á 3 4
+in the unknown vectors x , , x . We combine them into a single matrix equation
+(1) (n)
+3WILHELM JORDAN (1842–1899), German geodesist and mathematician. He did important geodesic work
+in Africa, where he surveyed oases. [See Althoen, S.C. and R. McLaughlin, Gauss–Jordan reduction: A brief
+history. American Mathematical Monthly,Vol. 94, No. 2 (1987), pp. 130–142.]
+We do not recommendit as a method for solving systems of linear equations, since the number of operations
+in addition to those of the Gauss elimination is larger than that for back substitution, which the Gauss–Jordan
+elimination avoids. See also Sec. 20.1.
+
+=== PAGE 49 ===
+c07.qxd 10/28/10 7:30 PM Page 303
+SEC. 7.8 Inverse of a Matrix. Gauss–Jordan Elimination 303
+AX (cid:2)I,with the unknown matrix Xhaving the columns x , Á , x .Correspondingly,
+(1) (n)
+we combine the n augmented matrices A e , Á , A e into one wide n(cid:5)2n
+“augmented matrix” A (cid:2) (cid:2) A I . Now 3 multip ( l 1 i ) c 4 ation o 3 f AX (n (cid:2) )4 I by A (cid:2)1 from the left
+gives X(cid:2)A (cid:2)1I(cid:2)A (cid:2)1. 3 Hence 4 , to solve AX (cid:2)I for X, we can apply the Gauss
+(cid:2)
+elimination to A(cid:2) A I . This gives a matrix of the form U H with upper triangular
+3 4 3 4
+U because the Gauss elimination triangularizes systems. The Gauss–Jordan method
+reduces Uby further elementary row operations to diagonal form, in fact to the unit matrix
+I. This is done by eliminating the entries of U above the main diagonal and making the
+diagonal entries all 1 by multiplication (see Example 1). Of course, the method operates
+on the entire matrix U H , transforming Hinto some matrix K,hence the entire U H
+to I K . This is t 3 he “aug 4 mented matrix” of IX (cid:2)K. Now IX (cid:2)X(cid:2)A (cid:2)1, as 3 shown 4
+bef 3 ore. B 4 y comparison, K (cid:2)A (cid:2)1, so that we can read A (cid:2)1 directly from I K .
+3 4
+The following example illustrates the practical details of the method.
+EXAMPLE 1 Finding the Inverse of a Matrix by Gauss–Jordan Elimination
+Determine the inverse A(cid:2)1of
+(cid:4)1 1 2
+A(cid:2) 3 (cid:4)1 1 .
+(cid:4)1 3 4
+Solution. We apply the Gauss elimination (SeDc. 7.3) to the follTowing n(cid:5)2n(cid:2)3(cid:5)6matrix, where BLUE
+always refers to the previous matrix.
+(cid:4)1 1 2 1 0 0
+A I (cid:2) 3 (cid:4)1 1 0 1 0
+3 4
+(cid:4)1 3 4 0 0 1
+D (cid:4)1 1 2 1 0 0T
+3
+0 2 7 3 1 0 Row 2(cid:3)3 Row 1
+0 2 2 (cid:4)1 0 1 Row 3(cid:4)Row 1
+D (cid:4)1 1 2 1 0 0T
+3
+0 2 7 3 1 0
+0 0 (cid:4)5 (cid:4)4 (cid:4)1 1 Row 3(cid:4)Row 2
+This is
+3
+U H
+4
+as produced by Dthe Gauss elimina3tion. Now follow tThe additional Gauss–Jordan steps, reducing
+Uto I,that is, to diagonal form with entries 1 on the main diagonal.
+1 (cid:4)1 (cid:4)2 (cid:4)1 0 0 (cid:4)Row 1
+0 1 3.5 1.5 0.5 0 0.5 Row 2
+0 0 1 0.8 0.2 (cid:4)0.2 (cid:4)0.2 Row 3
+D1 (cid:4)1 0 0.6 0.4 (cid:4)0.4T Row 1(cid:3)2 Row 3
+3
+0 1 0 (cid:4)1.3 (cid:4)0.2 0.7 Row 2–3.5 Row 3
+0 0 1 0.8 0.2 (cid:4)0.2
+D1 0 0 (cid:4)0.7 0.2 0.3T Row 1(cid:3)Row 2
+3
+0 1 0 (cid:4)1.3 (cid:4)0.2 0.7
+0 0 1 0.8 0.2 (cid:4)0.2
+D T
+3
+
+=== PAGE 50 ===
+c07.qxd 10/28/10 7:30 PM Page 304
+304 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+The last three columns constitute A(cid:2)1.Check:
+(cid:4)1 1 2 (cid:4)0.7 0.2 0.3 1 0 0
+3 (cid:4)1 1 (cid:4)1.3 (cid:4)0.2 0.7 (cid:2) 0 1 0 .
+(cid:4)1 3 4 0.8 0.2 (cid:4)0.2 0 0 1
+Hence AA(cid:2)1(cid:2)I.Simi D larly, A(cid:2)1A(cid:2)I. T D T D T (cid:2)
+Formulas for Inverses
+Since finding the inverse of a matrix is really a problem of solving a system of linear
+equations, it is not surprising that Cramer’s rule (Theorem 4, Sec. 7.7) might come into
+play. And similarly, as Cramer’s rule was useful for theoretical study but not for
+computation, so too is the explicit formula (4) in the following theorem useful for
+theoretical considerations but not recommended for actually determining inverse matrices,
+except for the frequently occurring 2(cid:5)2 case as given in (4*).
+THEOREM 2 Inverse of a Matrix by Determinants
+The inverse of a nonsingular n(cid:5)n matrix A(cid:2) a is given by
+3 jk4
+Á
+C C C
+11 21 n1
+Á
+C C C
+(4) A (cid:2)1(cid:2) 1 C T(cid:2) 1 12 22 n2 ,
+det A 3 jk4 det A # # Á #
+Á
+C C C
+1n 2n nn
+E U
+where C is the cofactor of a indet A(see Sec. 7.7). (CAUTION!Note well that
+jk jk
+in A
+(cid:2)1,
+the cofactor C occupies the same place as a (not a ) does in A.)
+jk kj jk
+In particular, the inverse of
+a a a (cid:4)a
+(4*) A(cid:2) 11 12 is A (cid:2)1(cid:2) 1 22 12 .
+ca a d det A c(cid:4)a a d
+21 22 21 11
+PROOF We denote the right side of (4) by B and show that BA(cid:2)I. We first write
+(5) BA(cid:2)G(cid:2) g
+3 kl4
+and then show that G(cid:2)I. Now by the definition of matrix multiplication and because of
+the form of B in (4), we obtain (CAUTION! C , not C )
+sk ks
+(6) g kl (cid:2) a n d C et s k A a sl (cid:2) de 1 t A (a 1l C 1k (cid:3) Á (cid:3)a nl C nk ).
+s(cid:2)1
+
+=== PAGE 51 ===
+c07.qxd 10/28/10 7:30 PM Page 305
+SEC. 7.8 Inverse of a Matrix. Gauss–Jordan Elimination 305
+Now (9) and (10) in Sec. 7.7 show that the sum ( Á ) on the right is D(cid:2)det A when
+l(cid:2)k, and is zero when l(cid:6)k. Hence
+1
+g (cid:2) det A (cid:2)1,
+kk det A
+g (cid:2)0 (l (cid:6)k).
+kl
+In particular, for n(cid:2)2 we have in (4), in the first row, C (cid:2)a , C (cid:2)(cid:4)a and,
+11 22 21 12
+in the second row, C (cid:2)(cid:4)a , C (cid:2)a . This gives (4*). (cid:2)
+12 21 22 11
+The special case n(cid:2)2occurs quite frequently in geometric and other applications. You
+may perhaps want to memorize formula (4*). Example 2 gives an illustration of (4*).
+EXAMPLE 2 Inverse of a 2(cid:3)2Matrix by Determinants
+A(cid:2) 3 1 , A(cid:2)1(cid:2) 1 4 (cid:4)1 (cid:2) 0.4 (cid:4)0.1 (cid:2)
+c2 4d 10 c(cid:4)2 3d c(cid:4)0.2 0.3d
+EXAMPLE 3 Further Illustration of Theorem 2
+Using (4), find the inverse of
+(cid:4)1 1 2
+A(cid:2) 3 (cid:4)1 1 .
+(cid:4)1 3 4
+# #
+Solution. We obtain det A(cid:2)(cid:4)1((cid:4)7)(cid:4)1 1D3(cid:3)2 8(cid:2)1T0, and in (4),
+(cid:4)1 1 1 2 1 2
+C (cid:2) (cid:2)(cid:4)7, C (cid:2)(cid:4) (cid:2)2, C (cid:2) (cid:2)3,
+11 3 4 21 3 4 31 (cid:4)1 1
+3 1 (cid:4)1 2 (cid:4)1 2
+C (cid:2)(cid:4) (cid:2)(cid:4)13, C (cid:2) (cid:2)(cid:4)2, C (cid:2)(cid:4) (cid:2)7,
+12 2 (cid:4)1 24 22 (cid:4)21 4 2 32 2 3 21
+3 (cid:4)1 (cid:4)1 1 (cid:4)1 1
+C (cid:2) (cid:2)8, C (cid:2)(cid:4) (cid:2)2, C (cid:2) (cid:2)(cid:4)2,
+13 (cid:4)21 3 2 23 2 (cid:4)1 23 33 23 (cid:4)1 2
+so that by (4), in agreement with Example 1,
+2 2 2 2 2 2
+(cid:4)0.7 0.2 0.3
+A(cid:2)1(cid:2) (cid:4)1.3 (cid:4)0.2 0.7 . (cid:2)
+0.8 0.2 (cid:4)0.2
+Diagonal matrices A(cid:2)[a ], a (cid:2)D0 when j(cid:6)k, haTve an inverse if and only if all
+jk jk
+a (cid:6)0. Then A (cid:2)1 is diagonal, too, with entries 1 a , Á , 1 a .
+jj > 11 > nn
+PROOF For a diagonal matrix we have in (4)
+Á
+C 11 (cid:2) a 22 Á a nn (cid:2) 1 , etc. (cid:2)
+D a 11 a 22 a nn a 11
+
+=== PAGE 52 ===
+c07.qxd 10/28/10 7:30 PM Page 306
+306 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+EXAMPLE 4 Inverse of a Diagonal Matrix
+Let
+(cid:4)0.5 0 0
+A(cid:2) 0 4 0 .
+0 0 1
+Then we obtain the inverse A(cid:2)1by inverting each D individual diagon T al element of A, that is, by taking 1 ((cid:4)0.5), 1,
+and 1as the diagonal entries of A(cid:2)1, that is, > 4
+1
+(cid:4)2 0 0
+A(cid:2)1(cid:2) 0 0.25 0 . (cid:2)
+0 0 1
+Products can be inverted by taking tDhe inverse of eTach factor and multiplying these
+inverses in reverse order,
+(7) (AC)
+(cid:2)1(cid:2)C (cid:2)1A (cid:2)1.
+Hence for more than two factors,
+(8) (AC
+Á
+PQ)
+(cid:2)1(cid:2)Q (cid:2)1P (cid:2)1Á
+C
+(cid:2)1A (cid:2)1.
+PROOF The idea is to start from (1) for AC instead of A, that is, AC(AC)
+(cid:2)1(cid:2)I,
+and multiply
+it on both sides from the left, first by A
+(cid:2)1,
+which because of A
+(cid:2)1A(cid:2)I
+gives
+A
+(cid:2)1AC(AC) (cid:2)1(cid:2)C(AC) (cid:2)1
+(cid:2)A (cid:2)1I(cid:2)A (cid:2)1,
+and then multiplying this on both sides from the left, this time by C
+(cid:2)1
+and by using
+C
+(cid:2)1C(cid:2)I,
+C
+(cid:2)1C(AC) (cid:2)1(cid:2)(AC) (cid:2)1(cid:2)C (cid:2)1A (cid:2)1.
+This proves (7), and from it, (8) follows by induction. (cid:2)
+We also note that the inverse of the inverse is the given matrix, as you may prove,
+(9) (A
+(cid:2)1) (cid:2)1(cid:2)A.
+Unusual Properties of Matrix Multiplication.
+Cancellation Laws
+Section 7.2 contains warnings that some properties of matrix multiplication deviate from
+those for numbers, and we are now able to explain the restricted validity of the so-called
+cancellation laws [2] and [3] below, using rank and inverse, concepts that were not yet
+
+=== PAGE 53 ===
+c07.qxd 10/28/10 7:30 PM Page 307
+SEC. 7.8 Inverse of a Matrix. Gauss–Jordan Elimination 307
+available in Sec. 7.2. The deviations from the usual are of great practical importance and
+must be carefully observed. They are as follows.
+[1] Matrix multiplication is not commutative, that is, in general we have
+AB (cid:6)BA.
+[2] AB (cid:2)0 does not generally imply A(cid:2)0 or B(cid:2)0 (or BA(cid:2)0); for example,
+1 1 (cid:4)1 1 0 0
+(cid:2) .
+c 2 2 d c 1 (cid:4)1 d c 0 0 d
+[3] AC(cid:2)AD does not generally imply C(cid:2)D (even when A(cid:6)0).
+Complete answers to [2] and [3] are contained in the following theorem.
+THEOREM 3 Cancellation Laws
+Let A, B, C be n(cid:5)n matrices. Then:
+(a) If rank A(cid:2)n and AB (cid:2)AC, then B(cid:2)C.
+(b) If rank A(cid:2)n, then AB (cid:2)0 implies B(cid:2)0. Hence if AB(cid:2)0, but A(cid:6)0
+as well as B(cid:6)0, then rank A(cid:9)n and rank B(cid:9)n.
+(c) If A is singular, so are BA and AB.
+PROOF (a) The inverse of A exists by Theorem 1. Multiplication by A
+(cid:2)1
+from the left gives
+A (cid:2)1AB (cid:2)A (cid:2)1AC, hence B(cid:2)C.
+(b)Let rank A(cid:2)n. Then A (cid:2)1exists, and AB (cid:2)0implies A (cid:2)1AB (cid:2)B(cid:2)0.Similarly
+when rank B(cid:2)n. This implies the second statement in (b).
+(c )Rank A(cid:9)nby Theorem 1. Hence Ax (cid:2)0has nontrivial solutions by Theorem 2
+1
+in Sec. 7.5. Multiplication by Bshows that these solutions are also solutions of BAx (cid:2)0,
+so that rank (BA)(cid:9)n by Theorem 2 in Sec. 7.5 and BA is singular by Theorem 1.
+(c ) AT is singular by Theorem 2(d) in Sec. 7.7. Hence BTAT is singular by part (c ),
+2 1
+and is equal to (AB)T by (10d) in Sec. 7.2. Hence AB is singular by Theorem 2(d) in
+Sec. 7.7. (cid:2)
+Determinants of Matrix Products
+The determinant of a matrix product AB or BA can be written as the product of the
+determinants of the factors, and it is interesting that det AB (cid:2)det BA,although AB (cid:6)BA
+in general. The corresponding formula (10) is needed occasionally and can be obtained
+by Gauss–Jordan elimination (see Example 1) and from the theorem just proved.
+THEOREM 4 Determinant of a Product of Matrices
+For any n(cid:5)n matrices A and B,
+(10) det (AB)(cid:2)det (BA)(cid:2)det A det B.
+
+=== PAGE 54 ===
+c07.qxd 10/28/10 7:30 PM Page 308
+308 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+PROOF If A or B is singular, so are AB and BA by Theorem 3(c), and (10) reduces to 0(cid:2)0 by
+Theorem 3 in Sec. 7.7.
+Now let Aand Bbe nonsingular. Then we can reduce Ato a diagonal matrix Â (cid:2)[a ]
+jk
+by Gauss–Jordan steps. Under these operations, det A retains its value, by Theorem 1 in
+Sec. 7.7, (a) and (b) [not (c)] except perhaps for a sign reversal in row interchanging when
+pivoting. But the same operations reduce AB to ÂB with the same effect on det (AB).
+Hence it remains to prove (10) for ÂB; written out,
+Á Á
+aˆ 0 0 b b b
+11 11 12 1n
+Á Á
+0 aˆ 0 b b b
+22 21 22 2n
+ÂB(cid:2) .
+. . .
+. .
+Á Á
+0 0 aˆ b b b
+nn n1 n2 nn
+E U EÁ U
+aˆ b aˆ b aˆ b
+11 11 11 12 11 1n
+Á
+aˆ b aˆ b aˆ b
+22 21 22 22 22 2n
+(cid:2) . .
+.
+.
+Á
+aˆ b aˆ b aˆ b
+nn n1 nn n2 nn nn
+E U
+We now take the determinant det (ÂB). On the right we can take out a factor aˆ from
+11
+Á Á
+the first row, aˆ from the second, , aˆ from the nth. But this product aˆ aˆ aˆ
+22 nn 11 22 nn
+equals det Â because Âis diagonal. The remaining determinant is det B. This proves (10)
+for det (AB), and the proof for det (BA) follows by the same idea. (cid:2)
+This completes our discussion of linear systems (Secs. 7.3–7.8). Section 7.9 on vector
+spaces and linear transformations is optional. Numeric methods are discussed in Secs.
+20.1–20.4, which are independent of other sections on numerics.
+PROBLEM SET 7.8
+1–10 INVERSE 0 1 0 1 2 3
+Find the inverse by Gauss–Jordan (or by (4*) if n(cid:2)2).
+7. 1 0 0 8. 4 5 6
+Check by using (1).
+1.80 (cid:4)2.32 cos 2u sin 2u 0 0 1 7 8 9
+1. 2.
+c(cid:4)0.25 0.60d c(cid:4)sin 2u cos 2ud D0 8 0T D 2 1T 2
+3 3 3
+0.3 (cid:4)0.1 0.5 0 0 0.1 9. 0 0 4 10. (cid:4)2 2 1
+3 3 3
+3. 2 6 4 4. 0 (cid:4)0.4 0 2 0 0 1 2 (cid:4)2
+3 3 3
+5 0 9 2.5 0 0 D T D T
+11–18 SOME GENERAL FORMULAS
+D1 0 0 T D (cid:4)4 0 0 T 11. Inverse of the square. Verify (A2)(cid:2)1(cid:2)(A(cid:2)1)2for A
+5. 2 1 0 6. 0 8 13 in Prob. 1.
+5 4 1 0 3 5 12. Prove the formula in Prob. 11.
+D T D T
+
+=== PAGE 55 ===
+c07.qxd 10/28/10 7:30 PM Page 309
+SEC. 7.9 Vector Spaces, Inner Product Spaces, Linear Transformations Optional 309
+13. Inverse of the transpose. Verify (AT)(cid:2)1(cid:2)(A(cid:2)1)Tfor 18. Row interchange. Same task as in Prob. 16 for the
+Ain Prob. 1. matrix in Prob. 7.
+14. Prove the formula in Prob. 13.
+15. Inverse of the inverse. Prove that (A(cid:2)1)(cid:2)1(cid:2)A. 19–20 FORMULA (4)
+16. Rotation. Give an application of the matrix in Prob.2 Formula (4) is occasionally needed in theory. To understand
+that makes the form of the inverse obvious. it, apply it and check the result by Gauss–Jordan:
+17. Triangular matrix. Is the inverse of a triangular 19. In Prob. 3
+matrix always triangular (as in Prob. 5)? Give reason. 20. In Prob. 6
+7.9
+Vector Spaces, Inner Product Spaces,
+Linear Transformations Optional
+We have captured the essence of vector spaces in Sec. 7.4. There we dealt with special
+vector spacesthat arose quite naturally in the context of matrices and linear systems. The
+elements of these vector spaces, called vectors, satisfied rules (3) and (4) of Sec. 7.1
+(which were similar to those for numbers). These special vector spaces were generated
+by spans, that is, linear combination of finitely many vectors. Furthermore, each such
+vector had n real numbers as components. Review this material before going on.
+We can generalize this idea by taking all vectors with n real numbers as components
+and obtain the very important real n-dimensional vector spaceRn. The vectors are known
+as “real vectors.” Thus, each vector in Rn is an ordered n-tuple of real numbers.
+Now we can consider special values for n. For n(cid:2)2, we obtain R2, the vector space
+of all ordered pairs, which correspond to the vectors in the plane.For n(cid:2)3, we obtain
+R3, the vector space of all ordered triples, which are the vectors in 3-space. These vectors
+have wide applications in mechanics, geometry, and calculus and are basic to the engineer
+and physicist.
+Similarly, if we take all ordered n-tuples of complex numbers as vectors and complex
+numbers as scalars, we obtain the complex vector spaceCn, which we shall consider in
+Sec. 8.5.
+Furthermore, there are other sets of practical interest consisting of matrices, functions,
+transformations, or others for which addition and scalar multiplication can be defined in
+an almost natural way so that they too form vector spaces.
+It is perhaps not too great an intellectual jump to create, from the concrete model Rn,
+the abstract concept of a real vector space V by taking the basic properties (3) and (4)
+in Sec. 7.1 as axioms. In this way, the definition of a real vector space arises.
+DEFINITION Real Vector Space
+A nonempty set Vof elements a,b, •••is called a real vector space(or real linear
+space), and these elements are called vectors(regardless of their nature, which will
+come out from the context or will be left arbitrary) if, in V, there are defined two
+algebraic operations (called vector addition and scalar multiplication) as follows.
+I. Vector addition associates with every pair of vectors a and b of V a unique
+vector of V, called the sumof aand band denoted by a(cid:3)b, such that the following
+axioms are satisfied.
+
+=== PAGE 56 ===
+c07.qxd 10/28/10 7:30 PM Page 310
+310 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+I.1 Commutativity. For any two vectors a and b of V,
+a (cid:3) b (cid:2) b (cid:3) a.
+I.2 Associativity. For any three vectors a, b, c of V,
+(a (cid:3) b) (cid:3) c (cid:2) a (cid:3) (b (cid:3) c) (written a (cid:3) b (cid:3) c).
+I.3 There is a unique vector in V, called the zero vector and denoted by 0, such
+that for every a in V,
+a (cid:3) 0 (cid:2) a.
+I.4 For every a in V there is a unique vector in V that is denoted by (cid:4)a and is
+such that
+a (cid:3) ((cid:4)a) (cid:2) 0.
+II. Scalar multiplication. The real numbers are called scalars. Scalar
+multiplication associates with every ain Vand every scalar ca unique vector of V,
+called the product of c and a and denoted by ca (or ac) such that the following
+axioms are satisfied.
+II.1 Distributivity. For every scalar c and vectors a and b in V,
+c(a (cid:3) b) (cid:2) ca (cid:3) cb.
+II.2 Distributivity. For all scalars c and k and every a in V,
+(c (cid:3) k)a (cid:2) ca (cid:3) ka.
+II.3 Associativity. For all scalars c and k and every a in V,
+c(ka) (cid:2) (ck)a (written cka).
+II.4 For every a in V,
+1a (cid:2) a.
+If, in the above definition, we take complex numbers as scalars instead of real numbers,
+we obtain the axiomatic definition of a complex vector space.
+Take a look at the axioms in the above definition. Each axiom stands on its own: It
+is concise, useful, and it expresses a simple property of V. There are as few axioms as
+possible and together they express all the desired properties of V.Selecting good axioms
+is a process of trial and error that often extends over a long period of time. But once
+agreed upon, axioms become standard such as the ones in the definition of a real vector
+space.
+
+=== PAGE 57 ===
+c07.qxd 10/28/10 7:30 PM Page 311
+SEC. 7.9 Vector Spaces, Inner Product Spaces, Linear Transformations Optional 311
+The following concepts related to a vector space are exactly defined as those given in
+Á
+Sec. 7.4. Indeed, a linear combinationof vectors a , , a in a vector space Vis an
+(1) (m)
+expression
+c a (cid:3) Á (cid:3)c a (c , Á , c any scalars).
+1 (1) m m 1 m
+These vectors form a linearly independent set (briefly, they are called linearly
+independent) if
+(1) c a (cid:3) Á(cid:3)c a (cid:2)0
+1 (1) m (m)
+implies that c (cid:2)0, Á , c (cid:2)0. Otherwise, if (1) also holds with scalars not all zero, the
+1 m
+vectors are called linearly dependent.
+Note that (1) with m(cid:2)1 is ca(cid:2)0 and shows that a single vector a is linearly
+independent if and only if a(cid:6)0.
+Vhas dimension n,or is n-dimensional,if it contains a linearly independent set of n
+vectors, whereas any set of more than n vectors in V is linearly dependent. That set of
+n linearly independent vectors is called a basis for V. Then every vector in V can be
+written as a linear combination of the basis vectors. Furthermore, for a given basis, this
+representation is unique (see Prob. 2).
+EXAMPLE 1 Vector Space of Matrices
+The real 2(cid:5)2matrices form a four-dimensional real vector space. A basis is
+1 0 0 1 0 0 0 0
+B (cid:2) , B (cid:2) , B (cid:2) , B (cid:2)
+11 c0 0d 12 c0 0d 21 c1 0d 22 c0 1d
+because any 2(cid:5)2matrix A(cid:2)[a ]has a unique representation A(cid:2)a B (cid:3) a B (cid:3)a B (cid:3)a B .
+jk 11 11 12 12 21 21 22 22
+Similarly, the real m(cid:5)n matrices with fixed m and n form an mn-dimensional vector space. What is the
+dimension of the vector space of all 3(cid:5)3skew-symmetric matrices? Can you find a basis? (cid:2)
+EXAMPLE 2 Vector Space of Polynomials
+The set of all constant, linear, and quadratic polynomials in xtogether is a vector space of dimension 3 with
+basis {1, x, x2}under the usual addition and multiplication by real numbers because these two operations give
+polynomials not exceeding degree 2. What is the dimension of the vector space of all polynomials of degree
+(cid:2)
+not exceeding a given fixed n? Can you find a basis?
+If a vector space Vcontains a linearly independent set of nvectors for every n, no matter
+how large, then V is called infinite dimensional, as opposed to a finite dimensional
+(n-dimensional) vector space just defined. An example of an infinite dimensional vector
+space is the space of all continuous functions on some interval [a, b] of the x-axis, as we
+mention without proof.
+Inner Product Spaces
+If a and b are vectors in Rn, regarded as column vectors, we can form the product aTb.
+This is a 1(cid:5)1matrix, which we can identify with its single entry, that is, with a number.
+
+=== PAGE 58 ===
+c07.qxd 10/28/10 7:30 PM Page 312
+312 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+This product is called the inner product or dot product of a and b. Other notations for
+it are (a, b) and a•b. Thus
+b
+1
+n
+aTb(cid:2)(a, b)(cid:2)a•b(cid:2)
+3
+a
+1
+Á a
+n4
+o (cid:2) aa
+l
+b
+l
+(cid:2)a
+1
+b
+1
+(cid:3) Á (cid:3)a
+n
+b
+n
+.
+i(cid:2)1
+b
+n
+D T
+We now extend this concept to general real vector spaces by taking basic properties of
+(a, b) as axioms for an “abstract inner product” (a, b) as follows.
+DEFINITION Real Inner Product Space
+A real vector space V is called a real inner product space (or real pre-Hilbert4
+space) if it has the following property. With every pair of vectors aand bin Vthere
+is associated a real number, which is denoted by (a, b) and is called the inner
+product of a and b, such that the following axioms are satisfied.
+I. For all scalars q and q and all vectors a, b, c in V,
+1 2
+(q a(cid:3)q b, c)(cid:2)q (a, c)(cid:3)q (b, c) (Linearity).
+1 2 1 2
+II. For all vectors a and b in V,
+(a, b)(cid:2)(b, a) (Symmetry).
+III. For every a in V,
+(a, a) (cid:10) 0,
+(Positive-definiteness).
+(a, a) (cid:2)0 if and only if a(cid:2)0
+r
+Vectors whose inner product is zero are called orthogonal.
+The length or norm of a vector in V is defined by
+(2) (cid:2)a(cid:2)(cid:2) 2(a, a) ((cid:10) 0).
+A vector of norm 1 is called a unit vector.
+4DAVID HILBERT (1862–1943), great German mathematician, taught at Königsberg and Göttingen and was
+the creator of the famous Göttingen mathematical school. He is known for his basic work in algebra, the calculus
+of variations, integral equations, functional analysis, and mathematical logic. His “Foundations of Geometry”
+helped the axiomatic method to gain general recognition. His famous 23 problems (presented in 1900 at the
+International Congress of Mathematicians in Paris) considerably influenced the development of modern
+mathematics.
+If Vis finite dimensional, it is actually a so-called Hilbert space; see [GenRef7], p. 128, listed in App. 1.
+
+=== PAGE 59 ===
+c07.qxd 10/28/10 7:30 PM Page 313
+SEC. 7.9 Vector Spaces, Inner Product Spaces, Linear Transformations Optional 313
+From these axioms and from (2) one can derive the basic inequality
+(3) ƒ(a, b)ƒ (cid:8)(cid:2)a(cid:2) (cid:2)b(cid:2) (Cauchy–Schwarz5 inequality).
+From this follows
+(4) (cid:2)a(cid:3)b(cid:2)(cid:8)(cid:2)a(cid:2)(cid:3)(cid:2)b(cid:2) (Triangle inequality).
+A simple direct calculation gives
+(5) (cid:2)a(cid:3)b(cid:2)2(cid:3)(cid:2)a(cid:4)b(cid:2)2(cid:2)2((cid:2)a(cid:2)2(cid:3)(cid:2)b(cid:2)2) (Parallelogram equality).
+EXAMPLE 3 n-Dimensional Euclidean Space
+Rnwith the inner product
+(6) (a, b)(cid:2)aTb(cid:2)a b (cid:3) Á (cid:3)a b
+1 1 n n
+(where both aand bare columnvectors) is called the n-dimensional Euclidean spaceand is denoted by Enor
+again simply by Rn. Axioms I–III hold, as direct calculation shows. Equation (2) gives the “Euclidean norm”
+(7) (cid:2)a(cid:2)(cid:2) 2(a, a)(cid:2) 2aTa(cid:2) 2a2(cid:3) Á (cid:3)a2. (cid:2)
+1 n
+EXAMPLE 4 An Inner Product for Functions. Function Space
+The set of all real-valued continuous functions f(x), g(x), Á on a given interval a(cid:8)x(cid:8)b is a real vector
+space under the usual addition of functions and multiplication by scalars (real numbers). On this “function
+space” we can define an inner product by the integral
+(cid:3)b
+(8) ( f, g)(cid:2) f(x) g(x) dx.
+a
+Axioms I–III can be verified by direct calculation. Equation (2) gives the norm
+(cid:3)b
+(9) (cid:2) f (cid:2)(cid:2) 2( f, f)(cid:2) f(x)2 dx. (cid:2)
+G a
+Our examples give a first impression of the great generality of the abstract concepts of
+vector spaces and inner product spaces. Further details belong to more advanced courses
+(on functional analysis, meaning abstract modern analysis; see [GenRef7] listed in App.
+1) and cannot be discussed here. Instead we now take up a related topic where matrices
+play a central role.
+Linear Transformations
+Let X and Y be any vector spaces. To each vector x in X we assign a unique vector y in
+Y. Then we say that a mapping (or transformation or operator) of X into Y is given.
+Such a mapping is denoted by a capital letter, say F. The vector yin Yassigned to a vector
+xin Xis called the imageof xunder Fand is denoted by F(x)[or Fx,without parentheses].
+5HERMANN AMANDUS SCHWARZ (1843–1921). German mathematician, known by his work in complex
+analysis (conformal mapping) and differential geometry. For Cauchy see Sec. 2.5.
+
+=== PAGE 60 ===
+c07.qxd 10/28/10 7:30 PM Page 314
+314 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Fis called a linear mappingor linear transformationif, for all vectors vand xin X
+and scalars c,
+F(v(cid:3)x)(cid:2)F(v) (cid:3)F(x)
+(10)
+F(cx) (cid:2)cF(x).
+Linear Transformation of Space Rn into Space Rm
+From now on we let X(cid:2)Rn and Y(cid:2)Rm. Then any real m(cid:5)n matrix A(cid:2)[a ] gives
+jk
+a transformation of Rn into Rm,
+(11) y(cid:2)Ax.
+Since A(u(cid:3)x)(cid:2)Au(cid:3)Ax and A(cx)(cid:2)cAx, this transformation is linear.
+We show that, conversely, every linear transformation F of Rn into Rm can be given
+in terms of an m(cid:5)nmatrix A,after a basis for Rnand a basis for Rmhave been chosen.
+This can be proved as follows.
+Let e , Á , e be any basis for Rn. Then every x in Rn has a unique representation
+(1) (n)
+x(cid:2)x e (cid:3) Á (cid:3)x e .
+1 (1) n (n)
+Since F is linear, this representation implies for the image F(x):
+F(x)(cid:2)F(x e (cid:3) Á (cid:3)x e )(cid:2)x F(e )(cid:3) Á (cid:3)x F(e ).
+1 (1) n (n) 1 (1) n (n)
+Hence F is uniquely determined by the images of the vectors of a basis for Rn. We now
+choose for Rn the “standard basis”
+1 0 0
+0 1 0
+(12) e (cid:2) 0 , e (cid:2) 0 , Á , e (cid:2) 0
+(1) (2) (n)
+. . .
+. . .
+. . .
+G0W G0W G1W
+where e has its jth component equal to 1 and all others 0. We show that we can now
+(j)
+determine an m(cid:5)nmatrix A(cid:2)[a ]such that for every xin Rnand image y(cid:2)F(x)in
+jk
+Rm,
+y(cid:2)F(x) (cid:2)Ax.
+Indeed, from the image y(1)(cid:2)F(e ) of e we get the condition
+(1) (1)
+y(1) a Á a 1
+1 11 1n
+y(1) a Á a 0
+2 21 2n
+y(1)(cid:2)
+.
+(cid:2)
+. . .
+. . . .
+. . . .
+y(1) a Á a 0
+m m1 mm
+F V F V F V
+
+=== PAGE 61 ===
+c07.qxd 10/28/10 7:30 PM Page 315
+SEC. 7.9 Vector Spaces, Inner Product Spaces, Linear Transformations Optional 315
+from which we can determine the first column of A,namely a (cid:2)y(1), a (cid:2)y(1), Á ,
+11 1 21 2
+a (cid:2)y(1). Similarly, from the image of e we get the second column of A,and so on.
+m1 m (2)
+This completes the proof. (cid:2)
+We say that A representsF, or is a representation of F,with respect to the bases for Rn
+and Rm. Quite generally, the purpose of a “representation” is the replacement of one
+object of study by another object whose properties are more readily apparent.
+In three-dimensional Euclidean space E3the standard basis is usually written e (cid:2)i,
+(1)
+e (cid:2)j, e (cid:2)k. Thus,
+(2) (3)
+1 0 0
+(13) i(cid:2) 0 , j(cid:2) 1 , k(cid:2) 0 .
+0 0 1
+These are the three unit vectorsD inT the posiDtivTe directionDs Tof the axes of the Cartesian
+coordinate system in space, that is, the usual coordinate system with the same scale of
+measurement on the three mutually perpendicular coordinate axes.
+EXAMPLE 5 Linear Transformations
+Interpreted as transformations of Cartesian coordinates in the plane, the matrices
+0 1 1 0 (cid:4)1 0 a 0
+, , ,
+c1 0d c0 (cid:4)1d c 0 (cid:4)1d c0 1d
+represent a reflection in the line x (cid:2)x , a reflection in the x -axis, a reflection in the origin, and a stretch
+(when a(cid:11)1, or a contraction when 2 0(cid:9) 1 a(cid:9)1) in the x -direc 1 tion, respectively. (cid:2)
+1
+EXAMPLE 6 Linear Transformations
+Our discussion preceding Example 5 is simpler than it may look at first sight. To see this, find Arepresenting
+the linear transformation that maps (x , x )onto (2x (cid:4)5x , 3x (cid:3)4x ).
+1 2 1 2 1 2
+Solution. Obviously, the transformation is
+y (cid:2)2x (cid:4)5x
+1 1 2
+y (cid:2)3x (cid:3)4x .
+2 1 2
+From this we can directly see that the matrix is
+2 (cid:4)5 y 2 (cid:4)5 x 2x (cid:4)5x
+A(cid:2) . Check: 1 (cid:2) 1 (cid:2) 1 2 . (cid:2)
+c3 4d cy d c3 4dcx d c3x (cid:3)4x d
+2 2 1 2
+If Ain (11) is square, n(cid:5)n, then (11) maps Rninto Rn. If this Ais nonsingular, so that
+A
+(cid:2)1
+exists (see Sec. 7.8), then multiplication of (11) by A
+(cid:2)1
+from the left and use of
+A
+(cid:2)1A(cid:2)I
+gives the inverse transformation
+(14) x(cid:2)A (cid:2)1y.
+It maps every y(cid:2)y onto that x,which by (11) is mapped onto y . The inverse of a linear
+0 0
+transformation is itself linear, because it is given by a matrix, as (14) shows.
+
+=== PAGE 62 ===
+c07.qxd 11/4/10 12:30 PM Page 316
+316 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+Composition of Linear Transformations
+We want to give you a flavor of how linear transformations in general vector spaces work.
+You will notice, if you read carefully, that definitions and verifications (Example 7) strictly
+follow the given rules and you can think your way through the material by going in a
+slow systematic fashion.
+The last operation we want to discuss is composition of linear transformations. Let X,
+Y, W be general vector spaces. As before, let F be a linear transformation from X to Y.
+Let G be a linear transformation from W to X. Then we denote, by H, the composition
+of F and G, that is,
+H(cid:2)F(cid:3)G(cid:2)FG(cid:2)F(G),
+which means we take transformation G and then apply transformation F to it (in that
+order!, i.e. you go from left to right).
+Now, to give this a more concrete meaning, if we let w be a vector in W, then G(w)
+is a vector in X and F(G(w)) is a vector in Y. Thus, H maps W to Y, and we can write
+(15) H(w)(cid:2)(F(cid:3)G) (w)(cid:2)(FG) (w)(cid:2)F(G(w)),
+which completes the definition of composition in a general vector space setting. But is
+composition really linear? To check this we have to verify that H, as defined in (15),obeys
+the two equations of (10).
+EXAMPLE 7 The Composition of Linear Transformations Is Linear
+To show that His indeed linear we must show that (10) holds. We have, for two vectors w , w in W,
+1 2
+H(w (cid:4)w )(cid:2)(F(cid:3)G)(w (cid:4)w )
+1 2 1 2
+(cid:2)F(G(w (cid:4)w ))
+1 2
+(cid:2)F(G(w )(cid:4)G(w )) (by linearity of G)
+1 2
+(cid:2)F(G(w ))(cid:4)F(G(w )) (by linearity of F)
+1 2
+(cid:2)(F(cid:3)G)(w )(cid:4)(F(cid:3)G)(w ) (by (15))
+1 2
+(cid:2)H(w )(cid:4)H(w ) (by definition of H).
+1 2
+Similarly, H(cw )(cid:2)(F(cid:3)G)(cw )(cid:2)F(G(cw ))(cid:2)F(c(G(w ))
+2 2 2 2
+(cid:2)cF(G(w ))(cid:2)c(F(cid:3)G)(w )(cid:2)cH(w ). (cid:2)
+2 2 2
+We defined composition as a linear transformation in a general vector space setting and
+showed that the composition of linear transformations is indeed linear.
+Next we want to relate composition of linear transformations to matrix multiplication.
+To do so we let X(cid:2)Rn, Y(cid:2)Rm, and W(cid:2)Rp. This choice of particular vector spaces
+allows us to represent the linear transformations as matrices and form matrix equations,
+as was done in (11). Thus F can be represented by a general real m(cid:3)nmatrix A(cid:2) a
+3 jk4
+and G by an n(cid:3)p matrix B(cid:2) b . Then we can write for F, with column vectors x
+3 jk4
+with n entries, and resulting vector y, with m entries
+(16) y(cid:2)Ax
+
+=== PAGE 63 ===
+c07.qxd 11/9/10 7:34 PM Page 317
+SEC. 7.9 Vector Spaces, Inner Product Spaces, Linear Transformations Optional 317
+and similarly for G, with column vector w with p entries,
+(17) x(cid:2)Bw.
+Substituting (17) into (16) gives
+(18) y(cid:2)Ax (cid:2)A(Bw) (cid:2)(AB)w (cid:2)ABw(cid:2)Cw where C(cid:2)AB.
+This is (15) in a matrix setting, this is, we can define the composition of linear transfor-
+mations in the Euclidean spaces as multiplication by matrices. Hence, the real m(cid:4)p
+matrix C represents a linear transformation H which maps Rp to Rn with vector w, a
+column vector with p entries.
+Remarks. Our discussion is similar to the one in Sec. 7.2, where we motivated the
+“unnatural” matrix multiplication of matrices. Look back and see that our current, more
+general, discussion is written out there for the case of dimension m(cid:2)2,n(cid:2)2,and p(cid:2)2.
+(You may want to write out our development by picking small distinct dimensions, such
+as m(cid:2)2, n(cid:2)3, and p(cid:2)4, and writing down the matrices and vectors. This is a trick
+of the trade of mathematicians in that we like to develop and test theories on smaller
+examples to see that they work.)
+EXAMPLE 8 Linear Transformations. Composition
+In Example 5 of Sec. 7.9, let A be the first matrix and B be the fourth matrix with a(cid:3)1. Then, applying B to
+a vector w(cid:2)[w w ]T, stretches the element w by a in the x direction. Next, when we apply A to the
+1 2 1 1
+“stretched” vector, we reflect the vector along the line x (cid:2)x , resulting in a vector y(cid:2)[w aw ]T. But this
+1 2 2 1
+represents, precisely, a geometric description for the composition H of two linear transformations F and G
+represented by matrices A and B. We now show that, for this example, our result can be obtained by
+straightforward matrix multiplication, that is,
+0 1 a 0 0 1
+AB(cid:2) (cid:2)
+c1 0d c0 1d ca 0d
+and as in (18) calculate
+0 1 w w
+ABw(cid:2) 1 (cid:2) 2 ,
+ca 0d cw d caw d
+2 1
+which is the same as before. This shows that indeed AB(cid:2)C, and we see the composition of linear
+transformations can be represented by a linear transformation. It also shows that the order of matrix multiplication
+is important (!). You may want to try applying A first and then B,resulting in BA.What do you see? Does it
+(cid:2)
+make geometric sense? Is it the same result as AB?
+We have learned several abstract concepts such as vector space, inner product space,
+and linear transformation. The introduction of such concepts allows engineers and
+scientists to communicate in a concise and common language. For example, the concept
+of a vector space encapsulated a lot of ideas in a very concise manner. For the student,
+learning such concepts provides a foundation for more advanced studies in engineering.
+This concludes Chapter 7. The central theme was the Gaussian elimination of Sec. 7.3
+from which most of the other concepts and theory flowed. The next chapter again has a
+central theme, that is, eigenvalue problems, an area very rich in applications such as in
+engineering, modern physics, and other areas.
+
+=== PAGE 64 ===
+c07.qxd 10/28/10 7:30 PM Page 318
+318 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+PROBLEM SET 7.9
+1. Basis. Find three bases of R2. 13. y 1 (cid:2)5x 1 (cid:3)3x 2 (cid:4)3x 3
+2. (cid:3) Un Á iqu (cid:3) en c es a s. Sh o o f w an y th g a i t v t e h n e v r e e c p t r o e r s i e n n a ta n t i n o - n d i v m (cid:2) ens c i 1 o a n ( a 1 l ) y 2 (cid:2)3x 1 (cid:3)2x 2 (cid:4)2x 3
+vector spa n ce ( n V ) in terms of a given basis a (1) , Á , a (n) y 3 (cid:2)2x 1 (cid:4) x 2 (cid:3)2x 3
+for V is unique. Hint. Take two representations and
+14. y (cid:2)0.2x (cid:4)0.1x
+consider the difference. 1 1 2
+y (cid:2) (cid:4)0.2x (cid:3)0.1x
+3–10 VECTOR SPACE 2 2 3
+(More problems in Problem Set 9.4.) Is the given set, taken
+y
+3
+(cid:2)0.1x
+1
+(cid:3)0.1x
+3
+with the usual addition and scalar multiplication, a vector
+space? Give reason. If your answer is yes, find the dimen- 15–20 EUCLIDEAN NORM
+sion and a basis. Find the Euclidean norm of the vectors:
+3. A (cid:4) l 4 l v v 1 e (cid:3) cto v rs 2 (cid:3) in v R 3 3 (cid:2) sa 0 ti . sfying (cid:4)v 1 (cid:3)2v 2 (cid:3)3v 3 (cid:2)0, 1 1 5 7 . . 3 1 3 0 1 (cid:4)4 0 4 T 1 (cid:4)1 1 6. 3 0 1 2 (cid:4)1 3 1 (cid:4) 1 1 2 T (cid:4)1 34 T
+4. All skew-symmetric 3(cid:5)3matrices. 18. 3 (cid:4)4 8 (cid:4)1 T 19. 2 2 1 4 0 T
+3 4 33 3 3 4
+5. All polynomials in x of degree 4 or less with 20. 1 (cid:4)1 (cid:4)1 1 T
+nonnegative coefficients. 32 2 2 24
+6. All functions y(x)(cid:2)a cos 2x(cid:3)b sin 2xwith arbitrary
+21–25 INNER PRODUCT. ORTHOGONALITY
+constants aand b.
+21. Orthogonality. For what value(s) of kare the vectors
+7. All functions y(x)(cid:2)(ax(cid:3)b)e(cid:2)xwith any constant a
+2 1 (cid:4)4 0 Tand 5 k 0 1 Torthogonal?
+and b. 3 2 4 3 44
+8. All n(cid:5)nmatrices Awith fixed nand det A(cid:2)0. 22. Orthogonality. Find all vectors in R3 orthogonal to
+2 0 1 .Do they form a vector space?
+9. All 2(cid:5)2matrices [a ]with a (cid:3)a (cid:2)0. 3 4
+jk 11 22
+10. All 3(cid:5)2matrices [a ]with first column any multiple 23. Triangle inequality. Verify (4) for the vectors in
+jk
+of [3 0 (cid:4)5]T. Probs. 15 and 18.
+24. Cauchy–Schwarz inequality. Verify (3) for the
+11–14 LINEAR TRANSFORMATIONS
+vectors in Probs. 16 and 19.
+Find the inverse transformation. Show the details.
+25. Parallelogram equality. Verify (5) for the first two
+11. y (cid:2)0.5x (cid:4)0.5x 12. y (cid:2)3x (cid:3)2x
+1 1 2 1 1 2 column vectors of the coefficient matrix in Prob. 13.
+y (cid:2)1.5x (cid:4)2.5x y (cid:2)4x (cid:3) x
+2 1 2 2 1 2
+CHAPTER 7 REVIEW QUESTIONS AND PROBLEMS
+1. What properties of matrix multiplication differ from 5. Motivate the definition of matrix multiplication.
+those of the multiplication of numbers?
+6. Explain the use of matrices in linear transformations.
+2. Let Abe a 100(cid:5)100matrix and Ba 100(cid:5)50matrix.
+Are the following expressions defined or not? A(cid:3)B, 7. How can you give the rank of a matrix in terms of row
+A2, B2, AB, BA, AAT, BTA, BTB, BBT, BTAB. Give vectors? Of column vectors? Of determinants?
+reasons.
+8. What is the role of rank in connection with solving
+3. Are there any linear systems without solutions? With linear systems?
+one solution? With more than one solution? Give
+9. What is the idea of Gauss elimination and back
+simple examples.
+substitution?
+4. Let Cbe 10(cid:5)10matrix and aa column vector with
+10 components. Are the following expressions defined 10. What is the inverse of a matrix? When does it exist?
+or not? Ca, CTa, CaT, aC, aTC, (CaT)T. How would you determine it?
+
+=== PAGE 65 ===
+c07.qxd 10/28/10 7:30 PM Page 319
+Chapter 7 Review Questions and Problems 319
+11–20 MATRIX AND VECTOR CALCULATIONS 27. x(cid:3)2y(cid:2) 6
+Showing the details, calculate the following expressions or 3x(cid:3)5y(cid:2) 20
+give reason why they are not defined, when
+(cid:4)4x(cid:3) y(cid:2)(cid:4)42
+3 1 (cid:4)3 0 4 1 28. (cid:4)8x (cid:3)2z(cid:2)1
+A(cid:2) 1 4 2 , B(cid:2) (cid:4)4 0 (cid:4)2 , 6y(cid:3)4z(cid:2)3
+(cid:4)3 2 5 (cid:4)1 2 0 12x(cid:3)2y (cid:2)2
+D 2T D 7 T 29–32 RANK
+u(cid:2) 0 , v(cid:2) (cid:4)3 Determine the ranks of the coefficient matrix and the
+augmented matrix and state how many solutions the linear
+(cid:4)5 3
+system will have.
+11. AB, BA D T 12. ATD, TBT 29. In Prob. 23
+13. Au, uTA 14. uTv, uvT 30. In Prob. 24
+15. uTAu, vTBv 16. A(cid:2)1, B(cid:2)1 31. In Prob. 27
+17. det A, det A2, (det A)2, det B 32. In Prob. 26
+18. (A2)(cid:2)1, (A(cid:2)1)2 19. AB(cid:4)BA 33–35 NETWORKS
+20. (A(cid:3)AT)(B(cid:4)BT)
+Find the currents.
+21–28 LINEAR SYSTEMS 33. 20 Ω
+Showing the details, find all solutions or indicate that no
+solution exists. I 3
+21. 4y(cid:3) z(cid:2)0
+I 2 10 Ω
+12x(cid:4)5y(cid:4)3z(cid:2)34 I 1
+(cid:4)6x (cid:3)4z(cid:2)8
+110 V
+22. 5x(cid:4)3y(cid:3) z(cid:2)7
+34.
+220 V
+2x(cid:3)3y(cid:4) z(cid:2)0
+8x(cid:3)9y(cid:4)3z(cid:2)2 5 Ω I
+1
+23. 9x(cid:3)3y(cid:4)6z(cid:2)60 I
+3 10 Ω
+I
+2
+2x(cid:4)4y(cid:3)8z(cid:2) 4
+24. (cid:4)6x(cid:3)39y(cid:4)9z(cid:2)(cid:4)12 240 V 20 Ω
+2x(cid:4)13y(cid:3)3z(cid:2) 4 35. 10 Ω
+25. 0.3x(cid:4)0.7y(cid:3)1.3z(cid:2) 3.24
+I 10 V
+1
+0.9y(cid:4)0.8z(cid:2)(cid:4)2.53
+I
+0.7z(cid:2) 1.19 I 2 3 30 Ω 130 V
+26. 2x(cid:3)3y(cid:4) 7z(cid:2)3 20 Ω
+(cid:4)4x(cid:4)6y(cid:3)14z(cid:2)7
+
+=== PAGE 66 ===
+c07.qxd 10/28/10 7:30 PM Page 320
+320 CHAP. 7 Linear Algebra: Matrices, Vectors, Determinants. Linear Systems
+7
+SUMMARY OF CHAPTER
+Linear Algebra: Matrices, Vectors, Determinants.
+Linear Systems
+An m(cid:5)n matrix A(cid:2)[a ] is a rectangular array of numbers or functions
+jk
+(“entries,” “elements”) arranged in m horizontal rows and n vertical columns. If
+m(cid:2)n, the matrix is called square. A 1(cid:5)n matrix is called a row vector and an
+m(cid:5)1 matrix a column vector (Sec. 7.1).
+The sum A(cid:3)B of matrices of the same size (i.e., both m(cid:5)n) is obtained by
+adding corresponding entries. The product of A by a scalar c is obtained by
+multiplying each a by c (Sec. 7.1).
+jk
+The product C(cid:2)AB of an m(cid:5)n matrix A by an r(cid:5)p matrix B(cid:2)[b ] is
+jk
+defined only when r(cid:2)n, and is the m(cid:5)p matrix C(cid:2) c with entries
+3 jk4
+(1) c (cid:2)a b (cid:3)a b (cid:3) Á (cid:3)a b (row j of A times
+jk j1 1k j2 2k jn nk
+column k of B).
+This multiplication is motivated by the composition of linear transformations
+(Secs. 7.2, 7.9). It is associative, but is not commutative:if ABis defined, BAmay
+not be defined, but even if BAis defined, AB (cid:6)BAin general. Also AB (cid:2)0may
+not imply A(cid:2)0 or B(cid:2)0 or BA(cid:2)0 (Secs. 7.2, 7.8). Illustrations:
+1 1 (cid:4)1 1 0 0
+(cid:2)
+c 2 2 dc 1 (cid:4)1 d c 0 0 d
+(cid:4)1 1 1 1 1 1
+(cid:2)
+c 1 (cid:4)1 dc 2 2 d c(cid:4)1 (cid:4)1 d
+3 3 3 6
+[1 2] (cid:2)[11], [1 2] (cid:2) .
+c d c d c d
+4 4 4 8
+The transpose AT of a matrix A(cid:2) a is AT(cid:2) a ; rows become columns
+3 jk4 3 kj4
+and conversely (Sec. 7.2). Here, A need not be square. If it is and A(cid:2)AT, then A
+is called symmetric; if A(cid:2)(cid:4)AT, it is called skew-symmetric. For a product,
+(AB)T(cid:2)BTAT (Sec. 7.2).
+A main application of matrices concerns linear systems of equations
+(2) Ax (cid:2)b (Sec. 7.3)
+Á
+(mequations in nunknowns x , , x ;A and bgiven). The most important method
+1 n
+of solution is the Gauss elimination (Sec. 7.3), which reduces the system to
+“triangular” form by elementary row operations, which leave the set of solutions
+unchanged. (Numeric aspects and variants, such as Doolittle’s and Cholesky’s
+methods, are discussed in Secs. 20.1 and 20.2.)
+
+=== PAGE 67 ===
+c07.qxd 10/28/10 7:30 PM Page 321
+Summary of Chapter 7 321
+Cramer’s rule (Secs. 7.6, 7.7) represents the unknowns in a system (2) of n
+equations in n unknowns as quotients of determinants; for numeric work it is
+impractical. Determinants(Sec. 7.7) have decreased in importance, but will retain
+their place in eigenvalue problems, elementary geometry, etc.
+The inverse A
+(cid:2)1of
+a square matrix satisfies AA
+(cid:2)1(cid:2)A (cid:2)1A(cid:2)I.
+It exists if and
+only if det A (cid:6)0. It can be computed by the Gauss–Jordan elimination(Sec. 7.8).
+The rank r of a matrix A is the maximum number of linearly independent rows
+or columns of Aor, equivalently, the number of rows of the largest square submatrix
+of A with nonzero determinant (Secs. 7.4, 7.7).
+The system (2) has solutions if and only if rank A(cid:2)rank [A b], where [A b]
+is the augmented matrix (Fundamental Theorem, Sec. 7.5).
+The homogeneous system
+(3) Ax (cid:2)0
+has solutions x(cid:6)0 (“nontrivial solutions”) if and only if rank A(cid:9)n, in the case
+m(cid:2)n equivalently if and only if det A (cid:2)0 (Secs. 7.6, 7.7).
+Vector spaces, inner product spaces, and linear transformations are discussed in
+Sec. 7.9. See also Sec. 7.4.
+
