@@ -10,6 +10,7 @@ book:
     - chapters/ch5.qmd
     - chapters/ch6.qmd
     - chapters/ch7.qmd
+    - chapters/ch8.qmd
     - chapters/intro.qmd
 
 
