@@ -418,7 +418,7 @@ y = e^x + 3\cos 10x + \sin 10x.
 $$
 This gives the solution curve, which oscillates about $e^x$ (dashed in @fig-01).
 
-![Solution in Example 2](../images/fig-01.png){#fig-01}
+![Solution in Example 2](../images/chapter3/fig-01.png){#fig-01}
 
 ### Multiple Real Roots
 
@@ -601,7 +601,7 @@ y = (3 - 25x^2)e^{-x} + 5x^3e^{-x}.
 $$
 The curve of $y$ begins at $(0, 3)$ with a negative slope, as expected from the initial values, and approaches zero as $x \to \infty$. The dashed curve in @fig-02 is $y_p$.
 
-![y and (dashed) $y_p$ in Example 1](../images/fig-02.png){#fig-02}
+![y and (dashed) $y_p$ in Example 1](../images/chapter3/fig-02.png){#fig-02}
 
 ### Method of Variation of Parameters
 
@@ -685,7 +685,7 @@ y = y_h + y_p = c_1 x + c_2 x^2 + c_3 x^3 + \frac{1}{6} x^4 \left( \ln x - \frac
 $$
 @fig-03 shows $y_p$. Can you explain the shape of this curve? Its behavior near $x = 0$? The occurrence of a minimum? Its rapid increase? Why would the method of undetermined coefficients not have given the solution?
 
-![Particular solution $y_p$ of the nonhomogeneous Euler-Cauchy equation in Example 2](../images/fig-03.png){#fig-03}
+![Particular solution $y_p$ of the nonhomogeneous Euler-Cauchy equation in Example 2](../images/chapter3/fig-03.png){#fig-03}
 
 ### Application: Elastic Beams
 
@@ -703,7 +703,7 @@ $$
 EI y^{iv} = f(x).
 $$ {#eq-3-30}
 
-![Elastic beam](../images/fig-04.png){#fig-04}
+![Elastic beam](../images/chapter3/fig-04.png){#fig-04}
 
 In applications the most important supports and corresponding boundary conditions are as follows and shown in @fig-05.
 (A) Simply supported at $x = 0$ and $L$
@@ -712,7 +712,7 @@ In applications the most important supports and corresponding boundary condition
 
 The boundary condition $y = 0$ means no displacement at that point, $y' = 0$ means a horizontal tangent, $y'' = 0$ means no bending moment, and $y''' = 0$ means no shear force.
 
-![Supports of a beam](../images/fig-05.png){#fig-05}
+![Supports of a beam](../images/chapter3/fig-05.png){#fig-05}
 
 Let us apply this to the uniformly loaded simply supported beam in @fig-04. The load is $f(x) \equiv f_0 = \text{const}$. Then (@eq-3-30) is
 $$
