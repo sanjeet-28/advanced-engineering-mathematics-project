@@ -7,6 +7,8 @@ book:
     - index.qmd
     - chapters/contents.qmd
     - chapters/ch1.qmd
+    - chapters/ch2.qmd
+    - chapters/ch3.qmd
     - chapters/ch5.qmd
     - chapters/ch6.qmd
     - chapters/ch7.qmd
