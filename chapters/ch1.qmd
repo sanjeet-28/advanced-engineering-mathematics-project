@@ -14,7 +14,7 @@ Understanding the basics of ODEs requires solving problems by hand (paper and pe
 
 ## 1.1 Basic Concepts. Modeling
 
-![Fig. 1. Modeling, solving, interpreting](../images/fig-1-1.png){#fig-1-1}
+![Fig. 1. Modeling, solving, interpreting](../images/chapter1/fig-1-1.png){#fig-1-1}
 
 If we want to solve an engineering problem (usually of a physical nature), we first have to formulate the problem as a mathematical expression in terms of variables, functions, and equations. Such an expression is known as a mathematical model of the given problem. The process of setting up a model, solving it mathematically, and interpreting the result in physical or other terms is called mathematical modeling or, briefly, modeling.
 
@@ -22,7 +22,7 @@ Modeling needs experience, which we shall gain by discussing various examples an
 
 Now many physical concepts, such as velocity and acceleration, are derivatives. Hence a model is very often an equation containing derivatives of an unknown function. Such a model is called a differential equation. Of course, we then want to find a solution (a function that satisfies the equation), explore its properties, graph it, find values of it, and interpret it in physical terms so that we can understand the behavior of the physical system in our given problem. However, before we can turn to methods of solution, we must first define some basic concepts needed throughout this chapter.
 
-![Fig. 2. Some applications of differential equations](../images/fig-1-2.png){#fig-1-2}
+![Fig. 2. Some applications of differential equations](../images/chapter1/fig-1-2.png){#fig-1-2}
 
 An ordinary differential equation (ODE) is an equation that contains one or several derivatives of an unknown function, which we usually call $y(x)$ (or sometimes $y(t)$ if the independent variable is time $t$). The equation may also contain $y$ itself, known functions of $x$ (or $t$), and constants. For example,
 
@@ -68,7 +68,7 @@ Verify that $y = c/x$ ($c$ an arbitrary constant) is a solution of the ODE $xy' 
 
 The ODE $y' = dy/dx = \cos x$ can be solved directly by integration on both sides. Indeed, using calculus, we obtain $y = \int \cos x \, dx = \sin x + c$, where $c$ is an arbitrary constant. This is a family of solutions. Each value of $c$, for instance, 2.75 or 0 or -8, gives one of these curves. Figure 3 shows some of them, for $c = -3, -2, -1, 0, 1, 2, 3, 4$.
 
-![Fig. 3. Solutions $y = \sin x + c$ of the ODE $y' = \cos x$](../images/fig-1-3.png){#fig-1-3}
+![Fig. 3. Solutions $y = \sin x + c$ of the ODE $y' = \cos x$](../images/chapter1/fig-1-3.png){#fig-1-3}
 
 ### EXAMPLE 3 (A) Exponential Growth. (B) Exponential Decay
 
@@ -80,9 +80,9 @@ Hence $y$ is a solution of $y' = 0.2y$ (Fig. 4A). This ODE is of the form $y' = 
 
 (B) Similarly, $y' = -0.2y$ (with a minus on the right) has the solution $y = ce^{-0.2t}$ (Fig. 4B) modeling exponential decay, as, for instance, of a radioactive substance (see Example 5).
 
-![Fig. 4A. Solutions of $y' = 0.2y$ in Example 3 (exponential growth)](../images/fig-1-4a.png){#fig-1-4a}
+![Fig. 4A. Solutions of $y' = 0.2y$ in Example 3 (exponential growth)](../images/chapter1/fig-1-4a.png){#fig-1-4a}
 
-![Fig. 4B. Solutions of $y' = -0.2y$ in Example 3 (exponential decay)](../images/fig-1-4b.png){#fig-1-4b}
+![Fig. 4B. Solutions of $y' = -0.2y$ in Example 3 (exponential decay)](../images/chapter1/fig-1-4b.png){#fig-1-4b}
 
 > ^1^ Named after the English pioneer in classic economics, THOMAS ROBERT MALTHUS (1766-1834).
 
@@ -154,7 +154,7 @@ $$
 
 **Step 3. Interpretation of result.** Formula (@eq-9) gives the amount of radioactive substance at time $t$. It starts from the correct initial amount and decreases with time because $k$ is positive. The limit of $y$ as $t \to \infty$ is zero.
 
-![Fig. 5. Radioactivity (Exponential decay, $y = 0.5e^{-kt}$, with $k = 1.5$ as an example)](../images/fig-1-5.png){#fig-1-5}
+![Fig. 5. Radioactivity (Exponential decay, $y = 0.5e^{-kt}$, with $k = 1.5$ as an example)](../images/chapter1/fig-1-5.png){#fig-1-5}
 
 ## PROBLEM SET 1.1
 
@@ -182,7 +182,7 @@ Solve the ODE by integration or by remembering a differentiation formula.
 15. Find two constant solutions of the ODE in Prob. 13 by inspection.
 16. **Singular solution.** An ODE may sometimes have an additional solution that cannot be obtained from the general solution and is then called a **singular solution**. The ODE $y'^2 - xy' + y = 0$ is of this kind. Show by differentiation and substitution that it has the general solution $y = cx - c^2$ and the singular solution $y = x^2/4$. Explain Fig. 6.
 
-![Fig. 6. Particular solutions and singular solution in Problem 16](../images/fig-1-6.png){#fig-1-6}
+![Fig. 6. Particular solutions and singular solution in Problem 16](../images/chapter1/fig-1-6.png){#fig-1-6}
 
 ### 17–20 MODELING, APPLICATIONS
 These problems will give you a first impression of modeling. Many more problems on modeling follow throughout this chapter.
@@ -225,7 +225,7 @@ $$ {#eq-sec12-2}
 
 obtained by a CAS (Computer Algebra System) and some approximate solution curves fitted in.
 
-![Fig. 7. Direction field of $y' = y + x$, with three approximate solution curves passing through $(0, 1)$, $(0, 0)$, $(0, -1)$, respectively](../images/fig-1-7.png){#fig-1-7}
+![Fig. 7. Direction field of $y' = y + x$, with three approximate solution curves passing through $(0, 1)$, $(0, 0)$, $(0, -1)$, respectively](../images/chapter1/fig-1-7.png){#fig-1-7}
 
 If you have no CAS, first draw a few level curves $f(x, y) = \text{const}$ of $f(x, y)$, then parallel lineal elements along each such curve (which is also called an **isocline**, meaning a curve of equal inclination), and finally draw approximation curves fit to the lineal elements.
 
@@ -250,7 +250,7 @@ $$
 
 where the step $h$ equals, e.g., 0.1 or 0.2 (as in Table 1.1) or a smaller value for greater accuracy.
 
-![Fig. 8. First Euler step, showing a solution curve, its tangent at $(x_0, y_0)$, step $h$ and increment $hf(x_0, y_0)$ in the formula for $y_1$](../images/fig-1-8.png){#fig-1-8}
+![Fig. 8. First Euler step, showing a solution curve, its tangent at $(x_0, y_0)$, step $h$ and increment $hf(x_0, y_0)$ in the formula for $y_1$](../images/chapter1/fig-1-8.png){#fig-1-8}
 
 Table 1.1 shows the computation of $n = 5$ steps with step $h = 0.2$ for the ODE (@eq-sec12-2) and initial condition $y(0) = 0$, corresponding to the middle curve in the direction field. We shall solve the ODE exactly in Sec. 1.5. For the time being, verify that the initial value problem has the solution $y = e^x - x - 1$. The solution curve and the values in Table 1.1 are shown in Fig. 9. These values are rather inaccurate. The errors $y(x_n) - y_n$ are shown in Table 1.1 as well as in Fig. 9. Decreasing $h$ would improve the values, but would soon require an impractical amount of computation. Much better methods of a similar nature will be discussed in Sec. 21.1.
 
@@ -265,7 +265,7 @@ Table 1.1. Euler method for $y' = y + x, \ y(0) = 0$ with step $h = 0.2$ for $x 
 | 4   | 0.8   | 0.274 | 0.426    | 0.152 |
 | 5   | 1.0   | 0.488 | 0.718    | 0.230 |
 
-![Fig. 9. Euler method: Approximate values in Table 1.1 and solution curve](../images/fig-1-9.png){#fig-1-9}
+![Fig. 9. Euler method: Approximate values in Table 1.1 and solution curve](../images/chapter1/fig-1-9.png){#fig-1-9}
 
 ## PROBLEM SET 1.2
 
@@ -368,7 +368,7 @@ $$
 
 This is the general solution. From it and the initial condition, $y(0) = ce^0 = c = 1.8$. Hence the IVP has the solution $y = 1.8e^{-x^2}$. This is a particular solution, representing a bell-shaped curve (Fig. 10).
 
-![Fig. 10. Solution in Example 3 (bell-shaped curve)](../images/fig-1-10.png){#fig-1-10}
+![Fig. 10. Solution in Example 3 (bell-shaped curve)](../images/chapter1/fig-1-10.png){#fig-1-10}
 
 ### Modeling
 
@@ -434,7 +434,7 @@ This function shows an exponential approach to the limit 5000 lb; see Fig. 11. C
 
 The model discussed becomes more realistic in problems on pollutants in lakes (see Problem Set 1.5, Prob. 35) or drugs in organs. These types of problems are more difficult because the mixing may be imperfect and the flow rates (in and out) may be different and known only very roughly.
 
-![Fig. 11. Mixing problem in Example 5](../images/fig-1-11.png){#fig-1-11}
+![Fig. 11. Mixing problem in Example 5](../images/chapter1/fig-1-11.png){#fig-1-11}
 
 ### EXAMPLE 6 Heating an Office Building (Newton’s Law of Cooling³)
 
@@ -478,7 +478,7 @@ $$
 
 Hence the temperature in the building dropped 9°F, a result that looks reasonable.
 
-![Fig. 12. Particular solution (temperature) in Example 6](../images/fig-1-12.png){#fig-1-12}
+![Fig. 12. Particular solution (temperature) in Example 6](../images/chapter1/fig-1-12.png){#fig-1-12}
 
 > ³Sir ISAAC NEWTON (1642–1727), great English physicist and mathematician, became a professor at Cambridge in 1669 and Master of the Mint in 1699. He and the German mathematician and philosopher GOTTFRIED WILHELM LEIBNIZ (1646–1716) invented (independently) the differential and integral calculus. Newton discovered many basic physical laws and created the method of investigating physical problems by means of calculus. His *Philosophiae naturalis principia mathematica* (*Mathematical Principles of Natural Philosophy*, 1687) contains the development of classical mechanics. His work is of greatest importance to both mathematics and physics.
 
@@ -550,7 +550,7 @@ Here you see distinctly the *importance of the choice of units*—we have been w
 
 **Step 5. Checking.** Check the result.
 
-![Fig. 13. Example 7. Outflow from a cylindrical tank (“leaking tank”). Torricelli’s law](../images/fig-1-13.png){#fig-1-13}
+![Fig. 13. Example 7. Outflow from a cylindrical tank (“leaking tank”). Torricelli’s law](../images/chapter1/fig-1-13.png){#fig-1-13}
 
 > ⁴EVANGELISTA TORRICELLI (1608–1647), Italian physicist, pupil and successor of GALILEO GALILEI (1564–1642) at Florence. The “contraction factor” 0.600 was introduced by J. C. BORDA in 1766 because the stream has a smaller cross section than the area of the hole.
 
@@ -610,7 +610,7 @@ $$
 
 This general solution represents a family of circles passing through the origin with centers on the $x$-axis.
 
-![Fig. 14. General solution (family of circles) in Example 8](../images/fig-1-14.png){#fig-1-14}
+![Fig. 14. General solution (family of circles) in Example 8](../images/chapter1/fig-1-14.png){#fig-1-14}
 
 ## PROBLEM SET 1.3
 
@@ -666,11 +666,11 @@ Solve the IVP. Show the steps of derivation, beginning with the general solution
 
     > ⁶CHARLES AUGUSTIN DE COULOMB (1736–1806), French physicist and engineer.
 
-    ![Fig. 15. Problem 32](../images/fig-1-15.png){#fig-1-15}
+    ![Fig. 15. Problem 32](../images/chapter1/fig-1-15.png){#fig-1-15}
 
 33. **Rope.** To tie a boat in a harbor, how many times must a rope be wound around a bollard (a vertical rough cylindrical post fixed on the ground) so that a man holding one end of the rope can resist a force exerted by the boat 1000 times greater than the man can exert? First guess. Experiments show that the change $\Delta S$ of the force $S$ in a small portion of the rope is proportional to $S$ and to the small angle $\Delta \phi$ in Fig. 16. Take the proportionality constant 0.15. The result should surprise you!
 
-    ![Fig. 16. Problem 33](../images/fig-1-16.png){#fig-1-16}
+    ![Fig. 16. Problem 33](../images/chapter1/fig-1-16.png){#fig-1-16}
 
 34. **TEAM PROJECT. Family of Curves.** A family of curves can often be characterized as the general solution of $y' = f(x, y)$.
     (a) Show that for the circles with center at the origin we get $y' = -x/y$.
@@ -845,7 +845,7 @@ $$
 
 From this, $\partial u/\partial x = \cos y \sinh x + dl/dx = M = \cos y \sinh x + 1$. Hence $dl/dx = 1$. By integration, $l(x) = x + c^*$. This gives the general solution $u(x, y) = \cos y \cosh x + x = c$. From the initial condition, $\cos 2 \cosh 1 + 1 = 0.358 = c$. Hence the answer is $\cos y \cosh x + x = 0.358$. Figure 17 shows the particular solutions for $c = 0, 0.358$ (thicker curve), 1, 2, 3. Check that the answer satisfies the ODE. (Proceed as in Example 1.) Also check that the initial condition is satisfied.
 
-![Fig. 17. Particular solutions in Example 2](../images/fig-1-17.png){#fig-1-17}
+![Fig. 17. Particular solutions in Example 2](../images/chapter1/fig-1-17.png){#fig-1-17}
 
 ### EXAMPLE 3 WARNING! Breakdown in the Case of Nonexactness
 
@@ -1005,7 +1005,7 @@ $$
 
 **Step 4. Checking.** Check by substitution that the answer satisfies the given equation as well as the initial condition.
 
-![Fig. 18. Particular solutions in Example 5](../images/fig-1-18.png){#fig-1-18}
+![Fig. 18. Particular solutions in Example 5](../images/chapter1/fig-1-18.png){#fig-1-18}
 
 ## PROBLEM SET 1.4
 
@@ -1051,7 +1051,7 @@ Test for exactness. If exact, solve. If not, use an integrating factor as given 
 
     (d) Which solution of (@eq-sec14-21) do we not get in (a) or (b)?
 
-    ![Particular solutions in CAS Project 18](../images/fig-1-29.png){#fig-1-29}
+    ![Particular solutions in CAS Project 18](../images/chapter1/fig-1-29.png){#fig-1-29}
 
 ## 1.5 Linear ODEs. Bernoulli Equation. Population Dynamics {#sec-linear-odes}
 
@@ -1219,7 +1219,7 @@ $$
 I = \frac{E}{R}(1 - e^{-(R/L)t}), \quad \text{thus} \quad I = \frac{48}{11}(1 - e^{-110t}).
 $$ {#eq-sec15-8}
 
-![Fig. 19. RL-circuit](../images/fig-1-19.png){#fig-1-19}
+![Fig. 19. RL-circuit](../images/chapter1/fig-1-19.png){#fig-1-19}
 
 ### EXAMPLE 3 Hormone Level
 
@@ -1258,7 +1258,7 @@ $$
 
 with the steady-state part as before. To plot $y_{\text{part}}$ we must specify values for the constants, say, $A = B = 1$, $K = 0.05$. Figure 20 shows this solution. Notice that the transition period is relatively short (although $K$ is small), and the curve soon looks sinusoidal; this is the response to the input $1 + \cos (\pi t / 12)$.
 
-![Fig. 20. Particular solution in Example 3](../images/fig-1-20.png){#fig-1-20}
+![Fig. 20. Particular solution in Example 3](../images/chapter1/fig-1-20.png){#fig-1-20}
 
 ### Reduction to Linear Form. Bernoulli Equation
 
@@ -1338,7 +1338,7 @@ $$ {#eq-sec15-12}
 
 Directly from (@eq-sec15-11) we see that $y \equiv 0$ ($y(t) = 0$ for all $t$) is also a solution.
 
-![Fig. 21. Logistic population model. Curves (9) in Example 4 with $A/B = 4$](../images/fig-1-21.png){#fig-1-21}
+![Fig. 21. Logistic population model. Curves (9) in Example 4 with $A/B = 4$](../images/chapter1/fig-1-21.png){#fig-1-21}
 
 ### Population Dynamics
 
@@ -1360,7 +1360,7 @@ Equation (@eq-sec15-13) has constant solutions, called **equilibrium solutions**
 
 The ODE $y' = (y - 1)(y - 2)$ has the stable equilibrium solution $y_1 = 1$ and the unstable $y_2 = 2$, as the direction field in Fig. 22 suggests. The values $y_1$ and $y_2$ are the zeros of the parabola $f(y) = (y - 1)(y - 2)$ in the figure. Now, since the ODE is autonomous, we can “condense” the direction field to a “phase line plot” giving $y_1$ and $y_2$ and the direction (upward or downward) of the arrows in the field, and thus giving information about the stability or instability of the equilibrium solutions.
 
-![Fig. 22. Example 5. (A) Direction field. (B) “Phase line”. (C) Parabola $f(y)$](../images/fig-1-22.png){#fig-1-22}
+![Fig. 22. Example 5. (A) Direction field. (B) “Phase line”. (C) Parabola $f(y)$](../images/chapter1/fig-1-22.png){#fig-1-22}
 
 A few further population models will be discussed in the problem set. For some more details of population dynamics, see C. W. Clark, *Mathematical Bioeconomics: The Mathematics of Conservation*, 3rd ed. Hoboken, NJ: Wiley, 2010.
 
@@ -1451,7 +1451,7 @@ Explain the effect of the transformation by writing it as $y = Y + v$, $v = 1/u$
 37. **Harvesting.** In Prob. 36 find and graph the solution satisfying $y(0) = 2$ when (for simplicity) $A = B = 1$ and $H = 0.2$. What is the limit? What does it mean? What if there were no fishing?
 38. **Intermittent harvesting.** In Prob. 36 assume that you fish for 3 years, then fishing is banned for the next 3 years. Thereafter you start again. And so on. This is called intermittent harvesting. Describe qualitatively how the population will develop if intermitting is continued periodically. Find and graph the solution for the first 9 years, assuming that $A = B = 1, H = 0.2$, and $y(0) = 2$.
 
-    ![Fig. 23. Fish population in Problem 38](../images/fig-1-23.png){#fig-1-23}
+    ![Fig. 23. Fish population in Problem 38](../images/chapter1/fig-1-23.png){#fig-1-23}
 
 39. **Extinction vs. unlimited growth.** If in a population the death rate is proportional to the population, and the birth rate is proportional to the chance encounters of meeting mates for reproduction, what will the model be? Without solving, find out what will eventually happen to a small initial population. To a large one. Then solve the model.
 40. **Air circulation.** In a room containing $20,000\text{ ft}^3$ of air, $600\text{ ft}^3$ of fresh air flows in per minute, and the mixture (made practically uniform by circulating fans) is exhausted at a rate of 600 cubic feet per minute (cfm). What is the amount of fresh air $y(t)$ at any time if $y(0) = 0$? After what time will 90% of the air be fresh?
@@ -1494,7 +1494,7 @@ $$
 
 This is the family of orthogonal trajectories, the quadratic parabolas along which electrons or other charged particles (of very small mass) would move in the electric field between the black ellipses (elliptic cylinders).
 
-![Fig. 24. Electrostatic field between two ellipses (elliptic cylinders in space): Elliptic equipotential curves (equipotential surfaces) and orthogonal trajectories (parabolas)](../images/fig-1-24.png){#fig-1-24}
+![Fig. 24. Electrostatic field between two ellipses (elliptic cylinders in space): Elliptic equipotential curves (equipotential surfaces) and orthogonal trajectories (parabolas)](../images/chapter1/fig-1-24.png){#fig-1-24}
 
 ## PROBLEM SET 1.6
 
@@ -1521,7 +1521,7 @@ Sketch or graph some of the given curves. Guess what their OTs may look like. Fi
 11. **Electric field.** Let the electric equipotential lines (curves of constant potential) between two concentric cylinders with the $z$-axis in space be given by $u(x, y) = x^2 + y^2 = c$ (these are circular cylinders in the $xyz$-space). Using the method in the text, find their orthogonal trajectories (the curves of electric force).
 12. **Electric field.** The lines of electric force of two opposite charges of the same strength at $(-1, 0)$ and $(1, 0)$ are the circles through $(-1, 0)$ and $(1, 0)$. Show that these circles are given by $x^2 + (y - c)^2 = 1 + c^2$. Show that the equipotential lines (which are orthogonal trajectories of those circles) are the circles given by $(x + c^*)^2 + y^2 = c^{*2} - 1$ (dashed in Fig. 25).
 
-    ![Fig. 25. Electric field in Problem 12](../images/fig-1-25.png){#fig-1-25}
+    ![Fig. 25. Electric field in Problem 12](../images/chapter1/fig-1-25.png){#fig-1-25}
 
 13. **Temperature field.** Let the isotherms (curves of constant temperature) in a body in the upper half-plane be given by $4x^2 + 9y^2 = c \ (y > 0)$. Find the orthogonal trajectories (the curves along which heat will flow in regions filled with heat-conducting material and free of heat sources or heat sinks).
 14. **Conic sections.** Find the conditions under which the orthogonal trajectories of families of ellipses $x^2/a^2 + y^2/b^2 = c$ are again conic sections. Illustrate your result graphically by sketches or by using your CAS. What happens if $a = 0$? If $b = 0$?
@@ -1579,7 +1579,7 @@ $$ {#eq-sec17-2}
 
 Then the initial value problem (@eq-sec17-1) has at least one solution $y(x)$. This solution exists at least for all $x$ in the subinterval $|x - x_0| < \alpha$ of the interval $|x - x_0| < a$; here, $\alpha$ is the smaller of the two numbers $a$ and $b/K$.
 
-![Fig. 26. Rectangle R in the existence and uniqueness theorems](../images/fig-1-26.png){#fig-1-26}
+![Fig. 26. Rectangle R in the existence and uniqueness theorems](../images/chapter1/fig-1-26.png){#fig-1-26}
 
 (Example of Boundedness. The function $f(x, y) = x^2 + y^2$ is bounded (with $K = 2$) in the square $|x| \le 1, |y| \le 1$. The function $f(x, y) = \tan(x + y)$ is not bounded for $|x + y| \le \pi/2$. Explain!)
 
@@ -1605,7 +1605,7 @@ Proofs of these theorems are beyond the level of this book (see Ref. [A11] in Ap
 
 Since $y' = f(x, y)$, the condition (@eq-sec17-2) implies that $|y'| \le K$; that is, the slope of any solution curve $y(x)$ in $R$ is at least $-K$ and at most $K$. Hence a solution curve that passes through the point $(x_0, y_0)$ must lie in the colored region in Fig. 27 bounded by the lines $l_1$ and $l_2$ whose slopes are $-K$ and $K$, respectively. Depending on the form of $R$, two different cases may arise. In the first case, shown in Fig. 27a, we have $b/K \ge a$ and therefore $\alpha = a$ in the existence theorem, which then asserts that the solution exists for all $x$ between $x_0 - a$ and $x_0 + a$. In the second case, shown in Fig. 27b, we have $b/K < a$. Therefore, $\alpha = b/K < a$ and all we can conclude from the theorems is that the solution exists for all $x$ between $x_0 - b/K$ and $x_0 + b/K$. For larger or smaller $x$'s the solution curve may leave the rectangle $R$, and since nothing is assumed about $f$ outside $R$, nothing can be concluded about the solution for those larger or smaller $x$'s; that is, for such $x$'s the solution may or may not exist—we don't know.
 
-![Fig. 27. The condition (2) of the existence theorem. (a) First case. (b) Second case](../images/fig-1-27.png){#fig-1-27}
+![Fig. 27. The condition (2) of the existence theorem. (a) First case. (b) Second case](../images/chapter1/fig-1-27.png){#fig-1-27}
 
 Let us illustrate our discussion with a simple example. We shall see that our choice of a rectangle $R$ with a large base (a long $x$-interval) will lead to the case in Fig. 27b.
 
@@ -1724,7 +1724,7 @@ Solve the IVP. Indicate the method used. Show the details of your work.
 27. **Exponential growth.** If the growth rate of a culture of bacteria is proportional to the number of bacteria present and after 1 day is 1.25 times the original number, within what interval of time will the number of bacteria (a) double, (b) triple?
 28. **Mixing problem.** The tank in Fig. 28 contains 80 lb of salt dissolved in 500 gal of water. The inflow per minute is 20 lb of salt dissolved in 20 gal of water. The outflow is 20 gal/min of the uniform mixture. Find $y(t)$ and the time when the salt content in the tank reaches 95% of its limiting value (as $t \to \infty$).
 
-    ![Fig. 28. Tank in Problem 28](../images/fig-1-28.png){#fig-1-28}
+    ![Fig. 28. Tank in Problem 28](../images/chapter1/fig-1-28.png){#fig-1-28}
 
 29. **Half-life.** If in a reactor, uranium ${}^{237}_{\ 97}\text{U}$ loses 10% of its weight within one day, what is its half-life? How long would it take for 99% of the original amount to disappear?
 30. **Newton's law of cooling.** A metal bar whose temperature is $20°\text{C}$ is placed in boiling water. How long does it take to heat the bar to practically $100°\text{C}$, say, to $99.9°\text{C}$, if the temperature of the bar after 1 min of heating is $51.5°\text{C}$? First guess, then calculate.
