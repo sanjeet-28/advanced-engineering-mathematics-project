@@ -8,7 +8,7 @@
 
 <meta name="author" content="Erwin Kreyszig">
 
-<title>8&nbsp; gutka – Advanced Engineering Mathematics</title>
+<title>11&nbsp; gutka – Advanced Engineering Mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/ch8.html" rel="prev">
+<link href="../chapters/ch17.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/intro.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">gutka</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/intro.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">gutka</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,32 +159,50 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 02: Second-Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 07: Linear Algebra: Matrices, Vectors, Determinants. Linear Systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">CHAPTER 07: Linear Algebra: Matrices, Vectors, Determinants. Linear Systems</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
   </div>
 </li>
     </ul>
@@ -197,8 +215,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-units" id="toc-sec-units" class="nav-link active" data-scroll-target="#sec-units"><span class="header-section-number">8.1</span> Systems of Units. Some Important Conversion Factors</a></li>
-  <li><a href="#sec-diff-int" id="toc-sec-diff-int" class="nav-link" data-scroll-target="#sec-diff-int"><span class="header-section-number">8.2</span> Differentiation and Integration Reference</a></li>
+  <li><a href="#sec-units" id="toc-sec-units" class="nav-link active" data-scroll-target="#sec-units"><span class="header-section-number">11.1</span> Systems of Units. Some Important Conversion Factors</a></li>
+  <li><a href="#sec-diff-int" id="toc-sec-diff-int" class="nav-link" data-scroll-target="#sec-diff-int"><span class="header-section-number">11.2</span> Differentiation and Integration Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -207,7 +225,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">gutka</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">gutka</span></h1>
 <p class="subtitle lead">Tenth Edition</p>
 </div>
 
@@ -237,13 +255,13 @@ window.Quarto = {
 <img src="images/cover.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Book Cover
+Figure&nbsp;11.1: Book Cover
 </figcaption>
 </figure>
 </div>
 <hr>
-<section id="sec-units" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="sec-units"><span class="header-section-number">8.1</span> Systems of Units. Some Important Conversion Factors</h2>
+<section id="sec-units" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="sec-units"><span class="header-section-number">11.1</span> Systems of Units. Some Important Conversion Factors</h2>
 <p>The most important systems of units are shown in the table below. The mks system is also known as the <em>International System of Units</em> (abbreviated <em>SI</em>), and the abbreviations sec (instead of s), gm (instead of g), and nt (instead of N) are also used.</p>
 <table class="caption-top table">
 <colgroup>
@@ -306,12 +324,12 @@ Figure&nbsp;8.1: Book Cover
 <p>For further details see, for example, D. Halliday, R. Resnick, and J. Walker, <em>Fundamentals of Physics</em>, 9th ed., Hoboken, N. J: Wiley, 2011. See also AN American National Standard, ASTM/IEEE Standard Metric Practice, Institute of Electrical and Electronics Engineers, Inc.&nbsp;(IEEE), 445 Hoes Lane, Piscataway, N. J. 08854, website at www.ieee.org.</p>
 <hr>
 </section>
-<section id="sec-diff-int" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="sec-diff-int"><span class="header-section-number">8.2</span> Differentiation and Integration Reference</h2>
+<section id="sec-diff-int" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="sec-diff-int"><span class="header-section-number">11.2</span> Differentiation and Integration Reference</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<section id="sec-differentiation" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="sec-differentiation"><span class="header-section-number">8.2.1</span> Differentiation</h3>
+<section id="sec-differentiation" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="sec-differentiation"><span class="header-section-number">11.2.1</span> Differentiation</h3>
 <p><span class="math display">\[
 (cu)' = cu' \quad (c \text{ constant})
 \]</span></p>
@@ -380,8 +398,8 @@ Figure&nbsp;8.1: Book Cover
 </div><div class="column" style="width:4%;">
 
 </div><div class="column" style="width:48%;">
-<section id="sec-integration" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="sec-integration"><span class="header-section-number">8.2.2</span> Integration</h3>
+<section id="sec-integration" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="sec-integration"><span class="header-section-number">11.2.2</span> Integration</h3>
 <p><span class="math display">\[
 \int uv'\,dx = uv - \int u'v\,dx \quad \text{(by parts)}
 \]</span></p>
@@ -855,8 +873,8 @@ Figure&nbsp;8.1: Book Cover
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/ch8.html" class="pagination-link" aria-label="CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span>
+      <a href="../chapters/ch17.html" class="pagination-link" aria-label="CHAPTER 17: Conformal Mapping">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
