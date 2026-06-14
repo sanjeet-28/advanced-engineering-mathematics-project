@@ -1783,3 +1783,960 @@ Solve the initial value problem. State which rule you are using. Show each step 
 
 20. **TEAM PROJECT. Extensions of the Method of Undetermined Coefficients.** (a) Extend the method to products of the functions in Table 2.1. (b) Extend the method to Euler–Cauchy equations. Comment on the practical significance of such extensions.
 
+---
+
+## 2.8 Modeling: Forced Oscillations. Resonance {#sec-forced-oscillations}
+
+In Sec. 2.4 we considered vertical motions of a mass–spring system (vibration of a mass $m$ on an elastic spring, as in Figs. 33 and 53) and modeled it by the homogeneous linear ODE
+
+$$
+m y'' + c y' + k y = 0 \tag{1}
+$$
+
+Here $y(t)$ as a function of time $t$ is the displacement of the body of mass $m$ from rest.
+
+The mass–spring system of Sec. 2.4 exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia $m y''$, the damping force $c y'$ (if $c > 0$), and the spring force $k y$, a restoring force.
+
+![Fig. 53. Mass on a spring](../images/fig-2-53.png){#fig-2-53}
+
+We now extend our model by including an additional force, that is, the external force $r(t)$ on the right. Then we have
+
+$$
+m y'' + c y' + k y = r(t) \tag{2*}
+$$
+
+Mechanically this means that at each instant $t$ the resultant of the internal forces is in equilibrium with $r(t)$. The resulting motion is called a **forced motion** with forcing function $r(t)$, which is also known as **input** or **driving force**, and the solution $y(t)$ to be obtained is called the **output** or the **response** of the system to the driving force.
+
+Of special interest are periodic external forces, and we shall consider a driving force of the form $r(t) = F_0 \cos \omega t$ ($F_0 > 0$, $\omega > 0$). Then we have the nonhomogeneous ODE
+
+$$
+m y'' + c y' + k y = F_0 \cos \omega t \tag{2}
+$$
+
+Its solution will reveal facts that are fundamental in engineering mathematics and allow us to model resonance.
+
+### Solving the Nonhomogeneous ODE (2)
+
+From Sec. 2.7 we know that a general solution of (2) is the sum of a general solution $y_h$ of the homogeneous ODE (1) plus any particular solution $y_p$ of (2). To find $y_p$ we use the method of undetermined coefficients (Sec. 2.7), starting from
+
+$$
+y_p(t) = a \cos \omega t + b \sin \omega t \tag{3}
+$$
+
+By differentiating this function (chain rule!) we obtain
+
+$$
+y_p'(t) = -\omega a \sin \omega t + \omega b \cos \omega t,
+$$
+
+$$
+y_p''(t) = -\omega^2 a \cos \omega t - \omega^2 b \sin \omega t.
+$$
+
+Substituting $y_p, y_p', y_p''$ into (2) and collecting the cosine and the sine terms, we get
+
+$$
+[(k - m\omega^2)a + \omega c b] \cos \omega t + [-\omega c a + (k - m\omega^2)b] \sin \omega t = F_0 \cos \omega t.
+$$
+
+The cosine terms on both sides must be equal, and the coefficient of the sine term on the left must be zero since there is no sine term on the right. This gives the two equations
+
+$$
+(k - m\omega^2)a + \omega c b = F_0
+$$
+
+$$
+-\omega c a + (k - m\omega^2)b = 0 \tag{4}
+$$
+
+for determining the unknown coefficients $a$ and $b$. This is a linear system. We can solve it by elimination. To eliminate $b$, multiply the first equation by $(k - m\omega^2)$ and the second by $-\omega c$, and add the results, obtaining
+
+$$
+[(k - m\omega^2)^2 + \omega^2 c^2]a = (k - m\omega^2)F_0.
+$$
+
+Similarly, to eliminate $a$, multiply the first equation by $\omega c$ and the second by $(k - m\omega^2)$, and add to get
+
+$$
+[(k - m\omega^2)^2 + \omega^2 c^2]b = \omega c F_0.
+$$
+
+If the factor $(k - m\omega^2)^2 + \omega^2 c^2$ is not zero, we can divide by this factor and solve for $a$ and $b$,
+
+$$
+a = F_0 \frac{k - m\omega^2}{(k - m\omega^2)^2 + \omega^2 c^2}, \qquad b = F_0 \frac{\omega c}{(k - m\omega^2)^2 + \omega^2 c^2}.
+$$
+
+If we set $\omega_0 = \sqrt{k/m}$ as in Sec. 2.4, then $k = m\omega_0^2$ and we obtain
+
+$$
+a = F_0 \frac{m(\omega_0^2 - \omega^2)}{m^2(\omega_0^2 - \omega^2)^2 + \omega^2 c^2}, \qquad b = F_0 \frac{\omega c}{m^2(\omega_0^2 - \omega^2)^2 + \omega^2 c^2} \tag{5}
+$$
+
+We thus obtain the general solution of the nonhomogeneous ODE (2) in the form
+
+$$
+y(t) = y_h(t) + y_p(t) \tag{6}
+$$
+
+Here $y_h$ is a general solution of the homogeneous ODE (1) and $y_p$ is given by (3) with coefficients (5).
+
+We shall now discuss the behavior of the mechanical system, distinguishing between the two cases $c = 0$ (no damping) and $c > 0$ (damping). These cases will correspond to two basically different types of output.
+
+### Case 1. Undamped Forced Oscillations. Resonance
+
+If the damping of the physical system is so small that its effect can be neglected over the time interval considered, we can set $c = 0$. Then (5) reduces to $a = F_0/[m(\omega_0^2 - \omega^2)]$ and $b = 0$. Hence (3) becomes (use $k = m\omega_0^2$)
+
+$$
+y_p(t) = \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t = \frac{F_0}{k[1 - (\omega/\omega_0)^2]} \cos \omega t \tag{7}
+$$
+
+Here we must assume that $\omega^2 \neq \omega_0^2$; physically, the frequency $\omega/(2\pi)$ [cycles/sec] of the driving force is different from the natural frequency $\omega_0/(2\pi)$ of the system, which is the frequency of the free undamped motion [see (4) in Sec. 2.4]. From (7) and from (4*) in Sec. 2.4 we have the general solution of the "undamped system"
+
+$$
+y(t) = C \cos (\omega_0 t - \delta) + \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t \tag{8}
+$$
+
+We see that this output is a superposition of two harmonic oscillations of the frequencies just mentioned.
+
+**Resonance.** We discuss (7). We see that the maximum amplitude of $y_p$ is (put $\cos \omega t = 1$)
+
+$$
+a_0 = \frac{F_0}{k} \rho \tag{9}
+$$
+
+where
+
+$$
+\rho = \frac{1}{\left|1 - \left(\frac{\omega}{\omega_0}\right)^2\right|} \tag{9*}
+$$
+
+depends on $\omega$ and $\omega_0$. If $\omega \to \omega_0$, then $\rho$ and $a_0$ tend to infinity. This excitation of large oscillations by matching input and natural frequencies is called **resonance**. $\rho$ is called the **resonance factor** (Fig. 54), and from (9) we see that $\rho$ is the ratio of the amplitude $a_0$ of the particular solution $y_p$ and the static displacement $F_0/k$ under a constant force $F_0$. We shall see later in this section that resonance is of basic importance in the study of vibrating systems.
+
+![Fig. 54. Resonance factor $\rho(\omega)$](../images/fig-2-54.png){#fig-2-54}
+
+In the case of resonance the nonhomogeneous ODE (2) becomes
+
+$$
+y'' + \omega_0^2 y = \frac{F_0}{m} \cos \omega_0 t \tag{10}
+$$
+
+Then (7) is no longer valid, and, from the Modification Rule in Sec. 2.7, we conclude that a particular solution of (10) is of the form
+
+$$
+y_p(t) = t(a \cos \omega_0 t + b \sin \omega_0 t).
+$$
+
+By substituting this into (10) we find $a = 0$ and $b = F_0 / (2m\omega_0)$. Hence (Fig. 55)
+
+$$
+y_p(t) = \frac{F_0}{2m\omega_0} t \sin \omega_0 t \tag{11}
+$$
+
+![Fig. 55. Particular solution in the case of resonance](../images/fig-2-55.png){#fig-2-55}
+
+We see that, because of the factor $t$, the amplitude of the vibration becomes larger and larger. Practically speaking, systems with very little damping may undergo large vibrations that can destroy the system. We shall return to this practical aspect of resonance later in this section.
+
+**Beats.** Another interesting and highly important type of oscillation is obtained if $\omega$ is close to $\omega_0$. Take, for example, the particular solution [see (8)]
+
+$$
+y(t) = \frac{F_0}{m(\omega_0^2 - \omega^2)} (\cos \omega t - \cos \omega_0 t) \tag{12}
+$$
+
+satisfying the initial conditions $y(0) = 0, y'(0) = 0$ (when $\omega \neq \omega_0$). Using formula (12) in App. 3.1 [which is $\cos \alpha - \cos \beta = 2 \sin \frac{\beta + \alpha}{2} \sin \frac{\beta - \alpha}{2}$], we may write this as
+
+$$
+y(t) = \frac{2F_0}{m(\omega_0^2 - \omega^2)} \sin \left( \frac{\omega_0 + \omega}{2} t \right) \sin \left( \frac{\omega_0 - \omega}{2} t \right)
+$$
+
+Since $\omega$ is close to $\omega_0$, the difference $\omega_0 - \omega$ is small. Hence the period of the last sine function is large, and we obtain an oscillation of the type shown in Fig. 56, the dashed curve resulting from the first sine factor. This is what musicians are listening to when they tune their instruments.
+
+![Fig. 56. Forced undamped oscillation when the difference of the input and natural frequencies is small ("beats")](../images/fig-2-56.png){#fig-2-56}
+
+### Case 2. Damped Forced Oscillations
+
+If the damping of the mass–spring system is not negligibly small, we have $c > 0$ and a damping term $c y'$ in (1) and (2). Then the general solution $y_h$ of the homogeneous ODE (1) approaches zero as $t$ goes to infinity, as we know from Sec. 2.4. Practically, it is zero after a sufficiently long time. Hence the "transient solution" (6) of (2), given by $y = y_h + y_p$, approaches the "steady-state solution" $y_p$. This proves the following.
+
+::: {.callout-note appearance="simple" icon=false}
+### THEOREM 1 Steady-State Solution
+After a sufficiently long time the output of a damped vibrating system under a purely sinusoidal driving force [see (2)] will practically be a harmonic oscillation whose frequency is that of the input.
+:::
+
+**Amplitude of the Steady-State Solution. Practical Resonance.** Whereas in the undamped case the amplitude of $y_p$ approaches infinity as $\omega$ approaches $\omega_0$, this will not happen in the damped case. In this case the amplitude will always be finite. But it may have a maximum for some $\omega_{max}$ depending on the damping constant $c$. This may be called **practical resonance**. It is of great importance because if $c$ is not too large, then some input may excite oscillations large enough to damage or even destroy the system. Machines, cars, ships, airplanes, bridges, and high-rising buildings are vibrating mechanical systems, and it is sometimes rather difficult to find constructions that are completely free of undesired resonance effects, caused, for instance, by an engine or by strong winds.
+
+To study the amplitude of $y_p$ as a function of $\omega$, we write (3) in the form
+
+$$
+y_p(t) = C^* \cos (\omega t - \eta) \tag{13}
+$$
+
+$C^*$ is called the amplitude of $y_p$ and $\eta$ the phase angle or phase lag because it measures the lag of the output behind the input. According to (5), these quantities are
+
+$$
+C^*(\omega) = \sqrt{a^2 + b^2} = \frac{F_0}{\sqrt{m^2(\omega_0^2 - \omega^2)^2 + \omega^2 c^2}} \tag{14}
+$$
+
+$$
+\tan \eta(\omega) = \frac{b}{a} = \frac{\omega c}{m(\omega_0^2 - \omega^2)} \tag{14*}
+$$
+
+Let us see whether $C^*(\omega)$ has a maximum and, if so, find its location and then its size. We denote the radicand in the denominator of $C^*$ by $R$. Equating the derivative of $C^*$ to zero, we obtain
+
+$$
+\frac{dC^*}{d\omega} = F_0 \left( -\frac{1}{2} R^{-3/2} \right) [2m^2(\omega_0^2 - \omega^2)(-2\omega) + 2\omega c^2] = 0.
+$$
+
+The expression in the brackets $[\dots]$ is zero if
+
+$$
+2m^2(\omega_0^2 - \omega^2) - c^2 = 0 \tag{15}
+$$
+
+By reshuffling terms we have
+
+$$
+2m^2\omega^2 = 2m^2\omega_0^2 - c^2 = 2mk - c^2
+$$
+
+since $\omega_0^2 = k/m$. The right side of this equation becomes negative if $c^2 > 2mk$, so that then (15) has no real solution and $C^*$ decreases monotonically as $\omega$ increases, as the lowest curve in Fig. 57 shows. If $c$ is smaller, then (15) has a real solution at $\omega = \omega_{max}$ where
+
+$$
+\omega_{max}^2 = \omega_0^2 - \frac{c^2}{2m^2} \tag{15*}
+$$
+
+From (15*) we see that this solution increases as $c$ decreases and approaches $\omega_0$ as $c$ approaches zero. See also Fig. 57.
+
+![Fig. 57. Amplification as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/fig-2-57.png){#fig-2-57}
+
+![Fig. 58. Phase lag as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/fig-2-58.png){#fig-2-58}
+
+The size of $C^*(\omega_{max})$ is obtained from (14), with $\omega^2$ given by (15*). For this we obtain in the radicand in the denominator of (14) from (15*):
+
+$$
+m^2(\omega_0^2 - \omega_{max}^2)^2 = m^2\left(\frac{c^2}{2m^2}\right)^2 = \frac{c^4}{4m^2}
+$$
+
+and
+
+$$
+\omega_{max}^2 c^2 = \left(\omega_0^2 - \frac{c^2}{2m^2}\right)c^2
+$$
+
+The sum of the right sides of these two formulas is
+
+$$
+\frac{c^4}{4m^2} + \omega_0^2 c^2 - \frac{c^4}{2m^2} = c^2 \left( \omega_0^2 - \frac{c^2}{4m^2} \right) = \frac{c^2}{4m^2}(4mk - c^2)
+$$
+
+Substitution into (14) gives
+
+$$
+C^*(\omega_{max}) = \frac{2m F_0}{c\sqrt{4m^2\omega_0^2 - c^2}} \tag{16}
+$$
+
+We see that $C^*(\omega_{max})$ is always finite when $c > 0$. Furthermore, since the expression in the denominator of (16) decreases monotonically to zero as $c$ goes to zero, the maximum amplitude (16) increases monotonically to infinity, in agreement with our result in Case 1. Figure 57 shows the amplification (ratio of the amplitudes of output and input) $C^*/F_0$ as a function of $\omega$ for $m=1, k=1$, hence $\omega_0 = 1$, and various values of the damping constant $c$. Figure 58 shows the phase angle $\eta$ (the lag of the output behind the input), which is less than $\pi/2$ when $\omega < \omega_0$, equal to $\pi/2$ when $\omega = \omega_0$, and greater than $\pi/2$ for $\omega > \omega_0$.
+
+---
+
+## PROBLEM SET 2.8
+
+1. **WRITING REPORT. Free and Forced Vibrations.** Write a condensed report of 2–3 pages on the most important similarities and differences of free and forced vibrations, with examples of your own. No proofs.
+
+2. Which of Probs. 1–18 in Sec. 2.7 (with time $t$) can be models of mass–spring systems with a harmonic oscillation as steady-state solution?
+
+### 3–7 STEADY-STATE SOLUTIONS
+Find the steady-state motion of the mass–spring system modeled by the ODE. Show the details of your work.
+
+3. $y'' + 6y' + 8y = 42.5 \cos 2t$
+4. $y'' + 2.5y' + 10y = -13.6 \sin 4t$
+5. $(D^2 + D + 4.25I)y = 22.1 \cos 4.5t$
+6. $y'' + 3y' + 3.25y = 3 \cos t - 1.5 \sin t$
+7. $2y'' + 4y' + 6.5y = 4 \sin 1.5t$
+
+### 8–15 TRANSIENT SOLUTIONS
+Find the transient motion of the mass–spring system modeled by the ODE. Show the details of your work.
+
+8. $y'' + 16y = 56 \cos 4t$
+9. $(D^2 + 4D + 3I)y = \cos t + \frac{1}{3} \cos 3t$
+10. $(4D^2 + 12D + 9I)y = 225 - 75 \sin 3t$
+11. $(D^2 + 2D + 5I)y = 4 \cos t + 8 \sin t$
+12. $(D^2 + 2I)y = \cos \sqrt{2}t + \sin \sqrt{2}t$
+13. $(D^2 + I)y = \cos \omega t, \quad \omega^2 \neq 1$
+14. $(D^2 + I)y = 5e^{-t} \cos t$
+15. $(D^2 + 4D + 8I)y = 2 \cos 2t + \sin 2t$
+
+### 16–20 INITIAL VALUE PROBLEMS
+Find the motion of the mass–spring system modeled by the ODE and the initial conditions. Sketch or graph the solution curve. In addition, sketch or graph the curve of $y - y_p$ to see when the system practically reaches the steady state.
+
+16. $y'' + 25y = 99 \cos 4.9t, \quad y(0) = 2, \quad y'(0) = 0$
+17. $(D^2 + 5I)y = \cos \pi t - \sin \pi t, \quad y(0) = 0, \quad y'(0) = 1$
+18. $(D^2 + 2D + 2I)y = e^{-t/2} \sin \frac{1}{2}t, \quad y(0) = 0, \quad y'(0) = 9.4$
+19. $(D^2 + 8D + 17I)y = 474.5 \sin 0.5t, \quad y(0) = -5.4, \quad y'(0) = 3$
+20. $y'' + 25y = 24 \sin t, \quad y(0) = 1, \quad y'(0) = 1$
+
+21. **Beats.** Derive the formula after (12) from (12). Can we have beats in a damped system?
+
+22. **Beats.** Solve $y'' + 25y = 99 \cos 4.9t, \quad y(0) = 2, \quad y'(0) = 0$ (which is Problem 16). How does the graph of the solution change if you change (a) $y(0)$, (b) the frequency of the driving force?
+
+23. **TEAM EXPERIMENT. Practical Resonance.**
+    (a) Derive, in detail, the crucial formula (16).
+    (b) By considering $dC^*(\omega_{max})/dc$ show that $C^*(\omega_{max})$ increases as $c$ decreases (with $c^2 < 2mk$).
+    (c) Illustrate practical resonance with an ODE of your own in which you vary $c$, and sketch or graph corresponding curves as in Fig. 57.
+    (d) Take your ODE with $c$ fixed and an input of two terms, one with frequency close to the practical resonance frequency and the other not. Discuss and sketch or graph the output.
+    (e) Give other applications (not in the book) in which resonance is important.
+
+![Fig. 59. Problem 24](../images/fig-2-59.png){#fig-2-59}
+
+![Fig. 60. Typical solution curves in CAS Experiment 25](../images/fig-2-60.png){#fig-2-60}
+
+24. **Gun barrel.** Solve $y'' + y = 1 - t^2/\pi^2$ if $0 \le t \le \pi$ and $0$ if $t > \pi$; here $y(0) = 0, y'(0) = 0$. This models an undamped system on which a force $F$ acts during some interval of time (see Fig. 59), for instance, the force on a gun barrel when a shell is fired, the barrel being braked by heavy springs (and then damped by a dashpot, which we disregard for simplicity). Hint: At $t = \pi$, both $y$ and $y'$ must be continuous.
+
+25. **CAS EXPERIMENT. Undamped Vibrations.**
+    (a) Solve the initial value problem $y'' + y = \cos \omega t, \quad \omega^2 \neq 1, \quad y(0) = 0, \quad y'(0) = 0$. Show that the solution can be written
+    $$y(t) = \frac{2}{1 - \omega^2} \sin \left[ \frac{1}{2}(1 + \omega)t \right] \sin \left[ \frac{1}{2}(1 - \omega)t \right].$$
+    (b) Experiment with the solution by changing $\omega$ to see the change of the curves from those for small $\omega$ to beats, to resonance, and to large values of $\omega$ (see Fig. 60).
+
+---
+
+## 2.9 Modeling: Electric Circuits {#sec-electric-circuits}
+
+Designing good models is a task the computer cannot do. Hence setting up models has become an important task in modern applied mathematics. The best way to gain experience in successful modeling is to carefully examine the modeling process in various fields and applications. Accordingly, modeling electric circuits will be profitable for all students, not just for electrical engineers and computer scientists.
+
+Figure 61 shows an RLC-circuit, as it occurs as a basic building block of large electric networks in computers and elsewhere. An RLC-circuit is obtained from an RL-circuit by adding a capacitor. Recall Example 2 on the RL-circuit in Sec. 1.5: The model of the RL-circuit is
+
+$$
+L I' + R I = E(t).
+$$
+
+It was obtained by KVL (Kirchhoff's Voltage Law)[^footnote1] by equating the voltage drops across the resistor and the inductor to the electromotive force (EMF) $E(t)$. Hence we obtain the model of the RLC-circuit simply by adding the voltage drop $Q/C$ across the capacitor. Here, $C$ (farads, F) is the capacitance of the capacitor, and $Q$ (coulombs) is the charge on the capacitor, related to the current $I(t)$ by
+
+$$
+I(t) = \frac{dQ}{dt}, \qquad \text{equivalently} \qquad Q(t) = \int I(t) \, dt.
+$$
+
+![Fig. 61. RLC-circuit](../images/fig-2-61.png){#fig-2-61}
+
+![Fig. 62. Elements in an RLC-circuit](../images/fig-2-62.png){#fig-2-62}
+
+| Name | Symbol Notation | Unit | Voltage Drop |
+|:---|:---|:---|:---|
+| Ohm's Resistor | $R$ Ohm's Resistance | ohms ($\Omega$) | $RI$ |
+| Inductor | $L$ Inductance | henrys (H) | $L \frac{dI}{dt}$ |
+| Capacitor | $C$ Capacitance | farads (F) | $Q/C$ |
+
+: Elements in an RLC-circuit {#tbl-2-2-elements}
+
+Assuming a sinusoidal EMF as in Fig. 61, we thus have the model of the RLC-circuit:
+
+$$
+L I' + R I + \frac{1}{C} \int I \, dt = E(t) = E_0 \sin \omega t \tag{1*}
+$$
+
+This is an "integro-differential equation." To get rid of the integral, we differentiate (1*) with respect to $t$, obtaining:
+
+$$
+L I'' + R I' + \frac{1}{C} I = E'(t) = E_0 \omega \cos \omega t \tag{1}
+$$
+
+This shows that the current in an RLC-circuit is obtained as the solution of this nonhomogeneous second-order ODE (1) with constant coefficients.
+
+In connection with initial value problems, we shall occasionally use
+
+$$
+L Q'' + R Q' + \frac{1}{C} Q = E(t) \tag{1'}
+$$
+
+obtained from $I = Q'$ and (1*).
+
+[^footnote1]: GUSTAV ROBERT KIRCHHOFF (1824–1887), German physicist. Later we shall also need Kirchhoff's Current Law (KCL): At any point of a circuit, the sum of the inflowing currents is equal to the sum of the outflowing currents. The units of measurement of electrical quantities are named after ANDRÉ MARIE AMPÈRE (1775–1836), French physicist, CHARLES AUGUSTIN DE COULOMB (1736–1806), French physicist and engineer, MICHAEL FARADAY (1791–1867), English physicist, JOSEPH HENRY (1797–1878), American physicist, GEORG SIMON OHM (1789–1854), German physicist, and ALESSANDRO VOLTA (1745–1827), Italian physicist.
+
+### Solving the ODE (1) for the Current in an RLC-Circuit
+
+A general solution of (1) is the sum $I = I_h + I_p$, where $I_h$ is a general solution of the homogeneous ODE corresponding to (1) and $I_p$ is a particular solution of (1). We first determine $I_p$ by the method of undetermined coefficients, proceeding as in the previous section. We substitute
+
+$$
+I_p(t) = a \cos \omega t + b \sin \omega t \tag{2}
+$$
+
+into (1). Then we collect the cosine terms and equate them to $E_0 \omega$ on the right, and we equate the sine terms to zero because there is no sine term on the right, obtaining:
+
+$$
+L\omega^2(-a) + R\omega b + \frac{a}{C} = E_0 \omega \qquad \text{(Cosine terms)}
+$$
+
+$$
+L\omega^2(-b) - R\omega a + \frac{b}{C} = 0 \qquad \text{(Sine terms)}
+$$
+
+Before solving this system for $a$ and $b$, we first introduce a combination of $L$ and $C$, called the **reactance**:
+
+$$
+S = \omega L - \frac{1}{\omega C} \tag{3}
+$$
+
+Dividing the previous two equations by $\omega$, ordering them, and substituting $S$ gives:
+
+$$
+-S a + R b = E_0
+$$
+
+$$
+-R a - S b = 0
+$$
+
+We now eliminate $b$ by multiplying the first equation by $S$ and the second by $R$, and adding. Then we eliminate $a$ by multiplying the first equation by $R$ and the second by $-S$, and adding. This gives:
+
+$$
+-(R^2 + S^2) a = E_0 S
+$$
+
+$$
+(R^2 + S^2) b = E_0 R
+$$
+
+We can solve for $a$ and $b$:
+
+$$
+a = \frac{-E_0 S}{R^2 + S^2}, \qquad b = \frac{E_0 R}{R^2 + S^2} \tag{4}
+$$
+
+Equation (2) with coefficients $a$ and $b$ given by (4) is the desired particular solution of the nonhomogeneous ODE (1) governing the current $I$ in an RLC-circuit with sinusoidal electromotive force.
+
+Using (4), we can write $I_p$ in terms of "physically visible" quantities, namely, amplitude $I_0$ and phase lag $\theta$ of the current behind the EMF, that is,
+
+$$
+I_p(t) = I_0 \sin(\omega t - \theta) \tag{5}
+$$
+
+where
+
+$$
+I_0 = \sqrt{a^2 + b^2} = \frac{E_0}{\sqrt{R^2 + S^2}}, \qquad \tan \theta = -\frac{a}{b} = \frac{S}{R} \tag{5*}
+$$
+
+The quantity $Z = \sqrt{R^2 + S^2}$ is called the **impedance**. Our formula shows that the impedance equals the ratio $E_0 / I_0$. This is somewhat analogous to $R = E/I$ (Ohm's law) and, because of this analogy, the impedance is also known as the **apparent resistance**.
+
+A general solution of the homogeneous equation corresponding to (1) is
+
+$$
+I_h(t) = c_1 e^{\lambda_1 t} + c_2 e^{\lambda_2 t}
+$$
+
+where $\lambda_1$ and $\lambda_2$ are the roots of the characteristic equation
+
+$$
+\lambda^2 + \frac{R}{L} \lambda + \frac{1}{LC} = 0.
+$$
+
+We can write these roots in the form $\lambda_1 = -\alpha + \beta$ and $\lambda_2 = -\alpha - \beta$, where
+
+$$
+\alpha = \frac{R}{2L}, \qquad \beta = \sqrt{\frac{R^2}{4L^2} - \frac{1}{LC}} = \frac{1}{2L}\sqrt{R^2 - \frac{4L}{C}}.
+$$
+
+Now in an actual circuit, $R$ is never zero (hence $R > 0$). From this it follows that $I_h$ approaches zero, theoretically as $t \to \infty$, but practically after a relatively short time. Hence the transient current $I = I_h + I_p$ tends to the steady-state current $I_p$, and after some time the output will practically be a harmonic oscillation, which is given by (5) and whose frequency is that of the input (of the electromotive force).
+
+### EXAMPLE 1 RLC-Circuit
+
+Find the current in an RLC-circuit with $R = 11\ \Omega$, $L = 0.1\text{ H}$, $C = 10^{-2}\text{ F}$, which is connected to a source of EMF $E(t) = 110 \sin (60 \cdot 2\pi t) = 110 \sin 377t\text{ V}$ (hence $60\text{ Hz}$, the usual frequency in the U.S. and Canada; in Europe it would be $220\text{ V}$ and $50\text{ Hz}$). Assume that current and capacitor charge are $0$ when $t = 0$.
+
+**Solution.** **Step 1. General solution of the homogeneous ODE.** Substituting $R, L, C$ and the derivative $E'(t)$ into (1), we obtain:
+
+$$
+0.1 I'' + 11 I' + 100 I = 110 \cdot 377 \cos 377 t.
+$$
+
+Hence the homogeneous ODE is $0.1 I'' + 11 I' + 100 I = 0$. Its characteristic equation is
+
+$$
+0.1 \lambda^2 + 11 \lambda + 100 = 0.
+$$
+
+The roots are $\lambda_1 = -10$ and $\lambda_2 = -100$. The corresponding general solution of the homogeneous ODE is
+
+$$
+I_h(t) = c_1 e^{-10t} + c_2 e^{-100t}.
+$$
+
+**Step 2. Particular solution of (1).** We calculate the reactance $S$ and the steady-state current $I_p(t) = a \cos 377t + b \sin 377t$:
+
+$$
+S = 377 \cdot 0.1 - \frac{1}{377 \cdot 10^{-2}} = 37.7 - 2.65 = 35.05.
+$$
+
+In the book, this is rounded to:
+
+$$
+S \approx 37.7 - 0.3 = 37.4\ \Omega.
+$$
+
+Let's check the coefficients $a$ and $b$ obtained from (4) (and rounded):
+
+$$
+a = \frac{-110 \cdot 37.4}{11^2 + 37.4^2} \approx -2.71, \qquad b = \frac{110 \cdot 11}{11^2 + 37.4^2} \approx 0.796.
+$$
+
+Hence in our present case, a general solution of the nonhomogeneous ODE (1) is:
+
+$$
+I(t) = c_1 e^{-10t} + c_2 e^{-100t} - 2.71 \cos 377t + 0.796 \sin 377t \tag{6}
+$$
+
+**Step 3. Particular solution satisfying the initial conditions.** How to use $Q(0) = 0$? We finally determine $c_1$ and $c_2$ from the initial conditions $I(0) = 0$ and $Q(0) = 0$. From the first condition and (6) we have:
+
+$$
+I(0) = c_1 + c_2 - 2.71 = 0, \qquad \text{hence} \qquad c_2 = 2.71 - c_1 \tag{7}
+$$
+
+We turn to $Q(0) = 0$. The integral in (1*) equals $Q(t)$, see near the beginning of this section. Hence for $t = 0$, Eq. (1*) becomes:
+
+$$
+L I'(0) + R I(0) + \frac{1}{C} Q(0) = E(0) = 0.
+$$
+
+Since $I(0) = 0$ and $Q(0) = 0$, this reduces to:
+
+$$
+L I'(0) = 0 \implies I'(0) = 0.
+$$
+
+Differentiating (6) and setting $t = 0$, we thus obtain:
+
+$$
+I'(0) = -10 c_1 - 100 c_2 + 377 \cdot 0.796 = 0.
+$$
+
+Since $377 \cdot 0.796 \approx 300.1$, this gives by (7):
+
+$$
+-10 c_1 - 100(2.71 - c_1) + 300.1 = 0 \implies 90 c_1 = 271 - 300.1 = -29.1 \implies c_1 \approx -0.323.
+$$
+
+Then $c_2 = 2.71 - (-0.323) = 3.033$. Hence the answer is:
+
+$$
+I(t) = -0.323 e^{-10t} + 3.033 e^{-100t} - 2.71 \cos 377t + 0.796 \sin 377t
+$$
+
+You may get slightly different values depending on the rounding. Figure 63 shows $I(t)$ as well as $I_p(t)$ which practically coincide, except for a very short time near $t = 0$ because the exponential terms go to zero very rapidly. Thus after a very short time the current will practically execute harmonic oscillations of the input frequency $60\text{ cycles/sec}$. Its maximum amplitude and phase lag can be seen from (5), which here takes the form:
+
+$$
+I_p(t) = 2.824 \sin(377t - 1.29). \qquad \square
+$$
+
+![Fig. 63. Transient (upper curve) and steady-state currents in Example 1](../images/fig-2-63.png){#fig-2-63}
+
+### Analogy of Electrical and Mechanical Quantities
+
+Entirely different physical or other systems may have the same mathematical model. For instance, we have seen this from the various applications of the ODE in Chap. 1. Another impressive demonstration of this unifying power of mathematics is given by the ODE (1) for an electric RLC-circuit and the ODE (2) in the last section for a mass–spring system. Both equations:
+
+$$
+L I'' + R I' + \frac{1}{C} I = E_0 \omega \cos \omega t
+$$
+
+and
+
+$$
+m y'' + c y' + k y = F_0 \cos \omega t
+$$
+
+are of the same form. Table 2.2 shows the analogy between the various quantities involved. The inductance $L$ corresponds to the mass $m$ and, indeed, an inductor opposes a change in current, having an "inertia effect" similar to that of a mass. The resistance $R$ corresponds to the damping constant $c$, and a resistor causes loss of energy, just as a damping dashpot does. And so on.
+
+This analogy is strictly quantitative in the sense that to a given mechanical system we can construct an electric circuit whose current will give the exact values of the displacement in the mechanical system when suitable scale factors are introduced.
+
+The practical importance of this analogy is almost obvious. The analogy may be used for constructing an "electrical model" of a given mechanical model, resulting in substantial savings of time and money because electric circuits are easy to assemble, and electric quantities can be measured much more quickly and accurately than mechanical ones.
+
+| Electrical System | Mechanical System |
+|:---|:---|
+| Inductance $L$ | Mass $m$ |
+| Resistance $R$ | Damping constant $c$ |
+| Reciprocal $1/C$ of capacitance | Spring modulus $k$ |
+| Electromotive force $E(t)$ (or its derivative $E'(t)$) | Driving force $F(t)$ (or $F_0 \cos \omega t$) |
+| Current $I(t)$ | Displacement $y(t)$ |
+
+: Analogy of Electrical and Mechanical Quantities {#tbl-2-2-analogy}
+
+Related to this analogy are transducers, devices that convert changes in a mechanical quantity (for instance, in a displacement) into changes in an electrical quantity that can be monitored; see Ref. [GenRef11] in App. 1.
+
+---
+
+## PROBLEM SET 2.9
+
+### 1–6 RLC-CIRCUITS: SPECIAL CASES
+
+1. **RC-Circuit.** Model the RC-circuit in Fig. 64. Find the current due to a constant $E$.
+
+![Fig. 64. RC-circuit](../images/fig-2-64.png){#fig-2-64}
+
+![Fig. 65. Current $I$ in Problem 1](../images/fig-2-65.png){#fig-2-65}
+
+2. **RC-Circuit.** Solve Prob. 1 when $E = E_0 \sin \omega t$, and $R, C, E_0$, and $\omega$ are arbitrary.
+
+3. **RL-Circuit.** Model the RL-circuit in Fig. 66. Find a general solution when $R, L, E$ are any constants. Graph or sketch solutions when $R = 10\ \Omega$, $L = 0.25\text{ H}$, and $E = 48\text{ V}$.
+
+![Fig. 66. RL-circuit](../images/fig-2-66.png){#fig-2-66}
+
+![Fig. 67. Currents in Problem 3](../images/fig-2-67.png){#fig-2-67}
+
+4. **RL-Circuit.** Solve Prob. 3 when $E = E_0 \sin \omega t$ and $R, L$, and $E_0$ are arbitrary. Sketch a typical solution.
+
+![Fig. 68. Typical current in Problem 4](../images/fig-2-68.png){#fig-2-68}
+
+5. **LC-Circuit.** This is an RLC-circuit with negligibly small $R$ (analog of an undamped mass–spring system). Find the current when $L = 0.5\text{ H}$, $C = 0.005\text{ F}$, and $E = \sin t\text{ V}$, assuming zero initial current and charge.
+
+![Fig. 69. LC-circuit](../images/fig-2-69.png){#fig-2-69}
+
+6. **LC-Circuit.** Find the current when $L = 0.5\text{ H}$, $C = 0.005\text{ F}$, $E = 2 t^2\text{ V}$, and initial current and charge are zero.
+
+### 7–18 GENERAL RLC-CIRCUITS
+
+7. **Tuning.** In tuning a stereo system to a radio station, we adjust the tuning control (turn a knob) that changes $C$ (or perhaps $L$) in an RLC-circuit so that the amplitude of the steady-state current (5) becomes maximum. For what $C$ will this happen?
+
+**8–13 Find the steady-state current in the RLC-circuit in Fig. 61 for the given data. Show the details of your work.**
+
+8. $R = 4\ \Omega$, $L = 0.1\text{ H}$, $C = 0.05\text{ F}$, $E = 110\text{ V}$
+9. $R = 2\ \Omega$, $L = 1\text{ H}$, $C = \frac{1}{20}\text{ F}$, $E = 157 \sin 3t\text{ V}$
+10. $R = 4\ \Omega$, $L = 0.5\text{ H}$, $C = 0.1\text{ F}$, $E = 500 \sin 2t\text{ V}$
+11. $R = 12\ \Omega$, $L = 1.2\text{ H}$, $C = \frac{20}{3} \times 10^{-3}\text{ F}$, $E = 12,000 \sin 25t\text{ V}$
+12. $R = 0.2\ \Omega$, $L = 0.1\text{ H}$, $C = 2\text{ F}$, $E = 220 \sin 314t\text{ V}$
+13. $R = 12\ \Omega$, $L = 0.4\text{ H}$, $C = \frac{1}{80}\text{ F}$, $E = 220 \sin 10t\text{ V}$
+
+14. Prove the claim in the text that if $R > 0$ (hence $R \neq 0$), then the transient current approaches $0$ as $t \to \infty$.
+
+15. **Cases of damping.** What are the conditions for an RLC-circuit to be (I) overdamped, (II) critically damped, (III) underdamped? What is the critical resistance $R_{crit}$ (the analog of the critical damping constant $c_0 = 2\sqrt{mk}$)?
+
+**16–18 Solve the initial value problem for the RLC-circuit in Fig. 61 with the given data, assuming zero initial current and charge. Graph or sketch the solution. Show the details of your work.**
+
+16. $R = 8\ \Omega$, $L = 0.2\text{ H}$, $C = 12.5 \times 10^{-3}\text{ F}$, $E = 100 \sin 10t\text{ V}$
+17. $R = 6\ \Omega$, $L = 1\text{ H}$, $C = 0.04\text{ F}$, $E = 600(\cos t + 4\sin t)\text{ V}$
+18. $R = 18\ \Omega$, $L = 1\text{ H}$, $C = 12.5 \times 10^{-3}\text{ F}$, $E = 820 \cos 10t\text{ V}$
+
+19. **WRITING REPORT. Mechanic-Electric Analogy.** Explain Table 2.2 in a 1–2 page report with examples, e.g., the analog (with $L = 1\text{ H}$) of a mass–spring system of mass $5\text{ kg}$, damping constant $10\text{ kg/sec}$, spring constant $60\text{ kg/sec}^2$, and driving force $220 \cos 10t\text{ N}$.
+
+20. **Complex Solution Method.** Solve $L I_p'' + R I_p' + \frac{1}{C} I_p = E_0 \omega \cos \omega t$ by substituting $I_p = K e^{i\omega t}$ ($K$ unknown) and its derivatives and taking the real part of the solution $\tilde{I}_p$. Show agreement with (2), (4). Hint: Use $e^{i\omega t} = \cos \omega t + i \sin \omega t$ and $i^2 = -1$.
+
+---
+
+## 2.10 Solution by Variation of Parameters {#sec-variation-of-parameters}
+
+We continue our discussion of nonhomogeneous linear ODEs, that is:
+
+$$
+y'' + p(x) y' + q(x) y = r(x) \tag{1}
+$$
+
+In Sec. 2.6 we have seen that a general solution of (1) is the sum of a general solution $y_h$ of the corresponding homogeneous ODE and any particular solution $y_p$ of (1). To obtain $y_p$ when $r(x)$ is not too complicated, we can often use the method of undetermined coefficients, as we have shown in Sec. 2.7 and applied to basic engineering models in Secs. 2.8 and 2.9.
+
+However, since this method is restricted to functions whose derivatives are of a form similar to itself (powers, exponential functions, etc.), it is desirable to have a method valid for more general ODEs (1), which we shall now develop. It is called the **method of variation of parameters** and is credited to Lagrange (Sec. 2.1). Here $p, q, r$ in (1) may be variable (given functions of $x$), but we assume that they are continuous on some open interval $I$.
+
+Lagrange's method gives a particular solution of (1) on $I$ in the form:
+
+$$
+y_p(x) = -y_1 \int \frac{y_2 r}{W} \, dx + y_2 \int \frac{y_1 r}{W} \, dx \tag{2}
+$$
+
+where $y_1, y_2$ form a basis of solutions of the corresponding homogeneous ODE:
+
+$$
+y'' + p(x) y' + q(x) y = 0 \tag{3}
+$$
+
+on $I$, and $W$ is the Wronskian of $y_1, y_2$:
+
+$$
+W = y_1 y_2' - y_2 y_1' \tag{4}
+$$
+
+(see Sec. 2.6).
+
+::: {.callout-caution}
+The solution formula (2) is obtained under the assumption that the ODE is written in standard form, with $y''$ as the first term as shown in (1). If it starts with $f(x) y''$, divide first by $f(x)$.
+:::
+
+The integration in (2) may often cause difficulties, and so may the determination of $y_1, y_2$ if (1) has variable coefficients. If you have a choice, use the previous method. It is simpler. Before deriving (2) let us work an example for which you do need the new method. (Try otherwise.)
+
+### EXAMPLE 1 Method of Variation of Parameters
+
+Solve the nonhomogeneous ODE:
+
+$$
+y'' + y = \sec x \tag{5}
+$$
+
+**Solution.** A basis of solutions of the homogeneous ODE $y'' + y = 0$ on any interval is $y_1 = \cos x, \quad y_2 = \sin x$. This gives the Wronskian:
+
+$$
+W(y_1, y_2) = \cos x \cos x - \sin x (-\sin x) = \cos^2 x + \sin^2 x = 1.
+$$
+
+From (2), choosing zero constants of integration, we get the particular solution of the given ODE (Fig. 70):
+
+$$
+y_p = -\cos x \int \sin x \sec x \, dx + \sin x \int \cos x \sec x \, dx
+$$
+
+$$
+= -\cos x \int \tan x \, dx + \sin x \int 1 \, dx
+$$
+
+$$
+= \cos x \ln|\cos x| + x \sin x.
+$$
+
+Figure 70 shows $y_p$ and its first term, which is small, so that $x \sin x$ essentially determines the shape of the curve of $y_p$. (Recall from Sec. 2.8 that we have seen $x \sin x$ in connection with resonance, except for notation.) From $y_p$ and the general solution $y_h = c_1 \cos x + c_2 \sin x$ of the homogeneous ODE we obtain the answer:
+
+$$
+y = y_h + y_p = (c_1 + \ln|\cos x|) \cos x + (c_2 + x) \sin x. \tag{6}
+$$
+
+Had we included integration constants in (2), then (2) would have given the additional $c_1 y_1 + c_2 y_2$, that is, a general solution of the given ODE directly from (2). This will always be the case. $\square$
+
+![Fig. 70. Particular solution $y_p$ and its first term in Example 1](../images/fig-2-70.png){#fig-2-70}
+
+### Idea of the Method. Derivation of (2)
+
+What idea did Lagrange have? What gave the method the name? Where do we use the continuity assumptions?
+
+The idea is to start from a general solution
+
+$$
+y_h(x) = c_1 y_1(x) + c_2 y_2(x)
+$$
+
+of the homogeneous ODE (3) on an open interval $I$ and to replace the constants ("the parameters") $c_1$ and $c_2$ by functions $u(x)$ and $v(x)$; this suggests the name of the method. We shall determine $u$ and $v$ so that the resulting function
+
+$$
+y_p(x) = u(x) y_1(x) + v(x) y_2(x) \tag{7}
+$$
+
+is a particular solution of the nonhomogeneous ODE (1). Note that $y_p$ exists by Theorem 3 in Sec. 2.6 because of the continuity of $p$ and $q$ on $I$. (The continuity of $r$ will be used later.)
+
+We determine $u$ and $v$ by substituting (7) and its derivatives into (1). Differentiating (7), we obtain:
+
+$$
+y_p' = u' y_1 + u y_1' + v' y_2 + v y_2'
+$$
+
+Now $y_p$ must satisfy (1). This is one condition for two functions $u$ and $v$. It seems plausible that we may impose a second condition. Indeed, our calculation will show that we can determine $u$ and $v$ such that $y_p$ satisfies (1) and $u$ and $v$ satisfy as a second condition the equation:
+
+$$
+u' y_1 + v' y_2 = 0 \tag{8}
+$$
+
+This reduces the first derivative $y_p'$ to the simpler form:
+
+$$
+y_p' = u y_1' + v y_2' \tag{9}
+$$
+
+Differentiating (9), we obtain:
+
+$$
+y_p'' = u' y_1' + u y_1'' + v' y_2' + v y_2'' \tag{10}
+$$
+
+We now substitute $y_p$ and its derivatives according to (7), (9), and (10) into (1). Collecting terms in $u$ and terms in $v$, we obtain:
+
+$$
+u(y_1'' + p y_1' + q y_1) + v(y_2'' + p y_2' + q y_2) + u' y_1' + v' y_2' = r(x).
+$$
+
+Since $y_1$ and $y_2$ are solutions of the homogeneous ODE (3), the parenthetical expressions are zero, and this reduces to:
+
+$$
+u' y_1' + v' y_2' = r(x) \tag{11a}
+$$
+
+Equation (8) is:
+
+$$
+u' y_1 + v' y_2 = 0 \tag{11b}
+$$
+
+This is a linear system of two algebraic equations for the unknown functions $u'$ and $v'$. We can solve it by elimination as follows (or by Cramer's rule in Sec. 7.6). To eliminate $v'$, we multiply (11a) by $y_2$ and (11b) by $-y_2'$, and add, obtaining:
+
+$$
+u'(y_1' y_2 - y_1 y_2') = y_2 r.
+$$
+
+Hence
+
+$$
+u'(y_1 y_2' - y_2 y_1') = -y_2 r \implies u' W = -y_2 r \implies u' = -\frac{y_2 r}{W}.
+$$
+
+Here, $W$ is the Wronskian (4) of $y_1, y_2$. To eliminate $u'$, we multiply (11a) by $-y_1$ and (11b) by $y_1'$, and add, obtaining:
+
+$$
+v'(y_1 y_2' - y_2 y_1') = y_1 r \implies v' W = y_1 r \implies v' = \frac{y_1 r}{W}.
+$$
+
+Since $y_1, y_2$ form a basis, we have $W \neq 0$ (by Theorem 2 in Sec. 2.6) and can divide by $W$:
+
+$$
+u' = -\frac{y_2 r}{W}, \qquad v' = \frac{y_1 r}{W} \tag{12}
+$$
+
+By integration:
+
+$$
+u = -\int \frac{y_2 r}{W} \, dx, \qquad v = \int \frac{y_1 r}{W} \, dx.
+$$
+
+These integrals exist because $r(x)$ and the other functions are continuous. Inserting them into (7) gives (2) and completes the derivation. $\square$
+
+---
+
+## PROBLEM SET 2.10
+
+### 1–13 GENERAL SOLUTION
+Solve the given nonhomogeneous linear ODE by variation of parameters or undetermined coefficients. Show the details of your work.
+
+1. $y'' + 9y = \csc 3x$
+2. $y'' + 9y = \sec 3x$
+3. $y'' - 4y' + 5y = e^{2x} \csc x$
+4. $x^2 y'' - 2x y' + 2y = x^3 \sin x$
+5. $y'' + y = \cos x - \sin x$
+6. $(D^2 + 6D + 9I)y = 16e^{-3x} / (x^2 + 1)$
+7. $(D^2 - 4D + 4I)y = 6e^{2x} / x^4$
+8. $(D^2 + 4I)y = \cosh 2x$
+9. $(D^2 - 2D + I)y = 35 x^{3/2} e^x$
+10. $(D^2 + 2D + 2I)y = 4e^{-x} \sec^3 x$
+11. $(x^2 D^2 + x D - 9I)y = 48 x^5$
+12. $(D^2 - I)y = 1/\cosh x$
+13. $(x^2 D^2 - 4x D + 6I)y = 21 x^{-4}$
+
+14. **TEAM PROJECT. Comparison of Methods. Invention.** The undetermined-coefficient method should be used whenever possible because it is simpler. Compare it with the present method as follows.
+    (a) Solve $y'' + 4y' + 3y = 65 \cos 2x$ by both methods, showing all details, and compare.
+    (b) Solve $y'' - 2y' + y = r_1 + r_2$ where $r_1 = 35 x^{3/2} e^x$ and $r_2 = x^2$ by applying each method to a suitable function on the right.
+    (c) Experiment to invent an undetermined-coefficient method for nonhomogeneous Euler–Cauchy equations.
+
+---
+
+## CHAPTER 2 REVIEW QUESTIONS AND PROBLEMS
+
+1. Why are linear ODEs preferable to nonlinear ones in modeling?
+2. What does an initial value problem of a second-order ODE look like? Why must you have a general solution to solve it?
+3. By what methods can you get a general solution of a nonhomogeneous ODE from a general solution of a homogeneous one?
+4. Describe applications of ODEs in mechanical systems. What are the electrical analogs of the latter?
+5. What is resonance? How can you remove undesirable resonance of a construction, such as a bridge, a ship, or a machine?
+6. What do you know about existence and uniqueness of solutions of linear second-order ODEs?
+
+### 7–18 GENERAL SOLUTION
+Find a general solution. Show the details of your calculation.
+
+7. $4y'' - 12y' + 9y = 2e^{1.5x}$
+8. $(D^2 + 2D + 2I)y = 3e^{-x} \cos 2x$
+9. $(2D^2 - 3D - 2I)y = 13 - 2x^2$
+10. $(x^2 D^2 + x D - 9I)y = 0$
+11. $(x^2 D^2 + 2x D - 12I)y = 0$
+12. $(D^2 + 4\pi D + 4\pi^2 I)y = 0$
+13. $(100D^2 - 160D + 64I)y = 0$
+14. $y'' + 0.20y' + 0.17y = 0$
+15. $y'' + 6y' + 34y = 0$
+16. $y'' + y' - 12y = 0$
+17. $4y'' + 32y' + 63y = 0$
+18. $y y'' = 2(y')^2$
+
+### 19–22 INITIAL VALUE PROBLEMS
+Solve the problem, showing the details of your work. Sketch or graph the solution.
+
+19. $(x^2 D^2 + 1.5x D + 0.49I)y = 0, \quad y(1) = 2, \quad y'(1) = -1.1$
+20. $(x^2 D^2 + x D - I)y = 16x^3, \quad y(1) = -1, \quad y'(1) = 1$
+21. $y'' - 3y' + 2y = 10 \sin x, \quad y(0) = 1, \quad y'(0) = -6$
+22. $y'' + 16y = 17e^x, \quad y(0) = 6, \quad y'(0) = -2$
+
+### 23–30 APPLICATIONS
+23. Find the steady-state current in the RLC-circuit in Fig. 71 when $R = 2\text{ k}\Omega$ ($2000\ \Omega$), $L = 1\text{ H}$, $C = 4 \times 10^{-3}\text{ F}$, and $E = 110 \sin 415 t\text{ V}$ ($66\text{ cycles/sec}$).
+24. Find a general solution of the homogeneous linear ODE corresponding to the ODE in Prob. 23.
+25. Find the steady-state current in the RLC-circuit in Fig. 71 when $R = 50\ \Omega$, $L = 30\text{ H}$, $C = 0.025\text{ F}$, and $E = 200 \sin 4t\text{ V}$.
+26. Find the current in the RLC-circuit in Fig. 71 when $R = 40\ \Omega$, $L = 0.4\text{ H}$, $C = 10^{-4}\text{ F}$, and $E = 220 \sin 314 t\text{ V}$ ($50\text{ cycles/sec}$).
+27. Find an electrical analog of the mass–spring system with mass $4\text{ kg}$, spring constant $10\text{ kg/sec}^2$, damping constant $20\text{ kg/sec}$, and driving force $100 \sin 4t\text{ N}$.
+28. Find the motion of the mass–spring system in Fig. 72 with mass $0.125\text{ kg}$, damping $0$, spring constant $1.125\text{ kg/sec}^2$, and driving force $\cos t - 4\sin t\text{ N}$, assuming zero initial displacement and velocity. For what frequency of the driving force would you get resonance?
+29. Show that the system in Fig. 72 with $m = 4\text{ kg}$, $c = 0$, $k = 36\text{ kg/sec}^2$, and driving force $r(t) = 61 \cos 3.1t\text{ N}$ exhibits beats. Hint: Choose zero initial conditions.
+30. In Fig. 72, let $m = 1\text{ kg}$, $c = 4\text{ kg/sec}$, $k = 24\text{ kg/sec}^2$, and driving force $r(t) = 10 \cos \omega t\text{ N}$. Determine $\omega$ such that you get the steady-state vibration of maximum possible amplitude. Determine this amplitude. Then find the general solution with this $\omega$ and check whether the results are in agreement.
+
+![Fig. 71. RLC-circuit](../images/fig-2-71.png){#fig-2-71}
+
+![Fig. 72. Mass–spring system](../images/fig-2-72.png){#fig-2-72}
+
+---
+
+## SUMMARY OF CHAPTER 2
+
+Second-order linear ODEs are particularly important in applications, for instance, in mechanics (Secs. 2.4, 2.8) and electrical engineering (Sec. 2.9). A second-order ODE is called **linear** if it can be written:
+
+$$
+y'' + p(x) y' + q(x) y = r(x) \tag{1}
+$$
+
+(Sec. 2.1). If the first term is, say, $f(x) y''$, divide by $f(x)$ to get the "standard form" (1) with $y''$ as the first term.
+
+Equation (1) is called **homogeneous** if $r(x)$ is zero for all $x$ considered, usually in some open interval; this is written:
+
+$$
+y'' + p(x) y' + q(x) y = 0 \tag{2}
+$$
+
+Equation (1) is called **nonhomogeneous** if $r(x) \neq 0$ (meaning $r(x)$ is not zero for some $x$ considered).
+
+For the homogeneous ODE (2) we have the important **superposition principle** (Sec. 2.1) that a linear combination of two solutions is again a solution.
+
+Two linearly independent solutions of (2) on an open interval $I$ form a **basis** (or fundamental system) of solutions on $I$, and $y = c_1 y_1 + c_2 y_2$ with arbitrary constants $c_1, c_2$ is a **general solution** of (2) on $I$. From it we obtain a **particular solution** if we specify numeric values for $c_1$ and $c_2$, usually by prescribing two **initial conditions**:
+
+$$
+y(x_0) = K_0, \qquad y'(x_0) = K_1 \tag{3}
+$$
+
+($x_0, K_0, K_1$ given numbers; Sec. 2.1). (2) and (3) together form an **initial value problem**. Similarly for (1) and (3).
+
+For a nonhomogeneous ODE (1) a general solution is of the form:
+
+$$
+y = y_h + y_p \tag{4}
+$$
+
+(Sec. 2.7). Here $y_h$ is a general solution of (2) and $y_p$ is a particular solution of (1). Such a $y_p$ can be determined by a general method (variation of parameters, Sec. 2.10) or in many practical cases by the method of undetermined coefficients. The latter applies when (1) has constant coefficients $p$ and $q$, and $r(x)$ is a power of $x$, sine, cosine, exponential, etc. (Sec. 2.7). Then we write (1) as:
+
+$$
+y'' + a y' + b y = r(x) \tag{5}
+$$
+
+(Sec. 2.7). The corresponding homogeneous ODE has solutions $y = e^{\lambda x}$, where $\lambda$ is a root of the **characteristic equation**:
+
+$$
+\lambda^2 + a \lambda + b = 0 \tag{6}
+$$
+
+Hence there are three cases (Sec. 2.2):
+
+| Case | Type of Roots | General Solution |
+|:---|:---|:---|
+| **I** | Distinct real $\lambda_1, \lambda_2$ | $y = c_1 e^{\lambda_1 x} + c_2 e^{\lambda_2 x}$ |
+| **II** | Double root $\lambda = -a/2$ | $y = (c_1 + c_2 x) e^{-ax/2}$ |
+| **III** | Complex roots $\lambda = -a/2 \pm i\omega^*$ | $y = e^{-ax/2}(A \cos \omega^* x + B \sin \omega^* x)$ |
+
+: Summary of Cases for Constant-Coefficient Homogeneous ODEs {#tbl-2-3-summary}
+
+Here $\omega^*$ is used since $\omega$ is needed for driving force frequency in Sec. 2.8.
+
+Important applications of (5) in mechanical and electrical engineering in connection with vibrations and resonance are discussed in Secs. 2.4, 2.7, and 2.8.
+
+Another large class of ODEs solvable "algebraically" consists of the **Euler–Cauchy equations**:
+
+$$
+x^2 y'' + a x y' + b y = 0 \tag{7}
+$$
+
+(Sec. 2.5). These have solutions of the form $y = x^m$, where $m$ is a solution of the auxiliary equation:
+
+$$
+m^2 + (a - 1)m + b = 0 \tag{8}
+$$
+
+Existence and uniqueness of solutions of (1) and (2) is discussed in Secs. 2.6 and 2.7, and reduction of order in Sec. 2.1.
+
+
+
+
+
