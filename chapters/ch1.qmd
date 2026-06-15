@@ -1051,8 +1051,6 @@ Test for exactness. If exact, solve. If not, use an integrating factor as given 
 
     (d) Which solution of (@eq-sec14-21) do we not get in (a) or (b)?
 
-    ![Particular solutions in CAS Project 18](../images/chapter1/fig-1-29.png){#fig-1-29}
-
 ## 1.5 Linear ODEs. Bernoulli Equation. Population Dynamics {#sec-linear-odes}
 
 Linear ODEs or ODEs that can be transformed to linear form are models of various phenomena, for instance, in physics, biology, population dynamics, and ecology, as we shall see. A first-order ODE is said to be **linear** if it can be brought into the form
