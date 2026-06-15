@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; CHAPTER 03: Higher Order Linear ODEs – Advanced Engineering Mathematics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch5.html" rel="next">
+<link href="../chapters/ch2.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch3.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Advanced Engineering Mathematics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contents</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">CHAPTER 01: First-Order ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 02: Second-Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">CHAPTER 07: Linear Algebra: Matrices, Vectors, Determinants. Linear Systems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-3-1" id="toc-sec-3-1" class="nav-link active" data-scroll-target="#sec-3-1"><span class="header-section-number">5.1</span> 3.1 Homogeneous Linear ODEs</a>
+  <ul class="collapse">
+  <li><a href="#homogeneous-linear-ode-superposition-principle-general-solution" id="toc-homogeneous-linear-ode-superposition-principle-general-solution" class="nav-link" data-scroll-target="#homogeneous-linear-ode-superposition-principle-general-solution"><span class="header-section-number">5.1.1</span> Homogeneous Linear ODE: Superposition Principle, General Solution</a></li>
+  <li><a href="#example-1-linear-dependence" id="toc-example-1-linear-dependence" class="nav-link" data-scroll-target="#example-1-linear-dependence"><span class="header-section-number">5.1.2</span> EXAMPLE 1 Linear Dependence</a></li>
+  <li><a href="#example-2-linear-independence" id="toc-example-2-linear-independence" class="nav-link" data-scroll-target="#example-2-linear-independence"><span class="header-section-number">5.1.3</span> EXAMPLE 2 Linear Independence</a></li>
+  <li><a href="#example-3-general-solution.-basis" id="toc-example-3-general-solution.-basis" class="nav-link" data-scroll-target="#example-3-general-solution.-basis"><span class="header-section-number">5.1.4</span> EXAMPLE 3 General Solution. Basis</a></li>
+  <li><a href="#initial-value-problem.-existence-and-uniqueness" id="toc-initial-value-problem.-existence-and-uniqueness" class="nav-link" data-scroll-target="#initial-value-problem.-existence-and-uniqueness"><span class="header-section-number">5.1.5</span> Initial Value Problem. Existence and Uniqueness</a></li>
+  <li><a href="#example-4-initial-value-problem-for-a-third-order-eulercauchy-equation" id="toc-example-4-initial-value-problem-for-a-third-order-eulercauchy-equation" class="nav-link" data-scroll-target="#example-4-initial-value-problem-for-a-third-order-eulercauchy-equation"><span class="header-section-number">5.1.6</span> EXAMPLE 4 Initial Value Problem for a Third-Order Euler–Cauchy Equation</a></li>
+  <li><a href="#linear-independence-of-solutions.-wronskian" id="toc-linear-independence-of-solutions.-wronskian" class="nav-link" data-scroll-target="#linear-independence-of-solutions.-wronskian"><span class="header-section-number">5.1.7</span> Linear Independence of Solutions. Wronskian</a></li>
+  <li><a href="#example-5-basis-wronskian" id="toc-example-5-basis-wronskian" class="nav-link" data-scroll-target="#example-5-basis-wronskian"><span class="header-section-number">5.1.8</span> EXAMPLE 5 Basis, Wronskian</a></li>
+  <li><a href="#a-general-solution-of-2-includes-all-solutions" id="toc-a-general-solution-of-2-includes-all-solutions" class="nav-link" data-scroll-target="#a-general-solution-of-2-includes-all-solutions"><span class="header-section-number">5.1.9</span> A General Solution of (2) Includes All Solutions</a></li>
+  <li><a href="#problem-set-3.1" id="toc-problem-set-3.1" class="nav-link" data-scroll-target="#problem-set-3.1"><span class="header-section-number">5.1.10</span> PROBLEM SET 3.1</a></li>
+  </ul></li>
+  <li><a href="#sec-3-2" id="toc-sec-3-2" class="nav-link" data-scroll-target="#sec-3-2"><span class="header-section-number">5.2</span> 3.2 Homogeneous Linear ODEs with Constant Coefficients</a>
+  <ul class="collapse">
+  <li><a href="#distinct-real-roots" id="toc-distinct-real-roots" class="nav-link" data-scroll-target="#distinct-real-roots"><span class="header-section-number">5.2.1</span> Distinct Real Roots</a></li>
+  <li><a href="#example-1-distinct-real-roots" id="toc-example-1-distinct-real-roots" class="nav-link" data-scroll-target="#example-1-distinct-real-roots"><span class="header-section-number">5.2.2</span> EXAMPLE 1 Distinct Real Roots</a></li>
+  <li><a href="#simple-complex-roots" id="toc-simple-complex-roots" class="nav-link" data-scroll-target="#simple-complex-roots"><span class="header-section-number">5.2.3</span> Simple Complex Roots</a></li>
+  <li><a href="#example-2-simple-complex-roots.-initial-value-problem" id="toc-example-2-simple-complex-roots.-initial-value-problem" class="nav-link" data-scroll-target="#example-2-simple-complex-roots.-initial-value-problem"><span class="header-section-number">5.2.4</span> EXAMPLE 2 Simple Complex Roots. Initial Value Problem</a></li>
+  <li><a href="#multiple-real-roots" id="toc-multiple-real-roots" class="nav-link" data-scroll-target="#multiple-real-roots"><span class="header-section-number">5.2.5</span> Multiple Real Roots</a></li>
+  <li><a href="#example-3-real-double-and-triple-roots" id="toc-example-3-real-double-and-triple-roots" class="nav-link" data-scroll-target="#example-3-real-double-and-triple-roots"><span class="header-section-number">5.2.6</span> EXAMPLE 3 Real Double and Triple Roots</a></li>
+  <li><a href="#multiple-complex-roots" id="toc-multiple-complex-roots" class="nav-link" data-scroll-target="#multiple-complex-roots"><span class="header-section-number">5.2.7</span> Multiple Complex Roots</a></li>
+  <li><a href="#problem-set-3.2" id="toc-problem-set-3.2" class="nav-link" data-scroll-target="#problem-set-3.2"><span class="header-section-number">5.2.8</span> PROBLEM SET 3.2</a></li>
+  </ul></li>
+  <li><a href="#sec-3-3" id="toc-sec-3-3" class="nav-link" data-scroll-target="#sec-3-3"><span class="header-section-number">5.3</span> 3.3 Nonhomogeneous Linear ODEs</a>
+  <ul class="collapse">
+  <li><a href="#method-of-undetermined-coefficients" id="toc-method-of-undetermined-coefficients" class="nav-link" data-scroll-target="#method-of-undetermined-coefficients"><span class="header-section-number">5.3.1</span> Method of Undetermined Coefficients</a></li>
+  <li><a href="#example-1-initial-value-problem.-modification-rule" id="toc-example-1-initial-value-problem.-modification-rule" class="nav-link" data-scroll-target="#example-1-initial-value-problem.-modification-rule"><span class="header-section-number">5.3.2</span> EXAMPLE 1 Initial Value Problem. Modification Rule</a></li>
+  <li><a href="#method-of-variation-of-parameters" id="toc-method-of-variation-of-parameters" class="nav-link" data-scroll-target="#method-of-variation-of-parameters"><span class="header-section-number">5.3.3</span> Method of Variation of Parameters</a></li>
+  <li><a href="#example-2-variation-of-parameters.-nonhomogeneous-eulercauchy-equation" id="toc-example-2-variation-of-parameters.-nonhomogeneous-eulercauchy-equation" class="nav-link" data-scroll-target="#example-2-variation-of-parameters.-nonhomogeneous-eulercauchy-equation"><span class="header-section-number">5.3.4</span> EXAMPLE 2 Variation of Parameters. Nonhomogeneous Euler–Cauchy Equation</a></li>
+  <li><a href="#application-elastic-beams" id="toc-application-elastic-beams" class="nav-link" data-scroll-target="#application-elastic-beams"><span class="header-section-number">5.3.5</span> Application: Elastic Beams</a></li>
+  <li><a href="#example-3-bending-of-an-elastic-beam-under-a-load" id="toc-example-3-bending-of-an-elastic-beam-under-a-load" class="nav-link" data-scroll-target="#example-3-bending-of-an-elastic-beam-under-a-load"><span class="header-section-number">5.3.6</span> EXAMPLE 3 Bending of an Elastic Beam under a Load</a></li>
+  <li><a href="#problem-set-3.3" id="toc-problem-set-3.3" class="nav-link" data-scroll-target="#problem-set-3.3"><span class="header-section-number">5.3.7</span> PROBLEM SET 3.3</a></li>
+  <li><a href="#chapter-3-review-questions-and-problems" id="toc-chapter-3-review-questions-and-problems" class="nav-link" data-scroll-target="#chapter-3-review-questions-and-problems"><span class="header-section-number">5.3.8</span> CHAPTER 3 REVIEW QUESTIONS AND PROBLEMS</a></li>
+  <li><a href="#summary-of-chapter-3" id="toc-summary-of-chapter-3" class="nav-link" data-scroll-target="#summary-of-chapter-3"><span class="header-section-number">5.3.9</span> SUMMARY OF CHAPTER 3</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The concepts and methods of solving linear ODEs of order <span class="math inline">\(n=2\)</span> extend nicely to linear ODEs of higher order <span class="math inline">\(n\)</span>, that is, <span class="math inline">\(n=3, 4\)</span>, etc. This shows that the theory explained in Chap. 2 for second-order linear ODEs is attractive, since it can be extended in a straightforward way to arbitrary <span class="math inline">\(n\)</span>. We do so in this chapter and notice that the formulas become more involved, the variety of roots of the characteristic equation (in Sec. 3.2) becomes much larger with increasing <span class="math inline">\(n\)</span>, and the Wronskian plays a more prominent role.</p>
+<p>The concepts and methods of solving second-order linear ODEs extend readily to linear ODEs of higher order.</p>
+<p>This chapter follows Chap. 2 naturally, since the results of Chap. 2 can be readily extended to that of Chap. 3.</p>
+<p><strong>Prerequisite:</strong> Secs. 2.1, 2.2, 2.6, 2.7, 2.10. <strong>References and Answers to Problems:</strong> App. 1 Part A, and App. 2.</p>
+<section id="sec-3-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-3-1"><span class="header-section-number">5.1</span> 3.1 Homogeneous Linear ODEs</h2>
+<p>Recall from Sec. 1.1 that an ODE is of <span class="math inline">\(n\)</span>th order if the <span class="math inline">\(n\)</span>th derivative of the unknown function <span class="math inline">\(y(x)\)</span> is the highest occurring derivative. Thus the ODE is of the form</p>
+<p><span class="math display">\[
+F(x, y, y', \dots, y^{(n)}) = 0
+\]</span></p>
+<p>where <span class="math inline">\(y^{(n)} = d^n y / dx^n\)</span>. lower order derivatives and <span class="math inline">\(y\)</span> itself may or may not occur. Such an ODE is called <strong>linear</strong> if it can be written</p>
+<p><span id="eq-3-1"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = r(x).
+\tag{5.1}\]</span></span></p>
+<p>(For <span class="math inline">\(n=2\)</span> this is (1) in Sec. 2.1 with <span class="math inline">\(p_1 = p\)</span> and <span class="math inline">\(p_0 = q\)</span>.) The coefficients <span class="math inline">\(p_0, \dots, p_{n-1}\)</span> and the function <span class="math inline">\(r\)</span> on the right are any given functions of <span class="math inline">\(x\)</span>, and <span class="math inline">\(y\)</span> is unknown. <span class="math inline">\(y^{(n)}\)</span> has coefficient 1. We call this the <strong>standard form</strong>. (If you have <span class="math inline">\(p_n(x)y^{(n)}\)</span>, divide by <span class="math inline">\(p_n(x)\)</span> to get this form.) An <span class="math inline">\(n\)</span>th-order ODE that cannot be written in the form (<a href="#eq-3-1" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>) is called <strong>nonlinear</strong>.</p>
+<p>If <span class="math inline">\(r(x)\)</span> is identically zero, (<span class="math inline">\(r(x) \equiv 0\)</span> for all <span class="math inline">\(x\)</span> considered, usually in some open interval <span class="math inline">\(I\)</span>), then (<a href="#eq-3-1" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>) becomes</p>
+<p><span id="eq-3-2"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = 0
+\tag{5.2}\]</span></span></p>
+<p>and is called <strong>homogeneous</strong>. If <span class="math inline">\(r(x)\)</span> is not identically zero, then the ODE is called <strong>nonhomogeneous</strong>. This is as in Sec. 2.1.</p>
+<p>A solution of an <span class="math inline">\(n\)</span>th-order (linear or nonlinear) ODE on some open interval <span class="math inline">\(I\)</span> is a function <span class="math inline">\(y = h(x)\)</span> that is defined and <span class="math inline">\(n\)</span> times differentiable on <span class="math inline">\(I\)</span> and is such that the ODE becomes an identity if we replace the unknown function <span class="math inline">\(y\)</span> and its derivatives by <span class="math inline">\(h\)</span> and its corresponding derivatives.</p>
+<p>Sections 3.1–3.2 will be devoted to homogeneous linear ODEs and Section 3.3 to nonhomogeneous linear ODEs.</p>
+<section id="homogeneous-linear-ode-superposition-principle-general-solution" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="homogeneous-linear-ode-superposition-principle-general-solution"><span class="header-section-number">5.1.1</span> Homogeneous Linear ODE: Superposition Principle, General Solution</h3>
+<p>The basic superposition or linearity principle of Sec. 2.1 extends to <span class="math inline">\(n\)</span>th order homogeneous linear ODEs as follows.</p>
+<p><strong>THEOREM 1 Fundamental Theorem for the Homogeneous Linear ODE (2)</strong> For a homogeneous linear ODE (2), sums and constant multiples of solutions on some open interval <span class="math inline">\(I\)</span> are again solutions on <span class="math inline">\(I\)</span>. (This does not hold for a nonhomogeneous or nonlinear ODE!)</p>
+<p>The proof is a simple generalization of that in Sec. 2.1 and we leave it to the student.</p>
+<p>Our further discussion parallels and extends that for second-order ODEs in Sec. 2.1. So we next define a general solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>), which will require an extension of linear independence from 2 to <span class="math inline">\(n\)</span> functions.</p>
+<p><strong>DEFINITION General Solution, Basis, Particular Solution</strong> A <strong>general solution</strong> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on an open interval <span class="math inline">\(I\)</span> is a solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span> of the form</p>
+<p><span id="eq-3-3"><span class="math display">\[
+y(x) = c_1 y_1(x) + \dots + c_n y_n(x) \quad (c_1, \dots, c_n \text{ arbitrary})
+\tag{5.3}\]</span></span></p>
+<p>where <span class="math inline">\(y_1, \dots, y_n\)</span> is a <strong>basis</strong> (or fundamental system) of solutions of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>; that is, these solutions are linearly independent on <span class="math inline">\(I\)</span>, as defined below.</p>
+<p>A <strong>particular solution</strong> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span> is obtained if we assign specific values to the <span class="math inline">\(n\)</span> constants in (<a href="#eq-3-3" class="quarto-xref">Equation&nbsp;<span>5.3</span></a>).</p>
+<p><strong>DEFINITION Linear Independence and Dependence</strong> Consider <span class="math inline">\(n\)</span> functions <span class="math inline">\(y_1(x), \dots, y_n(x)\)</span> defined on some interval <span class="math inline">\(I\)</span>. These functions are called <strong>linearly independent</strong> on <span class="math inline">\(I\)</span> if the equation</p>
+<p><span id="eq-3-4"><span class="math display">\[
+k_1 y_1(x) + \dots + k_n y_n(x) = 0 \quad \text{on } I
+\tag{5.4}\]</span></span></p>
+<p>implies that all <span class="math inline">\(k_1, \dots, k_n\)</span> are zero. These functions are called <strong>linearly dependent</strong> on <span class="math inline">\(I\)</span> if this equation also holds on <span class="math inline">\(I\)</span> for some <span class="math inline">\(k_1, \dots, k_n\)</span> not all zero.</p>
+<p>If and only if <span class="math inline">\(y_1, \dots, y_n\)</span> are linearly dependent on <span class="math inline">\(I\)</span>, we can express (at least) one of these functions on <span class="math inline">\(I\)</span> as a “linear combination” of the other functions, that is, as a sum of those functions, each multiplied by a constant (zero or not). This motivates the term “linearly dependent.” For instance, if (<a href="#eq-3-4" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>) holds with <span class="math inline">\(k_1 \neq 0\)</span>, we can divide by <span class="math inline">\(k_1\)</span> and express <span class="math inline">\(y_1\)</span> as the linear combination</p>
+<p><span class="math display">\[
+y_1 = -\frac{1}{k_1} (k_2 y_2 + \dots + k_n y_n).
+\]</span></p>
+<p>Note that when <span class="math inline">\(n = 2\)</span> these concepts reduce to those defined in Sec. 2.1.</p>
+</section>
+<section id="example-1-linear-dependence" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="example-1-linear-dependence"><span class="header-section-number">5.1.2</span> EXAMPLE 1 Linear Dependence</h3>
+<p>Show that the functions <span class="math inline">\(y_1 = x, y_2 = 5x, y_3 = 2x\)</span> are linearly dependent on any interval. <strong>Solution.</strong> <span class="math inline">\(y_2 = 5y_1 + 0y_3\)</span>. This proves linear dependence on any interval.</p>
+</section>
+<section id="example-2-linear-independence" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="example-2-linear-independence"><span class="header-section-number">5.1.3</span> EXAMPLE 2 Linear Independence</h3>
+<p>Show that <span class="math inline">\(y_1 = x, y_2 = x^2, y_3 = x^3\)</span> are linearly independent on any interval, for instance, on <span class="math inline">\(-1 \le x \le 2\)</span>. <strong>Solution.</strong> Equation (<a href="#eq-3-4" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>) is <span class="math inline">\(k_1x + k_2x^2 + k_3x^3 = 0\)</span>. Taking (a) <span class="math inline">\(x=-1\)</span>, (b) <span class="math inline">\(x=1\)</span>, (c) <span class="math inline">\(x=2\)</span>, we get (a) <span class="math inline">\(-k_1 + k_2 - k_3 = 0\)</span> (b) <span class="math inline">\(k_1 + k_2 + k_3 = 0\)</span> (c) <span class="math inline">\(2k_1 + 4k_2 + 8k_3 = 0\)</span>.</p>
+<p>from (a) + (b) we get <span class="math inline">\(k_2 = 0\)</span>. Then from (c) <span class="math inline">\(2k_1 + 8k_3 = 0\)</span>. Then from (b) <span class="math inline">\(k_1 + k_3 = 0\)</span>. This gives <span class="math inline">\(k_1 = 0, k_3 = 0\)</span>. This proves linear independence. A better method for testing linear independence of solutions of ODEs will soon be explained.</p>
+</section>
+<section id="example-3-general-solution.-basis" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="example-3-general-solution.-basis"><span class="header-section-number">5.1.4</span> EXAMPLE 3 General Solution. Basis</h3>
+<p>Solve the fourth-order ODE <span class="math display">\[
+y^{iv} - 5y'' + 4y = 0
+\]</span> (where <span class="math inline">\(y^{iv} = d^4y/dx^4\)</span>). <strong>Solution.</strong> As in Sec. 2.2 we substitute <span class="math inline">\(y = e^{\lambda x}\)</span>. Omitting the common factor <span class="math inline">\(e^{\lambda x}\)</span> we obtain the characteristic equation <span class="math display">\[
+\lambda^4 - 5\lambda^2 + 4 = 0.
+\]</span> This is a quadratic equation in <span class="math inline">\(\lambda^2\)</span>, namely, <span class="math inline">\((\lambda^2 - 1)(\lambda^2 - 4) = 0\)</span>. The roots are <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm 2\)</span>. Hence <span class="math inline">\(\lambda = -2, -1, 1, 2\)</span>. This gives four solutions. A general solution on any interval is <span class="math display">\[
+y = c_1 e^{-2x} + c_2 e^{-x} + c_3 e^x + c_4 e^{2x}
+\]</span> provided those four solutions are linearly independent. This is true but will be shown later.</p>
+</section>
+<section id="initial-value-problem.-existence-and-uniqueness" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="initial-value-problem.-existence-and-uniqueness"><span class="header-section-number">5.1.5</span> Initial Value Problem. Existence and Uniqueness</h3>
+<p>An initial value problem for the ODE (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) consists of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) and <span class="math inline">\(n\)</span> initial conditions</p>
+<p><span id="eq-3-5"><span class="math display">\[
+y(x_0) = K_0, \quad y'(x_0) = K_1, \dots, y^{(n-1)}(x_0) = K_{n-1}
+\tag{5.5}\]</span></span></p>
+<p>with <span class="math inline">\(x_0\)</span> given in the open interval <span class="math inline">\(I\)</span> considered, and <span class="math inline">\(K_0, \dots, K_{n-1}\)</span> given.</p>
+<p>In extension of the existence and uniqueness theorem in Sec. 2.6 we now have the following.</p>
+<p><strong>THEOREM 2 Existence and Uniqueness Theorem for Initial Value Problems</strong> If the coefficients <span class="math inline">\(p_0(x), \dots, p_{n-1}(x)\)</span> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) are continuous on some open interval <span class="math inline">\(I\)</span> and <span class="math inline">\(x_0\)</span> is in <span class="math inline">\(I\)</span>, then the initial value problem (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>), (<a href="#eq-3-5" class="quarto-xref">Equation&nbsp;<span>5.5</span></a>) has a unique solution <span class="math inline">\(y(x)\)</span> on <span class="math inline">\(I\)</span>.</p>
+<p>Existence is proved in Ref. [A11] in App. 1. Uniqueness can be proved by a slight generalization of the uniqueness proof at the beginning of App. 4.</p>
+</section>
+<section id="example-4-initial-value-problem-for-a-third-order-eulercauchy-equation" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="example-4-initial-value-problem-for-a-third-order-eulercauchy-equation"><span class="header-section-number">5.1.6</span> EXAMPLE 4 Initial Value Problem for a Third-Order Euler–Cauchy Equation</h3>
+<p>Solve the following initial value problem on any open interval <span class="math inline">\(I\)</span> on the positive <span class="math inline">\(x\)</span>-axis containing <span class="math inline">\(x=1\)</span>. <span class="math display">\[
+x^3y''' - 3x^2y'' + 6xy' - 6y = 0, \quad y(1) = 2, \quad y'(1) = 1, \quad y''(1) = -4.
+\]</span> <strong>Solution.</strong> <strong>Step 1. General solution.</strong> As in Sec. 2.5 we try <span class="math inline">\(y = x^m\)</span>. By differentiation and substitution, <span class="math display">\[
+x^3m(m-1)(m-2)x^{m-3} - 3x^2m(m-1)x^{m-2} + 6xmx^{m-1} - 6x^m = 0.
+\]</span> Dropping <span class="math inline">\(x^m\)</span> and ordering gives <span class="math inline">\(m^3 - 6m^2 + 11m - 6 = 0\)</span>. If we can guess the root <span class="math inline">\(m = 1\)</span>, we can divide by <span class="math inline">\(m-1\)</span> and find the other roots 2 and 3, thus obtaining the solutions <span class="math inline">\(x, x^2, x^3\)</span>, which are linearly independent on <span class="math inline">\(I\)</span> (see Example 2). [In general one shall need a root-finding method, such as Newton’s (Sec. 19.2), also available in a CAS (Computer Algebra System).] Hence a general solution is <span class="math display">\[
+y = c_1 x + c_2 x^2 + c_3 x^3
+\]</span> valid on any interval <span class="math inline">\(I\)</span>, even when it includes <span class="math inline">\(x=0\)</span> where the coefficients of the ODE divided by <span class="math inline">\(x^3\)</span> (to have the standard form) are not continuous.</p>
+<p><strong>Step 2. Particular solution.</strong> The derivatives are <span class="math inline">\(y' = c_1 + 2c_2 x + 3c_3 x^2\)</span> and <span class="math inline">\(y'' = 2c_2 + 6c_3 x\)</span>. From this, and <span class="math inline">\(y\)</span> and the initial conditions, we get by setting <span class="math inline">\(x=1\)</span>, (a) <span class="math inline">\(c_1 + c_2 + c_3 = 2\)</span> (b) <span class="math inline">\(c_1 + 2c_2 + 3c_3 = 1\)</span> (c) <span class="math inline">\(2c_2 + 6c_3 = -4\)</span>. This is solved by Cramer’s rule (Sec. 7.6), or by elimination, which is simple, as follows. (b) - (a) gives (d) <span class="math inline">\(c_2 + 2c_3 = -1\)</span>. Then (c) - 2(d) gives <span class="math inline">\(2c_3 = -2, c_3 = -1\)</span>. Then (d) gives <span class="math inline">\(c_2 = 1\)</span>. Finally <span class="math inline">\(c_1 = 2\)</span> from (a). <strong>Answer:</strong> <span class="math display">\[
+y = 2x + x^2 - x^3.
+\]</span></p>
+</section>
+<section id="linear-independence-of-solutions.-wronskian" class="level3" data-number="5.1.7">
+<h3 data-number="5.1.7" class="anchored" data-anchor-id="linear-independence-of-solutions.-wronskian"><span class="header-section-number">5.1.7</span> Linear Independence of Solutions. Wronskian</h3>
+<p>Linear independence of solutions is crucial for obtaining general solutions. Although it can often be seen by inspection, it would be good to have a criterion for it. Now Theorem 2 in Sec. 2.6 extends from order <span class="math inline">\(n=2\)</span> to any <span class="math inline">\(n\)</span>. This extended criterion uses the <strong>Wronskian</strong> <span class="math inline">\(W\)</span> of <span class="math inline">\(n\)</span> solutions <span class="math inline">\(y_1, \dots, y_n\)</span> defined as the <span class="math inline">\(n\)</span>th-order determinant</p>
+<p><span id="eq-3-6"><span class="math display">\[
+W(y_1, \dots, y_n) = \begin{vmatrix}
+y_1 &amp; y_2 &amp; \dots &amp; y_n \\
+y_1' &amp; y_2' &amp; \dots &amp; y_n' \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+y_1^{(n-1)} &amp; y_2^{(n-1)} &amp; \dots &amp; y_n^{(n-1)}
+\end{vmatrix}.
+\tag{5.6}\]</span></span></p>
+<p>Note that <span class="math inline">\(W\)</span> depends on <span class="math inline">\(x\)</span> since <span class="math inline">\(y_1, \dots, y_n\)</span> do. The criterion states that these solutions form a basis if and only if <span class="math inline">\(W\)</span> is not zero; more precisely: <strong>THEOREM 3 Linear Dependence and Independence of Solutions</strong> Let the ODE (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) have continuous coefficients on an open interval <span class="math inline">\(I\)</span>. Then <span class="math inline">\(n\)</span> solutions of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span> are linearly dependent on <span class="math inline">\(I\)</span> if and only if their Wronskian is zero for some <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span>. Furthermore, if <span class="math inline">\(W\)</span> is zero for <span class="math inline">\(x=x_0\)</span> then <span class="math inline">\(W\)</span> is identically zero on <span class="math inline">\(I\)</span>. Hence if there is an <span class="math inline">\(x_1\)</span> in <span class="math inline">\(I\)</span> at which <span class="math inline">\(W\)</span> is not zero, then <span class="math inline">\(y_1, \dots, y_n\)</span> are linearly independent on <span class="math inline">\(I\)</span>, so that they form a basis of solutions of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>.</p>
+<p><strong>PROOF</strong> (a) Let <span class="math inline">\(y_1, \dots, y_n\)</span> be linearly dependent solutions of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>. Then, by definition, there are constants <span class="math inline">\(k_1, \dots, k_n\)</span> not all zero, such that for all <span class="math inline">\(x\)</span> in <span class="math inline">\(I\)</span>, <span id="eq-3-7"><span class="math display">\[
+k_1 y_1 + \dots + k_n y_n = 0
+\tag{5.7}\]</span></span> By differentiations of (<a href="#eq-3-7" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>) we obtain for all <span class="math inline">\(x\)</span> in <span class="math inline">\(I\)</span> <span id="eq-3-8"><span class="math display">\[
+\begin{aligned}
+k_1 y_1' + \dots + k_n y_n' &amp;= 0 \\
+&amp;\vdots \\
+k_1 y_1^{(n-1)} + \dots + k_n y_n^{(n-1)} &amp;= 0.
+\end{aligned}
+\tag{5.8}\]</span></span> (<a href="#eq-3-7" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>), (<a href="#eq-3-8" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>) is a homogeneous linear system of algebraic equations with a nontrivial solution <span class="math inline">\(k_1, \dots, k_n\)</span>. Hence its coefficient determinant must be zero for every <span class="math inline">\(x\)</span> on <span class="math inline">\(I\)</span>, by Cramer’s theorem (Sec. 7.7). But that determinant is the Wronskian <span class="math inline">\(W\)</span>, as we see from (<a href="#eq-3-6" class="quarto-xref">Equation&nbsp;<span>5.6</span></a>). Hence <span class="math inline">\(W\)</span> is zero for every <span class="math inline">\(x\)</span> on <span class="math inline">\(I\)</span>.</p>
+<ol start="2" type="a">
+<li><p>Conversely, if <span class="math inline">\(W\)</span> is zero at an <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span>, then the system (<a href="#eq-3-7" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>), (<a href="#eq-3-8" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>) with <span class="math inline">\(x = x_0\)</span> has a solution <span class="math inline">\(k_1^*, \dots, k_n^*\)</span> not all zero, by the same theorem. With these constants we define the solution <span class="math inline">\(y^* = k_1^*y_1 + \dots + k_n^*y_n\)</span> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>. By (<a href="#eq-3-7" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>), (<a href="#eq-3-8" class="quarto-xref">Equation&nbsp;<span>5.8</span></a>) this solution satisfies the initial conditions <span class="math inline">\(y^*(x_0) = 0, \dots, y^{*(n-1)}(x_0) = 0\)</span>. But another solution satisfying the same conditions is <span class="math inline">\(y \equiv 0\)</span>. Hence <span class="math inline">\(y^* \equiv 0\)</span> by Theorem 2, which applies since the coefficients of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) are continuous. Together, <span class="math inline">\(y^* = k_1^*y_1 + \dots + k_n^*y_n \equiv 0\)</span> on <span class="math inline">\(I\)</span>. This means linear dependence of <span class="math inline">\(y_1, \dots, y_n\)</span> on <span class="math inline">\(I\)</span>.</p></li>
+<li><p>If <span class="math inline">\(W\)</span> is zero at an <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span>, we have linear dependence by (b) and then <span class="math inline">\(W \equiv 0\)</span> by (a). Hence if <span class="math inline">\(W\)</span> is not zero at an <span class="math inline">\(x_1\)</span> in <span class="math inline">\(I\)</span>, the solutions <span class="math inline">\(y_1, \dots, y_n\)</span> must be linearly independent on <span class="math inline">\(I\)</span>.</p></li>
+</ol>
+</section>
+<section id="example-5-basis-wronskian" class="level3" data-number="5.1.8">
+<h3 data-number="5.1.8" class="anchored" data-anchor-id="example-5-basis-wronskian"><span class="header-section-number">5.1.8</span> EXAMPLE 5 Basis, Wronskian</h3>
+<p>We can now prove that in Example 3 we do have a basis. In evaluating <span class="math inline">\(W\)</span>, pull out the exponential functions columnwise. In the result, subtract Column 1 from Columns 2, 3, 4 (without changing Column 1). Then expand by Row 1. In the resulting third-order determinant, subtract Column 1 from Column 2 and expand the result by Row 2:</p>
+<p><span class="math display">\[
+\begin{aligned}
+W &amp;= \begin{vmatrix}
+e^{-2x} &amp; e^{-x} &amp; e^x &amp; e^{2x} \\
+-2e^{-2x} &amp; -e^{-x} &amp; e^x &amp; 2e^{2x} \\
+4e^{-2x} &amp; e^{-x} &amp; e^x &amp; 4e^{2x} \\
+-8e^{-2x} &amp; -e^{-x} &amp; e^x &amp; 8e^{2x}
+\end{vmatrix}
+= e^{-2x}e^{-x}e^x e^{2x} \begin{vmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 \\
+-2 &amp; -1 &amp; 1 &amp; 2 \\
+4 &amp; 1 &amp; 1 &amp; 4 \\
+-8 &amp; -1 &amp; 1 &amp; 8
+\end{vmatrix} \\
+&amp;= \begin{vmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+-2 &amp; 1 &amp; 3 &amp; 4 \\
+4 &amp; -3 &amp; -3 &amp; 0 \\
+-8 &amp; 7 &amp; 9 &amp; 16
+\end{vmatrix}
+= \begin{vmatrix}
+1 &amp; 3 &amp; 4 \\
+-3 &amp; -3 &amp; 0 \\
+7 &amp; 9 &amp; 16
+\end{vmatrix}
+= \begin{vmatrix}
+1 &amp; 2 &amp; 4 \\
+-3 &amp; 0 &amp; 0 \\
+7 &amp; 2 &amp; 16
+\end{vmatrix}
+= -(-3) \begin{vmatrix}
+2 &amp; 4 \\
+2 &amp; 16
+\end{vmatrix} = 3(32 - 8) = 72.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="a-general-solution-of-2-includes-all-solutions" class="level3" data-number="5.1.9">
+<h3 data-number="5.1.9" class="anchored" data-anchor-id="a-general-solution-of-2-includes-all-solutions"><span class="header-section-number">5.1.9</span> A General Solution of (2) Includes All Solutions</h3>
+<p>Let us first show that general solutions always exist. Indeed, Theorem 3 in Sec. 2.6 extends as follows.</p>
+<p><strong>THEOREM 4 Existence of a General Solution</strong> If the coefficients <span class="math inline">\(p_0(x), \dots, p_{n-1}(x)\)</span> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) are continuous on some open interval <span class="math inline">\(I\)</span>, then (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) has a general solution on <span class="math inline">\(I\)</span>.</p>
+<p><strong>PROOF</strong> We choose any fixed <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span>. By Theorem 2 the ODE (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) has <span class="math inline">\(n\)</span> solutions <span class="math inline">\(y_1, \dots, y_n\)</span> where <span class="math inline">\(y_j\)</span> satisfies initial conditions (<a href="#eq-3-5" class="quarto-xref">Equation&nbsp;<span>5.5</span></a>) with <span class="math inline">\(K_{j-1} = 1\)</span> and all other <span class="math inline">\(K\)</span>’s equal to zero. Their Wronskian at <span class="math inline">\(x_0\)</span> equals 1. For instance, when <span class="math inline">\(n=3\)</span>, then <span class="math inline">\(y_1(x_0)=1, y_2'(x_0)=1, y_3''(x_0)=1\)</span> and the other initial values are zero. Thus, as claimed,</p>
+<p><span class="math display">\[
+W(y_1(x_0), y_2(x_0), y_3(x_0)) = \begin{vmatrix}
+y_1(x_0) &amp; y_2(x_0) &amp; y_3(x_0) \\
+y_1'(x_0) &amp; y_2'(x_0) &amp; y_3'(x_0) \\
+y_1''(x_0) &amp; y_2''(x_0) &amp; y_3''(x_0)
+\end{vmatrix}
+= \begin{vmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{vmatrix} = 1.
+\]</span></p>
+<p>Hence for any <span class="math inline">\(n\)</span> those solutions are linearly independent on <span class="math inline">\(I\)</span>, by Theorem 3. They form a basis on <span class="math inline">\(I\)</span>, and <span class="math inline">\(y = c_1 y_1 + \dots + c_n y_n\)</span> is a general solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>.</p>
+<p>We can now prove the basic property that, from a general solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>), every solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) can be obtained by choosing suitable values of the arbitrary constants. Hence an <span class="math inline">\(n\)</span>th-order linear ODE has no singular solutions, that is, solutions that cannot be obtained from a general solution.</p>
+<p><strong>THEOREM 5 General Solution Includes All Solutions</strong> If the ODE (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) has continuous coefficients <span class="math inline">\(p_0(x), \dots, p_{n-1}(x)\)</span> on some open interval <span class="math inline">\(I\)</span>, then every solution <span class="math inline">\(y = Y(x)\)</span> of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span> is of the form <span id="eq-3-9"><span class="math display">\[
+Y(x) = C_1 y_1(x) + \dots + C_n y_n(x)
+\tag{5.9}\]</span></span> where <span class="math inline">\(y_1, \dots, y_n\)</span> is a basis of solutions of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span> and <span class="math inline">\(C_1, \dots, C_n\)</span> are suitable constants.</p>
+<p><strong>PROOF</strong> Let <span class="math inline">\(Y\)</span> be a given solution and <span class="math inline">\(y = c_1 y_1 + \dots + c_n y_n\)</span> a general solution of (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) on <span class="math inline">\(I\)</span>. We choose any fixed <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span> and show that we can find constants <span class="math inline">\(c_1, \dots, c_n\)</span> for which <span class="math inline">\(y\)</span> and its first <span class="math inline">\(n-1\)</span> derivatives agree with <span class="math inline">\(Y\)</span> and its corresponding derivatives at <span class="math inline">\(x_0\)</span>. That is, we should have at <span class="math inline">\(x = x_0\)</span> <span id="eq-3-10"><span class="math display">\[
+\begin{aligned}
+c_1 y_1 + \dots + c_n y_n &amp;= Y \\
+c_1 y_1' + \dots + c_n y_n' &amp;= Y' \\
+&amp;\vdots \\
+c_1 y_1^{(n-1)} + \dots + c_n y_n^{(n-1)} &amp;= Y^{(n-1)}.
+\end{aligned}
+\tag{5.10}\]</span></span> But this is a linear system of equations in the unknowns <span class="math inline">\(c_1, \dots, c_n\)</span>. Its coefficient determinant is the Wronskian <span class="math inline">\(W\)</span> of <span class="math inline">\(y_1, \dots, y_n\)</span> at <span class="math inline">\(x_0\)</span>. Since <span class="math inline">\(y_1, \dots, y_n\)</span> form a basis, they are linearly independent, so that <span class="math inline">\(W\)</span> is not zero by Theorem 3. Hence (<a href="#eq-3-10" class="quarto-xref">Equation&nbsp;<span>5.10</span></a>) has a unique solution (by Cramer’s theorem in Sec. 7.7). With these values <span class="math inline">\(c_1 = C_1, \dots, c_n = C_n\)</span> we obtain the particular solution <span class="math display">\[
+y^*(x) = C_1 y_1(x) + \dots + C_n y_n(x)
+\]</span> on <span class="math inline">\(I\)</span>. Equation (<a href="#eq-3-10" class="quarto-xref">Equation&nbsp;<span>5.10</span></a>) shows that <span class="math inline">\(y^*\)</span> and its first <span class="math inline">\(n-1\)</span> derivatives agree at <span class="math inline">\(x_0\)</span> with <span class="math inline">\(Y\)</span> and its corresponding derivatives. That is, <span class="math inline">\(y^*\)</span> and <span class="math inline">\(Y\)</span> satisfy, at <span class="math inline">\(x_0\)</span>, the same initial conditions. The uniqueness theorem (Theorem 2) now implies that <span class="math inline">\(y^* \equiv Y\)</span> on <span class="math inline">\(I\)</span>. This proves the theorem.</p>
+<p>This completes our theory of the homogeneous linear ODE (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>). Note that for <span class="math inline">\(n = 2\)</span> it is identical with that in Sec. 2.6. This had to be expected.</p>
+</section>
+<section id="problem-set-3.1" class="level3" data-number="5.1.10">
+<h3 data-number="5.1.10" class="anchored" data-anchor-id="problem-set-3.1"><span class="header-section-number">5.1.10</span> PROBLEM SET 3.1</h3>
+<p><strong>1–6 BASES: TYPICAL EXAMPLES</strong> To get a feel for higher order ODEs, show that the given functions are solutions and form a basis on any interval. Use Wronskians. In Prob. 6, <span class="math inline">\(x &gt; 0\)</span>. 1. <span class="math inline">\(1, x^2, x^4, \quad x^2y''' - 3xy'' + 3y' = 0\)</span> 2. <span class="math inline">\(e^{-x}\cos 2x, e^{-x}\sin 2x, \quad y'' + 2y' + 5y = 0\)</span> 3. <span class="math inline">\(e^{-4x}, xe^{-4x}, x^2e^{-4x}, \quad y''' + 12y'' + 48y' + 64y = 0\)</span> 4. <span class="math inline">\(\cos x, \sin x, x \cos x, x \sin x, \quad y^{iv} + 2y'' + y = 0\)</span> 5. <span class="math inline">\(e^x, e^{-x}, e^{2x}, \quad y''' - 2y'' - y' + 2y = 0\)</span> 6. <span class="math inline">\(1, x, x^2, x^3, \quad y^{iv} = 0\)</span></p>
+<ol start="7" type="1">
+<li><strong>TEAM PROJECT. General Properties of Solutions of Linear ODEs.</strong> These properties are important in obtaining new solutions from given ones. Therefore extend Team Project 38 in Sec. 2.2 to <span class="math inline">\(n\)</span>th-order ODEs. Explore statements on sums and multiples of solutions of (<a href="#eq-3-1" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>) and (<a href="#eq-3-2" class="quarto-xref">Equation&nbsp;<span>5.2</span></a>) systematically and with proofs. Recognize clearly that no new ideas are needed in this extension from <span class="math inline">\(n = 2\)</span> to general <span class="math inline">\(n\)</span>.</li>
+</ol>
+<p><strong>8–15 LINEAR INDEPENDENCE</strong> Are the given functions linearly independent or dependent on the half-axis <span class="math inline">\(x \ge 0\)</span>? Give reason. 8. <span class="math inline">\(\tan x, \cot x, 1\)</span> 9. <span class="math inline">\(x^2, 1/x^2, 0\)</span> 10. <span class="math inline">\(\cosh 2x, \sinh 2x, e^{2x}\)</span> 11. <span class="math inline">\(\sin^2 x, \cos^2 x, 2\pi\)</span> 12. <span class="math inline">\(\sin x, \cos x, \sin 2x\)</span> 13. <span class="math inline">\(\sin^2 x, \cos^2 x, \cos 2x\)</span> 14. <span class="math inline">\(e^x \cos x, e^x \sin x, e^x\)</span> 15. <span class="math inline">\(e^{2x}, xe^{2x}, x^2e^{2x}\)</span></p>
+<ol start="16" type="1">
+<li><strong>TEAM PROJECT. Linear Independence and Dependence.</strong> (a) Investigate the given question about a set <span class="math inline">\(S\)</span> of functions on an interval <span class="math inline">\(I\)</span>. Give an example. Prove your answer.</li>
+</ol>
+<ol type="1">
+<li>If <span class="math inline">\(S\)</span> contains the zero function, can <span class="math inline">\(S\)</span> be linearly independent?</li>
+<li>If <span class="math inline">\(S\)</span> is linearly independent on a subinterval <span class="math inline">\(J\)</span> of <span class="math inline">\(I\)</span>, is it linearly independent on <span class="math inline">\(I\)</span>?</li>
+<li>If <span class="math inline">\(S\)</span> is linearly dependent on a subinterval <span class="math inline">\(J\)</span> of <span class="math inline">\(I\)</span>, is it linearly dependent on <span class="math inline">\(I\)</span>?</li>
+<li>If <span class="math inline">\(S\)</span> is linearly independent on <span class="math inline">\(I\)</span>, is it linearly independent on a subinterval <span class="math inline">\(J\)</span>?</li>
+<li>If <span class="math inline">\(S\)</span> is linearly dependent on <span class="math inline">\(I\)</span>, is it linearly independent on a subinterval <span class="math inline">\(J\)</span>?</li>
+<li>If <span class="math inline">\(S\)</span> is linearly dependent on <span class="math inline">\(I\)</span>, and if <span class="math inline">\(T\)</span> contains <span class="math inline">\(S\)</span>, is <span class="math inline">\(T\)</span> linearly dependent on <span class="math inline">\(I\)</span>?</li>
+</ol>
+<ol start="2" type="a">
+<li>In what cases can you use the Wronskian for testing linear independence? By what other means can you perform such a test?</li>
+</ol>
+</section>
+</section>
+<section id="sec-3-2" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-3-2"><span class="header-section-number">5.2</span> 3.2 Homogeneous Linear ODEs with Constant Coefficients</h2>
+<p>We proceed along the lines of Sec. 2.2, and generalize the results from <span class="math inline">\(n = 2\)</span> to arbitrary <span class="math inline">\(n\)</span>. We want to solve an <span class="math inline">\(n\)</span>th-order homogeneous linear ODE with constant coefficients, written as</p>
+<p><span id="eq-3-11"><span class="math display">\[
+y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = 0
+\tag{5.11}\]</span></span></p>
+<p>where <span class="math inline">\(y^{(n)} = d^ny/dx^n\)</span>, etc. As in Sec. 2.2, we substitute <span class="math inline">\(y = e^{\lambda x}\)</span> to obtain the characteristic equation</p>
+<p><span id="eq-3-12"><span class="math display">\[
+\lambda^n + a_{n-1}\lambda^{n-1} + \dots + a_1\lambda + a_0 = 0
+\tag{5.12}\]</span></span></p>
+<p>of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>). If <span class="math inline">\(\lambda\)</span> is a root of (<a href="#eq-3-12" class="quarto-xref">Equation&nbsp;<span>5.12</span></a>), then <span class="math inline">\(y = e^{\lambda x}\)</span> is a solution of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>). To find these roots, you may need a numeric method, such as Newton’s in Sec. 19.2, also available on the usual CASs.</p>
+<p>For general <span class="math inline">\(n\)</span> there are more cases than for <span class="math inline">\(n=2\)</span>. We can have distinct real roots, simple complex roots, multiple roots, and multiple complex roots, respectively. This will be shown next and illustrated by examples.</p>
+<section id="distinct-real-roots" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="distinct-real-roots"><span class="header-section-number">5.2.1</span> Distinct Real Roots</h3>
+<p>If all the <span class="math inline">\(n\)</span> roots <span class="math inline">\(\lambda_1, \dots, \lambda_n\)</span> of (<a href="#eq-3-12" class="quarto-xref">Equation&nbsp;<span>5.12</span></a>) are real and different, then the <span class="math inline">\(n\)</span> solutions</p>
+<p><span id="eq-3-13"><span class="math display">\[
+y_1 = e^{\lambda_1 x}, \dots, y_n = e^{\lambda_n x}
+\tag{5.13}\]</span></span></p>
+<p>constitute a basis for all <span class="math inline">\(x\)</span>. The corresponding general solution of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) is</p>
+<p><span id="eq-3-14"><span class="math display">\[
+y = c_1 e^{\lambda_1 x} + \dots + c_n e^{\lambda_n x}.
+\tag{5.14}\]</span></span></p>
+<p>Indeed, the solutions in (<a href="#eq-3-13" class="quarto-xref">Equation&nbsp;<span>5.13</span></a>) are linearly independent, as we shall see after the example.</p>
+</section>
+<section id="example-1-distinct-real-roots" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="example-1-distinct-real-roots"><span class="header-section-number">5.2.2</span> EXAMPLE 1 Distinct Real Roots</h3>
+<p>Solve the ODE <span class="math inline">\(y''' - 2y'' - y' + 2y = 0\)</span>. <strong>Solution.</strong> The characteristic equation is <span class="math inline">\(\lambda^3 - 2\lambda^2 - \lambda + 2 = 0\)</span>. It has the roots <span class="math inline">\(-1, 1, 2\)</span>; if you find one of them by inspection, you can obtain the other two roots by solving a quadratic equation (explain!). The corresponding general solution (<a href="#eq-3-14" class="quarto-xref">Equation&nbsp;<span>5.14</span></a>) is <span class="math display">\[
+y = c_1 e^{-x} + c_2 e^x + c_3 e^{2x}.
+\]</span></p>
+<p><strong>Linear Independence of (13).</strong> Students familiar with <span class="math inline">\(n\)</span>th-order determinants may verify that, by pulling out all exponential functions from the columns and denoting their product by <span class="math inline">\(E = \exp[(\lambda_1 + \dots + \lambda_n)x]\)</span>, the Wronskian of the solutions in (<a href="#eq-3-13" class="quarto-xref">Equation&nbsp;<span>5.13</span></a>) becomes</p>
+<p><span id="eq-3-15"><span class="math display">\[
+W = \begin{vmatrix}
+e^{\lambda_1 x} &amp; e^{\lambda_2 x} &amp; \dots &amp; e^{\lambda_n x} \\
+\lambda_1 e^{\lambda_1 x} &amp; \lambda_2 e^{\lambda_2 x} &amp; \dots &amp; \lambda_n e^{\lambda_n x} \\
+\lambda_1^2 e^{\lambda_1 x} &amp; \lambda_2^2 e^{\lambda_2 x} &amp; \dots &amp; \lambda_n^2 e^{\lambda_n x} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\lambda_1^{n-1} e^{\lambda_1 x} &amp; \lambda_2^{n-1} e^{\lambda_2 x} &amp; \dots &amp; \lambda_n^{n-1} e^{\lambda_n x}
+\end{vmatrix} = E \begin{vmatrix}
+1 &amp; 1 &amp; \dots &amp; 1 \\
+\lambda_1 &amp; \lambda_2 &amp; \dots &amp; \lambda_n \\
+\lambda_1^2 &amp; \lambda_2^2 &amp; \dots &amp; \lambda_n^2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\lambda_1^{n-1} &amp; \lambda_2^{n-1} &amp; \dots &amp; \lambda_n^{n-1}
+\end{vmatrix}.
+\tag{5.15}\]</span></span></p>
+<p>The exponential function <span class="math inline">\(E\)</span> is never zero. Hence <span class="math inline">\(W = 0\)</span> if and only if the determinant on the right is zero. This is a so-called Vandermonde or Cauchy determinant. It can be shown that it equals</p>
+<p><span id="eq-3-16"><span class="math display">\[
+(-1)^{n(n-1)/2} V
+\tag{5.16}\]</span></span></p>
+<p>where <span class="math inline">\(V\)</span> is the product of all factors <span class="math inline">\(\lambda_j - \lambda_k\)</span> with <span class="math inline">\(j &lt; k \le n\)</span>; for instance, when <span class="math inline">\(n = 3\)</span> we get <span class="math inline">\(-V = -(\lambda_1 - \lambda_2)(\lambda_1 - \lambda_3)(\lambda_2 - \lambda_3)\)</span>. This shows that the Wronskian is not zero if and only if all the <span class="math inline">\(n\)</span> roots of (<a href="#eq-3-12" class="quarto-xref">Equation&nbsp;<span>5.12</span></a>) are different and thus gives the following.</p>
+<p><strong>THEOREM 1 Basis</strong> Solutions <span class="math inline">\(y_1 = e^{\lambda_1 x}, \dots, y_n = e^{\lambda_n x}\)</span> of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) (with any real or complex <span class="math inline">\(\lambda\)</span>’s) form a basis of solutions of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) on any open interval if and only if all <span class="math inline">\(n\)</span> roots of (<a href="#eq-3-12" class="quarto-xref">Equation&nbsp;<span>5.12</span></a>) are different.</p>
+<p>Actually, Theorem 1 is an important special case of our more general result obtained from (<a href="#eq-3-15" class="quarto-xref">Equation&nbsp;<span>5.15</span></a>) and (<a href="#eq-3-16" class="quarto-xref">Equation&nbsp;<span>5.16</span></a>):</p>
+<p><strong>THEOREM 2 Linear Independence</strong> Any number of solutions of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) of the form <span class="math inline">\(e^{\lambda x}\)</span> are linearly independent on an open interval <span class="math inline">\(I\)</span> if and only if the corresponding <span class="math inline">\(\lambda\)</span> are all different.</p>
+</section>
+<section id="simple-complex-roots" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="simple-complex-roots"><span class="header-section-number">5.2.3</span> Simple Complex Roots</h3>
+<p>If complex roots occur, they must occur in conjugate pairs since the coefficients of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) are real. Thus, if <span class="math inline">\(\lambda = \gamma + i\omega\)</span> is a simple root of (<a href="#eq-3-12" class="quarto-xref">Equation&nbsp;<span>5.12</span></a>), so is the conjugate <span class="math inline">\(\bar{\lambda} = \gamma - i\omega\)</span> and two corresponding linearly independent solutions are (as in Sec. 2.2, except for notation)</p>
+<p><span class="math display">\[
+y_1 = e^{\gamma x} \cos \omega x, \quad y_2 = e^{\gamma x} \sin \omega x.
+\]</span></p>
+</section>
+<section id="example-2-simple-complex-roots.-initial-value-problem" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="example-2-simple-complex-roots.-initial-value-problem"><span class="header-section-number">5.2.4</span> EXAMPLE 2 Simple Complex Roots. Initial Value Problem</h3>
+<p>Solve the initial value problem <span class="math display">\[
+y''' - y'' + 100y' - 100y = 0, \quad y(0) = 4, \quad y'(0) = 11, \quad y''(0) = -299.
+\]</span> <strong>Solution.</strong> The characteristic equation is <span class="math inline">\(\lambda^3 - \lambda^2 + 100\lambda - 100 = 0\)</span>. It has the root 1, as can perhaps be seen by inspection. Then division by <span class="math inline">\(\lambda - 1\)</span> shows that the other roots are <span class="math inline">\(\pm 10i\)</span>. Hence a general solution and its derivatives (obtained by differentiation) are <span class="math display">\[
+\begin{aligned}
+y &amp;= c_1 e^x + A \cos 10x + B \sin 10x, \\
+y' &amp;= c_1 e^x - 10A \sin 10x + 10B \cos 10x, \\
+y'' &amp;= c_1 e^x - 100A \cos 10x - 100B \sin 10x.
+\end{aligned}
+\]</span> From this and the initial conditions we obtain, by setting <span class="math inline">\(x = 0\)</span>, (a) <span class="math inline">\(c_1 + A = 4\)</span> (b) <span class="math inline">\(c_1 + 10B = 11\)</span> (c) <span class="math inline">\(c_1 - 100A = -299\)</span> We solve this system for the unknowns <span class="math inline">\(c_1, A, B\)</span>. Equation (a) minus Equation (c) gives <span class="math inline">\(101A = 303, A = 3\)</span>. Then <span class="math inline">\(c_1 = 1\)</span> from (a) and <span class="math inline">\(B = 1\)</span> from (b). The solution is (<a href="#fig-01" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>) <span class="math display">\[
+y = e^x + 3\cos 10x + \sin 10x.
+\]</span> This gives the solution curve, which oscillates about <span class="math inline">\(e^x\)</span> (dashed in <a href="#fig-01" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
+<div id="fig-01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/chapter3/fig-01.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Solution in Example 2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="multiple-real-roots" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="multiple-real-roots"><span class="header-section-number">5.2.5</span> Multiple Real Roots</h3>
+<p>If a real double root occurs, say, <span class="math inline">\(\lambda_1 = \lambda_2\)</span>, then <span class="math inline">\(y_1 = y_2\)</span> in (<a href="#eq-3-13" class="quarto-xref">Equation&nbsp;<span>5.13</span></a>), and we take <span class="math inline">\(e^{\lambda_1 x}\)</span> and <span class="math inline">\(xe^{\lambda_1 x}\)</span> as corresponding linearly independent solutions. This is as in Sec. 2.2. More generally, if <span class="math inline">\(\lambda\)</span> is a real root of order <span class="math inline">\(m\)</span>, then <span class="math inline">\(m\)</span> corresponding linearly independent solutions are</p>
+<p><span id="eq-3-17"><span class="math display">\[
+e^{\lambda x}, xe^{\lambda x}, x^2e^{\lambda x}, \dots, x^{m-1}e^{\lambda x}.
+\tag{5.17}\]</span></span></p>
+<p>We derive these solutions after the next example and indicate how to prove their linear independence.</p>
+</section>
+<section id="example-3-real-double-and-triple-roots" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="example-3-real-double-and-triple-roots"><span class="header-section-number">5.2.6</span> EXAMPLE 3 Real Double and Triple Roots</h3>
+<p>Solve the ODE <span class="math inline">\(y^v - 3y^{iv} + 3y''' - y'' = 0\)</span>. <strong>Solution.</strong> The characteristic equation <span class="math inline">\(\lambda^5 - 3\lambda^4 + 3\lambda^3 - \lambda^2 = 0\)</span> has the roots <span class="math inline">\(\lambda_1 = \lambda_2 = 0\)</span> and <span class="math inline">\(\lambda_3 = \lambda_4 = \lambda_5 = 1\)</span>, and the answer is <span id="eq-3-18"><span class="math display">\[
+y = c_1 + c_2 x + (c_3 + c_4 x + c_5 x^2)e^x.
+\tag{5.18}\]</span></span></p>
+<p><strong>Derivation of (17).</strong> We write the left side of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>) as <span class="math display">\[
+L[y] = y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_0y.
+\]</span> Let <span class="math inline">\(y = e^{\lambda x}\)</span>. Then by performing the differentiations we have <span class="math display">\[
+L[e^{\lambda x}] = (\lambda^n + a_{n-1}\lambda^{n-1} + \dots + a_0)e^{\lambda x}.
+\]</span> Now let <span class="math inline">\(\lambda_1\)</span> be a root of <span class="math inline">\(m\)</span>th order of the polynomial on the right, where <span class="math inline">\(m \le n\)</span>. For <span class="math inline">\(m &lt; n\)</span> let <span class="math inline">\(\lambda_{m+1}, \dots, \lambda_n\)</span> be the other roots, all different from <span class="math inline">\(\lambda_1\)</span>. Writing the polynomial in product form, we then have <span class="math display">\[
+L[e^{\lambda x}] = (\lambda - \lambda_1)^m h(\lambda) e^{\lambda x}
+\]</span> with <span class="math inline">\(h(\lambda) = (\lambda - \lambda_{m+1})\dots(\lambda - \lambda_n)\)</span> if <span class="math inline">\(m &lt; n\)</span> and <span class="math inline">\(h(\lambda) = 1\)</span> if <span class="math inline">\(m = n\)</span>. Now comes the key idea: We differentiate on both sides with respect to <span class="math inline">\(\lambda\)</span>: <span id="eq-3-19"><span class="math display">\[
+\frac{\partial}{\partial \lambda} L[e^{\lambda x}] = m(\lambda - \lambda_1)^{m-1} h(\lambda) e^{\lambda x} + (\lambda - \lambda_1)^m \frac{\partial}{\partial \lambda}[h(\lambda)e^{\lambda x}].
+\tag{5.19}\]</span></span> The differentiations with respect to <span class="math inline">\(x\)</span> and <span class="math inline">\(\lambda\)</span> are independent and the resulting derivatives are continuous, so that we can interchange their order on the left: <span id="eq-3-20"><span class="math display">\[
+\frac{\partial}{\partial \lambda} L[e^{\lambda x}] = L\left[\frac{\partial}{\partial \lambda} e^{\lambda x}\right] = L[x e^{\lambda x}].
+\tag{5.20}\]</span></span> The right side of (<a href="#eq-3-19" class="quarto-xref">Equation&nbsp;<span>5.19</span></a>) is zero for <span class="math inline">\(\lambda = \lambda_1\)</span> because of the factors <span class="math inline">\(\lambda - \lambda_1\)</span> (and since <span class="math inline">\(m \ge 2\)</span>, we have a multiple root!). Hence <span class="math inline">\(L[xe^{\lambda_1 x}] = 0\)</span> by (<a href="#eq-3-19" class="quarto-xref">Equation&nbsp;<span>5.19</span></a>) and (<a href="#eq-3-20" class="quarto-xref">Equation&nbsp;<span>5.20</span></a>). This proves that <span class="math inline">\(xe^{\lambda_1 x}\)</span> is a solution of (<a href="#eq-3-11" class="quarto-xref">Equation&nbsp;<span>5.11</span></a>). We can repeat this step and produce <span class="math inline">\(x^2e^{\lambda_1 x}, \dots, x^{m-1}e^{\lambda_1 x}\)</span> by another <span class="math inline">\(m-2\)</span> such differentiations with respect to <span class="math inline">\(\lambda\)</span>. Going one step further would no longer give zero on the right because the lowest power of <span class="math inline">\(\lambda - \lambda_1\)</span> would then be multiplied by <span class="math inline">\(m!\)</span>, and because <span class="math inline">\(h(\lambda_1) \neq 0\)</span> has no factors <span class="math inline">\(\lambda - \lambda_1\)</span>, so we get precisely the solutions in (<a href="#eq-3-17" class="quarto-xref">Equation&nbsp;<span>5.17</span></a>). We finally show that the solutions (<a href="#eq-3-17" class="quarto-xref">Equation&nbsp;<span>5.17</span></a>) are linearly independent. For a specific <span class="math inline">\(n\)</span> this can be seen by calculating their Wronskian, which turns out to be nonzero. For arbitrary <span class="math inline">\(m\)</span> we can pull out the exponential functions from the Wronskian. This gives <span class="math inline">\(e^{m\lambda_1 x}\)</span> times a determinant which by “row operations” can be reduced to the Wronskian of <span class="math inline">\(1, x, \dots, x^{m-1}\)</span>. The latter is constant and different from zero (equal to <span class="math inline">\(1!2!\dots(m-1)!\)</span>). These functions are solutions of the ODE <span class="math inline">\(y^{(m)} = 0\)</span>, so that linear independence follows from Theorem 3 in Sec. 3.1.</p>
+</section>
+<section id="multiple-complex-roots" class="level3" data-number="5.2.7">
+<h3 data-number="5.2.7" class="anchored" data-anchor-id="multiple-complex-roots"><span class="header-section-number">5.2.7</span> Multiple Complex Roots</h3>
+<p>In this case, real solutions are obtained as for complex simple roots above. Consequently, if <span class="math inline">\(\lambda = \gamma + i\omega\)</span> is a complex double root, so is the conjugate <span class="math inline">\(\bar{\lambda} = \gamma - i\omega\)</span>. Corresponding linearly independent solutions are</p>
+<p><span id="eq-3-21"><span class="math display">\[
+e^{\gamma x} \cos \omega x, \quad e^{\gamma x} \sin \omega x, \quad x e^{\gamma x} \cos \omega x, \quad x e^{\gamma x} \sin \omega x.
+\tag{5.21}\]</span></span></p>
+<p>The first two of these result from <span class="math inline">\(e^{\lambda x}\)</span> and <span class="math inline">\(e^{\bar{\lambda} x}\)</span> as before, and the second two from <span class="math inline">\(x e^{\lambda x}\)</span> and <span class="math inline">\(x e^{\bar{\lambda} x}\)</span> in the same fashion. Obviously, the corresponding general solution is</p>
+<p><span id="eq-3-22"><span class="math display">\[
+y = e^{\gamma x} [(A_1 + A_2 x) \cos \omega x + (B_1 + B_2 x) \sin \omega x].
+\tag{5.22}\]</span></span></p>
+<p>For complex triple roots (which hardly ever occur in applications), one would obtain two more solutions <span class="math inline">\(x^2 e^{\gamma x} \cos \omega x, x^2 e^{\gamma x} \sin \omega x\)</span>, and so on.</p>
+</section>
+<section id="problem-set-3.2" class="level3" data-number="5.2.8">
+<h3 data-number="5.2.8" class="anchored" data-anchor-id="problem-set-3.2"><span class="header-section-number">5.2.8</span> PROBLEM SET 3.2</h3>
+<p><strong>1–6 GENERAL SOLUTION</strong> Solve the given ODE. Show the details of your work. 1. <span class="math inline">\(y''' + 25y' = 0\)</span> 2. <span class="math inline">\(y^{iv} + 2y'' + y = 0\)</span> 3. <span class="math inline">\(y^{iv} + 4y'' = 0\)</span> 4. <span class="math inline">\((D^3 - D^2 - D + I)y = 0\)</span> 5. <span class="math inline">\((D^4 + 10D^2 + 9I)y = 0\)</span> 6. <span class="math inline">\((D^5 + 8D^3 + 16D)y = 0\)</span></p>
+<p><strong>7–13 INITIAL VALUE PROBLEM</strong> Solve the IVP by a CAS, giving a general solution and the particular solution and its graph. 7. <span class="math inline">\(y''' + 3.2y'' + 4.81y' = 0, \quad y(0) = 3.4, \quad y'(0) = -4.6, \quad y''(0) = 9.91\)</span> 8. <span class="math inline">\(y''' + 7.5y'' + 14.25y' - 9.125y = 0, \quad y(0) = 10.05, \quad y'(0) = -54.975, \quad y''(0) = 257.5125\)</span> 9. <span class="math inline">\(4y''' + 8y'' + 41y' + 37y = 0, \quad y(0) = 9, \quad y'(0) = -6.5, \quad y''(0) = -39.75\)</span> 10. <span class="math inline">\(y^{iv} + 4y = 0, \quad y(0) = 1/2, \quad y'(0) = -3/2, \quad y''(0) = 5/2, \quad y'''(0) = -7/2\)</span> 11. <span class="math inline">\(y^{iv} - 9y'' - 400y = 0, \quad y(0) = 0, \quad y'(0) = 0, \quad y''(0) = 41, \quad y'''(0) = 0\)</span> 12. <span class="math inline">\(y^v - 5y''' + 4y' = 0, \quad y(0) = 3, \quad y'(0) = -5, \quad y''(0) = 11, \quad y'''(0) = -23, \quad y^{iv}(0) = 47\)</span> 13. <span class="math inline">\(y^{iv} + 0.45y''' - 0.165y'' + 0.0045y' - 0.00175y = 0, \quad y(0) = 17.4, \quad y'(0) = -2.82, \quad y''(0) = 2.0485, \quad y'''(0) = -1.458675\)</span></p>
+<ol start="14" type="1">
+<li><strong>PROJECT. Reduction of Order.</strong> This is of practical interest since a single solution of an ODE can often be guessed. For second order, see Example 7 in Sec. 2.1.</li>
+</ol>
+<ol type="a">
+<li>How could you reduce the order of a linear constant-coefficient ODE if a solution is known?</li>
+<li>ethod to a variable-coefficient ODE <span class="math display">\[
+y''' + p_2(x)y'' + p_1(x)y' + p_0(x)y = 0.
+\]</span> Assuming a solution <span class="math inline">\(y_1\)</span> to be known, show that another solution is <span class="math inline">\(y_2(x) = u(x)y_1(x)\)</span> with <span class="math inline">\(u(x) = \int z(x) dx\)</span> and <span class="math inline">\(z\)</span> obtained by solving <span class="math display">\[
+y_1 z'' + (3y_1' + p_2 y_1)z' + (3y_1'' + 2p_2 y_1' + p_1 y_1)z = 0.
+\]</span></li>
+<li>Reduce <span class="math display">\[
+x^3 y''' - 3x^2 y'' + (6 - x^2)x y' - (6 - x^2)y = 0,
+\]</span> using <span class="math inline">\(y_1 = x\)</span> (perhaps obtainable by inspection).</li>
+</ol>
+<ol start="15" type="1">
+<li><strong>CAS EXPERIMENT. Reduction of Order.</strong> Starting with a basis, find third-order linear ODEs with variable coefficients for which the reduction to second order turns out to be relatively simple.</li>
+</ol>
+</section>
+</section>
+<section id="sec-3-3" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-3-3"><span class="header-section-number">5.3</span> 3.3 Nonhomogeneous Linear ODEs</h2>
+<p>We now turn from homogeneous to nonhomogeneous linear ODEs of <span class="math inline">\(n\)</span>th order. We write them in standard form</p>
+<p><span id="eq-3-23"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = r(x)
+\tag{5.23}\]</span></span></p>
+<p>with <span class="math inline">\(y^{(n)} = d^ny/dx^n\)</span> as the first term, and <span class="math inline">\(r(x) \not\equiv 0\)</span>. As for second-order ODEs, a general solution of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) on an open interval <span class="math inline">\(I\)</span> of the <span class="math inline">\(x\)</span>-axis is of the form</p>
+<p><span id="eq-3-24"><span class="math display">\[
+y(x) = y_h(x) + y_p(x).
+\tag{5.24}\]</span></span></p>
+<p>Here <span class="math inline">\(y_h(x) = c_1 y_1(x) + \dots + c_n y_n(x)\)</span> is a general solution of the corresponding homogeneous ODE</p>
+<p><span id="eq-3-25"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = 0
+\tag{5.25}\]</span></span></p>
+<p>on <span class="math inline">\(I\)</span>. Also, <span class="math inline">\(y_p\)</span> is any solution of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) on <span class="math inline">\(I\)</span> containing no arbitrary constants. If (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) has continuous coefficients and a continuous <span class="math inline">\(r\)</span> on <span class="math inline">\(I\)</span>, then a general solution of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) exists and includes all solutions. Thus (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) has no singular solutions.</p>
+<p>An initial value problem for (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) consists of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) and <span class="math inline">\(n\)</span> initial conditions</p>
+<p><span id="eq-3-26"><span class="math display">\[
+y(x_0) = K_0, \quad y'(x_0) = K_1, \dots, \quad y^{(n-1)}(x_0) = K_{n-1}
+\tag{5.26}\]</span></span></p>
+<p>with <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span>. Under those continuity assumptions it has a unique solution. The ideas of proof are the same as those for <span class="math inline">\(n = 2\)</span> in Sec. 2.7.</p>
+<section id="method-of-undetermined-coefficients" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="method-of-undetermined-coefficients"><span class="header-section-number">5.3.1</span> Method of Undetermined Coefficients</h3>
+<p>Equation (<a href="#eq-3-24" class="quarto-xref">Equation&nbsp;<span>5.24</span></a>) shows that for solving (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) we have to determine a particular solution <span class="math inline">\(y_p\)</span> of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>). For a constant-coefficient equation</p>
+<p><span id="eq-3-27"><span class="math display">\[
+y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = r(x)
+\tag{5.27}\]</span></span></p>
+<p>(<span class="math inline">\(a_0, \dots, a_{n-1}\)</span> constant) and special <span class="math inline">\(r(x)\)</span> as in Sec. 2.7, such a <span class="math inline">\(y_p(x)\)</span> can be determined by the method of undetermined coefficients, as in Sec. 2.7, using the following rules.</p>
+<ol type="A">
+<li><strong>Basic Rule</strong> as in Sec. 2.7.</li>
+<li><strong>Modification Rule</strong>. If a term in your choice for <span class="math inline">\(y_p(x)\)</span> is a solution of the homogeneous equation (<a href="#eq-3-25" class="quarto-xref">Equation&nbsp;<span>5.25</span></a>), then multiply this term by <span class="math inline">\(x^k\)</span> where <span class="math inline">\(k\)</span> is the smallest positive integer such that this term times <span class="math inline">\(x^k\)</span> is not a solution of (<a href="#eq-3-25" class="quarto-xref">Equation&nbsp;<span>5.25</span></a>).</li>
+<li><strong>Sum Rule</strong> as in Sec. 2.7.</li>
+</ol>
+<p>The practical application of the method is the same as that in Sec. 2.7. It suffices to illustrate the typical steps of solving an initial value problem and, in particular, the new Modification Rule, which includes the old Modification Rule as a particular case (with <span class="math inline">\(n = 2, k = 1\)</span> or 2). We shall see that the technicalities are the same as for <span class="math inline">\(n = 2\)</span> except perhaps for the more involved determination of the constants.</p>
+</section>
+<section id="example-1-initial-value-problem.-modification-rule" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="example-1-initial-value-problem.-modification-rule"><span class="header-section-number">5.3.2</span> EXAMPLE 1 Initial Value Problem. Modification Rule</h3>
+<p>Solve the initial value problem <span id="eq-3-28"><span class="math display">\[
+y''' + 3y'' + 3y' + y = 30e^{-x}, \quad y(0) = 3, \quad y'(0) = -3, \quad y''(0) = -47.
+\tag{5.28}\]</span></span> <strong>Solution.</strong> <strong>Step 1.</strong> The characteristic equation is <span class="math inline">\(\lambda^3 + 3\lambda^2 + 3\lambda + 1 = (\lambda + 1)^3 = 0\)</span>. It has the triple root <span class="math inline">\(\lambda = -1\)</span>. Hence a general solution of the homogeneous ODE is <span class="math display">\[
+y_h = c_1 e^{-x} + c_2 x e^{-x} + c_3 x^2 e^{-x} = (c_1 + c_2 x + c_3 x^2)e^{-x}.
+\]</span> <strong>Step 2.</strong> If we try <span class="math inline">\(y_p = Ce^{-x}\)</span> we get <span class="math inline">\(C e^{-x} - 3C e^{-x} + 3C e^{-x} - C e^{-x} = 30 e^{-x}\)</span>, which has no solution. Try <span class="math inline">\(C x e^{-x}\)</span> and <span class="math inline">\(C x^2 e^{-x}\)</span>. The Modification Rule calls for <span class="math inline">\(C x^3 e^{-x}\)</span>. Then <span class="math display">\[
+\begin{aligned}
+y_p &amp;= Cx^3e^{-x}, \\
+y_p' &amp;= C(3x^2 - x^3)e^{-x}, \\
+y_p'' &amp;= C(6x - 6x^2 + x^3)e^{-x}, \\
+y_p''' &amp;= C(6 - 18x + 9x^2 - x^3)e^{-x}.
+\end{aligned}
+\]</span> Substitution of these expressions into (<a href="#eq-3-28" class="quarto-xref">Equation&nbsp;<span>5.28</span></a>) and omission of the common factor <span class="math inline">\(e^{-x}\)</span> gives <span class="math display">\[
+C(6 - 18x + 9x^2 - x^3) + 3C(6x - 6x^2 + x^3) + 3C(3x^2 - x^3) + Cx^3 = 30.
+\]</span> The linear, quadratic, and cubic terms drop out, and <span class="math inline">\(6C = 30\)</span>. Hence <span class="math inline">\(C = 5\)</span>. This gives <span class="math inline">\(y_p = 5x^3e^{-x}\)</span>. <strong>Step 3.</strong> We now write down the general solution of the given ODE. From it we find <span class="math inline">\(c_1\)</span> by the first initial condition. We insert the value, differentiate, and determine <span class="math inline">\(c_2\)</span> from the second initial condition, insert the value, and finally determine <span class="math inline">\(c_3\)</span> from <span class="math inline">\(y''\)</span> and the third initial condition: <span class="math display">\[
+\begin{aligned}
+y &amp;= y_h + y_p = (c_1 + c_2x + c_3x^2)e^{-x} + 5x^3e^{-x}, \quad y(0) = c_1 = 3 \\
+y' &amp;= [-3 + c_2 + (-c_2 + 2c_3)x + (15 - c_3)x^2 - 5x^3]e^{-x}, \quad y'(0) = -3 + c_2 = -3, \quad c_2 = 0 \\
+y'' &amp;= [3 + 2c_3 + (30 - 4c_3)x + (-30 + c_3)x^2 + 5x^3]e^{-x}, \quad y''(0) = 3 + 2c_3 = -47, \quad c_3 = -25.
+\end{aligned}
+\]</span> Hence the answer to our problem is (<a href="#fig-02" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>) <span class="math display">\[
+y = (3 - 25x^2)e^{-x} + 5x^3e^{-x}.
+\]</span> The curve of <span class="math inline">\(y\)</span> begins at <span class="math inline">\((0, 3)\)</span> with a negative slope, as expected from the initial values, and approaches zero as <span class="math inline">\(x \to \infty\)</span>. The dashed curve in <a href="#fig-02" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> is <span class="math inline">\(y_p\)</span>.</p>
+<div id="fig-02" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/chapter3/fig-02.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: y and (dashed) <span class="math inline">\(y_p\)</span> in Example 1
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="method-of-variation-of-parameters" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="method-of-variation-of-parameters"><span class="header-section-number">5.3.3</span> Method of Variation of Parameters</h3>
+<p>The method of variation of parameters (see Sec. 2.10) also extends to arbitrary order <span class="math inline">\(n\)</span>. It gives a particular solution <span class="math inline">\(y_p\)</span> for the nonhomogeneous equation (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) (in standard form with <span class="math inline">\(y^{(n)}\)</span> as the first term!) by the formula</p>
+<p><span id="eq-3-29"><span class="math display">\[
+y_p(x) = \sum_{k=1}^n y_k(x) \int \frac{W_k(x)}{W(x)} r(x) dx
+\tag{5.29}\]</span></span></p>
+<p><span class="math display">\[
+= y_1(x) \int \frac{W_1(x)}{W(x)} r(x) dx + \dots + y_n(x) \int \frac{W_n(x)}{W(x)} r(x) dx
+\]</span></p>
+<p>on an open interval <span class="math inline">\(I\)</span> on which the coefficients of (<a href="#eq-3-23" class="quarto-xref">Equation&nbsp;<span>5.23</span></a>) and <span class="math inline">\(r(x)\)</span> are continuous. In (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>) the functions <span class="math inline">\(y_1, \dots, y_n\)</span> form a basis of the homogeneous ODE (<a href="#eq-3-25" class="quarto-xref">Equation&nbsp;<span>5.25</span></a>), with Wronskian <span class="math inline">\(W\)</span>, and <span class="math inline">\(W_j\)</span> <span class="math inline">\((j = 1, \dots, n)\)</span> is obtained from <span class="math inline">\(W\)</span> by replacing the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(W\)</span> by the column <span class="math inline">\([0 \quad 0 \quad \dots \quad 0 \quad 1]^T\)</span>. Thus, when <span class="math inline">\(n = 2\)</span>, this becomes identical with (2) in Sec. 2.10,</p>
+<p><span class="math display">\[
+W = \begin{vmatrix}
+y_1 &amp; y_2 \\
+y_1' &amp; y_2'
+\end{vmatrix}, \quad W_1 = \begin{vmatrix}
+0 &amp; y_2 \\
+1 &amp; y_2'
+\end{vmatrix} = -y_2, \quad W_2 = \begin{vmatrix}
+y_1 &amp; 0 \\
+y_1' &amp; 1
+\end{vmatrix} = y_1.
+\]</span></p>
+<p>The proof of (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>) uses an extension of the idea of the proof of (2) in Sec. 2.10 and can be found in Ref [A11] listed in App. 1.</p>
+</section>
+<section id="example-2-variation-of-parameters.-nonhomogeneous-eulercauchy-equation" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="example-2-variation-of-parameters.-nonhomogeneous-eulercauchy-equation"><span class="header-section-number">5.3.4</span> EXAMPLE 2 Variation of Parameters. Nonhomogeneous Euler–Cauchy Equation</h3>
+<p>Solve the nonhomogeneous Euler–Cauchy equation <span class="math display">\[
+x^3y''' - 3x^2y'' + 6xy' - 6y = x^4 \ln x \quad (x &gt; 0).
+\]</span> <strong>Solution.</strong> <strong>Step 1.</strong> General solution of the homogeneous ODE. Substitution of <span class="math inline">\(y = x^m\)</span> and the derivatives into the homogeneous ODE and deletion of the factor <span class="math inline">\(x^m\)</span> gives <span class="math display">\[
+m(m-1)(m-2) - 3m(m-1) + 6m - 6 = 0.
+\]</span> The roots are 1, 2, 3 and give as a basis <span class="math display">\[
+y_1 = x, \quad y_2 = x^2, \quad y_3 = x^3.
+\]</span> Hence the corresponding general solution of the homogeneous ODE is <span class="math display">\[
+y_h = c_1 x + c_2 x^2 + c_3 x^3.
+\]</span> <strong>Step 2.</strong> Determinants needed in (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>). These are <span class="math display">\[
+W = \begin{vmatrix}
+x &amp; x^2 &amp; x^3 \\
+1 &amp; 2x &amp; 3x^2 \\
+0 &amp; 2 &amp; 6x
+\end{vmatrix} = 2x^3
+\]</span> <span class="math display">\[
+W_1 = \begin{vmatrix}
+0 &amp; x^2 &amp; x^3 \\
+0 &amp; 2x &amp; 3x^2 \\
+1 &amp; 2 &amp; 6x
+\end{vmatrix} = x^4, \quad W_2 = \begin{vmatrix}
+x &amp; 0 &amp; x^3 \\
+1 &amp; 0 &amp; 3x^2 \\
+0 &amp; 1 &amp; 6x
+\end{vmatrix} = -2x^3, \quad W_3 = \begin{vmatrix}
+x &amp; x^2 &amp; 0 \\
+1 &amp; 2x &amp; 0 \\
+0 &amp; 2 &amp; 1
+\end{vmatrix} = x^2.
+\]</span> <strong>Step 3.</strong> Integration. In (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>) we also need the right side of our ODE in standard form, obtained by division of the given equation by the coefficient <span class="math inline">\(x^3\)</span> of <span class="math inline">\(y'''\)</span>; thus, <span class="math inline">\(r(x) = (x^4 \ln x) / x^3 = x \ln x\)</span>. In (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>) we have the simple quotients <span class="math inline">\(W_1/W = x/2, W_2/W = -1, W_3/W = 1/(2x)\)</span>. Hence (<a href="#eq-3-29" class="quarto-xref">Equation&nbsp;<span>5.29</span></a>) becomes <span class="math display">\[
+\begin{aligned}
+y_p &amp;= x \int \frac{x}{2} x \ln x dx - x^2 \int (-1) x \ln x dx + x^3 \int \frac{1}{2x} x \ln x dx \\
+&amp;= \frac{x}{2} \left( \frac{x^3}{3} \ln x - \frac{x^3}{9} \right) + x^2 \left( \frac{x^2}{2} \ln x - \frac{x^2}{4} \right) + \frac{x^3}{2} (x \ln x - x).
+\end{aligned}
+\]</span> Simplification gives <span class="math inline">\(y_p = \frac{1}{6} x^4 (\ln x - \frac{11}{6})\)</span>. Hence the answer is <span class="math display">\[
+y = y_h + y_p = c_1 x + c_2 x^2 + c_3 x^3 + \frac{1}{6} x^4 \left( \ln x - \frac{11}{6} \right).
+\]</span> <a href="#fig-03" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> shows <span class="math inline">\(y_p\)</span>. Can you explain the shape of this curve? Its behavior near <span class="math inline">\(x = 0\)</span>? The occurrence of a minimum? Its rapid increase? Why would the method of undetermined coefficients not have given the solution?</p>
+<div id="fig-03" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/chapter3/fig-03.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Particular solution <span class="math inline">\(y_p\)</span> of the nonhomogeneous Euler-Cauchy equation in Example 2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="application-elastic-beams" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="application-elastic-beams"><span class="header-section-number">5.3.5</span> Application: Elastic Beams</h3>
+<p>Whereas second-order ODEs have various applications, of which we have discussed some of the more important ones, higher order ODEs have much fewer engineering applications. An important fourth-order ODE governs the bending of elastic beams, such as wooden or iron girders in a building or a bridge. A related application of vibration of beams does not fit in here since it leads to PDEs and will therefore be discussed in Sec. 12.3.</p>
+</section>
+<section id="example-3-bending-of-an-elastic-beam-under-a-load" class="level3" data-number="5.3.6">
+<h3 data-number="5.3.6" class="anchored" data-anchor-id="example-3-bending-of-an-elastic-beam-under-a-load"><span class="header-section-number">5.3.6</span> EXAMPLE 3 Bending of an Elastic Beam under a Load</h3>
+<p>We consider a beam <span class="math inline">\(B\)</span> of length <span class="math inline">\(L\)</span> and constant (e.g., rectangular) cross section and homogeneous elastic material (e.g., steel); see <a href="#fig-04" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. We assume that under its own weight the beam is bent so little that it is practically straight. If we apply a load to <span class="math inline">\(B\)</span> in a vertical plane through the axis of symmetry (the <span class="math inline">\(x\)</span>-axis in <a href="#fig-04" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>), <span class="math inline">\(B\)</span> is bent. Its axis is curved into the so-called elastic curve <span class="math inline">\(C\)</span> (or deflection curve). It is shown in elasticity theory that the bending moment <span class="math inline">\(M(x)\)</span> is proportional to the curvature <span class="math inline">\(k(x)\)</span> of <span class="math inline">\(C\)</span>. We assume the bending to be small, so that the deflection <span class="math inline">\(y(x)\)</span> and its derivative <span class="math inline">\(y'(x)\)</span> (determining the tangent direction of <span class="math inline">\(C\)</span>) are small. Then, by calculus, <span class="math inline">\(k = y'' / (1 + y'^2)^{3/2} \approx y''\)</span>. Hence <span class="math display">\[
+M(x) = EI y''(x).
+\]</span> <span class="math inline">\(EI\)</span> is the constant of proportionality. <span class="math inline">\(E\)</span> is Young’s modulus of elasticity of the material of the beam. <span class="math inline">\(I\)</span> is the moment of inertia of the cross section about the (horizontal) <span class="math inline">\(z\)</span>-axis in <a href="#fig-04" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. Elasticity theory shows further that <span class="math inline">\(M''(x) = f(x)\)</span>, where <span class="math inline">\(f(x)\)</span> is the load per unit length. Together, <span id="eq-3-30"><span class="math display">\[
+EI y^{iv} = f(x).
+\tag{5.30}\]</span></span></p>
+<div id="fig-04" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/chapter3/fig-04.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Elastic beam
+</figcaption>
+</figure>
+</div>
+<p>In applications the most important supports and corresponding boundary conditions are as follows and shown in <a href="#fig-05" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>. (A) Simply supported at <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(L\)</span> (B) Clamped at both ends at <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(L\)</span> (C) Clamped at <span class="math inline">\(x = 0\)</span>, free at <span class="math inline">\(x = L\)</span></p>
+<p>The boundary condition <span class="math inline">\(y = 0\)</span> means no displacement at that point, <span class="math inline">\(y' = 0\)</span> means a horizontal tangent, <span class="math inline">\(y'' = 0\)</span> means no bending moment, and <span class="math inline">\(y''' = 0\)</span> means no shear force.</p>
+<div id="fig-05" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/chapter3/fig-05.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Supports of a beam
+</figcaption>
+</figure>
+</div>
+<p>Let us apply this to the uniformly loaded simply supported beam in <a href="#fig-04" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. The load is <span class="math inline">\(f(x) \equiv f_0 = \text{const}\)</span>. Then (<a href="#eq-3-30" class="quarto-xref">Equation&nbsp;<span>5.30</span></a>) is <span id="eq-3-31"><span class="math display">\[
+y^{iv} = k, \quad k = \frac{f_0}{EI}.
+\tag{5.31}\]</span></span> This can be solved simply by calculus. Two integrations give <span class="math display">\[
+y'' = \frac{k}{2} x^2 + c_1 x + c_2.
+\]</span> <span class="math inline">\(y''(0) = 0\)</span> gives <span class="math inline">\(c_2 = 0\)</span>. Then <span class="math inline">\(y''(L) = L(\frac{1}{2}kL + c_1) = 0\)</span> (since <span class="math inline">\(L \neq 0\)</span>), <span class="math inline">\(c_1 = -kL/2\)</span>. Hence <span class="math display">\[
+y'' = \frac{k}{2} (x^2 - Lx).
+\]</span> Integrating this twice, we obtain <span class="math display">\[
+y = \frac{k}{2} \left( \frac{1}{12} x^4 - \frac{L}{6} x^3 + c_3 x + c_4 \right)
+\]</span> with <span class="math inline">\(c_4 = 0\)</span> from <span class="math inline">\(y(0) = 0\)</span>. Then <span class="math display">\[
+y(L) = \frac{k}{2} \left( \frac{L^4}{12} - \frac{L^4}{6} + c_3 L \right) = 0, \quad c_3 = \frac{L^3}{12}.
+\]</span> Inserting the expression for <span class="math inline">\(k\)</span>, we obtain as our solution <span class="math display">\[
+y = \frac{f_0}{24EI} (x^4 - 2Lx^3 + L^3x).
+\]</span> Since the boundary conditions at both ends are the same, we expect the deflection to be “symmetric” with respect to <span class="math inline">\(L/2\)</span>, that is, <span class="math inline">\(y(x) = y(L - x)\)</span>. Verify this directly or set <span class="math inline">\(x = u + L/2\)</span> and show that <span class="math inline">\(y\)</span> becomes an even function of <span class="math inline">\(u\)</span>, <span class="math display">\[
+y = \frac{f_0}{24EI} \left( u^2 - \frac{1}{4} L^2 \right) \left( u^2 - \frac{5}{4} L^2 \right).
+\]</span> From this we can see that the maximum deflection in the middle at <span class="math inline">\(u = 0\)</span> (<span class="math inline">\(x = L/2\)</span>) is <span class="math inline">\(5f_0 L^4 / (384 EI)\)</span>. Recall that the positive direction points downward.</p>
+</section>
+<section id="problem-set-3.3" class="level3" data-number="5.3.7">
+<h3 data-number="5.3.7" class="anchored" data-anchor-id="problem-set-3.3"><span class="header-section-number">5.3.7</span> PROBLEM SET 3.3</h3>
+<p><strong>1–7 GENERAL SOLUTION</strong> Solve the following ODEs, showing the details of your work. 1. <span class="math inline">\(y''' + 3y'' + 3y' + y = e^x - x - 1\)</span> 2. <span class="math inline">\(y''' + 2y'' - y' - 2y = 1 - 4x^3\)</span> 3. <span class="math inline">\((D^4 + 10D^2 + 9I) y = 6.5 \sinh 2x\)</span> 4. <span class="math inline">\((D^3 + 3D^2 - 5D - 39I) y = -300 \cos x\)</span> 5. <span class="math inline">\((x^3 D^3 + x^2 D^2 - 2xD + 2I) y = x^{-2}\)</span> 6. <span class="math inline">\((D^3 + 4D) y = \sin x\)</span> 7. <span class="math inline">\((D^3 - 9D^2 + 27D - 27I) y = 27 \sin 3x\)</span></p>
+<p><strong>8–13 INITIAL VALUE PROBLEM</strong> Solve the given IVP, showing the details of your work. 8. <span class="math inline">\(y^{iv} - 5y'' + 4y = 10e^{-3x}, \quad y(0) = 1, \quad y'(0) = 0, \quad y''(0) = 0, \quad y'''(0) = 0\)</span> 9. <span class="math inline">\(y^{iv} + 5y'' + 4y = 90 \sin 4x, \quad y(0) = 1, \quad y'(0) = 2, \quad y''(0) = -1, \quad y'''(0) = -32\)</span> 10. <span class="math inline">\(x^3 y''' + x y' - y = x^2, \quad y(1) = 1, \quad y'(1) = 3, \quad y''(1) = 14\)</span> 11. <span class="math inline">\((D^3 - 2D^2 - 3D) y = 74e^{-3x} \sin x, \quad y(0) = -1.4, \quad y'(0) = 3.2, \quad y''(0) = -5.2\)</span> 12. <span class="math inline">\((D^3 - 2D^2 - 9D + 18I) y = e^{2x}, \quad y(0) = 4.5, \quad y'(0) = 8.8, \quad y''(0) = 17.2\)</span> 13. <span class="math inline">\(y''' - 3y'' + 3y' - y = x^{1/2} e^x\)</span></p>
+<ol start="14" type="1">
+<li><p><strong>CAS EXPERIMENT. Undetermined Coefficients.</strong> Since variation of parameters is generally complicated, it seems worthwhile to try to extend the other method. Find out experimentally for what ODEs this is possible and for what not. Hint: Work backward, solving ODEs with a CAS and then looking whether the solution could be obtained by undetermined coefficients. For example, consider <span class="math inline">\(3y''' + x^2y'' - 2xy' + 2y = x^3 \ln x\)</span> and <span class="math inline">\(y''' - 3y'' + 3y' - y = x^{1/2}e^x\)</span>.</p></li>
+<li><p><strong>WRITING REPORT. Comparison of Methods.</strong> Write a report on the method of undetermined coefficients and the method of variation of parameters, discussing and comparing the advantages and disadvantages of each method. Illustrate your findings with typical examples. Try to show that the method of undetermined coefficients, say, for a third-order ODE with constant coefficients and an exponential function on the right, can be derived from the method of variation of parameters.</p></li>
+</ol>
+</section>
+<section id="chapter-3-review-questions-and-problems" class="level3" data-number="5.3.8">
+<h3 data-number="5.3.8" class="anchored" data-anchor-id="chapter-3-review-questions-and-problems"><span class="header-section-number">5.3.8</span> CHAPTER 3 REVIEW QUESTIONS AND PROBLEMS</h3>
+<ol type="1">
+<li>What is the superposition or linearity principle? For what <span class="math inline">\(n\)</span>th-order ODEs does it hold?</li>
+<li>List some other basic theorems that extend from second-order to <span class="math inline">\(n\)</span>th-order ODEs.</li>
+<li>If you know a general solution of a homogeneous linear ODE, what do you need to obtain from it a general solution of a corresponding nonhomogeneous linear ODE?</li>
+<li>What form does an initial value problem for an <span class="math inline">\(n\)</span>th-order linear ODE have?</li>
+<li>What is the Wronskian? What is it used for?</li>
+</ol>
+<p><strong>6–15 GENERAL SOLUTION</strong> Solve the given ODE. Show the details of your work. 6. <span class="math inline">\(y^{iv} - 3y'' - 4y = 0\)</span> 7. <span class="math inline">\(y''' + 4y'' + 13y' = 0\)</span> 8. <span class="math inline">\(y''' - 4y'' - y' + 4y = 30e^{2x}\)</span> 9. <span class="math inline">\((D^4 - 16I)y = -15 \cosh x\)</span> 10. <span class="math inline">\(x^2 y''' + 3xy'' - 2y' = 0\)</span> 11. <span class="math inline">\(y''' + 4.5y'' + 6.75y' + 3.375y = 0\)</span> 12. <span class="math inline">\((D^3 - D)y = \sinh 0.8x\)</span> 13. <span class="math inline">\((D^3 + 6D^2 + 12D + 8I)y = 8x^2\)</span> 14. <span class="math inline">\((D^4 - 13D^2 + 36I)y = 12e^x\)</span> 15. <span class="math inline">\(4x^3 y''' + 3xy' - 3y = 10\)</span></p>
+<p><strong>16–20 INITIAL VALUE PROBLEM</strong> Solve the IVP. Show the details of your work. 16. <span class="math inline">\((D^3 - D^2 - D + I)y = 0, \quad y(0) = 0, \quad Dy(0) = 1, \quad D^2y(0) = 0\)</span> 17. <span class="math inline">\(y''' + 5y'' + 24y' + 20y = x, \quad y(0) = 1.94, \quad y'(0) = -3.95, \quad y''(0) = -24\)</span> 18. <span class="math inline">\((D^4 - 26D^2 + 25I)y = 50(x + 1)^2, \quad y(0) = 12.16, \quad Dy(0) = -6, \quad D^2y(0) = 34, \quad D^3y(0) = -130\)</span> 19. <span class="math inline">\((D^3 + 9D^2 + 23D + 15I)y = 12\exp(-4x), \quad y(0) = 9, \quad Dy(0) = -41, \quad D^2y(0) = 189\)</span> 20. <span class="math inline">\((D^3 + 3D^2 + 3D + I)y = 8 \sin x, \quad y(0) = -1, \quad y'(0) = -3, \quad y''(0) = 5\)</span></p>
+</section>
+<section id="summary-of-chapter-3" class="level3" data-number="5.3.9">
+<h3 data-number="5.3.9" class="anchored" data-anchor-id="summary-of-chapter-3"><span class="header-section-number">5.3.9</span> SUMMARY OF CHAPTER 3</h3>
+<section id="higher-order-linear-odes" class="level4" data-number="5.3.9.1">
+<h4 data-number="5.3.9.1" class="anchored" data-anchor-id="higher-order-linear-odes"><span class="header-section-number">5.3.9.1</span> Higher Order Linear ODEs</h4>
+<p>Compare with the similar Summary of Chap. 2 (the case <span class="math inline">\(n = 2\)</span>).</p>
+<p>Chapter 3 extends Chap. 2 from order <span class="math inline">\(n = 2\)</span> to arbitrary order <span class="math inline">\(n\)</span>. An <span class="math inline">\(n\)</span>th-order linear ODE is an ODE that can be written</p>
+<p><span id="eq-3-32"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = r(x)
+\tag{5.32}\]</span></span></p>
+<p>with <span class="math inline">\(y^{(n)} = d^ny/dx^n\)</span> as the first term; we again call this the <strong>standard form</strong>. Equation (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>) is called <strong>homogeneous</strong> if <span class="math inline">\(r(x) \equiv 0\)</span> on a given open interval <span class="math inline">\(I\)</span> considered, <strong>nonhomogeneous</strong> if <span class="math inline">\(r(x) \not\equiv 0\)</span> on <span class="math inline">\(I\)</span>. For the homogeneous ODE</p>
+<p><span id="eq-3-33"><span class="math display">\[
+y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_1(x)y' + p_0(x)y = 0
+\tag{5.33}\]</span></span></p>
+<p>the superposition principle (Sec. 3.1) holds, just as in the case <span class="math inline">\(n = 2\)</span>. A <strong>basis</strong> or <strong>fundamental system</strong> of solutions of (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>) on <span class="math inline">\(I\)</span> consists of <span class="math inline">\(n\)</span> linearly independent solutions <span class="math inline">\(y_1, \dots, y_n\)</span> of (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>) on <span class="math inline">\(I\)</span>. A <strong>general solution</strong> of (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>) on <span class="math inline">\(I\)</span> is a linear combination of these,</p>
+<p><span id="eq-3-34"><span class="math display">\[
+y = c_1 y_1 + \dots + c_n y_n \quad (c_1, \dots, c_n \text{ arbitrary constants}).
+\tag{5.34}\]</span></span></p>
+<p>A <strong>general solution</strong> of the nonhomogeneous ODE (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>) on <span class="math inline">\(I\)</span> is of the form</p>
+<p><span id="eq-3-35"><span class="math display">\[
+y = y_h + y_p \quad \text{(Sec. 3.3)}.
+\tag{5.35}\]</span></span></p>
+<p>Here, <span class="math inline">\(y_p\)</span> is a particular solution of (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>) and is obtained by two methods (undetermined coefficients or variation of parameters) explained in Sec. 3.3.</p>
+<p>An <strong>initial value problem</strong> for (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>) or (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>) consists of one of these ODEs and <span class="math inline">\(n\)</span> initial conditions (Secs. 3.1, 3.3)</p>
+<p><span id="eq-3-36"><span class="math display">\[
+y(x_0) = K_0, \quad y'(x_0) = K_1, \quad \dots, \quad y^{(n-1)}(x_0) = K_{n-1}
+\tag{5.36}\]</span></span></p>
+<p>with <span class="math inline">\(x_0\)</span> given in <span class="math inline">\(I\)</span> and <span class="math inline">\(K_0, \dots, K_{n-1}\)</span> given. If <span class="math inline">\(p_0, \dots, p_{n-1}, r\)</span> are continuous on <span class="math inline">\(I\)</span>, then general solutions of (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>) and (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>) on <span class="math inline">\(I\)</span> exist, and initial value problems (<a href="#eq-3-32" class="quarto-xref">Equation&nbsp;<span>5.32</span></a>), (<a href="#eq-3-36" class="quarto-xref">Equation&nbsp;<span>5.36</span></a>) or (<a href="#eq-3-33" class="quarto-xref">Equation&nbsp;<span>5.33</span></a>), (<a href="#eq-3-36" class="quarto-xref">Equation&nbsp;<span>5.36</span></a>) have a unique solution.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch2.html" class="pagination-link" aria-label="CHAPTER 02: Second-Order Linear ODEs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 02: Second-Order Linear ODEs</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch5.html" class="pagination-link" aria-label="CHAPTER 05: Series Solutions of ODEs. Special Functions">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
