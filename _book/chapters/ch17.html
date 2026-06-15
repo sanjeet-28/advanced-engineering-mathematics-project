@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; CHAPTER 17: Conformal Mapping – Advanced Engineering Mathematics</title>
+<title>12&nbsp; CHAPTER 17: Conformal Mapping – Advanced Engineering Mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/ch21.html" rel="next">
-<link href="../chapters/ch9.html" rel="prev">
+<link href="../chapters/ch10.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch17.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch17.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,20 +201,26 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 10: Vector Integral Calculus. Integral Theorems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch21.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
   </div>
 </li>
     </ul>
@@ -227,55 +233,55 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-geometry-analytic-functions" id="toc-sec-geometry-analytic-functions" class="nav-link active" data-scroll-target="#sec-geometry-analytic-functions"><span class="header-section-number">11.1</span> 17.1 Geometry of Analytic Functions: Conformal Mapping</a>
+  <li><a href="#sec-geometry-analytic-functions" id="toc-sec-geometry-analytic-functions" class="nav-link active" data-scroll-target="#sec-geometry-analytic-functions"><span class="header-section-number">12.1</span> 17.1 Geometry of Analytic Functions: Conformal Mapping</a>
   <ul class="collapse">
-  <li><a href="#example-1-mapping-w-fz-z2" id="toc-example-1-mapping-w-fz-z2" class="nav-link" data-scroll-target="#example-1-mapping-w-fz-z2"><span class="header-section-number">11.1.1</span> EXAMPLE 1 Mapping <span class="math inline">\(w = f(z) = z^2\)</span></a></li>
-  <li><a href="#conformal-mapping" id="toc-conformal-mapping" class="nav-link" data-scroll-target="#conformal-mapping"><span class="header-section-number">11.1.2</span> Conformal Mapping</a></li>
-  <li><a href="#theorem-1-conformality-of-mapping-by-analytic-functions" id="toc-theorem-1-conformality-of-mapping-by-analytic-functions" class="nav-link" data-scroll-target="#theorem-1-conformality-of-mapping-by-analytic-functions"><span class="header-section-number">11.1.3</span> THEOREM 1 Conformality of Mapping by Analytic Functions</a></li>
-  <li><a href="#example-2-conformality-of-w-zn" id="toc-example-2-conformality-of-w-zn" class="nav-link" data-scroll-target="#example-2-conformality-of-w-zn"><span class="header-section-number">11.1.4</span> EXAMPLE 2 Conformality of <span class="math inline">\(w = z^n\)</span></a></li>
-  <li><a href="#example-3-mapping-w-z-1z.-joukowski-airfoil" id="toc-example-3-mapping-w-z-1z.-joukowski-airfoil" class="nav-link" data-scroll-target="#example-3-mapping-w-z-1z.-joukowski-airfoil"><span class="header-section-number">11.1.5</span> EXAMPLE 3 Mapping <span class="math inline">\(w = z + 1/z\)</span>. Joukowski Airfoil</a></li>
-  <li><a href="#example-4-conformality-of-w-ez" id="toc-example-4-conformality-of-w-ez" class="nav-link" data-scroll-target="#example-4-conformality-of-w-ez"><span class="header-section-number">11.1.6</span> EXAMPLE 4 Conformality of <span class="math inline">\(w = e^z\)</span></a></li>
-  <li><a href="#example-5-principle-of-inverse-mapping.-mapping-w-textln-z" id="toc-example-5-principle-of-inverse-mapping.-mapping-w-textln-z" class="nav-link" data-scroll-target="#example-5-principle-of-inverse-mapping.-mapping-w-textln-z"><span class="header-section-number">11.1.7</span> EXAMPLE 5 Principle of Inverse Mapping. Mapping <span class="math inline">\(w = \text{Ln } z\)</span></a></li>
-  <li><a href="#magnification-ratio" id="toc-magnification-ratio" class="nav-link" data-scroll-target="#magnification-ratio"><span class="header-section-number">11.1.8</span> Magnification Ratio</a></li>
-  <li><a href="#more-on-the-condition-fz-neq-0" id="toc-more-on-the-condition-fz-neq-0" class="nav-link" data-scroll-target="#more-on-the-condition-fz-neq-0"><span class="header-section-number">11.1.9</span> More on the Condition <span class="math inline">\(f'(z) \neq 0\)</span></a></li>
-  <li><a href="#problem-set-17.1" id="toc-problem-set-17.1" class="nav-link" data-scroll-target="#problem-set-17.1"><span class="header-section-number">11.1.10</span> PROBLEM SET 17.1</a></li>
+  <li><a href="#example-1-mapping-w-fz-z2" id="toc-example-1-mapping-w-fz-z2" class="nav-link" data-scroll-target="#example-1-mapping-w-fz-z2"><span class="header-section-number">12.1.1</span> EXAMPLE 1 Mapping <span class="math inline">\(w = f(z) = z^2\)</span></a></li>
+  <li><a href="#conformal-mapping" id="toc-conformal-mapping" class="nav-link" data-scroll-target="#conformal-mapping"><span class="header-section-number">12.1.2</span> Conformal Mapping</a></li>
+  <li><a href="#theorem-1-conformality-of-mapping-by-analytic-functions" id="toc-theorem-1-conformality-of-mapping-by-analytic-functions" class="nav-link" data-scroll-target="#theorem-1-conformality-of-mapping-by-analytic-functions"><span class="header-section-number">12.1.3</span> THEOREM 1 Conformality of Mapping by Analytic Functions</a></li>
+  <li><a href="#example-2-conformality-of-w-zn" id="toc-example-2-conformality-of-w-zn" class="nav-link" data-scroll-target="#example-2-conformality-of-w-zn"><span class="header-section-number">12.1.4</span> EXAMPLE 2 Conformality of <span class="math inline">\(w = z^n\)</span></a></li>
+  <li><a href="#example-3-mapping-w-z-1z.-joukowski-airfoil" id="toc-example-3-mapping-w-z-1z.-joukowski-airfoil" class="nav-link" data-scroll-target="#example-3-mapping-w-z-1z.-joukowski-airfoil"><span class="header-section-number">12.1.5</span> EXAMPLE 3 Mapping <span class="math inline">\(w = z + 1/z\)</span>. Joukowski Airfoil</a></li>
+  <li><a href="#example-4-conformality-of-w-ez" id="toc-example-4-conformality-of-w-ez" class="nav-link" data-scroll-target="#example-4-conformality-of-w-ez"><span class="header-section-number">12.1.6</span> EXAMPLE 4 Conformality of <span class="math inline">\(w = e^z\)</span></a></li>
+  <li><a href="#example-5-principle-of-inverse-mapping.-mapping-w-textln-z" id="toc-example-5-principle-of-inverse-mapping.-mapping-w-textln-z" class="nav-link" data-scroll-target="#example-5-principle-of-inverse-mapping.-mapping-w-textln-z"><span class="header-section-number">12.1.7</span> EXAMPLE 5 Principle of Inverse Mapping. Mapping <span class="math inline">\(w = \text{Ln } z\)</span></a></li>
+  <li><a href="#magnification-ratio" id="toc-magnification-ratio" class="nav-link" data-scroll-target="#magnification-ratio"><span class="header-section-number">12.1.8</span> Magnification Ratio</a></li>
+  <li><a href="#more-on-the-condition-fz-neq-0" id="toc-more-on-the-condition-fz-neq-0" class="nav-link" data-scroll-target="#more-on-the-condition-fz-neq-0"><span class="header-section-number">12.1.9</span> More on the Condition <span class="math inline">\(f'(z) \neq 0\)</span></a></li>
+  <li><a href="#problem-set-17.1" id="toc-problem-set-17.1" class="nav-link" data-scroll-target="#problem-set-17.1"><span class="header-section-number">12.1.10</span> PROBLEM SET 17.1</a></li>
   </ul></li>
-  <li><a href="#sec-lft" id="toc-sec-lft" class="nav-link" data-scroll-target="#sec-lft"><span class="header-section-number">11.2</span> 17.2 Linear Fractional Transformations (Möbius Transformations)</a>
+  <li><a href="#sec-lft" id="toc-sec-lft" class="nav-link" data-scroll-target="#sec-lft"><span class="header-section-number">12.2</span> 17.2 Linear Fractional Transformations (Möbius Transformations)</a>
   <ul class="collapse">
-  <li><a href="#example-1-properties-of-the-inversion-w-1z-fig-17-10" id="toc-example-1-properties-of-the-inversion-w-1z-fig-17-10" class="nav-link" data-scroll-target="#example-1-properties-of-the-inversion-w-1z-fig-17-10"><span class="header-section-number">11.2.1</span> EXAMPLE 1 Properties of the Inversion <span class="math inline">\(w = 1/z\)</span> (Figure&nbsp;<span>11.10</span>)</a></li>
-  <li><a href="#theorem-1-circles-and-straight-lines" id="toc-theorem-1-circles-and-straight-lines" class="nav-link" data-scroll-target="#theorem-1-circles-and-straight-lines"><span class="header-section-number">11.2.2</span> THEOREM 1 Circles and Straight Lines</a></li>
-  <li><a href="#extended-complex-plane" id="toc-extended-complex-plane" class="nav-link" data-scroll-target="#extended-complex-plane"><span class="header-section-number">11.2.3</span> Extended Complex Plane</a></li>
-  <li><a href="#fixed-points" id="toc-fixed-points" class="nav-link" data-scroll-target="#fixed-points"><span class="header-section-number">11.2.4</span> Fixed Points</a></li>
-  <li><a href="#theorem-2-fixed-points" id="toc-theorem-2-fixed-points" class="nav-link" data-scroll-target="#theorem-2-fixed-points"><span class="header-section-number">11.2.5</span> THEOREM 2 Fixed Points</a></li>
-  <li><a href="#problem-set-17.2" id="toc-problem-set-17.2" class="nav-link" data-scroll-target="#problem-set-17.2"><span class="header-section-number">11.2.6</span> PROBLEM SET 17.2</a></li>
+  <li><a href="#example-1-properties-of-the-inversion-w-1z-fig-17-10" id="toc-example-1-properties-of-the-inversion-w-1z-fig-17-10" class="nav-link" data-scroll-target="#example-1-properties-of-the-inversion-w-1z-fig-17-10"><span class="header-section-number">12.2.1</span> EXAMPLE 1 Properties of the Inversion <span class="math inline">\(w = 1/z\)</span> (Figure&nbsp;<span>12.10</span>)</a></li>
+  <li><a href="#theorem-1-circles-and-straight-lines" id="toc-theorem-1-circles-and-straight-lines" class="nav-link" data-scroll-target="#theorem-1-circles-and-straight-lines"><span class="header-section-number">12.2.2</span> THEOREM 1 Circles and Straight Lines</a></li>
+  <li><a href="#extended-complex-plane" id="toc-extended-complex-plane" class="nav-link" data-scroll-target="#extended-complex-plane"><span class="header-section-number">12.2.3</span> Extended Complex Plane</a></li>
+  <li><a href="#fixed-points" id="toc-fixed-points" class="nav-link" data-scroll-target="#fixed-points"><span class="header-section-number">12.2.4</span> Fixed Points</a></li>
+  <li><a href="#theorem-2-fixed-points" id="toc-theorem-2-fixed-points" class="nav-link" data-scroll-target="#theorem-2-fixed-points"><span class="header-section-number">12.2.5</span> THEOREM 2 Fixed Points</a></li>
+  <li><a href="#problem-set-17.2" id="toc-problem-set-17.2" class="nav-link" data-scroll-target="#problem-set-17.2"><span class="header-section-number">12.2.6</span> PROBLEM SET 17.2</a></li>
   </ul></li>
-  <li><a href="#sec-special-lft" id="toc-sec-special-lft" class="nav-link" data-scroll-target="#sec-special-lft"><span class="header-section-number">11.3</span> 17.3 Special Linear Fractional Transformations</a>
+  <li><a href="#sec-special-lft" id="toc-sec-special-lft" class="nav-link" data-scroll-target="#sec-special-lft"><span class="header-section-number">12.3</span> 17.3 Special Linear Fractional Transformations</a>
   <ul class="collapse">
-  <li><a href="#theorem-1-three-points-and-their-images-given" id="toc-theorem-1-three-points-and-their-images-given" class="nav-link" data-scroll-target="#theorem-1-three-points-and-their-images-given"><span class="header-section-number">11.3.1</span> THEOREM 1 Three Points and Their Images Given</a></li>
-  <li><a href="#mapping-of-standard-domains-by-theorem-1" id="toc-mapping-of-standard-domains-by-theorem-1" class="nav-link" data-scroll-target="#mapping-of-standard-domains-by-theorem-1"><span class="header-section-number">11.3.2</span> Mapping of Standard Domains by Theorem 1</a></li>
-  <li><a href="#example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" id="toc-example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" class="nav-link" data-scroll-target="#example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11"><span class="header-section-number">11.3.3</span> EXAMPLE 1 Mapping of a Half-Plane onto a Disk (Figure&nbsp;<span>11.11</span>)</a></li>
-  <li><a href="#example-2-occurrence-of-infty" id="toc-example-2-occurrence-of-infty" class="nav-link" data-scroll-target="#example-2-occurrence-of-infty"><span class="header-section-number">11.3.4</span> EXAMPLE 2 Occurrence of <span class="math inline">\(\infty\)</span></a></li>
-  <li><a href="#example-3-mapping-of-a-disk-onto-a-half-plane" id="toc-example-3-mapping-of-a-disk-onto-a-half-plane" class="nav-link" data-scroll-target="#example-3-mapping-of-a-disk-onto-a-half-plane"><span class="header-section-number">11.3.5</span> EXAMPLE 3 Mapping of a Disk onto a Half-Plane</a></li>
-  <li><a href="#example-4-mapping-of-a-half-plane-onto-a-half-plane" id="toc-example-4-mapping-of-a-half-plane-onto-a-half-plane" class="nav-link" data-scroll-target="#example-4-mapping-of-a-half-plane-onto-a-half-plane"><span class="header-section-number">11.3.6</span> EXAMPLE 4 Mapping of a Half-Plane onto a Half-Plane</a></li>
-  <li><a href="#example-5-mapping-of-the-unit-disk-onto-the-unit-disk" id="toc-example-5-mapping-of-the-unit-disk-onto-the-unit-disk" class="nav-link" data-scroll-target="#example-5-mapping-of-the-unit-disk-onto-the-unit-disk"><span class="header-section-number">11.3.7</span> EXAMPLE 5 Mapping of the Unit Disk onto the Unit Disk</a></li>
-  <li><a href="#example-6-mapping-of-an-angular-region-onto-the-unit-disk" id="toc-example-6-mapping-of-an-angular-region-onto-the-unit-disk" class="nav-link" data-scroll-target="#example-6-mapping-of-an-angular-region-onto-the-unit-disk"><span class="header-section-number">11.3.8</span> EXAMPLE 6 Mapping of an Angular Region onto the Unit Disk</a></li>
-  <li><a href="#problem-set-17.3" id="toc-problem-set-17.3" class="nav-link" data-scroll-target="#problem-set-17.3"><span class="header-section-number">11.3.9</span> PROBLEM SET 17.3</a></li>
+  <li><a href="#theorem-1-three-points-and-their-images-given" id="toc-theorem-1-three-points-and-their-images-given" class="nav-link" data-scroll-target="#theorem-1-three-points-and-their-images-given"><span class="header-section-number">12.3.1</span> THEOREM 1 Three Points and Their Images Given</a></li>
+  <li><a href="#mapping-of-standard-domains-by-theorem-1" id="toc-mapping-of-standard-domains-by-theorem-1" class="nav-link" data-scroll-target="#mapping-of-standard-domains-by-theorem-1"><span class="header-section-number">12.3.2</span> Mapping of Standard Domains by Theorem 1</a></li>
+  <li><a href="#example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" id="toc-example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" class="nav-link" data-scroll-target="#example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11"><span class="header-section-number">12.3.3</span> EXAMPLE 1 Mapping of a Half-Plane onto a Disk (Figure&nbsp;<span>12.11</span>)</a></li>
+  <li><a href="#example-2-occurrence-of-infty" id="toc-example-2-occurrence-of-infty" class="nav-link" data-scroll-target="#example-2-occurrence-of-infty"><span class="header-section-number">12.3.4</span> EXAMPLE 2 Occurrence of <span class="math inline">\(\infty\)</span></a></li>
+  <li><a href="#example-3-mapping-of-a-disk-onto-a-half-plane" id="toc-example-3-mapping-of-a-disk-onto-a-half-plane" class="nav-link" data-scroll-target="#example-3-mapping-of-a-disk-onto-a-half-plane"><span class="header-section-number">12.3.5</span> EXAMPLE 3 Mapping of a Disk onto a Half-Plane</a></li>
+  <li><a href="#example-4-mapping-of-a-half-plane-onto-a-half-plane" id="toc-example-4-mapping-of-a-half-plane-onto-a-half-plane" class="nav-link" data-scroll-target="#example-4-mapping-of-a-half-plane-onto-a-half-plane"><span class="header-section-number">12.3.6</span> EXAMPLE 4 Mapping of a Half-Plane onto a Half-Plane</a></li>
+  <li><a href="#example-5-mapping-of-the-unit-disk-onto-the-unit-disk" id="toc-example-5-mapping-of-the-unit-disk-onto-the-unit-disk" class="nav-link" data-scroll-target="#example-5-mapping-of-the-unit-disk-onto-the-unit-disk"><span class="header-section-number">12.3.7</span> EXAMPLE 5 Mapping of the Unit Disk onto the Unit Disk</a></li>
+  <li><a href="#example-6-mapping-of-an-angular-region-onto-the-unit-disk" id="toc-example-6-mapping-of-an-angular-region-onto-the-unit-disk" class="nav-link" data-scroll-target="#example-6-mapping-of-an-angular-region-onto-the-unit-disk"><span class="header-section-number">12.3.8</span> EXAMPLE 6 Mapping of an Angular Region onto the Unit Disk</a></li>
+  <li><a href="#problem-set-17.3" id="toc-problem-set-17.3" class="nav-link" data-scroll-target="#problem-set-17.3"><span class="header-section-number">12.3.9</span> PROBLEM SET 17.3</a></li>
   </ul></li>
-  <li><a href="#sec-conformal-other-fns" id="toc-sec-conformal-other-fns" class="nav-link" data-scroll-target="#sec-conformal-other-fns"><span class="header-section-number">11.4</span> 17.4 Conformal Mapping by Other Functions</a>
+  <li><a href="#sec-conformal-other-fns" id="toc-sec-conformal-other-fns" class="nav-link" data-scroll-target="#sec-conformal-other-fns"><span class="header-section-number">12.4</span> 17.4 Conformal Mapping by Other Functions</a>
   <ul class="collapse">
-  <li><a href="#sine-function" id="toc-sine-function" class="nav-link" data-scroll-target="#sine-function"><span class="header-section-number">11.4.1</span> Sine Function</a></li>
-  <li><a href="#cosine-function" id="toc-cosine-function" class="nav-link" data-scroll-target="#cosine-function"><span class="header-section-number">11.4.2</span> Cosine Function</a></li>
-  <li><a href="#hyperbolic-sine" id="toc-hyperbolic-sine" class="nav-link" data-scroll-target="#hyperbolic-sine"><span class="header-section-number">11.4.3</span> Hyperbolic Sine</a></li>
-  <li><a href="#hyperbolic-cosine" id="toc-hyperbolic-cosine" class="nav-link" data-scroll-target="#hyperbolic-cosine"><span class="header-section-number">11.4.4</span> Hyperbolic Cosine</a></li>
-  <li><a href="#tangent-function" id="toc-tangent-function" class="nav-link" data-scroll-target="#tangent-function"><span class="header-section-number">11.4.5</span> Tangent Function</a></li>
-  <li><a href="#problem-set-17.4" id="toc-problem-set-17.4" class="nav-link" data-scroll-target="#problem-set-17.4"><span class="header-section-number">11.4.6</span> PROBLEM SET 17.4</a></li>
+  <li><a href="#sine-function" id="toc-sine-function" class="nav-link" data-scroll-target="#sine-function"><span class="header-section-number">12.4.1</span> Sine Function</a></li>
+  <li><a href="#cosine-function" id="toc-cosine-function" class="nav-link" data-scroll-target="#cosine-function"><span class="header-section-number">12.4.2</span> Cosine Function</a></li>
+  <li><a href="#hyperbolic-sine" id="toc-hyperbolic-sine" class="nav-link" data-scroll-target="#hyperbolic-sine"><span class="header-section-number">12.4.3</span> Hyperbolic Sine</a></li>
+  <li><a href="#hyperbolic-cosine" id="toc-hyperbolic-cosine" class="nav-link" data-scroll-target="#hyperbolic-cosine"><span class="header-section-number">12.4.4</span> Hyperbolic Cosine</a></li>
+  <li><a href="#tangent-function" id="toc-tangent-function" class="nav-link" data-scroll-target="#tangent-function"><span class="header-section-number">12.4.5</span> Tangent Function</a></li>
+  <li><a href="#problem-set-17.4" id="toc-problem-set-17.4" class="nav-link" data-scroll-target="#problem-set-17.4"><span class="header-section-number">12.4.6</span> PROBLEM SET 17.4</a></li>
   </ul></li>
-  <li><a href="#sec-riemann-surfaces" id="toc-sec-riemann-surfaces" class="nav-link" data-scroll-target="#sec-riemann-surfaces"><span class="header-section-number">11.5</span> 17.5 Riemann Surfaces (Optional)</a>
+  <li><a href="#sec-riemann-surfaces" id="toc-sec-riemann-surfaces" class="nav-link" data-scroll-target="#sec-riemann-surfaces"><span class="header-section-number">12.5</span> 17.5 Riemann Surfaces (Optional)</a>
   <ul class="collapse">
-  <li><a href="#problem-set-17.5" id="toc-problem-set-17.5" class="nav-link" data-scroll-target="#problem-set-17.5"><span class="header-section-number">11.5.1</span> PROBLEM SET 17.5</a></li>
+  <li><a href="#problem-set-17.5" id="toc-problem-set-17.5" class="nav-link" data-scroll-target="#problem-set-17.5"><span class="header-section-number">12.5.1</span> PROBLEM SET 17.5</a></li>
   </ul></li>
-  <li><a href="#sec-ch17-review" id="toc-sec-ch17-review" class="nav-link" data-scroll-target="#sec-ch17-review"><span class="header-section-number">11.6</span> CHAPTER 17 REVIEW QUESTIONS AND PROBLEMS</a></li>
-  <li><a href="#sec-ch17-summary" id="toc-sec-ch17-summary" class="nav-link" data-scroll-target="#sec-ch17-summary"><span class="header-section-number">11.7</span> SUMMARY OF CHAPTER 17: Conformal Mapping</a></li>
+  <li><a href="#sec-ch17-review" id="toc-sec-ch17-review" class="nav-link" data-scroll-target="#sec-ch17-review"><span class="header-section-number">12.6</span> CHAPTER 17 REVIEW QUESTIONS AND PROBLEMS</a></li>
+  <li><a href="#sec-ch17-summary" id="toc-sec-ch17-summary" class="nav-link" data-scroll-target="#sec-ch17-summary"><span class="header-section-number">12.7</span> SUMMARY OF CHAPTER 17: Conformal Mapping</a></li>
   </ul>
 </nav>
     </div>
@@ -284,7 +290,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></h1>
 </div>
 
 
@@ -307,97 +313,97 @@ window.Quarto = {
 <p>Our study of conformality is similar to the approach used in calculus where we study properties of real functions <span class="math inline">\(y = f(x)\)</span> and graph them. Here we study the properties of conformal mappings (Secs. 17.1–17.4) to get a deeper understanding of the properties of functions, most notably the ones discussed in Chap. 13. Chapter 17 ends with an introduction to <strong>Riemann surfaces</strong>, an ingenious geometric way of dealing with multivalued complex functions such as <span class="math inline">\(w = \sqrt{z}\)</span> and <span class="math inline">\(w = \ln z\)</span>.</p>
 <p>So far we have covered two main approaches to solving problems in complex analysis. The first one was solving complex integrals by Cauchy’s integral formula and was broadly covered by material in Chaps. 13 and 14. The second approach was to use Laurent series and solve complex integrals by residue integration in Chaps. 15 and 16. Now, in Chaps. 17 and 18, we develop a third approach, that is, the <em>geometric approach</em> of conformal mapping to solve boundary value problems in complex analysis.</p>
 <p><strong>Prerequisite:</strong> Chap. 13. <strong>Sections that may be omitted in a shorter course:</strong> 17.3 and 17.5. <strong>References and Answers to Problems:</strong> App. 1 Part D, App. 2.</p>
-<section id="sec-geometry-analytic-functions" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="sec-geometry-analytic-functions"><span class="header-section-number">11.1</span> 17.1 Geometry of Analytic Functions: Conformal Mapping</h2>
+<section id="sec-geometry-analytic-functions" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-geometry-analytic-functions"><span class="header-section-number">12.1</span> 17.1 Geometry of Analytic Functions: Conformal Mapping</h2>
 <p>We shall see that conformal mappings are those mappings that preserve angles, except at critical points, and that these mappings are defined by analytic functions. A critical point occurs wherever the derivative of such a function is zero. To arrive at these results, we have to define terms more precisely.</p>
-<p>A complex function <span id="eq-sec171-1"><span class="math display">\[w = f(z) = u(x, y) + iv(x, y) \quad (z = x + iy) \tag{11.1}\]</span></span> of a complex variable <span class="math inline">\(z\)</span> gives a <strong>mapping</strong> of its domain of definition <span class="math inline">\(D\)</span> in the complex <span class="math inline">\(z\)</span>-plane <em>into</em> the complex <span class="math inline">\(w\)</span>-plane or <em>onto</em> its range of values in that plane.<sup>1</sup> For any point <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> the point <span class="math inline">\(w_0 = f(z_0)\)</span> is called the <strong>image</strong> of <span class="math inline">\(z_0\)</span> with respect to <span class="math inline">\(f\)</span>. More generally, for the points of a curve <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> the image points form the <strong>image</strong> of <span class="math inline">\(C\)</span>; similarly for other point sets in <span class="math inline">\(D\)</span>. Also, instead of <em>the mapping by a function <span class="math inline">\(w = f(z)\)</span></em> we shall say more briefly <em>the mapping <span class="math inline">\(w = f(z)\)</span></em>.</p>
+<p>A complex function <span id="eq-sec171-1"><span class="math display">\[w = f(z) = u(x, y) + iv(x, y) \quad (z = x + iy) \tag{12.1}\]</span></span> of a complex variable <span class="math inline">\(z\)</span> gives a <strong>mapping</strong> of its domain of definition <span class="math inline">\(D\)</span> in the complex <span class="math inline">\(z\)</span>-plane <em>into</em> the complex <span class="math inline">\(w\)</span>-plane or <em>onto</em> its range of values in that plane.<sup>1</sup> For any point <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> the point <span class="math inline">\(w_0 = f(z_0)\)</span> is called the <strong>image</strong> of <span class="math inline">\(z_0\)</span> with respect to <span class="math inline">\(f\)</span>. More generally, for the points of a curve <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> the image points form the <strong>image</strong> of <span class="math inline">\(C\)</span>; similarly for other point sets in <span class="math inline">\(D\)</span>. Also, instead of <em>the mapping by a function <span class="math inline">\(w = f(z)\)</span></em> we shall say more briefly <em>the mapping <span class="math inline">\(w = f(z)\)</span></em>.</p>
 <blockquote class="blockquote">
 <p><sup>1</sup> The general terminology is as follows. A mapping of a set <span class="math inline">\(A\)</span> into a set <span class="math inline">\(B\)</span> is called <strong>surjective</strong> or a mapping of <span class="math inline">\(A\)</span> <strong>onto</strong> <span class="math inline">\(B\)</span> if every element of <span class="math inline">\(B\)</span> is the image of at least one element of <span class="math inline">\(A\)</span>. It is called <strong>injective</strong> or <strong>one-to-one</strong> if different elements of <span class="math inline">\(A\)</span> have different images in <span class="math inline">\(B\)</span>. Finally, it is called <strong>bijective</strong> if it is both surjective and injective.</p>
 </blockquote>
-<section id="example-1-mapping-w-fz-z2" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="example-1-mapping-w-fz-z2"><span class="header-section-number">11.1.1</span> EXAMPLE 1 Mapping <span class="math inline">\(w = f(z) = z^2\)</span></h3>
-<p>Using polar forms <span class="math inline">\(z = re^{i\theta}\)</span> and <span class="math inline">\(w = Re^{i\phi}\)</span>, we have <span class="math inline">\(w = z^2 = r^2 e^{i 2\theta}\)</span>. Comparing moduli and arguments gives <span class="math display">\[R = r^2 \quad \text{and} \quad \phi = 2\theta.\]</span> Hence circles <span class="math inline">\(r = r_0\)</span> are mapped onto circles <span class="math inline">\(R = r_0^2\)</span> and rays <span class="math inline">\(\theta = \theta_0\)</span> onto rays <span class="math inline">\(\phi = 2\theta_0\)</span>. <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>11.1</span></a> shows this for the region <span class="math inline">\(1 \leq |z| \leq \frac{3}{2}, \ \pi/6 \leq \theta \leq \pi/3\)</span>, which is mapped onto the region <span class="math inline">\(1 \leq |w| \leq \frac{9}{4}, \ \pi/3 \leq \phi \leq 2\pi/3\)</span>.</p>
+<section id="example-1-mapping-w-fz-z2" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-1-mapping-w-fz-z2"><span class="header-section-number">12.1.1</span> EXAMPLE 1 Mapping <span class="math inline">\(w = f(z) = z^2\)</span></h3>
+<p>Using polar forms <span class="math inline">\(z = re^{i\theta}\)</span> and <span class="math inline">\(w = Re^{i\phi}\)</span>, we have <span class="math inline">\(w = z^2 = r^2 e^{i 2\theta}\)</span>. Comparing moduli and arguments gives <span class="math display">\[R = r^2 \quad \text{and} \quad \phi = 2\theta.\]</span> Hence circles <span class="math inline">\(r = r_0\)</span> are mapped onto circles <span class="math inline">\(R = r_0^2\)</span> and rays <span class="math inline">\(\theta = \theta_0\)</span> onto rays <span class="math inline">\(\phi = 2\theta_0\)</span>. <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> shows this for the region <span class="math inline">\(1 \leq |z| \leq \frac{3}{2}, \ \pi/6 \leq \theta \leq \pi/3\)</span>, which is mapped onto the region <span class="math inline">\(1 \leq |w| \leq \frac{9}{4}, \ \pi/3 \leq \phi \leq 2\pi/3\)</span>.</p>
 <div id="fig-17-01" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-01.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.1: Fig. 378. Mapping <span class="math inline">\(w = z^2\)</span>. Lines <span class="math inline">\(|z| = \text{const}\)</span>, <span class="math inline">\(\arg z = \text{const}\)</span> and their images in the <span class="math inline">\(w\)</span>-plane
+Figure&nbsp;12.1: Fig. 378. Mapping <span class="math inline">\(w = z^2\)</span>. Lines <span class="math inline">\(|z| = \text{const}\)</span>, <span class="math inline">\(\arg z = \text{const}\)</span> and their images in the <span class="math inline">\(w\)</span>-plane
 </figcaption>
 </figure>
 </div>
-<p>In Cartesian coordinates we have <span class="math inline">\(z = x + iy\)</span> and <span class="math display">\[u = \text{Re}(z^2) = x^2 - y^2, \quad v = \text{Im}(z^2) = 2xy.\]</span> Hence vertical lines <span class="math inline">\(x = c = \text{const}\)</span> are mapped onto <span class="math inline">\(u = c^2 - y^2, \ v = 2cy\)</span>. From this we can eliminate <span class="math inline">\(y\)</span>. We obtain <span class="math inline">\(y^2 = c^2 - u\)</span> and <span class="math inline">\(v^2 = 4c^2 y^2\)</span>. Together, <span id="eq-sec171-2"><span class="math display">\[v^2 = 4c^2(c^2 - u) \tag{11.2}\]</span></span> (see <a href="#fig-17-02" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>). These parabolas open to the left. Similarly, horizontal lines <span class="math inline">\(y = k = \text{const}\)</span> are mapped onto parabolas opening to the right, <span id="eq-sec171-3"><span class="math display">\[v^2 = 4k^2(k^2 + u) \tag{11.3}\]</span></span> (see <a href="#fig-17-02" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>).</p>
+<p>In Cartesian coordinates we have <span class="math inline">\(z = x + iy\)</span> and <span class="math display">\[u = \text{Re}(z^2) = x^2 - y^2, \quad v = \text{Im}(z^2) = 2xy.\]</span> Hence vertical lines <span class="math inline">\(x = c = \text{const}\)</span> are mapped onto <span class="math inline">\(u = c^2 - y^2, \ v = 2cy\)</span>. From this we can eliminate <span class="math inline">\(y\)</span>. We obtain <span class="math inline">\(y^2 = c^2 - u\)</span> and <span class="math inline">\(v^2 = 4c^2 y^2\)</span>. Together, <span id="eq-sec171-2"><span class="math display">\[v^2 = 4c^2(c^2 - u) \tag{12.2}\]</span></span> (see <a href="#fig-17-02" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>). These parabolas open to the left. Similarly, horizontal lines <span class="math inline">\(y = k = \text{const}\)</span> are mapped onto parabolas opening to the right, <span id="eq-sec171-3"><span class="math display">\[v^2 = 4k^2(k^2 + u) \tag{12.3}\]</span></span> (see <a href="#fig-17-02" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>).</p>
 <div id="fig-17-02" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-02.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.2: Fig. 379. Images of <span class="math inline">\(x = \text{const}\)</span>, <span class="math inline">\(y = \text{const}\)</span> under <span class="math inline">\(w = z^2\)</span>
+Figure&nbsp;12.2: Fig. 379. Images of <span class="math inline">\(x = \text{const}\)</span>, <span class="math inline">\(y = \text{const}\)</span> under <span class="math inline">\(w = z^2\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="conformal-mapping" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="conformal-mapping"><span class="header-section-number">11.1.2</span> Conformal Mapping</h3>
-<p>A mapping <span class="math inline">\(w = f(z)\)</span> is called <strong>conformal</strong> if it preserves angles between oriented curves in magnitude as well as in sense. <a href="#fig-17-03" class="quarto-xref">Figure&nbsp;<span>11.3</span></a> shows what this means. The <strong>angle</strong> <span class="math inline">\(\alpha\)</span> (<span class="math inline">\(0 \leq \alpha \leq \pi\)</span>) between two intersecting curves <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is defined to be the angle between their oriented tangents at the intersection point <span class="math inline">\(z_0\)</span>. And conformality means that the images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> of <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> make the same angle as the curves themselves in both magnitude and direction.</p>
+<section id="conformal-mapping" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="conformal-mapping"><span class="header-section-number">12.1.2</span> Conformal Mapping</h3>
+<p>A mapping <span class="math inline">\(w = f(z)\)</span> is called <strong>conformal</strong> if it preserves angles between oriented curves in magnitude as well as in sense. <a href="#fig-17-03" class="quarto-xref">Figure&nbsp;<span>12.3</span></a> shows what this means. The <strong>angle</strong> <span class="math inline">\(\alpha\)</span> (<span class="math inline">\(0 \leq \alpha \leq \pi\)</span>) between two intersecting curves <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is defined to be the angle between their oriented tangents at the intersection point <span class="math inline">\(z_0\)</span>. And conformality means that the images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> of <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> make the same angle as the curves themselves in both magnitude and direction.</p>
 <div id="fig-17-03" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-03.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.3: Fig. 380. Curves <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> and their respective images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> under a conformal mapping <span class="math inline">\(w = f(z)\)</span>
+Figure&nbsp;12.3: Fig. 380. Curves <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> and their respective images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> under a conformal mapping <span class="math inline">\(w = f(z)\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="theorem-1-conformality-of-mapping-by-analytic-functions" class="level3" data-number="11.1.3">
-<h3 data-number="11.1.3" class="anchored" data-anchor-id="theorem-1-conformality-of-mapping-by-analytic-functions"><span class="header-section-number">11.1.3</span> THEOREM 1 Conformality of Mapping by Analytic Functions</h3>
+<section id="theorem-1-conformality-of-mapping-by-analytic-functions" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="theorem-1-conformality-of-mapping-by-analytic-functions"><span class="header-section-number">12.1.3</span> THEOREM 1 Conformality of Mapping by Analytic Functions</h3>
 <p>The mapping <span class="math inline">\(w = f(z)\)</span> by an analytic function <span class="math inline">\(f\)</span> is conformal, except at <strong>critical points</strong>, that is, points at which the derivative <span class="math inline">\(f'(z)\)</span> is zero.</p>
-<p><strong>PROOF</strong> <span class="math inline">\(w = z^2\)</span> has a critical point at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(f'(z) = 2z = 0\)</span> and the angles are doubled (see <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>), so that conformality fails.</p>
-<p>The idea of proof is to consider a curve <span id="eq-sec171-4"><span class="math display">\[C: z(t) = x(t) + iy(t) \tag{11.4}\]</span></span> in the domain of <span class="math inline">\(f(z)\)</span> and to show that <span class="math inline">\(w = f(z)\)</span> rotates all tangents at a point <span class="math inline">\(z_0\)</span> (where <span class="math inline">\(f'(z_0) \neq 0\)</span>) through the same angle. Now <span class="math inline">\(\dot{z}(t) = dz/dt = \dot{x}(t) + i\dot{y}(t)\)</span> is tangent to <span class="math inline">\(C\)</span> in (<a href="#eq-sec171-4" class="quarto-xref">Equation&nbsp;<span>11.4</span></a>) because this is the limit of <span class="math inline">\((z_1 - z_0)/\Delta t\)</span> (which has the direction of the secant <span class="math inline">\(z_1 - z_0\)</span> in <a href="#fig-17-04" class="quarto-xref">Figure&nbsp;<span>11.4</span></a>) as <span class="math inline">\(z_1\)</span> approaches <span class="math inline">\(z_0\)</span> along <span class="math inline">\(C\)</span>. The image <span class="math inline">\(C^*\)</span> of <span class="math inline">\(C\)</span> is <span class="math inline">\(w = f(z(t))\)</span>. By the chain rule, <span class="math inline">\(\dot{w} = f'(z(t))\dot{z}(t)\)</span>. Hence the tangent direction of <span class="math inline">\(C^*\)</span> is given by the argument (use (9) in Sec. 13.2) <span id="eq-sec171-5"><span class="math display">\[\arg \dot{w} = \arg f' + \arg \dot{z} \tag{11.5}\]</span></span> where <span class="math inline">\(\arg \dot{z}\)</span> gives the tangent direction of <span class="math inline">\(C\)</span>. This shows that the mapping rotates <em>all</em> directions at a point <span class="math inline">\(z_0\)</span> in the domain of analyticity of <span class="math inline">\(f\)</span> through the same angle <span class="math inline">\(\arg f'(z_0)\)</span>, which exists as long as <span class="math inline">\(f'(z_0) \neq 0\)</span>. But this means conformality, as <a href="#fig-17-04" class="quarto-xref">Figure&nbsp;<span>11.4</span></a> illustrates for an angle <span class="math inline">\(\alpha\)</span> between two curves, whose images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> make the same angle (because of the rotation). <span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>PROOF</strong> <span class="math inline">\(w = z^2\)</span> has a critical point at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(f'(z) = 2z = 0\)</span> and the angles are doubled (see <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>), so that conformality fails.</p>
+<p>The idea of proof is to consider a curve <span id="eq-sec171-4"><span class="math display">\[C: z(t) = x(t) + iy(t) \tag{12.4}\]</span></span> in the domain of <span class="math inline">\(f(z)\)</span> and to show that <span class="math inline">\(w = f(z)\)</span> rotates all tangents at a point <span class="math inline">\(z_0\)</span> (where <span class="math inline">\(f'(z_0) \neq 0\)</span>) through the same angle. Now <span class="math inline">\(\dot{z}(t) = dz/dt = \dot{x}(t) + i\dot{y}(t)\)</span> is tangent to <span class="math inline">\(C\)</span> in (<a href="#eq-sec171-4" class="quarto-xref">Equation&nbsp;<span>12.4</span></a>) because this is the limit of <span class="math inline">\((z_1 - z_0)/\Delta t\)</span> (which has the direction of the secant <span class="math inline">\(z_1 - z_0\)</span> in <a href="#fig-17-04" class="quarto-xref">Figure&nbsp;<span>12.4</span></a>) as <span class="math inline">\(z_1\)</span> approaches <span class="math inline">\(z_0\)</span> along <span class="math inline">\(C\)</span>. The image <span class="math inline">\(C^*\)</span> of <span class="math inline">\(C\)</span> is <span class="math inline">\(w = f(z(t))\)</span>. By the chain rule, <span class="math inline">\(\dot{w} = f'(z(t))\dot{z}(t)\)</span>. Hence the tangent direction of <span class="math inline">\(C^*\)</span> is given by the argument (use (9) in Sec. 13.2) <span id="eq-sec171-5"><span class="math display">\[\arg \dot{w} = \arg f' + \arg \dot{z} \tag{12.5}\]</span></span> where <span class="math inline">\(\arg \dot{z}\)</span> gives the tangent direction of <span class="math inline">\(C\)</span>. This shows that the mapping rotates <em>all</em> directions at a point <span class="math inline">\(z_0\)</span> in the domain of analyticity of <span class="math inline">\(f\)</span> through the same angle <span class="math inline">\(\arg f'(z_0)\)</span>, which exists as long as <span class="math inline">\(f'(z_0) \neq 0\)</span>. But this means conformality, as <a href="#fig-17-04" class="quarto-xref">Figure&nbsp;<span>12.4</span></a> illustrates for an angle <span class="math inline">\(\alpha\)</span> between two curves, whose images <span class="math inline">\(C_1^*\)</span> and <span class="math inline">\(C_2^*\)</span> make the same angle (because of the rotation). <span class="math inline">\(\blacksquare\)</span></p>
 <div id="fig-17-04" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-04.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.4: Fig. 381. Secant and tangent of the curve <span class="math inline">\(C\)</span>
+Figure&nbsp;12.4: Fig. 381. Secant and tangent of the curve <span class="math inline">\(C\)</span>
 </figcaption>
 </figure>
 </div>
 <p>In the remainder of this section and in the next ones we shall consider various conformal mappings that are of practical interest, for instance, in modeling potential problems.</p>
 </section>
-<section id="example-2-conformality-of-w-zn" class="level3" data-number="11.1.4">
-<h3 data-number="11.1.4" class="anchored" data-anchor-id="example-2-conformality-of-w-zn"><span class="header-section-number">11.1.4</span> EXAMPLE 2 Conformality of <span class="math inline">\(w = z^n\)</span></h3>
-<p>The mapping <span class="math inline">\(w = z^n, \ n = 2, 3, \dots\)</span>, is conformal, except at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(w' = nz^{n-1} = 0\)</span>. For <span class="math inline">\(n=2\)</span> this is shown in <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>; we see that at 0 the angles are doubled. For general <span class="math inline">\(n\)</span> the angles at 0 are multiplied by a factor <span class="math inline">\(n\)</span> under the mapping. Hence the sector <span class="math inline">\(0 \leq \theta \leq \pi/n\)</span> is mapped by <span class="math inline">\(z^n\)</span> onto the upper half-plane <span class="math inline">\(v \geq 0\)</span> (see <a href="#fig-17-05" class="quarto-xref">Figure&nbsp;<span>11.5</span></a>).</p>
+<section id="example-2-conformality-of-w-zn" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="example-2-conformality-of-w-zn"><span class="header-section-number">12.1.4</span> EXAMPLE 2 Conformality of <span class="math inline">\(w = z^n\)</span></h3>
+<p>The mapping <span class="math inline">\(w = z^n, \ n = 2, 3, \dots\)</span>, is conformal, except at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(w' = nz^{n-1} = 0\)</span>. For <span class="math inline">\(n=2\)</span> this is shown in <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>; we see that at 0 the angles are doubled. For general <span class="math inline">\(n\)</span> the angles at 0 are multiplied by a factor <span class="math inline">\(n\)</span> under the mapping. Hence the sector <span class="math inline">\(0 \leq \theta \leq \pi/n\)</span> is mapped by <span class="math inline">\(z^n\)</span> onto the upper half-plane <span class="math inline">\(v \geq 0\)</span> (see <a href="#fig-17-05" class="quarto-xref">Figure&nbsp;<span>12.5</span></a>).</p>
 <div id="fig-17-05" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-05.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.5: Fig. 382. Mapping by <span class="math inline">\(w = z^n\)</span>
+Figure&nbsp;12.5: Fig. 382. Mapping by <span class="math inline">\(w = z^n\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="example-3-mapping-w-z-1z.-joukowski-airfoil" class="level3" data-number="11.1.5">
-<h3 data-number="11.1.5" class="anchored" data-anchor-id="example-3-mapping-w-z-1z.-joukowski-airfoil"><span class="header-section-number">11.1.5</span> EXAMPLE 3 Mapping <span class="math inline">\(w = z + 1/z\)</span>. Joukowski Airfoil</h3>
-<p>In terms of polar coordinates this mapping is <span class="math display">\[w = u + iv = r(\cos \theta + i \sin \theta) + \frac{1}{r}(\cos \theta - i \sin \theta).\]</span> By separating the real and imaginary parts we thus obtain <span class="math display">\[u = a \cos \theta, \quad v = b \sin \theta \quad \text{where} \quad a = r + \frac{1}{r}, \quad b = r - \frac{1}{r}.\]</span> Hence circles <span class="math inline">\(|z| = r = \text{const} \neq 1\)</span> are mapped onto ellipses <span class="math inline">\(u^2/a^2 + v^2/b^2 = 1\)</span>. The circle <span class="math inline">\(r = 1\)</span> is mapped onto the segment <span class="math inline">\(-2 \leq u \leq 2\)</span> of the <span class="math inline">\(u\)</span>-axis. See <a href="#fig-17-06" class="quarto-xref">Figure&nbsp;<span>11.6</span></a>.</p>
+<section id="example-3-mapping-w-z-1z.-joukowski-airfoil" class="level3" data-number="12.1.5">
+<h3 data-number="12.1.5" class="anchored" data-anchor-id="example-3-mapping-w-z-1z.-joukowski-airfoil"><span class="header-section-number">12.1.5</span> EXAMPLE 3 Mapping <span class="math inline">\(w = z + 1/z\)</span>. Joukowski Airfoil</h3>
+<p>In terms of polar coordinates this mapping is <span class="math display">\[w = u + iv = r(\cos \theta + i \sin \theta) + \frac{1}{r}(\cos \theta - i \sin \theta).\]</span> By separating the real and imaginary parts we thus obtain <span class="math display">\[u = a \cos \theta, \quad v = b \sin \theta \quad \text{where} \quad a = r + \frac{1}{r}, \quad b = r - \frac{1}{r}.\]</span> Hence circles <span class="math inline">\(|z| = r = \text{const} \neq 1\)</span> are mapped onto ellipses <span class="math inline">\(u^2/a^2 + v^2/b^2 = 1\)</span>. The circle <span class="math inline">\(r = 1\)</span> is mapped onto the segment <span class="math inline">\(-2 \leq u \leq 2\)</span> of the <span class="math inline">\(u\)</span>-axis. See <a href="#fig-17-06" class="quarto-xref">Figure&nbsp;<span>12.6</span></a>.</p>
 <div id="fig-17-06" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-06.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.6: Fig. 383. Mapping of circles to ellipses under <span class="math inline">\(w = z + 1/z\)</span>
+Figure&nbsp;12.6: Fig. 383. Mapping of circles to ellipses under <span class="math inline">\(w = z + 1/z\)</span>
 </figcaption>
 </figure>
 </div>
-<p>Now the derivative of <span class="math inline">\(w\)</span> is <span class="math display">\[w' = 1 - \frac{1}{z^2} = \frac{(z + 1)(z - 1)}{z^2}\]</span> which is 0 at <span class="math inline">\(z = \pm 1\)</span>. These are the points at which the mapping is not conformal. The two circles in <a href="#fig-17-07" class="quarto-xref">Figure&nbsp;<span>11.7</span></a> pass through <span class="math inline">\(z = -1\)</span>. The larger is mapped onto a <em>Joukowski airfoil</em>. The dashed circle passes through both <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> and is mapped onto a curved segment.</p>
+<p>Now the derivative of <span class="math inline">\(w\)</span> is <span class="math display">\[w' = 1 - \frac{1}{z^2} = \frac{(z + 1)(z - 1)}{z^2}\]</span> which is 0 at <span class="math inline">\(z = \pm 1\)</span>. These are the points at which the mapping is not conformal. The two circles in <a href="#fig-17-07" class="quarto-xref">Figure&nbsp;<span>12.7</span></a> pass through <span class="math inline">\(z = -1\)</span>. The larger is mapped onto a <em>Joukowski airfoil</em>. The dashed circle passes through both <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> and is mapped onto a curved segment.</p>
 <p>Another interesting application of <span class="math inline">\(w = z + 1/z\)</span> (the flow around a cylinder) will be considered in Sec. 18.4.</p>
 <div id="fig-17-07" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -405,22 +411,22 @@ Figure&nbsp;11.6: Fig. 383. Mapping of circles to ellipses under <span class="ma
 <img src="../images/fig-17-07.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.7: Fig. 384. Joukowski airfoil
+Figure&nbsp;12.7: Fig. 384. Joukowski airfoil
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="example-4-conformality-of-w-ez" class="level3" data-number="11.1.6">
-<h3 data-number="11.1.6" class="anchored" data-anchor-id="example-4-conformality-of-w-ez"><span class="header-section-number">11.1.6</span> EXAMPLE 4 Conformality of <span class="math inline">\(w = e^z\)</span></h3>
-<p>From (10) in Sec. 13.5 we have <span class="math inline">\(|e^z| = e^x\)</span> and <span class="math inline">\(\text{Arg } e^z = y\)</span>. Hence <span class="math inline">\(e^z\)</span> maps a vertical straight line <span class="math inline">\(x = x_0 = \text{const}\)</span> onto the circle <span class="math inline">\(|w| = e^{x_0}\)</span> and a horizontal straight line <span class="math inline">\(y = y_0 = \text{const}\)</span> onto the ray <span class="math inline">\(\arg w = y_0\)</span>. The rectangle in <a href="#fig-17-08" class="quarto-xref">Figure&nbsp;<span>11.8</span></a> is mapped onto a region bounded by circles and rays as shown.</p>
-<p>The fundamental region <span class="math inline">\(-\pi &lt; \text{Arg } z \leq \pi\)</span> of <span class="math inline">\(e^z\)</span> in the <span class="math inline">\(z\)</span>-plane is mapped bijectively and conformally onto the entire <span class="math inline">\(w\)</span>-plane without the origin <span class="math inline">\(w = 0\)</span> (because <span class="math inline">\(e^z = 0\)</span> for no <span class="math inline">\(z\)</span>). <a href="#fig-17-09" class="quarto-xref">Figure&nbsp;<span>11.9</span></a> shows that the upper half of the fundamental region <span class="math inline">\(0 &lt; y \leq \pi\)</span> is mapped onto the upper half-plane <span class="math inline">\(0 &lt; \arg w \leq \pi\)</span>, the left half being mapped inside the unit disk <span class="math inline">\(|w| \leq 1\)</span> and the right half outside (why?).</p>
+<section id="example-4-conformality-of-w-ez" class="level3" data-number="12.1.6">
+<h3 data-number="12.1.6" class="anchored" data-anchor-id="example-4-conformality-of-w-ez"><span class="header-section-number">12.1.6</span> EXAMPLE 4 Conformality of <span class="math inline">\(w = e^z\)</span></h3>
+<p>From (10) in Sec. 13.5 we have <span class="math inline">\(|e^z| = e^x\)</span> and <span class="math inline">\(\text{Arg } e^z = y\)</span>. Hence <span class="math inline">\(e^z\)</span> maps a vertical straight line <span class="math inline">\(x = x_0 = \text{const}\)</span> onto the circle <span class="math inline">\(|w| = e^{x_0}\)</span> and a horizontal straight line <span class="math inline">\(y = y_0 = \text{const}\)</span> onto the ray <span class="math inline">\(\arg w = y_0\)</span>. The rectangle in <a href="#fig-17-08" class="quarto-xref">Figure&nbsp;<span>12.8</span></a> is mapped onto a region bounded by circles and rays as shown.</p>
+<p>The fundamental region <span class="math inline">\(-\pi &lt; \text{Arg } z \leq \pi\)</span> of <span class="math inline">\(e^z\)</span> in the <span class="math inline">\(z\)</span>-plane is mapped bijectively and conformally onto the entire <span class="math inline">\(w\)</span>-plane without the origin <span class="math inline">\(w = 0\)</span> (because <span class="math inline">\(e^z = 0\)</span> for no <span class="math inline">\(z\)</span>). <a href="#fig-17-09" class="quarto-xref">Figure&nbsp;<span>12.9</span></a> shows that the upper half of the fundamental region <span class="math inline">\(0 &lt; y \leq \pi\)</span> is mapped onto the upper half-plane <span class="math inline">\(0 &lt; \arg w \leq \pi\)</span>, the left half being mapped inside the unit disk <span class="math inline">\(|w| \leq 1\)</span> and the right half outside (why?).</p>
 <div id="fig-17-08" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-08.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.8: Fig. 385. Mapping by <span class="math inline">\(w = e^z\)</span>
+Figure&nbsp;12.8: Fig. 385. Mapping by <span class="math inline">\(w = e^z\)</span>
 </figcaption>
 </figure>
 </div>
@@ -430,36 +436,36 @@ Figure&nbsp;11.8: Fig. 385. Mapping by <span class="math inline">\(w = e^z\)</sp
 <img src="../images/fig-17-09.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.9: Fig. 386. Mapping of the fundamental strip by <span class="math inline">\(w = e^z\)</span>
+Figure&nbsp;12.9: Fig. 386. Mapping of the fundamental strip by <span class="math inline">\(w = e^z\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="example-5-principle-of-inverse-mapping.-mapping-w-textln-z" class="level3" data-number="11.1.7">
-<h3 data-number="11.1.7" class="anchored" data-anchor-id="example-5-principle-of-inverse-mapping.-mapping-w-textln-z"><span class="header-section-number">11.1.7</span> EXAMPLE 5 Principle of Inverse Mapping. Mapping <span class="math inline">\(w = \text{Ln } z\)</span></h3>
+<section id="example-5-principle-of-inverse-mapping.-mapping-w-textln-z" class="level3" data-number="12.1.7">
+<h3 data-number="12.1.7" class="anchored" data-anchor-id="example-5-principle-of-inverse-mapping.-mapping-w-textln-z"><span class="header-section-number">12.1.7</span> EXAMPLE 5 Principle of Inverse Mapping. Mapping <span class="math inline">\(w = \text{Ln } z\)</span></h3>
 <p><strong>Principle.</strong> <em>The mapping by the inverse <span class="math inline">\(z = f^{-1}(w)\)</span> of <span class="math inline">\(w = f(z)\)</span> is obtained by interchanging the roles of the <span class="math inline">\(z\)</span>-plane and the <span class="math inline">\(w\)</span>-plane in the mapping by <span class="math inline">\(w = f(z)\)</span>.</em></p>
 <p>Now the principal value <span class="math inline">\(w = f(z) = \text{Ln } z\)</span> of the natural logarithm has the inverse <span class="math inline">\(z = f^{-1}(w) = e^w\)</span>. From Example 4 (with the notations <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> interchanged!) we know that <span class="math inline">\(f^{-1}(w) = e^w\)</span> maps the fundamental region of the exponential function onto the <span class="math inline">\(z\)</span>-plane without <span class="math inline">\(z = 0\)</span> (because <span class="math inline">\(e^w \neq 0\)</span> for every <span class="math inline">\(w\)</span>). Hence <span class="math inline">\(w = f(z) = \text{Ln } z\)</span> maps the <span class="math inline">\(z\)</span>-plane without the origin and cut along the negative real axis (where <span class="math inline">\(\theta = \text{Im } \text{Ln } z\)</span> jumps by <span class="math inline">\(2\pi\)</span>) conformally onto the horizontal strip <span class="math inline">\(-\pi &lt; v \leq \pi\)</span> of the <span class="math inline">\(w\)</span>-plane, where <span class="math inline">\(w = u + iv\)</span>.</p>
 <p>Since the mapping <span class="math inline">\(w = \ln z = \text{Ln } z + 2\pi i\)</span> differs from <span class="math inline">\(w = \text{Ln } z\)</span> by the translation <span class="math inline">\(2\pi i\)</span> (vertically upward), this function maps the <span class="math inline">\(z\)</span>-plane (cut as before and 0 omitted) onto the strip <span class="math inline">\(\pi &lt; v \leq 3\pi\)</span>. Similarly for each of the infinitely many mappings <span class="math inline">\(w = \ln z = \text{Ln } z \pm 2n\pi i \ (n = 0, 1, 2, \dots)\)</span>. The corresponding horizontal strips of width <span class="math inline">\(2\pi\)</span> (images of the <span class="math inline">\(z\)</span>-plane under these mappings) together cover the whole <span class="math inline">\(w\)</span>-plane without overlapping.</p>
 </section>
-<section id="magnification-ratio" class="level3" data-number="11.1.8">
-<h3 data-number="11.1.8" class="anchored" data-anchor-id="magnification-ratio"><span class="header-section-number">11.1.8</span> Magnification Ratio</h3>
-<p>By the definition of the derivative we have <span id="eq-sec171-6"><span class="math display">\[\lim_{z \to z_0} \left|\frac{f(z) - f(z_0)}{z - z_0}\right| = |f'(z_0)|. \tag{11.6}\]</span></span> Therefore, the mapping <span class="math inline">\(w = f(z)\)</span> magnifies (or shortens) the lengths of short lines by approximately the factor <span class="math inline">\(|f'(z_0)|\)</span>. The image of a small figure <em>conforms</em> to the original figure in the sense that it has approximately the same shape. However, since <span class="math inline">\(f'(z)\)</span> varies from point to point, a <em>large</em> figure may have an image whose shape is quite different from that of the original figure.</p>
+<section id="magnification-ratio" class="level3" data-number="12.1.8">
+<h3 data-number="12.1.8" class="anchored" data-anchor-id="magnification-ratio"><span class="header-section-number">12.1.8</span> Magnification Ratio</h3>
+<p>By the definition of the derivative we have <span id="eq-sec171-6"><span class="math display">\[\lim_{z \to z_0} \left|\frac{f(z) - f(z_0)}{z - z_0}\right| = |f'(z_0)|. \tag{12.6}\]</span></span> Therefore, the mapping <span class="math inline">\(w = f(z)\)</span> magnifies (or shortens) the lengths of short lines by approximately the factor <span class="math inline">\(|f'(z_0)|\)</span>. The image of a small figure <em>conforms</em> to the original figure in the sense that it has approximately the same shape. However, since <span class="math inline">\(f'(z)\)</span> varies from point to point, a <em>large</em> figure may have an image whose shape is quite different from that of the original figure.</p>
 </section>
-<section id="more-on-the-condition-fz-neq-0" class="level3" data-number="11.1.9">
-<h3 data-number="11.1.9" class="anchored" data-anchor-id="more-on-the-condition-fz-neq-0"><span class="header-section-number">11.1.9</span> More on the Condition <span class="math inline">\(f'(z) \neq 0\)</span></h3>
-<p>From (4) in Sec. 13.4 and the Cauchy–Riemann equations we obtain <span id="eq-sec171-7"><span class="math display">\[|f'(z)|^2 = \left|\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}\right|^2 = \left(\frac{\partial u}{\partial x}\right)^2 + \left(\frac{\partial v}{\partial x}\right)^2 = \frac{\partial u}{\partial x}\frac{\partial v}{\partial y} - \frac{\partial u}{\partial y}\frac{\partial v}{\partial x} \tag{11.7}\]</span></span> that is, <span id="eq-sec171-8"><span class="math display">\[|f'(z)|^2 = \begin{vmatrix} \frac{\partial u}{\partial x} &amp; \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} &amp; \frac{\partial v}{\partial y} \end{vmatrix} = \frac{\partial(u, v)}{\partial(x, y)}. \tag{11.8}\]</span></span> This determinant is the so-called <strong>Jacobian</strong> (Sec. 10.3) of the transformation <span class="math inline">\(w = f(z)\)</span> written in real form <span class="math inline">\(u = u(x, y), \ v = v(x, y)\)</span>. Hence <span class="math inline">\(f'(z_0) \neq 0\)</span> implies that the Jacobian is not 0 at <span class="math inline">\(z_0\)</span>. This condition is sufficient that the mapping <span class="math inline">\(w = f(z)\)</span> in a sufficiently small neighborhood of <span class="math inline">\(z_0\)</span> is one-to-one or injective (different points have different images). See Ref. [GenRef4] in App. 1.</p>
+<section id="more-on-the-condition-fz-neq-0" class="level3" data-number="12.1.9">
+<h3 data-number="12.1.9" class="anchored" data-anchor-id="more-on-the-condition-fz-neq-0"><span class="header-section-number">12.1.9</span> More on the Condition <span class="math inline">\(f'(z) \neq 0\)</span></h3>
+<p>From (4) in Sec. 13.4 and the Cauchy–Riemann equations we obtain <span id="eq-sec171-7"><span class="math display">\[|f'(z)|^2 = \left|\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}\right|^2 = \left(\frac{\partial u}{\partial x}\right)^2 + \left(\frac{\partial v}{\partial x}\right)^2 = \frac{\partial u}{\partial x}\frac{\partial v}{\partial y} - \frac{\partial u}{\partial y}\frac{\partial v}{\partial x} \tag{12.7}\]</span></span> that is, <span id="eq-sec171-8"><span class="math display">\[|f'(z)|^2 = \begin{vmatrix} \frac{\partial u}{\partial x} &amp; \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} &amp; \frac{\partial v}{\partial y} \end{vmatrix} = \frac{\partial(u, v)}{\partial(x, y)}. \tag{12.8}\]</span></span> This determinant is the so-called <strong>Jacobian</strong> (Sec. 10.3) of the transformation <span class="math inline">\(w = f(z)\)</span> written in real form <span class="math inline">\(u = u(x, y), \ v = v(x, y)\)</span>. Hence <span class="math inline">\(f'(z_0) \neq 0\)</span> implies that the Jacobian is not 0 at <span class="math inline">\(z_0\)</span>. This condition is sufficient that the mapping <span class="math inline">\(w = f(z)\)</span> in a sufficiently small neighborhood of <span class="math inline">\(z_0\)</span> is one-to-one or injective (different points have different images). See Ref. [GenRef4] in App. 1.</p>
 </section>
-<section id="problem-set-17.1" class="level3" data-number="11.1.10">
-<h3 data-number="11.1.10" class="anchored" data-anchor-id="problem-set-17.1"><span class="header-section-number">11.1.10</span> PROBLEM SET 17.1</h3>
+<section id="problem-set-17.1" class="level3" data-number="12.1.10">
+<h3 data-number="12.1.10" class="anchored" data-anchor-id="problem-set-17.1"><span class="header-section-number">12.1.10</span> PROBLEM SET 17.1</h3>
 <ol type="1">
-<li><strong>On <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>.</strong> One “rectangle” and its image are colored. Identify the images for the other “rectangles.”</li>
+<li><strong>On <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>.</strong> One “rectangle” and its image are colored. Identify the images for the other “rectangles.”</li>
 <li><strong>On Example 1.</strong> Verify all calculations.</li>
-<li><strong>Mapping <span class="math inline">\(w = z^3\)</span>.</strong> Draw an analog of <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>11.1</span></a> for <span class="math inline">\(w = z^3\)</span>.</li>
+<li><strong>Mapping <span class="math inline">\(w = z^3\)</span>.</strong> Draw an analog of <a href="#fig-17-01" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> for <span class="math inline">\(w = z^3\)</span>.</li>
 <li><strong>Conformality.</strong> Why do the images of the straight lines <span class="math inline">\(x = \text{const}\)</span> and <span class="math inline">\(y = \text{const}\)</span> under a mapping by an analytic function intersect at right angles? Same question for the curves <span class="math inline">\(|z| = \text{const}\)</span> and <span class="math inline">\(\arg z = \text{const}\)</span>. Are there exceptional points?</li>
 <li><strong>Experiment on <span class="math inline">\(w = \bar{z}\)</span>.</strong> Find out whether <span class="math inline">\(w = \bar{z}\)</span> preserves angles in size as well as in sense. Try to prove your result.</li>
 </ol>
-<section id="mapping-of-curves" class="level4" data-number="11.1.10.1">
-<h4 data-number="11.1.10.1" class="anchored" data-anchor-id="mapping-of-curves"><span class="header-section-number">11.1.10.1</span> 6–9 MAPPING OF CURVES</h4>
+<section id="mapping-of-curves" class="level4" data-number="12.1.10.1">
+<h4 data-number="12.1.10.1" class="anchored" data-anchor-id="mapping-of-curves"><span class="header-section-number">12.1.10.1</span> 6–9 MAPPING OF CURVES</h4>
 <p>Find and sketch or graph the images of the given curves under the given mapping.</p>
 <ol start="6" type="1">
 <li><span class="math inline">\(x = 1, 2, 3, 4, \quad y = 1, 2, 3, 4, \quad w = z^2\)</span></li>
@@ -475,8 +481,8 @@ Figure&nbsp;11.9: Fig. 386. Mapping of the fundamental strip by <span class="mat
 </ol></li>
 </ol>
 </section>
-<section id="mapping-of-regions" class="level4" data-number="11.1.10.2">
-<h4 data-number="11.1.10.2" class="anchored" data-anchor-id="mapping-of-regions"><span class="header-section-number">11.1.10.2</span> 11–20 MAPPING OF REGIONS</h4>
+<section id="mapping-of-regions" class="level4" data-number="12.1.10.2">
+<h4 data-number="12.1.10.2" class="anchored" data-anchor-id="mapping-of-regions"><span class="header-section-number">12.1.10.2</span> 11–20 MAPPING OF REGIONS</h4>
 <p>Sketch or graph the given region and its image under the given mapping.</p>
 <ol start="11" type="1">
 <li><span class="math inline">\(|z| \leq \frac{1}{2}, \quad -\pi/8 &lt; \text{Arg } z &lt; \pi/8, \quad w = z^2\)</span></li>
@@ -491,8 +497,8 @@ Figure&nbsp;11.9: Fig. 386. Mapping of the fundamental strip by <span class="mat
 <li><span class="math inline">\(\frac{1}{2} \leq |z| \leq 1, \quad 0 \leq \theta &lt; \pi/2, \quad w = \text{Ln } z\)</span></li>
 </ol>
 </section>
-<section id="failure-of-conformality" class="level4" data-number="11.1.10.3">
-<h4 data-number="11.1.10.3" class="anchored" data-anchor-id="failure-of-conformality"><span class="header-section-number">11.1.10.3</span> 21–26 FAILURE OF CONFORMALITY</h4>
+<section id="failure-of-conformality" class="level4" data-number="12.1.10.3">
+<h4 data-number="12.1.10.3" class="anchored" data-anchor-id="failure-of-conformality"><span class="header-section-number">12.1.10.3</span> 21–26 FAILURE OF CONFORMALITY</h4>
 <p>Find all points at which the mapping is not conformal. Give reason.</p>
 <ol start="21" type="1">
 <li>A cubic polynomial</li>
@@ -505,8 +511,8 @@ Figure&nbsp;11.9: Fig. 386. Mapping of the fundamental strip by <span class="mat
 <li>Prove the statement in Prob. 27 for general <span class="math inline">\(k = 1, 2, \dots\)</span>. <em>Hint.</em> Use the Taylor series.</li>
 </ol>
 </section>
-<section id="magnification-ratio-jacobian" class="level4" data-number="11.1.10.4">
-<h4 data-number="11.1.10.4" class="anchored" data-anchor-id="magnification-ratio-jacobian"><span class="header-section-number">11.1.10.4</span> 29–35 MAGNIFICATION RATIO, JACOBIAN</h4>
+<section id="magnification-ratio-jacobian" class="level4" data-number="12.1.10.4">
+<h4 data-number="12.1.10.4" class="anchored" data-anchor-id="magnification-ratio-jacobian"><span class="header-section-number">12.1.10.4</span> 29–35 MAGNIFICATION RATIO, JACOBIAN</h4>
 <p>Find the magnification ratio <span class="math inline">\(M\)</span>. Describe what it tells you about the mapping. Where is <span class="math inline">\(M = 1\)</span>? Find the Jacobian <span class="math inline">\(J\)</span>.</p>
 <ol start="29" type="1">
 <li><span class="math inline">\(w = \frac{1}{2}z^2\)</span></li>
@@ -520,20 +526,20 @@ Figure&nbsp;11.9: Fig. 386. Mapping of the fundamental strip by <span class="mat
 </section>
 </section>
 </section>
-<section id="sec-lft" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="sec-lft"><span class="header-section-number">11.2</span> 17.2 Linear Fractional Transformations (Möbius Transformations)</h2>
+<section id="sec-lft" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-lft"><span class="header-section-number">12.2</span> 17.2 Linear Fractional Transformations (Möbius Transformations)</h2>
 <p>Conformal mappings can help in modeling and solving boundary value problems by first mapping regions conformally onto another. We shall explain this for standard regions (disks, half-planes, strips) in the next section. For this it is useful to know properties of special basic mappings. Accordingly, let us begin with the following very important class.</p>
 <p>The next two sections discuss linear fractional transformations. The reason for our thorough study is that such transformations are useful in modeling and solving boundary value problems, as we shall see in Chapter 18. The task is to get a good grasp of which conformal mappings map certain regions conformally onto each other, such as, say mapping a disk onto a half-plane (Sec. 17.3) and so forth. Indeed, the first step in the modeling process of solving boundary value problems is to identify the correct conformal mapping that is related to the “geometry” of the boundary value problem.</p>
-<p>The following class of conformal mappings is very important. <strong>Linear fractional transformations</strong> (or <strong>Möbius transformations</strong>) are mappings <span id="eq-sec172-1"><span class="math display">\[w = \frac{az + b}{cz + d} \quad (ad - bc \neq 0) \tag{11.9}\]</span></span> where <span class="math inline">\(a, b, c, d\)</span> are complex or real numbers. Differentiation gives <span id="eq-sec172-2"><span class="math display">\[w' = \frac{a(cz + d) - c(az + b)}{(cz + d)^2} = \frac{ad - bc}{(cz + d)^2}. \tag{11.10}\]</span></span> This motivates our requirement <span class="math inline">\(ad - bc \neq 0\)</span>. It implies conformality for all <span class="math inline">\(z\)</span> and excludes the totally uninteresting case <span class="math inline">\(w' \equiv 0\)</span> once and for all. Special cases of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) are <span id="eq-sec172-3"><span class="math display">\[\begin{aligned}
+<p>The following class of conformal mappings is very important. <strong>Linear fractional transformations</strong> (or <strong>Möbius transformations</strong>) are mappings <span id="eq-sec172-1"><span class="math display">\[w = \frac{az + b}{cz + d} \quad (ad - bc \neq 0) \tag{12.9}\]</span></span> where <span class="math inline">\(a, b, c, d\)</span> are complex or real numbers. Differentiation gives <span id="eq-sec172-2"><span class="math display">\[w' = \frac{a(cz + d) - c(az + b)}{(cz + d)^2} = \frac{ad - bc}{(cz + d)^2}. \tag{12.10}\]</span></span> This motivates our requirement <span class="math inline">\(ad - bc \neq 0\)</span>. It implies conformality for all <span class="math inline">\(z\)</span> and excludes the totally uninteresting case <span class="math inline">\(w' \equiv 0\)</span> once and for all. Special cases of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) are <span id="eq-sec172-3"><span class="math display">\[\begin{aligned}
 w &amp;= z + b &amp;&amp; \text{(Translations)} \\
 w &amp;= az \quad \text{with } |a| = 1 &amp;&amp; \text{(Rotations)} \\
 w &amp;= az + b &amp;&amp; \text{(Linear transformations)} \\
 w &amp;= 1/z &amp;&amp; \text{(Inversion in the unit circle).}
-\end{aligned} \tag{11.11}\]</span></span></p>
-<section id="example-1-properties-of-the-inversion-w-1z-fig-17-10" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="example-1-properties-of-the-inversion-w-1z-fig-17-10"><span class="header-section-number">11.2.1</span> EXAMPLE 1 Properties of the Inversion <span class="math inline">\(w = 1/z\)</span> (<a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>11.10</span></a>)</h3>
+\end{aligned} \tag{12.11}\]</span></span></p>
+<section id="example-1-properties-of-the-inversion-w-1z-fig-17-10" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="example-1-properties-of-the-inversion-w-1z-fig-17-10"><span class="header-section-number">12.2.1</span> EXAMPLE 1 Properties of the Inversion <span class="math inline">\(w = 1/z\)</span> (<a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>12.10</span></a>)</h3>
 <p>In polar forms <span class="math inline">\(z = re^{i\theta}\)</span> and <span class="math inline">\(w = Re^{i\phi}\)</span> the inversion <span class="math inline">\(w = 1/z\)</span> is <span class="math display">\[Re^{i\phi} = \frac{1}{re^{i\theta}} = \frac{1}{r}e^{-i\theta} \quad \text{and gives} \quad R = \frac{1}{r}, \quad \phi = -\theta.\]</span> Hence the unit circle <span class="math inline">\(|z| = r = 1\)</span> is mapped onto the unit circle <span class="math inline">\(|w| = R = 1\)</span>; <span class="math inline">\(w = e^{i\phi} = e^{-i\theta}\)</span>. For a general <span class="math inline">\(z\)</span> the image <span class="math inline">\(w = 1/z\)</span> can be found geometrically by marking <span class="math inline">\(|w| = R = 1/r\)</span> on the segment from 0 to <span class="math inline">\(z\)</span> and then reflecting the mark in the real axis. (Make a sketch.)</p>
-<p><a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>11.10</span></a> shows that <span class="math inline">\(w = 1/z\)</span> maps horizontal and vertical straight lines onto circles or straight lines. Even the following is true. <span class="math display">\[\text{w = 1/z maps every straight line or circle onto a circle or straight line.}\]</span></p>
+<p><a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>12.10</span></a> shows that <span class="math inline">\(w = 1/z\)</span> maps horizontal and vertical straight lines onto circles or straight lines. Even the following is true. <span class="math display">\[\text{w = 1/z maps every straight line or circle onto a circle or straight line.}\]</span></p>
 <p><strong>Proof.</strong> Every straight line or circle in the <span class="math inline">\(z\)</span>-plane can be written <span class="math display">\[A(x^2 + y^2) + Bx + Cy + D = 0 \quad (A, B, C, D \text{ real}).\]</span> <span class="math inline">\(A = 0\)</span> gives a straight line and <span class="math inline">\(A \neq 0\)</span> a circle. In terms of <span class="math inline">\(z\)</span> and <span class="math inline">\(\bar{z}\)</span> this equation becomes <span class="math display">\[Az\bar{z} + B\frac{z + \bar{z}}{2} + C\frac{z - \bar{z}}{2i} + D = 0.\]</span> Now <span class="math inline">\(w = 1/z\)</span>. Substitution of <span class="math inline">\(z = 1/w\)</span> and multiplication by <span class="math inline">\(w\bar{w}\)</span> gives the equation <span class="math display">\[A + B\frac{\bar{w} + w}{2} + C\frac{\bar{w} - w}{2i} + Dw\bar{w} = 0\]</span> or, in terms of <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>, <span class="math display">\[A + Bu - Cv + D(u^2 + v^2) = 0.\]</span> This represents a circle (if <span class="math inline">\(D \neq 0\)</span>) or a straight line (if <span class="math inline">\(D = 0\)</span>) in the <span class="math inline">\(w\)</span>-plane. <span class="math inline">\(\blacksquare\)</span></p>
 <p>The proof in this example suggests the use of <span class="math inline">\(z\)</span> and <span class="math inline">\(\bar{z}\)</span> instead of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, a <strong>general principle</strong> that is often quite useful in practice.</p>
 <p>Surprisingly, <em>every</em> linear fractional transformation has the property just proved:</p>
@@ -543,45 +549,45 @@ w &amp;= 1/z &amp;&amp; \text{(Inversion in the unit circle).}
 <img src="../images/fig-17-10.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.10: Fig. 387. Mapping (Inversion) <span class="math inline">\(w = 1/z\)</span>
+Figure&nbsp;12.10: Fig. 387. Mapping (Inversion) <span class="math inline">\(w = 1/z\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="theorem-1-circles-and-straight-lines" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="theorem-1-circles-and-straight-lines"><span class="header-section-number">11.2.2</span> THEOREM 1 Circles and Straight Lines</h3>
-<p>Every linear fractional transformation (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) maps the totality of circles and straight lines in the <span class="math inline">\(z\)</span>-plane onto the totality of circles and straight lines in the <span class="math inline">\(w\)</span>-plane.</p>
-<p><strong>PROOF</strong> This is trivial for a translation or rotation, fairly obvious for a uniform expansion or contraction, and true for <span class="math inline">\(w = 1/z\)</span>, as just proved. Hence it also holds for composites of these special mappings. Now comes the key idea of the proof: represent (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) in terms of these special mappings. When <span class="math inline">\(c = 0\)</span>, this is easy. When <span class="math inline">\(c \neq 0\)</span>, the representation is <span class="math display">\[w = K\frac{1}{cz + d} + \frac{a}{c} \quad \text{where} \quad K = -\frac{ad - bc}{c}.\]</span> This can be verified by substituting <span class="math inline">\(K\)</span>, taking the common denominator and simplifying; this yields (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>). We can now set <span class="math display">\[w_1 = cz, \quad w_2 = w_1 + d, \quad w_3 = \frac{1}{w_2}, \quad w_4 = Kw_3,\]</span> and see from the previous formula that then <span class="math inline">\(w = w_4 + a/c\)</span>. This tells us that (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) is indeed a composite of those special mappings and completes the proof. <span class="math inline">\(\blacksquare\)</span></p>
+<section id="theorem-1-circles-and-straight-lines" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="theorem-1-circles-and-straight-lines"><span class="header-section-number">12.2.2</span> THEOREM 1 Circles and Straight Lines</h3>
+<p>Every linear fractional transformation (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) maps the totality of circles and straight lines in the <span class="math inline">\(z\)</span>-plane onto the totality of circles and straight lines in the <span class="math inline">\(w\)</span>-plane.</p>
+<p><strong>PROOF</strong> This is trivial for a translation or rotation, fairly obvious for a uniform expansion or contraction, and true for <span class="math inline">\(w = 1/z\)</span>, as just proved. Hence it also holds for composites of these special mappings. Now comes the key idea of the proof: represent (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) in terms of these special mappings. When <span class="math inline">\(c = 0\)</span>, this is easy. When <span class="math inline">\(c \neq 0\)</span>, the representation is <span class="math display">\[w = K\frac{1}{cz + d} + \frac{a}{c} \quad \text{where} \quad K = -\frac{ad - bc}{c}.\]</span> This can be verified by substituting <span class="math inline">\(K\)</span>, taking the common denominator and simplifying; this yields (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>). We can now set <span class="math display">\[w_1 = cz, \quad w_2 = w_1 + d, \quad w_3 = \frac{1}{w_2}, \quad w_4 = Kw_3,\]</span> and see from the previous formula that then <span class="math inline">\(w = w_4 + a/c\)</span>. This tells us that (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) is indeed a composite of those special mappings and completes the proof. <span class="math inline">\(\blacksquare\)</span></p>
 </section>
-<section id="extended-complex-plane" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="extended-complex-plane"><span class="header-section-number">11.2.3</span> Extended Complex Plane</h3>
+<section id="extended-complex-plane" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="extended-complex-plane"><span class="header-section-number">12.2.3</span> Extended Complex Plane</h3>
 <p>The extended complex plane (the complex plane together with the point <span class="math inline">\(\infty\)</span> in Sec. 16.2) can now be motivated even more naturally by linear fractional transformations as follows.</p>
-<p>To each <span class="math inline">\(z\)</span> for which <span class="math inline">\(cz + d \neq 0\)</span> there corresponds a unique <span class="math inline">\(w\)</span> in (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>). Now let <span class="math inline">\(c \neq 0\)</span>. Then for <span class="math inline">\(z = -d/c\)</span> we have <span class="math inline">\(cz + d = 0\)</span>, so that no <span class="math inline">\(w\)</span> corresponds to this <span class="math inline">\(z\)</span>. This suggests that we let <span class="math inline">\(w = \infty\)</span> be the image of <span class="math inline">\(z = -d/c\)</span>.</p>
-<p>Also, the <strong>inverse mapping</strong> of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) is obtained by solving (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) for <span class="math inline">\(z\)</span>; this gives again a linear fractional transformation <span id="eq-sec172-4"><span class="math display">\[z = \frac{dw - b}{-cw + a}. \tag{11.12}\]</span></span> When <span class="math inline">\(c \neq 0\)</span>, then <span class="math inline">\(cw - a = 0\)</span> for <span class="math inline">\(w = a/c\)</span>, and we let <span class="math inline">\(a/c\)</span> be the image of <span class="math inline">\(z = \infty\)</span>. With these settings, the linear fractional transformation (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) is now a one-to-one mapping of the extended <span class="math inline">\(z\)</span>-plane onto the extended <span class="math inline">\(w\)</span>-plane. We also say that every linear fractional transformation maps “the extended complex plane in a one-to-one manner onto itself.”</p>
+<p>To each <span class="math inline">\(z\)</span> for which <span class="math inline">\(cz + d \neq 0\)</span> there corresponds a unique <span class="math inline">\(w\)</span> in (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>). Now let <span class="math inline">\(c \neq 0\)</span>. Then for <span class="math inline">\(z = -d/c\)</span> we have <span class="math inline">\(cz + d = 0\)</span>, so that no <span class="math inline">\(w\)</span> corresponds to this <span class="math inline">\(z\)</span>. This suggests that we let <span class="math inline">\(w = \infty\)</span> be the image of <span class="math inline">\(z = -d/c\)</span>.</p>
+<p>Also, the <strong>inverse mapping</strong> of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) is obtained by solving (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) for <span class="math inline">\(z\)</span>; this gives again a linear fractional transformation <span id="eq-sec172-4"><span class="math display">\[z = \frac{dw - b}{-cw + a}. \tag{12.12}\]</span></span> When <span class="math inline">\(c \neq 0\)</span>, then <span class="math inline">\(cw - a = 0\)</span> for <span class="math inline">\(w = a/c\)</span>, and we let <span class="math inline">\(a/c\)</span> be the image of <span class="math inline">\(z = \infty\)</span>. With these settings, the linear fractional transformation (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) is now a one-to-one mapping of the extended <span class="math inline">\(z\)</span>-plane onto the extended <span class="math inline">\(w\)</span>-plane. We also say that every linear fractional transformation maps “the extended complex plane in a one-to-one manner onto itself.”</p>
 <p>Our discussion suggests the following.</p>
-<p><strong>General Remark.</strong> If <span class="math inline">\(z = \infty\)</span>, then the right side of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) becomes the meaningless expression <span class="math inline">\((a \cdot \infty + b)/(c \cdot \infty + d)\)</span>. We assign to it the value <span class="math inline">\(w = a/c\)</span> if <span class="math inline">\(c \neq 0\)</span> and <span class="math inline">\(w = \infty\)</span> if <span class="math inline">\(c = 0\)</span>.</p>
+<p><strong>General Remark.</strong> If <span class="math inline">\(z = \infty\)</span>, then the right side of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) becomes the meaningless expression <span class="math inline">\((a \cdot \infty + b)/(c \cdot \infty + d)\)</span>. We assign to it the value <span class="math inline">\(w = a/c\)</span> if <span class="math inline">\(c \neq 0\)</span> and <span class="math inline">\(w = \infty\)</span> if <span class="math inline">\(c = 0\)</span>.</p>
 </section>
-<section id="fixed-points" class="level3" data-number="11.2.4">
-<h3 data-number="11.2.4" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">11.2.4</span> Fixed Points</h3>
-<p><strong>Fixed points</strong> of a mapping <span class="math inline">\(w = f(z)\)</span> are points that are mapped onto themselves, are “kept fixed” under the mapping. Thus they are obtained from <span class="math display">\[w = f(z) = z.\]</span> The <strong>identity mapping</strong> <span class="math inline">\(w = z\)</span> has every point as a fixed point. The mapping <span class="math inline">\(w = \bar{z}\)</span> has infinitely many fixed points, <span class="math inline">\(w = 1/z\)</span> has two, a rotation has one, and a translation none in the finite plane. (Find them in each case.) For (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>), the fixed-point condition <span class="math inline">\(w = z\)</span> is <span id="eq-sec172-5"><span class="math display">\[z = \frac{az + b}{cz + d}, \quad \text{thus} \quad cz^2 - (a - d)z - b = 0. \tag{11.13}\]</span></span> For <span class="math inline">\(c \neq 0\)</span> this is a quadratic equation in <span class="math inline">\(z\)</span> whose coefficients all vanish if and only if the mapping is the identity mapping <span class="math inline">\(w = z\)</span> (in this case, <span class="math inline">\(a = d \neq 0, \ b = c = 0\)</span>). Hence we have</p>
+<section id="fixed-points" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">12.2.4</span> Fixed Points</h3>
+<p><strong>Fixed points</strong> of a mapping <span class="math inline">\(w = f(z)\)</span> are points that are mapped onto themselves, are “kept fixed” under the mapping. Thus they are obtained from <span class="math display">\[w = f(z) = z.\]</span> The <strong>identity mapping</strong> <span class="math inline">\(w = z\)</span> has every point as a fixed point. The mapping <span class="math inline">\(w = \bar{z}\)</span> has infinitely many fixed points, <span class="math inline">\(w = 1/z\)</span> has two, a rotation has one, and a translation none in the finite plane. (Find them in each case.) For (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>), the fixed-point condition <span class="math inline">\(w = z\)</span> is <span id="eq-sec172-5"><span class="math display">\[z = \frac{az + b}{cz + d}, \quad \text{thus} \quad cz^2 - (a - d)z - b = 0. \tag{12.13}\]</span></span> For <span class="math inline">\(c \neq 0\)</span> this is a quadratic equation in <span class="math inline">\(z\)</span> whose coefficients all vanish if and only if the mapping is the identity mapping <span class="math inline">\(w = z\)</span> (in this case, <span class="math inline">\(a = d \neq 0, \ b = c = 0\)</span>). Hence we have</p>
 </section>
-<section id="theorem-2-fixed-points" class="level3" data-number="11.2.5">
-<h3 data-number="11.2.5" class="anchored" data-anchor-id="theorem-2-fixed-points"><span class="header-section-number">11.2.5</span> THEOREM 2 Fixed Points</h3>
+<section id="theorem-2-fixed-points" class="level3" data-number="12.2.5">
+<h3 data-number="12.2.5" class="anchored" data-anchor-id="theorem-2-fixed-points"><span class="header-section-number">12.2.5</span> THEOREM 2 Fixed Points</h3>
 <p>A linear fractional transformation, not the identity, has at most two fixed points. If a linear fractional transformation is known to have three or more fixed points, it must be the identity mapping <span class="math inline">\(w = z\)</span>.</p>
 <p>To make our present general discussion of linear fractional transformations even more useful from a practical point of view, we extend it by further facts and typical examples, in the problem set as well as in the next section.</p>
 </section>
-<section id="problem-set-17.2" class="level3" data-number="11.2.6">
-<h3 data-number="11.2.6" class="anchored" data-anchor-id="problem-set-17.2"><span class="header-section-number">11.2.6</span> PROBLEM SET 17.2</h3>
+<section id="problem-set-17.2" class="level3" data-number="12.2.6">
+<h3 data-number="12.2.6" class="anchored" data-anchor-id="problem-set-17.2"><span class="header-section-number">12.2.6</span> PROBLEM SET 17.2</h3>
 <ol type="1">
 <li>Verify the calculations in the proof of Theorem 1, including those for the case <span class="math inline">\(c = 0\)</span>.</li>
 <li><strong>Composition of LFTs.</strong> Show that substituting a linear fractional transformation (LFT) into an LFT gives an LFT.</li>
-<li><strong>Matrices.</strong> If you are familiar with <span class="math inline">\(2 \times 2\)</span> matrices, prove that the coefficient matrices of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) and (<a href="#eq-sec172-4" class="quarto-xref">Equation&nbsp;<span>11.12</span></a>) are inverses of each other, provided that <span class="math inline">\(ad - bc = 1\)</span>, and that the composition of LFTs corresponds to the multiplication of the coefficient matrices.</li>
-<li><strong><a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>11.10</span></a>.</strong> Find the image of <span class="math inline">\(x = k = \text{const}\)</span> under <span class="math inline">\(w = 1/z\)</span>. <em>Hint.</em> Use formulas similar to those in Example 1.</li>
-<li><strong>Inverse.</strong> Derive (<a href="#eq-sec172-4" class="quarto-xref">Equation&nbsp;<span>11.12</span></a>) from (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>11.9</span></a>) and conversely.</li>
-<li><strong>Fixed points.</strong> Find the fixed points mentioned in the text before formula (<a href="#eq-sec172-5" class="quarto-xref">Equation&nbsp;<span>11.13</span></a>).</li>
+<li><strong>Matrices.</strong> If you are familiar with <span class="math inline">\(2 \times 2\)</span> matrices, prove that the coefficient matrices of (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) and (<a href="#eq-sec172-4" class="quarto-xref">Equation&nbsp;<span>12.12</span></a>) are inverses of each other, provided that <span class="math inline">\(ad - bc = 1\)</span>, and that the composition of LFTs corresponds to the multiplication of the coefficient matrices.</li>
+<li><strong><a href="#fig-17-10" class="quarto-xref">Figure&nbsp;<span>12.10</span></a>.</strong> Find the image of <span class="math inline">\(x = k = \text{const}\)</span> under <span class="math inline">\(w = 1/z\)</span>. <em>Hint.</em> Use formulas similar to those in Example 1.</li>
+<li><strong>Inverse.</strong> Derive (<a href="#eq-sec172-4" class="quarto-xref">Equation&nbsp;<span>12.12</span></a>) from (<a href="#eq-sec172-1" class="quarto-xref">Equation&nbsp;<span>12.9</span></a>) and conversely.</li>
+<li><strong>Fixed points.</strong> Find the fixed points mentioned in the text before formula (<a href="#eq-sec172-5" class="quarto-xref">Equation&nbsp;<span>12.13</span></a>).</li>
 </ol>
-<section id="inverse" class="level4" data-number="11.2.6.1">
-<h4 data-number="11.2.6.1" class="anchored" data-anchor-id="inverse"><span class="header-section-number">11.2.6.1</span> 7–10 INVERSE</h4>
+<section id="inverse" class="level4" data-number="12.2.6.1">
+<h4 data-number="12.2.6.1" class="anchored" data-anchor-id="inverse"><span class="header-section-number">12.2.6.1</span> 7–10 INVERSE</h4>
 <p>Find the inverse <span class="math inline">\(z = z(w)\)</span>. Check by solving <span class="math inline">\(z(w)\)</span> for <span class="math inline">\(w\)</span>.</p>
 <ol start="7" type="1">
 <li><span class="math inline">\(w = \frac{i}{2z - 1}\)</span></li>
@@ -590,8 +596,8 @@ Figure&nbsp;11.10: Fig. 387. Mapping (Inversion) <span class="math inline">\(w =
 <li><span class="math inline">\(w = \frac{z - \frac{1}{2}i}{-\frac{1}{2}iz - 1}\)</span></li>
 </ol>
 </section>
-<section id="fixed-points-1" class="level4" data-number="11.2.6.2">
-<h4 data-number="11.2.6.2" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">11.2.6.2</span> 11–16 FIXED POINTS</h4>
+<section id="fixed-points-1" class="level4" data-number="12.2.6.2">
+<h4 data-number="12.2.6.2" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">12.2.6.2</span> 11–16 FIXED POINTS</h4>
 <p>Find the fixed points.</p>
 <ol start="11" type="1">
 <li><span class="math inline">\(w = (a + ib)z^2\)</span></li>
@@ -602,8 +608,8 @@ Figure&nbsp;11.10: Fig. 387. Mapping (Inversion) <span class="math inline">\(w =
 <li><span class="math inline">\(w = \frac{aiz - 1}{z + ai}, \ a \neq 1\)</span></li>
 </ol>
 </section>
-<section id="fixed-points-2" class="level4" data-number="11.2.6.3">
-<h4 data-number="11.2.6.3" class="anchored" data-anchor-id="fixed-points-2"><span class="header-section-number">11.2.6.3</span> 17–20 FIXED POINTS</h4>
+<section id="fixed-points-2" class="level4" data-number="12.2.6.3">
+<h4 data-number="12.2.6.3" class="anchored" data-anchor-id="fixed-points-2"><span class="header-section-number">12.2.6.3</span> 17–20 FIXED POINTS</h4>
 <p>Find all LFTs with fixed point(s).</p>
 <ol start="17" type="1">
 <li><span class="math inline">\(z = 0\)</span></li>
@@ -614,96 +620,96 @@ Figure&nbsp;11.10: Fig. 387. Mapping (Inversion) <span class="math inline">\(w =
 </section>
 </section>
 </section>
-<section id="sec-special-lft" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="sec-special-lft"><span class="header-section-number">11.3</span> 17.3 Special Linear Fractional Transformations</h2>
-<p>We continue our study of linear fractional transformations. We shall identify linear fractional transformations <span id="eq-sec173-1"><span class="math display">\[w = \frac{az + b}{cz + d} \quad (ad - bc \neq 0) \tag{11.14}\]</span></span> that map certain standard domains onto others. Theorem 1 (below) will give us a tool for constructing desired linear fractional transformations.</p>
-<p>A mapping (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>11.14</span></a>) is determined by <span class="math inline">\(a, b, c, d\)</span>, actually by the ratios of three of these constants to the fourth because we can drop or introduce a common factor. This makes it plausible that three conditions determine a unique mapping (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>11.14</span></a>):</p>
-<section id="theorem-1-three-points-and-their-images-given" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="theorem-1-three-points-and-their-images-given"><span class="header-section-number">11.3.1</span> THEOREM 1 Three Points and Their Images Given</h3>
-<p>Three given distinct points <span class="math inline">\(z_1, z_2, z_3\)</span> can always be mapped onto three prescribed distinct points <span class="math inline">\(w_1, w_2, w_3\)</span> by one, and only one, linear fractional transformation <span class="math inline">\(w = f(z)\)</span>. This mapping is given implicitly by the equation <span id="eq-sec173-2"><span class="math display">\[\frac{w - w_1}{w - w_3} \cdot \frac{w_2 - w_3}{w_2 - w_1} = \frac{z - z_1}{z - z_3} \cdot \frac{z_2 - z_3}{z_2 - z_1} \tag{11.15}\]</span></span> (If one of these points is the point <span class="math inline">\(\infty\)</span>, the quotient of the two differences containing this point must be replaced by 1.)</p>
-<p><strong>PROOF</strong> Equation (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) is of the form <span class="math inline">\(F(w) = G(z)\)</span> with linear fractional <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span>. Hence <span class="math inline">\(w = f(z) = F^{-1}(G(z))\)</span> is linear fractional. Now if in (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) we set <span class="math inline">\(w = w_1, w_2, w_3\)</span> on the left and <span class="math inline">\(z = z_1, z_2, z_3\)</span> on the right, we see that <span class="math display">\[\begin{aligned}
+<section id="sec-special-lft" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-special-lft"><span class="header-section-number">12.3</span> 17.3 Special Linear Fractional Transformations</h2>
+<p>We continue our study of linear fractional transformations. We shall identify linear fractional transformations <span id="eq-sec173-1"><span class="math display">\[w = \frac{az + b}{cz + d} \quad (ad - bc \neq 0) \tag{12.14}\]</span></span> that map certain standard domains onto others. Theorem 1 (below) will give us a tool for constructing desired linear fractional transformations.</p>
+<p>A mapping (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>12.14</span></a>) is determined by <span class="math inline">\(a, b, c, d\)</span>, actually by the ratios of three of these constants to the fourth because we can drop or introduce a common factor. This makes it plausible that three conditions determine a unique mapping (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>12.14</span></a>):</p>
+<section id="theorem-1-three-points-and-their-images-given" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="theorem-1-three-points-and-their-images-given"><span class="header-section-number">12.3.1</span> THEOREM 1 Three Points and Their Images Given</h3>
+<p>Three given distinct points <span class="math inline">\(z_1, z_2, z_3\)</span> can always be mapped onto three prescribed distinct points <span class="math inline">\(w_1, w_2, w_3\)</span> by one, and only one, linear fractional transformation <span class="math inline">\(w = f(z)\)</span>. This mapping is given implicitly by the equation <span id="eq-sec173-2"><span class="math display">\[\frac{w - w_1}{w - w_3} \cdot \frac{w_2 - w_3}{w_2 - w_1} = \frac{z - z_1}{z - z_3} \cdot \frac{z_2 - z_3}{z_2 - z_1} \tag{12.15}\]</span></span> (If one of these points is the point <span class="math inline">\(\infty\)</span>, the quotient of the two differences containing this point must be replaced by 1.)</p>
+<p><strong>PROOF</strong> Equation (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) is of the form <span class="math inline">\(F(w) = G(z)\)</span> with linear fractional <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span>. Hence <span class="math inline">\(w = f(z) = F^{-1}(G(z))\)</span> is linear fractional. Now if in (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) we set <span class="math inline">\(w = w_1, w_2, w_3\)</span> on the left and <span class="math inline">\(z = z_1, z_2, z_3\)</span> on the right, we see that <span class="math display">\[\begin{aligned}
 F(w_1) &amp;= 0, &amp; F(w_2) &amp;= 1, &amp; F(w_3) &amp;= \infty \\
 G(z_1) &amp;= 0, &amp; G(z_2) &amp;= 1, &amp; G(z_3) &amp;= \infty.
 \end{aligned}\]</span> From the first column, <span class="math inline">\(F(w_1) = G(z_1)\)</span>, thus <span class="math inline">\(w_1 = F^{-1}(G(z_1)) = f(z_1)\)</span>. Similarly, <span class="math inline">\(w_2 = f(z_2)\)</span>, <span class="math inline">\(w_3 = f(z_3)\)</span>. This proves the existence of the desired linear fractional transformation.</p>
 <p>To prove uniqueness, let <span class="math inline">\(w = g(z)\)</span> be a linear fractional transformation, which also maps <span class="math inline">\(z_j\)</span> onto <span class="math inline">\(w_j, \ j = 1, 2, 3\)</span>. Thus <span class="math inline">\(w_j = g(z_j)\)</span>. Hence <span class="math inline">\(g^{-1}(w_j) = z_j\)</span>, where <span class="math inline">\(w_j = f(z_j)\)</span>. Together, <span class="math inline">\(g^{-1}(f(z_j)) = z_j\)</span>, a mapping with the three fixed points <span class="math inline">\(z_1, z_2, z_3\)</span>. By Theorem 2 in Sec. 17.2, this is the identity mapping, <span class="math inline">\(g^{-1}(f(z)) = z\)</span> for all <span class="math inline">\(z\)</span>. Thus <span class="math inline">\(f(z) = g(z)\)</span> for all <span class="math inline">\(z\)</span>, the uniqueness.</p>
 <p>The last statement of Theorem 1 follows from the General Remark in Sec. 17.2. <span class="math inline">\(\blacksquare\)</span></p>
 </section>
-<section id="mapping-of-standard-domains-by-theorem-1" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="mapping-of-standard-domains-by-theorem-1"><span class="header-section-number">11.3.2</span> Mapping of Standard Domains by Theorem 1</h3>
+<section id="mapping-of-standard-domains-by-theorem-1" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="mapping-of-standard-domains-by-theorem-1"><span class="header-section-number">12.3.2</span> Mapping of Standard Domains by Theorem 1</h3>
 <p>Using Theorem 1, we can now find linear fractional transformations of some practically useful domains (here called “standard domains”) according to the following principle.</p>
-<p><strong>Principle.</strong> <em>Prescribe three boundary points <span class="math inline">\(z_1, z_2, z_3\)</span> of the domain <span class="math inline">\(D\)</span> in the <span class="math inline">\(z\)</span>-plane. Choose their images <span class="math inline">\(w_1, w_2, w_3\)</span> on the boundary of the image <span class="math inline">\(D^*\)</span> of <span class="math inline">\(D\)</span> in the <span class="math inline">\(w\)</span>-plane. Obtain the mapping from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>). Make sure that <span class="math inline">\(D\)</span> is mapped onto <span class="math inline">\(D^*\)</span>, not onto its complement. In the latter case, interchange two <span class="math inline">\(w\)</span>-points. (Why does this help?)</em></p>
+<p><strong>Principle.</strong> <em>Prescribe three boundary points <span class="math inline">\(z_1, z_2, z_3\)</span> of the domain <span class="math inline">\(D\)</span> in the <span class="math inline">\(z\)</span>-plane. Choose their images <span class="math inline">\(w_1, w_2, w_3\)</span> on the boundary of the image <span class="math inline">\(D^*\)</span> of <span class="math inline">\(D\)</span> in the <span class="math inline">\(w\)</span>-plane. Obtain the mapping from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>). Make sure that <span class="math inline">\(D\)</span> is mapped onto <span class="math inline">\(D^*\)</span>, not onto its complement. In the latter case, interchange two <span class="math inline">\(w\)</span>-points. (Why does this help?)</em></p>
 <div id="fig-17-11" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-11.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.11: Fig. 388. Linear fractional transformation in Example 1
+Figure&nbsp;12.11: Fig. 388. Linear fractional transformation in Example 1
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" class="level3" data-number="11.3.3">
-<h3 data-number="11.3.3" class="anchored" data-anchor-id="example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11"><span class="header-section-number">11.3.3</span> EXAMPLE 1 Mapping of a Half-Plane onto a Disk (<a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>11.11</span></a>)</h3>
-<p>Find the linear fractional transformation (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>11.14</span></a>) that maps <span class="math inline">\(z_1 = -1, z_2 = 0, z_3 = 1\)</span> onto <span class="math inline">\(w_1 = -1, w_2 = -i, w_3 = 1\)</span>, respectively.</p>
-<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) we obtain <span class="math display">\[\frac{w - (-1)}{w - 1} \cdot \frac{-i - 1}{-i - (-1)} = \frac{z - (-1)}{z - 1} \cdot \frac{0 - 1}{0 - (-1)},\]</span> thus <span class="math display">\[w = \frac{z - i}{-iz + 1}.\]</span> Let us show that we can determine the specific properties of such a mapping without much calculation. For <span class="math inline">\(z = x\)</span> we have <span class="math inline">\(w = (x - i)/(-ix + 1)\)</span>, thus <span class="math inline">\(|w| = 1\)</span>, so that the <span class="math inline">\(x\)</span>-axis maps onto the unit circle. Since <span class="math inline">\(z = i\)</span> gives <span class="math inline">\(w = 0\)</span>, the upper half-plane maps onto the interior of that circle and the lower half-plane onto the exterior. <span class="math inline">\(z = 0, i, \infty\)</span> go onto <span class="math inline">\(w = -i, 0, i\)</span>, so that the positive imaginary axis maps onto the segment <span class="math inline">\(S: u = 0, \ -1 \leq v \leq 1\)</span>. The vertical lines <span class="math inline">\(x = \text{const}\)</span> map onto circles (by Theorem 1, Sec. 17.2) through <span class="math inline">\(w = i\)</span> (the image of <span class="math inline">\(z = \infty\)</span>) and perpendicular to <span class="math inline">\(|w| = 1\)</span> (by conformality; see <a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>11.11</span></a>). Similarly, the horizontal lines <span class="math inline">\(y = \text{const}\)</span> map onto circles through <span class="math inline">\(w = i\)</span> and perpendicular to <span class="math inline">\(S\)</span> (by conformality). <a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>11.11</span></a> gives these circles for <span class="math inline">\(y \geq 0\)</span>, and for <span class="math inline">\(y &lt; 0\)</span> they lie outside the unit disk shown.</p>
+<section id="example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="example-1-mapping-of-a-half-plane-onto-a-disk-fig-17-11"><span class="header-section-number">12.3.3</span> EXAMPLE 1 Mapping of a Half-Plane onto a Disk (<a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>12.11</span></a>)</h3>
+<p>Find the linear fractional transformation (<a href="#eq-sec173-1" class="quarto-xref">Equation&nbsp;<span>12.14</span></a>) that maps <span class="math inline">\(z_1 = -1, z_2 = 0, z_3 = 1\)</span> onto <span class="math inline">\(w_1 = -1, w_2 = -i, w_3 = 1\)</span>, respectively.</p>
+<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) we obtain <span class="math display">\[\frac{w - (-1)}{w - 1} \cdot \frac{-i - 1}{-i - (-1)} = \frac{z - (-1)}{z - 1} \cdot \frac{0 - 1}{0 - (-1)},\]</span> thus <span class="math display">\[w = \frac{z - i}{-iz + 1}.\]</span> Let us show that we can determine the specific properties of such a mapping without much calculation. For <span class="math inline">\(z = x\)</span> we have <span class="math inline">\(w = (x - i)/(-ix + 1)\)</span>, thus <span class="math inline">\(|w| = 1\)</span>, so that the <span class="math inline">\(x\)</span>-axis maps onto the unit circle. Since <span class="math inline">\(z = i\)</span> gives <span class="math inline">\(w = 0\)</span>, the upper half-plane maps onto the interior of that circle and the lower half-plane onto the exterior. <span class="math inline">\(z = 0, i, \infty\)</span> go onto <span class="math inline">\(w = -i, 0, i\)</span>, so that the positive imaginary axis maps onto the segment <span class="math inline">\(S: u = 0, \ -1 \leq v \leq 1\)</span>. The vertical lines <span class="math inline">\(x = \text{const}\)</span> map onto circles (by Theorem 1, Sec. 17.2) through <span class="math inline">\(w = i\)</span> (the image of <span class="math inline">\(z = \infty\)</span>) and perpendicular to <span class="math inline">\(|w| = 1\)</span> (by conformality; see <a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>12.11</span></a>). Similarly, the horizontal lines <span class="math inline">\(y = \text{const}\)</span> map onto circles through <span class="math inline">\(w = i\)</span> and perpendicular to <span class="math inline">\(S\)</span> (by conformality). <a href="#fig-17-11" class="quarto-xref">Figure&nbsp;<span>12.11</span></a> gives these circles for <span class="math inline">\(y \geq 0\)</span>, and for <span class="math inline">\(y &lt; 0\)</span> they lie outside the unit disk shown.</p>
 </section>
-<section id="example-2-occurrence-of-infty" class="level3" data-number="11.3.4">
-<h3 data-number="11.3.4" class="anchored" data-anchor-id="example-2-occurrence-of-infty"><span class="header-section-number">11.3.4</span> EXAMPLE 2 Occurrence of <span class="math inline">\(\infty\)</span></h3>
+<section id="example-2-occurrence-of-infty" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="example-2-occurrence-of-infty"><span class="header-section-number">12.3.4</span> EXAMPLE 2 Occurrence of <span class="math inline">\(\infty\)</span></h3>
 <p>Determine the linear fractional transformation that maps <span class="math inline">\(z_1 = 0, z_2 = 1, z_3 = \infty\)</span> onto <span class="math inline">\(w_1 = -1, w_2 = -i, w_3 = 1\)</span>, respectively.</p>
-<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) we obtain the desired mapping <span class="math display">\[w = \frac{z - i}{z + i}.\]</span> This is sometimes called the <em>Cayley transformation</em>.<sup>2</sup> In this case, (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) gave at first the quotient <span class="math inline">\((1 - \infty)/(z - \infty)\)</span>, which we had to replace by 1.</p>
+<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) we obtain the desired mapping <span class="math display">\[w = \frac{z - i}{z + i}.\]</span> This is sometimes called the <em>Cayley transformation</em>.<sup>2</sup> In this case, (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) gave at first the quotient <span class="math inline">\((1 - \infty)/(z - \infty)\)</span>, which we had to replace by 1.</p>
 <blockquote class="blockquote">
 <p><sup>2</sup> Named after the English mathematician ARTHUR CAYLEY (1821–1895), who is known for his important work in algebra, matrix theory, and differential equations.</p>
 </blockquote>
 </section>
-<section id="example-3-mapping-of-a-disk-onto-a-half-plane" class="level3" data-number="11.3.5">
-<h3 data-number="11.3.5" class="anchored" data-anchor-id="example-3-mapping-of-a-disk-onto-a-half-plane"><span class="header-section-number">11.3.5</span> EXAMPLE 3 Mapping of a Disk onto a Half-Plane</h3>
+<section id="example-3-mapping-of-a-disk-onto-a-half-plane" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="example-3-mapping-of-a-disk-onto-a-half-plane"><span class="header-section-number">12.3.5</span> EXAMPLE 3 Mapping of a Disk onto a Half-Plane</h3>
 <p>Find the linear fractional transformation that maps <span class="math inline">\(z_1 = -1, z_2 = i, z_3 = 1\)</span> onto <span class="math inline">\(w_1 = 0, w_2 = i, w_3 = \infty\)</span>, respectively, such that the unit disk is mapped onto the right half-plane. (Sketch disk and half-plane.)</p>
-<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) we obtain, after replacing <span class="math inline">\((i - \infty)/(w - \infty)\)</span> by 1, <span class="math display">\[w = -\frac{z + 1}{z - 1}.\]</span></p>
+<p><strong>Solution.</strong> From (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) we obtain, after replacing <span class="math inline">\((i - \infty)/(w - \infty)\)</span> by 1, <span class="math display">\[w = -\frac{z + 1}{z - 1}.\]</span></p>
 <p>Mapping half-planes onto half-planes is another task of practical interest. For instance, we may wish to map the upper half-plane <span class="math inline">\(y \geq 0\)</span> onto the upper half-plane <span class="math inline">\(v \geq 0\)</span>. Then the <span class="math inline">\(x\)</span>-axis must be mapped onto the <span class="math inline">\(u\)</span>-axis.</p>
 </section>
-<section id="example-4-mapping-of-a-half-plane-onto-a-half-plane" class="level3" data-number="11.3.6">
-<h3 data-number="11.3.6" class="anchored" data-anchor-id="example-4-mapping-of-a-half-plane-onto-a-half-plane"><span class="header-section-number">11.3.6</span> EXAMPLE 4 Mapping of a Half-Plane onto a Half-Plane</h3>
+<section id="example-4-mapping-of-a-half-plane-onto-a-half-plane" class="level3" data-number="12.3.6">
+<h3 data-number="12.3.6" class="anchored" data-anchor-id="example-4-mapping-of-a-half-plane-onto-a-half-plane"><span class="header-section-number">12.3.6</span> EXAMPLE 4 Mapping of a Half-Plane onto a Half-Plane</h3>
 <p>Find the linear fractional transformation that maps <span class="math inline">\(z_1 = -2, z_2 = 0, z_3 = 2\)</span> onto <span class="math inline">\(w_1 = \infty, w_2 = \frac{1}{4}, w_3 = \frac{3}{8}\)</span>, respectively.</p>
-<p><strong>Solution.</strong> You may verify that (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>) gives the mapping function <span class="math display">\[w = \frac{z + 1}{2z + 4}.\]</span> What is the image of the <span class="math inline">\(x\)</span>-axis? Of the <span class="math inline">\(y\)</span>-axis?</p>
-<p>Mappings of disks onto disks is a third class of practical problems. We may readily verify that the unit disk in the <span class="math inline">\(z\)</span>-plane is mapped onto the unit disk in the <span class="math inline">\(w\)</span>-plane by the following function, which maps <span class="math inline">\(z_0\)</span> onto the center <span class="math inline">\(w = 0\)</span>. <span id="eq-sec173-3"><span class="math display">\[w = \frac{z - z_0}{cz - 1}, \quad c = \bar{z}_0, \quad |z_0| &lt; 1. \tag{11.16}\]</span></span> To see this, take <span class="math inline">\(|z| = 1\)</span>, obtaining, with <span class="math inline">\(c = \bar{z}_0\)</span> as in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>11.16</span></a>), <span class="math display">\[\begin{aligned}
+<p><strong>Solution.</strong> You may verify that (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>) gives the mapping function <span class="math display">\[w = \frac{z + 1}{2z + 4}.\]</span> What is the image of the <span class="math inline">\(x\)</span>-axis? Of the <span class="math inline">\(y\)</span>-axis?</p>
+<p>Mappings of disks onto disks is a third class of practical problems. We may readily verify that the unit disk in the <span class="math inline">\(z\)</span>-plane is mapped onto the unit disk in the <span class="math inline">\(w\)</span>-plane by the following function, which maps <span class="math inline">\(z_0\)</span> onto the center <span class="math inline">\(w = 0\)</span>. <span id="eq-sec173-3"><span class="math display">\[w = \frac{z - z_0}{cz - 1}, \quad c = \bar{z}_0, \quad |z_0| &lt; 1. \tag{12.16}\]</span></span> To see this, take <span class="math inline">\(|z| = 1\)</span>, obtaining, with <span class="math inline">\(c = \bar{z}_0\)</span> as in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>12.16</span></a>), <span class="math display">\[\begin{aligned}
 |z - z_0| &amp;= |\bar{z} - c| \\
 &amp;= |z||\bar{z} - c| \\
 &amp;= |z\bar{z} - cz| = |1 - cz| = |cz - 1|.
-\end{aligned}\]</span> Hence <span class="math display">\[|w| = |z - z_0|/|cz - 1| = 1\]</span> from (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>11.16</span></a>), so that <span class="math inline">\(|z| = 1\)</span> maps onto <span class="math inline">\(|w| = 1\)</span>, as claimed, with <span class="math inline">\(z_0\)</span> going onto 0, as the numerator in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>11.16</span></a>) shows.</p>
-<p>Formula (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>11.16</span></a>) is illustrated by the following example. Another interesting case will be given in Prob. 17 of Sec. 18.2.</p>
+\end{aligned}\]</span> Hence <span class="math display">\[|w| = |z - z_0|/|cz - 1| = 1\]</span> from (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>12.16</span></a>), so that <span class="math inline">\(|z| = 1\)</span> maps onto <span class="math inline">\(|w| = 1\)</span>, as claimed, with <span class="math inline">\(z_0\)</span> going onto 0, as the numerator in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>12.16</span></a>) shows.</p>
+<p>Formula (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>12.16</span></a>) is illustrated by the following example. Another interesting case will be given in Prob. 17 of Sec. 18.2.</p>
 </section>
-<section id="example-5-mapping-of-the-unit-disk-onto-the-unit-disk" class="level3" data-number="11.3.7">
-<h3 data-number="11.3.7" class="anchored" data-anchor-id="example-5-mapping-of-the-unit-disk-onto-the-unit-disk"><span class="header-section-number">11.3.7</span> EXAMPLE 5 Mapping of the Unit Disk onto the Unit Disk</h3>
-<p>Taking <span class="math inline">\(z_0 = \frac{1}{2}\)</span> in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>11.16</span></a>), we obtain (verify!) <span class="math display">\[w = \frac{2z - 1}{z - 2}\]</span> (see <a href="#fig-17-12" class="quarto-xref">Figure&nbsp;<span>11.12</span></a>).</p>
+<section id="example-5-mapping-of-the-unit-disk-onto-the-unit-disk" class="level3" data-number="12.3.7">
+<h3 data-number="12.3.7" class="anchored" data-anchor-id="example-5-mapping-of-the-unit-disk-onto-the-unit-disk"><span class="header-section-number">12.3.7</span> EXAMPLE 5 Mapping of the Unit Disk onto the Unit Disk</h3>
+<p>Taking <span class="math inline">\(z_0 = \frac{1}{2}\)</span> in (<a href="#eq-sec173-3" class="quarto-xref">Equation&nbsp;<span>12.16</span></a>), we obtain (verify!) <span class="math display">\[w = \frac{2z - 1}{z - 2}\]</span> (see <a href="#fig-17-12" class="quarto-xref">Figure&nbsp;<span>12.12</span></a>).</p>
 <div id="fig-17-12" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-12.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.12: Fig. 389. Mapping in Example 5
+Figure&nbsp;12.12: Fig. 389. Mapping in Example 5
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="example-6-mapping-of-an-angular-region-onto-the-unit-disk" class="level3" data-number="11.3.8">
-<h3 data-number="11.3.8" class="anchored" data-anchor-id="example-6-mapping-of-an-angular-region-onto-the-unit-disk"><span class="header-section-number">11.3.8</span> EXAMPLE 6 Mapping of an Angular Region onto the Unit Disk</h3>
-<p>Certain mapping problems can be solved by combining linear fractional transformations with others. For instance, to map the angular region <span class="math inline">\(D: -\pi/6 \leq \arg z \leq \pi/6\)</span> (<a href="#fig-17-13" class="quarto-xref">Figure&nbsp;<span>11.13</span></a>) onto the unit disk <span class="math inline">\(|w| \leq 1\)</span>, we may map <span class="math inline">\(D\)</span> by <span class="math inline">\(Z = z^3\)</span> onto the right <span class="math inline">\(Z\)</span>-half-plane and then the latter onto the disk by <span class="math display">\[w = i\frac{Z - 1}{Z + 1}, \quad \text{combined} \quad w = i\frac{z^3 - 1}{z^3 + 1}.\]</span></p>
+<section id="example-6-mapping-of-an-angular-region-onto-the-unit-disk" class="level3" data-number="12.3.8">
+<h3 data-number="12.3.8" class="anchored" data-anchor-id="example-6-mapping-of-an-angular-region-onto-the-unit-disk"><span class="header-section-number">12.3.8</span> EXAMPLE 6 Mapping of an Angular Region onto the Unit Disk</h3>
+<p>Certain mapping problems can be solved by combining linear fractional transformations with others. For instance, to map the angular region <span class="math inline">\(D: -\pi/6 \leq \arg z \leq \pi/6\)</span> (<a href="#fig-17-13" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>) onto the unit disk <span class="math inline">\(|w| \leq 1\)</span>, we may map <span class="math inline">\(D\)</span> by <span class="math inline">\(Z = z^3\)</span> onto the right <span class="math inline">\(Z\)</span>-half-plane and then the latter onto the disk by <span class="math display">\[w = i\frac{Z - 1}{Z + 1}, \quad \text{combined} \quad w = i\frac{z^3 - 1}{z^3 + 1}.\]</span></p>
 <div id="fig-17-13" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-13.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.13: Fig. 390. Mapping in Example 6
+Figure&nbsp;12.13: Fig. 390. Mapping in Example 6
 </figcaption>
 </figure>
 </div>
 <p>This is the end of our discussion of linear fractional transformations. In the next section we turn to conformal mappings by other analytic functions (sine, cosine, etc.).</p>
 </section>
-<section id="problem-set-17.3" class="level3" data-number="11.3.9">
-<h3 data-number="11.3.9" class="anchored" data-anchor-id="problem-set-17.3"><span class="header-section-number">11.3.9</span> PROBLEM SET 17.3</h3>
+<section id="problem-set-17.3" class="level3" data-number="12.3.9">
+<h3 data-number="12.3.9" class="anchored" data-anchor-id="problem-set-17.3"><span class="header-section-number">12.3.9</span> PROBLEM SET 17.3</h3>
 <ol type="1">
 <li><strong>CAS EXPERIMENT. Linear Fractional Transformations (LFTs).</strong>
 <ol type="a">
@@ -713,12 +719,12 @@ Figure&nbsp;11.13: Fig. 390. Mapping in Example 6
 <li><strong>Inverse.</strong> Find the inverse of the mapping in Example 1. Show that under that inverse the lines <span class="math inline">\(x = \text{const}\)</span> are the images of circles in the <span class="math inline">\(w\)</span>-plane with centers on the line <span class="math inline">\(v = 1\)</span>.</li>
 <li><strong>Inverse.</strong> If <span class="math inline">\(w = f(z)\)</span> is any transformation that has an inverse, prove the (trivial!) fact that <span class="math inline">\(f\)</span> and its inverse have the same fixed points.</li>
 <li>Obtain the mapping in Example 1 of this section from Prob. 18 in Problem Set 17.2.</li>
-<li>Derive the mapping in Example 2 from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>).</li>
-<li>Derive the mapping in Example 4 from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>11.15</span></a>). Find its inverse and the fixed points.</li>
+<li>Derive the mapping in Example 2 from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>).</li>
+<li>Derive the mapping in Example 4 from (<a href="#eq-sec173-2" class="quarto-xref">Equation&nbsp;<span>12.15</span></a>). Find its inverse and the fixed points.</li>
 <li>Verify the formula for disks.</li>
 </ol>
-<section id="lfts-from-three-points-and-images" class="level4" data-number="11.3.9.1">
-<h4 data-number="11.3.9.1" class="anchored" data-anchor-id="lfts-from-three-points-and-images"><span class="header-section-number">11.3.9.1</span> 8–16 LFTs FROM THREE POINTS AND IMAGES</h4>
+<section id="lfts-from-three-points-and-images" class="level4" data-number="12.3.9.1">
+<h4 data-number="12.3.9.1" class="anchored" data-anchor-id="lfts-from-three-points-and-images"><span class="header-section-number">12.3.9.1</span> 8–16 LFTs FROM THREE POINTS AND IMAGES</h4>
 <p>Find the LFT that maps the given three points onto the three given points in the respective order.</p>
 <ol start="8" type="1">
 <li><span class="math inline">\(0, 1, 2\)</span> onto <span class="math inline">\(1, \frac{1}{2}, \frac{1}{3}\)</span></li>
@@ -738,88 +744,88 @@ Figure&nbsp;11.13: Fig. 390. Mapping in Example 6
 </section>
 </section>
 </section>
-<section id="sec-conformal-other-fns" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="sec-conformal-other-fns"><span class="header-section-number">11.4</span> 17.4 Conformal Mapping by Other Functions</h2>
+<section id="sec-conformal-other-fns" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-conformal-other-fns"><span class="header-section-number">12.4</span> 17.4 Conformal Mapping by Other Functions</h2>
 <p>We shall now cover mappings by trigonometric and hyperbolic analytic functions. So far we have covered the mappings by <span class="math inline">\(z^n\)</span> and <span class="math inline">\(e^z\)</span> (Sec. 17.1) as well as linear fractional transformations (Secs. 17.2 and 17.3).</p>
-<section id="sine-function" class="level3" data-number="11.4.1">
-<h3 data-number="11.4.1" class="anchored" data-anchor-id="sine-function"><span class="header-section-number">11.4.1</span> Sine Function</h3>
-<p><a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>11.14</span></a> shows the mapping by <span id="eq-sec174-1"><span class="math display">\[w = u + iv = \sin z = \sin x \cosh y + i \cos x \sinh y \tag{11.17}\]</span></span> (Sec. 13.6).</p>
+<section id="sine-function" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="sine-function"><span class="header-section-number">12.4.1</span> Sine Function</h3>
+<p><a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>12.14</span></a> shows the mapping by <span id="eq-sec174-1"><span class="math display">\[w = u + iv = \sin z = \sin x \cosh y + i \cos x \sinh y \tag{12.17}\]</span></span> (Sec. 13.6).</p>
 <div id="fig-17-14" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-14.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.14: Fig. 391. Mapping <span class="math inline">\(w = u + iv = \sin z\)</span>
+Figure&nbsp;12.14: Fig. 391. Mapping <span class="math inline">\(w = u + iv = \sin z\)</span>
 </figcaption>
 </figure>
 </div>
-<p>Hence <span id="eq-sec174-2"><span class="math display">\[u = \sin x \cosh y, \quad v = \cos x \sinh y. \tag{11.18}\]</span></span> Since <span class="math inline">\(\sin z\)</span> is periodic with period <span class="math inline">\(2\pi\)</span>, the mapping is certainly not one-to-one if we consider it in the full <span class="math inline">\(z\)</span>-plane. We restrict <span class="math inline">\(z\)</span> to the vertical strip <span class="math inline">\(S: -\frac{1}{2}\pi \leq x \leq \frac{1}{2}\pi\)</span> in <a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>11.14</span></a>. Since <span class="math inline">\(f'(z) = \cos z = 0\)</span> at <span class="math inline">\(z = \pm \frac{1}{2}\pi\)</span>, the mapping is not conformal at these two critical points. We claim that the rectangular net of straight lines <span class="math inline">\(x = \text{const}\)</span> and <span class="math inline">\(y = \text{const}\)</span> in <a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>11.14</span></a> is mapped onto a net in the <span class="math inline">\(w\)</span>-plane consisting of hyperbolas (the images of the vertical lines <span class="math inline">\(x = \text{const}\)</span>) and ellipses (the images of the horizontal lines <span class="math inline">\(y = \text{const}\)</span>) intersecting the hyperbolas at right angles (conformality!). Corresponding calculations are simple. From (<a href="#eq-sec174-2" class="quarto-xref">Equation&nbsp;<span>11.18</span></a>) and the relations <span class="math inline">\(\sin^2 x + \cos^2 x = 1\)</span> and <span class="math inline">\(\cosh^2 y - \sinh^2 y = 1\)</span> we obtain <span class="math display">\[\frac{u^2}{\sin^2 x} - \frac{v^2}{\cos^2 x} = \cosh^2 y - \sinh^2 y = 1 \quad \text{(Hyperbolas)}\]</span> <span class="math display">\[\frac{u^2}{\cosh^2 y} + \frac{v^2}{\sinh^2 y} = \sin^2 x + \cos^2 x = 1 \quad \text{(Ellipses).}\]</span> Exceptions are the vertical lines <span class="math inline">\(x = -\frac{1}{2}\pi, \ \frac{1}{2}\pi\)</span>, which are “folded” onto <span class="math inline">\(u \leq -1\)</span> and <span class="math inline">\(u \geq 1\)</span> (<span class="math inline">\(v = 0\)</span>), respectively.</p>
-<p><a href="#fig-17-15" class="quarto-xref">Figure&nbsp;<span>11.15</span></a> illustrates this further. The upper and lower sides of the rectangle are mapped onto semi-ellipses and the vertical sides onto <span class="math inline">\(-\cosh 1 \leq u \leq -1\)</span> and <span class="math inline">\(1 \leq u \leq \cosh 1 \ (v = 0)\)</span>, respectively. An application to a potential problem will be given in Prob. 3 of Sec. 18.2.</p>
+<p>Hence <span id="eq-sec174-2"><span class="math display">\[u = \sin x \cosh y, \quad v = \cos x \sinh y. \tag{12.18}\]</span></span> Since <span class="math inline">\(\sin z\)</span> is periodic with period <span class="math inline">\(2\pi\)</span>, the mapping is certainly not one-to-one if we consider it in the full <span class="math inline">\(z\)</span>-plane. We restrict <span class="math inline">\(z\)</span> to the vertical strip <span class="math inline">\(S: -\frac{1}{2}\pi \leq x \leq \frac{1}{2}\pi\)</span> in <a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>12.14</span></a>. Since <span class="math inline">\(f'(z) = \cos z = 0\)</span> at <span class="math inline">\(z = \pm \frac{1}{2}\pi\)</span>, the mapping is not conformal at these two critical points. We claim that the rectangular net of straight lines <span class="math inline">\(x = \text{const}\)</span> and <span class="math inline">\(y = \text{const}\)</span> in <a href="#fig-17-14" class="quarto-xref">Figure&nbsp;<span>12.14</span></a> is mapped onto a net in the <span class="math inline">\(w\)</span>-plane consisting of hyperbolas (the images of the vertical lines <span class="math inline">\(x = \text{const}\)</span>) and ellipses (the images of the horizontal lines <span class="math inline">\(y = \text{const}\)</span>) intersecting the hyperbolas at right angles (conformality!). Corresponding calculations are simple. From (<a href="#eq-sec174-2" class="quarto-xref">Equation&nbsp;<span>12.18</span></a>) and the relations <span class="math inline">\(\sin^2 x + \cos^2 x = 1\)</span> and <span class="math inline">\(\cosh^2 y - \sinh^2 y = 1\)</span> we obtain <span class="math display">\[\frac{u^2}{\sin^2 x} - \frac{v^2}{\cos^2 x} = \cosh^2 y - \sinh^2 y = 1 \quad \text{(Hyperbolas)}\]</span> <span class="math display">\[\frac{u^2}{\cosh^2 y} + \frac{v^2}{\sinh^2 y} = \sin^2 x + \cos^2 x = 1 \quad \text{(Ellipses).}\]</span> Exceptions are the vertical lines <span class="math inline">\(x = -\frac{1}{2}\pi, \ \frac{1}{2}\pi\)</span>, which are “folded” onto <span class="math inline">\(u \leq -1\)</span> and <span class="math inline">\(u \geq 1\)</span> (<span class="math inline">\(v = 0\)</span>), respectively.</p>
+<p><a href="#fig-17-15" class="quarto-xref">Figure&nbsp;<span>12.15</span></a> illustrates this further. The upper and lower sides of the rectangle are mapped onto semi-ellipses and the vertical sides onto <span class="math inline">\(-\cosh 1 \leq u \leq -1\)</span> and <span class="math inline">\(1 \leq u \leq \cosh 1 \ (v = 0)\)</span>, respectively. An application to a potential problem will be given in Prob. 3 of Sec. 18.2.</p>
 <div id="fig-17-15" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-15.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.15: Fig. 392. Mapping by <span class="math inline">\(w = \sin z\)</span>
+Figure&nbsp;12.15: Fig. 392. Mapping by <span class="math inline">\(w = \sin z\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="cosine-function" class="level3" data-number="11.4.2">
-<h3 data-number="11.4.2" class="anchored" data-anchor-id="cosine-function"><span class="header-section-number">11.4.2</span> Cosine Function</h3>
-<p>The mapping <span class="math inline">\(w = \cos z\)</span> could be discussed independently, but since <span id="eq-sec174-3"><span class="math display">\[w = \cos z = \sin\left(z + \frac{1}{2}\pi\right), \tag{11.19}\]</span></span> we see at once that this is the same mapping as <span class="math inline">\(\sin z\)</span> preceded by a translation to the right through <span class="math inline">\(\frac{1}{2}\pi\)</span> units.</p>
+<section id="cosine-function" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="cosine-function"><span class="header-section-number">12.4.2</span> Cosine Function</h3>
+<p>The mapping <span class="math inline">\(w = \cos z\)</span> could be discussed independently, but since <span id="eq-sec174-3"><span class="math display">\[w = \cos z = \sin\left(z + \frac{1}{2}\pi\right), \tag{12.19}\]</span></span> we see at once that this is the same mapping as <span class="math inline">\(\sin z\)</span> preceded by a translation to the right through <span class="math inline">\(\frac{1}{2}\pi\)</span> units.</p>
 </section>
-<section id="hyperbolic-sine" class="level3" data-number="11.4.3">
-<h3 data-number="11.4.3" class="anchored" data-anchor-id="hyperbolic-sine"><span class="header-section-number">11.4.3</span> Hyperbolic Sine</h3>
-<p>Since <span id="eq-sec174-4"><span class="math display">\[w = \sinh z = -i \sin(iz), \tag{11.20}\]</span></span> the mapping is a counterclockwise rotation <span class="math inline">\(Z = iz\)</span> through <span class="math inline">\(\frac{1}{2}\pi\)</span> (i.e., 90°), followed by the sine mapping <span class="math inline">\(Z^* = \sin Z\)</span>, followed by a clockwise 90°-rotation <span class="math inline">\(w = -iZ^*\)</span>.</p>
+<section id="hyperbolic-sine" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="hyperbolic-sine"><span class="header-section-number">12.4.3</span> Hyperbolic Sine</h3>
+<p>Since <span id="eq-sec174-4"><span class="math display">\[w = \sinh z = -i \sin(iz), \tag{12.20}\]</span></span> the mapping is a counterclockwise rotation <span class="math inline">\(Z = iz\)</span> through <span class="math inline">\(\frac{1}{2}\pi\)</span> (i.e., 90°), followed by the sine mapping <span class="math inline">\(Z^* = \sin Z\)</span>, followed by a clockwise 90°-rotation <span class="math inline">\(w = -iZ^*\)</span>.</p>
 </section>
-<section id="hyperbolic-cosine" class="level3" data-number="11.4.4">
-<h3 data-number="11.4.4" class="anchored" data-anchor-id="hyperbolic-cosine"><span class="header-section-number">11.4.4</span> Hyperbolic Cosine</h3>
-<p>This function <span id="eq-sec174-5"><span class="math display">\[w = \cosh z = \cos(iz) \tag{11.21}\]</span></span> defines a mapping that is a rotation <span class="math inline">\(Z = iz\)</span> followed by the mapping <span class="math inline">\(w = \cos Z\)</span>.</p>
-<p><a href="#fig-17-16" class="quarto-xref">Figure&nbsp;<span>11.16</span></a> shows the mapping of a semi-infinite strip onto a half-plane by <span class="math inline">\(w = \cosh z\)</span>. Since <span class="math inline">\(\cosh 0 = 1\)</span>, the point <span class="math inline">\(z = 0\)</span> is mapped onto <span class="math inline">\(w = 1\)</span>. For real <span class="math inline">\(z = x \geq 0\)</span>, <span class="math inline">\(\cosh z\)</span> is real and increases with increasing <span class="math inline">\(x\)</span> in a monotone fashion, starting from 1. Hence the positive <span class="math inline">\(x\)</span>-axis is mapped onto the portion <span class="math inline">\(u \geq 1\)</span> of the <span class="math inline">\(u\)</span>-axis.</p>
+<section id="hyperbolic-cosine" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="hyperbolic-cosine"><span class="header-section-number">12.4.4</span> Hyperbolic Cosine</h3>
+<p>This function <span id="eq-sec174-5"><span class="math display">\[w = \cosh z = \cos(iz) \tag{12.21}\]</span></span> defines a mapping that is a rotation <span class="math inline">\(Z = iz\)</span> followed by the mapping <span class="math inline">\(w = \cos Z\)</span>.</p>
+<p><a href="#fig-17-16" class="quarto-xref">Figure&nbsp;<span>12.16</span></a> shows the mapping of a semi-infinite strip onto a half-plane by <span class="math inline">\(w = \cosh z\)</span>. Since <span class="math inline">\(\cosh 0 = 1\)</span>, the point <span class="math inline">\(z = 0\)</span> is mapped onto <span class="math inline">\(w = 1\)</span>. For real <span class="math inline">\(z = x \geq 0\)</span>, <span class="math inline">\(\cosh z\)</span> is real and increases with increasing <span class="math inline">\(x\)</span> in a monotone fashion, starting from 1. Hence the positive <span class="math inline">\(x\)</span>-axis is mapped onto the portion <span class="math inline">\(u \geq 1\)</span> of the <span class="math inline">\(u\)</span>-axis.</p>
 <p>For pure imaginary <span class="math inline">\(z = iy\)</span> we have <span class="math inline">\(\cosh iy = \cos y\)</span>. Hence the left boundary of the strip is mapped onto the segment <span class="math inline">\(1 \geq u \geq -1\)</span> of the <span class="math inline">\(u\)</span>-axis, the point <span class="math inline">\(z = \pi i\)</span> corresponding to <span class="math display">\[w = \cosh i\pi = \cos \pi = -1.\]</span> On the upper boundary of the strip, <span class="math inline">\(y = \pi\)</span>, and since <span class="math inline">\(\sin \pi = 0\)</span> and <span class="math inline">\(\cos \pi = -1\)</span>, it follows that this part of the boundary is mapped onto the portion <span class="math inline">\(u \leq -1\)</span> of the <span class="math inline">\(u\)</span>-axis. Hence the boundary of the strip is mapped onto the <span class="math inline">\(u\)</span>-axis. It is not difficult to see that the interior of the strip is mapped onto the upper half of the <span class="math inline">\(w\)</span>-plane, and the mapping is one-to-one.</p>
-<p>This mapping in <a href="#fig-17-16" class="quarto-xref">Figure&nbsp;<span>11.16</span></a> has applications in potential theory, as we shall see in Prob. 12 of Sec. 18.3.</p>
+<p>This mapping in <a href="#fig-17-16" class="quarto-xref">Figure&nbsp;<span>12.16</span></a> has applications in potential theory, as we shall see in Prob. 12 of Sec. 18.3.</p>
 <div id="fig-17-16" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-16.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.16: Fig. 393. Mapping by <span class="math inline">\(w = \cosh z\)</span>
+Figure&nbsp;12.16: Fig. 393. Mapping by <span class="math inline">\(w = \cosh z\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="tangent-function" class="level3" data-number="11.4.5">
-<h3 data-number="11.4.5" class="anchored" data-anchor-id="tangent-function"><span class="header-section-number">11.4.5</span> Tangent Function</h3>
-<p><a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>11.17</span></a> shows the mapping of a vertical infinite strip onto the unit circle by <span class="math inline">\(w = \tan z\)</span>, accomplished in three steps as suggested by the representation (Sec. 13.6) <span class="math display">\[w = \tan z = \frac{\sin z}{\cos z} = \frac{(e^{iz} - e^{-iz})/i}{e^{iz} + e^{-iz}} = \frac{(e^{2iz} - 1)/i}{e^{2iz} + 1}.\]</span> Hence if we set <span class="math inline">\(Z = e^{2iz}\)</span> and use <span class="math inline">\(1/i = -i\)</span>, we have <span id="eq-sec174-6"><span class="math display">\[w = \tan z = -iW, \quad W = \frac{Z - 1}{Z + 1}, \quad Z = e^{2iz}. \tag{11.22}\]</span></span> We now see that <span class="math inline">\(w = \tan z\)</span> is a linear fractional transformation preceded by an exponential mapping (see Sec. 17.1) and followed by a clockwise rotation through an angle <span class="math inline">\(\frac{1}{2}\pi\)</span> (90°).</p>
-<p>The strip is <span class="math inline">\(S: -\frac{1}{4}\pi &lt; x &lt; \frac{1}{4}\pi\)</span>, and we show that it is mapped onto the unit disk in the <span class="math inline">\(w\)</span>-plane. Since <span class="math inline">\(Z = e^{2iz} = e^{-2y + 2ix}\)</span>, we see from (10) in Sec. 13.5 that <span class="math inline">\(|Z| = e^{-2y}, \ \arg Z = 2x\)</span>. Hence the vertical lines <span class="math inline">\(x = -\pi/4, \ 0, \ \pi/4\)</span> are mapped onto the rays <span class="math inline">\(\arg Z = -\pi/2, \ 0, \ \pi/2\)</span>, respectively. Hence <span class="math inline">\(S\)</span> is mapped onto the right <span class="math inline">\(Z\)</span>-half-plane. Also <span class="math inline">\(|Z| = e^{-2y} &lt; 1\)</span> if <span class="math inline">\(y &gt; 0\)</span> and <span class="math inline">\(|Z| &gt; 1\)</span> if <span class="math inline">\(y &lt; 0\)</span>. Hence the upper half of <span class="math inline">\(S\)</span> is mapped inside the unit circle <span class="math inline">\(|Z| = 1\)</span> and the lower half of <span class="math inline">\(S\)</span> outside <span class="math inline">\(|Z| = 1\)</span>, as shown in <a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>11.17</span></a>.</p>
-<p>Now comes the linear fractional transformation in (<a href="#eq-sec174-6" class="quarto-xref">Equation&nbsp;<span>11.22</span></a>), which we denote by <span class="math inline">\(g(Z)\)</span>: <span id="eq-sec174-7"><span class="math display">\[W = g(Z) = \frac{Z - 1}{Z + 1}. \tag{11.23}\]</span></span> For real <span class="math inline">\(Z\)</span> this is real. Hence the real <span class="math inline">\(Z\)</span>-axis is mapped onto the real <span class="math inline">\(W\)</span>-axis. Furthermore, the imaginary <span class="math inline">\(Z\)</span>-axis is mapped onto the unit circle <span class="math inline">\(|W| = 1\)</span> because for pure imaginary <span class="math inline">\(Z = iY\)</span> we get from (<a href="#eq-sec174-7" class="quarto-xref">Equation&nbsp;<span>11.23</span></a>) <span class="math display">\[|W| = |g(iY)| = \left|\frac{iY - 1}{iY + 1}\right| = 1.\]</span> The right <span class="math inline">\(Z\)</span>-half-plane is mapped inside this unit circle <span class="math inline">\(|W| = 1\)</span>, not outside, because <span class="math inline">\(Z = 1\)</span> has its image <span class="math inline">\(g(1) = 0\)</span> inside that circle. Finally, the unit circle <span class="math inline">\(|Z| = 1\)</span> is mapped onto the imaginary <span class="math inline">\(W\)</span>-axis, because this circle is <span class="math inline">\(Z = e^{i\phi}\)</span>, so that (<a href="#eq-sec174-7" class="quarto-xref">Equation&nbsp;<span>11.23</span></a>) gives a pure imaginary expression, namely, <span class="math display">\[g(e^{i\phi}) = \frac{e^{i\phi} - 1}{e^{i\phi} + 1} = \frac{e^{i\phi/2} - e^{-i\phi/2}}{e^{i\phi/2} + e^{-i\phi/2}} = \frac{i \sin(\phi/2)}{\cos(\phi/2)}.\]</span> From the <span class="math inline">\(W\)</span>-plane we get to the <span class="math inline">\(w\)</span>-plane simply by a clockwise rotation through <span class="math inline">\(\pi/2\)</span>; see (<a href="#eq-sec174-6" class="quarto-xref">Equation&nbsp;<span>11.22</span></a>).</p>
-<p>Together we have shown that <span class="math inline">\(w = \tan z\)</span> maps <span class="math inline">\(S: -\pi/4 &lt; \text{Re } z &lt; \pi/4\)</span> onto the unit disk <span class="math inline">\(|w| &lt; 1\)</span>, with the four quarters of <span class="math inline">\(S\)</span> mapped as indicated in <a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>11.17</span></a>. This mapping is conformal and one-to-one.</p>
+<section id="tangent-function" class="level3" data-number="12.4.5">
+<h3 data-number="12.4.5" class="anchored" data-anchor-id="tangent-function"><span class="header-section-number">12.4.5</span> Tangent Function</h3>
+<p><a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>12.17</span></a> shows the mapping of a vertical infinite strip onto the unit circle by <span class="math inline">\(w = \tan z\)</span>, accomplished in three steps as suggested by the representation (Sec. 13.6) <span class="math display">\[w = \tan z = \frac{\sin z}{\cos z} = \frac{(e^{iz} - e^{-iz})/i}{e^{iz} + e^{-iz}} = \frac{(e^{2iz} - 1)/i}{e^{2iz} + 1}.\]</span> Hence if we set <span class="math inline">\(Z = e^{2iz}\)</span> and use <span class="math inline">\(1/i = -i\)</span>, we have <span id="eq-sec174-6"><span class="math display">\[w = \tan z = -iW, \quad W = \frac{Z - 1}{Z + 1}, \quad Z = e^{2iz}. \tag{12.22}\]</span></span> We now see that <span class="math inline">\(w = \tan z\)</span> is a linear fractional transformation preceded by an exponential mapping (see Sec. 17.1) and followed by a clockwise rotation through an angle <span class="math inline">\(\frac{1}{2}\pi\)</span> (90°).</p>
+<p>The strip is <span class="math inline">\(S: -\frac{1}{4}\pi &lt; x &lt; \frac{1}{4}\pi\)</span>, and we show that it is mapped onto the unit disk in the <span class="math inline">\(w\)</span>-plane. Since <span class="math inline">\(Z = e^{2iz} = e^{-2y + 2ix}\)</span>, we see from (10) in Sec. 13.5 that <span class="math inline">\(|Z| = e^{-2y}, \ \arg Z = 2x\)</span>. Hence the vertical lines <span class="math inline">\(x = -\pi/4, \ 0, \ \pi/4\)</span> are mapped onto the rays <span class="math inline">\(\arg Z = -\pi/2, \ 0, \ \pi/2\)</span>, respectively. Hence <span class="math inline">\(S\)</span> is mapped onto the right <span class="math inline">\(Z\)</span>-half-plane. Also <span class="math inline">\(|Z| = e^{-2y} &lt; 1\)</span> if <span class="math inline">\(y &gt; 0\)</span> and <span class="math inline">\(|Z| &gt; 1\)</span> if <span class="math inline">\(y &lt; 0\)</span>. Hence the upper half of <span class="math inline">\(S\)</span> is mapped inside the unit circle <span class="math inline">\(|Z| = 1\)</span> and the lower half of <span class="math inline">\(S\)</span> outside <span class="math inline">\(|Z| = 1\)</span>, as shown in <a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>12.17</span></a>.</p>
+<p>Now comes the linear fractional transformation in (<a href="#eq-sec174-6" class="quarto-xref">Equation&nbsp;<span>12.22</span></a>), which we denote by <span class="math inline">\(g(Z)\)</span>: <span id="eq-sec174-7"><span class="math display">\[W = g(Z) = \frac{Z - 1}{Z + 1}. \tag{12.23}\]</span></span> For real <span class="math inline">\(Z\)</span> this is real. Hence the real <span class="math inline">\(Z\)</span>-axis is mapped onto the real <span class="math inline">\(W\)</span>-axis. Furthermore, the imaginary <span class="math inline">\(Z\)</span>-axis is mapped onto the unit circle <span class="math inline">\(|W| = 1\)</span> because for pure imaginary <span class="math inline">\(Z = iY\)</span> we get from (<a href="#eq-sec174-7" class="quarto-xref">Equation&nbsp;<span>12.23</span></a>) <span class="math display">\[|W| = |g(iY)| = \left|\frac{iY - 1}{iY + 1}\right| = 1.\]</span> The right <span class="math inline">\(Z\)</span>-half-plane is mapped inside this unit circle <span class="math inline">\(|W| = 1\)</span>, not outside, because <span class="math inline">\(Z = 1\)</span> has its image <span class="math inline">\(g(1) = 0\)</span> inside that circle. Finally, the unit circle <span class="math inline">\(|Z| = 1\)</span> is mapped onto the imaginary <span class="math inline">\(W\)</span>-axis, because this circle is <span class="math inline">\(Z = e^{i\phi}\)</span>, so that (<a href="#eq-sec174-7" class="quarto-xref">Equation&nbsp;<span>12.23</span></a>) gives a pure imaginary expression, namely, <span class="math display">\[g(e^{i\phi}) = \frac{e^{i\phi} - 1}{e^{i\phi} + 1} = \frac{e^{i\phi/2} - e^{-i\phi/2}}{e^{i\phi/2} + e^{-i\phi/2}} = \frac{i \sin(\phi/2)}{\cos(\phi/2)}.\]</span> From the <span class="math inline">\(W\)</span>-plane we get to the <span class="math inline">\(w\)</span>-plane simply by a clockwise rotation through <span class="math inline">\(\pi/2\)</span>; see (<a href="#eq-sec174-6" class="quarto-xref">Equation&nbsp;<span>12.22</span></a>).</p>
+<p>Together we have shown that <span class="math inline">\(w = \tan z\)</span> maps <span class="math inline">\(S: -\pi/4 &lt; \text{Re } z &lt; \pi/4\)</span> onto the unit disk <span class="math inline">\(|w| &lt; 1\)</span>, with the four quarters of <span class="math inline">\(S\)</span> mapped as indicated in <a href="#fig-17-17" class="quarto-xref">Figure&nbsp;<span>12.17</span></a>. This mapping is conformal and one-to-one.</p>
 <div id="fig-17-17" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-17.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.17: Fig. 394. Mapping by <span class="math inline">\(w = \tan z\)</span>
+Figure&nbsp;12.17: Fig. 394. Mapping by <span class="math inline">\(w = \tan z\)</span>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="problem-set-17.4" class="level3" data-number="11.4.6">
-<h3 data-number="11.4.6" class="anchored" data-anchor-id="problem-set-17.4"><span class="header-section-number">11.4.6</span> PROBLEM SET 17.4</h3>
-<section id="conformal-mapping-w-ez" class="level4" data-number="11.4.6.1">
-<h4 data-number="11.4.6.1" class="anchored" data-anchor-id="conformal-mapping-w-ez"><span class="header-section-number">11.4.6.1</span> CONFORMAL MAPPING <span class="math inline">\(w = e^z\)</span></h4>
+<section id="problem-set-17.4" class="level3" data-number="12.4.6">
+<h3 data-number="12.4.6" class="anchored" data-anchor-id="problem-set-17.4"><span class="header-section-number">12.4.6</span> PROBLEM SET 17.4</h3>
+<section id="conformal-mapping-w-ez" class="level4" data-number="12.4.6.1">
+<h4 data-number="12.4.6.1" class="anchored" data-anchor-id="conformal-mapping-w-ez"><span class="header-section-number">12.4.6.1</span> CONFORMAL MAPPING <span class="math inline">\(w = e^z\)</span></h4>
 <ol type="1">
 <li>Find the image of <span class="math inline">\(x = c = \text{const}, -\pi &lt; y \leq \pi\)</span>, under <span class="math inline">\(w = e^z\)</span>.</li>
 <li>Find the image of <span class="math inline">\(y = k = \text{const}, -\infty &lt; x \leq \infty\)</span>, under <span class="math inline">\(w = e^z\)</span>.</li>
 </ol>
 </section>
-<section id="section" class="level4" data-number="11.4.6.2">
-<h4 data-number="11.4.6.2" class="anchored" data-anchor-id="section"><span class="header-section-number">11.4.6.2</span> 3–7</h4>
+<section id="section" class="level4" data-number="12.4.6.2">
+<h4 data-number="12.4.6.2" class="anchored" data-anchor-id="section"><span class="header-section-number">12.4.6.2</span> 3–7</h4>
 <p>Find and sketch the image of the given region under <span class="math inline">\(w = e^z\)</span>.</p>
 <ol start="3" type="1">
 <li><span class="math inline">\(-\frac{1}{2} \leq x \leq \frac{1}{2}, \quad -\pi \leq y \leq \pi\)</span></li>
@@ -830,15 +836,15 @@ Figure&nbsp;11.17: Fig. 394. Mapping by <span class="math inline">\(w = \tan z\)
 <li><strong>CAS EXPERIMENT. Conformal Mapping.</strong> If your CAS can do conformal mapping, use it to solve Prob. 7. Then increase <span class="math inline">\(y\)</span> beyond <span class="math inline">\(\pi\)</span>, say, to <span class="math inline">\(50\pi\)</span> or <span class="math inline">\(100\pi\)</span>. State what you expected. See what you get as the image. Explain.</li>
 </ol>
 </section>
-<section id="conformal-mapping-w-sin-z" class="level4" data-number="11.4.6.3">
-<h4 data-number="11.4.6.3" class="anchored" data-anchor-id="conformal-mapping-w-sin-z"><span class="header-section-number">11.4.6.3</span> CONFORMAL MAPPING <span class="math inline">\(w = \sin z\)</span></h4>
+<section id="conformal-mapping-w-sin-z" class="level4" data-number="12.4.6.3">
+<h4 data-number="12.4.6.3" class="anchored" data-anchor-id="conformal-mapping-w-sin-z"><span class="header-section-number">12.4.6.3</span> CONFORMAL MAPPING <span class="math inline">\(w = \sin z\)</span></h4>
 <ol start="9" type="1">
 <li>Find the points at which <span class="math inline">\(w = \sin z\)</span> is not conformal.</li>
 <li>Sketch or graph the images of the lines <span class="math inline">\(x = 0, \ \pm\pi/6, \ \pm\pi/3, \ \pm\pi/2\)</span> under the mapping <span class="math inline">\(w = \sin z\)</span>.</li>
 </ol>
 </section>
-<section id="section-1" class="level4" data-number="11.4.6.4">
-<h4 data-number="11.4.6.4" class="anchored" data-anchor-id="section-1"><span class="header-section-number">11.4.6.4</span> 11–14</h4>
+<section id="section-1" class="level4" data-number="12.4.6.4">
+<h4 data-number="12.4.6.4" class="anchored" data-anchor-id="section-1"><span class="header-section-number">12.4.6.4</span> 11–14</h4>
 <p>Find and sketch or graph the image of the given region under <span class="math inline">\(w = \sin z\)</span>.</p>
 <ol start="11" type="1">
 <li><span class="math inline">\(0 &lt; x &lt; \pi/2, \quad 0 &lt; y &lt; 2\)</span></li>
@@ -850,15 +856,15 @@ Figure&nbsp;11.17: Fig. 394. Mapping by <span class="math inline">\(w = \tan z\)
 <li>Find an analytic function that maps the region <span class="math inline">\(R\)</span> bounded by the positive <span class="math inline">\(x\)</span>- and <span class="math inline">\(y\)</span>-semi-axes and the hyperbola <span class="math inline">\(xy = \pi\)</span> in the first quadrant onto the upper half-plane. <em>Hint.</em> First map <span class="math inline">\(R\)</span> onto a horizontal strip.</li>
 </ol>
 </section>
-<section id="conformal-mapping-w-cos-z" class="level4" data-number="11.4.6.5">
-<h4 data-number="11.4.6.5" class="anchored" data-anchor-id="conformal-mapping-w-cos-z"><span class="header-section-number">11.4.6.5</span> CONFORMAL MAPPING <span class="math inline">\(w = \cos z\)</span></h4>
+<section id="conformal-mapping-w-cos-z" class="level4" data-number="12.4.6.5">
+<h4 data-number="12.4.6.5" class="anchored" data-anchor-id="conformal-mapping-w-cos-z"><span class="header-section-number">12.4.6.5</span> CONFORMAL MAPPING <span class="math inline">\(w = \cos z\)</span></h4>
 <ol start="18" type="1">
 <li>Find the images of the lines <span class="math inline">\(y = k = \text{const}\)</span> under the mapping <span class="math inline">\(w = \cos z\)</span>.</li>
 <li>Find the images of the lines <span class="math inline">\(x = c = \text{const}\)</span> under the mapping <span class="math inline">\(w = \cos z\)</span>.</li>
 </ol>
 </section>
-<section id="section-2" class="level4" data-number="11.4.6.6">
-<h4 data-number="11.4.6.6" class="anchored" data-anchor-id="section-2"><span class="header-section-number">11.4.6.6</span> 20–23</h4>
+<section id="section-2" class="level4" data-number="12.4.6.6">
+<h4 data-number="12.4.6.6" class="anchored" data-anchor-id="section-2"><span class="header-section-number">12.4.6.6</span> 20–23</h4>
 <p>Find and sketch or graph the image of the given region under the mapping <span class="math inline">\(w = \cos z\)</span>.</p>
 <ol start="20" type="1">
 <li><span class="math inline">\(0 &lt; x &lt; 2\pi, \quad \frac{1}{2} &lt; y &lt; 1\)</span></li>
@@ -874,40 +880,40 @@ Figure&nbsp;11.17: Fig. 394. Mapping by <span class="math inline">\(w = \tan z\)
 <img src="../images/fig-17-18.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.18: Problem 25
+Figure&nbsp;12.18: Problem 25
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
 </section>
-<section id="sec-riemann-surfaces" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="sec-riemann-surfaces"><span class="header-section-number">11.5</span> 17.5 Riemann Surfaces (Optional)</h2>
+<section id="sec-riemann-surfaces" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-riemann-surfaces"><span class="header-section-number">12.5</span> 17.5 Riemann Surfaces (Optional)</h2>
 <p>One of the simplest but most ingenious ideas in complex analysis is that of <strong>Riemann surfaces</strong>. They allow multivalued relations, such as <span class="math inline">\(w = \sqrt{z}\)</span> or <span class="math inline">\(w = \ln z\)</span>, to become single-valued and therefore functions in the usual sense. This works because the Riemann surfaces consist of several sheets that are connected at certain points (called branch points). Thus <span class="math inline">\(w = \sqrt{z}\)</span> will need two sheets, being single-valued on each sheet. How many sheets do you think <span class="math inline">\(w = \ln z\)</span> needs? Can you guess, by recalling Sec. 13.7? (The answer will be given at the end of this section). Let us start our systematic discussion.</p>
-<p>The mapping given by <span id="eq-sec175-1"><span class="math display">\[w = u + iv = z^2 \tag{11.24}\]</span></span> is conformal, except at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(w' = 2z = 0\)</span>. At <span class="math inline">\(z = 0\)</span>, angles are doubled under the mapping. Thus the right <span class="math inline">\(z\)</span>-half-plane (including the positive <span class="math inline">\(y\)</span>-axis) is mapped onto the full <span class="math inline">\(w\)</span>-plane, cut along the negative half of the <span class="math inline">\(u\)</span>-axis; this mapping is one-to-one. Similarly for the left <span class="math inline">\(z\)</span>-half-plane (including the negative <span class="math inline">\(y\)</span>-axis). Hence the image of the full <span class="math inline">\(z\)</span>-plane under <span class="math inline">\(w = z^2\)</span> “covers the <span class="math inline">\(w\)</span>-plane twice” in the sense that every <span class="math inline">\(w \neq 0\)</span> is the image of two <span class="math inline">\(z\)</span>-points; if <span class="math inline">\(z_1\)</span> is one, the other is <span class="math inline">\(-z_1\)</span>. For example, <span class="math inline">\(z = i\)</span> and <span class="math inline">\(-i\)</span> are both mapped onto <span class="math inline">\(w = -1\)</span>.</p>
-<p>Now comes the crucial idea. We place those two copies of the cut <span class="math inline">\(w\)</span>-plane upon each other so that the upper sheet is the image of the right half <span class="math inline">\(z\)</span>-plane <span class="math inline">\(R\)</span> and the lower sheet is the image of the left half <span class="math inline">\(z\)</span>-plane <span class="math inline">\(L\)</span>. We join the two sheets crosswise along the cuts (along the negative <span class="math inline">\(u\)</span>-axis) so that if <span class="math inline">\(z\)</span> moves from <span class="math inline">\(R\)</span> to <span class="math inline">\(L\)</span>, its image can move from the upper to the lower sheet. The two origins are fastened together because <span class="math inline">\(w = 0\)</span> is the image of just one <span class="math inline">\(z\)</span>-point, <span class="math inline">\(z = 0\)</span>. The surface obtained is called a <strong>Riemann surface</strong> (see <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>11.19</span></a>, left). <span class="math inline">\(w = 0\)</span> is called a “winding point” or <strong>branch point</strong>. <span class="math inline">\(w = z^2\)</span> maps the full <span class="math inline">\(z\)</span>-plane onto this surface in a one-to-one manner.</p>
-<p>By interchanging the roles of the variables <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> it follows that the double-valued relation <span id="eq-sec175-2"><span class="math display">\[w = \sqrt{z} \tag{11.25}\]</span></span> becomes single-valued on the Riemann surface in <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>11.19</span></a> (left), that is, a function in the usual sense. We can let the upper sheet correspond to the principal value of <span class="math inline">\(\sqrt{z}\)</span>. Its image is the right <span class="math inline">\(w\)</span>-half-plane. The other sheet is then mapped onto the left <span class="math inline">\(w\)</span>-half-plane.</p>
+<p>The mapping given by <span id="eq-sec175-1"><span class="math display">\[w = u + iv = z^2 \tag{12.24}\]</span></span> is conformal, except at <span class="math inline">\(z = 0\)</span>, where <span class="math inline">\(w' = 2z = 0\)</span>. At <span class="math inline">\(z = 0\)</span>, angles are doubled under the mapping. Thus the right <span class="math inline">\(z\)</span>-half-plane (including the positive <span class="math inline">\(y\)</span>-axis) is mapped onto the full <span class="math inline">\(w\)</span>-plane, cut along the negative half of the <span class="math inline">\(u\)</span>-axis; this mapping is one-to-one. Similarly for the left <span class="math inline">\(z\)</span>-half-plane (including the negative <span class="math inline">\(y\)</span>-axis). Hence the image of the full <span class="math inline">\(z\)</span>-plane under <span class="math inline">\(w = z^2\)</span> “covers the <span class="math inline">\(w\)</span>-plane twice” in the sense that every <span class="math inline">\(w \neq 0\)</span> is the image of two <span class="math inline">\(z\)</span>-points; if <span class="math inline">\(z_1\)</span> is one, the other is <span class="math inline">\(-z_1\)</span>. For example, <span class="math inline">\(z = i\)</span> and <span class="math inline">\(-i\)</span> are both mapped onto <span class="math inline">\(w = -1\)</span>.</p>
+<p>Now comes the crucial idea. We place those two copies of the cut <span class="math inline">\(w\)</span>-plane upon each other so that the upper sheet is the image of the right half <span class="math inline">\(z\)</span>-plane <span class="math inline">\(R\)</span> and the lower sheet is the image of the left half <span class="math inline">\(z\)</span>-plane <span class="math inline">\(L\)</span>. We join the two sheets crosswise along the cuts (along the negative <span class="math inline">\(u\)</span>-axis) so that if <span class="math inline">\(z\)</span> moves from <span class="math inline">\(R\)</span> to <span class="math inline">\(L\)</span>, its image can move from the upper to the lower sheet. The two origins are fastened together because <span class="math inline">\(w = 0\)</span> is the image of just one <span class="math inline">\(z\)</span>-point, <span class="math inline">\(z = 0\)</span>. The surface obtained is called a <strong>Riemann surface</strong> (see <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>12.19</span></a>, left). <span class="math inline">\(w = 0\)</span> is called a “winding point” or <strong>branch point</strong>. <span class="math inline">\(w = z^2\)</span> maps the full <span class="math inline">\(z\)</span>-plane onto this surface in a one-to-one manner.</p>
+<p>By interchanging the roles of the variables <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> it follows that the double-valued relation <span id="eq-sec175-2"><span class="math display">\[w = \sqrt{z} \tag{12.25}\]</span></span> becomes single-valued on the Riemann surface in <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>12.19</span></a> (left), that is, a function in the usual sense. We can let the upper sheet correspond to the principal value of <span class="math inline">\(\sqrt{z}\)</span>. Its image is the right <span class="math inline">\(w\)</span>-half-plane. The other sheet is then mapped onto the left <span class="math inline">\(w\)</span>-half-plane.</p>
 <div id="fig-17-19" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-17-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-17-19.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.19: Fig. 395. Riemann surfaces
+Figure&nbsp;12.19: Fig. 395. Riemann surfaces
 </figcaption>
 </figure>
 </div>
-<p>Similarly, the triple-valued relation <span class="math inline">\(w = \sqrt[3]{z}\)</span> becomes single-valued on the three-sheeted Riemann surface in <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>11.19</span></a> (right), which also has a branch point at <span class="math inline">\(z = 0\)</span>.</p>
-<p>The infinitely many-valued natural logarithm (Sec. 13.7) <span id="eq-sec175-3"><span class="math display">\[w = \ln z = \text{Ln } z + 2n\pi i \quad (n = 0, \pm 1, \pm 2, \dots) \tag{11.26}\]</span></span> becomes single-valued on a Riemann surface consisting of infinitely many sheets, <span class="math inline">\(w = \text{Ln } z\)</span> corresponds to one of them. This sheet is cut along the negative <span class="math inline">\(x\)</span>-axis and the upper edge of the slit is joined to the lower edge of the next sheet, which corresponds to the argument <span class="math inline">\(\pi &lt; \theta \leq 3\pi\)</span>, that is, to <span id="eq-sec175-4"><span class="math display">\[w = \text{Ln } z + 2\pi i. \tag{11.27}\]</span></span> The principal value <span class="math inline">\(\text{Ln } z\)</span> maps its sheet onto the horizontal strip <span class="math inline">\(-\pi &lt; v \leq \pi\)</span>. The function <span class="math inline">\(w = \text{Ln } z + 2\pi i\)</span> maps its sheet onto the neighboring strip <span class="math inline">\(\pi &lt; v \leq 3\pi\)</span>, and so on. The mapping of the points <span class="math inline">\(z \neq 0\)</span> of the Riemann surface onto the points of the <span class="math inline">\(w\)</span>-plane is one-to-one. See also Example 5 in Sec. 17.1.</p>
-<section id="problem-set-17.5" class="level3" data-number="11.5.1">
-<h3 data-number="11.5.1" class="anchored" data-anchor-id="problem-set-17.5"><span class="header-section-number">11.5.1</span> PROBLEM SET 17.5</h3>
+<p>Similarly, the triple-valued relation <span class="math inline">\(w = \sqrt[3]{z}\)</span> becomes single-valued on the three-sheeted Riemann surface in <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>12.19</span></a> (right), which also has a branch point at <span class="math inline">\(z = 0\)</span>.</p>
+<p>The infinitely many-valued natural logarithm (Sec. 13.7) <span id="eq-sec175-3"><span class="math display">\[w = \ln z = \text{Ln } z + 2n\pi i \quad (n = 0, \pm 1, \pm 2, \dots) \tag{12.26}\]</span></span> becomes single-valued on a Riemann surface consisting of infinitely many sheets, <span class="math inline">\(w = \text{Ln } z\)</span> corresponds to one of them. This sheet is cut along the negative <span class="math inline">\(x\)</span>-axis and the upper edge of the slit is joined to the lower edge of the next sheet, which corresponds to the argument <span class="math inline">\(\pi &lt; \theta \leq 3\pi\)</span>, that is, to <span id="eq-sec175-4"><span class="math display">\[w = \text{Ln } z + 2\pi i. \tag{12.27}\]</span></span> The principal value <span class="math inline">\(\text{Ln } z\)</span> maps its sheet onto the horizontal strip <span class="math inline">\(-\pi &lt; v \leq \pi\)</span>. The function <span class="math inline">\(w = \text{Ln } z + 2\pi i\)</span> maps its sheet onto the neighboring strip <span class="math inline">\(\pi &lt; v \leq 3\pi\)</span>, and so on. The mapping of the points <span class="math inline">\(z \neq 0\)</span> of the Riemann surface onto the points of the <span class="math inline">\(w\)</span>-plane is one-to-one. See also Example 5 in Sec. 17.1.</p>
+<section id="problem-set-17.5" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="problem-set-17.5"><span class="header-section-number">12.5.1</span> PROBLEM SET 17.5</h3>
 <ol type="1">
 <li>If <span class="math inline">\(z\)</span> moves from <span class="math inline">\(z = 1/4\)</span> twice around the circle <span class="math inline">\(|z| = 1/4\)</span>, what does <span class="math inline">\(w = \sqrt{z}\)</span> do?</li>
 <li>Show that the Riemann surface of <span class="math inline">\(w = \sqrt{(z-1)(z-2)}\)</span> has branch points at 1 and 2 sheets, which we may cut and join crosswise from 1 to 2. <em>Hint.</em> Introduce polar coordinates <span class="math inline">\(z-1 = r_1 e^{i\theta_1}\)</span> and <span class="math inline">\(z-2 = r_2 e^{i\theta_2}\)</span>, so that <span class="math inline">\(w = \sqrt{r_1 r_2} e^{i(\theta_1+\theta_2)/2}\)</span>.</li>
-<li>Make a sketch, similar to <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>11.19</span></a>, of the Riemann surface of <span class="math inline">\(w = \sqrt[4]{z+1}\)</span>.</li>
+<li>Make a sketch, similar to <a href="#fig-17-19" class="quarto-xref">Figure&nbsp;<span>12.19</span></a>, of the Riemann surface of <span class="math inline">\(w = \sqrt[4]{z+1}\)</span>.</li>
 </ol>
-<section id="riemann-surfaces" class="level4" data-number="11.5.1.1">
-<h4 data-number="11.5.1.1" class="anchored" data-anchor-id="riemann-surfaces"><span class="header-section-number">11.5.1.1</span> 4–10 RIEMANN SURFACES</h4>
+<section id="riemann-surfaces" class="level4" data-number="12.5.1.1">
+<h4 data-number="12.5.1.1" class="anchored" data-anchor-id="riemann-surfaces"><span class="header-section-number">12.5.1.1</span> 4–10 RIEMANN SURFACES</h4>
 <p>Find the branch points and the number of sheets of the Riemann surface.</p>
 <ol start="4" type="1">
 <li><span class="math inline">\(\sqrt{iz - 2 + i}\)</span></li>
@@ -921,8 +927,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 </section>
 </section>
 </section>
-<section id="sec-ch17-review" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="sec-ch17-review"><span class="header-section-number">11.6</span> CHAPTER 17 REVIEW QUESTIONS AND PROBLEMS</h2>
+<section id="sec-ch17-review" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sec-ch17-review"><span class="header-section-number">12.6</span> CHAPTER 17 REVIEW QUESTIONS AND PROBLEMS</h2>
 <ol type="1">
 <li>What is a conformal mapping? Why does it occur in complex analysis?</li>
 <li>At what points are <span class="math inline">\(w = z^5 - z\)</span> and <span class="math inline">\(w = \cos(\pi z^2)\)</span> not conformal?</li>
@@ -935,8 +941,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 <li>What mapping gave the Joukowski airfoil? Explain details.</li>
 <li>What is a Riemann surface? Its motivation? Its simplest example.</li>
 </ol>
-<section id="mapping-w-z2" class="level4" data-number="11.6.0.1">
-<h4 data-number="11.6.0.1" class="anchored" data-anchor-id="mapping-w-z2"><span class="header-section-number">11.6.0.1</span> 11–16 MAPPING <span class="math inline">\(w = z^2\)</span></h4>
+<section id="mapping-w-z2" class="level4" data-number="12.6.0.1">
+<h4 data-number="12.6.0.1" class="anchored" data-anchor-id="mapping-w-z2"><span class="header-section-number">12.6.0.1</span> 11–16 MAPPING <span class="math inline">\(w = z^2\)</span></h4>
 <p>Find and sketch the image of the given region or curve under <span class="math inline">\(w = z^2\)</span>.</p>
 <ol start="11" type="1">
 <li><span class="math inline">\(1 &lt; |z| &lt; 2, \quad |\arg z| &lt; \pi/8\)</span></li>
@@ -947,8 +953,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 <li><span class="math inline">\(y = -2, \ 2\)</span></li>
 </ol>
 </section>
-<section id="mapping-w-1z" class="level4" data-number="11.6.0.2">
-<h4 data-number="11.6.0.2" class="anchored" data-anchor-id="mapping-w-1z"><span class="header-section-number">11.6.0.2</span> 17–22 MAPPING <span class="math inline">\(w = 1/z\)</span></h4>
+<section id="mapping-w-1z" class="level4" data-number="12.6.0.2">
+<h4 data-number="12.6.0.2" class="anchored" data-anchor-id="mapping-w-1z"><span class="header-section-number">12.6.0.2</span> 17–22 MAPPING <span class="math inline">\(w = 1/z\)</span></h4>
 <p>Find and sketch the image of the given region or curve under <span class="math inline">\(w = 1/z\)</span>.</p>
 <ol start="17" type="1">
 <li><span class="math inline">\(|z| &lt; 1\)</span></li>
@@ -959,8 +965,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 <li><span class="math inline">\(z = 1 + iy \ (-\infty &lt; y &lt; \infty)\)</span></li>
 </ol>
 </section>
-<section id="linear-fractional-transformations-lfts" class="level4" data-number="11.6.0.3">
-<h4 data-number="11.6.0.3" class="anchored" data-anchor-id="linear-fractional-transformations-lfts"><span class="header-section-number">11.6.0.3</span> 23–28 LINEAR FRACTIONAL TRANSFORMATIONS (LFTs)</h4>
+<section id="linear-fractional-transformations-lfts" class="level4" data-number="12.6.0.3">
+<h4 data-number="12.6.0.3" class="anchored" data-anchor-id="linear-fractional-transformations-lfts"><span class="header-section-number">12.6.0.3</span> 23–28 LINEAR FRACTIONAL TRANSFORMATIONS (LFTs)</h4>
 <p>Find the LFT that maps</p>
 <ol start="23" type="1">
 <li><span class="math inline">\(-1, 0, 1\)</span> onto <span class="math inline">\(4 + 3i, 5i/2, 4 - 3i\)</span>, respectively</li>
@@ -971,8 +977,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 <li><span class="math inline">\(-1, -i, i\)</span> onto <span class="math inline">\(1 - i, 2, 0\)</span>, respectively</li>
 </ol>
 </section>
-<section id="fixed-points-3" class="level4" data-number="11.6.0.4">
-<h4 data-number="11.6.0.4" class="anchored" data-anchor-id="fixed-points-3"><span class="header-section-number">11.6.0.4</span> 29–34 FIXED POINTS</h4>
+<section id="fixed-points-3" class="level4" data-number="12.6.0.4">
+<h4 data-number="12.6.0.4" class="anchored" data-anchor-id="fixed-points-3"><span class="header-section-number">12.6.0.4</span> 29–34 FIXED POINTS</h4>
 <p>Find the fixed points of the mapping</p>
 <ol start="29" type="1">
 <li><span class="math inline">\(w = (2 + i)z\)</span></li>
@@ -983,8 +989,8 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 <li><span class="math inline">\(w = (iz + 5)/(5z + i)\)</span></li>
 </ol>
 </section>
-<section id="given-regions" class="level4" data-number="11.6.0.5">
-<h4 data-number="11.6.0.5" class="anchored" data-anchor-id="given-regions"><span class="header-section-number">11.6.0.5</span> 35–40 GIVEN REGIONS</h4>
+<section id="given-regions" class="level4" data-number="12.6.0.5">
+<h4 data-number="12.6.0.5" class="anchored" data-anchor-id="given-regions"><span class="header-section-number">12.6.0.5</span> 35–40 GIVEN REGIONS</h4>
 <p>Find an analytic function <span class="math inline">\(w = f(z)\)</span> that maps</p>
 <ol start="35" type="1">
 <li>The infinite strip <span class="math inline">\(0 &lt; y &lt; \pi/4\)</span> onto the upper half plane <span class="math inline">\(v &gt; 0\)</span>.</li>
@@ -996,11 +1002,11 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
 </ol>
 </section>
 </section>
-<section id="sec-ch17-summary" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="sec-ch17-summary"><span class="header-section-number">11.7</span> SUMMARY OF CHAPTER 17: Conformal Mapping</h2>
+<section id="sec-ch17-summary" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="sec-ch17-summary"><span class="header-section-number">12.7</span> SUMMARY OF CHAPTER 17: Conformal Mapping</h2>
 <p>A complex function <span class="math inline">\(w = f(z)\)</span> gives a <strong>mapping</strong> of its domain of definition in the complex <span class="math inline">\(z\)</span>-plane onto its range of values in the complex <span class="math inline">\(w\)</span>-plane. If <span class="math inline">\(f(z)\)</span> is <em>analytic</em>, this mapping is <strong>conformal</strong>, that is, angle-preserving: the images of any two intersecting curves make the same angle of intersection, in both magnitude and sense, as the curves themselves (Sec. 17.1). Exceptions are the points at which <span class="math inline">\(f'(z) = 0\)</span> (“critical points,” e.g.&nbsp;<span class="math inline">\(z = 0\)</span> for <span class="math inline">\(w = z^2\)</span>).</p>
 <p>For mapping properties of <span class="math inline">\(e^z, \ \cos z, \ \sin z\)</span> etc. see Secs. 17.1 and 17.4.</p>
-<p><strong>Linear fractional transformations</strong>, also called <strong>Möbius transformations</strong> <span id="eq-sec17-sum-1"><span class="math display">\[w = \frac{az + b}{cz + d} \tag{11.28}\]</span></span> (<span class="math inline">\(ad - bc \neq 0\)</span>) map the extended complex plane (Sec. 17.2) onto itself. They solve the problems of mapping half-planes onto half-planes or disks, and disks onto disks or half-planes. Prescribing the images of three points determines (<a href="#eq-sec17-sum-1" class="quarto-xref">Equation&nbsp;<span>11.28</span></a>) uniquely.</p>
+<p><strong>Linear fractional transformations</strong>, also called <strong>Möbius transformations</strong> <span id="eq-sec17-sum-1"><span class="math display">\[w = \frac{az + b}{cz + d} \tag{12.28}\]</span></span> (<span class="math inline">\(ad - bc \neq 0\)</span>) map the extended complex plane (Sec. 17.2) onto itself. They solve the problems of mapping half-planes onto half-planes or disks, and disks onto disks or half-planes. Prescribing the images of three points determines (<a href="#eq-sec17-sum-1" class="quarto-xref">Equation&nbsp;<span>12.28</span></a>) uniquely.</p>
 <p><strong>Riemann surfaces</strong> (Sec. 17.5) consist of several sheets connected at certain points called <em>branch points</em>. On them, multivalued relations become single-valued, that is, functions in the usual sense. <em>Examples.</em> For <span class="math inline">\(w = \sqrt{z}\)</span> we need two sheets (with branch point 0) since this relation is doubly-valued. For <span class="math inline">\(w = \ln z\)</span> we need infinitely many sheets since this relation is infinitely many-valued (see Sec. 13.7).</p>
 
 
@@ -1409,13 +1415,13 @@ Figure&nbsp;11.19: Fig. 395. Riemann surfaces
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/ch9.html" class="pagination-link" aria-label="CHAPTER 09: Vector Differential Calculus. Grad, Div, Curl">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 09: Vector Differential Calculus. Grad, Div, Curl</span></span>
+      <a href="../chapters/ch10.html" class="pagination-link" aria-label="CHAPTER 10: Vector Integral Calculus. Integral Theorems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 10: Vector Integral Calculus. Integral Theorems</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/ch21.html" class="pagination-link" aria-label="CHAPTER 21: Numerics for ODEs and PDEs">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
