@@ -1,0 +1,2860 @@
+=== PAGE 1 ===
+c09.qxd 10/30/10 3:25 PM Page 354
+9
+C H A P T E R
+Vector Differential Calculus.
+Grad, Div, Curl
+Engineering, physics, and computer sciences, in general, but particularly solid mechanics,
+aerodynamics, aeronautics, fluid flow, heat flow, electrostatics, quantum physics, laser
+technology, robotics as well as other areas have applications that require an understanding
+ofvector calculus.This field encompasses vector differential calculus and vector integral
+calculus. Indeed, the engineer, physicist, and mathematician need a good grounding in
+these areas as provided by the carefully chosen material of Chaps. 9 and 10.
+Forces, velocities, and various other quantities may be thought of as vectors. Vectors
+appear frequently in the applications above and also in the biological and social sciences,
+so it is natural that problems are modeled in 3-space. This is the space of three dimensions
+with the usual measurement of distance, as given by the Pythagorean theorem. Within that
+realm, 2-space (the plane) is a special case. Working in 3-space requires that we extend
+the common differential calculus to vector differential calculus, that is, the calculus that
+deals with vector functions and vector fields and is explained in this chapter.
+Chapter 9 is arranged in three groups of sections. Sections 9.1–9.3 extend the basic
+algebraic operations of vectors into 3-space. These operations include the inner product
+and the cross product. Sections 9.4 and 9.5 form the heart of vector differential calculus.
+Finally, Secs. 9.7–9.9 discuss three physically important concepts related to scalar and
+vector fields: gradient (Sec. 9.7), divergence (Sec. 9.8), and curl (Sec. 9.9). They are
+expressed in Cartesian coordinates in this chapter and, if desired, expressed in curvilinear
+coordinates in a short section in App. A3.4.
+We shall keep this chapter independent of Chaps.7 and8. Our present approach is in
+harmony with Chap. 7, with the restriction to two and three dimensions providing for a
+richer theory with basic physical, engineering, and geometric applications.
+Prerequisite: Elementary use of second- and third-order determinants in Sec. 9.3.
+Sections that may be omitted in a shorter course: 9.5, 9.6.
+References and Answers to Problems: App. 1 Part B, App. 2.
+9.1
+Vectors in 2-Space and 3-Space
+In engineering, physics, mathematics, and other areas we encounter two kinds of quantities.
+They are scalars and vectors.
+A scalaris a quantity that is determined by its magnitude. It takes on a numerical value,
+i.e., a number. Examples of scalars are time, temperature, length, distance, speed, density,
+energy, and voltage.
+354
+
+=== PAGE 2 ===
+c09.qxd 10/30/10 3:25 PM Page 355
+SEC. 9.1 Vectors in 2-Space and 3-Space 355
+In contrast, a vector is a quantity that has both magnitude and direction. We can say
+that a vector is an arrow or a directed line segment. For example, a velocity vector has
+length or magnitude, which is speed, and direction, which indicates the direction of motion.
+Typical examples of vectors are displacement, velocity, and force, see Fig. 164 as an
+illustration.
+More formally, we have the following. We denote vectors by lowercase boldface letters
+a, b, v, etc. In handwriting you may use arrows, for instance, a(cid:2) (in place of a), b (cid:2) , etc.
+A vector (arrow) has a tail, called its initial point, and a tip, called its terminal point.
+This is motivated in the translation (displacement without rotation) of the triangle in
+Fig. 165, where the initial point P of the vector a is the original position of a point, and
+the terminal point Qis the terminal position of that point, its position afterthe translation.
+The length of the arrow equals the distance between P and Q. This is called the length
+(or magnitude) of the vector a and is denoted by ƒaƒ. Another name for length is norm
+(or Euclidean norm).
+A vector of length 1 is called a unit vector.
+Velocity
+Earth
+Force
+Q
+a
+Sun
+P
+Fig. 164. Force and velocity Fig. 165. Translation
+Of course, we would like to calculate with vectors. For instance, we want to find the
+resultant of forces or compare parallel forces of different magnitude. This motivates our
+next ideas: to define componentsof a vector, and then the two basic algebraic operations
+of vector addition and scalar multiplication.
+For this we must first define equality of vectorsin a way that is practical in connection
+with forces and other applications.
+DEFINITION Equality of Vectors
+Two vectors aand bare equal, written a(cid:2)b, if they have the same length and the
+same direction [as explained in Fig. 166; in particular, note (B)]. Hence a vector
+can be arbitrarily translated; that is, its initial point can be chosen arbitrarily.
+a b a b a b a b
+Equal vectors, Vectors having Vectors having Vectors having
+a = b the same length the same direction different length
+(A) but different but different and different
+direction length direction
+(B) (C) (D)
+Fig. 166. (A) Equal vectors. (B)–(D) Different vectors
+
+=== PAGE 3 ===
+c09.qxd 10/30/10 3:25 PM Page 356
+356 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Components of a Vector
+We choose an xyz Cartesian coordinate system1 in space (Fig. 167), that is, a usual
+rectangular coordinate system with the same scale of measurement on the three mutually
+perpendicular coordinate axes. Let abe a given vector with initial point P: (x , y , z )and
+1 1 1
+terminal point Q: (x , y , z ). Then the three coordinate differences
+2 2 2
+(1) a (cid:2)x (cid:3)x , a (cid:2)y (cid:3)y , a (cid:2)z (cid:3)z
+1 2 1 2 2 1 3 2 1
+are called the componentsof the vector awith respect to that coordinate system, and we
+write simply a(cid:2)[a , a , a ]. See Fig. 168.
+1 2 3
+The length ƒaƒ of acan now readily be expressed in terms of components because from
+(1) and the Pythagorean theorem we have
+(2) ƒaƒ (cid:2) 2a2(cid:4)a2(cid:4)a2.
+1 2 3
+EXAMPLE 1 Components and Length of a Vector
+The vector awith initial point P: (4, 0, 2)and terminal point Q: (6, (cid:3)1, 2)has the components
+a (cid:2)6(cid:3)4(cid:2)2, a (cid:2)(cid:3)1(cid:3)0(cid:2)(cid:3)1, a (cid:2)2(cid:3)2(cid:2)0.
+1 2 3
+Hence a(cid:2)[2, (cid:3)1, 0].(Can you sketch a, as in Fig. 168?) Equation (2) gives the length
+ƒaƒ (cid:2) 222(cid:4)((cid:3)1)2(cid:4)02(cid:2) 15.
+If we choose ((cid:3)1, 5, 8)as the initial point of a, the corresponding terminal point is (1, 4, 8).
+If we choose the origin (0, 0, 0) as the initial point of a, the corresponding terminal point is (2, (cid:3)1, 0);its
+coordinates equal the components of a. This suggests that we can determine each point in space by a vector,
+(cid:2)
+called the position vectorof the point, as follows.
+A Cartesian coordinate system being given, the position vector r of a point A: (x, y, z)
+is the vector with the origin (0, 0, 0) as the initial point and A as the terminal point (see
+Fig. 169). Thus in components, r(cid:2)[x, y, z]. This can be seen directly from (1) with
+x (cid:2)y (cid:2)z (cid:2)0.
+1 1 1
+z z z
+a
+3 Q A
+1
+r
+P
+a a
+1 2
+1 1
+x y x y x y
+Fig. 167. Cartesian Fig. 168. Components Fig. 169. Position vector r
+coordinate system of a vector of a point A: (x, y, z)
+1Named after the French philosopher and mathematician RENATUS CARTESIUS, latinized for RENÉ
+DESCARTES (1596–1650), who invented analytic geometry. His basic work Géométrieappeared in 1637, as
+an appendix to his Discours de la méthode.
+
+=== PAGE 4 ===
+SEC. 9.1 Vectors in 2-Space and 3-Space 357
+Furthermore, if we translate a vector a, with initial point P and terminal point Q, then
+corresponding coordinates of Pand Qchange by the same amount, so that the differences
+in (1) remain unchanged. This proves
+THEOREM 1 Vectors as Ordered Triples of Real Numbers
+A fixed Cartesian coordinate system being given, each vector is uniquely determined
+by its ordered triple of corresponding components. Conversely, to each ordered
+triple of real numbers (a , a , a ) there corresponds precisely one vector
+1 2 3
+a(cid:2)[a , a , a ],with(0, 0, 0) corresponding to thezero vector 0, which has length
+1 2 3
+0 and no direction.
+Hence a vector equation a(cid:2)b is equivalent to the three equations a (cid:2)b ,
+1 1
+a (cid:2)b , a (cid:2)b for the components.
+2 2 3 3
+We now see that from our “geometric” definition of a vector as an arrow we have arrived
+at an “algebraic” characterization of a vector by Theorem 1. We could have started from
+the latter and reversed our process. This shows that the two approaches are equivalent.
+Vector Addition, Scalar Multiplication
+Calculations with vectors are very useful and are almost as simple as the arithmetic for
+real numbers. Vector arithmetic follows almost naturally from applications. We first define
+how to add vectors and later on how to multiply a vector by a number.
+DEFINITION Addition of Vectors
+The sum a(cid:4)b of two vectors a(cid:2)[a , a , a ] and b(cid:2)[b , b , b ] is obtained by
+1 2 3 1 2 3
+b adding the corresponding components,
+a c = a + b (3) a(cid:4)b(cid:2)[a (cid:4)b , a (cid:4)b , a (cid:4)b ].
+1 1 2 2 3 3
+Fig. 170. Vector Geometrically, place the vectors as in Fig. 170 (the initial point of bat the terminal
+addition point of a); then a(cid:4)bis the vector drawn from the initial point of ato the terminal
+point of b.
+For forces, this addition is the parallelogram law by which we obtain the resultantof two
+forces in mechanics. See Fig. 171.
+Figure 172 shows (for the plane) that the “algebraic” way and the “geometric way” of
+vector addition give the same vector.
+tnatluseR
+c09.qxd 10/30/10 3:25 PM Page 357
+c
+b
+c
+b
+a
+a
+Fig. 171. Resultant of two forces (parallelogram law)
+
+=== PAGE 5 ===
+358 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Basic Properties of Vector Addition. Familiar laws for real numbers give immediately
+(a) a(cid:4)b(cid:2)b(cid:4)a (Commutativity)
+(b) (u(cid:4)v)(cid:4)w(cid:2)u(cid:4)(v(cid:4)w) (Associativity)
+(4)
+(c) a(cid:4)0(cid:2)0(cid:4)a(cid:2)a
+(d) a(cid:4)((cid:3)a)(cid:2)0.
+Properties (a) and (b) are verified geometrically in Figs. 173 and 174. Furthermore, (cid:3)a
+denotes the vector having the length ƒaƒ and the direction opposite to that of a.
+y
+u + v + w
+b b 2 u
+c
+2 a a c b w
+2
+a c
+a v
+a b
+1 1
+c 1 x b
+Fig. 172. Vector addition Fig. 173. Cummutativity
+of vector addition
+v
++
+u
+c09.qxd 10/30/10 3:25 PM Page 358
+v + w
+Fig. 174. Associativity
+of vector addition
+In (4b) we may simply write u(cid:4)v(cid:4)w, and similarly for sums of more than three
+vectors. Instead of a(cid:4)a we also write 2a, and so on. This (and the notation (cid:3)a used
+just before) motivates defining the second algebraic operation for vectors as follows.
+DEFINITION Scalar Multiplication (Multiplication by a Number)
+The product ca of any vector a(cid:2)[a , a , a ] and any scalar c (real number c) is
+1 2 3
+the vector obtained by multiplying each component of a by c,
+a 2a –a – 1 a (5) ca(cid:2)[ca , ca , ca ].
+2 1 2 3
+Fig. 175. Scalar
+multiplication Geometrically, if a(cid:7)0, then ca with c(cid:6)0 has the direction of a and with c(cid:5)0
+[multiplication of the direction opposite to a. In any case, the length of cais ƒcaƒ (cid:2) ƒcƒƒaƒ,and ca(cid:2)0
+vectors by scalars if a(cid:2)0 or c(cid:2)0 (or both). (See Fig. 175.)
+(numbers)]
+Basic Properties of Scalar Multiplication. From the definitions we obtain directly
+(a) c(a(cid:4)b)(cid:2)ca(cid:4)cb
+(b) (c(cid:4)k)a(cid:2)ca(cid:4)ka
+(6)
+(c) c(ka) (cid:2)(ck)a (written cka)
+(d) 1a(cid:2)a.
+
+=== PAGE 6 ===
+c09.qxd 10/30/10 3:25 PM Page 359
+SEC. 9.1 Vectors in 2-Space and 3-Space 359
+You may prove that (4) and (6) imply for any vector a
+(a) 0a(cid:2)0
+(7)
+(b) ((cid:3)1)a(cid:2)(cid:3)a.
+Instead of b(cid:4)((cid:3)a) we simply write b(cid:3)a (Fig. 176).
+EXAMPLE 2 Vector Addition. Multiplication by Scalars
+With respect to a given coordinate system, let
+a(cid:2)[4, 0, 1] and b(cid:2)[2, (cid:3)5, 1].
+3
+Then (cid:3)a(cid:2)[(cid:3)4, 0, (cid:3)1], 7a(cid:2)[28, 0, 7], a(cid:4)b(cid:2)[6, (cid:3)5, 4], and
+3
+2(a(cid:3)b)(cid:2)2[2, 5, 2](cid:2)[4, 10, 4](cid:2)2a(cid:3)2b. (cid:2)
+3 3
+Unit Vectors i, j, k. Besides a(cid:2)[a , a , a ] another popular way of writing vectors is
+1 2 3
+(8) a(cid:2)a i(cid:4)a j(cid:4)a k.
+1 2 3
+In this representation, i, j, k are the unit vectors in the positive directions of the axes of
+a Cartesian coordinate system (Fig. 177). Hence, in components,
+(9) i(cid:2)[1, 0, 0], j(cid:2)[0, 1, 0], k(cid:2)[0, 0, 1]
+and the right side of (8) is a sum of three vectors parallel to the three axes.
+EXAMPLE 3 ijk Notation for Vectors
+In Example 2 we have a(cid:2)4i(cid:4)k, b(cid:2)2i(cid:3)5j(cid:4)1k,and so on. (cid:2)
+3
+All the vectors a(cid:2)[a , a , a ](cid:2)a i(cid:4)a j(cid:4)a k (with real numbers as components)
+1 2 3 1 2 3
+form the real vector space R3 with the two algebraic operations of vector addition and
+scalar multiplication as just defined. R3 has dimension 3. The triple of vectors i, j, k
+iscalled a standard basisof R3.Given a Cartesian coordinate system, the representation
+(8) of a given vector is unique.
+Vector space R3 is a model of a general vector space, as discussed in Sec. 7.9, but is
+not needed in this chapter.
+z
+z
+a
+k
+a b i j a1 i a3k
+–a
+b – a –a x y x a 2j y
+Fig. 176. Difference of vectors Fig. 177. The unit vectors i, j, k
+and the representation (8)
+
+=== PAGE 7 ===
+c09.qxd 10/30/10 3:25 PM Page 360
+360 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+PROBLEM SET 9.1
+1–5 COMPONENTS AND LENGTH 26–37 FORCES, VELOCITIES
+Find the components of the vector v with initial point P 26. Equilibrium. Find vsuch that p, q, uin Prob. 21 and
+and terminal point Q. Find ƒvƒ. Sketch ƒvƒ. Find the unit vare in equilibrium.
+vector uin the direction of v.
+27. Find p such that u, v, w in Prob. 23 and p are in
+1. P: (1, 1, 0), Q: (6, 2, 0)
+equilibrium.
+2. P: (1, 1, 1), Q: (2, 2, 0)
+28. Unit vector. Find the unit vector in the direction of
+3. P: ((cid:3)3.0, 4,0, (cid:3)0.5), Q: (5.5, 0, 1.2) the resultant in Prob. 24.
+4. P: (1, 4, 2), Q: ((cid:3)1, (cid:3)4, (cid:3)2)
+29. Restricted resultant. Find all vsuch that the resultant
+5. P: (0, 0, 0), Q: (2, 1, (cid:3)2) of v, p, q, u with p, q, u as in Prob. 21 is parallel to
+the xy-plane.
+30. Find v such that the resultant of p, q, u, v with p,
+6–10 Find the terminal point Qof the vector vwith
+q, u as in Prob. 24 has no components in x- and
+components as given and initial point P. Find ƒvƒ.
+y-directions.
+6. 4, 0, 0; P: (0, 2, 13) 31. For what kis the resultant of [2, 0, (cid:3)7], [1, 2, (cid:3)3],and
+7. 1, 3, (cid:3)1; P: (7, (cid:3)3, 3) [0, 3, k]parallel to the xy-plane?
+2 4 2 4
+8. 13.1, 0.8, (cid:3)2.0; P: (0, 0, 0) 32. If ƒpƒ (cid:2)6 and ƒqƒ (cid:2)4, what can you say about the
+9. 6, 1, (cid:3)4; P: ((cid:3)6, (cid:3)1, (cid:3)4) magnitude and direction of the resultant? Can you think
+10. 0, (cid:3)3, 3; P: (0, 3, (cid:3)3) of an application to robotics?
+33. Same question as in Prob. 32 if ƒpƒ (cid:2)9, ƒqƒ (cid:2)6,
+ƒuƒ (cid:2)3.
+11–18 ADDITION, SCALAR MULTIPLICATION 34. Relative velocity. If airplanes A and B are moving
+Let a(cid:2)[3, 2, 0](cid:2)3i(cid:4)2j; b(cid:2)[(cid:3)4, 6, 0](cid:2)4i(cid:4)6j, southwest with speed ƒv ƒ (cid:2)550 mph, and north-
+A
+c(cid:2)[5, (cid:3)1, 8](cid:2)5i(cid:3)j(cid:4)8k, d(cid:2)[0, 0, 4](cid:2)4k. west with speed ƒv ƒ (cid:2)450 mph, respectively, what
+B
+Find: is therelative velocity v(cid:2)v (cid:3)v of Bwith respect
+B A
+11. 2a, 1a, (cid:3)a to A?
+2
+12. (a(cid:4)b)(cid:4)c, a(cid:4)(b(cid:4)c) 35. Same question as in Prob. 34 for two ships moving
+13. b(cid:4)c, c(cid:4)b northeast with speed ƒv A ƒ (cid:2)22 knots and west with
+14. 3c(cid:3)6d, 3(c(cid:3)2d) speed ƒv B ƒ (cid:2)19knots.
+15. 7(c(cid:3)b), 7c(cid:3)7b 36. Reflection. If a ray of light is reflected once in each
+16. 9a(cid:3)3c, 9(1a(cid:3)1c) of two mutually perpendicular mirrors, what can you
+2 2 3 say about the reflected ray?
+17. (7(cid:3)3)a, 7a(cid:3)3a
+18. 4a(cid:4)3b, (cid:3)4a(cid:3)3b 37. Force polygon. Truss. Find the forces in the system
+of two rods (truss) in the figure, where ƒpƒ (cid:2)1000 nt.
+19. What laws do Probs. 12–16 illustrate?
+Hint.Forces in equilibrium form a polygon, the force
+20. Prove Eqs. (4) and (6). polygon.
+21–25 FORCES, RESULTANT y
+Find the resultant in terms of components and its
+45(cid:8) x
+magnitude.
+21. p(cid:2)[2, 3, 0], q(cid:2)[0, 6, 1], u(cid:2)[2, 0, (cid:3)4] p v p
+22. p(cid:2)[1, (cid:3)2, 3], q(cid:2)[3, 21, (cid:3)16],
+u(cid:2)[(cid:3)4, (cid:3)19, 13]
+23. u(cid:2)[8, (cid:3)1, 0], v(cid:2)[1 2 , 0, 4 3 ], w(cid:2)[(cid:3)1 2 7 , 1, 1 3 1 ] u
+24. p(cid:2)[(cid:3)1, 2, (cid:3)3], q(cid:2)[1, 1, 1], u(cid:2)[1, (cid:3)2, 2] Truss Force polygon
+25. u(cid:2)[3, 1, (cid:3)6], v(cid:2)[0, 2, 5], w(cid:2)[3, (cid:3)1, (cid:3)13] Problem 37
+
+=== PAGE 8 ===
+c09.qxd 10/30/10 3:25 PM Page 361
+SEC. 9.2 Inner Product (Dot Product) 361
+38. TEAM PROJECT. Geometric Applications. To b
+increase your skill in dealing with vectors, use vectors P
+to prove the following (see the figures).
+(a) The diagonals of a parallelogram bisect each other. a
+(b) The line through the midpoints of adjacent sides Team Project 38(a)
+of a parallelogram bisects one of the diagonals in the
+ratio 1:3.
+(c) Obtain (b) from (a). b
+(d) The three medians of a triangle (the segments P Q
+from a vertex to the midpoint of the opposite side)
+meet at a single point, which divides the medians in 0 a
+the ratio 2:1.
+Team Project 38(d)
+(e) The quadrilateral whose vertices are the mid-
+points of the sides of an arbitrary quadrilateral is a
+parallelogram. c C b
+(f) The four space diagonals of a parallelepiped meet D B
+d
+and bisect each other.
+(g) The sum of the vectors drawn from the center of A a
+a regular polygon to its vertices is the zero vector. Team Project 38(e)
+9.2
+Inner Product (Dot Product)
+Orthogonality
+The inner product or dot product can be motivated by calculating work done by a constant
+force, determining components of forces, or other applications. It involves the length of
+vectors and the angle between them. The inner product is a kind of multiplication of two
+vectors, defined in such a way that the outcome is a scalar. Indeed, another term for inner
+product is scalar product, a term we shall not use here. The definition of the inner product
+is as follows.
+DEFINITION Inner Product (Dot Product) of Vectors
+The inner productor dot producta•b(read “adot b”) of two vectors aand bis
+the product of their lengths times the cosine of their angle (see Fig. 178),
+a•b(cid:2) ƒaƒƒbƒ cos g if a(cid:7)0, b(cid:7)0
+(1)
+a•b(cid:2)0 if a(cid:2)0 or b (cid:2)0.
+The angle g, 0(cid:9)g(cid:9)p, between a and b is measured when the initial points of
+the vectors coincide, as in Fig. 178. In components, a(cid:2)[a , a , a ], b (cid:2)[b , b , b ],
+1 2 3 1 2 3
+and
+(2) a•b(cid:2)a b (cid:4)a b (cid:4)a b .
+1 1 2 2 3 3
+
+=== PAGE 9 ===
+c09.qxd 10/30/10 3:25 PM Page 362
+362 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+The second line in (1) is needed because g is undefined when a(cid:2)0 or b(cid:2)0. The
+derivation of (2) from (1) is shown below.
+γ
+a γ
+a
+γ a
+b b b
+a.b > 0 a.b = 0 a.b < 0
+(orthogonality)
+Fig. 178. Angle between vectors and value of inner product
+Orthogonality. Since the cosine in (1) may be positive, 0, or negative, so may be the
+inner product (Fig. 178). The case that the inner product is zero is of particular practical
+interest and suggests the following concept.
+A vector a is called orthogonal to a vector b if a•b(cid:2)0. Then b is also orthogonal
+to a, and we call a and b orthogonal vectors. Clearly, this happens for nonzero vectors
+if and only if cos g (cid:2)0; thus g(cid:2)p 2 (90°). This proves the important
+>
+THEOREM 1 Orthogonality Criterion
+The inner product of two nonzero vectors is 0 if and only if these vectors are
+perpendicular.
+Length and Angle. Equation (1) with b(cid:2)a gives a•a(cid:2) ƒaƒ2. Hence
+(3) ƒaƒ (cid:2) 1a•a.
+From (3) and (1) we obtain for the angle g between two nonzero vectors
+a•b a•b
+(4) cos g (cid:2) (cid:2) .
+ƒaƒƒbƒ 1a•a1b•b
+EXAMPLE 1 Inner Product. Angle Between Vectors
+Find the inner product and the lengths of a(cid:2)[1, 2, 0]and b(cid:2)[3, (cid:3)2, 1]as well as the angle between these
+vectors.
+# # #
+Solution. a•b(cid:2)1 3(cid:4)2 (cid:3)2 (cid:4)0 1(cid:2)(cid:3)1, ƒaƒ (cid:2) 1a•a(cid:2) 15, ƒbƒ (cid:2) 1b•b(cid:2) 114, and (4)
+1 2
+gives the angle
+g(cid:2)arccos
+a•b
+(cid:2)arccos ((cid:3)0.11952)(cid:2)1.69061(cid:2)96.865°. (cid:2)
+ƒaƒƒbƒ
+
+=== PAGE 10 ===
+c09.qxd 10/30/10 3:25 PM Page 363
+SEC. 9.2 Inner Product (Dot Product) 363
+From the definition we see that the inner product has the following properties. For any
+vectors a, b, c and scalars q , q ,
+1 2
+(a) (q a(cid:4)q b)•c(cid:2)q a•c(cid:4)q b•c (Linearity)
+1 2 1 1
+(b) a•b(cid:2)b•a (Symmetry)
+(5)
+a•a(cid:11)0
+(c) (Positive-definiteness).
+a•a(cid:2)0 if and only if a(cid:2)0
+Hence dot multiplication is commutativeas shown by (5b). Furthermore, it isdistributive
+r
+with respect to vector addition. This follows from (5a) with q (cid:2)1 and q (cid:2)1:
+1 2
+(5a*) (a(cid:4)b)•c(cid:2)a•c(cid:4)b•c (Distributivity).
+Furthermore, from (1) and ƒcos gƒ (cid:9)1 we see that
+(6) ƒa•bƒ (cid:9) ƒaƒƒbƒ (Cauchy–Schwarz inequality).
+Using this and (3), you may prove (see Prob. 16)
+(7) ƒa(cid:4)bƒ (cid:9) ƒaƒ (cid:4) ƒbƒ (Triangle inequality).
+Geometrically, (7) with(cid:5) says that one side of a triangle must be shorter than the other
+two sides together; this motivates the name of (7).
+A simple direct calculation with inner products shows that
+(8) ƒa(cid:4)bƒ2(cid:4) ƒa(cid:3)bƒ2(cid:2)2(ƒaƒ2(cid:4) ƒbƒ2) (Parallelogram equality).
+Equations (6)–(8) play a basic role in so-called Hilbert spaces, which are abstract inner
+product spaces. Hilbert spaces form the basis of quantum mechanics, for details see
+[GenRef7] listed in App. 1.
+Derivation of (2) from (1). We write a(cid:2)a i(cid:4)a j(cid:4)a kand b(cid:2)b i(cid:4) b j(cid:4)b k,
+as in (8) of Sec. 9.1. If we substitute this into
+1
+a•ba
+2
+n d use
+3
+(5a*), we firs
+1
+t have
+2
+a sum
+3
+of
+3(cid:10)3(cid:2)9 products
+a•b(cid:2)a b i•i(cid:4)a b i•j(cid:4) Á (cid:4)a b k•k.
+1 1 1 2 3 3
+Now i, j, k are unit vectors, so that i•i(cid:2)j•j(cid:2)k•k(cid:2)1by (3). Since the coordinate
+axes are perpendicular, so are i, j, k, and Theorem 1 implies that the other six of those
+nine products are 0, namely, i•j(cid:2)j•i(cid:2)j•k(cid:2)k•j(cid:2)k•i(cid:2)i•k(cid:2)0. But this
+reduces our sum for a•b to (2). (cid:2)
+
+=== PAGE 11 ===
+c09.qxd 10/30/10 3:25 PM Page 364
+364 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Applications of Inner Products
+Typical applications of inner products are shown in the following examples and in
+Problem Set 9.2.
+EXAMPLE 2 Work Done by a Force Expressed as an Inner Product
+This is a major application. It concerns a body on which a constant force p acts. (For a variable force, see
+Sec. 10.1.) Let the body be given a displacement d. Then the work done by pin the displacement is defined as
+(9) W(cid:2) ƒpƒƒdƒ cos a(cid:2)p•d,
+that is, magnitude ƒpƒ of the force times length ƒdƒ of the displacement times the cosine of the angle abetween
+pand d(Fig. 179). If a(cid:5)90°, as in Fig. 179, then W(cid:6)0. If pand dare orthogonal, then the work is zero
+(why?). If a(cid:6)90°, then W(cid:5)0, which means that in the displacement one has to do work against the force.
+For example, think of swimming across a river at some angle aagainst the current.
+y
+y
+Rope –p
+x
+p
+p
+x
+α c
+25°
+d a
+Fig. 179. Work done by a force Fig. 180. Example 3
+EXAMPLE 3 Component of a Force in a Given Direction
+What force in the rope in Fig. 180 will hold a car of 5000 lb in equilibrium if the ramp makes an angle of 25°
+with the horizontal?
+Solution. Introducing coordinates as shown, the weight is a(cid:2)[0, (cid:3)5000] because this force points
+downward, in the negative y-direction. We have to represent aas a sum (resultant) of two forces, a(cid:2)c(cid:4)p,
+where cis the force the car exerts on the ramp, which is of no interest to us, and pis parallel to the rope. A
+vector in the direction of the rope is (see Fig. 180)
+b(cid:2)[(cid:3)1, tan 25°](cid:2)[(cid:3)1, 0.46631], thus ƒbƒ (cid:2)1.10338,
+The direction of the unit vector uis opposite to the direction of the rope so that
+1
+u(cid:2)(cid:3) b(cid:2)[0.90631, (cid:3)0.42262].
+ƒbƒ
+Since ƒuƒ (cid:2)1and cos g(cid:6)0, we see that we can write our result as
+#
+a•b 5000 0.46631
+ƒpƒ (cid:2)(ƒaƒ cos g)ƒuƒ (cid:2)a•u(cid:2)(cid:3)
+ƒbƒ
+(cid:2)
+1.10338
+(cid:2)2113 [1b].
+We can also note that g(cid:2)90°(cid:3)25°(cid:2)65°is the angle between aand pso that
+ƒpƒ (cid:2) ƒaƒ cos g(cid:2)5000 cos 65°(cid:2)2113 [1b].
+(cid:2)
+Answer:About 2100 lb.
+
+=== PAGE 12 ===
+c09.qxd 10/30/10 3:25 PM Page 365
+SEC. 9.2 Inner Product (Dot Product) 365
+Example 3 is typical of applications that deal with the component or projection of a
+vectorain the direction of a vectorb((cid:7)0). If we denote by pthe length of the orthogonal
+projection of a on a straight line l parallel to b as shown in Fig. 181, then
+(10) p(cid:2) ƒaƒ cos g.
+Here p is taken with the plus sign if pb has the direction of b and with the minus sign if
+pb has the direction opposite to b.
+a a a γ
+γ
+γ
+l l l
+b b b
+p
+p
+(p > 0) (p = 0) (p < 0)
+Fig. 181. Component of a vector ain the direction of a vector b
+Multiplying (10) by ƒbƒ ƒbƒ (cid:2)1, we have a•b in the numerator and thus
+>
+a•b
+(11) p(cid:2) (b(cid:7)0).
+ƒbƒ
+If b is a unit vector, as it is often used for fixing a direction, then (11) simply gives
+(12) p(cid:2)a•b (ƒbƒ (cid:2)1).
+Figure 182 shows the projection p of a in the direction of b (as in Fig. 181) and the
+projection q(cid:2) ƒbƒ cos g of b in the direction of a.
+a
+q
+b
+p
+Fig. 182. Projections pof aon band qof bon a
+EXAMPLE 4 Orthonormal Basis
+By definition, an orthonormal basisfor 3-space is a basis {a, b, c}consisting of orthogonal unit vectors. It has
+the great advantage that the determination of the coefficients in representations v(cid:2)l a(cid:4)l b(cid:4)l cof a given
+1 2 3
+vector vis very simple. We claim that l (cid:2)a•v, l (cid:2)b•v, l (cid:2)c•v. Indeed, this follows simply by taking
+1 2 3
+the inner products of the representation with a, b, c, respectively, and using the orthonormality of the basis,
+a•v(cid:2)l a•a(cid:4)l a•b(cid:4)l a•c(cid:2)l , etc.
+1 2 3 1
+For example, the unit vectors i, j, kin (8), Sec. 9.1, associated with a Cartesian coordinate system form an
+(cid:2)
+orthonormal basis, called the standard basiswith respect to the given coordinate system.
+
+=== PAGE 13 ===
+c09.qxd 10/30/10 3:25 PM Page 366
+366 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+EXAMPLE 5 Orthogonal Straight Lines in the Plane
+Find the straight line L through the point P: (1, 3) in the xy-plane and perpendicular to the straight line
+1
+L :x(cid:3)2y(cid:4)2(cid:2)0; see Fig. 183.
+2
+Solution. The idea is to write a general straight line L :a x(cid:4)a y(cid:2)cas a•r(cid:2)cwith a(cid:2)[a , a ](cid:7)0
+1 1 2 1 2
+and r(cid:2)[x, y], according to (2). Now the line L*through the origin and parallel to L is a•r(cid:2)0. Hence, by
+1 1
+Theorem 1, the vector ais perpendicular to r. Hence it is perpendicular to L*and also to L because L and
+1 1 1
+L*are parallel. ais called a normal vectorof L (and of L*).
+1 1 1
+Now a normal vector of the given line x(cid:3)2y(cid:4)2(cid:2)0 is b(cid:2)[1, (cid:3)2]. Thus L is perpendicular to L
+1 2
+if b•a(cid:2)a (cid:3)2a (cid:2)0, for instance, if a(cid:2)[2, 1]. Hence L is given by 2x(cid:4)y(cid:2)c. It passes through
+1 2# 1
+P: (1, 3) when 2 1(cid:4)3(cid:2)c(cid:2)5. Answer: y(cid:2)(cid:3)2x(cid:4)5. Show that the point of intersection is
+(x, y)(cid:2)(1.6, 1.8). (cid:2)
+EXAMPLE 6 Normal Vector to a Plane
+Find a unit vector perpendicular to the plane 4x(cid:4)2y(cid:4)4z(cid:2)(cid:3)7.
+Solution. Using (2), we may write any plane in space as
+(13) a•r(cid:2)a x(cid:4)a y(cid:4)a z(cid:2)c
+1 2 3
+where a(cid:2)[a , a , a ](cid:7)0and r(cid:2)[x, y, z]. The unit vector in the direction of ais (Fig. 184)
+1 2 3
+1
+n(cid:2) a.
+ƒaƒ
+Dividing by ƒaƒ, we obtain from (13)
+c
+(14) n•r(cid:2)p where p(cid:2) .
+ƒaƒ
+From (12) we see that pis the projection of rin the direction of n. This projection has the same constant value
+c ƒaƒ for the position vector rof any point in the plane. Clearly this holds if and only if nis perpendicular to
+>
+the plane. nis called a unit normal vectorof the plane (the other being (cid:3)n).
+Furthermore, from this and the definition of projection, it follows that ƒpƒ is the distance of the plane from
+the origin. Representation (14) is called Hesse’s2normal formof a plane. In our case, a(cid:2)[4, 2, 4], c(cid:2)(cid:3)7,
+ƒaƒ (cid:2)6, n(cid:2)1a(cid:2)[2, 1, 2], and the plane has the distance 7from the origin. (cid:2)
+6 3 3 3 6
+y
+P n
+3
+L
+2
+2
+1
+L |p|
+1
+r
+1 2 3 x
+Fig. 183. Example 5 Fig. 184. Normal vector to a plane
+2LUDWIG OTTO HESSE (1811–1874), German mathematician who contributed to the theory of curves and
+surfaces.
+
+=== PAGE 14 ===
+c09.qxd 10/30/10 3:25 PM Page 367
+SEC. 9.2 Inner Product (Dot Product) 367
+PROBLEM SET 9.2
+1–10 INNER PRODUCT 25. What will happen to the angle in Prob. 24 if we replace
+Let a(cid:2)[1, (cid:3)3, 5], b(cid:2)[4, 0, 8], c(cid:2)[(cid:3)2, 9, 1]. c by nc with larger and larger n?
+Find: 26. Cosine law. Deduce the law of cosines by using
+1. a•b, b•a, b•c vectors a, b, and a(cid:3)b.
+2. ((cid:3)3a(cid:4)5c)•b, 15(a(cid:3)c)•b 27. Addition law. cos (a(cid:3)b)(cid:2)cos a cos b(cid:4)sin a
+3. ƒaƒ, ƒ2bƒ, ƒ(cid:3)cƒ sin b. Obtain this by using a(cid:2)[cos a, sin a],
+4. ƒa(cid:4)bƒ, ƒaƒ (cid:4) ƒbƒ b(cid:2)[cos b, sin b]where 0(cid:9)a(cid:9)b(cid:9)2p.
+5. ƒb(cid:4)cƒ, ƒbƒ (cid:4) ƒcƒ 28. Triangle. Find the angles of the triangle with vertices
+6. ƒa(cid:4)cƒ2(cid:4) ƒa(cid:3)cƒ2(cid:3)2(ƒaƒ2(cid:4) ƒcƒ2) A: (0, 0, 2), B: (3, 0, 2), and C: (1, 1, 1). Sketch the
+7. ƒa•cƒ, ƒaƒƒcƒ triangle.
+8. 5a•13b, 65a•b 29. Parallelogram. Find the angles if the vertices are
+9. 15a•b(cid:4)15a•c, 15a•(b(cid:4)c) (0,0), (6, 0), (8, 3), and (2, 3).
+10. a•(b(cid:3)c), (a(cid:3)b)•c 30. Distance. Find the distance of the point A: (1, 0, 2)
+from the plane P: 3x(cid:4)y(cid:4)z(cid:2)9. Make a sketch.
+11–16 GENERAL PROBLEMS
+31–35 ORTHOGONALITY is particularly important,
+11. What laws do Probs. 1 and 4–7 illustrate?
+mainly because of orthogonal coordinates, such as Cartesian
+12. What does u•v(cid:2)u•wimply if u(cid:2)0? If u(cid:7)0?
+coordinates, whose natural basis[Eq. (9), Sec. 9.1], consists
+13. Prove the Cauchy–Schwarz inequality.
+of three orthogonal unit vectors.
+14. Verify the Cauchy–Schwarz and triangle inequalities
+for the above aand b. 31. For what values of a are [a , 4, 3] and [3, (cid:3)2, 12]
+1 1
+15. Prove the parallelogram equality. Explain its name. orthogonal?
+16. Triangle inequality. Prove Eq. (7). Hint.Use Eq. (3) 32. Planes. For what c are 3x(cid:4)z(cid:2)5 and 8x(cid:3)y(cid:4)
+for ƒa(cid:4)bƒ and Eq. (6) to prove the square of Eq. (7), cz(cid:2)9 orthogonal?
+then take roots.
+33. Unit vectors. Find all unit vectors a(cid:2)[a , a ]in the
+1 2
+17–20 WORK plane orthogonal to [4, 3].
+Find the work done by a force p acting on a body if the 34. Corner reflector. Find the angle between a light ray
+body is displaced along the straight segment ABfrom Ato and its reflection in three orthogonal plane mirrors,
+B. Sketch ABand p. Show the details. known as corner reflector.
+17. p(cid:2)[2, 5, 0], A: (1, 3, 3), B: (3, 5, 5)
+35. Parallelogram. When will the diagonals be ortho-
+18. p(cid:2)[(cid:3)1, (cid:3)2, 4], A: (0, 0, 0), B: (6, 7, 5) gonal? Give a proof.
+19. p(cid:2)[0, 4, 3], A: (4, 5, (cid:3)1), B: (1, 3, 0)
+20. p(cid:2)[6, (cid:3)3, (cid:3)3], A: (1, 5, 2), B: (3, 4, 1) 36–40 COMPONENT IN THE DIRECTION
+21. Resultant. Is the work done by the resultant of two OF A VECTOR
+forces in a displacement the sum of the work done Find the component of a in the direction of b. Make a
+by each of the forces separately? Give proof or sketch.
+counterexample. 36. a(cid:2)[1, 1, 1], b(cid:2)[2, 1, 3]
+37. a(cid:2)[3, 4, 0], b(cid:2)[4, (cid:3)3, 2]
+22–30 ANGLE BETWEEN VECTORS
+38. a(cid:2)[8, 2, 0], b(cid:2)[(cid:3)4, (cid:3)1, 0]
+Let a(cid:2)[1, 1, 0], b(cid:2)[3, 2, 1], and c(cid:2)[1, 0, 2]. Find the
+39. When will the component (the projection) of a in the
+angle between:
+direction of b be equal to the component (the
+22. a, b projection) of b in the direction of a?First guess.
+23. b, c 40. What happens to the component of a in the direction
+24. a(cid:4)c, b(cid:4)c of b if you change the length of b?
+
+=== PAGE 15 ===
+c09.qxd 10/30/10 3:25 PM Page 368
+368 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+9.3
+Vector Product (Cross Product)
+We shall define another form of multiplication of vectors, inspired by applications, whose
+result will be a vector. This is in contrast to the dot product of Sec. 9.2 where multiplication
+resulted in a scalar. We can construct a vector v that is perpendicular to two vectors a
+and b, which are two sides of a parallelogram on a plane in space as indicated in Fig.185,
+such that the length ƒvƒ is numerically equal to the area of that parallelogram. Here then
+is the new concept.
+DEFINITION Vector Product (Cross Product, Outer Product) of Vectors
+The vector product or cross product a(cid:2)b (read “a cross b”) of two vectors a
+and b is the vector v denoted by
+v(cid:2)a(cid:2)b
+I. If a(cid:2)0 or b (cid:2)0, then we define v(cid:2)a(cid:2)b(cid:2)0.
+II. If both vectors are nonzero vectors, then vector v has the length
+(1) ƒvƒ (cid:2) ƒa(cid:2)bƒ (cid:2) ƒaƒƒbƒ sin g,
+where g is the angle between a and b as in Sec. 9.2.
+Furthermore, by design, a and b form the sides of a parallelogram on a plane
+in space. The parallelogram is shaded in blue in Fig. 185. The area of this blue
+parallelogram is precisely given by Eq. (1), so that the length ƒvƒ of the vector
+v is equal to the area of that parallelogram.
+III. If a and b lie in the same straight line, i.e., a and b have the same or opposite
+directions, then g is 0° or 180° so that sin g (cid:2)0. In that case ƒvƒ (cid:2)0 so that
+v(cid:2)a(cid:2)b(cid:2)0.
+IV. If cases I and III do not occur, then v is a nonzero vector. The direction of
+v(cid:2)a(cid:2)bis perpendicular to both a andb such that a, b, v—precisely in this
+order (!)—form a right-handed triple as shown in Figs. 185–187 and explained
+below.
+Another term for vector product is outer product.
+Remark. Note that I and III completely characterize the exceptional case when the cross
+product is equal to the zero vector, and II and IV the regular case where the cross product
+is perpendicular to two vectors.
+Just as we did with the dot product, we would also like to express the cross product in
+components. Let a(cid:2)[a , a , a ]and b(cid:2)[b , b , b ]. Then v(cid:2)[v , v , v ](cid:2)a(cid:2)bhas
+1 2 3 1 2 3 1 2 3
+the components
+(2) v (cid:2)a b (cid:3)a b , v (cid:2)a b (cid:3)a b , v (cid:2)a b (cid:3)a b .
+1 2 3 3 2 2 3 1 1 3 3 1 2 2 1
+Here the Cartesian coordinate system is right-handed, as explained below (see also
+Fig. 188). (For a left-handed system, each component of v must be multiplied by (cid:3)1.
+Derivation of (2) in App. 4.)
+
+=== PAGE 16 ===
+c09.qxd 10/30/10 3:25 PM Page 369
+SEC. 9.3 Vector Product (Cross Product) 369
+Right-Handed Triple. A triple of vectors a, b, v is right-handed if the vectors in the
+given order assume the same sort of orientation as the thumb, index finger, and middle
+finger of the right hand when these are held as in Fig. 186. We may also say that if a is
+rotated into the direction of b through the angle g ((cid:5)p), then v advances in the same
+direction as a right-handed screw would if turned in the same way (Fig. 187).
+v
+v
+b
+v = a × b
+b
+γ b
+a
+a a
+Fig. 185. Vector product Fig. 186. Right-handed Fig. 187. Right-handed
+triple of vectors a, b, v screw
+Right-Handed Cartesian Coordinate System. The system is called right-handed if
+the corresponding unit vectors i, j, k in the positive directions of the axes (see Sec. 9.1)
+form a right-handed triple as in Fig. 188a. The system is called left-handed if the sense
+of k is reversed, as in Fig. 188b. In applications, we prefer right-handed systems.
+z
+k
+i j i j
+k
+x y x y
+z
+(a) Right-handed (b) Left-handed
+Fig. 188. The two types of Cartesian coordinate systems
+How to Memorize (2). If you know second- and third-order determinants, you see that
+(2) can be written
+a a a a a a a a
+2 3 1 3 3 1 1 2
+(2*) v (cid:2) , v (cid:2)(cid:3) (cid:2)(cid:4) , v (cid:2)
+1 2 3
+b b b b b b b b
+2 3 1 3 3 1 1 2
+2 2 2 2 2 2 2 2
+
+=== PAGE 17 ===
+c09.qxd 10/30/10 3:25 PM Page 370
+370 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+and v(cid:2)[v , v , v ](cid:2)v i(cid:4)v j(cid:4)v k is the expansion of the following symbolic
+1 2 3 1 2 3
+determinant by its first row. (We call the determinant “symbolic” because the first row
+consists of vectors rather than of numbers.)
+i j k
+a a a a a a
+2 3 1 3 1 2
+(2**) v(cid:2)a(cid:2)b(cid:2) a a a (cid:2) i(cid:3) j(cid:4) k.
+1 2 3
+b b b b b b
+2 3 1 3 1 2
+b b b
+1 2 3
+For a left-handed system3 the determi3nan2t has a m2inus 2sign in f2ront. 2 2
+EXAMPLE 1 Vector Product
+For the vector product v(cid:2)a(cid:2)b of a(cid:2)[1, 1, 0] and b(cid:2)[3, 0, 0] in right-handed coordinates we obtain
+from (2)
+# #
+v (cid:2)0, v (cid:2)0, v (cid:2)1 0(cid:3)1 3(cid:2)(cid:3)3.
+1 2 3
+We confirm this by (2**):
+i j k
+1 0 1 0 1 1
+v(cid:2)a(cid:2)b(cid:2) 1 1 0 (cid:2) i(cid:3) j(cid:4) k(cid:2)(cid:3)3k(cid:2)[0, 0, (cid:3)3].
+0 0 3 0 3 0
+3 0 0
+To check the result in this s3imple case3, sk2etch a,2 b, an2 d v. C2an y2ou see 2that two vectors in the xy-plane must
+(cid:2)
+always have their vector product parallel to the z-axis (or equal to the zero vector)?
+EXAMPLE 2 Vector Products of the Standard Basis Vectors
+i(cid:2)j(cid:2) k, j(cid:2)k(cid:2) i, k(cid:2)i(cid:2) j
+(3)
+j(cid:2)i(cid:2)(cid:3)k, k(cid:2)j(cid:2)(cid:3)i, i(cid:2)k(cid:2)(cid:3)j.
+(cid:2)
+We shall use this in the next proof.
+THEOREM 1 General Properties of Vector Products
+(a) For every scalar l,
+(4) (la)(cid:2)b(cid:2)l(a(cid:2)b)(cid:2)a(cid:2)(lb).
+(b) Cross multiplication is distributive with respect to vector addition; that is,
+a × b
+b (a) a(cid:2)(b(cid:4)c)(cid:2)(a(cid:2)b)(cid:4)(a(cid:2)c),
+(5)
+(b) (a(cid:4)b)(cid:2)c(cid:2)(a(cid:2)c)(cid:4)(b(cid:2)c).
+a
+b × a (c) Cross multiplication is not commutative but anticommutative; that is,
+Fig. 189.
+Anticommutativity (6) b(cid:2)a(cid:2)(cid:3)(a(cid:2)b) (Fig. 189).
+of cross
+multiplication
+
+=== PAGE 18 ===
+c09.qxd 10/30/10 3:25 PM Page 371
+SEC. 9.3 Vector Product (Cross Product) 371
+(d) Cross multiplication is not associative; that is, in general,
+(7) a(cid:2)(b(cid:2)c)(cid:7)(a(cid:2)b)(cid:2)c
+so that the parentheses cannot be omitted.
+PROOF Equation (4) follows directly from the definition. In (5a), formula (2*) gives for the first
+component on the left
+a a
+2 3
+(cid:2)a (b (cid:4)c )(cid:3)a (b (cid:4)c )
+2 3 3 3 2 2
+b (cid:4)c b (cid:4)c
+2 2 3 3
+(cid:2)(a b (cid:3)a b )(cid:4)(a c (cid:3)a c )
+2 3 3 2 2 3 3 2
+2 2
+a a a a
+2 3 2 3
+(cid:2) (cid:4) .
+b b c c
+2 3 2 3
+By (2*) the sum of the two determinants is the first component of (a(cid:2)b)(cid:4)(a(cid:2)c), the
+right side of (5a). For the other compon2ents in (52 a)2and in 5(2b), equality follows by the
+same idea.
+Anticommutativity (6) follows from (2**) by noting that the interchange of Rows 2
+and 3 multiplies the determinant by (cid:3)1. We can confirm this geometrically if we set
+a(cid:2)b(cid:2)vand b(cid:2)a(cid:2)w; then ƒvƒ (cid:2) ƒwƒ by (1), and for b, a, wto form a right-handed
+triple, we must have w(cid:2)(cid:3)v.
+Finally, i(cid:2)(i (cid:2)j) (cid:2)i(cid:2)k(cid:2)(cid:3)j, whereas (i (cid:2)i) (cid:2)j(cid:2)0(cid:2)j(cid:2)0(see Example 2).
+This proves (7). (cid:2)
+Typical Applications of Vector Products
+EXAMPLE 3 Moment of a Force
+In mechanics the moment mof a force pabout a point Qis defined as the product m(cid:2) ƒpƒd, where dis the
+(perpendicular) distance between Qand the line of action Lof p(Fig. 190). If ris the vector from Qto any
+point Aon L, then d(cid:2) ƒrƒ sin g, as shown in Fig. 190, and
+m(cid:2) ƒrƒƒpƒ sin g.
+Since gis the angle between rand p, we see from (1) that m(cid:2) ƒr(cid:2)pƒ. The vector
+(8) m(cid:2)r(cid:2)p
+is called the moment vectoror vector momentof pabout Q. Its magnitude is m. If m(cid:7)0, its direction is
+that of the axis of the rotation about Qthat phas the tendency to produce. This axis is perpendicular to both
+(cid:2)
+rand p.
+L
+p
+Q r
+γ
+d A
+Fig. 190. Moment of a force p
+
+=== PAGE 19 ===
+c09.qxd 10/30/10 3:25 PM Page 372
+372 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+EXAMPLE 4 Moment of a Force
+Find the moment of the force pabout the center Q of a wheel, as given in Fig. 191.
+Solution. Introducing coordinates as shown in Fig. 191, we have
+p(cid:2)[1000 cos 30°, 1000 sin 30°, 0](cid:2)[866, 500, 0], r(cid:2)[0, 1.5, 0].
+(Note that the center of the wheel is at y(cid:2)(cid:3)1.5on the y-axis.) Hence (8) and (2**) give
+i j k
+0 1.5
+m(cid:2)r(cid:2)p(cid:2) 0 1.5 0 (cid:2)0i(cid:3)0j(cid:4) k(cid:2)[0, 0, (cid:3)1299].
+866 500
+866 500 0
+This moment vector mis normal, i.e., perpendicular to the plane of the wheel. Hence it has the direction of the
+3 3 2 2
+axis of rotation about the center Q of the wheel that the force phas the tendency to produce. The moment m
+points in the negative z-direction, This is, the direction in which a right-handed screw would advance if turned
+(cid:2)
+in that way.
+y |p| = 1000 lb
+30°
+x
+1.5 ft
+Q
+Fig. 191. Moment of a force p
+EXAMPLE 5 Velocity of a Rotating Body
+A rotation of a rigid body B in space can be simply and uniquely described by a vector w as follows. The
+direction of wis that of the axis of rotation and such that the rotation appears clockwise if one looks from the
+initial point of wto its terminal point. The length of wis equal to the angular speedv((cid:6)0)of the rotation,
+that is, the linear (or tangential) speed of a point of Bdivided by its distance from the axis of rotation.
+Let Pbe any point of Band dits distance from the axis. Then Phas the speed vd. Let rbe the position vector
+of Preferred to a coordinate system with origin 0 on the axis of rotation. Then d(cid:2) ƒrƒ sin g, where gis the
+angle between wand r. Therefore,
+vd(cid:2) ƒwƒƒrƒ sin g(cid:2) ƒw(cid:2)rƒ.
+From this and the definition of vector product we see that the velocity vector vof Pcan be represented in the
+form (Fig. 192)
+(9) v(cid:2)w(cid:2)r.
+(cid:2)
+This simple formula is useful for determining vat any point of B.
+w
+d
+P v
+γ r
+w
+r
+0
+Fig. 192. Rotation of a rigid body
+
+=== PAGE 20 ===
+c09.qxd 10/30/10 3:25 PM Page 373
+SEC. 9.3 Vector Product (Cross Product) 373
+Scalar Triple Product
+Certain products of vectors, having three or more factors, occur in applications. The most
+important of these products is the scalar triple product or mixed product of three vectors
+a, b, c.
+(10*) (a b c)(cid:2)a•(b(cid:2)c).
+The scalar triple product is indeed a scalar since (10*) involves a dot product, which in
+turn is a scalar. We want to express the scalar triple product in components and as a third-
+order determinant. To this end, let a(cid:2)[a , a , a ], b (cid:2)[b , b , b ], and c(cid:2)[c , c , c ].
+1 2 3 1 2 3 1 2 3
+Also set b(cid:2)c(cid:2)v(cid:2)[v , v , v ]. Then from the dot product in components [formula
+1 2 3
+(2) in Sec. 9.2] and from (2*) with b and c instead of a and b we first obtain
+a•(b(cid:2)c)(cid:2)a•v(cid:2)a v (cid:4)a v (cid:4)a v
+1 1 2 2 3 3
+b b b b b b
+2 3 3 1 1 2
+(cid:2)a (cid:4)a (cid:4)a .
+1 2 3
+c c c c c c
+2 3 3 1 1 2
+The sum on the right is the expansion of a third-order determinant by its first row. Thus
+we obtain the desired formula for2 the scal2ar tripl2e produ2ct, that2 is, 2
+a a a
+1 2 3
+(10) (a b c)(cid:2)a•(b(cid:2)c)(cid:2) b b b .
+1 2 3
+c c c
+1 2 3
+The most important properties of the scalar triple p3roduct are as 3follows.
+THEOREM 2 Properties and Applications of Scalar Triple Products
+(a) In (10) the dot and cross can be interchanged:
+(11) (a b c)(cid:2)a•(b(cid:2)c)(cid:2)(a(cid:2)b)•c.
+(b) Geometric interpretation. The absolute value ƒ(a b c)ƒ of (10) is the
+volume of the parallelepiped (oblique box) with a, b, c as edge vectors (Fig. 193).
+(c) Linear independence. Three vectors in R3 are linearly independent if
+and only if their scalar triple product is not zero.
+PROOF (a) Dot multiplication is commutative, so that by (10)
+c c c
+1 2 3
+(a(cid:2)b)•c(cid:2)c•(a(cid:2)b)(cid:2) a a a .
+1 2 3
+b b b
+1 2 3
+3 3
+
+=== PAGE 21 ===
+c09.qxd 10/30/10 3:25 PM Page 374
+374 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+From this we obtain the determinant in (10) by interchanging Rows 1 and 2 and in the
+result Rows 2 and 3. But this does not change the value of the determinant because each
+interchange produces a factor (cid:3)1, and ((cid:3)1)((cid:3)1)(cid:2)1. This proves (11).
+(b) The volume of that box equals the height h(cid:2) ƒaƒƒcos gƒ (Fig. 193) times the area
+of the base, which is the area ƒb(cid:2)cƒ of the parallelogram with sides band c. Hence the
+volume is
+ƒaƒƒb(cid:2)cƒ ƒcos gƒ (cid:2) ƒa•(b(cid:2)c)ƒ (Fig. 193)
+as given by the absolute value of (11).
+(c)Three nonzero vectors, whose initial points coincide, are linearly independent if and
+only if the vectors do not lie in the same plane nor lie on the same straight line.
+This happens if and only if the triple product in (b) is not zero, so that the independence
+criterion follows. (The case of one of the vectors being the zero vector is trivial.)
+b × c
+a
+β h c
+b
+Fig. 193. Geometric interpretation of a scalar triple product
+EXAMPLE 6 Tetrahedron
+A tetrahedron is determined by three edge vectors a, b, c, as indicated in Fig. 194. Find the volume of the tetrahedron
+in Fig. 194, when a(cid:2)[2, 0, 3],b(cid:2)[0, 4, 1],c(cid:2)[5, 6, 0].
+Solution. The volume Vof the parallelepiped with these vectors as edge vectors is the absolute value of the
+scalar triple product
+2 0 3
+a 4 1 0 4
+c (a b c)(cid:2) 0 4 1 (cid:2)2 (cid:4)3 (cid:2)(cid:3)12(cid:3)60(cid:2)(cid:3)72.
+6 0 5 6
+5 6 0
+b
+Hence V(cid:2)72. The minus sign ind3icates that3 if the2 coord2inates2 are ri2ght-handed, the triple a, b, cis left-handed.
+The volume of a tetrahedron is 1of that of the parallelepiped (can you prove it?), hence 12.
+6
+Fig. 194. Can you sketch the tetrahedron, choosing the origin as the common initial point of the vectors? What are the
+(cid:2)
+Tetrahedron coordinates of the four vertices?
+This is the end of vector algebra (in space R3 and in the plane). Vector calculus
+(differentiation) begins in the next section.
+PROBLEM SET 9.3
+1–10 GENERAL PROBLEMS 4. Lagrange’s identity for ƒa(cid:2)bƒ. Verify it for
+a(cid:2)[3, 4, 2] and b(cid:2)[1, 0, 2]. Prove it, using
+1. Give the details of the proofs of Eqs. (4) and (5).
+sin2 g(cid:2)1(cid:3)cos2 g. The identity is
+2. What does a(cid:2)b(cid:2)a(cid:2)cwith a(cid:7)0imply?
+3. Give the details of the proofs of Eqs. (6) and (11). (12) ƒa(cid:2)bƒ (cid:2) 2(a•a) (b•b)(cid:3)(a•b)2.
+
+=== PAGE 22 ===
+c09.qxd 10/30/10 3:25 PM Page 375
+SEC. 9.4 Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives 375
+5. What happens in Example 3 of the text if you replace examples. Hint.For (13) choose Cartesian coordinates
+pby (cid:3)p? such that d(cid:2)[d , 0, 0]and c(cid:2)[c , c , 0].Show that
+1 1 2
+6. What happens in Example 5 if you choose a P at each side of (13) then equals [(cid:3)b 2 c 2 d 1 , b 1 c 2 d 1 , 0], and
+distance 2dfrom the axis of rotation? give reasons why the two sides are then equal in any
+Cartesian coordinate system. For (14) and (15) use (13).
+7. Rotation. A wheel is rotating about the y-axis with
+angular speed v(cid:2)20 sec(cid:3)1. The rotation appears (13) b(cid:2)(c(cid:2)d)(cid:2)(b•d)c(cid:3)(b•c)d
+clockwise if one looks from the origin in the positive (14) (a(cid:2)b)(cid:2)(c(cid:2)d)(cid:2)(a b d)c(cid:3)(a b c)d
+y-direction. Find the velocity and speed at the point
+(15) (a(cid:2)b)•(c(cid:2)d)(cid:2)(a•c)(b•d)(cid:3)(a•d)(b•c)
+[8, 6, 0]. Make a sketch.
+(16) (a b c)(cid:2) (b c a)(cid:2) (c a b)
+8. Rotation. What are the velocity and speed in Prob. 7
+at the point (4, 2, (cid:3)2) if the wheel rotates about the (cid:2)(cid:3)(c b a)(cid:2)(cid:3)(a c b)
+line y(cid:2)x, z(cid:2)0with v(cid:2)10 sec(cid:3)1? 25–35 APPLICATIONS
+9. Scalar triple product. What does (a b c)(cid:2)0imply
+25. Moment m of a force p. Find the moment vector m
+with respect to these vectors?
+and m of p(cid:2)[2, 3, 0] about Q: (2, 1, 0) acting on a
+10. WRITING REPORT. Summarize the most important line through A: (0, 3, 0). Make a sketch.
+applications discussed in this section. Give examples.
+26. Moment. Solve Prob. 25 if p(cid:2)[1, 0, 3], Q: (2, 0, 3),
+No proofs.
+and A: (4, 3, 5).
+11–23 VECTOR AND SCALAR 27. Parallelogram.Find the area if the vertices are (4, 2,
+TRIPLE PRODUCTS 0), (10, 4, 0), (5, 4, 0), and (11, 6, 0). Make a sketch.
+With respect to right-handed Cartesian coordinates, 28. A remarkable parallelogram. Find the area of the
+let a(cid:2)[2, 1, 0], b(cid:2)[(cid:3)3, 2, 0], c(cid:2)[1, 4, (cid:3)2], and quadrangle Q whose vertices are the midpoints of
+d(cid:2)[5, (cid:3)1, 3]. Showing details, find: thesides of the quadrangle Pwith vertices A: (2, 1, 0),
+11. a(cid:2)b, b(cid:2)a, a•b B: (5, (cid:3)1. 0), C: (8, 2, 0), and D: (4, 3, 0). Verify that
+Q is a parallelogram.
+12. 3c(cid:2)5d, 15d(cid:2)c, 15d•c, 15c•d
+29. Triangle. Find the area if the vertices are (0, 0, 1),
+13. c(cid:2)(a(cid:4)b), a(cid:2)c(cid:4)b(cid:2)c
+(2,0, 5), and (2, 3, 4).
+14. 4b(cid:2)3c(cid:4)12c(cid:2)b
+30. Plane. Find the plane through the points A: (1, 2, 1),
+15. (a(cid:4)d)(cid:2)(d(cid:4)a) B: (4, 2, (cid:3)2),and C: (0, 8, 4). 4
+16. (b(cid:2)c)•d, b•(c(cid:2)d) 31. Plane. Find the plane through (1, 3, 4), (1, (cid:3)2, 6), and
+17. (b(cid:2)c)(cid:2)d, b(cid:2)(c(cid:2)d) (4, 0, 7).
+18. (a(cid:2)b)(cid:2)a, a(cid:2)(b(cid:2)a) 32. Parallelepiped. Find the volume if the edge vectors
+19. (i j k), (i k j) are i(cid:4)j, (cid:3)2i(cid:4)2k, and (cid:3)2i(cid:3)3k. Make a sketch.
+20. (a(cid:2)b)(cid:2)(c(cid:2)d), (a b d)c(cid:3)(a b c)d 33. Tetrahedron. Find the volume if the vertices are
+21. 4b(cid:2)3c, 12ƒb(cid:2)cƒ, 12ƒc(cid:2)bƒ (1, 1, 1), (5, (cid:3)7, 3), (7, 4, 8), and (10, 7, 4).
+22. (a(cid:3)b c(cid:3)b d(cid:3)b), (a c d) 34. Tetrahedron. Find the volume if the vertices are
+(1, 3, 6), (3, 7, 12), (8, 8, 9), and (2, 2, 8).
+23. b(cid:2)b, (b(cid:3)c)(cid:2)(c(cid:3)b), b•b
+35. WRITING PROJECT. Applications of Cross
+24. TEAM PROJECT. Useful Formulas for Three and
+Products.Summarize the most important applications
+Four Vectors. Prove (13)–(16), which are often useful
+we have discussed in this section and give a few simple
+in practical work, and illustrate each formula with two
+examples. No proofs.
+9.4
+Vector and Scalar Functions and Their Fields.
+Vector Calculus: Derivatives
+Our discussion of vector calculus begins with identifying the two types of functions on which
+it operates. Let P be any point in a domain of definition. Typical domains in applications
+are three-dimensional, or a surface or a curve in space. Then we define a vector function
+v,whose values are vectors, that is,
+v(cid:2)v(P)(cid:2)[v (P), v (P), v (P)]
+1 2 3
+
+=== PAGE 23 ===
+c09.qxd 10/30/10 3:25 PM Page 376
+376 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+that depends on points Pin space. We say that a vector function defines a vector fieldin
+a domain of definition. Typical domains were just mentioned. Examples of vector fields
+are the field of tangent vectors of a curve (shown in Fig. 195), normal vectors of a surface
+(Fig. 196), and velocity field of a rotating body (Fig. 197). Note that vector functions may
+also depend on time t or on some other parameters.
+Similarly, we define a scalar function f, whose values are scalars, that is,
+f(cid:2)f(P)
+that depends on P. We say that a scalar function defines a scalar field in that three-
+dimensional domain or surface or curve in space. Two representative examples of scalar
+fields are the temperature field of a body and the pressure field of the air in Earth’s
+atmosphere. Note that scalar functions may also depend on some parameter such as
+time t.
+Notation. If we introduce Cartesian coordinates x, y, z, then, instead of writing v(P) for
+the vector function, we can write
+v(x, y, z)(cid:2)[v (x, y, z), v (x, y, z), v (x, y, z)].
+1 2 3
+Fig. 195. Field of tangent Fig. 196. Field of normal
+vectors of a curve vectors of a surface
+We have to keep in mind that the components depend on our choice of coordinate system,
+whereas a vector field that has a physical or geometric meaning should have magnitude
+and direction depending only on P, not on the choice of coordinate system.
+Similarly, for a scalar function, we write
+f(P)(cid:2)f(x, y, z).
+We illustrate our discussion of vector functions, scalar functions, vector fields, and scalar
+fields by the following three examples.
+EXAMPLE 1 Scalar Function (Euclidean Distance in Space)
+The distance f(P) of any point Pfrom a fixed point P in space is a scalar function whose domain of definition
+0
+is the whole space. f(P) defines a scalar field in space. If we introduce a Cartesian coordinate system and P
+0
+has the coordinates x , y , z , then fis given by the well-known formula
+0 0 0
+f(P)(cid:2)f(x, y, z)(cid:2) 2(x(cid:3)x )2(cid:4)(y(cid:3)y )2(cid:4)(z(cid:3)z )2
+0 0 0
+where x, y, zare the coordinates of P. If we replace the given Cartesian coordinate system with another such
+system by translating and rotating the given system, then the values of the coordinates of Pand P will in general
+0
+change, but f(P)will have the same value as before. Hence f(P)is a scalar function. The direction cosines of
+the straight line through Pand P are not scalars because their values depend on the choice of the coordinate
+0 (cid:2)
+system.
+
+=== PAGE 24 ===
+c09.qxd 10/30/10 3:25 PM Page 377
+SEC. 9.4 Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives 377
+EXAMPLE 2 Vector Field (Velocity Field)
+At any instant the velocity vectors v(P) of a rotating body Bconstitute a vector field, called the velocity field
+of the rotation. If we introduce a Cartesian coordinate system having the origin on the axis of rotation, then (see
+Example 5 in Sec. 9.3)
+(1) v(x, y, z)(cid:2)w(cid:2)r(cid:2)w(cid:2)[x, y, z](cid:2)w(cid:2)(xi(cid:4)yj(cid:4)zk)
+where x, y, zare the coordinates of any point Pof Bat the instant under consideration. If the coordinates are
+such that the z-axis is the axis of rotation and wpoints in the positive z-direction, then w(cid:2)vkand
+i j k
+v(cid:2) 0 0v (cid:2)v[(cid:3)y, x, 0](cid:2)v((cid:3)yi(cid:4)xj).
+x y z
+4 4 (cid:2)
+An example of a rotating body and the corresponding velocity field are shown in Fig. 197.
+Fig. 197. Velocity field of a rotating body
+EXAMPLE 3 Vector Field (Field of Force, Gravitational Field)
+Let a particle Aof mass Mbe fixed at a point P and let a particle Bof mass mbe free to take up various positions
+0
+Pin space. Then Aattracts B. According to Newton’s law of gravitationthe corresponding gravitational force p
+is directed from Pto P, and its magnitude is proportional to 1 r2, where ris the distance between Pand P, say,
+0 > 0
+c
+(2) ƒpƒ (cid:2) , c(cid:2)GMm.
+r2
+Here G(cid:2)6.67 # 10(cid:3)8 cm3 (g # sec2)is the gravitational constant. Hence pdefines a vector field in space. If
+>
+we introduce Cartesian coordinates such that P has the coordinates x , y , z and Phas the coordinates x, y, z,
+0 0 0 0
+then by the Pythagorean theorem,
+r(cid:2) 2(x(cid:3)x )2(cid:4)(y(cid:3)y )2(cid:4)(z(cid:3)z )2 ((cid:11)0).
+0 0 0
+Assuming that r(cid:6)0and introducing the vector
+r(cid:2)[x(cid:3)x , y(cid:3)y , z(cid:3)z ](cid:2)(x(cid:3)x )i(cid:4)(y(cid:3)y )j(cid:4)(z(cid:3)z )k,
+0 0 0 0 0 0
+we have ƒrƒ (cid:2)r,and ((cid:3)1 r)ris a unit vector in the direction of p; the minus sign indicates that pis directed
+>
+from Pto P (Fig. 198). From this and (2) we obtain
+0
+1 c x(cid:3)x y(cid:3)y z(cid:3)z
+p(cid:2) ƒpƒ (cid:3) r (cid:2)(cid:3) r(cid:2) (cid:3)c 0, (cid:3)c 0, (cid:3)c 0
+a r b r3 c r3 r3 r3 d
+(3)
+(cid:2)(cid:3)c
+x(cid:3)x
+0 i(cid:3)c
+y(cid:3)y
+0 j(cid:3)c
+z(cid:3)z
+0 k.
+r3 r3 r3
+(cid:2)
+This vector function describes the gravitational force acting on B.
+
+=== PAGE 25 ===
+c09.qxd 10/30/10 3:25 PM Page 378
+378 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+P
+P
+0
+Fig. 198. Gravitational field in Example 3
+Vector Calculus
+The student may be pleased to learn that many of the concepts covered in (regular)
+calculus carry over to vector calculus. Indeed, we show how the basic concepts of
+convergence, continuity, and differentiability from calculus can be defined for vector
+functions in a simple and natural way. Most important of these is the derivative of a
+vector function.
+Convergence. An infinite sequence of vectors a , n(cid:2)1, 2, Á , is said to converge if
+(n)
+there is a vector a such that
+(4) lim ƒa (cid:3)aƒ (cid:2)0.
+n:(cid:12) (n)
+a is called the limit vector of that sequence, and we write
+(5) lim a (cid:2)a.
+n:(cid:12) (n)
+If the vectors are given in Cartesian coordinates, then this sequence of vectors converges
+to a if and only if the three sequences of components of the vectors converge to the
+corresponding components of a. We leave the simple proof to the student.
+Similarly, a vector function v(t) of a real variable t is said to have the limit l as t
+approaches t , if v(t) is defined in some neighborhood of t (possibly except at t ) and
+0 0 0
+(6) lim ƒv(t)(cid:3)lƒ (cid:2)0.
+t:t0
+Then we write
+(7) lim v(t)(cid:2)l.
+t:t0
+Here, a neighborhoodof t is an interval (segment) on the t-axis containing t as an interior
+0 0
+point (not as an endpoint).
+Continuity. A vector function v(t) is said to be continuous at t(cid:2)t if it is defined in
+0
+some neighborhood of t (including at t itself!) and
+0 0
+(8) lim v(t)(cid:2)v(t ).
+t:t0 0
+
+=== PAGE 26 ===
+c09.qxd 10/30/10 3:25 PM Page 379
+SEC. 9.4 Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives 379
+If we introduce a Cartesian coordinate system, we may write
+v(t)(cid:2)[v (t), v (t), v (t)](cid:2)v (t)i(cid:4)v (t)j(cid:4)v (t)k.
+1 2 3 1 2 3
+Then v(t) is continuous at t if and only if its three components are continuous at t .
+0 0
+We now state the most important of these definitions.
+DEFINITION Derivative of a Vector Function
+A vector function v(t) is said to be differentiableat a pointt if the following limit
+exists:
+v(t (cid:4) ¢t) (cid:3)v(t)
+(9) v r (t)(cid:2) lim .
+¢t:0 ¢t
+r
+This vector v (t) is called the derivative of v(t). See Fig. 199.
+v′(t)
+v(t + Δt)
+v(t)
+Fig. 199. Derivative of a vector function
+In components with respect to a given Cartesian coordinate system,
+(10) v r (t)(cid:2)[v r (t), v r (t), v r (t)].
+1 2 3
+r
+Hence the derivativev (t)is obtained by differentiating each component separately.For
+instance, if v(cid:2)[t, t2, 0], then v r (cid:2)[1, 2t, 0].
+Equation (10) follows from (9) and conversely because (9) is a “vector form” of the
+usual formula of calculus by which the derivative of a function of a single variable is
+defined. [The curve in Fig. 199 is the locus of the terminal points representing v(t) for
+values of the independent variable in some interval containing t and t(cid:4) ¢t in (9)]. It
+follows that the familiar differentiation rules continue to hold for differentiating vector
+functions, for instance,
+(cv) r (cid:2)cv r (c constant),
+(u(cid:4)v) r (cid:2)u r(cid:4)v r
+and in particular
+(11) (u•v) r (cid:2)u r •v(cid:4)u•v r
+(12) (u(cid:2)v) r (cid:2)u r (cid:2)v(cid:4)u(cid:2)v r
+(13) (u v w) r (cid:2)(u r v w)(cid:4)(u v r w)(cid:4)(u v w r ).
+
+=== PAGE 27 ===
+c09.qxd 10/30/10 3:25 PM Page 380
+380 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+The simple proofs are left to the student. In (12), note the order of the vectors carefully
+because cross multiplication is not commutative.
+EXAMPLE 4 Derivative of a Vector Function of Constant Length
+Let v(t) be a vector function whose length is constant, say, ƒv(t)ƒ (cid:2)c. Then ƒvƒ2(cid:2)v•v(cid:2)c2, and
+(v•v) r(cid:2)2v•v r(cid:2)0, by differentiation [see (11)]. This yields the following result. The derivative of a vector
+(cid:2)
+functionv(t) of constant length is either the zero vector or is perpendicular tov(t).
+Partial Derivatives of a Vector Function
+Our present discussion shows that partial differentiation of vector functions of two or more
+variables can be introduced as follows. Suppose that the components of a vector function
+v(cid:2)[v , v , v ](cid:2)v i(cid:4)v j(cid:4)v k
+1 2 3 1 2 3
+Á
+are differentiable functions of nvariables t , , t . Then the partial derivativeof vwith
+1 n
+respect to t is denoted by 0v 0t and is defined as the vector function
+m > m
+0v 0v 0v 0v
+(cid:2) 1 i(cid:4) 2 j(cid:4) 3 k.
+0t 0t 0t 0t
+m m m m
+Similarly, second partial derivatives are
+02v 02v 02v 02v
+(cid:2) 1 i(cid:4) 2 j(cid:4) 3 k,
+0t 0t 0t 0t 0t 0t 0t 0t
+l m l m l m l m
+and so on.
+EXAMPLE 5 Partial Derivatives
+Let r(t , t )(cid:2)a cos t i(cid:4)a sin t j(cid:4)t k. Then
+0r
+(cid:2)(cid:3)a sin t i(cid:4)a cos t j and
+0r
+(cid:2)k. (cid:2)
+1 2 1 1 2 0t 1 1 0t
+1 2
+Various physical and geometric applications of derivatives of vector functions will be
+discussed in the next sections as well as in Chap. 10.
+PROBLEM SET 9.4
+1–8 SCALAR FIELDS IN THE PLANE (a) x2(cid:3)4x(cid:3)y2 (b) x2y(cid:3)y3 3
+>
+Let the temperature Tin a body be independent of zso that (c) cos x sinh y (d) sin x sinh y
+it is given by a scalar function T(cid:2)T(x, t). Identify the (e) ex sin y (f) e2x cos 2y
+isotherms T(x, y)(cid:2)const.Sketch some of them. (g) x4(cid:3)6x2y2(cid:4)y4 (h) x2(cid:3)2x(cid:3)y2
+1. T(cid:2)x2(cid:3)y2 2. T(cid:2)xy
+3. T(cid:2)3x(cid:3)4y 4. T(cid:2)arctan (y x) 9–14 SCALAR FIELDS IN SPACE
+>
+5. T(cid:2)y (x2(cid:4)y2) 6. T(cid:2)x (x2(cid:4)y2) What kind of surfaces are the level surfaces f (x, y, z)(cid:2)
+> >
+7. T(cid:2)9x2(cid:4)4y2 const?
+9. f(cid:2)4x(cid:3)3y(cid:4)2z 10. f(cid:2)9(x2(cid:4)y2)(cid:4)z2
+8. CAS PROJECT. Scalar Fields in the Plane.Sketch
+or graph isotherms of the following fields and describe 11. f(cid:2)5x2(cid:4)2y2 12. f(cid:2)z(cid:3) 2x2(cid:4)y2
+what they look like. 13. f(cid:2)z(cid:3)(x2(cid:4)y2) 14. f(cid:2)x(cid:3)y2
+
+=== PAGE 28 ===
+c09.qxd 10/30/10 3:25 PM Page 381
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 381
+15–20 VECTOR FIELDS 22–25 DIFFERENTIATION
+Sketch figures similar to Fig. 198. Try to interpet the field 22. Find the first and second derivatives of r(cid:2)[3 cos 2t,
+of vas a velocity field. 3 sin 2t, 4t].
+15. v(cid:2)i(cid:4)j 16. v(cid:2)(cid:3)yi(cid:4)xj 23. Prove (11)–(13). Give two typical examples for each
+17. v(cid:2)xj 18. v(cid:2)xi(cid:4)yj formula.
+19. v(cid:2)xi(cid:3)yj 20. v(cid:2)yi(cid:3)xj 24. Find the first partial derivatives of v (cid:2)[ex cos y,
+1
+21. CAS PROJECT. Vector Fields. Plot by arrows: ex sin y]and v (cid:2)[cos x cosh y, (cid:3)sin x sinh y].
+2
+(a) v(cid:2)[x, x2] (b) v(cid:2)[1 y, 1 x] 25. WRITING PROJECT. Differentiation of Vector
+> >
+(c) v(cid:2)[cos x, sin x] (d) v(cid:2)e(cid:3)(x2(cid:4)y2) [x, (cid:3)y] Functions. Summarize the essential ideas and facts
+and give examples of your own.
+9.5
+Curves. Arc Length. Curvature. Torsion
+Vector calculus has important applications to curves (Sec. 9.5) and surfaces (to be covered
+in Sec. 10.5) in physics and geometry. The application of vector calculus to geometry is
+a field known as differential geometry. Differential geometric methods are applied
+to problems in mechanics, computer-aided as well as traditional engineering design,
+geodesy, geography, space travel, and relativity theory. For details, see [GenRef8] and
+[GenRef9] in App. 1.
+Bodies that move in space form paths that may be represented by curves C. This and
+other applications show the need for parametric representationsof Cwith parametert,
+which may denote time or something else (see Fig. 200). A typical parametric representation
+is given by
+(1) r(t)(cid:2) [x(t), y(t), z (t)] (cid:2)x(t)i(cid:4)y(t)j(cid:4)z(t)k.
+C
+r(t)
+z
+x y
+Fig. 200. Parametric representation of a curve
+Here tis the parameter and x, y, zare Cartesian coordinates, that is, the usual rectangular
+coordinates as shown in Sec. 9.1. To each value t(cid:2)t , there corresponds a point of C
+0
+with position vector r(t ) whose coordinates are x(t ), y(t ), z(t ). This is illustrated
+˛ 0 0 0 0
+in Figs. 201 and 202.
+The use of parametric representations has key advantages over other representations
+that involve projections into the xy-plane and xz-plane or involve a pair of equations with
+y or with z as independent variable. The projections look like this:
+(2) y(cid:2)f(x), z(cid:2)g(x).
+
+=== PAGE 29 ===
+c09.qxd 10/30/10 3:25 PM Page 382
+382 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+The advantages of using (1) instead of (2) are that, in (1), the coordinates x, y, z all
+play an equal role, that is, all three coordinates are dependent variables. Moreover, the
+parametric representation (1) induces an orientation on C. This means that as we
+increase t, we travel along the curve C in a certain direction. The sense of increasing
+tis called the positive sense on C. The sense of decreasing tis then called the negative
+sense on C, given by (1).
+Examples 1–4 give parametric representations of several important curves.
+EXAMPLE 1 Circle. Parametric Representation. Positive Sense
+The circle x2(cid:4)y2(cid:2)4, z(cid:2)0in the xy-plane with center 0 and radius 2 can be represented parametrically by
+r(t)(cid:2)[2 cos t, 2 sin t, 0] or simply by r(t)(cid:2)[2 cos t, 2 sin t] (Fig. 201)
+where 0(cid:9)t(cid:9)2p. Indeed, x2(cid:4)y2(cid:2)(2 cos t)2(cid:4)(2 sin t)2(cid:2)4(cos2 t(cid:4)sin2 t)(cid:2)4, For t(cid:2)0 we have
+r(0)(cid:2)[2, 0], for t(cid:2)1pwe get r(1p)(cid:2)[0, 2],and so on. The positive sense induced by this representation
+2 2
+is the counterclockwise sense.
+If we replace twith t*(cid:2)(cid:3)t,we have t(cid:2)(cid:3)t*and get
+r*(t*)(cid:2)[2 cos ((cid:3)t*), 2 sin ((cid:3)t*)](cid:2)[2 cos t*, (cid:3)2 sin t*].
+(cid:2)
+This has reversed the orientation, and the circle is now oriented clockwise.
+EXAMPLE 2 Ellipse
+The vector function
+(3) r(t)(cid:2)[a cos t, b sin t, 0](cid:2)a cos t i(cid:4)b sin t j (Fig. 202)
+represents an ellipse in the xy-plane with center at the origin and principal axes in the direction of the x-and
+y-axes. In fact, since cos2 t(cid:4)sin2 t(cid:2)1, we obtain from (3)
+x2 y2
+(cid:4) (cid:2)1, z(cid:2)0.
+a2 b2
+If b(cid:2)a,then (3) represents a circleof radius a. (cid:2)
+y
+(t = 1_ π)
+2
+(t = π) y
+(t = π) (t = 1 2 _ π)
+2
+x b
+a x
+(t = 0)
+(t = 3 2 _ π) (t = 3 2 _ π) (t = 0)
+Fig. 201. Circle in Example 1 Fig. 202. Ellipse in Example 2
+EXAMPLE 3 Straight Line
+A straight line Lthrough a point Awith position vector ain the direction of a constant vector b(see Fig. 203)
+can be represented parametrically in the form
+(4) r(t)(cid:2)a(cid:4)tb(cid:2)[a (cid:4)tb, a (cid:4)tb, a (cid:4)tb].
+1 ˛ 1 2 2 3 ˛ 3
+
+=== PAGE 30 ===
+c09.qxd 10/30/10 3:25 PM Page 383
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 383
+If bis a unit vector, its components are the direction cosinesof L. In this case, ƒtƒ measures the distance of the
+points of Lfrom A. For instance, the straight line in the xy-plane through A: (3, 2) having slope 1 is (sketch it)
+r(t)(cid:2)[3, 2, 0](cid:4)t[1, 1, 0](cid:2)[3(cid:4)t, 2(cid:4)t, 0]. (cid:2)
+L
+b
+A
+z
+a
+x y
+Fig. 203. Parametric representation of a straight line
+A plane curve is a curve that lies in a plane in space. A curve that is not plane is called
+a twisted curve. A standard example of a twisted curve is the following.
+EXAMPLE 4 Circular Helix
+The twisted curve Crepresented by the vector function
+(5) r(t)(cid:2)[a cos t, a sin t, ct](cid:2)a cos ti(cid:4)a sin tj(cid:4)ctk (c(cid:7)0)
+is called a circular helix.It lies on the cylinder x2(cid:4)y2(cid:2)a2. If c(cid:6)0,the helix is shaped like a right-handed
+screw (Fig. 204). If c(cid:5)0,it looks like a left-handed screw (Fig. 205). If c(cid:2)0,then (5) is a circle. (cid:2)
+z
+z
+y
+x
+y
+x
+Fig. 204. Right-handed circular helix Fig. 205. Left-handed circular helix
+A simple curve is a curve without multiple points, that is, without points at which the
+curve intersects or touches itself. Circle and helix are simple curves. Figure 206 shows
+curves that are not simple. An example is [sin 2t, cos t, 0]. Can you sketch it?
+An arc of a curve is the portion between any two points of the curve. For simplicity,
+we say “curve” for curves as well as for arcs.
+Fig. 206. Curves with multiple points
+
+=== PAGE 31 ===
+c09.qxd 10/30/10 3:25 PM Page 384
+384 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Tangent to a Curve
+The next idea is the approximation of a curve by straight lines, leading to tangents and
+to a definition of length. Tangents are straight lines touching a curve. The tangent to a
+simple curve C at a point P of C is the limiting position of a straight line L through P
+and a point Q of C as Q approaches P along C. See Fig. 207.
+Let us formalize this concept. If C is given by r(t), and P and Q correspond to t and
+t(cid:4) ¢t, then a vector in the direction of L is
+1
+[r(t (cid:4) ¢t) (cid:3)r(t)].
+(6) ¢t
+In the limit this vector becomes the derivative
+(7) r r (t)(cid:2) lim 1 [r(t (cid:4) ¢t) (cid:3)r(t)],
+¢t:0 ¢t
+provided r(t) is differentiable, as we shall assume from now on. If r r (t)(cid:7)0,we call r r (t)
+a tangent vectorof Cat Pbecause it has the direction of the tangent. The corresponding
+unit vector is the unit tangent vector (see Fig. 207)
+(8) u(cid:2) 1 r r .
+ƒr rƒ
+r
+Note that both r and u point in the direction of increasing t. Hence their sense depends
+on the orientation of C. It is reversed if we reverse the orientation.
+It is now easy to see that the tangent to C at P is given by
+(9) q(w)(cid:2)r(cid:4)wr r (Fig. 208).
+r
+This is the sum of the position vector rof Pand a multiple of the tangent vector r of C
+at P. Both vectors depend on P. The variable w is the parameter in (9).
+L
+Tangent
+T
+u Q C w r ′
+q
+P P
+r(t) r(t + Δt) r
+0
+0 C
+Fig. 207. Tangent to a curve Fig. 208. Formula (9) for the tangent to a curve
+EXAMPLE 5 Tangent to an Ellipse
+Find the tangent to the ellipse 1x2(cid:4)y2(cid:2)1at P: (12, 1 12).
+4 >
+Solution. Equation (3) with semi-axes a(cid:2)2and b(cid:2)1gives r(t)(cid:2)[2 cos t, sin t].The derivative is
+r r (t)(cid:2)[(cid:3)2 sin t, cos t].Now Pcorresponds to t(cid:2)p 4because
+>
+r(p 4)(cid:2)[2 cos (p 4), sin (p 4)](cid:2)[12, 1 12].
+> > > >
+
+=== PAGE 32 ===
+c09.qxd 10/30/10 3:25 PM Page 385
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 385
+Hence r r (p 4)(cid:2)[(cid:3)12, 1 12].From (9) we thus get the answer
+> >
+q(w)(cid:2)[12, 1 12](cid:4)w[(cid:3)12, 1 12](cid:2)[12(1(cid:3)w), (1 12)(1(cid:4)w)].
+> > >
+(cid:2)
+To check the result, sketch or graph the ellipse and the tangent.
+Length of a Curve
+We are now ready to define the length l of a curve. l will be the limit of the lengths of
+broken lines of n chords (see Fig. 209, where n(cid:2)5) with larger and larger n. For this,
+let r(t), a (cid:9)t(cid:9)b, represent C. For each n(cid:2)1, 2, Á , we subdivide (“partition”) the
+interval a(cid:9)t(cid:9)b by points
+t ((cid:2)a), t , Á , t , t ((cid:2)b), where t (cid:5)t (cid:5) Á (cid:5)t .
+0 1 n(cid:3)1 n 0 1 n
+Á
+This gives a broken line of chords with endpoints r(t ), , r(t ).We do this arbitrarily
+0 n
+but so that the greatest ƒ¢t ƒ (cid:2) ƒt (cid:3)t ƒ approaches 0 as n:(cid:12). The lengths
+m m m(cid:3)1
+Á
+l , l , of these chords can be obtained from the Pythagorean theorem. If r(t) has a
+1 2
+r Á
+continuous derivative r (t),it can be shown that the sequence l , l , has a limit, which
+1 2
+is independent of the particular choice of the representation of C and of the choice of
+subdivisions. This limit is given by the integral
+(cid:2)b
+(10) l(cid:2) 2r r •r r dt r r (cid:2) dr .
+a dtb
+a
+l is called the length of C, and C is called rectifiable. Formula (10) is made plausible
+incalculus for plane curves and is proved for curves in space in [GenRef8] listed in App.1.
+The actual evaluation of the integral (10) will, in general, be difficult. However, some
+simple cases are given in the problem set.
+Arc Length s of a Curve
+The length (10) of a curve Cis a constant, a positive number. But if we replace the fixed
+bin (10) with a variable t, the integral becomes a function of t, denoted by s(t) and called
+the arc length function or simply the arc length of C. Thus
+(11) s(t)(cid:2)
+(cid:2)t
+2r r •r r d (cid:3) t
+a
+r r (cid:2)
+d
+d (cid:3) r
+t b
+.
+a
+~
+Here the variable of integration is denoted by t because tis now used in the upper limit.
+Geometrically, s(t )with some t (cid:6)ais the length of the arc of Cbetween the points
+0 0
+with parametric values a and t . The choice of a (the point s(cid:2)0) is arbitrary; changing
+0
+a means changing s by a constant.
+Fig. 209. Length of a curve
+
+=== PAGE 33 ===
+c09.qxd 10/30/10 3:25 PM Page 386
+386 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Linear Element ds. If we differentiate (11) and square, we have
+2 2 2 2
+(12) ds (cid:2) dr • dr (cid:2) ƒr r (t)ƒ2(cid:2) dx (cid:4) dy (cid:4) dz .
+adtb dt dt adtb adtb adtb
+It is customary to write
+(13*) dr(cid:2)[dx, dy, dz](cid:2)dxi(cid:4)dyj(cid:4)dzk
+and
+(13) ds2(cid:2)dr•dr(cid:2)dx2(cid:4)dy2(cid:4)dz2.
+ds is called the linear element of C.
+Arc Length as Parameter. The use of sin (1) instead of an arbitrary tsimplifies various
+formulas. For the unit tangent vector (8) we simply obtain
+(14) u(s)(cid:2)r r (s).
+Indeed, ƒr r (s)ƒ (cid:2)(ds ds) (cid:2)1 in (12) shows that r r (s) is a unit vector. Even greater
+>
+simplifications due to the use of s will occur in curvature and torsion (below).
+EXAMPLE 6 Circular Helix. Circle. Arc Length as Parameter
+The helix r(t)(cid:2)[a cos t, a sin t, ct] in (5) has the derivative r r (t)(cid:2)[(cid:3)a sin t, a cos t, c]. Hence
+r r•r r(cid:2)a2(cid:4)c2,a constant, which we denote by K2.Hence the integrand in (11) is constant, equal to K,
+and the integral is s(cid:2)Kt. Thus t(cid:2)s K, so that a representation of the helix with the arc length s as
+>
+parameter is
+s s s cs
+(15) r*(s)(cid:2)r (cid:2) a cos , a sin , , K(cid:2) 2a2(cid:4)c2.
+aKb c K K Kd
+A circleis obtained if we set c(cid:2)0.Then K(cid:2)a, t(cid:2)s a,and a representation with arc length sas parameter is
+>
+r*(s)(cid:2)r s (cid:2) a cos s , a sin s . (cid:2)
+aab c a ad
+Curves in Mechanics. Velocity. Acceleration
+Curves play a basic role in mechanics, where they may serve as paths of moving bodies.
+Then such a curve Cshould be represented by a parametric representation r(t) with time
+t as parameter. The tangent vector (7) of C is then called the velocity vector v because,
+being tangent, it points in the instantaneous direction of motion and its length gives the
+speed ƒvƒ (cid:2) ƒr rƒ (cid:2) 2r r •r r (cid:2)ds dt; see (12). The second derivative of r(t) is called
+>
+the acceleration vector and is denoted by a. Its length ƒaƒ is called the acceleration of
+the motion. Thus
+(16) v(t)(cid:2)r r (t), a(t)(cid:2)v r (t)(cid:2)r s (t).
+
+=== PAGE 34 ===
+c09.qxd 10/30/10 3:25 PM Page 387
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 387
+Tangential and Normal Acceleration. Whereas the velocity vector is always tangent
+to the path of motion, the acceleration vector will generally have another direction. We
+can split the acceleration vector into two directional components, that is,
+(17) a(cid:2)a (cid:4)a ,
+tan norm
+where the tangential acceleration vector a is tangent to the path (or, sometimes, 0)
+tan
+and the normal acceleration vector a is normal (perpendicular) to the path (or,
+norm
+sometimes, 0).
+Expressions for the vectors in (17) are obtained from (16) by the chain rule. We first have
+dr dr ds ds
+v(t)(cid:2) (cid:2) (cid:2)u(s)
+dt ds dt dt
+where u(s) is the unit tangent vector (14). Another differentiation gives
+2
+dv d ds du ds d2s
+(18) a(t)(cid:2) (cid:2) u(s) (cid:2) (cid:4)u(s) .
+dt dt a dt b ds adt b dt2
+Since the tangent vector u(s) has constant length (length one), its derivative du ds is
+>
+perpendicular to u(s), from the result in Example 4 in Sec. 9.4. Hence the first term on
+the right of (18) is the normal acceleration vector, and the second term on the right is the
+tangential acceleration vector, so that (18) is of the form (17).
+Now the length ƒa ƒ is the absolute value of the projection of ain the direction of v,
+tan
+given by (11) in Sec. 9.2 with b(cid:2)v; that is, ƒa ƒ (cid:2) ƒa•vƒ ƒvƒ. Hence a is this
+tan > tan
+expression times the unit vector (1 ƒvƒ)v in the direction of v, that is,
+>
+a•v
+(18*) a tan (cid:2) v•v v. Also, a norm (cid:2)a(cid:3)a tan .
+We now turn to two examples that are relevant to applications in space travel.
+They deal with the centripetal and centrifugal accelerations, as well as the Coriolis
+acceleration.
+EXAMPLE 7 Centripetal Acceleration. Centrifugal Force
+The vector function
+r(t)(cid:2)[R cos vt, R sin vt](cid:2)R cos vt i(cid:4)R sin vt j (Fig. 210)
+(with fixed iand j) represents a circle Cof radius Rwith center at the origin of the xy-plane and describes the
+motion of a small body Bcounterclockwise around the circle. Differentiation gives the velocity vector
+v(cid:2)r r(cid:2)[(cid:3)Rv sin vt, Rv cos vt](cid:2)(cid:3)Rv sin vt i(cid:4)Rv cos vt j (Fig. 210)
+vis tangent to C. Its magnitude, the speed, is
+ƒvƒ (cid:2) ƒr rƒ (cid:2) 2r r•r r(cid:2)Rv.
+Hence it is constant. The speed divided by the distance Rfrom the center is called the angular speed. It equals
+v, so that it is constant, too. Differentiating the velocity vector, we obtain the acceleration vector
+(19) a(cid:2)v r(cid:2)[(cid:3)Rv2 cos vt, (cid:3)Rv2 sin vt](cid:2)(cid:3)Rv2 cos vt i(cid:3)Rv2 sin vt j.
+
+=== PAGE 35 ===
+c09.qxd 10/30/10 3:25 PM Page 388
+388 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+y
+j
+b
+b′
+i x
+Fig. 210. Centripetal acceleration a
+This shows that a(cid:2)(cid:3)v2r(Fig. 210), so that there is an acceleration toward the center, called the centripetal
+accelerationof the motion. It occurs because the velocity vector is changing direction at a constant rate. Its
+magnitude is constant, ƒaƒ (cid:2)v2ƒrƒ (cid:2)v2R.Multiplying aby the mass mof B, we get the centripetal forcema.
+The opposite vector (cid:3)mais called the centrifugal force. At each instant these two forces are in equilibrium.
+We see that in this motion the acceleration vector is normal (perpendicular) to C; hence there is no tangential
+(cid:2)
+acceleration.
+EXAMPLE 8 Superposition of Rotations. Coriolis Acceleration
+A projectile is moving with constant speed along a meridian of the rotating earth in Fig. 211. Find its acceleration.
+z
+a
+cor k
+P
+b
+x
+y
+Fig. 211. Example 8. Superposition of two rotations
+Solution. Let x, y, zbe a fixed Cartesian coordinate system in space, with unit vectors i,j,kin the directions
+of the axes. Let the Earth, together with a unit vector b, be rotating about the z-axis with angular speed v(cid:6)0
+(see Example 7). Since bis rotating together with the Earth, it is of the form
+b(t)(cid:2)cos vt i(cid:4)sin vt j.
+Let the projectile be moving on the meridian whose plane is spanned by band k(Fig. 211) with constant angular
+speed v(cid:6)0.Then its position vector in terms of band kis
+r (t)(cid:2)R cos gt b (t)(cid:4)R sin gt k (R(cid:2)Radius of the Earth).
+
+=== PAGE 36 ===
+c09.qxd 10/30/10 3:25 PM Page 389
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 389
+We have finished setting up the model. Next, we apply vector calculus to obtain the desired acceleration of the
+projectile. Our result will be unexpected—and highly relevant for air and space travel. The first and second
+derivatives of bwith respect to tare
+b r (t)(cid:2)(cid:3)v sin vt i(cid:4)v cos vt j
+(20)
+b s (t)(cid:2)(cid:3)v2 cos vt i(cid:3)v2 sin vt j(cid:2)(cid:3)v2b(t).
+The first and second derivatives of r(t) with respect to tare
+v(cid:2)r r (t)(cid:2)R cos gt b r(cid:3)gR sin gt b(cid:4)gR cos gt k
+(21) a(cid:2)v r(cid:2)R cos gt b s(cid:3)2gR sin gt b r(cid:3)g2R cos gt b(cid:3)g2R sin gt k
+(cid:2)R cos gt b s(cid:3)2gR sin gt b r(cid:3)g2r.
+By analogy with Example 7 and because of b s(cid:2)(cid:3)v2bin (20) we conclude that the first term in a(involving v
+s
+in b !) is the centripetal acceleration due to the rotation of the Earth. Similarly, the third term in the last line (involving
+g!) is the centripetal acceleration due to the motion of the projectile on the meridian Mof the rotating Earth.
+The second, unexpected term (cid:3)2gR sin gt b r in a is called the Coriolis acceleration3(Fig. 211) and is
+due to the interaction of the two rotations. On the Northern Hemisphere, sin gt(cid:6)0(for t(cid:6)0;also g(cid:6)0
+by assumption), so that a has the direction of (cid:3)b r , that is, opposite to the rotation of the Earth. ƒa ƒ
+cor cor
+is maximum at the North Pole and zero at the equator. The projectile B of mass m experiences a force
+0
+(cid:3)m a opposite to m a , which tends to let B deviate from M to the right (and in the Southern
+0 cor 0 cor
+Hemisphere, where sin gt(cid:5)0, to the left). This deviation has been observed for missiles, rockets, shells,
+(cid:2)
+and atmospheric airflow.
+Curvature and Torsion. Optional
+This last topic of Sec. 9.5 is optional but completes our discussion of curves relevant to
+vector calculus.
+The curvature(cid:2)(s)of a curve C:r(s)(sthe arc length) at a point Pof Cmeasures the
+rate of change ƒu r (s)ƒ of the unit tangent vector u(s)at P. Hence (cid:2)(s)measures the deviation
+of C at P from a straight line (its tangent at P). Since u(s)(cid:2)r r (s), the definition is
+(22) (cid:2)(s)(cid:2) ƒu r (s)ƒ (cid:2) ƒr s (s)ƒ ( r (cid:2)d ds).
+>
+The torsion t(s) of C at P measures the rate of change of the osculating plane O of
+r
+curve C at point P. Note that this plane is spanned by u and u and shown in Fig. 212.
+Hence t(s) measures the deviation of C at P from a plane (from O at P). Now the rate
+r
+of change is also measured by the derivative b of a normal vector bat O. By the definition
+of vector product, a unit normal vector of Ois b(cid:2)u(cid:2)(1 (cid:2))u r (cid:2)u(cid:2)p.Here p(cid:2)(1 (cid:2))u r
+> >
+is called the unit principal normal vectorand bis called the unit binormal vectorofC
+at P.The vectors are labeled in Fig. 212. Here we must assume that (cid:2)(cid:7)0; hence (cid:2)(cid:6)0.
+The absolute value of the torsion is now defined by
+(23*) ƒt(s)ƒ (cid:2) ƒb r (s)ƒ.
+Whereas (cid:2)(s) is nonnegative, it is practical to give the torsion a sign, motivated by
+“right-handed” and “left-handed” (see Figs. 204 and 205). This needs a little further
+r
+calculation. Since b is a unit vector, it has constant length. Hence b is perpendicular
+3GUSTAVE GASPARD CORIOLIS (1792–1843), French engineer who did research in mechanics.
+
+=== PAGE 37 ===
+390 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+u Rectifying plane b Normal plane
+Curve
+Principal
+p normal
+u
+r
+to b (see Example 4 in Sec. 9.4). Now b is also perpendicular to u because, by the
+definition of vector product, we have b•u(cid:2)0, b•u r (cid:2)0. This implies
+(b•u) r (cid:2)0; that is, b r •u(cid:4)b•u r (cid:2)b r •u(cid:4)0(cid:2)0.
+Hence if b r (cid:7)0at P, it must have the direction of por (cid:3)p, so that it must be of the form
+b r (cid:2)(cid:3)tp. Taking the dot product of this by p and using p•p(cid:2)1 gives
+(23) t(s)(cid:2)(cid:3)p(s)•b r (s).
+The minus sign is chosen to make the torsion of a right-handedhelix positiveand that of
+a left-handedhelix negative(Figs. 204 and 205). The orthonormal vector triple u,p,bis
+called the trihedron of C. Figure 212 also shows the names of the three straight lines in
+the directions of u,p,b, which are the intersections of the osculating plane, the normal
+plane, and the rectifying plane.
+PROBLEM SET 9.5
+1–10 PARAMETRIC REPRESENTATIONS 11–20 FIND A PARAMETRIC REPRESENTATION
+What curves are represented by the following? 11. Circle in the plane z(cid:2)1with center (3, 2) and passing
+Sketch them. through the origin.
+1. [3(cid:4)2 cos t, 2 sin t, 0] 12. Circle in the yz-plane with center (4, 0) and passing
+2. [a(cid:4)t, b(cid:4)3t, c(cid:3)5t] through (0, 3). Sketch it.
+3. [0, t, t3] 13. Straight line through (2, 1, 3) in the direction of i(cid:4)2j.
+4. [(cid:3)2, 2(cid:4)5 cos t, (cid:3)1(cid:4)5 sin t] 14. Straight line through (1, 1, 1) and (4, 0, 2). Sketch it.
+5. [2(cid:4)4 cos t, 1(cid:4)sin t, 0] 15. Straight line y(cid:2)4x(cid:3)1, z(cid:2)5x.
+6. [a(cid:4)3 cos pt, b(cid:3)2 sin pt, 0] 16. The intersection of the circular cylinder of radius 1
+7. [4 cos t, 4 sin t, 3t] about the z-axis and the plane z(cid:2)y.
+8. [cosh t, sinh t, 2] 17. Circle 1
+2
+x2(cid:4)y2(cid:2)1, z(cid:2)y.
+9. [cos t, sin 2t, 0] 18. Helix x2(cid:4)y2(cid:2)25, z(cid:2)2 arctan (y x).
+>
+10. [t, 2, 1 t] 19. Hyperbola 4x2(cid:3)3y2(cid:2)4, z(cid:2)(cid:3)2.
+>
+lamroniB
+c09.qxd 10/30/10 3:25 PM Page 390
+Tangent
+Osculating plane
+Fig. 212. Trihedron. Unit vectors u,p,band planes
+
+=== PAGE 38 ===
+c09.qxd 10/30/10 3:25 PM Page 391
+SEC. 9.5 Curves. Arc Length. Curvature. Torsion 391
+20. Intersection of 2x(cid:3)y(cid:4)3z(cid:2)2and x(cid:4)2y(cid:3)z(cid:2)3. 31. Circle r(t)(cid:2)[a cos t, a sin t]from (a, 0) to (0, a).
+21. Orientation. Explain why setting t(cid:2)(cid:3)t* reverses 32. Hypocycloid r(t)(cid:2)[a cos3 t, a sin3 t], total length.
+the orientation of [a cos t, a sin t, 0].
+33. Plane curve. Show that Eq. (10) implies
+22. CAS PROJECT. Curves. Graph the following more /(cid:2) (cid:3)b21(cid:4)y r2 dx for the length of a plane curve
+a
+complicated curves:
+C: y(cid:2)f(x), z(cid:2)0, and a(cid:2)x(cid:2)b.
+(a) r(t)(cid:2)[2 cos t(cid:4)cos 2t, 2 sin t(cid:3)sin 2t](Steiner’s
+34. Polar coordinates r(cid:2) 2x2(cid:4)y2, u(cid:2)arctan (y x)
+hypocycloid). >
+give
+(b) r(t)(cid:2)[cos t(cid:4)k cos 2t, sin t(cid:3)k sin 2t]with k(cid:2)
+10, 2, 1, 1 2 , 0, (cid:3)1 2 , (cid:3)1. /(cid:2) (cid:2)b 2r2(cid:4)r r2 du,
+(c) r(t)(cid:2)[cos t, sin 5t](a Lissajous curve).
+a
+(d) r (t)(cid:2)[cos t, sin kt]. For what k’s will it be closed? where r r (cid:2)dr du. Derive this. Use it to find the total
+(e) r (t)(cid:2)[R sin vt(cid:4)vRt, R cos vt(cid:4)R](cycloid). length of the c > ardioid r(cid:2)a(1(cid:3)cos u). Sketch this
+23. CAS PROJECT. Famous Curves in Polar Form. curve. Hint.Use (10) in App. 3.1.
+Use your CAS to graph the following curves4given in
+polar form r(cid:2)r (u), r2(cid:2)x2(cid:4)y2, tan u(cid:2)y
+>
+x, and 35–46 CURVES IN MECHANICS
+investigate their form depending on parameters aand b.
+Forces acting on moving objects (cars, airplanes, ships, etc.)
+r(cid:2)au Spiral of Archimedes require the engineer to know corresponding tangentialand
+normal accelerations. In Probs. 35–38 find them, along
+r(cid:2)aebu Logarithmic spiral
+with the velocityand speed. Sketch the path.
+r(cid:2) 2a sin2 u Cissoid of Diocles 35. Parabola r (t)(cid:2)[t, t2, 0]. Find v and a.
+cos u
+36. Straight line r(t)(cid:2)[8t, 6t, 0]. Find vand a.
+a
+r(cid:2) (cid:4)b Conchoid of Nicomedes 37. Cycloid r (t)(cid:2)(R sin vt(cid:4)Rt) i(cid:4)(R cos vt(cid:4)R) j.
+cos u
+This is the path of a point on the rim of a wheel of
+r(cid:2)a u Hyperbolic spiral radius R that rolls without slipping along the x-axis.
+>
+Find vand aat the maximum y-values of the curve.
+3a sin 2u
+r(cid:2) cos3 u(cid:4)sin3 u Folium of Descartes 38. Ellipse r(cid:2)[cos t, 2 sin t, 0].
+r(cid:2)2a sin 3u Maclaurin’s trisectrix 39–42 THE USE OF A CAS may greatly facilitate the
+sin 2u
+investigation of more complicated paths, as they occur in
+r(cid:2)2a cos u(cid:4)b Pascal’s snail gear transmissions and other constructions. To grasp the
+idea, using a CAS, graph the path and find velocity, speed,
+24–28 TANGENT
+and tangential and normal acceleration.
+r
+Given a curve C: r(t), find a tangent vector r (t), a unit
+tangent vector u r (t), and the tangent of Cat P. Sketch curve 39. r (t)(cid:2)[cos t(cid:4)cos 2t, sin t(cid:3)sin 2t]
+and tangent. 40. r(t)(cid:2)[2 cos t(cid:4)cos 2t, 2 sin t(cid:3)sin 2t]
+24. r (t)(cid:2)[t, 1 2 t2, 1], P: (2, 2, 1) 41. r (t)(cid:2)[cos t, sin 2t, cos 2t]
+25. r (t)(cid:2)[10 cos t, 1, 10 sin t], P: (6, 1, 8) 42. r (t)(cid:2)[ct cos t, ct sin t, ct] (c(cid:7)0)
+26. r(t)(cid:2)[cos t, sin t, 9t], P: (1, 0, 18p)
+43. Sun and Earth. Find the acceleration of the Earth
+27. r (t)(cid:2)[t, 1 > t, 0], P: (2, 1 2 , 0) toward the sun from (19) and the fact that Earth
+28. r(t)(cid:2)[t, t2, t3], P: (1, 1, 1) revolves about the sun in a nearly circular orbit with
+an almost constant speed of 30 km s.
+29–32 LENGTH >
+44. Earth and moon. Find the centripetal acceleration
+Find the length and sketch the curve.
+of the moon toward Earth, assuming that the orbit
+29. Catenaryr (t)(cid:2)[t, cosh t]from t(cid:2)0to t(cid:2)1. of the moon is a circle of radius 239,000 miles(cid:2)
+#
+30. Circular helix r(t)(cid:2)[4 cos t, 4 sin t, 5t]from (4, 0, 0) 3.85 108 m, and the time for one complete revolution
+#
+to (4, 0, 10p). is 27.3 days(cid:2)2.36 106 s.
+4Named after ARCHIMEDES (c. 287–212 B.C.), DESCARTES (Sec. 9.1), DIOCLES (200 B.C.),
+MACLAURIN (Sec. 15.4), NICOMEDES (250? B.C.) ÉTIENNE PASCAL (1588–1651), father of BLAISE
+PASCAL (1623–1662).
+
+=== PAGE 39 ===
+c09.qxd 10/30/10 3:25 PM Page 392
+392 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+45. Satellite. Find the speed of an artificial Earth satellite 50. Torsion. Using b(cid:2)u(cid:2)pand (23), show that (when
+traveling at an altitude of 80 miles above Earth’s (cid:2)(cid:6)0)
+surface, where g(cid:2)31 ft > sec2. (The radius of the Earth (23**) t(s)(cid:2)(u p p r )(cid:2)(r r r s r t ) (cid:13)2.
+is 3960 miles.) >
+46. Satellite. A satellite moves in a circular orbit 51. Torsion. Show that if C is represented by r (t) with
+450 miles above Earth’s surface and completes arbitrary parameter t, then, assuming (cid:2)(cid:6)0as before,
+1revolution in 100 min. Find the acceleration of gravity
+(r
+r
+r
+s
+r
+t
+)
+at the orbitfrom these data and from the radius of Earth (23***) t(t)(cid:2) .
+(3960miles). (r r •r r )(r s •r s )(cid:3)(r r •r s )2
+47–55 CURVATURE AND TORSION 52. Helix. Show that the helix [a cos t, a sin t, ct]can
+47. Circle. Show that a circle of radius a has curvature be represented by [a cos (s K), a sin (s K), cs K],
+> > >
+1 a. where K(cid:2) 2a2(cid:4)c2 and s is the arc length. Show
+>
+48. Curvature. Using (22), show that if Cis represented that it has constant curvature (cid:2)(cid:2)a K2 and torsion
+>
+by r(t)with arbitrary t, then t(cid:2)c K2.
+>
+53. Find the torsion of C: r(t)(cid:2)[t, t2, t3], which looks
+2(r r •r r )(r s •r s )(cid:3)(r r •r s )2
+(22*) (cid:13)(t)(cid:2) . similar to the curve in Fig. 212.
+(r r •r r )3 > 2 54. Frenet5formulas. Show that
+49. Plane curve. Using (22*), show that for a curve u r (cid:2)(cid:2)p, p r (cid:2)(cid:3)(cid:2)u(cid:4)tb, b r (cid:2)(cid:3)tp.
+y(cid:2)f(x),
+55. Obtain (cid:2) and t in Prob. 52 from (22*) and (23***)
+ƒy sƒ dy and the original representation in Prob. 54 with
+(22**) (cid:13)(x)(cid:2)
+(1(cid:4)y r2)3
+>
+2 a
+y r (cid:2)
+dx
+, etc.
+b
+. parameter t.
+9.6
+Calculus Review:
+Functions of Several Variables. Optional
+The parametric representations of curves C required vector functions that depended on a
+single variable x, s, or t.We now want to systematically cover vector functions of several
+variables.This optional section is inserted into the book for your convenience and to make
+the book reasonably self-contained. Go onto Sec. 9.7 and consult Sec. 9.6 only when
+needed. For partial derivatives, see App. A3.2.
+Chain Rules
+Figure 213 shows the notations in the following basic theorem.
+v z
+D
+(u, v) [x(u, v), y(u, v), z(u, v)]
+B
+u
+x y
+Fig. 213. Notations in Theorem 1
+5JEAN-FRÉDÉRIC FRENET (1816–1900), French mathematician.
+
+=== PAGE 40 ===
+c09.qxd 10/30/10 3:25 PM Page 393
+SEC. 9.6 Calculus Review: Functions of Several Variables. Optional 393
+THEOREM 1 Chain Rule
+Let w(cid:2)f(x, y, z) be continuous and have continuous first partial derivatives in a
+domain D in xyz-space. Let x(cid:2)x(u, v), y(cid:2)y(u, v), z(cid:2)z(u, v) be functions that
+are continuous and have first partial derivatives in a domain B in the uv-plane,
+where B is such that for every point (u, v) in B, the corresponding point [x(u, v),
+y(u, v), z(u, v)] lies in D. See Fig. 213. Then the function
+w(cid:2)f(x(u, v), y(u, v), z(u, v))
+is defined in B, has first partial derivatives with respect to u and v in B, and
+0w 0w 0x 0w 0y 0w 0z
+(cid:2) (cid:4) (cid:4)
+0u 0x 0u 0y 0u 0z 0u
+(1)
+0w 0w 0x 0w 0y 0w 0z
+(cid:2) (cid:4) (cid:4) .
+0v 0x 0v 0y 0v 0z 0v
+In this theorem, a domain D is an open connected point set in xyz-space, where
+“connected” means that any two points of D can be joined by a broken line of finitely
+many linear segments all of whose points belong to D. “Open” means that every point P
+of Dhas a neighborhood (a little ball with center P) all of whose points belong to D. For
+example, the interior of a cube or of an ellipsoid (the solid without the boundary surface)
+is a domain.
+In calculus, x, y, z are often called the intermediate variables, in contrast with the
+independent variables u, v and the dependent variable w.
+Special Cases of Practical Interest
+If w(cid:2)f(x, y) and x(cid:2)x(u, v), y(cid:2)y(u, v) as before, then (1) becomes
+0w 0w 0x 0w 0y
+(cid:2) (cid:4)
+0u 0x 0u 0y 0u
+(2)
+0w 0w 0x 0w 0y
+(cid:2) (cid:4) .
+0v 0x 0v 0y 0v
+If w(cid:2)f(x, y, z) and x(cid:2)x(t), y(cid:2)y(t), z(cid:2)z(t), then (1) gives
+dw 0w dx 0w dy 0w dz
+(3) dt (cid:2) 0x dt (cid:4) 0y dt (cid:4) 0z dt .
+
+=== PAGE 41 ===
+c09.qxd 10/30/10 3:25 PM Page 394
+394 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+If w(cid:2)f(x, y) and x(cid:2)x(t), y(cid:2)y(t), then (3) reduces to
+dw 0w dx 0w dy
+(4) dt (cid:2) 0x dt (cid:4) 0y dt .
+Finally, the simplest case w(cid:2)f(x), x(cid:2)x(t) gives
+dw dw dx
+(5)
+dt
+(cid:2)
+dx dt
+.
+EXAMPLE 1 Chain Rule
+If w(cid:2)x2(cid:3)y2and we define polar coordinates r, uby x(cid:2)r cos u, y(cid:2)r sin u, then (2) gives
+0w
+(cid:2)2x cos u(cid:3)2y sin u(cid:2)2r cos2 u(cid:3)2r sin2 u(cid:2)2r cos 2u
+0r
+0w
+(cid:2)2x((cid:3)r sin u)(cid:3)2y(r cos u)(cid:2)(cid:3)2r2 cos u sin u(cid:3)2r2 sin u cos u(cid:2)(cid:3)2r2 sin 2u. (cid:2)
+0u
+Partial Derivatives on a Surface z (cid:2) g(x, y)
+Let w(cid:2)f(x, y, z)and let z(cid:2)g(x, y)represent a surface Sin space. Then on Sthe function
+becomes
+(cid:3)
+w(x, y) (cid:2)f(x, y, g(x, y)).
+Hence, by (1), the partial derivatives are
+(cid:3) (cid:3)
+0w 0f 0f 0g 0w 0f 0f 0g
+(6) (cid:2) (cid:4) , (cid:2) (cid:4) [z (cid:2)g(x, y)].
+0x 0x 0z 0x 0y 0y 0z 0y
+We shall need this formula in Sec. 10.9.
+EXAMPLE 2 Partial Derivatives on Surface
+Let w(cid:2)f(cid:2)x3(cid:4)y3(cid:4)z3and let z(cid:2)g(cid:2)x2(cid:4)y2. Then (6) gives
+(cid:3)
+0w # #
+(cid:2)3x2(cid:4)3z2 2x(cid:2)3x2(cid:4)3(x2(cid:4)y2)2 2x,
+0x
+(cid:3)
+0w # #
+(cid:2)3y2(cid:4)3z2 2y(cid:2)3y2(cid:4)3(x2(cid:4)y2)2 2y.
+0y
+We confirm this by substitution, using w(x, y)(cid:2)x3(cid:4)y3(cid:4)(x2(cid:4)y2)3, that is,
+(cid:3) (cid:3)
+0w (cid:2)3x2(cid:4)3(x2(cid:4)y2)2 # 2x, 0w (cid:2)3y2(cid:4)3(x2(cid:4)y2)2 # 2y. (cid:2)
+0x 0y
+
+=== PAGE 42 ===
+c09.qxd 10/30/10 3:25 PM Page 395
+SEC. 9.7 Gradient of a Scalar Field. Directional Derivative 395
+Mean Value Theorems
+THEOREM 2 Mean Value Theorem
+Let f(x, y, z) be continuous and have continuous first partial derivatives in a
+domain D in xyz-space. Let P: (x , y , z ) and P: (x (cid:4)h, y (cid:4)k, z (cid:4)l) be
+0 0 0 0 0 0 0
+points in D such that the straight line segment PP joining these points lies entirely
+0
+in D. Then
+0f 0f 0f
+(7) f(x (cid:4)h, y (cid:4)k, z (cid:4)l)(cid:3)f(x , y , z )(cid:2)h (cid:4)k (cid:4)l ,
+0 0 0 0 0 0 0x 0y 0z
+the partial derivatives being evaluated at a suitable point of that segment.
+Special Cases
+For a function f(x, y) of two variables (satisfying assumptions as in the theorem), formula
+(7) reduces to (Fig. 214)
+0f 0f
+(8) f (x 0 (cid:4)h, y 0 (cid:4)k)(cid:3)f (x 0 , y 0 )(cid:2)h 0x (cid:4)k 0y ,
+and, for a function f(x) of a single variable, (7) becomes
+0f
+(9) f (x 0 (cid:4)h)(cid:3)f (x 0 )(cid:2)h 0x ,
+where in (9), the domain D is a segment of the x-axis and the derivative is taken at a
+suitable point between x and x (cid:4)h.
+0 0
+(x + h, y + k)
+0 0
+(x , y ) D
+0 0
+Fig. 214. Mean value theorem for a function of two variables [Formula (8)]
+9.7
+Gradient of a Scalar Field.
+Directional Derivative
+We shall see that someof the vector fields that occur in applications—not all of them!—
+can be obtained from scalar fields. Using scalar fields instead of vector fields is of a
+considerable advantage because scalar fields are easier to use than vector fields. It is the
+
+=== PAGE 43 ===
+c09.qxd 10/30/10 3:25 PM Page 396
+396 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+“gradient” that allows us to obtain vector fields from scalar fields, and thus the gradient
+is of great practical importance to the engineer.
+DEFINITION 1 Gradient
+The setting is that we are given a scalar function f(x, y, z) that is defined and
+differentiable in a domain in 3-space with Cartesian coordinates x, y, z. We denote
+the gradient of that function by grad f or (cid:14)f (read nabla f). Then the qradient of
+f(x, y, z) is defined as the vector function
+0f 0f 0f 0f 0f 0f
+(1) grad f(cid:2)(cid:14)f(cid:2) , , (cid:2) i(cid:4) j(cid:4) k.
+c0x 0y 0zd 0x 0y 0z
+Remarks. For a definition of the gradient in curvilinear coordinates, see App. 3.4.
+As a quick example, if f(x, y, z)(cid:2)2y3(cid:4)4xz(cid:4)3x, then grad f(cid:2)[4z (cid:4)3, 6y2, 4x].
+Furthermore, we will show later in this section that (1) actually does define a vector.
+The notation (cid:14)f is suggested by the differential operator (cid:14) (read nabla) defined by
+0 0 0
+(1*) (cid:14)(cid:2) i(cid:4) j(cid:4) k.
+0x 0y 0z
+Gradients are useful in several ways, notably in giving the rate of change of f(x, y, z)
+in any direction in space, in obtaining surface normal vectors, and in deriving vector fields
+from scalar fields, as we are going to show in this section.
+Directional Derivative
+From calculus we know that the partial derivatives in (1) give the rates of change of
+f(x, y, z)in the directions of the three coordinate axes. It seems natural to extend this and
+ask for the rate of change of fin an arbitrary directionin space. This leads to the following
+concept.
+DEFINITION 2 Directional Derivative
+The directional derivative D f or df ds of a function f(x, y, z) at a point P in the
+b >
+direction of a vector b is defined by (see Fig. 215)
+df f(Q)(cid:3)f(P)
+(2) D f(cid:2) (cid:2)lim .
+b ds s:0 s
+HereQ is a variable point on the straight lineL in the direction of b,and ƒsƒ is the
+distance betweenP andQ. Also, s(cid:6)0ifQ lies in the direction of b(as in Fig.215),
+s(cid:5)0 if Q lies in the direction of (cid:3)b, and s(cid:2)0 if Q(cid:2)P.
+
+=== PAGE 44 ===
+c09.qxd 10/30/10 3:25 PM Page 397
+SEC. 9.7 Gradient of a Scalar Field. Directional Derivative 397
+L
+s
+Q
+b
+P
+Fig. 215. Directional derivative
+The next idea is to use Cartesian xyz-coordinates and for ba unit vector. Then the line L
+is given by
+(3) r(s)(cid:2)x(s)i(cid:4)y(s)j(cid:4)z(s)k(cid:2)p (cid:4)sb (ƒbƒ (cid:2)1)
+0
+where p the position vector of P. Equation (2) now shows that D f(cid:2)df ds is the
+0 b >
+derivative of the function f(x(s), y(s), z(s)) with respect to the arc length s of L. Hence,
+assuming that f has continuous partial derivatives and applying the chain rule [formula
+(3) in the previous section], we obtain
+df 0f 0f 0f
+(4) D f(cid:2) (cid:2) x r (cid:4) y r (cid:4) z r
+b ds 0x 0y 0z
+where primes denote derivatives with respect to s (which are taken at s(cid:2)0). But here,
+differentiating (3) gives r r (cid:2)x r i(cid:4)y r j(cid:4)z r k(cid:2)b. Hence (4) is simply the inner product
+of grad f and b [see (2), Sec. 9.2]; that is,
+df
+(5) D f(cid:2) (cid:2)b•grad f (ƒbƒ (cid:2)1).
+b ds
+ATTENTION! If the direction is given by a vector a of any length ((cid:7) 0), then
+df 1
+(5*) D f(cid:2) (cid:2) a•grad f.
+a ds ƒaƒ
+EXAMPLE 1 Gradient. Directional Derivative
+Find the directional derivative of f(x, y, z)(cid:2)2x2(cid:4)3y2(cid:4)z2at P: (2, 1, 3)in the direction of a(cid:2)[1, 0, (cid:3)2].
+Solution. grad f(cid:2)[4x, 6y, 2z] gives at P the vector grad f(P)(cid:2)[8, 6, 6]. From this and (5*) we obtain,
+since ƒaƒ (cid:2) 15,
+1 1 4
+D f(P)(cid:2) [1, 0, (cid:3)2]•[8, 6, 6](cid:2) (8(cid:4)0(cid:3)12)(cid:2)(cid:3) (cid:2)(cid:3)1.789.
+a
+15 15 15
+(cid:2)
+The minus sign indicates that at Pthe function fis decreasing in the direction of a.
+
+=== PAGE 45 ===
+c09.qxd 10/30/10 3:25 PM Page 398
+398 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Gradient Is a Vector. Maximum Increase
+Here is a finer point of mathematics that concerns the consistency of our theory: grad f
+in (1) lookslike a vector—after all, it has three components! But to prove that it actually
+is a vector, since it is defined in terms of components depending on the Cartesian
+coordinates, we must show that grad f has a length and direction independent of the choice
+of those coordinates. See proof of Theorem 1. In contrast, [0f 0x, 20f 0y, 0f 0z]also looks
+> > >
+like a vector but does not have a length and direction independent of the choice of Cartesian
+coordinates.
+Incidentally, the direction makes the gradient eminently useful: grad f points in the
+direction of maximum increase of f.
+THEOREM 1 Use of Gradient: Direction of Maximum Increase
+Let f(P)(cid:2)f(x, y, z)be a scalar function having continuous first partial derivatives
+in some domain B in space. Then gradfexists in B and is a vector, that is, its length
+and direction are independent of the particular choice of Cartesian coordinates. If
+grad f(P)(cid:7)0 at some point P, it has the direction of maximum increase of f at P.
+PROOF From (5) and the definition of inner product [(1) in Sec. 9.2] we have
+(6) D f(cid:2) ƒbƒƒgrad fƒ cos g (cid:2) ƒgrad fƒ cos g
+b
+where gis the angle between band grad f. Now fis a scalar function. Hence its value at
+a point P depends on P but not on the particular choice of coordinates. The same holds
+for the arc length sof the line Lin Fig. 215, hence also for D f. Now (6) shows that D f
+is maximum when cos g (cid:2)1, g(cid:2)0, and then D f(cid:2) ƒgrad f
+b
+ƒ. It follows that the leng
+b
+th
+b
+and direction of grad f are independent of the choice of coordinates. Since g(cid:2)0 if and
+only if b has the direction of grad f, the latter is the direction of maximum increase of f
+at P, provided grad f(cid:7)0 at P. Make sure that you understood the proof to get a good
+feel for mathematics.
+Gradient as Surface Normal Vector
+Gradients have an important application in connection with surfaces, namely, as surface
+normal vectors, as follows. Let Sbe a surface represented by f(x, y, z)(cid:2)c(cid:2)const,where
+fis differentiable. Such a surface is called a level surfaceof f, and for different cwe get
+different level surfaces. Now let C be a curve on S through a point P of S. As a curve in
+space, C has a representation r(t)(cid:2)[x(t), y(t), z(t)]. For C to lie on the surface S, the
+components of r(t) must satisfy f(x, y, z)(cid:2)c, that is,
+(7) f(x(t), y(t), z(t)(cid:2)c.
+Now a tangent vector of C is r r (t)(cid:2)[x r (t), y r (t), z r (t)]. And the tangent vectors of all
+curves on Spassing through Pwill generally form a plane, called the tangent planeof S
+at P. (Exceptions occur at edges or cusps of S, for instance, at the apex of the cone in
+Fig. 217.) The normal of this plane (the straight line through Pperpendicular to the tangent
+plane) is called the surface normal to S at P. A vector in the direction of the surface
+
+=== PAGE 46 ===
+c09.qxd 10/30/10 3:25 PM Page 399
+SEC. 9.7 Gradient of a Scalar Field. Directional Derivative 399
+normal is called a surface normal vector of S at P. We can obtain such a vector quite
+simply by differentiating (7) with respect to t. By the chain rule,
+0f 0f 0f
+x r (cid:4) y r (cid:4) z r (cid:2)(grad f)•r r (cid:2)0.
+0x 0y 0z
+r
+Hence grad fis orthogonal to all the vectors r in the tangent plane, so that it is a normal
+vector of S at P. Our result is as follows (see Fig. 216).
+Tangent plane f = const
+grad f
+C
+P
+Fig. 216. Gradient as surface normal vector
+THEOREM 2 Gradient as Surface Normal Vector
+Let fbe a differentiable scalar function in space. Let f(x, y, z)(cid:2)c(cid:2)constrepresent
+a surface S. Then if the gradient of fat a point P of S is not the zero vector, it is a
+normal vector of S at P.
+EXAMPLE 2 Gradient as Surface Normal Vector. Cone
+Find a unit normal vector nof the cone of revolution z2(cid:2)4(x2(cid:4)y2)at the point P: (1, 0, 2).
+Solution. The cone is the level surface f(cid:2)0of f(x, y, z)(cid:2)4(x2(cid:4)y2)(cid:3)z2.Thus (Fig. 217)
+grad f(cid:2)[8x, 8y, (cid:3)2z], grad f(P)(cid:2)[8, 0, (cid:3)4]
+1 2 1
+n(cid:2) grad f(P)(cid:2) , 0, (cid:3) .
+ƒgrad f (P)ƒ c15 15d
+npoints downward since it has a negative z-component. The other unit normal vector of the cone at Pis (cid:3)n. (cid:2)
+z
+P
+n
+1
+y
+x
+Fig. 217. Cone and unit normal vector n
+
+=== PAGE 47 ===
+c09.qxd 10/30/10 3:25 PM Page 400
+400 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Vector Fields That Are Gradients
+of Scalar Fields (“Potentials”)
+At the beginning of this section we mentioned that some vector fields have the advantage
+that they can be obtained from scalar fields, which can be worked with more easily. Such
+a vector field is given by a vector function v(P), which is obtained as the gradient of a
+scalar function, say, v(P)(cid:2)grad f(P). The function f(P)is called a potential function or
+a potentialof v(P). Such a v(P)and the corresponding vector field are called conservative
+because in such a vector field, energy is conserved; that is, no energy is lost (or gained)
+in displacing a body (or a charge in the case of an electrical field) from a point Pto another
+point in the field and back to P. We show this in Sec. 10.2.
+Conservative fields play a central role in physics and engineering. A basic application
+concerns the gravitational force (see Example 3 in Sec. 9.4) and we show that it has a
+potential which satisfies Laplace’s equation, the most important partial differential
+equation in physics and its applications.
+THEOREM 3 Gravitational Field. Laplace’s Equation
+The force of attraction
+c x(cid:3)x y(cid:3)y z(cid:3)z
+(8) p(cid:2)(cid:3) r(cid:2)(cid:3)c 0 , 0 , 0
+r3 c r3 r3 r3 d
+between two particles at points P: (x , y , z )and P: (x, y, z)(as given by Newton’s
+0 0 0 0
+law of gravitation) has the potential f(x, y, z)(cid:2)c r, where r((cid:6) 0) is the distance
+>
+between P and P.
+0
+Thus p(cid:2)grad f (cid:2)grad (c r). This potential fis a solution of Laplace’s equation
+>
+02f 02f 02f
+(9) (cid:14)2f(cid:2) (cid:4) (cid:4) (cid:2)0.
+0x2 0y2 0z2
+[(cid:14)2f (read nabla squared f) is called the Laplacian of f.]
+PROOF That distance is r(cid:2)((x(cid:3)x 0 )2(cid:4)( y(cid:3)y 0 )2(cid:4)(z (cid:3)z 2 )2)1 > 2. The key observation now
+is that for the components of p(cid:2)[p , p , p ] we obtain by partial differentiation
+1 2 3
+0 1 (cid:3)2(x(cid:3)x ) x(cid:3)x
+(10a) (cid:2) 0 (cid:2)(cid:3) 0
+0xarb 2[(x (cid:3)x 0 )2(cid:4)( y(cid:3)y 0 )2(cid:4)(z (cid:3)z 0 )2]3 > 2 r3
+and similarly
+0 1 y(cid:3)y
+(cid:2) (cid:3) 0,
+0yarb r3
+(10b)
+0 1 z(cid:3)z
+(cid:2) (cid:3) 0.
+0zarb r3
+
+=== PAGE 48 ===
+c09.qxd 10/30/10 3:25 PM Page 401
+SEC. 9.7 Gradient of a Scalar Field. Directional Derivative 401
+From this we see that, indeed, pis the gradient of the scalar function f(cid:2)c r. The second
+>
+statement of the theorem follows by partially differentiating (10), that is,
+02 1 1 3(x(cid:3)x )2
+(cid:2)(cid:3) (cid:4) 0 ,
+0x2arb r3 r5
+02 1 1 3(y(cid:3)y )2
+(cid:2)(cid:3) (cid:4) 0 ,
+0y2arb r3 r5
+02 1 1 3(z (cid:3)z )2
+(cid:2)(cid:3) (cid:4) 0 ,
+0z2arb r3 r5
+and then adding these three expressions. Their common denominator is r5. Hence the
+three terms (cid:3)1 r3 contribute (cid:3)3r2 to the numerator, and the three other terms give
+>
+the sum
+3(x(cid:3)x )2(cid:4)3(y(cid:3)y )2(cid:4)3(z (cid:3)z )2(cid:2)3r2,
+0 0 0
+so that the numerator is 0, and we obtain (9). (cid:2)
+(cid:14)2f is also denoted by ¢f. The differential operator
+02 02 02
+(11) (cid:14)2(cid:2) ¢ (cid:2) (cid:4) (cid:4)
+0x2 0y2 0z2
+(read “nabla squared” or “delta”) is called the Laplace operator. It can be shown that the
+field of force produced by any distribution of masses is given by a vector function that is
+the gradient of a scalar function f, and f satisfies (9) in any region that is free of matter.
+The great importance of the Laplace equation also results from the fact that there are
+other laws in physics that are of the same form as Newton’s law of gravitation. For instance,
+in electrostatics the force of attraction (or repulsion) between two particles of opposite (or
+like) charge Q and Q is
+1 2
+k
+(12) p(cid:2) r (Coulomb’s law6).
+r3
+Laplace’s equation will be discussed in detail in Chaps. 12 and 18.
+A method for finding out whether a given vector field has a potential will be explained
+in Sec. 9.9.
+6CHARLES AUGUSTIN DE COULOMB (1736–1806), French physicist and engineer. Coulomb’s law was
+derived by him from his own very precise measurements.
+
+=== PAGE 49 ===
+c09.qxd 10/30/10 3:25 PM Page 402
+402 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+PROBLEM SET 9.7
+1–6 CALCULATION OF GRADIENTS 18–23 VELOCITY FIELDS
+Find grad f. Graph some level curves f(cid:2)const. Indicate Given the velocity potential f of a flow, find the velocity
+(cid:14)fby arrows at some points of these curves. v(cid:2)(cid:14)f of the field and its value v(P) at P. Sketch v(P)
+1. f(cid:2)(x(cid:4)1)(2y(cid:3)1) and the curve f(cid:2)constpassing through P.
+2. f(cid:2)9x2(cid:4)4y2 18. f(cid:2)x2(cid:3)6x(cid:3)y2, P: ((cid:3)1, 5)
+3. f(cid:2)y x 19. f(cid:2)cos x cosh y, P: (1 2 p, ln 2)
+4. (y(cid:4) > 6)2(cid:4)(x(cid:3)4)2 20. f(cid:2)x(1(cid:4)(x2(cid:4)y2)(cid:3)1), P: (1, 1)
+5. f(cid:2)x4(cid:4)y4 21. f(cid:2)ex cos y, P: (1, 1 2 p)
+6. f(cid:2)(x2(cid:3)y2) (x2(cid:4)y2) 22. At what points is the flow in Prob. 21 directed vertically
+>
+upward?
+7–10 USEFUL FORMULAS FOR GRADIENT
+23. At what points is the flow in Prob. 21 horizontal?
+AND LAPLACIAN
+Prove and illustrate by an example. 24–27 HEAT FLOW
+7. (cid:14)( fn)(cid:2)nfn(cid:3)1(cid:14)f
+Experiments show that in a temperature field, heat flows in
+8. (cid:14)( fg)(cid:2)f (cid:14)g(cid:4)g(cid:14)f the direction of maximum decrease of temperature T. Find
+9. (cid:14)( f g)(cid:2)(1 g2)(g(cid:14)f(cid:3)f (cid:14)g) this direction in general and at the given point P. Sketch
+> >
+10. (cid:14)2( fg)(cid:2)g(cid:14)2f(cid:4)2(cid:14)f(cid:4)(cid:14)g(cid:4)f (cid:14)2g that direction at Pas an arrow.
+24. T(cid:2)3x2(cid:3)2y2, P: (2.5, 1.8)
+11–15 USE OF GRADIENTS. ELECTRIC FORCE
+25. T(cid:2)z (x2(cid:4)y2), P: (0, 1, 2)
+The force in an electrostatic field given by f(x, y, z)has the >
+26. T(cid:2)x2(cid:4)y2(cid:4)4z2, P: (2, (cid:3)1, 2)
+direction of the gradient. Find (cid:14)fand its value atP.
+27. CAS PROJECT. Isotherms. Graph some curves of
+11. f(cid:2)xy, P: ((cid:3)4, 5)
+constant temperature (“isotherms”) and indicate
+12. f(cid:2)x > (x2(cid:4)y2), P: (1, 1) directions of heat flow by arrows when the temperature
+13. f(cid:2)ln (x2(cid:4)y2), P: (8, 6) equals (a)x3(cid:3)3xy2, (b)sin x sinh y, and (c)excos y.
+14. f(cid:2)(x2(cid:4)y2(cid:4)z2)(cid:3)1 > 2 P: (12, 0, 16) 28. Steepest ascent. If z (x, y)(cid:2)3000(cid:3)x2(cid:3)9y2
+15. f(cid:2)4x2(cid:4)9y2(cid:4)z2, P: (5, (cid:3)1, (cid:3)11) [meters] gives the elevation of a mountain at sea level,
+16. For what points P: (x, y, z) does (cid:14)f with what is the direction of steepest ascent at P: (4, 1)?
+f(cid:2)25x2(cid:4)9y2(cid:4)16z2 have the direction from P to 29. Gradient. What does it mean if ƒ(cid:14)f (P)ƒ (cid:6) ƒ(cid:14)f (Q)ƒ at
+the origin? two points Pand Qin a scalar field?
+17. Same question as in Prob. 16 when f(cid:2)25x2(cid:4)4y2.
+9.8
+Divergence of a Vector Field
+Vector calculus owes much of its importance in engineering and physics to the gradient,
+divergence, and curl. From a scalar field we can obtain a vector field by the gradient
+(Sec.9.7). Conversely, from a vector field we can obtain a scalar field by the divergence
+or another vector field by the curl (to be discussed in Sec. 9.9). These concepts were
+suggested by basic physical applications. This will be evident from our examples.
+To begin, let v(x, y, z) be a differentiable vector function, where x, y, z are Cartesian
+coordinates, and let v , v , v be the components of v. Then the function
+1 2 3
+0v 0v 0v
+(1) div v (cid:2) 0x 1 (cid:4) 0y 2 (cid:4) 0z 3
+
+=== PAGE 50 ===
+c09.qxd 10/30/10 3:25 PM Page 403
+SEC. 9.8 Divergence of a Vector Field 403
+is called the divergence of v or the divergence of the vector field defined by v. For
+example, if
+v(cid:2)[3xz, 2xy, (cid:3)yz2](cid:2)3xzi (cid:4)2xyj(cid:3)yz2k, then div v(cid:2)3z(cid:4)2x(cid:3)2yz.
+Another common notation for the divergence is
+0 0 0
+div v(cid:2)(cid:14)• v(cid:2) , , •[v , v , v ]
+c0x 0y 0z d 1 2 3
+0 0 0
+(cid:2) i(cid:4) j(cid:4) k •(v i(cid:4)v j(cid:4)v k)
+a0x 0y 0z b 1 2 3
+0v 0v 0v
+(cid:2) 1 (cid:4) 2 (cid:4) 3 ,
+0x 0y 0z
+with the understanding that the “product” (0 0x)v in the dot product means the partial
+derivative 0v 0x, etc. This is a convenient > nota t ˛ io 1 n, but nothing more. Note that (cid:5)•v
+1>
+means the scalar div v, whereas (cid:14)f means the vector grad f defined in Sec. 9.7.
+In Example 2 we shall see that the divergence has an important physical meaning.
+Clearly, the values of a function that characterizes a physical or geometric property must
+be independent of the particular choice of coordinates. In other words, these values must
+be invariant with respect to coordinate transformations. Accordingly, the following
+theorem should hold.
+THEOREM 1 Invariance of the Divergence
+The divergence div v is a scalar function, that is, its values depend only on the
+points in space (and, of course, on v) but not on the choice of the coordinates in
+(1), so that with respect to other Cartesian coordinates x*, y*, z*and corresponding
+components v *, v *, v * of v,
+1 2 3
+0v* 0v* 0v*
+(2) div v (cid:2) 1 (cid:4) 2 (cid:4) 3 .
+0x* 0y* 0z*
+We shall prove this theorem in Sec. 10.7, using integrals.
+Presently, let us turn to the more immediate practical task of gaining a feel for the
+significance of the divergence. Let f(x, y, z)be a twice differentiable scalar function. Then
+its gradient exists,
+0f 0f 0f 0f 0f 0f
+v(cid:2)grad f(cid:2) , , (cid:2) i(cid:4) j(cid:4) k
+c0x 0y 0z d 0x 0y 0z
+and we can differentiate once more, the first component with respect to x, the second with
+respect to y, the third with respect to z, and then form the divergence,
+02f 02f 02f
+div v (cid:2)div (grad f)(cid:2) (cid:4) (cid:4) .
+0x2 0y2 0z2
+
+=== PAGE 51 ===
+c09.qxd 10/30/10 3:25 PM Page 404
+404 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+Hence we have the basic result that the divergence of the gradient is the Laplacian
+(Sec. 9.7),
+(3) div (grad f )(cid:2)(cid:14)2f.
+EXAMPLE 1 Gravitational Force. Laplace’s Equation
+The gravitational force pin Theorem 3 of the last section is the gradient of the scalar function f(x, y, z)(cid:2)c r,
+which satisfies Laplaces equation (cid:14)2f(cid:2)0. According to (3) this implies that div p(cid:2)0 (r(cid:6)0).
+>(cid:2)
+The following example from hydrodynamics shows the physical significance of the
+divergence of a vector field. We shall get back to this topic in Sec. 10.8 and add further
+physical details.
+EXAMPLE 2 Flow of a Compressible Fluid. Physical Meaning of the Divergence
+We consider the motion of a fluid in a region Rhaving no sourcesor sinksin R, that is, no points at which
+fluid is produced or disappears. The concept of fluid stateis meant to cover also gases and vapors. Fluids in
+the restricted sense, or liquids, such as water or oil, have very small compressibility, which can be neglected in
+many problems. In contrast, gases and vapors have high compressibility. Their density r ((cid:2) mass per unit volume)
+depends on the coordinates x, y, z in space and may also depend on time t. We assume that our fluid is
+compressible. We consider the flow through a rectangular box B of small edges ¢x, ¢y, ¢z parallel to the
+coordinate axes as shown in Fig. 218. (Here ¢ is a standard notation for small quantities and, of course, has
+nothing to do with the notation for the Laplacian in (11) of Sec. 9.7.) The box Bhas the volume ¢V(cid:2)¢x ¢y ¢z.
+Let v(cid:2)[v , v , v ](cid:2)v i(cid:4)v j(cid:4)v kbe the velocity vector of the motion. We set
+1 2 3 1 2 3
+(4) u(cid:2)rv(cid:2)[u , u , u ](cid:2)u i(cid:4)u j(cid:4)u k
+1 2 3 1 2 3
+and assume that uand vare continuously differentiable vector functions of x, y, z, and t,that is, they have first
+partial derivatives which are continuous. Let us calculate the change in the mass included in Bby considering
+the fluxacross the boundary, that is, the total loss of mass leaving Bper unit time. Consider the flow through
+the left of the three faces of Bthat are visible in Fig. 218, whose area is ¢x¢z. Since the vectors v iand v k
+1 3
+are parallel to that face, the components v and v of vcontribute nothing to this flow. Hence the mass of fluid
+1 3
+entering through that face during a short time interval ¢tis given approximately by
+(rv ) ¢x ¢z ¢t(cid:2)(u ) ¢x ¢z ¢t,
+2y 2y
+where the subscript yindicates that this expression refers to the left face. The mass of fluid leaving the box B
+through the opposite face during the same time interval is approximately (u 2 ) y(cid:4)¢y ¢x ¢z ¢t, where the subscript
+y(cid:4)¢yindicates that this expression refers to the right face (which is not visible in Fig. 218). The difference
+¢u
+¢u 2 ¢x ¢z ¢t(cid:2) ¢y 2 ¢V ¢t [¢u 2 (cid:2)(u 2 ) y(cid:4)¢y (cid:3)(u 2 ) y ]
+is the approximate loss of mass. Two similar expressions are obtained by considering the other two pairs of
+parallel faces of B. If we add these three expressions, we find that the total loss of mass in Bduring the time
+interval ¢tis approximately
+¢u ¢u ¢u
+1(cid:4) 2(cid:4) 3 ¢V ¢t,
+a ¢x ¢y ¢z b
+where
+¢u 1 (cid:2)(u 1 ) x(cid:4)¢x (cid:3)(u 1 ) x and ¢u 3 (cid:2)(u 3 ) z(cid:4)¢z (cid:3)(u 3 ) z .
+This loss of mass in Bis caused by the time rate of change of the density and is thus equal to
+0r
+(cid:3) ¢V¢t.
+0t
+
+=== PAGE 52 ===
+c09.qxd 10/30/10 3:25 PM Page 405
+SEC. 9.8 Divergence of a Vector Field 405
+Box B
+Δz
+z (x, y, z)
+Δx Δy
+k
+j y
+i
+x
+Fig. 218. Physical interpretation of the divergence
+If we equate both expressions, divide the resulting equation by ¢V¢t, and let ¢x, ¢y, ¢z, and ¢tapproach
+zero, then we obtain
+0r
+div u(cid:2)div (rv)(cid:2)(cid:3)
+0t
+or
+0r
+(5) (cid:4)div (rv)(cid:2)0.
+0t
+This important relation is called the condition for the conservation of mass or the continuity equation of a
+compressible fluid flow.
+If the flow is steady,that is, independent of time, then 0r 0t(cid:2)0and the continuity equation is
+>
+(6) div (rv)(cid:2)0.
+If the density ris constant, so that the fluid is incompressible, then equation (6) becomes
+(7) div v(cid:2)0.
+This relation is known as the condition of incompressibility. It expresses the fact that the balance of outflow
+and inflow for a given volume element is zero at any time. Clearly, the assumption that the flow has no sources
+or sinks in Ris essential to our argument. vis also referred to as solenoidal.
+From this discussion you should conclude and remember that, roughly speaking, the divergence measures
+(cid:2)
+outflow minus inflow.
+Comment. The divergence theorem of Gauss, an integral theorem involving the
+divergence, follows in the next chapter (Sec. 10.7).
+PROBLEM SET 9.8
+1–6 CALCULATION OF THE DIVERGENCE 5. v(cid:2)x2y2z2[x, y, z], P: (3, (cid:3)1, 4)
+Find div vand its value at P. 6. v(cid:2)(x2(cid:4)y2(cid:4)z2)(cid:3)3 > 2[x, y, z]
+1. v(cid:2)[x2, 4y2, 9z2], P: ((cid:3)1, 0, 1
+2
+] 7. For what v
+3
+is v(cid:2)[ex cos y, ex sin y, v
+3
+]solenoidal?
+2. v(cid:2)[0, cos xyz, sin xyz], P: (2, 1
+2
+p, 0] 8. Let v(cid:2)[x, y, v
+3
+]. Find a v
+3
+such that (a) div v(cid:6)0
+3. v(cid:2)(x2(cid:4)y2)(cid:3)1[x, y] everywhere, (b) div v(cid:6)0if ƒzƒ (cid:5)1and div v(cid:5)0if
+4. v(cid:2)[v (y, z), v (z, x), v (x, y)], P: (3, 1, (cid:3)1)]
+ƒzƒ (cid:6)1.
+1 2 3
+
+=== PAGE 53 ===
+c09.qxd 10/30/10 3:25 PM Page 406
+406 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+9. PROJECT. Useful Formulas for the Divergence. that at time t(cid:2)0 are in the cube whose faces are
+Prove portions of the planes x(cid:2)0, x(cid:2)1, y(cid:2)0, y(cid:2)1,
+(a) div (kv)(cid:2)k div v (kconstant) z(cid:2)0, z(cid:2)1occupy at t(cid:2)1the volume 1.
+(b) div ( fv)(cid:2)f div v(cid:4)v•(cid:14)f 12. Compressible flow.Consider the flow with velocity
+(c) div ( f (cid:14)g)(cid:2)f (cid:14)2g(cid:4)(cid:14)f•(cid:14)g vector v(cid:2)xi. Show that the individual particles have
+the position vectors r(t)(cid:2)c eti(cid:4)c j(cid:4)c k with
+(d) div ( f (cid:14)g)(cid:3) div (g(cid:14)f )(cid:2)f (cid:14)2g(cid:3)g(cid:14)2f 1 2 3
+constant c , c , c . Show that the particles that at
+Verify (b) for f(cid:2)exyz and v(cid:2)axi(cid:4)byj(cid:4)czk. t(cid:2)0are in 1 th 2 e c 3 ube of Prob. 11 at t(cid:2)1occupy the
+Obtain the answer to Prob. 6 from (b). Verify (c) for volume e.
+f(cid:2)x2(cid:3)y2 and g(cid:2)ex(cid:4)y. Give examples of your
+13. Rotational flow. The velocity vector v(x, y, z) of an
+own for which (a)–(d) are advantageous.
+incompressible fluid rotating in a cylindrical vessel is
+10. CAS EXPERIMENT. Visualizing the Divergence. of the form v(cid:2)w(cid:2)r, where w is the (constant)
+Graph the given velocity field v of a fluid flow in a rotation vector; see Example 5 in Sec. 9.3. Show that
+square centered at the origin with sides parallel to the div v(cid:2)0. Is this plausible because of our present
+coordinate axes. Recall that the divergence measures Example 2?
+outflow minus inflow. By looking at the flow near the 14. Does div u(cid:2)div v imply u(cid:2)v or u(cid:2)v(cid:4)k
+sides of the square, can you see whether div v must
+(kconstant)? Give reason.
+bepositive or negative or may perhaps be zero? Then
+calculate div v. First do the given flows and then do 15–20 LAPLACIAN
+some of your own. Enjoy it. Calculate (cid:14)2f by Eq. (3). Check by direct differentiation.
+(a) v(cid:2)i Indicate when (3) is simpler. Show the details of your work.
+(b) v(cid:2)xi 15. f(cid:2)cos2 x(cid:4)sin2 y
+(c) v(cid:2)xi(cid:3)yj 16. f(cid:2)exyz
+(d) v(cid:2)xi(cid:4)yj 17. f(cid:2)ln (x2(cid:4)y2)
+(e) v(cid:2)(cid:3)xi(cid:3)yj 18. f(cid:2)z(cid:3) 2x2(cid:4)y2
+(f) v(cid:2)(x2(cid:4)y2)(cid:3)1((cid:3)yi(cid:4)xj) 19. f(cid:2)1 (x2(cid:4)y2(cid:4)z2)
+>
+11. Incompressible flow.Show that the flow with velocity 20. f(cid:2)e2x cosh 2y
+vector v(cid:2)yiis incompressible. Show that the particles
+9.9
+Curl of a Vector Field
+The concepts of gradient (Sec. 9.7), divergence (Sec. 9.8), and curl are of fundamental
+importance in vector calculus and frequently applied in vector fields. In this section
+we define and discuss the concept of the curl and apply it to several engineering
+problems.
+Let v(x, y, z)(cid:2)[v , v , v ](cid:2)v i(cid:4)v j(cid:4)v k be a differentiable vector function of
+1 2 3 1 2 3
+the Cartesian coordinates x, y, z. Then the curl of the vector function v or of the vector
+field given by v is defined by the “symbolic” determinant
+i j k
+0 0 0
+(1) curl v(cid:2)(cid:14)(cid:2) v(cid:2)
+0x 0y 0z
+v v v
+1 2 3
+0v 0v4 0v 4 0v 0v 0v
+(cid:2) 3 (cid:3) 2 i(cid:4) 1 (cid:3) 3 j(cid:4) 2 (cid:3) 1 k.
+a 0y 0z b a 0z 0x b a 0x 0y b
+
+=== PAGE 54 ===
+c09.qxd 10/30/10 3:25 PM Page 407
+SEC. 9.9 Curl of a Vector Field 407
+This is the formula when x, y, zare right-handed.If they are left-handed,the determinant
+has a minus sign in front (just as in (2**) in Sec. 9.3).
+Instead of curl v one also uses the notation rot v. This is suggested by “rotation,”
+an application explored in Example 2. Note that curl v is a vector, as shown in
+Theorem 3.
+EXAMPLE 1 Curl of a Vector Function
+Let v(cid:2)[yz, 3zx, z](cid:2)yzi(cid:4)3zxj(cid:4)zkwith right-handed x, y, z. Then (1) gives
+i j k
+0 0 0
+curl v(cid:2) (cid:2)(cid:3)3xi(cid:4)yj(cid:4)(3z(cid:3)z)k(cid:2)(cid:3)3xi(cid:4)yj(cid:4)2zk. (cid:2)
+0x 0y 0z
+yz 3zx z
+5 5
+The curl has many applications. A typical example follows. More about the nature and
+significance of the curl will be considered in Sec. 10.9.
+EXAMPLE 2 Rotation of a Rigid Body. Relation to the Curl
+We have seen in Example 5, Sec. 9.3, that a rotation of a rigid body B about a fixed axis in space can be
+described by a vector wof magnitude vin the direction of the axis of rotation, where v ((cid:6)0)is the angular
+speed of the rotation, and wis directed so that the rotation appears clockwise if we look in the direction of w.
+According to (9), Sec. 9.3, the velocity field of the rotation can be represented in the form
+v(cid:2)w(cid:2)r
+where ris the position vector of a moving point with respect to a Cartesian coordinate system having the origin
+on the axis of rotation. Let us choose right-handed Cartesian coordinates such that the axis of rotation is the
+z-axis. Then (see Example 2 in Sec. 9.4)
+w(cid:2)[0, 0, v](cid:2)vk, v(cid:2)w(cid:2)r(cid:2)[(cid:3)vy, vx, 0](cid:2)(cid:3)vyi(cid:4)vxj.
+Hence
+i j k
+0 0 0
+curl v(cid:2) (cid:2)[0, 0, 2v](cid:2)2vk(cid:2)2w.
+0x 0y 0z
+(cid:3)vy vx 0
+6 6
+(cid:2)
+This proves the following theorem.
+THEOREM 1 Rotating Body and Curl
+The curl of the velocity field of a rotating rigid body has the direction of
+theaxisof the rotation, and its magnitude equals twice the angular speed of the
+rotation.
+Next we show how the grad, div, and curl are interrelated, thereby shedding further light
+on the nature of the curl.
+
+=== PAGE 55 ===
+c09.qxd 10/30/10 3:25 PM Page 408
+408 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+THEOREM 2 Grad, Div, Curl
+Gradient fields are irrotational. That is, if a continuously differentiable vector
+function is the gradient of a scalar function f, then its curl is the zero vector,
+(2) curl(grad f )(cid:2)0.
+Furthermore, the divergence of the curl of a twice continuously differentiable vector
+function v is zero,
+(3) div(curl v)(cid:2)0.
+PROOF Both (2) and (3) follow directly from the definitions by straightforward calculation. In the
+proof of (3) the six terms cancel in pairs. (cid:2)
+EXAMPLE 3 Rotational and Irrotational Fields
+The field in Example 2 is not irrotational. A similar velocity field is obtained by stirring tea or coffee in a cup.
+The gravitational field in Theorem 3 of Sec. 9.7 has curl p(cid:2)0. It is an irrotational gradient field. (cid:2)
+The term “irrotational” for curl v(cid:2)0is suggested by the use of the curl for characterizing
+the rotation in a field. If a gradient field occurs elsewhere, not as a velocity field, it is
+usually called conservative (see Sec. 9.7). Relation (3) is plausible because of the
+interpretation of the curl as a rotation and of the divergence as a flux (see Example 2 in
+Sec. 9.8).
+Finally, since the curl is defined in terms of coordinates, we should do what we did for
+the gradient in Sec. 9.7, namely, to find out whether the curl is a vector. This is true, as
+follows.
+THEOREM 3 Invariance of the Curl
+curl vis a vector. It has a length and a direction that are independent of the particular
+choice of a Cartesian coordinate system in space.
+PROOF The proof is quite involved and shown in App. 4.
+We have completed our discussion of vector differential calculus. The companion
+Chap. 10 on vector integral calculus follows and makes use of many concepts covered
+in this chapter, including dot and cross products, parametric representation of curves C,
+along with grad, div, and curl.
+PROBLEM SET 9.9
+1. WRITING REPORT. Grad, div, curl. List the 2. (a) What direction does curl v have if v is parallel
+definitions and most important facts and formulas for to the yz-plane? (b) If, moreover, v is independent
+grad, div, curl, and (cid:14)2. Use your list to write a of x?
+corresponding report of 3–4 pages, with examples of 3. Prove Theorem 2. Give two examples for (2) and (3)
+your own. No proofs. each.
+
+=== PAGE 56 ===
+c09.qxd 10/30/10 3:25 PM Page 409
+Chapter 9 Review Questions and Problems 409
+4–8 CALCULUTION OF CURL 14. PROJECT. Useful Formulas for the Curl.Assuming
+sufficient differentiability, show that
+Find curl v for v given with respect to right-handed
+Cartesian coordinates. Show the details of your work. (a) curl (u(cid:4)v)(cid:2)curl u(cid:4)curl v
+4. v(cid:2)[2y2, 5x, 0] (b) div (curl v)(cid:2)0
+5. v(cid:2)xyz [x, y, z] (c) curl ( f v)(cid:2)(grad f )(cid:2)v(cid:4)f curl v
+6. v(cid:2)(x2(cid:4)y2(cid:4)z2)(cid:3)3 > 2 [x, y, z] (d) curl (grad f )(cid:2)0
+7. v(cid:2)[0, 0, e(cid:3)x sin y] (e) div (u(cid:2)v)(cid:2)v•curl u(cid:3)u•curl v
+8. v(cid:2)[e(cid:3)z2, e(cid:3)x2, e(cid:3)y2] 15–20 DIV AND CURL
+9–13 FLUID FLOW With respect to right-handed coordinates, let u(cid:2)[y, z, x],
+v(cid:2)[yz, zx, xy], f(cid:2)xyz,and g(cid:2)x(cid:4)y(cid:4)z.Find the given
+Let v be the velocity vector of a steady fluid flow. Is the
+expressions. Check your result by a formula in Proj. 14
+flow irrotational? Incompressible? Find the streamlines (the
+if applicable.
+paths of the particles). Hint. See the answers to Probs. 9
+and 11 for a determination of a path. 15. curl (u(cid:4)v), curl v
+9. v(cid:2)[0, 3z2, 0] 16. curl (gv)
+10. v(cid:2)[sec x, csc x, 0] 17. v•curl u, u•curl v, u•curl u
+11. v(cid:2)[y, (cid:3)2x, 0] 18. div (u(cid:2)v)
+12. v(cid:2)[(cid:3)y, x, p] 19. curl (gu(cid:4)v), curl (gu)
+13. v(cid:2)[x, y, (cid:3)z] 20. div (grad ( fg))
+CHAPTER 9 REVIEW QUESTIONS AND PROBLEMS
+1. What is a vector? A vector function? A vector field? A 12. a(cid:2)c, b(cid:2)d, d(cid:2)b, a(cid:2)a
+scalar? A scalar function? A scalar field? Give examples. 13. b(cid:2)c, c(cid:2)b, c(cid:2)c, c•c
+2. What is an inner product, a vector product, a scalar triple 14. 5(a(cid:2)b)•c, a•(5b(cid:2)c), (5a b c), 5(a•b)(cid:2)c
+product? What applications motivate these products?
+15. 6(a(cid:2)b)(cid:2)d, a(cid:2)6(b(cid:2)d), 2a(cid:2)3b(cid:2)d
+3. What are right-handed and left-handed coordinates?
+16. (1 ƒaƒ)a, (1 ƒbƒ)b, a•b ƒbƒ, a•b ƒaƒ
+When is this distinction important? > > > >
+17. (a b d), (b a d), (b d a)
+4. When is a vector product the zero vector? What is
+orthogonality? 18. ƒa(cid:4)bƒ, ƒaƒ (cid:4) ƒbƒ
+5. How is the derivative of a vector function defined? 19. a(cid:2)b(cid:3)b(cid:2)a, (a(cid:2)c)•c, ƒa(cid:2)bƒ
+What is its significance in geometry and mechanics? 20. Commutativity. When is u(cid:2)v(cid:2)v(cid:2)u? When is
+6. If r(t) represents a motion, what are r r (t), ƒr r (t)ƒ, r s (t), u•v(cid:2)v•u?
+and ƒr s (t)ƒ?
+21. Resultant, equilibrium. Find usuch that uand a, b,
+7. Can a moving body have constant speed but variable c, dabove and uare in equilibrium.
+velocity? Nonzero acceleration?
+22. Resultant. Find the most general vsuch that the resultant
+8. What do you know about directional derivatives? Their of v,a,b,c(see above) is parallel to the yz-plane.
+relation to the gradient?
+23. Angle. Find the angle between aand c. Between band
+9. Write down the definitions and explain the significance
+d. Sketch aand c.
+of grad, div, and curl.
+24. Planes. Find the angle between the two planes
+10. Granted sufficient differentiability, which of the P: 4x(cid:3)y(cid:4)3z(cid:2)12and P: x(cid:4)2y(cid:4)4z(cid:2)4. Make
+following expressions make sense? f curl v, v curl f, 1 2
+a sketch.
+u(cid:2)v, u(cid:2)v(cid:2)w, f•v, f•(v(cid:2)w), u•(v(cid:2)w),
+v(cid:2)curl v,div ( fv),curl ( fv),and curl ( f•v). 25. Work. Find the work done by q(cid:2)[5, 2, 0] in the
+displacement from (1, 1, 0) to (4, 3, 0).
+11–19 ALGEBRAIC OPERATIONS FOR VECTORS 26. Component. When is the component of a vector vin
+Let a(cid:2)[4, 7, 0], b(cid:2)[3, (cid:3)1, 5], c(cid:2)[(cid:3)6, 2, 0], and d(cid:2) the direction of a vector wequal to the component of
+[1, (cid:3)2, 8]. Calculate the following expressions. Try to win the direction of v?
+make a sketch. 27. Component. Find the component of v(cid:2)[4, 7, 0] in
+11. a•c, 3b•8d, 24d•b, a•a the direction of w(cid:2)[2, 2, 0]. Sketch it.
+
+=== PAGE 57 ===
+c09.qxd 10/30/10 3:25 PM Page 410
+410 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+28. Moment. When is the moment of a force equal to zero? 32–40 GRAD, DIV, CURL, (cid:14)2, D f
+v
+29. Moment. A force p(cid:2)[4, 2, 0] is acting in a line Let f(cid:2)xy(cid:3)yz, v(cid:2)[2y, 2z, 4x(cid:4)z], and w(cid:2)[3z2,
+through (2, 3, 0). Find its moment vector about the x2(cid:3)y2, y2]. Find:
+center (5, 1, 0) of a wheel.
+32. grad fand fgrad fat P: (2, 7, 0)
+30. Velocity, acceleration. Find the velocity, speed,
+33. div v, div w 34. curl v, curl w
+and acceleration of the motion given by r(t)(cid:2)[3
+cos t, 3 sin t, 4t] (t(cid:2)time) at the point P: (3 12, 35. div (grad f), (cid:14)2f, (cid:14)2(xyf )
+3 12, p). > 36. (curl w)•v at (4, 0, 2) 37. grad (div w)
+>
+31. Tetrahedron. Find the volume if the vertices are 38. D v fat P: (1, 1, 2) 39. D w fat P: (3, 0, 2)
+(0,0,0), (3, 1, 2), (2, 4, 0), (5, 4, 0). 40. v•((curl w)(cid:2)v)
+9
+SUMMARY OF CHAPTER
+Vector Differential Calculus. Grad, Div, Curl
+All vectors of the form a(cid:2)[a , a , a ](cid:2)a i(cid:4)a j(cid:4)a k constitute the real
+1 2 3 1 2 3
+vector space R3 with componentwise vector addition
+(1) [a , a , a ](cid:4)[b , b , b ](cid:2)[a (cid:4)b , a (cid:4)b , a (cid:4)b ]
+1 2 3 1 2 3 1 1 2 2 3 3
+and componentwise scalar multiplication (c a scalar, a real number)
+(2) c[a , a , a ](cid:2)[ca , ca , ca ] (Sec. 9.1).
+1 2 3 1 2 3
+For instance, the resultant of forces a and b is the sum a(cid:4)b.
+The inner product or dot product of two vectors is defined by
+(3) a•b(cid:2) ƒaƒƒbƒ cos g (cid:2)a b (cid:4)a b (cid:4)a b (Sec. 9.2)
+1 1 2 2 3 3
+where g is the angle between a and b. This gives for the norm or length ƒaƒ of a
+(4) ƒaƒ (cid:2) 1a•a(cid:2) 2a2(cid:4)a2(cid:4)a2
+1 2 3
+as well as a formula for g. If a•b(cid:2)0, we call aand b orthogonal. The dot product
+is suggested by the work W(cid:2)p•d done by a force p in a displacement d.
+The vector product or cross product v(cid:2)a(cid:2)b is a vector of length
+(5) ƒa(cid:2)bƒ (cid:2) ƒaƒƒbƒ sin g (Sec. 9.3)
+and perpendicular to both a and b such that a, b, v form a right-handed triple. In
+terms of components with respect to right-handed coordinates,
+i j k
+(6) a(cid:2)b(cid:2) a a a (Sec. 9.3).
+1 2 3
+b b b
+1 2 3
+4 4
+
+=== PAGE 58 ===
+c09.qxd 10/30/10 3:25 PM Page 411
+Summary of Chapter 9 411
+The vector product is suggested, for instance, by moments of forces or by rotations.
+CAUTION! This multiplication is anticommutative, a(cid:2)b(cid:2)(cid:3)b(cid:2)a, and is not
+associative.
+An (oblique) box with edges a, b, c has volume equal to the absolute value of
+the scalar triple product
+(7) (a b c)(cid:2)a•(b(cid:2)c)(cid:2)(a(cid:2)b)•c.
+Sections 9.4–9.9 extend differential calculus to vector functions
+v(t)(cid:2)[v (t), v (t), v (t)](cid:2)v (t)i(cid:4)v (t)j(cid:4)v (t)k
+1 2 3 1 2 3
+and to vector functions of more than one variable (see below). The derivative of
+v(t) is
+(8) v r (cid:2) dv (cid:2) lim v(t (cid:4) ¢t) (cid:3)v(t) (cid:2)[v r , v r , v r ](cid:2)v r i(cid:4)v r j(cid:4)v r k.
+dt ¢t:0 ¢t 1 2 3 1 2 3
+Differentiation rules are as in calculus. They imply (Sec. 9.4)
+(u•v) r (cid:2)u r •v(cid:4)u•v r , (u(cid:2)v) r (cid:2)u r (cid:2)v(cid:4)u(cid:2)v r .
+r
+CurvesCin space represented by the position vector r(t) have r (t)as a tangent
+r
+vector (the velocity in mechanics when t is time), r (s) (s arc length, Sec. 9.5) as
+the unit tangent vector, and ƒr s (s)ƒ (cid:2)(cid:2) as the curvature (the acceleration in
+mechanics).
+Vector functionsv(x, y, z)(cid:2)[v (x, y, z), v (x, y, z), v (x, y, z)]represent vector
+1 2 3
+fields in space. Partial derivatives with respect to the Cartesian coordinates x, y, z
+are obtained componentwise, for instance,
+0v
+(cid:2)
+0v
+1 ,
+0v
+2 ,
+0v
+3 (cid:2)
+0v
+1 i(cid:4)
+0v
+2 j(cid:4)
+0v
+3 k (Sec. 9.6).
+0x 0x 0x 0x 0x 0x 0x
+The gradient of a scalar function f is
+B R
+0f 0f 0f
+(9) grad f(cid:2)(cid:14)f(cid:2) , , (Sec. 9.7).
+0x 0y 0z
+The directional derivative of f in the direction of a vector a is
+B R
+df 1
+(10) D f(cid:2) (cid:2) a•(cid:14)f (Sec. 9.7).
+a ds ƒaƒ
+The divergence of a vector function v is
+0v 0v 0v
+(11) div v (cid:2)(cid:14)• v(cid:2) 1 (cid:4) 2 (cid:4) 3 . (Sec. 9.8).
+0x 0y 0z
+
+=== PAGE 59 ===
+c09.qxd 10/30/10 3:25 PM Page 412
+412 CHAP. 9 Vector Differential Calculus. Grad, Div, Curl
+The curl of v is
+i j k
+0 0 0
+(12) curl v(cid:2)(cid:14)(cid:2) v(cid:2) (Sec. 9.9)
+0x 0y 0z
+v v v
+1 2 3
+5 5
+or minus the determinant if the coordinates are left-handed.
+Some basic formulas for grad, div, curl are (Secs. 9.7–9.9)
+(cid:14)( fg)(cid:2)f(cid:14)g(cid:4)g(cid:14)f
+(13)
+(cid:14)( f g)(cid:2)(1 g2)(g(cid:14)f(cid:3)f(cid:14)g)
+> >
+div ( fv)(cid:2)f div v(cid:4)v•(cid:14)f
+(14)
+div ( f(cid:14)g)(cid:2)f(cid:14)2g(cid:4)(cid:14)f•(cid:14)g
+(cid:14)2f(cid:2)div ((cid:14)f )
+(15)
+(cid:14)2( fg)(cid:2)g(cid:14)2f(cid:4)2(cid:14)f•(cid:14)g(cid:4)f(cid:14)2g
+curl ( fv)(cid:2)(cid:14)f(cid:2)v(cid:4)f curl v
+(16)
+div (u(cid:2)v)(cid:2)v•curl u(cid:3)u•curl v
+curl ((cid:14)f )(cid:2)0
+(17)
+div (curl v)(cid:2)0.
+For grad, div, curl, and (cid:14)2 in curvilinear coordinates see App. A3.4.
+
