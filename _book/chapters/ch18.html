@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/ch21.html" rel="next">
+<link href="../chapters/ch19.html" rel="next">
 <link href="../chapters/ch17.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -225,20 +225,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 19: Numerics in General</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 20: Numeric Linear Algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/ch21.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch22.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
   </div>
 </li>
     </ul>
@@ -438,7 +450,7 @@ Figure&nbsp;14.3: Fig. 398. Potential in Example 3
 <p><span id="eq-sec181-3"><span class="math display">\[F(z) = F_1(z) + F_2(z) = K[\text{Ln}(z - c) - \text{Ln}(z + c)] = K \text{Ln}\left(\frac{z - c}{z + c}\right) \tag{14.3}\]</span></span></p>
 <p>The equipotential lines are the curves <span class="math inline">\(\Phi = \text{Re } F(z) = K \ln |(z - c)/(z + c)| = \text{const}\)</span>, thus</p>
 <p><span class="math display">\[\left| \frac{z - c}{z + c} \right| = \text{const}\]</span></p>
-<p>These are circles, as you may show by direct calculation. The lines of force are <span class="math inline">\(\Psi = \text{Im } F(z) = K[\text{Arg}(z - c) - \text{Arg}(z + c)] = \text{const}\)</span>. We write this briefly (see <a href="#fig-18-04" class="quarto-xref">Figure&nbsp;<span>14.4</span></a> and <a href="#fig-18-05" class="quarto-xref">Figure&nbsp;<span>14.5</span></a>):</p>
+<p>These are circles, as you may show by direct calculation. The lines of force are <span class="math inline">\(\Psi = \text{Im } F(z) = K[\text{Arg}(z - c) - \text{Arg}(z + c)] = \text{const}\)</span>. We write this briefly (see <a href="#fig-18-04" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-18-04</span></a> and <a href="#fig-18-05" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-18-05</span></a>):</p>
 <p><span class="math display">\[\Psi = K(\theta_1 - \theta_2) = \text{const}\]</span></p>
 <div id="fig-18-04" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1691,8 +1703,8 @@ M = |F(z_0)| &amp;\le \frac{1}{2\pi} \left| \int_{C_1} \frac{F(z)}{z - z_0} dz \
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/ch21.html" class="pagination-link" aria-label="CHAPTER 21: Numerics for ODEs and PDEs">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/ch19.html" class="pagination-link" aria-label="CHAPTER 19: Numerics in General">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 19: Numerics in General</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
