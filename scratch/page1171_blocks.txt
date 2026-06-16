@@ -1,0 +1,319 @@
+Block (72.3, 36.4):
+App. 2
+Answers to Odd-Numbered Problems
+A31
+
+
+Block (156.3, 63.0):
+17. No, the assumptions in Theorem 3 are not satisfied.
+19. 
+
+
+Block (172.0, 75.8):
+[ f1  f2  f3  f4, f1  if2  f3  if4, f1  f2  f3  f4, f1  if2  f3  if4]
+
+
+Block (219.5, 86.8):
+f2
+d  c
+f1  f2
+
+
+Block (173.5, 88.3):
+c
+1
+1
+
+
+Block (177.7, 88.3):
+1
+1d c
+f1
+
+
+Block (252.3, 88.3):
+f1  f2
+d
+
+
+Block (156.3, 101.0):
+21. 
+
+
+Block (156.3, 141.4):
+Chapter 11 Review Questions and Problems, page 537
+
+
+Block (334.4, 157.1):
+2
+ Á b
+
+
+Block (191.8, 159.6):
+p asin px
+
+
+Block (250.3, 159.8):
+3 sin 3px
+
+
+Block (305.6, 159.8):
+5 sin 5px
+
+
+Block (172.0, 161.1):
+1  4
+
+
+Block (226.4, 161.1):
+2  1
+
+
+Block (279.1, 161.1):
+2
+ 1
+
+
+Block (156.3, 167.5):
+11. 
+
+
+Block (312.1, 183.6):
+25 cos 5px  Á b 
+
+
+Block (192.8, 186.1):
+p2 acos px  1
+
+
+Block (172.5, 187.6):
+1
+4  2
+
+
+Block (256.1, 187.6):
+9 cos 3px  1
+
+
+Block (156.3, 194.0):
+13. 
+
+
+Block (284.5, 212.6):
+3 sin 3px   Á b
+
+
+Block (172.5, 215.1):
+1
+p asin px  1
+
+
+Block (230.0, 216.6):
+2 sin 2px  1
+
+
+Block (172.0, 242.8):
+cosh x, sinh x (5  x  5),
+
+
+Block (156.3, 243.0):
+15. 
+respectively
+17. Cf. Sec. 11.1.
+
+
+Block (257.4, 252.1):
+9 cos 3px  Á b , 2
+
+
+Block (403.8, 252.1):
+2 sin 2px   Á b
+
+
+Block (194.0, 254.6):
+p2 acos px  1
+
+
+Block (346.3, 254.6):
+p asin px  1
+
+
+Block (172.5, 256.1):
+1
+2
+  4
+
+
+Block (156.3, 262.5):
+19. 
+
+
+Block (172.0, 280.3):
+y  C1 cos vt  C2 sin vt  p2
+
+
+Block (295.1, 281.1):
+v2  12 a cos t
+
+
+Block (383.8, 282.5):
+4
+ # cos 2t
+
+
+Block (447.0, 282.5):
+9
+ # cos 3t
+
+
+Block (338.4, 282.6):
+v2  1
+ 1
+
+
+Block (401.6, 282.6):
+v2  4
+ 1
+
+
+Block (156.3, 289.0):
+21. 
+
+
+Block (464.7, 293.6):
+v2  9
+
+
+Block (203.5, 307.6):
+v2  16
+  Á b
+
+
+Block (180.8, 311.5):
+16
+ #
+cos 4t
+
+
+Block (172.0, 311.6):
+ 1
+
+
+Block (156.3, 340.0):
+23. 0.82, 0.50, 0.36, 0.28, 0.23
+25. 0.0076, 0.0076, 0.0012, 0.0012, 0.0004
+
+
+Block (173.0, 350.8):
+12>p (cos aw  cos w  aw sin aw  w sin w)>w2
+
+
+Block (191.4, 365.5):
+
+
+
+Block (197.3, 369.3):
+(cos w  w sin w  1) cos wx  (sin w  w cos w) sin wx
+
+
+Block (172.5, 369.6):
+1
+p 
+
+
+Block (156.3, 376.0):
+27. 
+
+
+Block (309.1, 376.0):
+w2
+ dw
+
+
+Block (187.9, 390.6):
+0
+
+
+Block (156.3, 400.0):
+29. 
+
+
+Block (156.3, 429.4):
+Problem Set 12.1, page 542
+
+
+Block (172.0, 443.0):
+u(x, y)  axy  bx  cy  k;
+u  c1( y)x  c2( y)>x2
+u  e3y(a(x) cos 2y  b(x) sin 2y)  0.1e3y
+u  c(x) ey3>3
+u  a( y) cos 4px  b( y) sin 4px
+u  110  (110>ln 100) ln (x2  y2)
+c  p>25
+v
+c  a>b
+c  2
+L(c1u1  c2u2)  c1L(u1)  c2L(u2)  c1 # 0  c2 # 0  0
+
+
+Block (156.3, 449.0):
+1. 
+3. 
+5. 
+7. Any c and 
+9. 
+15. 
+17. 
+19. 
+21. 
+23. 
+(Euler–Cauchy)
+25. 
+a, b, c, k arbitrary constants
+
+
+Block (156.3, 569.4):
+Problem Set 12.3, page 551
+
+
+Block (172.0, 587.8):
+k cos 3pt sin 3px
+
+
+Block (161.3, 589.0):
+5. 
+
+
+Block (262.7, 598.1):
+27 cos 3pt sin 3px 
+1
+125 cos 5pt sin 5px  Á b
+
+
+Block (172.5, 600.6):
+8k
+p3
+ acos pt sin px  1
+
+
+Block (161.3, 608.5):
+7. 
+
+
+Block (351.4, 631.1):
+25 cos 5pt sin 5px   Á b
+
+
+Block (172.7, 633.6):
+p2
+ acos pt sin px  1
+
+
+Block (161.3, 635.1):
+9. 0.8
+
+
+Block (263.2, 635.1):
+9 cos 3pt sin 3px  1
+
+

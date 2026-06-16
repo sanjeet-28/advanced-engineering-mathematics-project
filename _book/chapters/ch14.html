@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; CHAPTER 14: Complex Integration – Advanced Engineering Mathematics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch17.html" rel="next">
+<link href="../chapters/ch13.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch14.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 14: Complex Integration</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Advanced Engineering Mathematics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contents</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">CHAPTER 01: First-Order ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 02: Second-Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 04: Systems of ODEs. Phase Plane. Qualitative Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CHAPTER 07: Linear Algebra: Matrices, Vectors, Determinants. Linear Systems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">CHAPTER 09: Vector Differential Calculus. Grad, Div, Curl</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 10: Vector Integral Calculus. Integral Theorems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 13: Complex Numbers and Functions. Complex Differentiation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch14.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 14: Complex Integration</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 19: Numerics in General</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">CHAPTER 20: Numeric Linear Algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch22.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">CHAPTER 23: Graphs. Combinatorial Optimization</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">CHAPTER 24: Data Analysis. Probability Theory</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">CHAPTER 25: Mathematical Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-line-integral" id="toc-sec-line-integral" class="nav-link active" data-scroll-target="#sec-line-integral"><span class="header-section-number">15.1</span> 14.1 Line Integral in the Complex Plane</a>
+  <ul class="collapse">
+  <li><a href="#definition-of-the-complex-line-integral" id="toc-definition-of-the-complex-line-integral" class="nav-link" data-scroll-target="#definition-of-the-complex-line-integral"><span class="header-section-number">15.1.1</span> Definition of the Complex Line Integral</a></li>
+  <li><a href="#basic-properties-directly-implied-by-the-definition" id="toc-basic-properties-directly-implied-by-the-definition" class="nav-link" data-scroll-target="#basic-properties-directly-implied-by-the-definition"><span class="header-section-number">15.1.2</span> Basic Properties Directly Implied by the Definition</a></li>
+  <li><a href="#existence-of-the-complex-line-integral" id="toc-existence-of-the-complex-line-integral" class="nav-link" data-scroll-target="#existence-of-the-complex-line-integral"><span class="header-section-number">15.1.3</span> Existence of the Complex Line Integral</a></li>
+  <li><a href="#first-evaluation-method-indefinite-integration-and-substitution-of-limits" id="toc-first-evaluation-method-indefinite-integration-and-substitution-of-limits" class="nav-link" data-scroll-target="#first-evaluation-method-indefinite-integration-and-substitution-of-limits"><span class="header-section-number">15.1.4</span> First Evaluation Method: Indefinite Integration and Substitution of Limits</a></li>
+  <li><a href="#theorem-1-indefinite-integration-of-analytic-functions" id="toc-theorem-1-indefinite-integration-of-analytic-functions" class="nav-link" data-scroll-target="#theorem-1-indefinite-integration-of-analytic-functions"><span class="header-section-number">15.1.5</span> THEOREM 1 Indefinite Integration of Analytic Functions</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">15.1.6</span> EXAMPLE 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">15.1.7</span> EXAMPLE 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">15.1.8</span> EXAMPLE 3</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4"><span class="header-section-number">15.1.9</span> EXAMPLE 4</a></li>
+  <li><a href="#second-evaluation-method-use-of-a-representation-of-a-path" id="toc-second-evaluation-method-use-of-a-representation-of-a-path" class="nav-link" data-scroll-target="#second-evaluation-method-use-of-a-representation-of-a-path"><span class="header-section-number">15.1.10</span> Second Evaluation Method: Use of a Representation of a Path</a></li>
+  <li><a href="#theorem-2-integration-by-the-use-of-the-path" id="toc-theorem-2-integration-by-the-use-of-the-path" class="nav-link" data-scroll-target="#theorem-2-integration-by-the-use-of-the-path"><span class="header-section-number">15.1.11</span> THEOREM 2 Integration by the Use of the Path</a></li>
+  <li><a href="#steps-in-applying-theorem-2" id="toc-steps-in-applying-theorem-2" class="nav-link" data-scroll-target="#steps-in-applying-theorem-2"><span class="header-section-number">15.1.12</span> Steps in Applying Theorem 2</a></li>
+  <li><a href="#example-5-a-basic-result-integral-of-1z-around-the-unit-circle" id="toc-example-5-a-basic-result-integral-of-1z-around-the-unit-circle" class="nav-link" data-scroll-target="#example-5-a-basic-result-integral-of-1z-around-the-unit-circle"><span class="header-section-number">15.1.13</span> EXAMPLE 5 A Basic Result: Integral of <span class="math inline">\(1/z\)</span> Around the Unit Circle</a></li>
+  <li><a href="#example-6-integral-of-1zm-with-integer-power-m" id="toc-example-6-integral-of-1zm-with-integer-power-m" class="nav-link" data-scroll-target="#example-6-integral-of-1zm-with-integer-power-m"><span class="header-section-number">15.1.14</span> EXAMPLE 6 Integral of <span class="math inline">\(1/z^m\)</span> with Integer Power <span class="math inline">\(m\)</span></a></li>
+  <li><a href="#example-7-integral-of-a-nonanalytic-function.-dependence-on-path" id="toc-example-7-integral-of-a-nonanalytic-function.-dependence-on-path" class="nav-link" data-scroll-target="#example-7-integral-of-a-nonanalytic-function.-dependence-on-path"><span class="header-section-number">15.1.15</span> EXAMPLE 7 Integral of a Nonanalytic Function. Dependence on Path</a></li>
+  <li><a href="#bounds-for-integrals.-ml-inequality" id="toc-bounds-for-integrals.-ml-inequality" class="nav-link" data-scroll-target="#bounds-for-integrals.-ml-inequality"><span class="header-section-number">15.1.16</span> Bounds for Integrals. ML-Inequality</a></li>
+  <li><a href="#example-8-estimation-of-an-integral" id="toc-example-8-estimation-of-an-integral" class="nav-link" data-scroll-target="#example-8-estimation-of-an-integral"><span class="header-section-number">15.1.17</span> EXAMPLE 8 Estimation of an Integral</a></li>
+  </ul></li>
+  <li><a href="#problem-set-14.1" id="toc-problem-set-14.1" class="nav-link" data-scroll-target="#problem-set-14.1"><span class="header-section-number">15.2</span> PROBLEM SET 14.1</a>
+  <ul class="collapse">
+  <li><a href="#find-the-path-and-sketch-it." id="toc-find-the-path-and-sketch-it." class="nav-link" data-scroll-target="#find-the-path-and-sketch-it."><span class="header-section-number">15.2.1</span> 1–10 FIND THE PATH and sketch it.</a></li>
+  <li><a href="#find-a-parametric-representation-and-sketch-the-path." id="toc-find-a-parametric-representation-and-sketch-the-path." class="nav-link" data-scroll-target="#find-a-parametric-representation-and-sketch-the-path."><span class="header-section-number">15.2.2</span> 11–20 FIND A PARAMETRIC REPRESENTATION and sketch the path.</a></li>
+  <li><a href="#integration" id="toc-integration" class="nav-link" data-scroll-target="#integration"><span class="header-section-number">15.2.3</span> 21–30 INTEGRATION</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">15.2.4</span> 31–35</a></li>
+  </ul></li>
+  <li><a href="#sec-cauchy-integral-theorem" id="toc-sec-cauchy-integral-theorem" class="nav-link" data-scroll-target="#sec-cauchy-integral-theorem"><span class="header-section-number">15.3</span> 14.2 Cauchy’s Integral Theorem</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-cauchys-integral-theorem" id="toc-theorem-1-cauchys-integral-theorem" class="nav-link" data-scroll-target="#theorem-1-cauchys-integral-theorem"><span class="header-section-number">15.3.1</span> THEOREM 1 Cauchy’s Integral Theorem</a></li>
+  <li><a href="#example-1-entire-functions" id="toc-example-1-entire-functions" class="nav-link" data-scroll-target="#example-1-entire-functions"><span class="header-section-number">15.3.2</span> EXAMPLE 1 Entire Functions</a></li>
+  <li><a href="#example-2-points-outside-the-contour-where-fz-is-not-analytic" id="toc-example-2-points-outside-the-contour-where-fz-is-not-analytic" class="nav-link" data-scroll-target="#example-2-points-outside-the-contour-where-fz-is-not-analytic"><span class="header-section-number">15.3.3</span> EXAMPLE 2 Points Outside the Contour Where <span class="math inline">\(f(z)\)</span> is Not Analytic</a></li>
+  <li><a href="#example-3-nonanalytic-function" id="toc-example-3-nonanalytic-function" class="nav-link" data-scroll-target="#example-3-nonanalytic-function"><span class="header-section-number">15.3.4</span> EXAMPLE 3 Nonanalytic Function</a></li>
+  <li><a href="#example-4-analyticity-sufficient-not-necessary" id="toc-example-4-analyticity-sufficient-not-necessary" class="nav-link" data-scroll-target="#example-4-analyticity-sufficient-not-necessary"><span class="header-section-number">15.3.5</span> EXAMPLE 4 Analyticity Sufficient, Not Necessary</a></li>
+  <li><a href="#example-5-simple-connectedness-essential" id="toc-example-5-simple-connectedness-essential" class="nav-link" data-scroll-target="#example-5-simple-connectedness-essential"><span class="header-section-number">15.3.6</span> EXAMPLE 5 Simple Connectedness Essential</a></li>
+  <li><a href="#independence-of-path" id="toc-independence-of-path" class="nav-link" data-scroll-target="#independence-of-path"><span class="header-section-number">15.3.7</span> Independence of Path</a></li>
+  <li><a href="#theorem-2-independence-of-path" id="toc-theorem-2-independence-of-path" class="nav-link" data-scroll-target="#theorem-2-independence-of-path"><span class="header-section-number">15.3.8</span> THEOREM 2 Independence of Path</a></li>
+  <li><a href="#principle-of-deformation-of-path" id="toc-principle-of-deformation-of-path" class="nav-link" data-scroll-target="#principle-of-deformation-of-path"><span class="header-section-number">15.3.9</span> Principle of Deformation of Path</a></li>
+  <li><a href="#example-6-a-basic-result-integral-of-integer-powers" id="toc-example-6-a-basic-result-integral-of-integer-powers" class="nav-link" data-scroll-target="#example-6-a-basic-result-integral-of-integer-powers"><span class="header-section-number">15.3.10</span> EXAMPLE 6 A Basic Result: Integral of Integer Powers</a></li>
+  <li><a href="#existence-of-indefinite-integral" id="toc-existence-of-indefinite-integral" class="nav-link" data-scroll-target="#existence-of-indefinite-integral"><span class="header-section-number">15.3.11</span> Existence of Indefinite Integral</a></li>
+  <li><a href="#theorem-3-existence-of-indefinite-integral" id="toc-theorem-3-existence-of-indefinite-integral" class="nav-link" data-scroll-target="#theorem-3-existence-of-indefinite-integral"><span class="header-section-number">15.3.12</span> THEOREM 3 Existence of Indefinite Integral</a></li>
+  <li><a href="#cauchys-theorem-for-multiply-connected-domains" id="toc-cauchys-theorem-for-multiply-connected-domains" class="nav-link" data-scroll-target="#cauchys-theorem-for-multiply-connected-domains"><span class="header-section-number">15.3.13</span> Cauchy’s Theorem for Multiply Connected Domains</a></li>
+  </ul></li>
+  <li><a href="#problem-set-14.2" id="toc-problem-set-14.2" class="nav-link" data-scroll-target="#problem-set-14.2"><span class="header-section-number">15.4</span> PROBLEM SET 14.2</a>
+  <ul class="collapse">
+  <li><a href="#comments-on-text-and-examples" id="toc-comments-on-text-and-examples" class="nav-link" data-scroll-target="#comments-on-text-and-examples"><span class="header-section-number">15.4.1</span> 1–8 COMMENTS ON TEXT AND EXAMPLES</a></li>
+  <li><a href="#cauchys-theorem-applicable" id="toc-cauchys-theorem-applicable" class="nav-link" data-scroll-target="#cauchys-theorem-applicable"><span class="header-section-number">15.4.2</span> 9–20 CAUCHY’S THEOREM APPLICABLE?</a></li>
+  <li><a href="#contour-integration" id="toc-contour-integration" class="nav-link" data-scroll-target="#contour-integration"><span class="header-section-number">15.4.3</span> 21–30 CONTOUR INTEGRATION</a></li>
+  </ul></li>
+  <li><a href="#sec-cauchy-integral-formula" id="toc-sec-cauchy-integral-formula" class="nav-link" data-scroll-target="#sec-cauchy-integral-formula"><span class="header-section-number">15.5</span> 14.3 Cauchy’s Integral Formula</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-cauchys-integral-formula" id="toc-theorem-1-cauchys-integral-formula" class="nav-link" data-scroll-target="#theorem-1-cauchys-integral-formula"><span class="header-section-number">15.5.1</span> THEOREM 1 Cauchy’s Integral Formula</a></li>
+  <li><a href="#example-1-cauchys-integral-formula" id="toc-example-1-cauchys-integral-formula" class="nav-link" data-scroll-target="#example-1-cauchys-integral-formula"><span class="header-section-number">15.5.2</span> EXAMPLE 1 Cauchy’s Integral Formula</a></li>
+  <li><a href="#example-2-cauchys-integral-formula" id="toc-example-2-cauchys-integral-formula" class="nav-link" data-scroll-target="#example-2-cauchys-integral-formula"><span class="header-section-number">15.5.3</span> EXAMPLE 2 Cauchy’s Integral Formula</a></li>
+  <li><a href="#example-3-integration-around-different-contours" id="toc-example-3-integration-around-different-contours" class="nav-link" data-scroll-target="#example-3-integration-around-different-contours"><span class="header-section-number">15.5.4</span> EXAMPLE 3 Integration Around Different Contours</a></li>
+  </ul></li>
+  <li><a href="#problem-set-14.3" id="toc-problem-set-14.3" class="nav-link" data-scroll-target="#problem-set-14.3"><span class="header-section-number">15.6</span> PROBLEM SET 14.3</a>
+  <ul class="collapse">
+  <li><a href="#integration-1" id="toc-integration-1" class="nav-link" data-scroll-target="#integration-1"><span class="header-section-number">15.6.1</span> 1–8 INTEGRATION</a></li>
+  <li><a href="#contour-integration-1" id="toc-contour-integration-1" class="nav-link" data-scroll-target="#contour-integration-1"><span class="header-section-number">15.6.2</span> 9–15 CONTOUR INTEGRATION</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">15.6.3</span> 16–20</a></li>
+  </ul></li>
+  <li><a href="#sec-derivatives-analytic-functions" id="toc-sec-derivatives-analytic-functions" class="nav-link" data-scroll-target="#sec-derivatives-analytic-functions"><span class="header-section-number">15.7</span> 14.4 Derivatives of Analytic Functions</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-derivatives-of-an-analytic-function" id="toc-theorem-1-derivatives-of-an-analytic-function" class="nav-link" data-scroll-target="#theorem-1-derivatives-of-an-analytic-function"><span class="header-section-number">15.7.1</span> THEOREM 1 Derivatives of an Analytic Function</a></li>
+  <li><a href="#applications-of-theorem-1" id="toc-applications-of-theorem-1" class="nav-link" data-scroll-target="#applications-of-theorem-1"><span class="header-section-number">15.7.2</span> Applications of Theorem 1</a></li>
+  <li><a href="#example-1-evaluation-of-line-integrals" id="toc-example-1-evaluation-of-line-integrals" class="nav-link" data-scroll-target="#example-1-evaluation-of-line-integrals"><span class="header-section-number">15.7.3</span> EXAMPLE 1 Evaluation of Line Integrals</a></li>
+  <li><a href="#example-2-1" id="toc-example-2-1" class="nav-link" data-scroll-target="#example-2-1"><span class="header-section-number">15.7.4</span> EXAMPLE 2</a></li>
+  <li><a href="#example-3-1" id="toc-example-3-1" class="nav-link" data-scroll-target="#example-3-1"><span class="header-section-number">15.7.5</span> EXAMPLE 3</a></li>
+  <li><a href="#cauchys-inequality.-liouvilles-and-moreras-theorems" id="toc-cauchys-inequality.-liouvilles-and-moreras-theorems" class="nav-link" data-scroll-target="#cauchys-inequality.-liouvilles-and-moreras-theorems"><span class="header-section-number">15.7.6</span> Cauchy’s Inequality. Liouville’s and Morera’s Theorems</a></li>
+  <li><a href="#theorem-2-liouvilles-theorem" id="toc-theorem-2-liouvilles-theorem" class="nav-link" data-scroll-target="#theorem-2-liouvilles-theorem"><span class="header-section-number">15.7.7</span> THEOREM 2 Liouville’s Theorem</a></li>
+  <li><a href="#theorem-3-moreras-theorem-converse-of-cauchys-integral-theorem-2" id="toc-theorem-3-moreras-theorem-converse-of-cauchys-integral-theorem-2" class="nav-link" data-scroll-target="#theorem-3-moreras-theorem-converse-of-cauchys-integral-theorem-2"><span class="header-section-number">15.7.8</span> THEOREM 3 Morera’s Theorem (Converse of Cauchy’s Integral Theorem) </a></li>
+  </ul></li>
+  <li><a href="#problem-set-14.4" id="toc-problem-set-14.4" class="nav-link" data-scroll-target="#problem-set-14.4"><span class="header-section-number">15.8</span> PROBLEM SET 14.4</a>
+  <ul class="collapse">
+  <li><a href="#evaluation-of-integrals" id="toc-evaluation-of-integrals" class="nav-link" data-scroll-target="#evaluation-of-integrals"><span class="header-section-number">15.8.1</span> 1–8 EVALUATION OF INTEGRALS</a></li>
+  <li><a href="#contour-integration-2" id="toc-contour-integration-2" class="nav-link" data-scroll-target="#contour-integration-2"><span class="header-section-number">15.8.2</span> 9–19 CONTOUR INTEGRATION</a></li>
+  <li><a href="#team-project.-theory-on-growth" id="toc-team-project.-theory-on-growth" class="nav-link" data-scroll-target="#team-project.-theory-on-growth"><span class="header-section-number">15.8.3</span> 20 TEAM PROJECT. Theory on Growth</a></li>
+  </ul></li>
+  <li><a href="#chapter-14-review-questions-and-problems" id="toc-chapter-14-review-questions-and-problems" class="nav-link" data-scroll-target="#chapter-14-review-questions-and-problems"><span class="header-section-number">15.9</span> CHAPTER 14 REVIEW QUESTIONS AND PROBLEMS</a>
+  <ul class="collapse">
+  <li><a href="#integration-2" id="toc-integration-2" class="nav-link" data-scroll-target="#integration-2"><span class="header-section-number">15.9.1</span> 21–30 INTEGRATION</a></li>
+  </ul></li>
+  <li><a href="#summary-of-chapter-14" id="toc-summary-of-chapter-14" class="nav-link" data-scroll-target="#summary-of-chapter-14"><span class="header-section-number">15.10</span> SUMMARY OF CHAPTER 14</a>
+  <ul class="collapse">
+  <li><a href="#complex-integration" id="toc-complex-integration" class="nav-link" data-scroll-target="#complex-integration"><span class="header-section-number">15.10.1</span> Complex Integration</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 14: Complex Integration</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Chapter 13 laid the groundwork for the study of complex analysis, covered complex numbers in the complex plane, limits, and differentiation, and introduced the most important concept of analyticity. A complex function is analytic in some domain if it is differentiable in that domain. Complex analysis deals with such functions and their applications. The Cauchy–Riemann equations, in Sec. 13.4, were the heart of Chapter 13 and allowed a means of checking whether a function is indeed analytic. In that section, we also saw that analytic functions satisfy Laplace’s equation, the most important PDE in physics.</p>
+<p>We now consider the next part of complex calculus, that is, we shall discuss the first approach to complex integration. It centers around the very important Cauchy integral theorem (also called the Cauchy–Goursat theorem) in <a href="#sec-cauchy-integral-theorem" class="quarto-xref"><span>Section 15.3</span></a>. This theorem is important because it allows, through its implied Cauchy integral formula of <a href="#sec-cauchy-integral-formula" class="quarto-xref"><span>Section 15.5</span></a>, the evaluation of integrals having an analytic integrand. Furthermore, the Cauchy integral formula shows the surprising result that analytic functions have derivatives of all orders. Hence, in this respect, complex analytic functions behave much more simply than real-valued functions of real variables, which may have derivatives only up to a certain order.</p>
+<p>Complex integration is attractive for several reasons. Some basic properties of analytic functions are difficult to prove by other methods. This includes the existence of derivatives of all orders just discussed. A main practical reason for the importance of integration in the complex plane is that such integration can evaluate certain real integrals that appear in applications and that are not accessible by real integral calculus.</p>
+<p>Finally, complex integration is used in connection with special functions, such as gamma functions (consult [GenRef1]), the error function, and various polynomials (see [GenRef10]). These functions are applied to problems in physics.</p>
+<p>The second approach to complex integration is integration by residues, which we shall cover in Chapter 16.</p>
+<p><strong>Prerequisite:</strong> Chap. 13.</p>
+<p><strong>Section that may be omitted in a shorter course:</strong> 14.1, 14.5.</p>
+<p><strong>References and Answers to Problems:</strong> App. 1 Part D, App. 2.</p>
+<section id="sec-line-integral" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="sec-line-integral"><span class="header-section-number">15.1</span> 14.1 Line Integral in the Complex Plane</h2>
+<p>As in calculus, in complex analysis we distinguish between definite integrals and indefinite integrals or antiderivatives. Here an indefinite integral is a function whose derivative equals a given analytic function in a region. By inverting known differentiation formulas we may find many types of indefinite integrals.</p>
+<p>Complex definite integrals are called (complex) line integrals. They are written <span class="math display">\[
+\int_C f(z) \, dz
+\]</span> Here the integrand <span class="math inline">\(f(z)\)</span> is integrated over a given curve <span class="math inline">\(C\)</span> or a portion of it (an arc, but we shall say “curve” in either case, for simplicity). This curve <span class="math inline">\(C\)</span> in the complex plane is called the path of integration. We may represent <span class="math inline">\(C\)</span> by a parametric representation <span id="eq-14-1-1"><span class="math display">\[
+z(t) = x(t) + i y(t) \quad (a \le t \le b)
+\tag{15.1}\]</span></span></p>
+<p>The sense of increasing <span class="math inline">\(t\)</span> is called the positive sense on <span class="math inline">\(C\)</span>, and we say that <span class="math inline">\(C\)</span> is oriented by <a href="#eq-14-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>.</p>
+<p>For instance, <span class="math inline">\(z(t) = t + 3it \quad (0 \le t \le 2)\)</span> gives a portion (a segment) of the line <span class="math inline">\(y = 3x\)</span>. The function <span class="math inline">\(z(t) = 4\cos t + 4i\sin t \quad (-\pi \le t \le \pi)\)</span> represents the circle <span class="math inline">\(|z| = 4\)</span>, and so on. More examples follow below.</p>
+<p>We assume <span class="math inline">\(C\)</span> to be a smooth curve, that is, <span class="math inline">\(C\)</span> has a continuous and nonzero derivative <span class="math display">\[
+\dot{z}(t) = \frac{dz}{dt} = \dot{x}(t) + i \dot{y}(t)
+\]</span> at each point. Geometrically this means that <span class="math inline">\(C\)</span> has everywhere a continuously turning tangent, as follows directly from the definition <span class="math display">\[
+\dot{z}(t) = \lim_{\Delta t \to 0} \frac{z(t + \Delta t) - z(t)}{\Delta t}
+\]</span> (see <a href="#fig-14-01" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>). Here we use a dot since a prime denotes the derivative with respect to <span class="math inline">\(z\)</span>.</p>
+<div id="fig-14-01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-01.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: Fig. 339. Tangent vector <span class="math inline">\(\dot{z}(t)\)</span> of a curve <span class="math inline">\(C\)</span> in the complex plane given by <span class="math inline">\(z(t)\)</span>. The arrowhead on the curve indicates the positive sense (sense of increasing <span class="math inline">\(t\)</span>)
+</figcaption>
+</figure>
+</div>
+<div id="fig-14-02" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-02.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: Fig. 340. Complex line integral
+</figcaption>
+</figure>
+</div>
+<section id="definition-of-the-complex-line-integral" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="definition-of-the-complex-line-integral"><span class="header-section-number">15.1.1</span> Definition of the Complex Line Integral</h3>
+<p>This is similar to the method in calculus. Let <span class="math inline">\(C\)</span> be a smooth curve in the complex plane given by <a href="#eq-14-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>, and let <span class="math inline">\(f(z)\)</span> be a continuous function given (at least) at each point of <span class="math inline">\(C\)</span>. We now subdivide (we “partition”) the interval <span class="math inline">\(a \le t \le b\)</span> in <a href="#eq-14-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> by points <span class="math display">\[
+t_0 \ (&lt; t_1 &lt; \dots &lt; t_{n-1} &lt; t_n)
+\]</span> where <span class="math inline">\(t_0 = a\)</span> and <span class="math inline">\(t_n = b\)</span>. To this subdivision there corresponds a subdivision of <span class="math inline">\(C\)</span> by points <span class="math display">\[
+z_0, z_1, \dots, z_{n-1}, z_n \quad (z_n = Z)
+\]</span> (see <a href="#fig-14-02" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>). On each portion of subdivision of <span class="math inline">\(C\)</span> we choose an arbitrary point, say, a point <span class="math inline">\(\zeta_m\)</span> between <span class="math inline">\(z_{m-1}\)</span> and <span class="math inline">\(z_m\)</span> (that is, <span class="math inline">\(\zeta_m = z(t)\)</span> where <span class="math inline">\(t\)</span> satisfies <span class="math inline">\(t_{m-1} \le t \le t_m\)</span>). Then we form the sum <span id="eq-14-1-2"><span class="math display">\[
+S_n = \sum_{m=1}^n f(\zeta_m) \Delta z_m \quad \text{where} \quad \Delta z_m = z_m - z_{m-1}.
+\tag{15.2}\]</span></span></p>
+<p>We do this for each <span class="math inline">\(n = 2, 3, \dots\)</span> in a completely independent manner, but so that the greatest <span class="math inline">\(|\Delta t_m| = |t_m - t_{m-1}|\)</span> approaches zero as <span class="math inline">\(n \to \infty\)</span>. This implies that the greatest <span class="math inline">\(|\Delta z_m|\)</span> also approaches zero. Indeed, it cannot exceed the length of the arc of <span class="math inline">\(C\)</span> from <span class="math inline">\(z_{m-1}\)</span> to <span class="math inline">\(z_m\)</span> and the latter goes to zero since the arc length of the smooth curve <span class="math inline">\(C\)</span> is a continuous function of <span class="math inline">\(t\)</span>. The limit of the sequence of complex numbers <span class="math inline">\(S_2, S_3, \dots\)</span> thus obtained is called the line integral (or simply the integral) of <span class="math inline">\(f(z)\)</span> over the path of integration <span class="math inline">\(C\)</span> with the orientation given by <a href="#eq-14-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>. This line integral is denoted by <span id="eq-14-1-3"><span class="math display">\[
+\int_C f(z) \, dz, \quad \text{or by} \quad \oint_C f(z) \, dz
+\tag{15.3}\]</span></span> if <span class="math inline">\(C\)</span> is a closed path (one whose terminal point <span class="math inline">\(Z\)</span> coincides with its initial point <span class="math inline">\(z_0\)</span>, as for a circle or for a curve shaped like an 8).</p>
+<p><strong>General Assumption.</strong> All paths of integration for complex line integrals are assumed to be piecewise smooth, that is, they consist of finitely many smooth curves joined end to end.</p>
+</section>
+<section id="basic-properties-directly-implied-by-the-definition" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="basic-properties-directly-implied-by-the-definition"><span class="header-section-number">15.1.2</span> Basic Properties Directly Implied by the Definition</h3>
+<ol type="1">
+<li><p><strong>Linearity.</strong> Integration is a linear operation, that is, we can integrate sums term by term and can take out constant factors from under the integral sign. This means that if the integrals of <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> over a path <span class="math inline">\(C\)</span> exist, so does the integral of <span class="math inline">\(k_1 f_1 + k_2 f_2\)</span> over the same path and <span id="eq-14-1-4"><span class="math display">\[
+\int_C [k_1 f_1(z) + k_2 f_2(z)] \, dz = k_1 \int_C f_1(z) \, dz + k_2 \int_C f_2(z) \, dz.
+\tag{15.4}\]</span></span></p></li>
+<li><p><strong>Sense reversal</strong> in integrating over the same path, from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(Z\)</span> (left) and from <span class="math inline">\(Z\)</span> to <span class="math inline">\(z_0\)</span> (right), introduces a minus sign as shown, <span id="eq-14-1-5"><span class="math display">\[
+\int_{z_0}^Z f(z) \, dz = -\int_Z^{z_0} f(z) \, dz.
+\tag{15.5}\]</span></span></p></li>
+<li><p><strong>Partitioning of path</strong> (see <a href="#fig-14-03" class="quarto-xref">Figure&nbsp;<span>15.3</span></a>) <span id="eq-14-1-6"><span class="math display">\[
+\int_C f(z) \, dz = \int_{C_1} f(z) \, dz + \int_{C_2} f(z) \, dz.
+\tag{15.6}\]</span></span></p></li>
+</ol>
+<div id="fig-14-03" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-03.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.3: Fig. 341. Partitioning of path [formula (6)]
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="existence-of-the-complex-line-integral" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="existence-of-the-complex-line-integral"><span class="header-section-number">15.1.3</span> Existence of the Complex Line Integral</h3>
+<p>Our assumptions that <span class="math inline">\(f(z)\)</span> is continuous and <span class="math inline">\(C\)</span> is piecewise smooth imply the existence of the line integral <a href="#eq-14-1-3" class="quarto-xref">Equation&nbsp;<span>15.3</span></a>. This can be seen as follows.</p>
+<p>As in the preceding chapter let us write <span class="math inline">\(f(z) = u(x, y) + i v(x, y)\)</span>. We also set <span class="math display">\[
+\zeta_m = \xi_m + i \eta_m \quad \text{and} \quad \Delta z_m = \Delta x_m + i \Delta y_m.
+\]</span> Then <a href="#eq-14-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a> may be written <span id="eq-14-1-7"><span class="math display">\[
+S_n = \sum_{m=1}^n (u_m + i v_m)(\Delta x_m + i \Delta y_m)
+\tag{15.7}\]</span></span> where <span class="math inline">\(u_m = u(\xi_m, \eta_m)\)</span>, <span class="math inline">\(v_m = v(\xi_m, \eta_m)\)</span> and we sum over <span class="math inline">\(m\)</span> from 1 to <span class="math inline">\(n\)</span>. Performing the multiplication, we may now split up <span class="math inline">\(S_n\)</span> into four sums: <span class="math display">\[
+S_n = \sum_{m=1}^n u_m \Delta x_m - \sum_{m=1}^n v_m \Delta y_m + i \left[ \sum_{m=1}^n u_m \Delta y_m + \sum_{m=1}^n v_m \Delta x_m \right].
+\]</span> These sums are real. Since <span class="math inline">\(f\)</span> is continuous, <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are continuous. Hence, if we let <span class="math inline">\(n\)</span> approach infinity in the aforementioned way, then the greatest <span class="math inline">\(\Delta x_m\)</span> and <span class="math inline">\(\Delta y_m\)</span> will approach zero and each sum on the right becomes a real line integral: <span id="eq-14-1-8"><span class="math display">\[
+\lim_{n \to \infty} S_n = \int_C f(z) \, dz = \int_C u \, dx - \int_C v \, dy + i \left[ \int_C u \, dy + \int_C v \, dx \right].
+\tag{15.8}\]</span></span> This shows that under our assumptions on <span class="math inline">\(f\)</span> and <span class="math inline">\(C\)</span> the line integral <a href="#eq-14-1-3" class="quarto-xref">Equation&nbsp;<span>15.3</span></a> exists and its value is independent of the choice of subdivisions and intermediate points <span class="math inline">\(\zeta_m\)</span>.</p>
+</section>
+<section id="first-evaluation-method-indefinite-integration-and-substitution-of-limits" class="level3" data-number="15.1.4">
+<h3 data-number="15.1.4" class="anchored" data-anchor-id="first-evaluation-method-indefinite-integration-and-substitution-of-limits"><span class="header-section-number">15.1.4</span> First Evaluation Method: Indefinite Integration and Substitution of Limits</h3>
+<p>This method is the analog of the evaluation of definite integrals in calculus by the well-known formula <span class="math display">\[
+\int_a^b f(x) \, dx = F(b) - F(a)
+\]</span> where <span class="math inline">\([F'(x) = f(x)]\)</span>.</p>
+<p>It is simpler than the next method, but it is suitable for analytic functions only. To formulate it, we need the following concept of general interest.</p>
+<p>A domain <span class="math inline">\(D\)</span> is called <strong>simply connected</strong> if every simple closed curve (closed curve without self-intersections) encloses only points of <span class="math inline">\(D\)</span>.</p>
+<p>For instance, a circular disk is simply connected, whereas an annulus (Sec. 13.3) is not simply connected. (Explain!)</p>
+</section>
+<section id="theorem-1-indefinite-integration-of-analytic-functions" class="level3" data-number="15.1.5">
+<h3 data-number="15.1.5" class="anchored" data-anchor-id="theorem-1-indefinite-integration-of-analytic-functions"><span class="header-section-number">15.1.5</span> THEOREM 1 Indefinite Integration of Analytic Functions</h3>
+<p>Let <span class="math inline">\(f(z)\)</span> be analytic in a simply connected domain <span class="math inline">\(D\)</span>. Then there exists an indefinite integral of <span class="math inline">\(f(z)\)</span> in the domain <span class="math inline">\(D\)</span>, that is, an analytic function <span class="math inline">\(F(z)\)</span> such that <span class="math inline">\(F'(z) = f(z)\)</span> in <span class="math inline">\(D\)</span>, and for all paths in <span class="math inline">\(D\)</span> joining two points <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> in <span class="math inline">\(D\)</span> we have <span id="eq-14-1-9"><span class="math display">\[
+\int_{z_0}^{z_1} f(z) \, dz = F(z_1) - F(z_0) \quad [F'(z) = f(z)].
+\tag{15.9}\]</span></span> (Note that we can write <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> instead of <span class="math inline">\(C\)</span>, since we get the same value for all those <span class="math inline">\(C\)</span> from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(z_1\)</span>.)</p>
+<p>This theorem will be proved in the next section.</p>
+<p>Simple connectedness is quite essential in Theorem 1, as we shall see in Example 5. Since analytic functions are our main concern, and since differentiation formulas will often help in finding <span class="math inline">\(F(z)\)</span> for a given <span class="math inline">\(f(z) = F'(z)\)</span>, the present method is of great practical interest. If <span class="math inline">\(f(z)\)</span> is entire (Sec. 13.5), we can take for <span class="math inline">\(D\)</span> the complex plane (which is certainly simply connected).</p>
+</section>
+<section id="example-1" class="level3" data-number="15.1.6">
+<h3 data-number="15.1.6" class="anchored" data-anchor-id="example-1"><span class="header-section-number">15.1.6</span> EXAMPLE 1</h3>
+<p><span class="math display">\[
+\int_0^{1+i} z^2 \, dz = \left. \frac{1}{3} z^3 \right|_0^{1+i} = \frac{1}{3}(1+i)^3 = -\frac{2}{3} + \frac{2}{3}i
+\]</span></p>
+</section>
+<section id="example-2" class="level3" data-number="15.1.7">
+<h3 data-number="15.1.7" class="anchored" data-anchor-id="example-2"><span class="header-section-number">15.1.7</span> EXAMPLE 2</h3>
+<p><span class="math display">\[
+\int_{-\pi i}^{\pi i} \cos z \, dz = \left. \sin z \right|_{-\pi i}^{\pi i} = 2 \sin \pi i = 2i \sinh \pi \approx 23.097i
+\]</span></p>
+</section>
+<section id="example-3" class="level3" data-number="15.1.8">
+<h3 data-number="15.1.8" class="anchored" data-anchor-id="example-3"><span class="header-section-number">15.1.8</span> EXAMPLE 3</h3>
+<p><span class="math display">\[
+\int_{8 + \pi i}^{8 - 3\pi i} e^{z/2} \, dz = \left. 2e^{z/2} \right|_{8 + \pi i}^{8 - 3\pi i} = 2(e^{4 - 3\pi i / 2} - e^{4 + \pi i / 2}) = 0
+\]</span> since <span class="math inline">\(e^z\)</span> is periodic with period <span class="math inline">\(2\pi i\)</span>.</p>
+</section>
+<section id="example-4" class="level3" data-number="15.1.9">
+<h3 data-number="15.1.9" class="anchored" data-anchor-id="example-4"><span class="header-section-number">15.1.9</span> EXAMPLE 4</h3>
+<p><span class="math display">\[
+\int_{-i}^i \frac{dz}{z} = \text{Ln } i - \text{Ln }(-i) = i\frac{\pi}{2} - \left(-i\frac{\pi}{2}\right) = i\pi.
+\]</span> Here <span class="math inline">\(D\)</span> is the complex plane without <span class="math inline">\(0\)</span> and the negative real axis (where <span class="math inline">\(\text{Ln } z\)</span> is not analytic). Obviously, <span class="math inline">\(D\)</span> is a simply connected domain.</p>
+</section>
+<section id="second-evaluation-method-use-of-a-representation-of-a-path" class="level3" data-number="15.1.10">
+<h3 data-number="15.1.10" class="anchored" data-anchor-id="second-evaluation-method-use-of-a-representation-of-a-path"><span class="header-section-number">15.1.10</span> Second Evaluation Method: Use of a Representation of a Path</h3>
+<p>This method is not restricted to analytic functions but applies to any continuous complex function.</p>
+</section>
+<section id="theorem-2-integration-by-the-use-of-the-path" class="level3" data-number="15.1.11">
+<h3 data-number="15.1.11" class="anchored" data-anchor-id="theorem-2-integration-by-the-use-of-the-path"><span class="header-section-number">15.1.11</span> THEOREM 2 Integration by the Use of the Path</h3>
+<p>Let <span class="math inline">\(C\)</span> be a piecewise smooth path, represented by <span class="math inline">\(z = z(t)\)</span>, where <span class="math inline">\(a \le t \le b\)</span>. Let <span class="math inline">\(f(z)\)</span> be a continuous function on <span class="math inline">\(C\)</span>. Then <span id="eq-14-1-10"><span class="math display">\[
+\int_C f(z) \, dz = \int_a^b f[z(t)] \dot{z}(t) \, dt \quad \left( \dot{z} = \frac{dz}{dt} \right).
+\tag{15.10}\]</span></span></p>
+<p><strong>PROOF</strong> The left side of <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a> is given by <a href="#eq-14-1-8" class="quarto-xref">Equation&nbsp;<span>15.8</span></a> in terms of real line integrals, and we show that the right side of <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a> also equals <a href="#eq-14-1-8" class="quarto-xref">Equation&nbsp;<span>15.8</span></a>. We have <span class="math inline">\(z = x + iy\)</span>, hence <span class="math inline">\(\dot{z} = \dot{x} + i\dot{y}\)</span>. We simply write <span class="math inline">\(u\)</span> for <span class="math inline">\(u[x(t), y(t)]\)</span> and <span class="math inline">\(v\)</span> for <span class="math inline">\(v[x(t), y(t)]\)</span>. We also have <span class="math inline">\(dx = \dot{x} \, dt\)</span> and <span class="math inline">\(dy = \dot{y} \, dt\)</span>. Consequently, in <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a> <span class="math display">\[
+\int_a^b f[z(t)] \dot{z}(t) \, dt = \int_a^b (u + iv)(\dot{x} + i\dot{y}) \, dt = \int_C (u \, dx - v \, dy) + i \int_C (u \, dy + v \, dx). \quad \square
+\]</span></p>
+<p><strong>COMMENT.</strong> In <a href="#eq-14-1-7" class="quarto-xref">Equation&nbsp;<span>15.7</span></a> and <a href="#eq-14-1-8" class="quarto-xref">Equation&nbsp;<span>15.8</span></a> of the existence proof of the complex line integral we referred to real line integrals. If one wants to avoid this, one can take <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a> as a definition of the complex line integral.</p>
+</section>
+<section id="steps-in-applying-theorem-2" class="level3" data-number="15.1.12">
+<h3 data-number="15.1.12" class="anchored" data-anchor-id="steps-in-applying-theorem-2"><span class="header-section-number">15.1.12</span> Steps in Applying Theorem 2</h3>
+<ol type="A">
+<li>Represent the path <span class="math inline">\(C\)</span> in the form <span class="math inline">\(z(t) \quad (a \le t \le b)\)</span>.<br>
+</li>
+<li>Calculate the derivative <span class="math inline">\(\dot{z}(t) = dz/dt\)</span>.<br>
+</li>
+<li>Substitute <span class="math inline">\(z(t)\)</span> for every <span class="math inline">\(z\)</span> in <span class="math inline">\(f(z)\)</span> (hence <span class="math inline">\(x(t)\)</span> for <span class="math inline">\(x\)</span> and <span class="math inline">\(y(t)\)</span> for <span class="math inline">\(y\)</span>).<br>
+</li>
+<li>Integrate <span class="math inline">\(f[z(t)]\dot{z}(t)\)</span> over <span class="math inline">\(t\)</span> from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>.</li>
+</ol>
+</section>
+<section id="example-5-a-basic-result-integral-of-1z-around-the-unit-circle" class="level3" data-number="15.1.13">
+<h3 data-number="15.1.13" class="anchored" data-anchor-id="example-5-a-basic-result-integral-of-1z-around-the-unit-circle"><span class="header-section-number">15.1.13</span> EXAMPLE 5 A Basic Result: Integral of <span class="math inline">\(1/z\)</span> Around the Unit Circle</h3>
+<p>We show that by integrating <span class="math inline">\(1/z\)</span> counterclockwise around the unit circle (the circle of radius 1 and center 0; see Sec. 13.3) we obtain <span id="eq-14-1-11"><span class="math display">\[
+\oint_C \frac{dz}{z} = 2\pi i \quad (C \text{ the unit circle, counterclockwise}).
+\tag{15.11}\]</span></span> This is a very important result that we shall need quite often.</p>
+<p><strong>Solution.</strong><br>
+(A) We may represent the unit circle <span class="math inline">\(C\)</span> in Fig. 330 of Sec. 13.3 by <span class="math display">\[
+z(t) = \cos t + i \sin t = e^{it} \quad (0 \le t \le 2\pi),
+\]</span> so that counterclockwise integration corresponds to an increase of <span class="math inline">\(t\)</span> from 0 to <span class="math inline">\(2\pi\)</span>.<br>
+(B) Differentiation gives <span class="math inline">\(\dot{z}(t) = i e^{it}\)</span> (chain rule!).<br>
+(C) By substitution, <span class="math inline">\(f(z(t)) = 1/z(t) = e^{-it}\)</span>.<br>
+(D) From <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a> we thus obtain the result <span class="math display">\[
+\oint_C \frac{dz}{z} = \int_0^{2\pi} e^{-it} i e^{it} \, dt = i \int_0^{2\pi} \, dt = 2\pi i.
+\]</span> Check this result by using <span class="math inline">\(z(t) = \cos t + i \sin t\)</span>.</p>
+<p>Simple connectedness is essential in Theorem 1. Equation <a href="#eq-14-1-9" class="quarto-xref">Equation&nbsp;<span>15.9</span></a> in Theorem 1 gives 0 for any closed path because then <span class="math inline">\(z_1 = z_0\)</span>, so that <span class="math inline">\(F(z_1) - F(z_0) = 0\)</span>. Now <span class="math inline">\(1/z\)</span> is not analytic at <span class="math inline">\(z = 0\)</span>. But any simply connected domain containing the unit circle must contain <span class="math inline">\(z = 0\)</span>, so that Theorem 1 does not apply—it is not enough that <span class="math inline">\(1/z\)</span> is analytic in an annulus, say, <span class="math inline">\(1/2 &lt; |z| &lt; 3/2\)</span>, because an annulus is not simply connected! <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-6-integral-of-1zm-with-integer-power-m" class="level3" data-number="15.1.14">
+<h3 data-number="15.1.14" class="anchored" data-anchor-id="example-6-integral-of-1zm-with-integer-power-m"><span class="header-section-number">15.1.14</span> EXAMPLE 6 Integral of <span class="math inline">\(1/z^m\)</span> with Integer Power <span class="math inline">\(m\)</span></h3>
+<p>Let <span class="math inline">\(f(z) = (z - z_0)^m\)</span> where <span class="math inline">\(m\)</span> is an integer and <span class="math inline">\(z_0\)</span> a constant. Integrate counterclockwise around the circle <span class="math inline">\(C\)</span> of radius <span class="math inline">\(\rho\)</span> with center at <span class="math inline">\(z_0\)</span> (see <a href="#fig-14-04" class="quarto-xref">Figure&nbsp;<span>15.4</span></a>).</p>
+<div id="fig-14-04" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-04.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: Fig. 342. Path in Example 6
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> We may represent <span class="math inline">\(C\)</span> in the form <span class="math display">\[
+z(t) = z_0 + \rho(\cos t + i \sin t) = z_0 + \rho e^{it} \quad (0 \le t \le 2\pi).
+\]</span> Then we have <span class="math display">\[
+(z - z_0)^m = \rho^m e^{imt}, \quad dz = i \rho e^{it} \, dt
+\]</span> and obtain <span class="math display">\[
+\oint_C (z - z_0)^m \, dz = \int_0^{2\pi} \rho^m e^{imt} i \rho e^{it} \, dt = i \rho^{m+1} \int_0^{2\pi} e^{i(m+1)t} \, dt.
+\]</span> By the Euler formula (5) in Sec. 13.6 the right side equals <span class="math display">\[
+i \rho^{m+1} \left[ \int_0^{2\pi} \cos(m+1)t \, dt + i \int_0^{2\pi} \sin(m+1)t \, dt \right].
+\]</span> If <span class="math inline">\(m = -1\)</span>, we have <span class="math inline">\(\rho^{m+1} = 1\)</span>, <span class="math inline">\(\cos 0 = 1\)</span>, <span class="math inline">\(\sin 0 = 0\)</span>. We thus obtain <span class="math inline">\(2\pi i\)</span>. For integer <span class="math inline">\(m \neq -1\)</span> each of the two integrals is zero because we integrate over an interval of length <span class="math inline">\(2\pi\)</span>, equal to a period of sine and cosine. Hence the result is <span id="eq-14-1-12"><span class="math display">\[
+\oint_C (z - z_0)^m \, dz = \begin{cases} 2\pi i &amp; (m = -1), \\ 0 &amp; (m \neq -1 \text{ and integer}). \end{cases}
+\tag{15.12}\]</span></span></p>
+<p><strong>Dependence on path.</strong> Now comes a very important fact. If we integrate a given function <span class="math inline">\(f(z)\)</span> from a point <span class="math inline">\(z_0\)</span> to a point <span class="math inline">\(z_1\)</span> along different paths, the integrals will in general have different values. In other words, a complex line integral depends not only on the endpoints of the path but in general also on the path itself. The next example gives a first impression of this, and a systematic discussion follows in the next section.</p>
+</section>
+<section id="example-7-integral-of-a-nonanalytic-function.-dependence-on-path" class="level3" data-number="15.1.15">
+<h3 data-number="15.1.15" class="anchored" data-anchor-id="example-7-integral-of-a-nonanalytic-function.-dependence-on-path"><span class="header-section-number">15.1.15</span> EXAMPLE 7 Integral of a Nonanalytic Function. Dependence on Path</h3>
+<p>Integrate <span class="math inline">\(f(z) = \text{Re } z = x\)</span> from 0 to <span class="math inline">\(1 + 2i\)</span> (a) along <span class="math inline">\(C^*\)</span> in <a href="#fig-14-05" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>, (b) along <span class="math inline">\(C\)</span> consisting of <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>.</p>
+<div id="fig-14-05" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-05.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.5: Fig. 343. Paths in Example 7
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong><br>
+(a) <span class="math inline">\(C^*\)</span> can be represented by <span class="math inline">\(z(t) = t + 2it \quad (0 \le t \le 1)\)</span>. Hence <span class="math inline">\(\dot{z}(t) = 1 + 2i\)</span> and <span class="math inline">\(f[z(t)] = x(t) = t\)</span> on <span class="math inline">\(C^*\)</span>. We now calculate <span class="math display">\[
+\int_{C^*} \text{Re } z \, dz = \int_0^1 t(1 + 2i) \, dt = (1 + 2i) \left. \frac{t^2}{2} \right|_0^1 = \frac{1}{2} + i.
+\]</span> (b) We now have <span class="math display">\[
+C_1 : z(t) = t, \quad \dot{z}(t) = 1, \quad f(z(t)) = x(t) = t \quad (0 \le t \le 1)
+\]</span> <span class="math display">\[
+C_2 : z(t) = 1 + it, \quad \dot{z}(t) = i, \quad f(z(t)) = x(t) = 1 \quad (0 \le t \le 2).
+\]</span> Using <a href="#eq-14-1-6" class="quarto-xref">Equation&nbsp;<span>15.6</span></a> we calculate <span class="math display">\[
+\int_C \text{Re } z \, dz = \int_{C_1} \text{Re } z \, dz + \int_{C_2} \text{Re } z \, dz = \int_0^1 t \, dt + \int_0^2 1 \cdot i \, dt = \frac{1}{2} + 2i.
+\]</span> Note that this result differs from the result in (a).</p>
+</section>
+<section id="bounds-for-integrals.-ml-inequality" class="level3" data-number="15.1.16">
+<h3 data-number="15.1.16" class="anchored" data-anchor-id="bounds-for-integrals.-ml-inequality"><span class="header-section-number">15.1.16</span> Bounds for Integrals. ML-Inequality</h3>
+<p>There will be a frequent need for estimating the absolute value of complex line integrals. The basic formula is <span id="eq-14-1-13"><span class="math display">\[
+\left| \int_C f(z) \, dz \right| \le ML \quad \text{(ML-inequality)};
+\tag{15.13}\]</span></span> <span class="math inline">\(L\)</span> is the length of <span class="math inline">\(C\)</span> and <span class="math inline">\(M\)</span> a constant such that <span class="math inline">\(|f(z)| \le M\)</span> everywhere on <span class="math inline">\(C\)</span>.</p>
+<p><strong>PROOF</strong> Taking the absolute value in <a href="#eq-14-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a> and applying the generalized inequality (6*) in Sec. 13.2, we obtain <span class="math display">\[
+|S_n| = \left| \sum_{m=1}^n f(\zeta_m) \Delta z_m \right| \le \sum_{m=1}^n |f(\zeta_m)| |\Delta z_m| \le M \sum_{m=1}^n |\Delta z_m|.
+\]</span> Now <span class="math inline">\(|\Delta z_m|\)</span> is the length of the chord whose endpoints are <span class="math inline">\(z_{m-1}\)</span> and <span class="math inline">\(z_m\)</span> (see <a href="#fig-14-02" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>). Hence the sum on the right represents the length <span class="math inline">\(L^*\)</span> of the broken line of chords whose endpoints are <span class="math inline">\(z_0, z_1, \dots, z_n \ (= Z)\)</span>. If <span class="math inline">\(n\)</span> approaches infinity in such a way that the greatest <span class="math inline">\(|\Delta t_m|\)</span> and thus <span class="math inline">\(|\Delta z_m|\)</span> approach zero, then <span class="math inline">\(L^*\)</span> approaches the length <span class="math inline">\(L\)</span> of the curve <span class="math inline">\(C\)</span>, by the definition of the length of a curve. From this the inequality <a href="#eq-14-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a> follows. <span class="math inline">\(\square\)</span></p>
+<p>We cannot see from <a href="#eq-14-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a> how close to the bound <span class="math inline">\(ML\)</span> the actual absolute value of the integral is, but this will be no handicap in applying <a href="#eq-14-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a>. For the time being we explain the practical use of <a href="#eq-14-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a> by a simple example.</p>
+</section>
+<section id="example-8-estimation-of-an-integral" class="level3" data-number="15.1.17">
+<h3 data-number="15.1.17" class="anchored" data-anchor-id="example-8-estimation-of-an-integral"><span class="header-section-number">15.1.17</span> EXAMPLE 8 Estimation of an Integral</h3>
+<p>Find an upper bound for the absolute value of the integral <span class="math display">\[
+\int_C z^2 \, dz, \quad C \text{ the straight-line segment from 0 to } 1+i \text{ (see @fig-14-06).}
+\]</span></p>
+<div id="fig-14-06" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-06.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.6: Fig. 344. Path in Example 8
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> <span class="math inline">\(L = \sqrt{2}\)</span> and <span class="math inline">\(|f(z)| = |z^2| \le 2\)</span> on <span class="math inline">\(C\)</span> gives by <a href="#eq-14-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a> <span class="math display">\[
+\left| \int_C z^2 \, dz \right| \le 2\sqrt{2} \approx 2.8284.
+\]</span> The absolute value of the integral is <span class="math inline">\(|-2/3 + 2i/3| = \frac{2}{3}\sqrt{2} \approx 0.9428\)</span> (see Example 1). <span class="math inline">\(\square\)</span></p>
+<p><strong>Summary on Integration.</strong> Line integrals of <span class="math inline">\(f(z)\)</span> can always be evaluated by <a href="#eq-14-1-10" class="quarto-xref">Equation&nbsp;<span>15.10</span></a>, using a representation <a href="#eq-14-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a> of the path of integration. If <span class="math inline">\(f(z)\)</span> is analytic, indefinite integration by <a href="#eq-14-1-9" class="quarto-xref">Equation&nbsp;<span>15.9</span></a> as in calculus will be simpler (proof in the next section).</p>
+</section>
+</section>
+<section id="problem-set-14.1" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="problem-set-14.1"><span class="header-section-number">15.2</span> PROBLEM SET 14.1</h2>
+<section id="find-the-path-and-sketch-it." class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="find-the-path-and-sketch-it."><span class="header-section-number">15.2.1</span> 1–10 FIND THE PATH and sketch it.</h3>
+<ol type="1">
+<li><span class="math inline">\(z(t) = (1 + i)t \quad (2 \le t \le 5)\)</span></li>
+<li><span class="math inline">\(z(t) = 3 + i - (1 - i)t \quad (0 \le t \le 3)\)</span></li>
+<li><span class="math inline">\(z(t) = t + 2it^2 \quad (1 \le t \le 2)\)</span></li>
+<li><span class="math inline">\(z(t) = t + (1 - t)^2 i \quad (-1 \le t \le 1)\)</span></li>
+<li><span class="math inline">\(z(t) = 3 - i + \frac{1}{10} e^{-it} \quad (0 \le t \le 2\pi)\)</span></li>
+<li><span class="math inline">\(z(t) = 1 + i + e^{-\pi i t} \quad (0 \le t \le 2)\)</span></li>
+<li><span class="math inline">\(z(t) = 2 + 4e^{\pi i t / 2} \quad (0 \le t \le 2)\)</span></li>
+<li><span class="math inline">\(z(t) = 5e^{-it} \quad (0 \le t \le \pi/2)\)</span></li>
+<li><span class="math inline">\(z(t) = t + it^3 \quad (-2 \le t \le 2)\)</span></li>
+<li><span class="math inline">\(z(t) = 2 \cos t + i \sin t \quad (0 \le t \le 2\pi)\)</span></li>
+</ol>
+</section>
+<section id="find-a-parametric-representation-and-sketch-the-path." class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="find-a-parametric-representation-and-sketch-the-path."><span class="header-section-number">15.2.2</span> 11–20 FIND A PARAMETRIC REPRESENTATION and sketch the path.</h3>
+<ol start="11" type="1">
+<li>Segment from <span class="math inline">\((-1, 1)\)</span> to <span class="math inline">\((1, 3)\)</span></li>
+<li>From <span class="math inline">\((0, 0)\)</span> to <span class="math inline">\((2, 1)\)</span> along the axes</li>
+<li>Upper half of <span class="math inline">\(|z - 2 + i| = 2\)</span> from <span class="math inline">\((4, -1)\)</span> to <span class="math inline">\((0, -1)\)</span></li>
+<li>Unit circle, clockwise</li>
+<li><span class="math inline">\(x^2 - 4y^2 = 4\)</span>, the branch through <span class="math inline">\((2, 0)\)</span> clockwise</li>
+<li>Ellipse <span class="math inline">\(4x^2 + 9y^2 = 36\)</span>, counterclockwise</li>
+<li><span class="math inline">\(|z - a - ib| = r\)</span>, clockwise</li>
+<li><span class="math inline">\(y = 1/x\)</span> from <span class="math inline">\((1, 1)\)</span> to <span class="math inline">\((5, 1/5)\)</span></li>
+<li>Parabola <span class="math inline">\(y = 1 - \frac{1}{4} x^2 \quad (-2 \le x \le 2)\)</span></li>
+<li><span class="math inline">\(4(x-2)^2 + 5(y+1)^2 = 20\)</span></li>
+</ol>
+</section>
+<section id="integration" class="level3" data-number="15.2.3">
+<h3 data-number="15.2.3" class="anchored" data-anchor-id="integration"><span class="header-section-number">15.2.3</span> 21–30 INTEGRATION</h3>
+<p>Integrate by the first method or state why it does not apply and use the second method. Show the details. 21. <span class="math inline">\(\int_C \text{Re } z \, dz\)</span>, <span class="math inline">\(C\)</span> the shortest path from <span class="math inline">\(1 + i\)</span> to <span class="math inline">\(3 + 3i\)</span> 22. <span class="math inline">\(\int_C \text{Re } z \, dz\)</span>, <span class="math inline">\(C\)</span> the parabola <span class="math inline">\(y = 1 + \frac{1}{2}(x - 1)^2\)</span> from <span class="math inline">\(1 + i\)</span> to <span class="math inline">\(3 + 3i\)</span> 23. <span class="math inline">\(\int_C e^z \, dz\)</span>, <span class="math inline">\(C\)</span> the shortest path from <span class="math inline">\(\pi i\)</span> to <span class="math inline">\(2\pi i\)</span> 24. <span class="math inline">\(\int_C \cos 2z \, dz\)</span>, <span class="math inline">\(C\)</span> the semicircle <span class="math inline">\(|z| = \pi, x \ge 0\)</span> from <span class="math inline">\(-\pi i\)</span> to <span class="math inline">\(\pi i\)</span> 25. <span class="math inline">\(\int_C z \exp(z^2) \, dz\)</span>, <span class="math inline">\(C\)</span> from 1 along the axes to <span class="math inline">\(i\)</span> 26. <span class="math inline">\(\int_C (z + z^{-1}) \, dz\)</span>, <span class="math inline">\(C\)</span> the unit circle, counterclockwise 27. <span class="math inline">\(\int_C \sec^2 z \, dz\)</span>, any path from <span class="math inline">\(-\pi/4\)</span> to <span class="math inline">\(\pi/4\)</span> 28. <span class="math inline">\(\int_C \left( \frac{5}{z - 2i} - \frac{6}{(z - 2i)^2} \right) \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 2i| = 4\)</span>, counterclockwise 29. <span class="math inline">\(\oint_C \text{Im } z^2 \, dz\)</span> counterclockwise around the triangle with vertices 0, 1, <span class="math inline">\(i\)</span> 30. <span class="math inline">\(\oint_C \text{Re } z^2 \, dz\)</span> clockwise around the boundary of the square with vertices 0, <span class="math inline">\(i\)</span>, <span class="math inline">\(1 + i\)</span>, 1</p>
+</section>
+<section id="section" class="level3" data-number="15.2.4">
+<h3 data-number="15.2.4" class="anchored" data-anchor-id="section"><span class="header-section-number">15.2.4</span> 31–35</h3>
+<ol start="31" type="1">
+<li><strong>CAS PROJECT. Integration.</strong> Write programs for the two integration methods. Apply them to problems of your choice. Could you make them into a joint program that also decides which of the two methods to use in a given case?</li>
+<li><strong>Sense reversal.</strong> Verify <a href="#eq-14-1-5" class="quarto-xref">Equation&nbsp;<span>15.5</span></a> for <span class="math inline">\(f(z) = z^2\)</span>, where <span class="math inline">\(C\)</span> is the segment from <span class="math inline">\(-1 - i\)</span> to <span class="math inline">\(1 + i\)</span>.</li>
+<li><strong>Path partitioning.</strong> Verify <a href="#eq-14-1-6" class="quarto-xref">Equation&nbsp;<span>15.6</span></a> for <span class="math inline">\(f(z) = 1/z\)</span> and <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> the upper and lower halves of the unit circle.</li>
+<li><strong>TEAM EXPERIMENT. Integration.</strong>
+<ol type="a">
+<li><strong>Comparison.</strong> First write a short report comparing the essential points of the two integration methods.<br>
+</li>
+<li><strong>Comparison.</strong> Evaluate <span class="math inline">\(\int_C f(z) \, dz\)</span> by Theorem 1 and check the result by Theorem 2, where:
+<ol type="i">
+<li><span class="math inline">\(f(z) = z^4\)</span> and <span class="math inline">\(C\)</span> is the semicircle <span class="math inline">\(|z| = 2\)</span> from <span class="math inline">\(-2i\)</span> to <span class="math inline">\(2i\)</span> in the right half-plane,<br>
+</li>
+<li><span class="math inline">\(f(z) = e^{2z}\)</span> and <span class="math inline">\(C\)</span> is the shortest path from 0 to <span class="math inline">\(1 + 2i\)</span>.<br>
+</li>
+</ol></li>
+<li><strong>Continuous deformation of path.</strong> Experiment with a family of paths with common endpoints, say, <span class="math inline">\(z(t) = t + i a \sin t, \ 0 \le t \le \pi\)</span>, with real parameter <span class="math inline">\(a\)</span>. Integrate nonanalytic functions (<span class="math inline">\(\text{Re } z\)</span>, <span class="math inline">\(\text{Re}(z^2)\)</span>, etc.) and explore how the result depends on <span class="math inline">\(a\)</span>. Then take analytic functions of your choice. (Show the details of your work.) Compare and comment.<br>
+</li>
+<li><strong>Continuous deformation of path.</strong> Choose another family, for example, semi-ellipses <span class="math inline">\(z(t) = a \cos t + i \sin t, \ -\pi/2 \le t \le \pi/2\)</span>, and experiment as in (c).</li>
+</ol></li>
+<li><strong>ML-inequality.</strong> Find an upper bound of the absolute value of the integral in Prob. 21.</li>
+</ol>
+</section>
+</section>
+<section id="sec-cauchy-integral-theorem" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="sec-cauchy-integral-theorem"><span class="header-section-number">15.3</span> 14.2 Cauchy’s Integral Theorem</h2>
+<p>This section is the focal point of the chapter. We have just seen in <a href="#sec-line-integral" class="quarto-xref"><span>Section 15.1</span></a> that a line integral of a function <span class="math inline">\(f(z)\)</span> generally depends not merely on the endpoints of the path, but also on the choice of the path itself. This dependence often complicates situations. Hence conditions under which this does not occur are of considerable importance. Namely, if <span class="math inline">\(f(z)\)</span> is analytic in a domain <span class="math inline">\(D\)</span> and <span class="math inline">\(D\)</span> is simply connected (see <a href="#sec-line-integral" class="quarto-xref"><span>Section 15.1</span></a> and also below), then the integral will not depend on the choice of a path between given points. This result (Theorem 2) follows from Cauchy’s integral theorem, along with other basic consequences that make Cauchy’s integral theorem the most important theorem in this chapter and fundamental throughout complex analysis.</p>
+<p>Let us continue our discussion of simple connectedness which we started in <a href="#sec-line-integral" class="quarto-xref"><span>Section 15.1</span></a>.</p>
+<ol type="1">
+<li><strong>A simple closed path</strong> is a closed path (defined in <a href="#sec-line-integral" class="quarto-xref"><span>Section 15.1</span></a>) that does not intersect or touch itself as shown in <a href="#fig-14-07" class="quarto-xref">Figure&nbsp;<span>15.7</span></a>. For example, a circle is simple, but a curve shaped like an 8 is not simple.</li>
+</ol>
+<div id="fig-14-07" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-07.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.7: Fig. 345. Closed paths
+</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><strong>A simply connected domain</strong> <span class="math inline">\(D\)</span> in the complex plane is a domain (Sec. 13.3) such that every simple closed path in <span class="math inline">\(D\)</span> encloses only points of <span class="math inline">\(D\)</span>. Examples: The interior of a circle (“open disk”), ellipse, or any simple closed curve. A domain that is not simply connected is called <strong>multiply connected</strong>. Examples: An annulus (Sec. 13.3), a disk without the center, for example, <span class="math inline">\(0 &lt; |z| &lt; 1\)</span>. See also <a href="#fig-14-08" class="quarto-xref">Figure&nbsp;<span>15.8</span></a>.</li>
+</ol>
+<p>More precisely, a bounded domain <span class="math inline">\(D\)</span> (that is, a domain that lies entirely in some circle about the origin) is called <strong><span class="math inline">\(p\)</span>-fold connected</strong> if its boundary consists of <span class="math inline">\(p\)</span> closed connected sets without common points. These sets can be curves, segments, or single points (such as <span class="math inline">\(z = 0\)</span> for <span class="math inline">\(0 &lt; |z| &lt; 1\)</span>, for which <span class="math inline">\(p = 2\)</span>). Thus, <span class="math inline">\(D\)</span> has <span class="math inline">\(p - 1\)</span> “holes,” where “hole” may also mean a segment or even a single point. Hence an annulus is doubly connected (<span class="math inline">\(p = 2\)</span>).</p>
+<div id="fig-14-08" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-08.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.8: Fig. 346. Simply and multiply connected domains
+</figcaption>
+</figure>
+</div>
+<section id="theorem-1-cauchys-integral-theorem" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="theorem-1-cauchys-integral-theorem"><span class="header-section-number">15.3.1</span> THEOREM 1 Cauchy’s Integral Theorem</h3>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then for every simple closed path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span>, <span id="eq-14-2-1"><span class="math display">\[
+\oint_C f(z) \, dz = 0.
+\tag{15.14}\]</span></span> See <a href="#fig-14-09" class="quarto-xref">Figure&nbsp;<span>15.9</span></a>.</p>
+<div id="fig-14-09" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-09.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.9: Fig. 347. Cauchy’s integral theorem
+</figcaption>
+</figure>
+</div>
+<p>Before we prove the theorem, let us consider some examples in order to really understand what is going on. A simple closed path is sometimes called a <strong>contour</strong> and an integral over such a path a <strong>contour integral</strong>. Thus, <a href="#eq-14-2-1" class="quarto-xref">Equation&nbsp;<span>15.14</span></a> and our examples involve contour integrals.</p>
+</section>
+<section id="example-1-entire-functions" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="example-1-entire-functions"><span class="header-section-number">15.3.2</span> EXAMPLE 1 Entire Functions</h3>
+<p><span class="math display">\[
+\oint_C e^z \, dz = 0, \quad \oint_C \cos z \, dz = 0, \quad \oint_C z^n \, dz = 0 \quad (n = 0, 1, \dots)
+\]</span> for any closed path, since these functions are entire (analytic for all <span class="math inline">\(z\)</span>).</p>
+</section>
+<section id="example-2-points-outside-the-contour-where-fz-is-not-analytic" class="level3" data-number="15.3.3">
+<h3 data-number="15.3.3" class="anchored" data-anchor-id="example-2-points-outside-the-contour-where-fz-is-not-analytic"><span class="header-section-number">15.3.3</span> EXAMPLE 2 Points Outside the Contour Where <span class="math inline">\(f(z)\)</span> is Not Analytic</h3>
+<p><span class="math display">\[
+\oint_C \sec z \, dz = 0, \quad \oint_C \frac{dz}{z^2 + 4} = 0
+\]</span> where <span class="math inline">\(C\)</span> is the unit circle. <span class="math inline">\(\sec z = 1/\cos z\)</span> is not analytic at <span class="math inline">\(z = \pm\pi/2, \pm3\pi/2, \dots\)</span>, but all these points lie outside <span class="math inline">\(C\)</span>; none lies on <span class="math inline">\(C\)</span> or inside <span class="math inline">\(C\)</span>. Similarly for the second integral, whose integrand is not analytic at <span class="math inline">\(z = \pm 2i\)</span> outside <span class="math inline">\(C\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-3-nonanalytic-function" class="level3" data-number="15.3.4">
+<h3 data-number="15.3.4" class="anchored" data-anchor-id="example-3-nonanalytic-function"><span class="header-section-number">15.3.4</span> EXAMPLE 3 Nonanalytic Function</h3>
+<p><span class="math display">\[
+\oint_C \bar{z} \, dz = \int_0^{2\pi} e^{-it} i e^{it} \, dt = 2\pi i
+\]</span> where <span class="math inline">\(C: z(t) = e^{it}\)</span> is the unit circle. This does not contradict Cauchy’s theorem because <span class="math inline">\(f(z) = \bar{z}\)</span> is not analytic. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-4-analyticity-sufficient-not-necessary" class="level3" data-number="15.3.5">
+<h3 data-number="15.3.5" class="anchored" data-anchor-id="example-4-analyticity-sufficient-not-necessary"><span class="header-section-number">15.3.5</span> EXAMPLE 4 Analyticity Sufficient, Not Necessary</h3>
+<p><span class="math display">\[
+\oint_C \frac{dz}{z^2} = 0
+\]</span> where <span class="math inline">\(C\)</span> is the unit circle. This result does not follow from Cauchy’s theorem, because <span class="math inline">\(f(z) = 1/z^2\)</span> is not analytic at <span class="math inline">\(z = 0\)</span>. Hence the condition that <span class="math inline">\(f\)</span> be analytic in <span class="math inline">\(D\)</span> is sufficient rather than necessary for <a href="#eq-14-2-1" class="quarto-xref">Equation&nbsp;<span>15.14</span></a> to be true. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-5-simple-connectedness-essential" class="level3" data-number="15.3.6">
+<h3 data-number="15.3.6" class="anchored" data-anchor-id="example-5-simple-connectedness-essential"><span class="header-section-number">15.3.6</span> EXAMPLE 5 Simple Connectedness Essential</h3>
+<p><span class="math display">\[
+\oint_C \frac{dz}{z} = 2\pi i
+\]</span> for counterclockwise integration around the unit circle (see <a href="#sec-line-integral" class="quarto-xref"><span>Section 15.1</span></a>). <span class="math inline">\(C\)</span> lies in the annulus <span class="math inline">\(1/2 &lt; |z| &lt; 3/2\)</span> where <span class="math inline">\(1/z\)</span> is analytic, but this domain is not simply connected, so that Cauchy’s theorem cannot be applied. Hence the condition that the domain <span class="math inline">\(D\)</span> be simply connected is essential.</p>
+<p>In other words, by Cauchy’s theorem, if <span class="math inline">\(f(z)\)</span> is analytic on a simple closed path <span class="math inline">\(C\)</span> and everywhere inside <span class="math inline">\(C\)</span>, with no exception, not even a single point, then <a href="#eq-14-2-1" class="quarto-xref">Equation&nbsp;<span>15.14</span></a> holds. The point that causes trouble here is <span class="math inline">\(z = 0\)</span> where <span class="math inline">\(1/z\)</span> is not analytic. <span class="math inline">\(\square\)</span></p>
+<p><strong>PROOF</strong> Cauchy proved his integral theorem under the additional assumption that the derivative <span class="math inline">\(f'(z)\)</span> is continuous (which is true, but would need an extra proof). His proof proceeds as follows. From <a href="#eq-14-1-8" class="quarto-xref">Equation&nbsp;<span>15.8</span></a> in Sec. 14.1 we have <span class="math display">\[
+\oint_C f(z) \, dz = \oint_C (u \, dx - v \, dy) + i \oint_C (u \, dy + v \, dx).
+\]</span> Since <span class="math inline">\(f(z)\)</span> is analytic in <span class="math inline">\(D\)</span>, its derivative <span class="math inline">\(f'(z)\)</span> exists in <span class="math inline">\(D\)</span>. Since <span class="math inline">\(f'(z)\)</span> is assumed to be continuous, (4) and (5) in Sec. 13.4 imply that <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> have continuous partial derivatives in <span class="math inline">\(D\)</span>. Hence Green’s theorem (Sec. 10.4) (with <span class="math inline">\(u\)</span> and <span class="math inline">\(-v\)</span> instead of <span class="math inline">\(F_1\)</span> and <span class="math inline">\(F_2\)</span>) is applicable and gives <span class="math display">\[
+\oint_C (u \, dx - v \, dy) = \iint_R \left( -\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} \right) \, dx \, dy
+\]</span> where <span class="math inline">\(R\)</span> is the region bounded by <span class="math inline">\(C\)</span>. The second Cauchy–Riemann equation (Sec. 13.4) shows that the integrand on the right is identically zero. Hence the integral on the left is zero. In the same fashion it follows by the use of the first Cauchy–Riemann equation that the last integral in the above formula is zero. This completes Cauchy’s proof. <span class="math inline">\(\square\)</span></p>
+<p>Goursat’s proof without the condition that <span class="math inline">\(f'(z)\)</span> is continuous<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is much more complicated. We leave it optional and include it in App. 4.</p>
+</section>
+<section id="independence-of-path" class="level3" data-number="15.3.7">
+<h3 data-number="15.3.7" class="anchored" data-anchor-id="independence-of-path"><span class="header-section-number">15.3.7</span> Independence of Path</h3>
+<p>We know from the preceding section that the value of a line integral of a given function <span class="math inline">\(f(z)\)</span> from a point <span class="math inline">\(z_0\)</span> to a point <span class="math inline">\(z_1\)</span> will in general depend on the path <span class="math inline">\(C\)</span> over which we integrate, not merely on <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span>. It is important to characterize situations in which this difficulty of path dependence does not occur. This task suggests the following concept.</p>
+<p>We call an integral of <span class="math inline">\(f(z)\)</span> <strong>independent of path</strong> in a domain <span class="math inline">\(D\)</span> if for every <span class="math inline">\(z_0, z_1\)</span> in <span class="math inline">\(D\)</span> its value depends (besides on <span class="math inline">\(f(z)\)</span>, of course) only on the initial point <span class="math inline">\(z_0\)</span> and the terminal point <span class="math inline">\(z_1\)</span>, but not on the choice of the path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> [so that every path in <span class="math inline">\(D\)</span> from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(z_1\)</span> gives the same value of the integral of <span class="math inline">\(f(z)\)</span>].</p>
+</section>
+<section id="theorem-2-independence-of-path" class="level3" data-number="15.3.8">
+<h3 data-number="15.3.8" class="anchored" data-anchor-id="theorem-2-independence-of-path"><span class="header-section-number">15.3.8</span> THEOREM 2 Independence of Path</h3>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then the integral of <span class="math inline">\(f(z)\)</span> is independent of path in <span class="math inline">\(D\)</span>.</p>
+<p><strong>PROOF</strong> Let <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> be any points in <span class="math inline">\(D\)</span>. Consider two paths <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(D\)</span> from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(z_1\)</span> without further common points, as in <a href="#fig-14-10" class="quarto-xref">Figure&nbsp;<span>15.10</span></a>. Denote by <span class="math inline">\(C_2^*\)</span> the path <span class="math inline">\(C_2\)</span> with the orientation reversed (see <a href="#fig-14-11" class="quarto-xref">Figure&nbsp;<span>15.11</span></a>). Integrate from <span class="math inline">\(z_0\)</span> over <span class="math inline">\(C_1\)</span> to <span class="math inline">\(z_1\)</span> and over <span class="math inline">\(C_2^*\)</span> back to <span class="math inline">\(z_0\)</span>. This is a simple closed path, and Cauchy’s theorem applies under our assumptions of the present theorem and gives zero: <span class="math display">\[
+\int_{C_1} f \, dz + \int_{C_2^*} f \, dz = 0, \quad \text{thus} \quad \int_{C_1} f \, dz = -\int_{C_2^*} f \, dz.
+\]</span> But the minus sign on the right disappears if we integrate in the reverse direction, from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(z_1\)</span>, which shows that the integrals of <span class="math inline">\(f(z)\)</span> over <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are equal, <span id="eq-14-2-2"><span class="math display">\[
+\int_{C_1} f(z) \, dz = \int_{C_2} f(z) \, dz
+\tag{15.15}\]</span></span> (see <a href="#fig-14-10" class="quarto-xref">Figure&nbsp;<span>15.10</span></a>). This proves the theorem for paths that have only the endpoints in common. For paths that have finitely many further common points, apply the present argument to each “loop” (portions of <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> between consecutive common points; four loops in <a href="#fig-14-12" class="quarto-xref">Figure&nbsp;<span>15.12</span></a>). For paths with infinitely many common points we would need additional argumentation not to be presented here. <span class="math inline">\(\square\)</span></p>
+<div id="fig-14-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-10.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.10: Fig. 348. Formula (2)
+</figcaption>
+</figure>
+</div>
+<div id="fig-14-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-11.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.11: Fig. 349. Formula (2’)
+</figcaption>
+</figure>
+</div>
+<div id="fig-14-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-12.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.12: Fig. 350. Paths with more common points
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="principle-of-deformation-of-path" class="level3" data-number="15.3.9">
+<h3 data-number="15.3.9" class="anchored" data-anchor-id="principle-of-deformation-of-path"><span class="header-section-number">15.3.9</span> Principle of Deformation of Path</h3>
+<p>This idea is related to path independence. We may imagine that the path <span class="math inline">\(C_2\)</span> in <a href="#eq-14-2-2" class="quarto-xref">Equation&nbsp;<span>15.15</span></a> was obtained from <span class="math inline">\(C_1\)</span> by continuously moving <span class="math inline">\(C_1\)</span> (with ends fixed!) until it coincides with <span class="math inline">\(C_2\)</span>. <a href="#fig-14-13" class="quarto-xref">Figure&nbsp;<span>15.13</span></a> shows two of the infinitely many intermediate paths for which the integral always retains its value (because of Theorem 2). Hence we may impose a continuous deformation of the path of an integral, keeping the ends fixed. As long as our deforming path always contains only points at which <span class="math inline">\(f(z)\)</span> is analytic, the integral retains the same value. This is called the <strong>principle of deformation of path</strong>.</p>
+<div id="fig-14-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-13.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.13: Fig. 351. Continuous deformation of path
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="example-6-a-basic-result-integral-of-integer-powers" class="level3" data-number="15.3.10">
+<h3 data-number="15.3.10" class="anchored" data-anchor-id="example-6-a-basic-result-integral-of-integer-powers"><span class="header-section-number">15.3.10</span> EXAMPLE 6 A Basic Result: Integral of Integer Powers</h3>
+<p>From Example 6 in Sec. 14.1 and the principle of deformation of path it follows that <span id="eq-14-2-3"><span class="math display">\[
+\oint_C (z - z_0)^m \, dz = \begin{cases} 2\pi i &amp; (m = -1), \\ 0 &amp; (m \neq -1 \text{ and integer}) \end{cases}
+\tag{15.16}\]</span></span> for counterclockwise integration around any simple closed path <span class="math inline">\(C\)</span> containing <span class="math inline">\(z_0\)</span> in its interior. Indeed, the circle <span class="math inline">\(|z - z_0| = \rho\)</span> in Example 6 of Sec. 14.1 can be continuously deformed in two steps into a path as just indicated, namely, by first deforming, say, one semicircle and then the other one. (Make a sketch). <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="existence-of-indefinite-integral" class="level3" data-number="15.3.11">
+<h3 data-number="15.3.11" class="anchored" data-anchor-id="existence-of-indefinite-integral"><span class="header-section-number">15.3.11</span> Existence of Indefinite Integral</h3>
+<p>We shall now justify our indefinite integration method in the preceding section <a href="#eq-14-1-9" class="quarto-xref">formula&nbsp;<span>15.9</span></a>. The proof will need Cauchy’s integral theorem.</p>
+</section>
+<section id="theorem-3-existence-of-indefinite-integral" class="level3" data-number="15.3.12">
+<h3 data-number="15.3.12" class="anchored" data-anchor-id="theorem-3-existence-of-indefinite-integral"><span class="header-section-number">15.3.12</span> THEOREM 3 Existence of Indefinite Integral</h3>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then there exists an indefinite integral <span class="math inline">\(F(z)\)</span> of <span class="math inline">\(f(z)\)</span> in <span class="math inline">\(D\)</span>—thus, <span class="math inline">\(F'(z) = f(z)\)</span>—which is analytic in <span class="math inline">\(D\)</span>, and for all paths in <span class="math inline">\(D\)</span> joining any two points <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> in <span class="math inline">\(D\)</span>, the integral of <span class="math inline">\(f(z)\)</span> from <span class="math inline">\(z_0\)</span> to <span class="math inline">\(z_1\)</span> can be evaluated by formula <a href="#eq-14-1-9" class="quarto-xref">Equation&nbsp;<span>15.9</span></a> in Sec. 14.1.</p>
+<p><strong>PROOF</strong> The conditions of Cauchy’s integral theorem are satisfied. Hence the line integral of <span class="math inline">\(f(z)\)</span> from any <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> to any <span class="math inline">\(z\)</span> in <span class="math inline">\(D\)</span> is independent of path in <span class="math inline">\(D\)</span>. We keep <span class="math inline">\(z_0\)</span> fixed. Then this integral becomes a function of <span class="math inline">\(z\)</span>, call it <span class="math inline">\(F(z)\)</span>, <span id="eq-14-2-4"><span class="math display">\[
+F(z) = \int_{z_0}^z f(z^*) \, dz^*
+\tag{15.17}\]</span></span> which is uniquely determined. We show that this <span class="math inline">\(F(z)\)</span> is analytic in <span class="math inline">\(D\)</span> and <span class="math inline">\(F'(z) = f(z)\)</span>. Using <a href="#eq-14-2-4" class="quarto-xref">Equation&nbsp;<span>15.17</span></a> we form the difference quotient <span id="eq-14-2-5"><span class="math display">\[
+\frac{F(z + \Delta z) - F(z)}{\Delta z} = \frac{1}{\Delta z} \left[ \int_{z_0}^{z + \Delta z} f(z^*) \, dz^* - \int_{z_0}^z f(z^*) \, dz^* \right] = \frac{1}{\Delta z} \int_z^{z + \Delta z} f(z^*) \, dz^*.
+\tag{15.18}\]</span></span> We now subtract <span class="math inline">\(f(z)\)</span> from <a href="#eq-14-2-5" class="quarto-xref">Equation&nbsp;<span>15.18</span></a> and show that the resulting expression approaches zero as <span class="math inline">\(\Delta z \to 0\)</span>. The details are as follows.</p>
+<p>We keep <span class="math inline">\(z\)</span> fixed. Then we choose <span class="math inline">\(z + \Delta z\)</span> in <span class="math inline">\(D\)</span> so that the whole segment with endpoints <span class="math inline">\(z\)</span> and <span class="math inline">\(z + \Delta z\)</span> is in <span class="math inline">\(D\)</span> (see <a href="#fig-14-14" class="quarto-xref">Figure&nbsp;<span>15.14</span></a>). This can be done because <span class="math inline">\(D\)</span> is a domain, hence it contains a neighborhood of <span class="math inline">\(z\)</span>. We use this segment as the path of integration in <a href="#eq-14-2-5" class="quarto-xref">Equation&nbsp;<span>15.18</span></a>. Now we subtract <span class="math inline">\(f(z)\)</span>. This is a constant because <span class="math inline">\(z\)</span> is kept fixed. Hence we can write <span class="math display">\[
+\frac{1}{\Delta z} \int_z^{z + \Delta z} f(z) \, dz^* = \frac{f(z)}{\Delta z} \int_z^{z + \Delta z} \, dz^* = \frac{f(z)}{\Delta z} \Delta z = f(z).
+\]</span> Thus <span class="math display">\[
+f(z) = \frac{1}{\Delta z} \int_z^{z + \Delta z} f(z) \, dz^*.
+\]</span> By this trick and from <a href="#eq-14-2-5" class="quarto-xref">Equation&nbsp;<span>15.18</span></a> we get a single integral: <span class="math display">\[
+\frac{F(z + \Delta z) - F(z)}{\Delta z} - f(z) = \frac{1}{\Delta z} \int_z^{z + \Delta z} [f(z^*) - f(z)] \, dz^*.
+\]</span> Since <span class="math inline">\(f(z)\)</span> is analytic, it is continuous (see Team Project (24d) in Sec. 13.3). An <span class="math inline">\(\epsilon &gt; 0\)</span> being given, we can thus find a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math inline">\(|f(z^*) - f(z)| &lt; \epsilon\)</span> when <span class="math inline">\(|z^* - z| &lt; \delta\)</span>. Hence, letting <span class="math inline">\(|\Delta z| &lt; \delta\)</span>, we see that the ML-inequality (Sec. 14.1) yields <span class="math display">\[
+\left| \frac{F(z + \Delta z) - F(z)}{\Delta z} - f(z) \right| = \left| \frac{1}{\Delta z} \int_z^{z + \Delta z} [f(z^*) - f(z)] \, dz^* \right| \le \frac{1}{|\Delta z|} \epsilon |\Delta z| = \epsilon.
+\]</span> By the definition of limit and derivative, this proves that <span class="math display">\[
+F'(z) = \lim_{\Delta z \to 0} \frac{F(z + \Delta z) - F(z)}{\Delta z} = f(z).
+\]</span> Since <span class="math inline">\(z\)</span> is any point in <span class="math inline">\(D\)</span>, this implies that <span class="math inline">\(F(z)\)</span> is analytic in <span class="math inline">\(D\)</span> and is an indefinite integral or antiderivative of <span class="math inline">\(f(z)\)</span> in <span class="math inline">\(D\)</span>, written <span class="math display">\[
+F(z) = \int f(z) \, dz.
+\]</span></p>
+<p>The relationship between <span class="math inline">\(F(z)\)</span> and any other indefinite integral <span class="math inline">\(G(z)\)</span> of <span class="math inline">\(f(z)\)</span> is as in real calculus: <span class="math inline">\(G(z) = F(z) + C\)</span>, where <span class="math inline">\(C\)</span> is a constant. (Prove it). This follows because their difference has a derivative that is identically zero, which implies that it must be a constant. (See Example 3 in Sec. 13.4).</p>
+<div id="fig-14-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-14.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.14: Fig. 352. Path of integration
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="cauchys-theorem-for-multiply-connected-domains" class="level3" data-number="15.3.13">
+<h3 data-number="15.3.13" class="anchored" data-anchor-id="cauchys-theorem-for-multiply-connected-domains"><span class="header-section-number">15.3.13</span> Cauchy’s Theorem for Multiply Connected Domains</h3>
+<p>Cauchy’s theorem applies to multiply connected domains. We first explain this for a doubly connected domain <span class="math inline">\(D\)</span> with outer boundary curve <span class="math inline">\(C_1\)</span> and inner <span class="math inline">\(C_2\)</span> (see <a href="#fig-14-15" class="quarto-xref">Figure&nbsp;<span>15.15</span></a>). If a function <span class="math inline">\(f(z)\)</span> is analytic in any domain <span class="math inline">\(D^*\)</span> that contains <span class="math inline">\(D\)</span> and its boundary curves, we claim that <span id="eq-14-2-6"><span class="math display">\[
+\oint_{C_1} f(z) \, dz = \oint_{C_2} f(z) \, dz
+\tag{15.19}\]</span></span> both integrals being taken counterclockwise (or both clockwise, and regardless of whether the boundary curves are simple or not, though we assume them to be simple for convenience).</p>
+<div id="fig-14-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-15.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.15: Fig. 353. Paths in (6)
+</figcaption>
+</figure>
+</div>
+<p><strong>PROOF</strong> By two cuts <span class="math inline">\(C_a\)</span> and <span class="math inline">\(C_b\)</span> (see <a href="#fig-14-16" class="quarto-xref">Figure&nbsp;<span>15.16</span></a>) we cut <span class="math inline">\(D\)</span> into two simply connected domains <span class="math inline">\(D_1\)</span> and <span class="math inline">\(D_2\)</span> in which and on whose boundaries <span class="math inline">\(f(z)\)</span> is analytic. By Cauchy’s integral theorem the integral over the entire boundary of <span class="math inline">\(D_1\)</span> (taken in the sense of the arrows in <a href="#fig-14-16" class="quarto-xref">Figure&nbsp;<span>15.16</span></a>) is zero, and so is the integral over the boundary of <span class="math inline">\(D_2\)</span>, and thus their sum. In this sum the integrals over the cuts <span class="math inline">\(C_a\)</span> and <span class="math inline">\(C_b\)</span> are taken twice, but in opposite directions—this is the key—and we are left with the integrals over <span class="math inline">\(C_1\)</span> (counterclockwise) and <span class="math inline">\(C_2\)</span> (clockwise; see <a href="#fig-14-16" class="quarto-xref">Figure&nbsp;<span>15.16</span></a>); hence by reversing the integration over <span class="math inline">\(C_2\)</span> (to counterclockwise) we have <span class="math display">\[
+\oint_{C_1} f \, dz - \oint_{C_2} f \, dz = 0,
+\]</span> which is <a href="#eq-14-2-6" class="quarto-xref">Equation&nbsp;<span>15.19</span></a>. <span class="math inline">\(\square\)</span></p>
+<p>For domains of higher connectivity the idea remains the same. Thus, for a triply connected domain we use three cuts <span class="math inline">\(C_a, C_b, C_c\)</span> (see <a href="#fig-14-17" class="quarto-xref">Figure&nbsp;<span>15.17</span></a>). Adding integrals as before, the integrals over the cuts cancel and the sum of the integrals over <span class="math inline">\(C_1\)</span> (counterclockwise) and <span class="math inline">\(C_2, C_3\)</span> (clockwise) is zero. Reversing the orientation of <span class="math inline">\(C_2, C_3\)</span> to counterclockwise, we obtain: <span id="eq-14-2-7"><span class="math display">\[
+\oint_{C_1} f(z) \, dz = \oint_{C_2} f(z) \, dz + \oint_{C_3} f(z) \, dz.
+\tag{15.20}\]</span></span></p>
+<div id="fig-14-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-16.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.16: Fig. 354. Doubly connected domain
+</figcaption>
+</figure>
+</div>
+<div id="fig-14-17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-17.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.17: Fig. 355. Triply connected domain
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="problem-set-14.2" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="problem-set-14.2"><span class="header-section-number">15.4</span> PROBLEM SET 14.2</h2>
+<section id="comments-on-text-and-examples" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="comments-on-text-and-examples"><span class="header-section-number">15.4.1</span> 1–8 COMMENTS ON TEXT AND EXAMPLES</h3>
+<ol type="1">
+<li><strong>Deformation range.</strong> Find the edit range of the path of integration in Example 5 (unit circle) for which the value of the integral is still <span class="math inline">\(2\pi i\)</span>.</li>
+<li><strong>Deformation range.</strong> For what boundaries of the region of analyticity of the integrand is the value of the integral in Example 6 still <span class="math inline">\(2\pi i\)</span>? For <span class="math inline">\(m \neq -1\)</span>?</li>
+<li><strong>Cauchy-Goursat proof.</strong> What assumptions are omitted in Goursat’s proof? Why is this important?</li>
+<li><strong>Simply connected domain.</strong> Is the domain <span class="math inline">\(D: 1 &lt; |z| &lt; 3\)</span> simply connected? Give reason.</li>
+<li><strong>Path independence.</strong> Under what conditions is a complex line integral independent of path?</li>
+<li><strong>Morera’s Theorem.</strong> What is the converse of Cauchy’s integral theorem?</li>
+<li><strong>Liouville’s Theorem.</strong> What entire functions are bounded?</li>
+<li><strong>Summary.</strong> In your own words, summarize Cauchy’s integral theorem and its consequences.</li>
+</ol>
+</section>
+<section id="cauchys-theorem-applicable" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="cauchys-theorem-applicable"><span class="header-section-number">15.4.2</span> 9–20 CAUCHY’S THEOREM APPLICABLE?</h3>
+<p>Integrate <span class="math inline">\(f(z)\)</span> counterclockwise around the unit circle. State whether Cauchy’s theorem applies. Show the details. 9. <span class="math inline">\(f(z) = e^{-z^2}\)</span> 10. <span class="math inline">\(f(z) = \tan z\)</span> 11. <span class="math inline">\(f(z) = 1/(2z - 1)\)</span> 12. <span class="math inline">\(f(z) = \bar{z}^3\)</span> 13. <span class="math inline">\(f(z) = 1/(z^4 - 1.2)\)</span> 14. <span class="math inline">\(f(z) = 1/z\)</span> 15. <span class="math inline">\(f(z) = 1/\bar{z}\)</span> 16. <span class="math inline">\(f(z) = \text{Im } z\)</span> 17. <span class="math inline">\(f(z) = 1/(z^2 - 9)\)</span> 18. <span class="math inline">\(f(z) = z^3 \cot z\)</span> 19. <span class="math inline">\(f(z) = 1/(z^2 + 0.5)\)</span> 20. <span class="math inline">\(f(z) = z^2 \sec z\)</span></p>
+</section>
+<section id="contour-integration" class="level3" data-number="15.4.3">
+<h3 data-number="15.4.3" class="anchored" data-anchor-id="contour-integration"><span class="header-section-number">15.4.3</span> 21–30 CONTOUR INTEGRATION</h3>
+<p>Integrate counterclockwise around the boundary of the region <span class="math inline">\(D\)</span> (where <span class="math inline">\(D\)</span> is the domain bounded by the given curves). 21. <span class="math inline">\(f(z) = z/(z^2 - 1)\)</span>, boundary of the square with vertices <span class="math inline">\(\pm 2, \pm 2i\)</span> 22. <span class="math inline">\(f(z) = \text{Re } z\)</span>, boundary of the triangle with vertices 0, 1, <span class="math inline">\(i\)</span> 23. <span class="math inline">\(f(z) = 1/(z^2 - 4)\)</span>, boundary of the annulus <span class="math inline">\(1 &lt; |z| &lt; 3\)</span> 24. <span class="math inline">\(f(z) = 1/(z^2 - 4)\)</span>, boundary of the square with vertices <span class="math inline">\(\pm 1, \pm i\)</span> 25. <span class="math inline">\(f(z) = z^2 - 3iz\)</span>, boundary of the disk <span class="math inline">\(|z - 3i| \le 2\)</span> 26. <span class="math inline">\(f(z) = \cot z\)</span>, boundary of the square with vertices <span class="math inline">\(\pm 1, \pm i\)</span> 27. <span class="math inline">\(f(z) = 1/(z^2 + 1)\)</span>, boundary of the annulus <span class="math inline">\(1.5 &lt; |z| &lt; 2.5\)</span> 28. <span class="math inline">\(f(z) = z^2 \exp(-z)\)</span>, boundary of the unit disk <span class="math inline">\(|z| \le 1\)</span> 29. <span class="math inline">\(f(z) = \bar{z}\)</span>, boundary of the square with vertices 0, 1, <span class="math inline">\(1+i\)</span>, <span class="math inline">\(i\)</span> 30. <span class="math inline">\(f(z) = 1/(z^2 + 2z)\)</span>, boundary of the disk <span class="math inline">\(|z + 1| \le 1.5\)</span></p>
+</section>
+</section>
+<section id="sec-cauchy-integral-formula" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="sec-cauchy-integral-formula"><span class="header-section-number">15.5</span> 14.3 Cauchy’s Integral Formula</h2>
+<p>The most important consequence of Cauchy’s integral theorem is Cauchy’s integral formula. It expresses the value of an analytic function <span class="math inline">\(f(z)\)</span> at any point <span class="math inline">\(z_0\)</span> in a simply connected domain <span class="math inline">\(D\)</span> in terms of the values of <span class="math inline">\(f(z)\)</span> on a simple closed path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> that encloses <span class="math inline">\(z_0\)</span>. This is a very surprising result. It means that the values of an analytic function on the boundary of a domain determine the values of the function in the interior of the domain!</p>
+<section id="theorem-1-cauchys-integral-formula" class="level3" data-number="15.5.1">
+<h3 data-number="15.5.1" class="anchored" data-anchor-id="theorem-1-cauchys-integral-formula"><span class="header-section-number">15.5.1</span> THEOREM 1 Cauchy’s Integral Formula</h3>
+<p>Let <span class="math inline">\(f(z)\)</span> be analytic in a simply connected domain <span class="math inline">\(D\)</span>, and let <span class="math inline">\(C\)</span> be a simple closed path in <span class="math inline">\(D\)</span>, taken counterclockwise. Then for any point <span class="math inline">\(z_0\)</span> inside <span class="math inline">\(C\)</span>, <span id="eq-14-3-1"><span class="math display">\[
+f(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - z_0} \, dz
+\tag{15.21}\]</span></span> or, written as a formula for evaluating contour integrals, <span id="eq-14-3-1star"><span class="math display">\[
+\oint_C \frac{f(z)}{z - z_0} \, dz = 2\pi i f(z_0).
+\tag{15.22}\]</span></span> See <a href="#fig-14-18" class="quarto-xref">Figure&nbsp;<span>15.18</span></a>.</p>
+<div id="fig-14-18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-18.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.18: Fig. 356. Cauchy’s integral formula
+</figcaption>
+</figure>
+</div>
+<p><strong>PROOF</strong> By assumption, <span class="math inline">\(f(z)\)</span> is analytic in <span class="math inline">\(D\)</span>. Hence the integrand <span class="math inline">\(f(z)/(z - z_0)\)</span> is analytic in <span class="math inline">\(D\)</span> except at <span class="math inline">\(z_0\)</span>. By <a href="#eq-14-2-6" class="quarto-xref">Equation&nbsp;<span>15.19</span></a> in Sec. 14.2, we can replace <span class="math inline">\(C\)</span> by a small circle <span class="math inline">\(K\)</span> of radius <span class="math inline">\(r\)</span> and center <span class="math inline">\(z_0\)</span> (see <a href="#fig-14-19" class="quarto-xref">Figure&nbsp;<span>15.19</span></a>), without altering the value of the integral. Since <span class="math inline">\(f(z)\)</span> is analytic, it is continuous at <span class="math inline">\(z_0\)</span>. Hence, an <span class="math inline">\(\epsilon &gt; 0\)</span> being given, we can find a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math inline">\(|f(z) - f(z_0)| &lt; \epsilon\)</span> for all <span class="math inline">\(z\)</span> in the disk <span class="math inline">\(|z - z_0| &lt; \delta\)</span>. We choose <span class="math inline">\(r &lt; \delta\)</span>. We can now write <span class="math inline">\(f(z) = f(z_0) + [f(z) - f(z_0)]\)</span>. Substituting this into the integral over <span class="math inline">\(K\)</span>, we obtain <span class="math display">\[
+\oint_K \frac{f(z)}{z - z_0} \, dz = \oint_K \frac{f(z_0) + [f(z) - f(z_0)]}{z - z_0} \, dz = f(z_0) \oint_K \frac{dz}{z - z_0} + \oint_K \frac{f(z) - f(z_0)}{z - z_0} \, dz.
+\]</span> The first term on the right equals <span class="math inline">\(f(z_0) \cdot 2\pi i\)</span>, which follows from Example 6 in Sec. 14.2. In the second term, <span class="math inline">\(|f(z) - f(z_0)| &lt; \epsilon\)</span> at each point of <span class="math inline">\(K\)</span>. The length of <span class="math inline">\(K\)</span> is <span class="math inline">\(2\pi r\)</span>. Hence, by the ML-inequality in Sec. 14.1, <span class="math display">\[
+\left| \oint_K \frac{f(z) - f(z_0)}{z - z_0} \, dz \right| \le \frac{\epsilon}{r} \cdot 2\pi r = 2\pi \epsilon.
+\]</span> Since <span class="math inline">\(\epsilon &gt; 0\)</span> was arbitrary, this integral must be zero. This proves (1). <span class="math inline">\(\square\)</span></p>
+<div id="fig-14-19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-19.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.19: Fig. 357. Proof of Cauchy’s integral formula
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="example-1-cauchys-integral-formula" class="level3" data-number="15.5.2">
+<h3 data-number="15.5.2" class="anchored" data-anchor-id="example-1-cauchys-integral-formula"><span class="header-section-number">15.5.2</span> EXAMPLE 1 Cauchy’s Integral Formula</h3>
+<p><span class="math display">\[
+\oint_C \frac{e^z}{z - 2} \, dz = \left. 2\pi i e^z \right|_{z=2} = 2\pi i e^2 \approx 46.4268i
+\]</span> for any contour enclosing <span class="math inline">\(z_0 = 2\)</span> (counterclockwise). <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-2-cauchys-integral-formula" class="level3" data-number="15.5.3">
+<h3 data-number="15.5.3" class="anchored" data-anchor-id="example-2-cauchys-integral-formula"><span class="header-section-number">15.5.3</span> EXAMPLE 2 Cauchy’s Integral Formula</h3>
+<p><span class="math display">\[
+\oint_C \frac{z^3 - 6}{2z - i} \, dz = \oint_C \frac{\frac{1}{2} z^3 - 3}{z - i/2} \, dz = \left. 2\pi i \left( \frac{1}{2} z^3 - 3 \right) \right|_{z=i/2} = 2\pi i \left( \frac{i}{16} - 3 \right) = -\frac{\pi}{8} - 6\pi i
+\]</span> for any contour enclosing <span class="math inline">\(z_0 = i/2\)</span> (counterclockwise). <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-3-integration-around-different-contours" class="level3" data-number="15.5.4">
+<h3 data-number="15.5.4" class="anchored" data-anchor-id="example-3-integration-around-different-contours"><span class="header-section-number">15.5.4</span> EXAMPLE 3 Integration Around Different Contours</h3>
+<p>Integrate <span class="math display">\[
+g(z) = \frac{z^2 + 1}{z^2 - 1} = \frac{z^2 + 1}{(z - 1)(z + 1)}
+\]</span> counterclockwise around each of the four circles in <a href="#fig-14-20" class="quarto-xref">Figure&nbsp;<span>15.20</span></a>.</p>
+<div id="fig-14-20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-20.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.20: Fig. 358. Example 3
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong><br>
+(a) The circle <span class="math inline">\(|z - 1| = 1\)</span> encloses <span class="math inline">\(z_0 = 1\)</span> but not <span class="math inline">\(z_0 = -1\)</span>. Hence the integrand is analytic except at <span class="math inline">\(z_0 = 1\)</span> in the disk. We write the integrand in the form <span class="math display">\[
+g(z) = \frac{\frac{z^2 + 1}{z + 1}}{z - 1}.
+\]</span> Thus <span class="math inline">\(f(z) = (z^2 + 1)/(z + 1)\)</span>, which is analytic inside the contour. By (1) we obtain <span class="math display">\[
+\oint_{C_1} g(z) \, dz = 2\pi i f(1) = 2\pi i \left. \frac{z^2 + 1}{z + 1} \right|_{z=1} = 2\pi i \cdot \frac{2}{2} = 2\pi i.
+\]</span> (b) The circle <span class="math inline">\(|z + 1| = 1\)</span> encloses <span class="math inline">\(z_0 = -1\)</span> but not <span class="math inline">\(z_0 = 1\)</span>. Hence we write <span class="math display">\[
+g(z) = \frac{\frac{z^2 + 1}{z - 1}}{z + 1}.
+\]</span> Thus <span class="math inline">\(f(z) = (z^2 + 1)/(z - 1)\)</span>, which is analytic inside the contour. By (1) we obtain <span class="math display">\[
+\oint_{C_2} g(z) \, dz = 2\pi i f(-1) = 2\pi i \left. \frac{z^2 + 1}{z - 1} \right|_{z=-1} = 2\pi i \cdot \frac{2}{-2} = -2\pi i.
+\]</span> (c) The circle <span class="math inline">\(|z| = 1/2\)</span> encloses neither <span class="math inline">\(z_0 = 1\)</span> nor <span class="math inline">\(z_0 = -1\)</span>. Hence the integrand is analytic inside and on the contour. By Cauchy’s integral theorem (<a href="#sec-cauchy-integral-theorem" class="quarto-xref"><span>Section 15.3</span></a>) <span class="math display">\[
+\oint_{C_3} g(z) \, dz = 0.
+\]</span> (d) The circle <span class="math inline">\(|z| = 2\)</span> encloses both <span class="math inline">\(z_0 = 1\)</span> and <span class="math inline">\(z_0 = -1\)</span>. We can separate the singularities by partial fractions: <span class="math display">\[
+g(z) = 1 + \frac{2}{z^2 - 1} = 1 + \frac{1}{z - 1} - \frac{1}{z + 1}.
+\]</span> By linearity of integration <span class="math display">\[
+\oint_{C_4} g(z) \, dz = \oint_{C_4} \, dz + \oint_{C_4} \frac{dz}{z - 1} - \oint_{C_4} \frac{dz}{z + 1} = 0 + 2\pi i - 2\pi i = 0.
+\]</span> Can you verify this using <a href="#eq-14-2-6" class="quarto-xref">Equation&nbsp;<span>15.19</span></a> in Sec. 14.2? Yes, by deforming <span class="math inline">\(C_4\)</span> into two small circles around 1 and -1 (see <a href="#fig-14-21" class="quarto-xref">Figure&nbsp;<span>15.21</span></a>). <span class="math inline">\(\square\)</span></p>
+<p>Multiply connected domains can be handled as in Sec. 14.2. For instance, if <span class="math inline">\(f(z)\)</span> is analytic on <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> and in the ring-shaped domain bounded by <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> (see <a href="#fig-14-21" class="quarto-xref">Figure&nbsp;<span>15.21</span></a>) and <span class="math inline">\(z_0\)</span> is any point in this domain, then <span id="eq-14-3-3"><span class="math display">\[
+f(z_0) = \frac{1}{2\pi i} \oint_{C_1} \frac{f(z)}{z - z_0} \, dz - \frac{1}{2\pi i} \oint_{C_2} \frac{f(z)}{z - z_0} \, dz
+\tag{15.23}\]</span></span> where both integrals are taken counterclockwise.</p>
+<div id="fig-14-21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-21.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.21: Fig. 359. Formula (3) multiple boundaries
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="problem-set-14.3" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="problem-set-14.3"><span class="header-section-number">15.6</span> PROBLEM SET 14.3</h2>
+<section id="integration-1" class="level3" data-number="15.6.1">
+<h3 data-number="15.6.1" class="anchored" data-anchor-id="integration-1"><span class="header-section-number">15.6.1</span> 1–8 INTEGRATION</h3>
+<p>Evaluate the contour integral counterclockwise. Show the details. 1. <span class="math inline">\(\oint_C \frac{\sin z}{z - \pi} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z| = 4\)</span> 2. <span class="math inline">\(\oint_C \frac{z^2 - 1}{z^2 + 1} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - i| = 1\)</span> 3. <span class="math inline">\(\oint_C \frac{e^z}{z - 2i} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z| = 3\)</span> 4. <span class="math inline">\(\oint_C \frac{\cos z}{z^2 - 1} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 1| = 1\)</span> 5. <span class="math inline">\(\oint_C \frac{\tan z}{z - i/2} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 1, \pm i\)</span> 6. <span class="math inline">\(\oint_C \frac{z^3 - 6}{2z - i} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 2, \pm 2i\)</span> 7. <span class="math inline">\(\oint_C \frac{z^2 + 1}{z^2 - 1} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 1.5, \pm 1.5i\)</span> 8. <span class="math inline">\(\oint_C \frac{e^z}{z^2 + 4} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 2i| = 1.5\)</span></p>
+</section>
+<section id="contour-integration-1" class="level3" data-number="15.6.2">
+<h3 data-number="15.6.2" class="anchored" data-anchor-id="contour-integration-1"><span class="header-section-number">15.6.2</span> 9–15 CONTOUR INTEGRATION</h3>
+<p>Evaluate the contour integral counterclockwise around the given contour. 9. <span class="math inline">\(\oint_C \frac{\cos z}{z(z - 1)} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z| = 2\)</span> 10. <span class="math inline">\(\oint_C \frac{z^2 + 1}{z(z - 1)} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 1| = 0.5\)</span> 11. <span class="math inline">\(\oint_C \frac{\sin\pi z}{z^2 - 1} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 1| = 1\)</span> 12. <span class="math inline">\(\oint_C \frac{\tan z}{z^2 - 1} \, dz\)</span>, <span class="math inline">\(C\)</span> the circle <span class="math inline">\(|z - 1| = 0.5\)</span> 13. <span class="math inline">\(\oint_C \frac{e^z}{z(z - 1)} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 2, \pm 2i\)</span> 14. <span class="math inline">\(\oint_C \frac{4z^2 - 8iz}{z - 2i} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 2, \pm 2i\)</span> 15. <span class="math inline">\(\oint_C \frac{e^{z^2}}{z(z - 2i)} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 1, \pm 2i\)</span></p>
+</section>
+<section id="section-1" class="level3" data-number="15.6.3">
+<h3 data-number="15.6.3" class="anchored" data-anchor-id="section-1"><span class="header-section-number">15.6.3</span> 16–20</h3>
+<ol start="16" type="1">
+<li><strong>Cauchy’s integral formula.</strong> Prove <a href="#eq-14-3-1" class="quarto-xref">Equation&nbsp;<span>15.21</span></a> by writing <span class="math inline">\(f(z) = f(z_0) + (z - z_0)g(z)\)</span>, where <span class="math inline">\(g(z)\)</span> is analytic, enclosing <span class="math inline">\(z_0\)</span> by a small circle <span class="math inline">\(K\)</span> of radius <span class="math inline">\(r\)</span> (as in <a href="#fig-14-18" class="quarto-xref">Figure&nbsp;<span>15.18</span></a>) and taking the limit as <span class="math inline">\(r \to 0\)</span>.</li>
+<li><strong>Indefinite integration.</strong> Show that the method in Sec. 14.1 can be applied to the integral in Example 2.</li>
+<li><strong>Continuous deformation.</strong> Show that the integral in Example 2 is independent of the path of integration.</li>
+<li><strong>Team Project.</strong> Show that <a href="#eq-14-3-3" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> follows from Cauchy’s integral theorem.</li>
+<li><strong>Self-intersection.</strong> If <span class="math inline">\(C\)</span> is a closed curve with a double point (self-intersection), say, like an 8, can we apply Cauchy’s integral formula? Explain.</li>
+</ol>
+</section>
+</section>
+<section id="sec-derivatives-analytic-functions" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="sec-derivatives-analytic-functions"><span class="header-section-number">15.7</span> 14.4 Derivatives of Analytic Functions</h2>
+<p>As another surprising consequence of Cauchy’s integral formula, we shall now show that an analytic function has derivatives of all orders. This is a very important result, which has no analog in real calculus (where a function may have a first derivative but no second derivative, etc.).</p>
+<section id="theorem-1-derivatives-of-an-analytic-function" class="level3" data-number="15.7.1">
+<h3 data-number="15.7.1" class="anchored" data-anchor-id="theorem-1-derivatives-of-an-analytic-function"><span class="header-section-number">15.7.1</span> THEOREM 1 Derivatives of an Analytic Function</h3>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a domain <span class="math inline">\(D\)</span>, then it has derivatives of all orders in <span class="math inline">\(D\)</span>, which are themselves analytic functions in <span class="math inline">\(D\)</span>. The values of these derivatives at any point <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> are given by <span id="eq-14-4-1"><span class="math display">\[
+f'(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^2} \, dz
+\tag{15.24}\]</span></span> <span id="eq-14-4-2"><span class="math display">\[
+f''(z_0) = \frac{2!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^3} \, dz
+\tag{15.25}\]</span></span> and in general <span id="eq-14-4-3"><span class="math display">\[
+f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \quad (n = 1, 2, \dots)
+\tag{15.26}\]</span></span> where <span class="math inline">\(C\)</span> is any simple closed path in <span class="math inline">\(D\)</span> that encloses <span class="math inline">\(z_0\)</span> and whose interior belongs to <span class="math inline">\(D\)</span>; and we integrate counterclockwise around <span class="math inline">\(C\)</span> (see <a href="#fig-14-22" class="quarto-xref">Figure&nbsp;<span>15.22</span></a>).</p>
+<div id="fig-14-22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-14-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-14-22.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.22: Fig. 360. Theorem 1 and its proof
+</figcaption>
+</figure>
+</div>
+<p><strong>PROOF</strong> We prove <a href="#eq-14-4-1" class="quarto-xref">Equation&nbsp;<span>15.24</span></a> and leave the general proof by induction to the reader. By definition of the derivative, <span class="math display">\[
+f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}.
+\]</span> On the right we represent <span class="math inline">\(f(z_0 + \Delta z)\)</span> and <span class="math inline">\(f(z_0)\)</span> by Cauchy’s integral formula: <span class="math display">\[
+\frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z} = \frac{1}{2\pi i \Delta z} \left[ \oint_C \frac{f(z)}{z - (z_0 + \Delta z)} \, dz - \oint_C \frac{f(z)}{z - z_0} \, dz \right].
+\]</span> Simplifying the difference in the bracket, we have: <span class="math display">\[
+\frac{1}{z - z_0 - \Delta z} - \frac{1}{z - z_0} = \frac{(z - z_0) - (z - z_0 - \Delta z)}{(z - z_0 - \Delta z)(z - z_0)} = \frac{\Delta z}{(z - z_0 - \Delta z)(z - z_0)}.
+\]</span> Hence the difference quotient is: <span class="math display">\[
+\frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z} = \frac{1}{2\pi i} \oint_C \frac{f(z)}{(z - z_0 - \Delta z)(z - z_0)} \, dz.
+\]</span> Clearly, we can now establish <a href="#eq-14-4-1" class="quarto-xref">Equation&nbsp;<span>15.24</span></a> by showing that, as <span class="math inline">\(\Delta z \to 0\)</span>, the integral on the right approaches the integral in <a href="#eq-14-4-1" class="quarto-xref">Equation&nbsp;<span>15.24</span></a>, that is, the difference between these two integrals approaches zero: <span class="math display">\[
+\oint_C \frac{f(z)}{(z - z_0 - \Delta z)(z - z_0)} \, dz - \oint_C \frac{f(z)}{(z - z_0)^2} \, dz = \oint_C f(z) \left[ \frac{1}{(z - z_0 - \Delta z)(z - z_0)} - \frac{1}{(z - z_0)^2} \right] \, dz.
+\]</span> Simplifying the expression in the bracket, we have: <span class="math display">\[
+\frac{1}{(z - z_0 - \Delta z)(z - z_0)} - \frac{1}{(z - z_0)^2} = \frac{(z - z_0) - (z - z_0 - \Delta z)}{(z - z_0 - \Delta z)(z - z_0)^2} = \frac{\Delta z}{(z - z_0 - \Delta z)(z - z_0)^2}.
+\]</span> Hence the difference is: <span class="math display">\[
+\oint_C \frac{f(z) \Delta z}{(z - z_0 - \Delta z)(z - z_0)^2} \, dz.
+\]</span> We show by the ML-inequality (Sec. 14.1) that the integral on the right approaches zero as <span class="math inline">\(\Delta z \to 0\)</span>. Since <span class="math inline">\(f(z)\)</span> is analytic on <span class="math inline">\(C\)</span> and <span class="math inline">\(C\)</span> is closed, <span class="math inline">\(|f(z)|\)</span> is bounded, say, <span class="math inline">\(|f(z)| \le K\)</span>. Let <span class="math inline">\(d\)</span> be the smallest distance from <span class="math inline">\(z_0\)</span> to the points of <span class="math inline">\(C\)</span> (see <a href="#fig-14-22" class="quarto-xref">Figure&nbsp;<span>15.22</span></a>). Then for all <span class="math inline">\(z\)</span> on <span class="math inline">\(C\)</span> we have <span class="math inline">\(|z - z_0| \ge d\)</span>, hence <span class="math display">\[
+\frac{1}{|z - z_0|^2} \le \frac{1}{d^2}.
+\]</span> By the triangle inequality, <span class="math display">\[
+d \le |z - z_0| = |z - z_0 - \Delta z + \Delta z| \le |z - z_0 - \Delta z| + |\Delta z|.
+\]</span> We now subtract <span class="math inline">\(|\Delta z|\)</span> on both sides and let <span class="math inline">\(|\Delta z| \le d/2\)</span>, so that <span class="math inline">\(-|\Delta z| \ge -d/2\)</span>. Then <span class="math display">\[
+\frac{1}{2}d \le d - |\Delta z| \le |z - z_0 - \Delta z|. \quad \text{Hence} \quad \frac{1}{|z - z_0 - \Delta z|} \le \frac{2}{d}.
+\]</span> Let <span class="math inline">\(L\)</span> be the length of <span class="math inline">\(C\)</span>. If <span class="math inline">\(|\Delta z| \le d/2\)</span>, then by the ML-inequality <span class="math display">\[
+\left| \oint_C \frac{f(z) \Delta z}{(z - z_0 - \Delta z)(z - z_0)^2} \, dz \right| \le K L |\Delta z| \frac{2}{d} \frac{1}{d^2} = \frac{2 K L}{d^3} |\Delta z|.
+\]</span> This approaches zero as <span class="math inline">\(\Delta z \to 0\)</span>. Formula <a href="#eq-14-4-1" class="quarto-xref">Equation&nbsp;<span>15.24</span></a> is proved. <span class="math inline">\(\square\)</span></p>
+<p>Note that we used Cauchy’s integral formula <a href="#eq-14-3-1star" class="quarto-xref">Equation&nbsp;<span>15.22</span></a>, Sec. 14.3, but if all we had known about <span class="math inline">\(f(z_0)\)</span> is the fact that it can be represented by <a href="#eq-14-3-1star" class="quarto-xref">Equation&nbsp;<span>15.22</span></a>, Sec. 14.3, our argument would still have worked! This means that if a continuous function <span class="math inline">\(f(z)\)</span> can be represented by <a href="#eq-14-3-1star" class="quarto-xref">Equation&nbsp;<span>15.22</span></a>, Sec. 14.3, then it is analytic! We shall use this fact in proving Morera’s theorem.</p>
+</section>
+<section id="applications-of-theorem-1" class="level3" data-number="15.7.2">
+<h3 data-number="15.7.2" class="anchored" data-anchor-id="applications-of-theorem-1"><span class="header-section-number">15.7.2</span> Applications of Theorem 1</h3>
+</section>
+<section id="example-1-evaluation-of-line-integrals" class="level3" data-number="15.7.3">
+<h3 data-number="15.7.3" class="anchored" data-anchor-id="example-1-evaluation-of-line-integrals"><span class="header-section-number">15.7.3</span> EXAMPLE 1 Evaluation of Line Integrals</h3>
+<p><span class="math display">\[
+\oint_C \frac{\cos z}{(z - \pi i)^2} \, dz = \left. 2\pi i (\cos z)' \right|_{z=\pi i} = \left. 2\pi i (-\sin z) \right|_{z=\pi i} = 2\pi \sinh \pi \approx 72.33i
+\]</span> for any contour enclosing <span class="math inline">\(z_0 = \pi i\)</span> (counterclockwise). <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="example-2-1" class="level3" data-number="15.7.4">
+<h3 data-number="15.7.4" class="anchored" data-anchor-id="example-2-1"><span class="header-section-number">15.7.4</span> EXAMPLE 2</h3>
+<p>For any contour enclosing the point <span class="math inline">\(-i\)</span> (counterclockwise), we obtain by <a href="#eq-14-4-2" class="quarto-xref">Equation&nbsp;<span>15.25</span></a> <span class="math display">\[
+\oint_C \frac{z^4 - 3z^2 + 6}{(z + i)^3} \, dz = \left. \frac{2\pi i}{2!} (z^4 - 3z^2 + 6)'' \right|_{z=-i} = \left. \pi i (12z^2 - 6) \right|_{z=-i} = \pi i (-12 - 6) = -18\pi i.
+\]</span></p>
+</section>
+<section id="example-3-1" class="level3" data-number="15.7.5">
+<h3 data-number="15.7.5" class="anchored" data-anchor-id="example-3-1"><span class="header-section-number">15.7.5</span> EXAMPLE 3</h3>
+<p>For any contour for which 1 lies inside and <span class="math inline">\(\pm 2i\)</span> lie outside (counterclockwise), <span class="math display">\[
+\oint_C \frac{e^z}{(z - 1)^2 (z^2 + 4)} \, dz = \left. 2\pi i \left( \frac{e^z}{z^2 + 4} \right)' \right|_{z=1} = \left. 2\pi i \left( \frac{e^z(z^2 + 4) - e^z(2z)}{(z^2 + 4)^2} \right) \right|_{z=1} = \frac{6e\pi i}{25} \approx 2.050i.
+\]</span></p>
+</section>
+<section id="cauchys-inequality.-liouvilles-and-moreras-theorems" class="level3" data-number="15.7.6">
+<h3 data-number="15.7.6" class="anchored" data-anchor-id="cauchys-inequality.-liouvilles-and-moreras-theorems"><span class="header-section-number">15.7.6</span> Cauchy’s Inequality. Liouville’s and Morera’s Theorems</h3>
+<p>We develop other general results about analytic functions, further showing the versatility of Cauchy’s integral theorem.</p>
+<p><strong>Cauchy’s Inequality.</strong> Theorem 1 yields a basic inequality that has many applications. To get it, all we have to do is to choose for <span class="math inline">\(C\)</span> in <a href="#eq-14-4-3" class="quarto-xref">Equation&nbsp;<span>15.26</span></a> a circle of radius <span class="math inline">\(r\)</span> and center <span class="math inline">\(z_0\)</span> and apply the ML-inequality (Sec. 14.1); with <span class="math inline">\(|f(z)| \le M\)</span> on <span class="math inline">\(C\)</span> we obtain from <a href="#eq-14-4-3" class="quarto-xref">Equation&nbsp;<span>15.26</span></a> <span class="math display">\[
+|f^{(n)}(z_0)| = \frac{n!}{2\pi} \left| \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \right| \le \frac{n!}{2\pi} \frac{M}{r^{n+1}} 2\pi r = \frac{n! M}{r^n}.
+\]</span> This gives <strong>Cauchy’s inequality</strong> <span id="eq-14-4-4"><span class="math display">\[
+|f^{(n)}(z_0)| \le \frac{n! M}{r^n}.
+\tag{15.27}\]</span></span></p>
+<p>To gain a first impression of the importance of this inequality, let us prove a famous theorem on entire functions (definition in Sec. 13.5).</p>
+</section>
+<section id="theorem-2-liouvilles-theorem" class="level3" data-number="15.7.7">
+<h3 data-number="15.7.7" class="anchored" data-anchor-id="theorem-2-liouvilles-theorem"><span class="header-section-number">15.7.7</span> THEOREM 2 Liouville’s Theorem</h3>
+<p>If an entire function is bounded in absolute value in the whole complex plane, then this function must be a constant.</p>
+<p><strong>PROOF</strong> By assumption, <span class="math inline">\(|f(z)| \le K\)</span> for all <span class="math inline">\(z\)</span>. Using <a href="#eq-14-4-4" class="quarto-xref">Equation&nbsp;<span>15.27</span></a> with <span class="math inline">\(n = 1\)</span>, we see that <span class="math inline">\(|f'(z_0)| \le K/r\)</span>. Since <span class="math inline">\(f(z)\)</span> is entire, this holds for every <span class="math inline">\(r\)</span>, so that we can take <span class="math inline">\(r\)</span> as large as we please and conclude that <span class="math inline">\(f'(z_0) = 0\)</span>. Since <span class="math inline">\(z_0\)</span> is arbitrary, <span class="math inline">\(f'(z) = u_x + i v_x = 0\)</span> for all <span class="math inline">\(z\)</span> (see (4) in Sec. 13.4), hence <span class="math inline">\(u_x = v_x = 0\)</span>, and <span class="math inline">\(u_y = v_y = 0\)</span> by the Cauchy–Riemann equations. Thus <span class="math inline">\(u = \text{const}\)</span>, <span class="math inline">\(v = \text{const}\)</span>, and <span class="math inline">\(f = u + iv = \text{const}\)</span> for all <span class="math inline">\(z\)</span>. This completes the proof. <span class="math inline">\(\square\)</span></p>
+<p>Another very interesting consequence of Theorem 1 is the converse of Cauchy’s integral theorem:</p>
+</section>
+<section id="theorem-3-moreras-theorem-converse-of-cauchys-integral-theorem-2" class="level3" data-number="15.7.8">
+<h3 data-number="15.7.8" class="anchored" data-anchor-id="theorem-3-moreras-theorem-converse-of-cauchys-integral-theorem-2"><span class="header-section-number">15.7.8</span> THEOREM 3 Morera’s Theorem (Converse of Cauchy’s Integral Theorem) <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h3>
+<p>If <span class="math inline">\(f(z)\)</span> is continuous in a simply connected domain <span class="math inline">\(D\)</span> and if <span id="eq-14-4-5"><span class="math display">\[
+\oint_C f(z) \, dz = 0
+\tag{15.28}\]</span></span> for every closed path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span>, then <span class="math inline">\(f(z)\)</span> is analytic in <span class="math inline">\(D\)</span>.</p>
+<p><strong>PROOF</strong> In Sec. 14.2 we showed that if <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then <span class="math display">\[
+F(z) = \int_{z_0}^z f(z^*) \, dz^*
+\]</span> is analytic in <span class="math inline">\(D\)</span> and <span class="math inline">\(F'(z) = f(z)\)</span>. In the proof we used only the continuity of <span class="math inline">\(f(z)\)</span> and the property that its integral around every closed path in <span class="math inline">\(D\)</span> is zero; from these assumptions we proved that <span class="math inline">\(F(z)\)</span> is analytic in <span class="math inline">\(D\)</span> and <span class="math inline">\(F'(z) = f(z)\)</span>. Now, by Theorem 1 of the present section, the derivative of an analytic function is itself analytic. Hence <span class="math inline">\(F'(z) = f(z)\)</span> is analytic in <span class="math inline">\(D\)</span>. This completes the proof. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="problem-set-14.4" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="problem-set-14.4"><span class="header-section-number">15.8</span> PROBLEM SET 14.4</h2>
+<section id="evaluation-of-integrals" class="level3" data-number="15.8.1">
+<h3 data-number="15.8.1" class="anchored" data-anchor-id="evaluation-of-integrals"><span class="header-section-number">15.8.1</span> 1–8 EVALUATION OF INTEGRALS</h3>
+<p>Integrate counterclockwise around the circle <span class="math inline">\(|z| = 2\)</span>. Show the details. 1. <span class="math inline">\(\oint_C \frac{\sin 3z}{(z - \pi/4)^3} \, dz\)</span> 2. <span class="math inline">\(\oint_C \frac{ze^{iz}}{(z - i)^4} \, dz\)</span> 3. <span class="math inline">\(\oint_C \frac{\cosh z}{z^{n+1}} \, dz \quad (n = 1, 2, \dots)\)</span> 4. <span class="math inline">\(\oint_C \frac{\sin z}{z^4} \, dz\)</span> 5. <span class="math inline">\(\oint_C \frac{z^3 \cos z}{(z - 1)^2} \, dz\)</span> 6. <span class="math inline">\(\oint_C \frac{e^z \cos z}{(z - 0.5)^2} \, dz\)</span> 7. <span class="math inline">\(\oint_C \frac{1}{(z - i)^2 (z + i)} \, dz\)</span> 8. <span class="math inline">\(\oint_C \frac{\text{Ln}(z - 1)}{z^2} \, dz\)</span> (use Principal Branch)</p>
+</section>
+<section id="contour-integration-2" class="level3" data-number="15.8.2">
+<h3 data-number="15.8.2" class="anchored" data-anchor-id="contour-integration-2"><span class="header-section-number">15.8.2</span> 9–19 CONTOUR INTEGRATION</h3>
+<p>Evaluate the contour integral counterclockwise around the given contour. 9. <span class="math inline">\(\oint_C \frac{z^6}{(2z - 1)^6} \, dz\)</span>, <span class="math inline">\(C\)</span> the unit circle 10. <span class="math inline">\(\oint_C \frac{z^3 + \sin z}{(z - i)^3} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 2, \pm 2i\)</span> 11. <span class="math inline">\(\oint_C \frac{(1 + z)\sin z}{(2z - 1)^2} \, dz\)</span>, <span class="math inline">\(C: |z - i| = 2\)</span> 12. <span class="math inline">\(\oint_C \frac{\exp(z^2)}{z(z - 2i)^2} \, dz\)</span>, <span class="math inline">\(C: |z - 3i| = 2\)</span> clockwise 13. <span class="math inline">\(\oint_C \frac{\text{Ln } z}{(z - 2)^2} \, dz\)</span>, <span class="math inline">\(C: |z - 3| = 2\)</span> 14. <span class="math inline">\(\oint_C \frac{\text{Ln }(z + 3)}{(z - 2)(z + 1)^2} \, dz\)</span>, <span class="math inline">\(C\)</span> the boundary of the square with vertices <span class="math inline">\(\pm 1.5, \pm 1.5i\)</span> 15. <span class="math inline">\(\oint_C \frac{\cosh 4z}{(z - 4)^3} \, dz\)</span>, <span class="math inline">\(C\)</span> consists of <span class="math inline">\(|z| = 6\)</span> counterclockwise and <span class="math inline">\(|z - 3| = 2\)</span> clockwise 16. <span class="math inline">\(\oint_C \frac{e^{4z}}{z(z - 2i)^2} \, dz\)</span>, <span class="math inline">\(C\)</span> consists of <span class="math inline">\(|z - i| = 3\)</span> counterclockwise and <span class="math inline">\(|z| = 1\)</span> clockwise 17. <span class="math inline">\(\oint_C \frac{e^{-z}\sin z}{(z - 4)^3} \, dz\)</span>, <span class="math inline">\(C\)</span> consists of <span class="math inline">\(|z| = 5\)</span> counterclockwise and <span class="math inline">\(|z - 3| = 3\)</span> clockwise 18. <span class="math inline">\(\oint_C \frac{\sinh z}{z^n} \, dz\)</span>, <span class="math inline">\(C: |z| = 1\)</span> counterclockwise, <span class="math inline">\(n\)</span> integer 19. <span class="math inline">\(\oint_C \frac{e^{3z}}{(4z - \pi i)^3} \, dz\)</span>, <span class="math inline">\(C: |z| = 1\)</span>, counterclockwise</p>
+</section>
+<section id="team-project.-theory-on-growth" class="level3" data-number="15.8.3">
+<h3 data-number="15.8.3" class="anchored" data-anchor-id="team-project.-theory-on-growth"><span class="header-section-number">15.8.3</span> 20 TEAM PROJECT. Theory on Growth</h3>
+<ol type="a">
+<li><strong>Growth of entire functions.</strong> If <span class="math inline">\(f(z)\)</span> is not a constant and is analytic for all (finite) <span class="math inline">\(z\)</span>, and <span class="math inline">\(R\)</span> and <span class="math inline">\(M\)</span> are any positive real numbers (no matter how large), show that there exist values of <span class="math inline">\(z\)</span> for which <span class="math inline">\(|z| &gt; R\)</span> and <span class="math inline">\(|f(z)| &gt; M\)</span>. <em>Hint.</em> Use Liouville’s theorem.<br>
+</li>
+<li><strong>Growth of polynomials.</strong> If <span class="math inline">\(f(z)\)</span> is a polynomial in <span class="math inline">\(z\)</span> of degree <span class="math inline">\(n &gt; 0\)</span> and <span class="math inline">\(M\)</span> is an arbitrary positive real number (no matter how large), show that there exists a positive real number <span class="math inline">\(R\)</span> such that <span class="math inline">\(|f(z)| &gt; M\)</span> for all <span class="math inline">\(|z| &gt; R\)</span>.<br>
+</li>
+<li><strong>Exponential function.</strong> Show that <span class="math inline">\(f(z) = e^z\)</span> has the property characterized in (a) but does not have that characterized in (b).<br>
+</li>
+<li><strong>Fundamental theorem of algebra.</strong> If <span class="math inline">\(f(z)\)</span> is a polynomial in <span class="math inline">\(z\)</span>, not a constant, then <span class="math inline">\(f(z) = 0\)</span> for at least one value of <span class="math inline">\(z\)</span>. Prove this. <em>Hint.</em> Use (a).</li>
+</ol>
+</section>
+</section>
+<section id="chapter-14-review-questions-and-problems" class="level2" data-number="15.9">
+<h2 data-number="15.9" class="anchored" data-anchor-id="chapter-14-review-questions-and-problems"><span class="header-section-number">15.9</span> CHAPTER 14 REVIEW QUESTIONS AND PROBLEMS</h2>
+<ol type="1">
+<li>What is a parametric representation of a curve? What is its advantage?</li>
+<li>What did we assume about paths of integration <span class="math inline">\(z = z(t)\)</span>? What is <span class="math inline">\(\dot{z} = dz/dt\)</span> geometrically?</li>
+<li>State the definition of a complex line integral from memory.</li>
+<li>Can you remember the relationship between complex and real line integrals discussed in this chapter?</li>
+<li>How can you evaluate a line integral of an analytic function? Of an arbitrary continuous complex function?</li>
+<li>What value do you get by counterclockwise integration of <span class="math inline">\(1/z\)</span> around the unit circle? You should remember this. It is basic.</li>
+<li>Which theorem in this chapter do you regard as most important? State it precisely from memory.</li>
+<li>What is independence of path? Its importance? State a basic theorem on independence of path in complex.</li>
+<li>What is deformation of path? Give a typical example.</li>
+<li>Don’t confuse Cauchy’s integral theorem (also known as Cauchy–Goursat theorem) and Cauchy’s integral formula. State both. How are they related?</li>
+<li>What is a doubly connected domain? How can you extend Cauchy’s integral theorem to it?</li>
+<li>What do you know about derivatives of analytic functions?</li>
+<li>How did we use integral formulas for derivatives in evaluating integrals?</li>
+<li>How does the situation for analytic functions differ with respect to derivatives from that in calculus?</li>
+<li>What is Liouville’s theorem? To what complex functions does it apply?</li>
+<li>What is Morera’s theorem?</li>
+<li>If the integrals of a function <span class="math inline">\(f(z)\)</span> over each of the two boundary circles of an annulus <span class="math inline">\(D\)</span> taken in the same sense have different values, can <span class="math inline">\(f(z)\)</span> be analytic everywhere in <span class="math inline">\(D\)</span>? Give reason.</li>
+<li>Is <span class="math inline">\(\text{Im} \oint_C f(z) \, dz = \oint_C \text{Im } f(z) \, dz\)</span>? Give reason.</li>
+<li>Is <span class="math inline">\(\left| \oint_C f(z) \, dz \right| = \oint_C |f(z)| \, dz\)</span>?</li>
+<li>How would you find a bound for the left side in Prob. 19?</li>
+</ol>
+<section id="integration-2" class="level3" data-number="15.9.1">
+<h3 data-number="15.9.1" class="anchored" data-anchor-id="integration-2"><span class="header-section-number">15.9.1</span> 21–30 INTEGRATION</h3>
+<p>Integrate by a suitable method. 21. <span class="math inline">\(\int_C z \sinh(z^2) \, dz\)</span> from <span class="math inline">\(0\)</span> to <span class="math inline">\(\pi i/2\)</span>. 22. <span class="math inline">\(\oint_C (|z| + z) \, dz\)</span> clockwise around the unit circle. 23. <span class="math inline">\(\oint_C \frac{5e^z}{z} \, dz\)</span> counterclockwise around <span class="math inline">\(|z| = \pi\)</span>. 24. <span class="math inline">\(\int_C \text{Re } z \, dz\)</span> from <span class="math inline">\(0\)</span> to <span class="math inline">\(3 + 27i\)</span> along <span class="math inline">\(y = x^3\)</span>. 25. <span class="math inline">\(\oint_C \frac{\tan \pi z}{(z - 1)^2} \, dz\)</span> clockwise around <span class="math inline">\(|z - 1| = 0.1\)</span>. 26. <span class="math inline">\(\int_C (z^2 + \bar{z}^2) \, dz\)</span> from <span class="math inline">\(z = 0\)</span> horizontally to <span class="math inline">\(z = 2\)</span>, then vertically upward to <span class="math inline">\(2 + 2i\)</span>. 27. <span class="math inline">\(\int_C (z^2 + \bar{z}^2) \, dz\)</span> from <span class="math inline">\(0\)</span> to <span class="math inline">\(2 + 2i\)</span>, shortest path. 28. <span class="math inline">\(\oint_C \frac{\text{Ln } z}{(z - 2i)^2} \, dz\)</span> counterclockwise around <span class="math inline">\(|z - 1| = 1/2\)</span>. 29. <span class="math inline">\(\oint_C \left[ \frac{2}{z - 2i} - \frac{1}{z - 4i} \right] \, dz\)</span> clockwise around <span class="math inline">\(|z - 1| = 2.5\)</span>. 30. <span class="math inline">\(\int_C \sin z \, dz\)</span> from 0 to <span class="math inline">\((1 + i)\)</span>.</p>
+</section>
+</section>
+<section id="summary-of-chapter-14" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="summary-of-chapter-14"><span class="header-section-number">15.10</span> SUMMARY OF CHAPTER 14</h2>
+<section id="complex-integration" class="level3" data-number="15.10.1">
+<h3 data-number="15.10.1" class="anchored" data-anchor-id="complex-integration"><span class="header-section-number">15.10.1</span> Complex Integration</h3>
+<p>The complex line integral of a function <span class="math inline">\(f(z)\)</span> taken over a path <span class="math inline">\(C\)</span> is denoted by <span id="eq-sum-1"><span class="math display">\[
+\int_C f(z) \, dz \quad \text{or, if $C$ is closed, also by} \quad \oint_C f(z) \, dz
+\tag{15.29}\]</span></span> (Sec. 14.1).</p>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then we can evaluate <a href="ch18.html#eq-sum-1" class="quarto-xref">Equation&nbsp;<span>14.33</span></a> as in calculus by indefinite integration and substitution of limits, that is, <span id="eq-sum-2"><span class="math display">\[
+\int_C f(z) \, dz = F(z_1) - F(z_0) \quad [F'(z) = f(z)]
+\tag{15.30}\]</span></span> for every path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> from a point <span class="math inline">\(z_0\)</span> to a point <span class="math inline">\(z_1\)</span> (see Sec. 14.1). These assumptions imply independence of path, that is, <a href="ch18.html#eq-sum-2" class="quarto-xref">Equation&nbsp;<span>14.34</span></a> depends only on <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> (and on <span class="math inline">\(f(z)\)</span>, of course) but not on the choice of <span class="math inline">\(C\)</span> (Sec. 14.2). The existence of an <span class="math inline">\(F(z)\)</span> such that <span class="math inline">\(F'(z) = f(z)\)</span> is proved in Sec. 14.2 by Cauchy’s integral theorem (see below).</p>
+<p>A general method of integration, not restricted to analytic functions, uses the equation <span class="math inline">\(z = z(t)\)</span> of <span class="math inline">\(C\)</span>, where <span class="math inline">\(a \le t \le b\)</span>, <span id="eq-sum-3"><span class="math display">\[
+\int_C f(z) \, dz = \int_a^b f(z(t)) \dot{z}(t) \, dt \quad \left( \dot{z} = \frac{dz}{dt} \right).
+\tag{15.31}\]</span></span></p>
+<p><strong>Cauchy’s integral theorem</strong> is the most important theorem in this chapter. It states that if <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then for every closed path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> (Sec. 14.2), <span id="eq-sum-4"><span class="math display">\[
+\oint_C f(z) \, dz = 0.
+\tag{15.32}\]</span></span></p>
+<p>Under the same assumptions and for any <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> and closed path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> containing <span class="math inline">\(z_0\)</span> in its interior we also have <strong>Cauchy’s integral formula</strong> <span id="eq-sum-5"><span class="math display">\[
+f(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - z_0} \, dz.
+\tag{15.33}\]</span></span></p>
+<p>Furthermore, under these assumptions <span class="math inline">\(f(z)\)</span> has derivatives of all orders in <span class="math inline">\(D\)</span> that are themselves analytic functions in <span class="math inline">\(D\)</span> and (Sec. 14.4) <span id="eq-sum-6"><span class="math display">\[
+f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \quad (n = 1, 2, \dots).
+\tag{15.34}\]</span></span></p>
+<p>This implies Morera’s theorem (the converse of Cauchy’s integral theorem) and Cauchy’s inequality (Sec. 14.4), which in turn implies Liouville’s theorem that an entire function that is bounded in the whole complex plane must be constant.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>ÉDOUARD GOURSAT (1858–1936), French mathematician who made important contributions to complex analysis and PDEs. Cauchy published the theorem in 1825. The removal of that condition by Goursat (see <em>Transactions Amer. Math. Soc.</em>, vol.&nbsp;1, 1900) is quite important because, for instance, derivatives of analytic functions are also analytic. Because of this, Cauchy’s integral theorem is also called the Cauchy–Goursat theorem.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>GIACINTO MORERA (1856–1909), Italian mathematician who made important contributions to elasticity and complex analysis.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch13.html" class="pagination-link" aria-label="CHAPTER 13: Complex Numbers and Functions. Complex Differentiation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 13: Complex Numbers and Functions. Complex Differentiation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch17.html" class="pagination-link" aria-label="CHAPTER 17: Conformal Mapping">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
