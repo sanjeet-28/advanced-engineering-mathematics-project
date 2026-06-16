@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -235,6 +235,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -324,23 +330,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#critical-points.-linearization" id="toc-critical-points.-linearization" class="nav-link" data-scroll-target="#critical-points.-linearization"><span class="header-section-number">6.10.1</span> 4–8 CRITICAL POINTS. LINEARIZATION</a></li>
   <li><a href="#critical-points-of-odes" id="toc-critical-points-of-odes" class="nav-link" data-scroll-target="#critical-points-of-odes"><span class="header-section-number">6.10.2</span> 9–13 CRITICAL POINTS OF ODEs</a></li>
-  <li><a href="#cas-experiment.-phase-plane." id="toc-cas-experiment.-phase-plane." class="nav-link" data-scroll-target="#cas-experiment.-phase-plane."><span class="header-section-number">6.10.3</span> 16–20 CAS EXPERIMENT. PHASE PLANE.</a></li>
-  </ul></li>
-  <li><a href="#nonhomogeneous-linear-systems" id="toc-nonhomogeneous-linear-systems" class="nav-link" data-scroll-target="#nonhomogeneous-linear-systems"><span class="header-section-number">6.11</span> 4.4 Nonhomogeneous Linear Systems</a>
-  <ul class="collapse">
-  <li><a href="#method-of-undetermined-coefficients" id="toc-method-of-undetermined-coefficients" class="nav-link" data-scroll-target="#method-of-undetermined-coefficients"><span class="header-section-number">6.11.1</span> Method of Undetermined Coefficients</a></li>
-  <li><a href="#method-of-variation-of-parameters" id="toc-method-of-variation-of-parameters" class="nav-link" data-scroll-target="#method-of-variation-of-parameters"><span class="header-section-number">6.11.2</span> Method of Variation of Parameters</a></li>
-  </ul></li>
-  <li><a href="#problem-set-4.4" id="toc-problem-set-4.4" class="nav-link" data-scroll-target="#problem-set-4.4"><span class="header-section-number">6.12</span> PROBLEM SET 4.4</a>
-  <ul class="collapse">
-  <li><a href="#general-solution-1" id="toc-general-solution-1" class="nav-link" data-scroll-target="#general-solution-1"><span class="header-section-number">6.12.1</span> 1–10 GENERAL SOLUTION</a></li>
-  <li><a href="#initial-value-problems-1" id="toc-initial-value-problems-1" class="nav-link" data-scroll-target="#initial-value-problems-1"><span class="header-section-number">6.12.2</span> 11–15 INITIAL VALUE PROBLEMS</a></li>
-  <li><a href="#network." id="toc-network." class="nav-link" data-scroll-target="#network."><span class="header-section-number">6.12.3</span> 16. Network.</a></li>
-  </ul></li>
-  <li><a href="#qualitative-methods-for-nonlinear-systems" id="toc-qualitative-methods-for-nonlinear-systems" class="nav-link" data-scroll-target="#qualitative-methods-for-nonlinear-systems"><span class="header-section-number">6.13</span> 4.5 Qualitative Methods for Nonlinear Systems</a>
-  <ul class="collapse">
-  <li><a href="#linearization-of-nonlinear-systems-1" id="toc-linearization-of-nonlinear-systems-1" class="nav-link" data-scroll-target="#linearization-of-nonlinear-systems-1"><span class="header-section-number">6.13.1</span> Linearization of Nonlinear Systems</a></li>
-  <li><a href="#lotka-volterra-predator-prey-model" id="toc-lotka-volterra-predator-prey-model" class="nav-link" data-scroll-target="#lotka-volterra-predator-prey-model"><span class="header-section-number">6.13.2</span> Lotka-Volterra Predator-Prey Model</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1490,178 +1479,8 @@ Figure&nbsp;6.21: Fig. 98: Trajectories in Problem 15
 </figcaption>
 </figure>
 </div>
-<ol start="15" type="1">
-<li><strong>Trajectories.</strong> Find and sketch the trajectories of the system <span class="math inline">\(y_1' = y_1, \ y_2' = 2y_2\)</span>.</li>
-</ol>
-</section>
-<section id="cas-experiment.-phase-plane." class="level3" data-number="6.10.3">
-<h3 data-number="6.10.3" class="anchored" data-anchor-id="cas-experiment.-phase-plane."><span class="header-section-number">6.10.3</span> 16–20 CAS EXPERIMENT. PHASE PLANE.</h3>
-<ul>
-<li><strong>16.</strong> Choose a system with a center. Change coefficients slightly and see what happens. Try to find a rule.</li>
-<li><strong>17.</strong> Choose a system with an unstable node or saddle point. Vector-field-plot its trajectories. Then change the system to one that has a stable node or saddle point, and see how the vector field changes.</li>
-<li><strong>18.</strong> Run an animation of trajectories changing as a parameter in the system changes.</li>
-<li><strong>19.</strong> Plot trajectories of the van der Pol equation for several <span class="math inline">\(\mu\)</span>. Choose <span class="math inline">\(\mu = 0.1, \ 1, \ 10\)</span>. Note the change from nearly circular trajectories to “limit cycles” with sharp corners.</li>
-<li><strong>20.</strong> Find a system with three or more critical points and plot its phase portrait.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="nonhomogeneous-linear-systems" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="nonhomogeneous-linear-systems"><span class="header-section-number">6.11</span> 4.4 Nonhomogeneous Linear Systems</h2>
-<p>In Sec. 4.2 we discussed homogeneous linear systems. Now we shall handle nonhomogeneous linear systems <span class="math display">\[y' = Ay + g\]</span></p>
-<p>where the vector <span class="math inline">\(g(t)\)</span> is not identically zero. We assume <span class="math inline">\(A(t)\)</span> and <span class="math inline">\(g(t)\)</span> to be continuous on some interval <span class="math inline">\(I\)</span>.</p>
-<p>We shall discuss two methods. The first is the <strong>method of undetermined coefficients</strong>, which is suitable if the elements of <span class="math inline">\(A\)</span> are constants and the elements of <span class="math inline">\(g\)</span> are constants, exponentials, sines, or cosines. The second method, the <strong>method of variation of parameters</strong>, is more general because it applies to any system, even with variable coefficients, but it is more complicated.</p>
-<p>Both methods yield a particular solution <span class="math inline">\(y^{(p)}\)</span> of the system. The general solution of the nonhomogeneous system is then of the form: <span class="math display">\[y = y^{(h)} + y^{(p)}\]</span></p>
-<p>where <span class="math inline">\(y^{(h)}\)</span> is a general solution of the corresponding homogeneous system <span class="math inline">\(y' = Ay\)</span> on the same interval. This is analogous to the situation for a single ODE in Sec. 2.7.</p>
-<hr>
-<section id="method-of-undetermined-coefficients" class="level3" data-number="6.11.1">
-<h3 data-number="6.11.1" class="anchored" data-anchor-id="method-of-undetermined-coefficients"><span class="header-section-number">6.11.1</span> Method of Undetermined Coefficients</h3>
-<p>As for a single ODE, this method consists of selecting a form for <span class="math inline">\(y^{(p)}\)</span> with unknown constant vectors, which are determined by substituting <span class="math inline">\(y^{(p)}\)</span> into the system. The rules for choosing <span class="math inline">\(y^{(p)}\)</span> are similar to those in Sec. 2.7.</p>
-<section id="example-1-method-of-undetermined-coefficients" class="level4" data-number="6.11.1.1">
-<h4 data-number="6.11.1.1" class="anchored" data-anchor-id="example-1-method-of-undetermined-coefficients"><span class="header-section-number">6.11.1.1</span> EXAMPLE 1: Method of Undetermined Coefficients</h4>
-<p>Find a general solution of the nonhomogeneous system <span class="math display">\[y' = Ay + g = \begin{pmatrix} -3 &amp; 1 \\ 1 &amp; -3 \end{pmatrix} y + \begin{pmatrix} -6 \\ 2 \end{pmatrix} e^{-2t}\]</span></p>
-<p><strong>Solution.</strong> <strong>Step 1. Form of a general solution of the homogeneous system.</strong> The eigenvalues of <span class="math inline">\(A\)</span> are the roots of the characteristic equation <span class="math display">\[\det(A - \lambda I) = \begin{vmatrix} -3 - \lambda &amp; 1 \\ 1 &amp; -3 - \lambda \end{vmatrix} = (-3 - \lambda)^2 - 1 = \lambda^2 + 6\lambda + 8 = 0\]</span></p>
-<p>These roots are <span class="math inline">\(\lambda_1 = -2\)</span> and <span class="math inline">\(\lambda_2 = -4\)</span>. Components of an eigenvector <span class="math inline">\(x^{(1)}\)</span> for <span class="math inline">\(\lambda_1 = -2\)</span> are found from <span class="math inline">\((-3 - \lambda)x_1 + x_2 = 0\)</span>, that is, <span class="math inline">\(-x_1 + x_2 = 0\)</span>, say, <span class="math inline">\(x_1 = 1, \ x_2 = 1\)</span>. So, <span class="math inline">\(x^{(1)} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>.</p>
-<p>Similarly, an eigenvector <span class="math inline">\(x^{(2)}\)</span> for <span class="math inline">\(\lambda_2 = -4\)</span> is given by <span class="math inline">\(-3x_1 + x_2 = -4x_1\)</span>, or <span class="math inline">\(x_1 + x_2 = 0\)</span>, say, <span class="math inline">\(x^{(2)} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}\)</span>. Hence, <span class="math display">\[y^{(h)} = c_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{-2t} + c_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} e^{-4t}\]</span></p>
-<p><strong>Step 2. Particular solution <span class="math inline">\(y^{(p)}\)</span> by modification.</strong> Since <span class="math inline">\(\lambda = -2\)</span> is an eigenvalue of <span class="math inline">\(A\)</span>, the function <span class="math inline">\(g(t) = \begin{pmatrix} -6 \\ 2 \end{pmatrix} e^{-2t}\)</span> represents a <strong>Modification Case</strong> (see Sec. 2.7). Thus, we try <span class="math display">\[y^{(p)} = u t e^{-2t} + v e^{-2t}\]</span></p>
-<p>where <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are constant vectors to be determined. Differentiating <span class="math inline">\(y^{(p)}\)</span>, we get <span class="math display">\[(y^{(p)})' = u e^{-2t} - 2u t e^{-2t} - 2v e^{-2t}\]</span></p>
-<p>Substituting <span class="math inline">\(y^{(p)}\)</span> and <span class="math inline">\((y^{(p)})'\)</span> into the nonhomogeneous system gives <span class="math display">\[u e^{-2t} - 2u t e^{-2t} - 2v e^{-2t} = A(u t e^{-2t} + v e^{-2t}) + g\]</span></p>
-<p>Equating the terms containing <span class="math inline">\(t e^{-2t}\)</span> on both sides yields <span class="math display">\[-2u = Au \quad \text{or} \quad (A + 2I)u = 0\]</span></p>
-<p>Hence <span class="math inline">\(u\)</span> must be an eigenvector of <span class="math inline">\(A\)</span> corresponding to <span class="math inline">\(\lambda = -2\)</span>. We choose <span class="math inline">\(u = a \begin{pmatrix} 1 \\ 1 \end{pmatrix}\)</span>, where <span class="math inline">\(a\)</span> is a scalar constant to be determined.</p>
-<p>Next, equating the terms containing <span class="math inline">\(e^{-2t}\)</span> gives <span class="math display">\[u - 2v = Av + \begin{pmatrix} -6 \\ 2 \end{pmatrix} \quad \implies \quad (A + 2I)v = u - \begin{pmatrix} -6 \\ 2 \end{pmatrix}\]</span></p>
-<p>In terms of components, this system is <span class="math display">\[\begin{pmatrix} -1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} a + 6 \\ a - 2 \end{pmatrix}\]</span></p>
-<p>The first row gives <span class="math inline">\(-v_1 + v_2 = a + 6\)</span>. The second row gives <span class="math inline">\(v_1 - v_2 = a - 2\)</span>. Adding these two equations gives <span class="math inline">\(0 = 2a + 4\)</span>, which implies <span class="math inline">\(a = -2\)</span>.</p>
-<p>Thus, <span class="math inline">\(u = -2 \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} -2 \\ -2 \end{pmatrix}\)</span>. With <span class="math inline">\(a = -2\)</span>, the system for <span class="math inline">\(v\)</span> becomes <span class="math display">\[-v_1 + v_2 = 4\]</span></p>
-<p>We can choose any value for <span class="math inline">\(v_1\)</span>, say, <span class="math inline">\(v_1 = 0\)</span>. Then <span class="math inline">\(v_2 = 4\)</span>, so <span class="math inline">\(v = \begin{pmatrix} 0 \\ 4 \end{pmatrix}\)</span>. This gives the particular solution <span class="math display">\[y^{(p)} = \begin{pmatrix} -2 \\ -2 \end{pmatrix} t e^{-2t} + \begin{pmatrix} 0 \\ 4 \end{pmatrix} e^{-2t}\]</span></p>
-<p>The general solution is <span class="math inline">\(y = y^{(h)} + y^{(p)}\)</span>: <span class="math display">\[y = c_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{-2t} + c_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} e^{-4t} + \begin{pmatrix} -2 \\ -2 \end{pmatrix} t e^{-2t} + \begin{pmatrix} 0 \\ 4 \end{pmatrix} e^{-2t}\]</span></p>
-<hr>
-</section>
-</section>
-<section id="method-of-variation-of-parameters" class="level3" data-number="6.11.2">
-<h3 data-number="6.11.2" class="anchored" data-anchor-id="method-of-variation-of-parameters"><span class="header-section-number">6.11.2</span> Method of Variation of Parameters</h3>
-<p>This method can be applied to any linear system <span class="math inline">\(y' = Ay + g\)</span>. It uses a fundamental matrix <span class="math inline">\(Y(t)\)</span> of the corresponding homogeneous system <span class="math inline">\(y' = Ay\)</span>. A <strong>fundamental matrix</strong> is an <span class="math inline">\(n \times n\)</span> matrix whose columns are <span class="math inline">\(n\)</span> linearly independent solution vectors of <span class="math inline">\(y' = Ay\)</span> (see Sec. 4.2). Thus, <span class="math inline">\(Y' = AY\)</span>.</p>
-<p>A general solution of the homogeneous system can be written as <span class="math display">\[y^{(h)} = Y(t)c\]</span></p>
-<p>where <span class="math inline">\(c\)</span> is a constant vector. The method of variation of parameters consists of replacing <span class="math inline">\(c\)</span> by a variable vector <span class="math inline">\(u(t)\)</span>, so that we look for a particular solution of the nonhomogeneous system in the form <span class="math display">\[y^{(p)} = Y(t)u(t)\]</span></p>
-<p>Differentiating <span class="math inline">\(y^{(p)}\)</span> by the product rule, we get <span class="math display">\[(y^{(p)})' = Y'u + Yu'\]</span></p>
-<p>Substituting this into <span class="math inline">\(y' = Ay + g\)</span> gives <span class="math display">\[Y'u + Yu' = A(Yu) + g\]</span></p>
-<p>Since <span class="math inline">\(Y' = AY\)</span>, the first term on the left equals the first term on the right (<span class="math inline">\(Y'u = AYu\)</span>). Hence, this reduces to <span class="math display">\[Yu' = g\]</span></p>
-<p>Since the columns of <span class="math inline">\(Y\)</span> are linearly independent, <span class="math inline">\(\det Y \neq 0\)</span>, and the inverse matrix <span class="math inline">\(Y^{-1}\)</span> exists. Multiplying by <span class="math inline">\(Y^{-1}\)</span> gives <span class="math display">\[u' = Y^{-1}g\]</span></p>
-<p>Integrating this yields <span class="math inline">\(u(t)\)</span>: <span class="math display">\[u(t) = \int Y^{-1}(t)g(t) \, dt\]</span></p>
-<p>Therefore, a particular solution <span class="math inline">\(y^{(p)}\)</span> of the nonhomogeneous system is <span class="math display">\[y^{(p)} = Y(t) \int Y^{-1}(t)g(t) \, dt\]</span></p>
-<p>The general solution is <span class="math inline">\(y = y^{(h)} + y^{(p)} = Y(t)c + y^{(p)}\)</span>.</p>
-<hr>
-<section id="example-2-method-of-variation-of-parameters" class="level4" data-number="6.11.2.1">
-<h4 data-number="6.11.2.1" class="anchored" data-anchor-id="example-2-method-of-variation-of-parameters"><span class="header-section-number">6.11.2.1</span> EXAMPLE 2: Method of Variation of Parameters</h4>
-<p>Solve the nonhomogeneous system in Example 1.</p>
-<p><strong>Solution.</strong> The fundamental matrix <span class="math inline">\(Y(t)\)</span> obtained from <span class="math inline">\(y^{(h)}\)</span> in Step 1 of Example 1 is <span class="math display">\[Y(t) = \begin{pmatrix} e^{-2t} &amp; e^{-4t} \\ e^{-2t} &amp; -e^{-4t} \end{pmatrix}\]</span></p>
-<p>The inverse <span class="math inline">\(Y^{-1}(t)\)</span> is found using the formula for a <span class="math inline">\(2 \times 2\)</span> matrix: <span class="math display">\[\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix}\]</span></p>
-<p>Here, <span class="math inline">\(\det Y = -e^{-2t}e^{-4t} - e^{-4t}e^{-2t} = -2e^{-6t}\)</span>. Thus, <span class="math display">\[Y^{-1}(t) = -\frac{1}{2} e^{6t} \begin{pmatrix} -e^{-4t} &amp; -e^{-4t} \\ -e^{-2t} &amp; e^{-2t} \end{pmatrix} = \frac{1}{2} \begin{pmatrix} e^{2t} &amp; e^{2t} \\ e^{4t} &amp; -e^{4t} \end{pmatrix}\]</span></p>
-<p>We now compute <span class="math inline">\(u' = Y^{-1}g\)</span>, where <span class="math inline">\(g = \begin{pmatrix} -6 \\ 2 \end{pmatrix} e^{-2t}\)</span>: <span class="math display">\[u' = \frac{1}{2} \begin{pmatrix} e^{2t} &amp; e^{2t} \\ e^{4t} &amp; -e^{4t} \end{pmatrix} \begin{pmatrix} -6e^{-2t} \\ 2e^{-2t} \end{pmatrix} = \frac{1}{2} \begin{pmatrix} -6 + 2 \\ -6e^{2t} - 2e^{2t} \end{pmatrix} = \begin{pmatrix} -2 \\ -4e^{2t} \end{pmatrix}\]</span></p>
-<p>Integrating <span class="math inline">\(u'\)</span>, we get <span class="math display">\[u(t) = \int \begin{pmatrix} -2 \\ -4e^{2t} \end{pmatrix} \, dt = \begin{pmatrix} -2t \\ -2e^{2t} \end{pmatrix}\]</span></p>
-<p>Finally, we find <span class="math inline">\(y^{(p)} = Yu\)</span>: <span class="math display">\[y^{(p)} = \begin{pmatrix} e^{-2t} &amp; e^{-4t} \\ e^{-2t} &amp; -e^{-4t} \end{pmatrix} \begin{pmatrix} -2t \\ -2e^{2t} \end{pmatrix} = \begin{pmatrix} -2te^{-2t} - 2e^{-2t} \\ -2te^{-2t} + 2e^{-2t} \end{pmatrix} = \begin{pmatrix} -2 \\ -2 \end{pmatrix} t e^{-2t} + \begin{pmatrix} -2 \\ 2 \end{pmatrix} e^{-2t}\]</span></p>
-<p>The general solution is <span class="math inline">\(y = y^{(h)} + y^{(p)}\)</span>: <span class="math display">\[y = c_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{-2t} + c_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} e^{-4t} + \begin{pmatrix} -2 \\ -2 \end{pmatrix} t e^{-2t} + \begin{pmatrix} -2 \\ 2 \end{pmatrix} e^{-2t}\]</span></p>
-<p>This looks a bit different from the solution in Example 1, but it is actually the same. If we combine the last term of <span class="math inline">\(y^{(p)}\)</span> with the first term of <span class="math inline">\(y^{(h)}\)</span>, we get <span class="math display">\[c_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{-2t} + \begin{pmatrix} -2 \\ 2 \end{pmatrix} e^{-2t} = \begin{pmatrix} c_1 - 2 \\ c_1 + 2 \end{pmatrix} e^{-2t}\]</span></p>
-<p>In Example 1, the corresponding terms were <span class="math display">\[c_1^* \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{-2t} + \begin{pmatrix} 0 \\ 4 \end{pmatrix} e^{-2t} = \begin{pmatrix} c_1^* \\ c_1^* + 4 \end{pmatrix} e^{-2t}\]</span></p>
-<p>Setting <span class="math inline">\(c_1^* = c_1 - 2\)</span>, we see that both expressions are identical.</p>
-<hr>
-</section>
-</section>
-</section>
-<section id="problem-set-4.4" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="problem-set-4.4"><span class="header-section-number">6.12</span> PROBLEM SET 4.4</h2>
-<section id="general-solution-1" class="level3" data-number="6.12.1">
-<h3 data-number="6.12.1" class="anchored" data-anchor-id="general-solution-1"><span class="header-section-number">6.12.1</span> 1–10 GENERAL SOLUTION</h3>
-<p>Find a general solution of the following systems. (Show the details of your work.)</p>
-<ol type="1">
-<li><p><span class="math inline">\(y_1' = y_1 + y_2 + 10\cos t\)</span> <span class="math inline">\(y_2' = 3y_1 - y_2 - 10\sin t\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 + 4y_2 - t^2 + 6t\)</span> <span class="math inline">\(y_2' = y_1 + y_2 - t^2 + t - 1\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = 4y_2 + 9t\)</span> <span class="math inline">\(y_2' = -4y_1 + 5\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 + y_2 + e^{2t}\)</span> <span class="math inline">\(y_2' = y_1 + y_2 - e^{2t}\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 + 2y_2 + e^t\)</span> <span class="math inline">\(y_2' = 2y_1 + y_2 + e^t\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = -y_1 + 4y_2 + e^{-t}\)</span> <span class="math inline">\(y_2' = y_1 - y_2 + e^{-t}\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 + 3y_2 + \sec t\)</span> <span class="math inline">\(y_2' = 3y_1 + y_2\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = -14y_1 + 10y_2 + 162\)</span> <span class="math inline">\(y_2' = -10y_1 + 10y_2 - 324t\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 + 2y_2 + t^2\)</span> <span class="math inline">\(y_2' = 2y_1 + y_2 + t^2\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = -2y_1 + 2y_2 + 12\)</span> <span class="math inline">\(y_2' = -2y_1 + 3y_2 + te^t\)</span></p></li>
-</ol>
-<hr>
-</section>
-<section id="initial-value-problems-1" class="level3" data-number="6.12.2">
-<h3 data-number="6.12.2" class="anchored" data-anchor-id="initial-value-problems-1"><span class="header-section-number">6.12.2</span> 11–15 INITIAL VALUE PROBLEMS</h3>
-<p>Solve the following initial value problems. (Show the details.)</p>
-<ol start="11" type="1">
-<li><p><span class="math inline">\(y_1' = 4y_1 + 2y_2 + e^t\)</span> <span class="math inline">\(y_2' = -y_1 + y_2 - e^t\)</span> <span class="math inline">\(y_1(0) = 1, \ y_2(0) = 1\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = 3y_1 + 2y_2 + t\)</span> <span class="math inline">\(y_2' = 2y_1 + 3y_2 + t\)</span> <span class="math inline">\(y_1(0) = 0.5, \ y_2(0) = 0.5\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 - y_2 + e^t\)</span> <span class="math inline">\(y_2' = y_1 + y_2 + e^t\)</span> <span class="math inline">\(y_1(0) = 1, \ y_2(0) = 0\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = y_1 - y_2 + t\)</span> <span class="math inline">\(y_2' = y_1 + y_2 - t\)</span> <span class="math inline">\(y_1(0) = 0, \ y_2(0) = 0\)</span></p></li>
-<li><p><span class="math inline">\(y_1' = 10y_1 - 6y_2 + 10\)</span> <span class="math inline">\(y_2' = 6y_1 - 10y_2 - 10\)</span> <span class="math inline">\(y_1(0) = 1, \ y_2(0) = 0\)</span></p></li>
-</ol>
-<hr>
-</section>
-<section id="network." class="level3" data-number="6.12.3">
-<h3 data-number="6.12.3" class="anchored" data-anchor-id="network."><span class="header-section-number">6.12.3</span> 16. Network.</h3>
-<p>Find the currents <span class="math inline">\(I_1(t)\)</span> and <span class="math inline">\(I_2(t)\)</span> in the network in Fig. 95, assuming that <span class="math inline">\(I_1(0) = 0, \ I_2(0) = 0, \ R_1 = 2 \, \Omega, \ R_2 = 8 \, \Omega, \ L = 1 \, \text{H}, \ C = 0.5 \, \text{F}\)</span>, and <span class="math inline">\(E(t) = 100 \sin t \, \text{V}\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="image_057c04.jpg" class="img-fluid figure-img"></p>
-<figcaption>Fig. 95. Network in Problem 16</figcaption>
-</figure>
-</div>
-<hr>
-</section>
-</section>
-<section id="qualitative-methods-for-nonlinear-systems" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="qualitative-methods-for-nonlinear-systems"><span class="header-section-number">6.13</span> 4.5 Qualitative Methods for Nonlinear Systems</h2>
-<p>Qualitative methods are approaches where we do not find actual solutions but instead obtain information about the general behavior of solutions. This is particularly valuable for nonlinear systems, which are often difficult or impossible to solve analytically.</p>
-<p>In Sec. 4.3 we used the phase plane method to study the linear system <span class="math display">\[y' = Ay\]</span></p>
-<p>Now we shall extend this qualitative approach to autonomous nonlinear systems of the form <span class="math display">\[y_1' = f_1(y_1, y_2)\]</span> <span class="math display">\[y_2' = f_2(y_1, y_2)\]</span></p>
-<p>An <strong>autonomous system</strong> is one in which the independent variable <span class="math inline">\(t\)</span> does not appear explicitly on the right side.</p>
-<p>We assume that <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> are continuous and have continuous partial derivatives in some domain of the <span class="math inline">\(y_1y_2\)</span>-plane (the phase plane). Then, through every point <span class="math inline">\((y_1, y_2)\)</span> there passes exactly one trajectory.</p>
-<p>A point <span class="math inline">\((y_1, y_2)\)</span> where both <span class="math inline">\(f_1(y_1, y_2) = 0\)</span> and <span class="math inline">\(f_2(y_1, y_2) = 0\)</span> is called a <strong>critical point</strong> (or stationary point, or equilibrium point) of the system. At a critical point, <span class="math inline">\(y_1' = 0\)</span> and <span class="math inline">\(y_2' = 0\)</span>, so the system remains at rest.</p>
-<hr>
-<section id="linearization-of-nonlinear-systems-1" class="level3" data-number="6.13.1">
-<h3 data-number="6.13.1" class="anchored" data-anchor-id="linearization-of-nonlinear-systems-1"><span class="header-section-number">6.13.1</span> Linearization of Nonlinear Systems</h3>
-<p>The basic idea of the qualitative analysis of a nonlinear system near a critical point is to replace the nonlinear system by a linear system that approximates the nonlinear system closely near that critical point. This process is called <strong>linearization</strong>.</p>
-<p>Let <span class="math inline">\(P_0: (y_1, y_2) = (y_1^0, y_2^0)\)</span> be a critical point of the system. We can translate the origin of the coordinate system to <span class="math inline">\(P_0\)</span> by setting <span class="math display">\[y_1 = y_1^0 + \tilde{y}_1, \quad y_2 = y_2^0 + \tilde{y}_2\]</span></p>
-<p>Then <span class="math inline">\(\tilde{y}_1\)</span> and <span class="math inline">\(\tilde{y}_2\)</span> are small when we are near the critical point. Since <span class="math inline">\(y_1^0\)</span> and <span class="math inline">\(y_2^0\)</span> are constants, we have <span class="math inline">\(y_1' = \tilde{y}_1'\)</span> and <span class="math inline">\(y_2' = \tilde{y}_2'\)</span>.</p>
-<p>Using Taylor’s theorem for functions of two variables, we can expand <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> about <span class="math inline">\((y_1^0, y_2^0)\)</span>: <span class="math display">\[f_1(y_1, y_2) = f_1(y_1^0, y_2^0) + \left. \frac{\partial f_1}{\partial y_1} \right|_{P_0} \tilde{y}_1 + \left. \frac{\partial f_1}{\partial y_2} \right|_{P_0} \tilde{y}_2 + \text{higher-order terms}\]</span> <span class="math display">\[f_2(y_1, y_2) = f_2(y_1^0, y_2^0) + \left. \frac{\partial f_2}{\partial y_1} \right|_{P_0} \tilde{y}_1 + \left. \frac{\partial f_2}{\partial y_2} \right|_{P_0} \tilde{y}_2 + \text{higher-order terms}\]</span></p>
-<p>Since <span class="math inline">\(P_0\)</span> is a critical point, <span class="math inline">\(f_1(y_1^0, y_2^0) = 0\)</span> and <span class="math inline">\(f_2(y_1^0, y_2^0) = 0\)</span>. If we neglect the higher-order terms, which are very small near <span class="math inline">\(P_0\)</span>, we obtain the <strong>linearized system</strong> (or <strong>linearized approximation</strong>) near <span class="math inline">\(P_0\)</span>: <span class="math display">\[\tilde{y}' = J(P_0)\tilde{y}\]</span></p>
-<p>where <span class="math inline">\(\tilde{y} = \begin{pmatrix} \tilde{y}_1 \\ \tilde{y}_2 \end{pmatrix}\)</span> and <span class="math inline">\(J(P_0)\)</span> is the <strong>Jacobian matrix</strong> of the system evaluated at <span class="math inline">\(P_0\)</span>: <span class="math display">\[J(P_0) = \begin{pmatrix} \frac{\partial f_1}{\partial y_1} &amp; \frac{\partial f_1}{\partial y_2} \\ \frac{\partial f_2}{\partial y_1} &amp; \frac{\partial f_2}{\partial y_2} \end{pmatrix}_{P_0}\]</span></p>
-<p>We can now determine the type and stability of the critical point <span class="math inline">\(P_0\)</span> by studying the eigenvalues of the Jacobian matrix <span class="math inline">\(J(P_0)\)</span>, using the criteria for linear systems discussed in Sec. 4.3.</p>
-<hr>
-</section>
-<section id="lotka-volterra-predator-prey-model" class="level3" data-number="6.13.2">
-<h3 data-number="6.13.2" class="anchored" data-anchor-id="lotka-volterra-predator-prey-model"><span class="header-section-number">6.13.2</span> Lotka-Volterra Predator-Prey Model</h3>
-<p>This model describes the growth and interaction of two biological species, a predator species (e.g., foxes) and a prey species (e.g., rabbits). Let <span class="math inline">\(y_1(t)\)</span> be the population of prey and <span class="math inline">\(y_2(t)\)</span> be the population of predators at time <span class="math inline">\(t\)</span>.</p>
-<p>The model is given by the following system of nonlinear ODEs: <span class="math display">\[y_1' = ay_1 - by_1y_2\]</span> <span class="math display">\[y_2' = -cy_2 + dy_1y_2\]</span></p>
-<p>where <span class="math inline">\(a, b, c, d\)</span> are positive constants.</p>
-<ul>
-<li><span class="math inline">\(ay_1\)</span> represents the natural growth rate of prey in the absence of predators.</li>
-<li><span class="math inline">\(-by_1y_2\)</span> represents the rate of prey consumed by predators, assumed proportional to the number of encounters between the two species.</li>
-<li><span class="math inline">\(-cy_2\)</span> represents the natural death rate of predators in the absence of prey.</li>
-<li><span class="math inline">\(dy_1y_2\)</span> represents the growth rate of predators resulting from consumption of prey.</li>
-</ul>
-<hr>
-<section id="example-1-analysis-of-the-lotka-volterra-model" class="level4" data-number="6.13.2.1">
-<h4 data-number="6.13.2.1" class="anchored" data-anchor-id="example-1-analysis-of-the-lotka-volterra-model"><span class="header-section-number">6.13.2.1</span> EXAMPLE 1: Analysis of the Lotka-Volterra Model</h4>
-<p>Find the critical points and analyze their type and stability for the Lotka-Volterra system with <span class="math inline">\(a = 2, \ b = 1, \ c = 5, \ d = 1\)</span>.</p>
-<p><strong>Solution.</strong> The system is <span class="math display">\[y_1' = f_1(y_1, y_2) = 2y_1 - y_1y_2 = y_1(2 - y_2)\]</span> <span class="math display">\[y_2' = f_2(y_1, y_2) = -5y_2 + y_1y_2 = y_2(-5 + y_1)\]</span></p>
-<p>To find the critical points, we set <span class="math inline">\(f_1 = 0\)</span> and <span class="math inline">\(f_2 = 0\)</span>: 1. <span class="math inline">\(y_1(2 - y_2) = 0 \implies y_1 = 0\)</span> or <span class="math inline">\(y_2 = 2\)</span>. 2. <span class="math inline">\(y_2(-5 + y_1) = 0 \implies y_2 = 0\)</span> or <span class="math inline">\(y_1 = 5\)</span>.</p>
-<p>This gives two critical points: <span class="math inline">\(P_1: (0, 0)\)</span> and <span class="math inline">\(P_2: (5, 2)\)</span>.</p>
-<p>The Jacobian matrix of the system is <span class="math display">\[J(y_1, y_2) = \begin{pmatrix} \frac{\partial f_1}{\partial y_1} &amp; \frac{\partial f_1}{\partial y_2} \\ \frac{\partial f_2}{\partial y_1} &amp; \frac{\partial f_2}{\partial y_2} \end{pmatrix} = \begin{pmatrix} 2 - y_2 &amp; -y_1 \\ y_2 &amp; -5 + y_1 \end{pmatrix}\]</span></p>
-<p><strong>Analysis of <span class="math inline">\(P_1: (0, 0)\)</span>:</strong> Evaluating the Jacobian matrix at <span class="math inline">\(P_1\)</span>, we get <span class="math display">\[J(0, 0) = \begin{pmatrix} 2 &amp; 0 \\ 0 &amp; -5 \end{pmatrix}\]</span></p>
-<p>The eigenvalues are <span class="math inline">\(\lambda_1 = 2\)</span> and <span class="math inline">\(\lambda_2 = -5\)</span>. Since the eigenvalues are real and have opposite signs, the critical point <span class="math inline">\((0, 0)\)</span> is a <strong>saddle point</strong>, which is always <strong>unstable</strong>.</p>
-<p><strong>Analysis of <span class="math inline">\(P_2: (5, 2)\)</span>:</strong> Evaluating the Jacobian matrix at <span class="math inline">\(P_2\)</span>, we get <span class="math display">\[J(5, 2) = \begin{pmatrix} 0 &amp; -5 \\ 2 &amp; 0 \end{pmatrix}\]</span></p>
-<p>The characteristic equation is <span class="math display">\[\det(J - \lambda I) = \begin{vmatrix} -\lambda &amp; -5 \\ 2 &amp; -\lambda \end{vmatrix} = \lambda^2 + 10 = 0\]</span></p>
-<p>The roots are purely imaginary: <span class="math inline">\(\lambda = \pm i\sqrt{10}\)</span>. For a linear system, this would mean the critical point is a <strong>center</strong>. For a nonlinear system, a center of the linearized system can either remain a center or become a spiral point of the nonlinear system.</p>
-<p>To determine the exact nature, we can find the equation of the trajectories directly. From the system equations, we have <span class="math display">\[\frac{dy_2}{dy_1} = \frac{y_2(-5 + y_1)}{y_1(2 - y_2)}\]</span></p>
-<p>Separating variables gives <span class="math display">\[\frac{2 - y_2}{y_2} \, dy_2 = \frac{-5 + y_1}{y_1} \, dy_1\]</span> <span class="math display">\[\left(\frac{2}{y_2} - 1\right) \, dy_2 = \left(-\frac{5}{y_1} + 1\right) \, dy_1\]</span></p>
-<p>Integrating both sides yields <span class="math display">\[2\ln y_2 - y_2 = -5\ln y_1 + y_1 + C\]</span> <span class="math display">\[5\ln y_1 + 2\ln y_2 - y_1 - y_2 = C\]</span></p>
-<p>Taking exponentials on both sides gives <span class="math display">\[y_1^5 y_2^2 e^{-y_1} e^{-y_2} = e^C = C^*\]</span></p>
-<p>These curves are closed trajectories surrounding the critical point <span class="math inline">\((5, 2)\)</span>. Therefore, <span class="math inline">\(P_2\)</span> is indeed a <strong>center</strong>, which is <strong>stable</strong> (but not asymptotically stable). The populations of prey and predators will oscillate periodically over time.</p>
 
 
-</section>
 </section>
 </section>
 

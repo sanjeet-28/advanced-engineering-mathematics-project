@@ -1,0 +1,2193 @@
+--- Page 1 ---
+844CHAPTER 20
+Numeric Linear Algebra
+This chapter deals with two main topics. The first topic is how to solve linear systems of
+equations numerically. We start with Gauss elimination, which may be familiar to somereaders, but this time in an algorithmic setting with partial pivoting. Variants of this method(Doolittle, Crout, Cholesky, Gauss–Jordan) are discussed in Sec. 20.2. All these methodsare direct methods, that is, methods of numerics where we know in advance how manysteps they will take until they arrive at a solution. However, small pivots and roundofferror magnification may produce nonsensical results, such as in the Gauss method. A shiftoccurs in Sec. 20.3, where we discuss numeric iteration methods or indirect methods toaddress our first topic. Here we cannot be totally sure how many steps will be needed toarrive at a good answer. Several factors—such as how far is the starting value from ourinitial solution, how is the problem structure influencing speed of convergence, howaccurate would we like our result to be—determine the outcome of these methods.Moreover, our computation cycle may not converge. Gauss–Seidel iteration and Jacobiiteration are discussed in Sec. 20.3. Section 20.4 is at the heart of addressing the pitfallsof numeric linear algebra. It is concerned with problems that are ill-conditioned. We learnto estimate how “bad” such a problem is by calculating the condition number of its matrix.
+The second topic (Secs. 20.6–20.9) is how to solve eigenvalue problems numerically.
+Eigenvalue problems appear throughout engineering, physics, mathematics, economics,and many areas. For large or very large matrices, determining the eigenvalues is difficultas it involves finding the roots of the characteristic equations, which are high-degreepolynomials. As such, there are different approaches to tackling this problem. Somemethods, such as Gerschgorin’s method and Collatz’s method only provide a range inwhich eigenvalues lie and thus are known as inclusion methods. Others such astridiagonalization and QR-factorization actually find all the eigenvalues. The area is quiteingeneous and should be fascinating to the reader.
+COMMENT. This chapter is independent of Chap. 19and can be studied immediately
+after Chap. 7or 8.
+Prerequisite: Secs. 7.1, 7.2, 8.1.
+Sections that may be omitted in a shorter course: 20.4, 20.5, 20.9.
+References and Answers to Problems: App. 1 Part E, App. 2.
+20.1 Linear Systems: Gauss Elimination
+The basic method for solving systems of linear equations by Gauss elimination and back
+substitution was explained in Sec. 7.3. If you covered Sec. 7.3, you may wonder why wecover Gauss elimination again. The reason is that here we cover Gauss elimination in the
+c20-a.qxd  11/2/10  8:57 PM  Page 844
+--- Page 2 ---
+setting of numerics and introduce new material such as pivoting, row scaling, and operation
+count. Furthermore, we give an algorithmic representation of Gauss elimination in Table 20.1
+that can be readily converted into software. We also show when Gauss elimination runsinto difficulties with small pivots and what to do about it. The reader should pay closeattention to the material as variants of Gauss elimination are covered in Sec. 20.2 and,furthermore, the general problem of solving linear systems is the focus of the first half ofthis chapter.
+A linear system of n equations in n unknowns is a set of equations
+of the form
+(1)
+where the coefficients and the are given numbers. The system is called homogeneous
+if all the are zero; otherwise it is called nonhomogeneous. Using matrix multiplication
+(Sec. 7.2), we can write (1) as a single vector equation
+(2)where the coefficient matrix is the matrix
+are column vectors. The following matrix A/H33522is called the augmented matrix of the
+system (1):
+A solution of (1) is a set of numbers that satisfy all the nequations, and a
+solution vector of (1) is a vector x whose components constitute a solution of (1).
+The method of solving such a system by determinants (Cramer’s rule in Sec. 7.7) is
+not practical, even with efficient methods for evaluating the determinants.
+A practical method for the solution of a linear system is the so-called Gauss elimination,
+which we shall now discuss ( proceeding independently of Sec. 7.3 ).x
+1,Á, xnA/H33522/H11005[A b]/H11005Ea11Á a1n b1
+a21Á a2n b2
+# Á ##
+an1Á ann bnU .b/H11005Eb1
+o
+bnU and A/H11005Ea11 a12Á a1n
+a21 a22Á a2n
+## Á #
+an1 an2Á annU , and x/H11005Ex1
+o
+xnU n/H11003n A/H11005[ajk]Ax/H11549bbjbj ajkE1:  a 11x1/H11001Á/H11001a1nxn/H11005b1
+E2:  a 21x1/H11001Á/H11001a2nxn/H11005b2
+ #############
+En:  a n1x1/H11001Á/H11001annxn/H11005bnE1,Á, Enx1,Á, xnSEC. 20.1 Linear Systems: Gauss Elimination 845c20-a.qxd  11/2/10  8:57 PM  Page 845
+--- Page 3 ---
+Gauss Elimination
+This standard method for solving linear systems (1) is a systematic process of elimination
+that reduces (1) to triangular form because the system can then be easily solved by back
+substitution. For instance, a triangular system is
+and back substitution gives from the third equation, then
+from the second equation, and finally from the first equation
+How do we reduce a given system (1) to triangular form? In the first step we eliminate
+from equations to in (1). We do this by adding (or subtracting) suitable multi-
+ples of to (from) equations and taking the resulting equations, call them
+as the new equations. The first equation, is called the pivot equation in
+this step, and is called the pivot. This equation is left unaltered. In the second step
+we take the new second equation (which no longer contains as the pivot equation
+and use it to eliminate from to And so on. After steps this gives a
+triangular system that can be solved by back substitution as just shown. In this way weobtain precisely all solutions of the given system (as proved in Sec. 7.3).
+The pivot (in step k) must be different from zero and should be large in absolute
+value to avoid roundoff magnification by the multiplication in the elimination. For thiswe choose as our pivot equation one that has the absolutely largest in column kon or
+below the main diagonal (actually, the uppermost if there are several such equations). Thispopular method is called partial pivoting. It is used in CASs (e.g., in Maple).
+Partial pivoting distinguishes it from total pivoting, which involves both row and
+column interchanges but is hardly used in practice.
+Let us illustrate this method with a simple example.
+EXAMPLE 1 Gauss Elimination. Partial Pivoting
+Solve the system
+Solution. We must pivot since has no -term. In Column 1, equation has the largest coefficient.
+Hence we interchange and 
+ 8 x2/H110012x3/H11005/H11002 7. 3x1/H110015x2/H110012x3/H11005 8 6x1/H110012x2/H110018x3/H1100526E3, E 1E3 x1 E1E1: 8x2/H110012x3/H11005/H11002 7
+E2: 3x1/H110015x2/H110012x3/H11005 8
+E3: 6x1/H110012x2/H110018x3/H1100526.ajkakkn/H110021 E*n. E *3 x2x1) E*2a11E1, E*2,Á, E*nE2,Á, En E1En E2 x1x1/H110051
+3 (8/H110025x2/H110022x3)/H110054.x2/H110051
+8 (/H110027/H110022x3)/H11005/H11002 1x3/H110053
+6/H110051
+2 6 x3/H11005  3 8 x2/H110012x3/H11005/H11002 7 3x1/H110015x2/H110012x3/H11005  8846 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 846
+--- Page 4 ---
+ww ö
+w wöw wöww öStep 1. Elimination of
+It would suffice to show the augmented matrix and operate on it. We show both the equations and the augmentedmatrix. In the first step, the first equation is the pivot equation. Thus
+To eliminate from the other equations (here, from the second equation), do:
+Subtract times the pivot equation from the second equation.
+The result is
+Step 2. Elimination of
+The largest coefficient in Column 2 is 8. Hence we take the newthird equation as the pivot equation, interchanging
+equations 2 and 3,
+To eliminate from the third equation, do:
+Subtract times the pivot equation from the third equation.
+The resulting triangular system is shown below. This is the end of the forward elimination. Now comes the back
+substitution.
+Back substitution. Determination of 
+The triangular system obtained in Step 2 is
+From this system, taking the last equation, then the second equation, and finally the first equation, we compute
+the solution
+This agrees with the values given above, before the beginning of the example.
+The general algorithm for the Gauss elimination is shown in Table 20.1. To help explain
+the algorithm, we have numbered some of its lines. is denoted by for uniformity.In lines 1 and 2 we look for a possible pivot. [For we can always find one; otherwise
+would not occur in (1).] In line 2 we do pivoting if necessary, picking an of greatest
+absolute value (the one with the smallest jif there are several) and interchange thea
+jk x1k/H110051aj,n/H110011, bj/H17039 x1/H110051
+6 (26/H110022x2/H110028x3)/H110054. x2/H110051
+8 (/H110027/H110022x3)/H11005/H11002 1 x3/H110051
+26x1/H110012x2/H110018x3/H11005  26
+8x2/H110012x3/H11005/H110027
+/H110023x3/H11005/H110023
+2    D628 2 6
+082 /H110027
+00 /H110023/H110023
+2 T .x3, x2, x11
+2x2D628 2 6082 /H110027
+04 /H110022/H110025T .6x
+1/H110012x2/H110018x3/H1100526
+8x2/H110012x3/H11005/H11002 7
+4x2/H110022x3/H11005/H11002 5x2D6282 604 /H110022/H110025
+082 /H110027T .6x
+1/H110012x2/H110018x3/H1100526
+4x2/H110022x3/H11005/H11002 5
+8x2/H110012x3/H11005/H11002 73
+6 /H110051
+2 x1D628 2 6352 8082 /H110027T .6x
+1/H110012x2/H110018x3/H1100526
+3x1/H110015x2/H110012x3/H11005 8
+8x2/H110012x3/H11005/H11002 7x1SEC. 20.1 Linear Systems: Gauss Elimination 847
+Pivot 6Eliminate
+Pivot 8Eliminate|
+|||||
+||||||
+||||||||||||c20-a.qxd  11/2/10  8:57 PM  Page 847
+--- Page 5 ---
+corresponding rows. If is greatest, we do no pivoting. in line 4 suggests
+multiplier, since these are the factors by which we have to multiply the pivot equation in Step k before subtracting it from an equation below from which we want to
+eliminate Here we have written and to indicate that after Step 1 these are nolonger the equations given in (1), but these underwent a change in each step, as indicatedin line 5. Accordingly, etc. in all lines refer to the most recent equations, and in line 1 indicates that we leave untouched all the equations that have served as pivotequations in previous steps. For in line 5 we get 0 on the right, as it should be inthe elimination,
+In line 3, if the last equation in the triangular system is we have no
+solution. If it is we have no unique solution because we then have fewerequations than unknowns.
+EXAMPLE 2 Gauss Elimination in Table 20.1, Sample Computation
+In Example 1 we had so that pivoting was necessary. The greatest coefficient in Column 1 was 
+Thus in line 2, and we interchanged and Then in lines 4 and 5 we computed and
+and then so that the third equation did not change in Step 1. In Step 2 
+we had 8 as the greatest coefficient in Column 2, hence We interchanged equations 2 and 3, computed
+in line 5, and the This produced the
+triangular form used in the back substitution.
+If in Step k, we must pivot . If is small, we should pivot because of roundoff
+error magnification that may seriously affect accuracy or even produce nonsensical
+results.
+EXAMPLE 3 Difficulty with Small Pivots
+The solution of the system
+is We solve this system by the Gauss elimination, using four-digit floating-point arithmetic.
+(4D is for simplicity. Make an 8D-arithmetic example that shows the same.)
+(a)Picking the first of the given equations as the pivot equation, we have to multiply this equation by
+and subtract the result from the second equation, obtaining
+Hence and from the first equation, instead of we get
+This failure occurs because is small compared with so that a small roundoff error in leads to a
+large error in x 1.x2 ƒa12ƒ, ƒa11ƒx1/H110051
+0.0004 (1.406 /H110021.402/H115540.9993) /H110050.005
+0.0004 /H1100512.5.x1/H1100510, x2/H11005/H11002 1404> (/H110021405) /H110050.9993,/H110021405x 2/H11005/H11002 1404.m/H110050.4003> 0.0004/H110051001x1/H1100510, x 2/H110051. 0.4003x 1/H110021.502x 2/H110052.501 0.0004x 1/H110011.402x 2/H110051.406ƒakkƒ akk/H110050/H17039a33/H11005/H11002 2/H110021
+2 /H115542/H11005/H11002 3, a 34/H11005/H11002 5/H110021
+2 (/H110027)/H11005/H110023
+2 . m32/H11005/H110024
+8 /H11005/H110021
+2 j~/H110053.(k/H110052) 8x2/H110012x3/H11005/H11002 7 m31/H110050
+6 /H110050,a22/H110055/H110021
+2 /H115542/H110054,  a23/H110052/H110021
+2 /H115548/H11005/H11002 2,  a24/H110058/H110021
+2 /H1155426/H11005/H11002 5,m21/H110053
+6 /H110051
+2 E3. E 1 j~/H110053a31. a11/H110050,0/H11005b*n/H110050,0/H11005b*n/HS110050,ajk/H11002mjkakk/H11005ajk/H11002ajk
+akk akk/H110050.p/H11005kj/H11084k ajkE*j E*k xk.E*k E*jE*kmjk ƒakkƒ848 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 848
+--- Page 6 ---
+SEC. 20.1 Linear Systems: Gauss Elimination 849
+(b)Picking the second of the given equations as the pivot equation, we have to multiply this equation by
+and subtract the result from the first equation, obtaining
+Hence and from the pivot equation This success occurs because is not very small
+compared to so that a small roundoff error in would not lead to a large error in Indeed, forinstance, if we had the value we would still have from the pivot equation the good value
+Table 20.1 Gauss Elimination
+ALGORITHM GAUSS (A/H33522/H11005[ajk]/H11005[A b])
+This algorithm computes a unique solution x/H11005[xj]of the system (1) or indicates that
+(1) has no unique solution.
+INPUT: Augmented n/H11003(n/H110011) matrix where 
+OUTPUT: Solution x/H11005[xj]of (1) or message that the system (1) has no
+unique solution
+For k/H110051, •••, n/H110021, do:
+1
+For j/H11005 , •••, n, do:
+If then 
+End
+If amk/H110050 then OUTPUT “No unique solution exists” 
+Stop[Procedure completed unsuccessfully ]
+2 Else exchange row k and row m
+3 If a
+nn/H110050 then OUTPUT “No unique solution exists.”
+Stop
+Else
+4 For j/H11005k/H110011, •••, n, do:
+5 For p/H11005k/H110011, •••, n/H110011, do:
+ajp: /H11005ajp/H11002mjkakp
+End
+End
+End
+6[ Start back substitution ]
+For i/H11005n/H110021, •••, 1, do:
+7
+End
+OUTPUT x/H11005[xj]. Stop
+End GAUSSxi/H110051
+aii aai,n/H110011/H11002an
+j/H11005i/H110011aijxjbxn/H11005an,n/H110011
+ann mjk:/H11005ajk
+akk m/H11005j (ƒamkƒ/H11021ƒajkƒ)k/H110011m/H11005kaj,n/H110011/H11005bj A/H33522/H11005[ajk],/H17039 x1/H11005(2.501/H110011.505)> 0.4003/H1100510.01.x2/H110051.002,x1. x2 ƒa22ƒ,ƒa21ƒ x1/H1100510. x2/H110051,1.404x 2/H110051.404.0.0004> 0.4003/H110050.0009993c20-a.qxd  11/2/10  8:57 PM  Page 849
+--- Page 7 ---
+Error estimates for the Gauss elimination are discussed in Ref. [E5] listed in App. 1.
+Row scaling means the multiplication of each Row jby a suitable scaling factor It is
+done in connection with partial pivoting to get more accurate solutions. Despite much
+research (see Refs. [E9], [E24] in App. 1) and the proposition of several principles, scalingis still not well understood. As a possibility, one can scale for pivot choice only (not inthe calculation, to avoid additional roundoff) and take as first pivot the entry for which
+is largest; here is an entry of largest absolute value in Row j. Similarly in
+the further steps of the Gauss elimination.
+For instance, for the system
+we might pick 4 as pivot, but dividing the first equation by gives the system inExample 3, for which the second equation is a better pivot equation.
+Operation Count
+Quite generally, important factors in judging the quality of a numeric method are
+Amount of storage
+Amount of time number of operations)Effect of roundoff error
+For the Gauss elimination, the operation count for a full matrix (a matrix with relatively
+many nonzero entries) is as follows. In Step kwe eliminate from equations.
+This needs divisions in computing the (line 3) and multiplications and as many subtractions (both in line 4). Since we do steps, k
+goes from 1 to and thus the total number of operations in this forwardelimination is
+(write 
+where is obtained by dropping lower powers of n. We see that grows about
+proportional to We say that is of order and write
+where Osuggests order. The general definition of O is as follows. We write
+if the quotients and remain bounded (do not trail off to infinity)as In our present case, and, indeed, because the omitted
+terms divided by go to zero as n:/H11009. n
+3f (n)>n3:  2
+3 h(n)/H11005n3n:/H11009.ƒh(n)> f (n)ƒ ƒ f (n)>h(n) ƒf (n)/H11005O(h  (n))f (n)/H11005O(n3)n3f (n) n3.f (n) 2n3>3 /H11005an/H115461
+s/H110051 s/H110012an/H115461
+s/H110051 s (s/H110011)/H110051
+2 (n/H110021)n/H110012
+3 (n2/H110021)n/H110152
+3 n3n/H11002k/H11005s)  f (n)/H11005an/H115461
+k/H110051 (n/H11002k)/H110012an/H115461
+k/H110051 (n/H11002k)(n/H11002k/H110011)n/H110021n/H110021(n/H11002k)(n/H11002k/H110011) mjk n/H11002kn/H11002k xk(/H11013104 0.4003x 1/H110021.502x 2/H110052.501 4.0000x 1/H1100114020x 2/H1100514060Aj ƒaj1ƒ>ƒAjƒaj1sj.850 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 850
+--- Page 8 ---
+In the back substitution of we make multiplications and as many subtractions,
+as well as 1 division. Hence the number of operations in the back substitution is
+We see that it grows more slowly than the number of operations in the forward elimination
+of the Gauss algorithm, so that it is negligible for large systems because it is smaller bya factor n, approximately. For instance, if an operation takes sec, then the timesneeded are:
+Algorithm
+Elimination 0.7 sec 11 min
+Back substitution 0.001 sec 0.1 secn/H1100510000 n/H11005100010/H115469b(n)/H110052an
+i/H110051 (n/H11002i)/H11001n/H110052an
+s/H110051  s/H11001n/H11005n(n/H110011)/H11001n/H11005n2/H110012n/H11005O(n2).n/H11002i xiSEC. 20.1 Linear Systems: Gauss Elimination 851
+APPLICATIONS of linear systems see Secs. 7.1 and 8.2.
+1–3 GEOMETRIC INTERPRETATION
+Solve graphically and explain geometrically.
+1.
+2.3.
+4–16
+GAUSS ELIMINATION
+Solve the following linear systems by Gauss elimination,
+with partial pivoting if necessary (but without scaling). Showthe intermediate steps. Check the result by substitution. If nosolution or more than one solution exists, give a reason.
+4.
+5.6. 25.38x
+1/H1100215.48x 2/H11005 30.60
+/H1100214.10x 1/H110018.60x 2/H11005/H11002 17.002x1/H110028x2/H11005/H11002 4
+3x1/H11001x2/H11005 76x1/H11001x2/H11005/H11002 3
+4x1/H110022x2/H11005 67.2x 1/H110023.5x 2/H1100516.0
+/H1100214.4x 1/H110017.0x 2/H1100531.0/H110025.00x 1/H110018.40x 2/H110050
+10.25x 1/H1100217.22x 2/H110050x1/H110024x2/H1100520.1
+3x1/H110015x2/H110055.97.
+8.9.
+10.11.12. 5x
+1/H110013x2/H11001 x3/H11005 2
+/H110024x 2/H110018x3/H11005/H11002 3
+10x 1/H110026x2/H1100126x 3/H11005 03.4x 1/H110026.12x 2/H110022.72x 3/H110050
+/H11002x1/H110011.80x 2/H110010.80x 3/H110050
+2.7x 1/H110024.86x 2/H110012.16x 3/H1100504x1/H110014x2/H110012x3/H110050
+3x1/H11002x2/H110012x3/H110050
+3x1/H110017x2/H11001x3/H1100506x2/H1100113x 3/H11005 137.86
+6x1 /H110028x3/H11005/H11002 85.88
+13x 1/H110028x2 /H11005178.545x1/H110013x2/H11001 x3/H11005 2
+/H110024x 2/H110018x3/H11005/H11002 3
+10x 1/H110026x2/H1100126x 3/H11005 0/H110023x 1/H110016x2/H110029x3/H11005/H11002 46.725
+x1/H110024x2/H110013x3/H11005 19.571
+2x1/H110015x2/H110027x3/H11005/H11002 20.073PROBLEM SET 20.1c20-a.qxd  11/2/10  8:57 PM  Page 851
+--- Page 9 ---
+13.
+14.15.
+16.
+17. CAS EXPERIMENT. Gauss Elimination. Write a
+program for the Gauss elimination with pivoting.
+Apply it to Probs. 13–16. Experiment with systemswhose coefficient determinant is small in absolutevalue. Also investigate the performance of yourprogram for larger systems of your choice, includingsparse systems.
+18. TEAM PROJECT. Linear Systems and Gauss
+Elimination. (a) Existence and uniqueness. Find a
+and bsuch that has (i) a
+unique solution, (ii) infinitely many solutions, (iii) nosolutions.
+(b) Gauss elimination and nonexistence. Apply the
+Gauss elimination to the following two systems andax
+1/H11001x2/H11005b, x 1/H11001x2/H1100533.2x 1/H110011.6x 2 /H11005/H11002 0.8
+1.6x 1/H110020.8x 2/H110012.4x 3 /H11005 16.0
+2.4x 2/H110024.8x 3/H110013.6x 4/H11005/H11002 39.0
+3.6x 3/H110012.4x 4/H11005 10.22.2x 2/H110011.5x 3/H110023.3x 4/H11005/H11002 9.30
+0.2x 1/H110011.8x 2 /H110014.2x 4/H11005 9.24
+/H11002x1/H110023.1x 2/H110012.5x 3 /H11005/H11002 8.70
+0.5x 1 /H110023.8x 3/H110011.5x 4/H11005  11.94/H1100247x 1/H110014x2/H110027x3/H11005/H11002 118
+19x 1/H110023x2/H110012x3/H11005 43
+/H1100215x 1/H110015x2 /H11005/H11002 253x2/H110015x3/H11005 1.20736
+3x1/H110024x2 /H11005/H11002 2.34066
+5x1 /H110016x3/H11005/H11002 0.329193852 CHAP. 20 Numeric Linear Algebra
+compare the calculations step by step. Explain why the
+elimination fails if no solution exists.
+(c) Zero determinant. Why may a computer program
+give you the result that a homogeneous linear system
+has only the trivial solution although you know itscoefficient determinant to be zero?
+(d) Pivoting. Solve System (A) (below) by the Gauss
+elimination first without pivoting. Show that for any
+fixed machine word length and sufficiently small the computer gives and then Whatis the exact solution? Its limit as Then solvethe system by the Gauss elimination with pivoting.Compare and comment.
+(e) Pivoting. Solve System (B) by the Gauss elimination
+and three-digit rounding arithmetic, choosing (i) the first
+equation, (ii) the second equation as pivot equation.
+(Remember to round to 3S after each operation beforedoing the next, just as would be done on a computer!)Then use four-digit rounding arithmetic in those twocalculations. Compare and comment.
+(A)
+(B) 4.03x
+1/H110012.16x 2/H11005/H11002 4.61
+6.21x 1/H110013.35x 2/H11005/H11002 7.19Px1/H11001x2/H110051
+x1/H11001x2/H110052P:0?x1/H110050. x2/H110051P/H110220x1/H11001x2/H11001x3/H110053
+4x1/H110012x2/H11002x3/H110055
+9x1/H110015x2/H11002x3/H1100512.x1/H11001x2/H11001x3/H110053
+4x1/H110012x2/H11002x3/H110055
+9x1/H110015x2/H11002x3/H1100513
+20.2 Linear Systems: LU-Factorization, 
+Matrix Inversion
+We continue our discussion of numeric methods for solving linear systems of nequations
+in nunknowns 
+(1)
+where is the given coefficient matrix and and
+We present three related methods that are modifications of the Gauss bT/H11005[b1,Á, bn].xT/H11005[x1,Á, xn] n/H11003n A/H11005[ajk]Ax/H11005bx1,Á, xn,c20-a.qxd  11/2/10  8:57 PM  Page 852
+--- Page 10 ---
+elimination, which require fewer arithmetic operations. They are named after Doolittle,
+Crout, and Cholesky and use the idea of the LU-factorization of A, which we explain
+first.
+An LU-factorization of a given square matrix A is of the form
+(2)
+where Lis lower triangular and Uis upper triangular. For example,
+It can be proved that for any nonsingular matrix (see Sec. 7.8) the rows can be reordered
+so that the resulting matrix A has an LU-factorization (2) in which L turns out to be the
+matrix of the multipliers of the Gauss elimination, with main diagonal and
+Uis the matrix of the triangular system at the end of the Gauss elimination. (See Ref.
+[E5], pp. 155–156, listed in App. 1.)
+The crucial idea now is that L and Uin (2) can be computed directly, without solving
+simultaneous equations (thus, without using the Gauss elimination). As a count shows,this needs about operations, about half as many as the Gauss elimination, whichneeds about (see Sec. 20.1). And once we have (2), we can use it for solving in two steps, involving only about operations, simply by noting that may be written
+(3) (a) where (b)
+and solving first (3a) for y and then (3b) for x. Here we can require that L have main
+diagonal as stated before; then this is called Doolittle’s method.1Both systems
+(3a) and (3b) are triangular, so we can solve them as in the back substitution for the Gausselimination.
+A similar method, Crout’s method,
+2is obtained from (2) if U (instead of L) is required
+to have main diagonal In either case the factorization (2) is unique.
+EXAMPLE 1 Doolittle’s Method
+Solve the system in Example 1 of Sec. 20.1 by Doolittle’s method.
+Solution. The decomposition (2) is obtained from
+A/H11005[ajk]/H11005Da11 a12 a13
+a21 a22 a23
+a31 a32 a33T/H11005D352
+082628T/H11005D100m
+21 10
+m31 m32 1T  Du11 u12 u13
+0 u22 u23
+00u 33T1,Á, 1.1,Á, 1Ux/H11005y Ly/H11005bAx/H11005LUx/H11005b n2Ax/H11005b 2n3>3n3>31,Á, 1, mjkA/H11005c2385
+d/H11005LU/H11005c1041
+d c230/H110027
+d .A/H11005LUSEC. 20.2 Linear Systems: LU-Factorization, Matrix Inversion 853
+1MYRICK H. DOOLITTLE (1830–1913). American mathematician employed by the U.S. Coast and Geodetic
+Survey Office. His method appeared in U.S. Coast and Geodetic Survey , 1878, 115–120.
+2PRESCOTT DURAND CROUT (1907–1984), American mathematician, professor at MIT, also worked at
+General Electric.c20-a.qxd  11/2/10  8:57 PM  Page 853
+--- Page 11 ---
+by determining the and using matrix multiplication. By going through Arow by row we get successively
+Thus the factorization (2) is
+We first solve determining then then from 
+thus (note the interchange in bbecause of the interchange in A!)
+Solution
+Then we solve determining then then that is,
+Solution
+This agrees with the solution in Example 1 of Sec. 20.1.
+Our formulas in Example 1 suggest that for general nthe entries of the matrices 
+(with main diagonal and suggesting “multiplier”) and in the
+Doolittle method are computed from
+(4)
+j/H11005k/H110011,Á, n; k/H110842. mjk/H110051
+ukk  aajk/H11002ak/H115461
+s/H110051 mjsuskbk/H11005j,Á, n; j/H110842 ujk/H11005ajk/H11002aj/H115461
+s/H110051 mjsuskj/H110052,Á, n mj1/H11005aj1
+u11k/H110051,Á, n u1k/H11005a1kU/H11005[ujk] mjk 1,Á, 1L/H11005[mjk]/H17039x/H11005D4
+/H110021
+1
+2 T . D352
+082006T  Dx
+1
+x2
+x3T/H11005D8
+/H110027
+3T .x1, x2, x3/H110053
+6 Ux/H11005y,y/H11005D8
+/H110027
+3T . D1000102/H1100211T  Dy
+1
+y2
+y3T/H11005D8
+/H110027
+26T .2y1/H11002y2/H11001y3/H1100516/H110017/H11001y3/H1100526; y3 y2/H11005/H11002 7, y1/H110058, Ly/H11005b,D352082628T/H11005LU/H11005D1000102/H1100211T  D352082006T . u
+33/H110056  m32/H11005/H11002 1  m31/H110052 /H110052/H115542/H110021/H115542/H11001u33  /H110052/H115545/H11001m32/H115548  /H11005m31/H115543 a33/H110058/H11005m31u13/H11001m32u23/H11001u33  a32/H110052/H11005m31u12/H11001m32u22  a31/H110056/H11005m31u11u23/H110052 u22/H110058 m21/H110050a23/H110052/H11005m21u13/H11001u23 a22/H110058/H11005m21u12/H11001u22 a21/H110050/H11005m21u11a13/H110052/H110051/H11554u13/H11005u13 a12/H110055/H110051/H11554u12/H11005u12 a11/H110053/H110051/H11554u11/H11005u11ujk, mjk854 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 854
+--- Page 12 ---
+Row Interchanges. Matrices, such as
+or
+have no LU-factorization (try!). This indicates that for obtaining an LU-factorization, row
+interchanges of A (and corresponding interchanges in b) may be necessary.
+Cholesky’s Method
+For a symmetric, positive definite matrix A(thus for all we
+can in (2) even choose thus (but cannot impose conditions on themain diagonal entries). For example,
+(5)
+The popular method of solving based on this factorization is called
+Cholesky’s method.
+3In terms of the entries of the formulas for the factorization
+are
+(6)
+If Ais symmetric but not positive definite, this method could still be applied, but then
+leads to a complex matrix L, so that the method becomes impractical.
+EXAMPLE 2 Cholesky’s Method
+Solve by Cholesky’s method:
+4x1/H110012x2/H1100114x 3/H11005 14
+2x1/H1100117x 2/H110025x3/H11005/H11002 101
+14x 1/H110025x2/H1100183x 3/H11005 155.p/H11005j/H110011,Á, n; j/H110842. lpj/H110051
+ljj  aapj/H11002aj/H115461
+s/H110051 ljslpsbj/H110052,Á, n ljj/H11005
+Bajj/H11002aj/H115461
+s/H110051 ljs2j/H110052,Á, n lj1/H11005aj1
+l11l11/H110051a11L/H11005[ljk]A/H11005LLTAx/H11005bA/H11005D42 1 4
+21 7 /H110025
+14/H1100258 3T/H11005LLT/H11005D2001407/H1100235T  D2170 4 /H110023
+005T .u
+jk/H11005mkj U/H11005LT,x/HS110050) A/H11005AT, xTAx/H110220c011 0
+d c0 1
+11dSEC. 20.2 Linear Systems: LU-Factorization, Matrix Inversion 855
+3ANDRÉ-LOUIS CHOLESKY (1875–1918), French military officer, geodecist, and mathematician. Surveyed
+Crete and North Africa. Died in World War I. His method was published posthumously in Bulletin Géodésique
+in 1924 but received little attention until JOHN TODD (1911–2007) — Irish-American mathematician, numerical
+analysist, and early pioneer of computer methods in numerics, professor at Caltech, and close personal friendand collaborator of ERWIN KREYSZIG, see [E20]—taught Cholesky’s method in his analysis course at King’sCollege, London, in the 1940s.c20-a.qxd  11/10/10  2:33 AM  Page 855
+--- Page 13 ---
+Solution. From (6) or from the form of the factorization
+we compute, in the given order,
+This agrees with (5). We now have to solve that is,
+Solution
+As the second step, we have to solve that is,
+Solution
+THEOREM 1 Stability of the Cholesky Factorization
+The Cholesky -factorization is numerically stable (as defined in Sec. 19.1).
+PROOF We have by squaring the third formula in (6) and solving it
+for Hence for all (note that for we obtain (the inequality being trivial)
+That is, is bounded by an entry of A, which means stability against rounding.
+Gauss–Jordan Elimination. Matrix Inversion
+Another variant of the Gauss elimination is the Gauss–Jordan elimination, introduced
+by W. Jordan in 1920, in which back substitution is avoided by additional computationsthat reduce the matrix to diagonal form, instead of the triangular form in the Gausselimination. But this reduction from the Gauss triangular to the diagonal form requiresmore operations than back substitution does, so that the method is disadvantageous for
+solving systems But it may be used for matrix inversion, where the situation isas follows.Ax/H11005b./H17039 l
+jk2ljk2/H11017lj12/H11001lj22/H11001Á/H11001ljj2/H11005ajj.k/H11022j) ljk/H110050 ljk ajj.ajj/H11005lj12/H11001lj22/H11001Á/H11001ljj2LLT/H17039 x/H11005D3
+/H110026
+1T . D217
+04 /H110023
+005T  Dx1
+x2
+x3T/H11005D7
+/H1100227
+5T .Ux/H11005LTx/H11005y,y/H11005D7
+/H1100227
+5T . D2001407/H1100235T  Dy
+1
+y2
+y3T/H11005D14
+/H11002101
+155T .Ly/H11005b, l33/H110052a 33/H11002l312/H11002l322/H11005283/H1100272/H11002(/H110023)2/H110055. l32/H110051
+l23 (a32/H11002l31l21)/H110051
+4 (/H110025/H110027#1)/H11005/H11002 3 l22/H110052a 22/H11002l212/H11005117/H110021/H110054l11/H110051a11/H110052  l21/H11005a21
+l11/H110052
+2/H110051  l31/H11005a31
+l11/H1100514
+2/H110057D42 1 4
+21 7 /H110025
+14/H1100258 3T/H11005Dl11 00
+l21 l22 0
+l31 l32 l33T  Dl11 l21 l31
+0 l22 l32
+00l 33T856 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 856
+--- Page 14 ---
+The inverse of a nonsingular square matrix A may be determined in principle by solving
+the nsystems
+(7)
+where is the jth column of the unit matrix.
+However, it is preferable to produce by operating on the unit matrix Iin the same
+way as the Gauss–Jordan algorithm, reducing Ato I. A typical illustrative example of this
+method is given in Sec. 7.8.A/H115461n/H11003n bj( j/H110051,Á, n) Ax/H11005bjSEC. 20.2 Linear Systems: LU-Factorization, Matrix Inversion 857
+1–5 DOOLITTLE’S METHOD
+Show the factorization and solve by Doolittle’s method.
+1.
+2.3.
+4.5.6. TEAM PROJECT. Crout’s method factorizes
+where Lis lower triangular and U is upper
+triangular with diagonal entries 
+(a) Formulas. Obtain formulas for Crout’s method
+similar to (4).(b) Examples. Solve Prob. 5 by Crout’s method.
+(c)Factor the following matrix by the Doolittle,
+Crout, and Cholesky methods.
+(d)Give the formulas for factoring a tridiagonal
+matrix by Crout’s method.D1/H1100242
+/H1100242 5 4
+24 2 4Tu
+jj/H110051, j/H110051,Á, n.A/H11005LU,3x1/H110019x2/H110016x3/H110054.6
+18x 1/H1100148x 2/H1100139x 3/H1100527.2
+9x1/H1100227x 2/H1100142x 3/H110059.02x1/H11001x2/H110012x3/H110050
+/H110022x 1/H110012x2/H11001x3/H110050
+x1/H110012x2/H110022x3/H11005185x1/H110014x2/H11001 x3/H110056.8
+10x 1/H110019x2/H110014x3/H1100517.6
+10x 1/H1100113x 2/H1100115x 3/H1100538.42x1/H110019x2/H11005 82
+3x1/H110025x2/H11005/H11002 624x1/H110015x2/H1100514
+12x 1/H1100114x 2/H1100536(e)When can you obtain Crout’s factorization from
+Doolittle’s by transposition?
+7–12 CHOLESKY’S METHOD
+Show the factorization and solve.
+7.
+8.9.
+10.11.
+12.
+13. Definiteness. Let A,B be and positive definite.
+Are positive definite?/H11002A, A
+T, A/H11001B, A/H11002Bn/H11003n4x1/H110012x2/H110014x3 /H1100520
+2x1/H110012x2/H110013x3/H110012x4/H1100536
+4x1/H110013x2/H110016x3/H110013x4/H1100560
+2x2/H110013x3/H110019x4/H11005122x1/H11002x2/H110013x3/H110012x4/H11005 15
+/H11002x1/H110015x2/H110025x3/H110022x4/H11005/H11002 35
+3x1/H110025x2/H1100119x 3/H110013x4/H11005 94
+2x1/H110022x2/H110013x3/H1100121x 4/H11005 14x1 /H110012x3/H110051.5
+4x2/H11001x3/H110054.0
+2x1/H11001x2/H110012x3/H110052.50.01x 1 /H110010.03x 3/H110050.14
+0.16x 2/H110010.08x 3/H110050.16
+0.03x 1/H110010.08x 2/H110010.14x 3/H110050.544x1/H110016x2/H11001 8x3/H11005 0
+6x1/H1100134x 2/H1100152x 3/H11005/H11002 160
+8x1/H1100152x 2/H11001129x 3/H11005/H11002 4529x1/H110016x2/H1100112x 3/H1100517.4
+6x1/H1100113x 2/H1100111x 3/H1100523.6
+12x 1/H1100111x 2/H1100126x 3/H1100530.8PROBLEM SET 20.2c20-a.qxd  11/2/10  8:57 PM  Page 857
+--- Page 15 ---
+14. CAS PROJECT. Cholesky’s Method. (a) Write a
+program for solving linear systems by Cholesky’s
+method and apply it to Example 2 in the text, to Probs.7–9, and to systems of your choice.
+(b) Splines. Apply the factorization part of the
+program to the following matrices (as they occur in
+(9), Sec. 19.4 (with in connection withsplines).
+D210
+1 4 1
+012T ,
+  E21001 41  0
+01  41
+0012U .cj/H110051),858 CHAP. 20 Numeric Linear Algebra
+15–19 INVERSE
+Find the inverse by the Gauss–Jordan method, showing the
+details.
+15.In Prob. 1 16.In Prob. 4
+17.In Team Project 6(c) 18.In Prob. 9
+19.In Prob. 12
+20. Rounding. For the following matrix A find det A.
+What happens if you roundoff the given entries to
+(a)5S, (b)4S, (c)3S, (d)2S, (e)lS? What is the
+practical implication of your work?
+A/H11005D1
+3 1
+4 2
+/H110021
+9 1  1
+7
+4
+63 /H110023
+28  13
+49T
+20.3 Linear Systems: Solution by Iteration
+The Gauss elimination and its variants in the last two sections belong to the direct methods
+for solving linear systems of equations; these are methods that give solutions after an
+amount of computation that can be specified in advance. In contrast, in an indirect or
+iterative method we start from an approximation to the true solution and, if successful,
+obtain better and better approximations from a computational cycle repeated as often asmay be necessary for achieving a required accuracy, so that the amount of arithmeticdepends upon the accuracy required and varies from case to case.
+We apply iterative methods if the convergence is rapid (if matrices have large main
+diagonal entries, as we shall see), so that we save operations compared to a direct method.We also use iterative methods if a large system is sparse, that is, has very many zerocoefficients, so that one would waste space in storing zeros, for instance, 9995 zeros perequation in a potential problem of equations in unknowns with typically only 5nonzero terms per equation (more on this in Sec. 21.4).
+Gauss–Seidel Iteration Method4
+This is an iterative method of great practical importance, which we can simply explain interms of an example.
+EXAMPLE 1 Gauss–Seidel Iteration 
+We consider the linear system
+(1)x1/H110020.25x 2/H110020.25x 3 /H1100550
+/H110020.25x 1/H11001 x2 /H110020.25x 4/H1100550
+/H110020.25x 1 /H11001 x3/H110020.25x 4/H1100525
+/H110020.25x 2/H110020.25x 3/H11001 x4/H1100525.104104
+4PHILIPP LUDWIG VON SEIDEL (1821–1896), German mathematician. For Gauss see footnote 5 in 
+Sec. 5.4.c20-a.qxd  11/2/10  8:57 PM  Page 858
+--- Page 16 ---
+(Equations of this form arise in the numeric solution of PDEs and in spline interpolation.) We write the system
+in the form
+(2)These equations are now used for iteration; that is, we start from a (possibly poor) approximation to the solution,
+say and compute from (2) a perhaps better approximationx
+1(0)/H11005100, x 2(0)/H11005100, x 3(0)/H11005100, x 4(0)/H11005100,x1/H11005 0.25x 2/H110010.25x 3 /H1100150
+x2/H110050.25x 1 /H110010.25x 4/H1100150
+x3/H110050.25x 1 /H110010.25x 4/H1100125
+x4/H11005 0.25x 2/H110010.25x 3 /H1100125.SEC. 20.3 Linear Systems: Solution by Iteration 859
++ 50.00 = 100.00
++ 50.00 = 100.00
++ 25.00 = 75.00
++ 25.00 = 68.75Use “old” values
+(“New” values here not yet available)
+Use “new” values(1)=x10.25(0)+x20.25(0)x3
+0.25(1)+x20.25(1)x30.25(1)x1
+0.25(1)x10.25(0)x4
+0.25(0)x4(1)=x2
+(1)=x3
+(1)=x4(3)
+These equations (3) are obtained from (2) by substituting on the right the most recent approximation for each
+unknown. In fact, corresponding values replace previous ones as soon as they have been computed, so that in
+the second and third equations we use (not and in the last equation of (3) we use and (not
+and Using the same principle, we obtain in the next step
+Further steps give the valuesx1(2)/H11005 0.25x 2(1)/H110010.25x 3(1) /H1100150.00/H1100593.750
+x2(2)/H110050.25x 1(2) /H110010.25x 4(1)/H1100150.00/H1100590.625
+x3(2)/H110050.25x 1(2) /H110010.25x 4(1)/H1100125.00/H1100565.625
+x4(2)/H11005 0.25x 2(2)/H110010.25x 3(2) /H1100125.00/H1100564.062x3(0)). x2(0)x3(1) x2(1) x1(0)), x1(1)
+x1 x2 x3 x4
+89.062 88.281 63.281 62.891
+87.891 87.695 62.695 62.59887.598 87.549 62.549 62.52487.524 87.512 62.512 62.50687.506 87.503 62.503 62.502
+Hence convergence to the exact solution (verify!) seems rather fast.
+An algorithm for the Gauss–Seidel iteration is shown in Table 20.2. To obtain the
+algorithm, let us derive the general formulas for this iteration.
+We assume that for (Note that this can be achieved if we can
+rearrange the equations so that no diagonal coefficient is zero; then we may divide eachequation by the corresponding diagonal coefficient.) We now writej/H110051,Á, n. a
+jj/H110051/H17039 x1/H11005x2/H1100587.5, x 3/H11005x4/H1100562.5c20-a.qxd  11/2/10  8:57 PM  Page 859
+--- Page 17 ---
+(4)
+where Iis the unit matrix and L and Uare, respectively, lower and upper triangular
+matrices with zero main diagonals. If we substitute (4) into we have
+Taking Lxand Uxto the right, we obtain, since 
+(5)
+Remembering from (3) in Example 1 that below the main diagonal we took “new”
+approximations and above the main diagonal “old” ones, we obtain from (5) the desirediteration formulas
+“New” “Old”
+(6)
+where is the mth approximation and is the st
+approximation. In components this gives the formula in line 1 in Table 20.2. The matrix
+Amust satisfy for all j. In Table 20.2 our assumption is no longer required,
+but is automatically taken care of by the factor in line 1. 1>ajjajj/H110051 ajj/HS110050(m/H110011) x(m/H110011)/H11005[xj(m/H110011)] x(m)/H11005[xj(m)](ajj/H110051) x(m/H110011)/H11005b/H11002Lx(m/H110011)/H11002Ux(m)x/H11549b/H11546Lx/H11546Ux.Ix/H11549x,Ax/H11549(I/H11545L/H11545U)x/H11549b.Ax/H11005b,n/H11003n(ajj/H110051) A/H11005I/H11001L/H11001U860 CHAP. 20 Numeric Linear Algebra
+Table 20.2 Gauss–Seidel Iteration
+ALGORITHM GAUSS–SEIDEL (A, b, x(0), , N)
+This algorithm computes a solution xof the system Ax /H11005bgiven an initial approximation
+x(0), where A /H11005[ajk]is an n/H11003nmatrix with ajj/HS110050, j/H110051, •••, n.
+INPUT: A, b, initial approximation x(0), tolerance /H110220, maximum number
+of iterations N
+OUTPUT: Approximate solution [] or failure message that x(N)does
+not satisfy the tolerance condition
+For m/H110050, •••, N/H110021, do:
+For j/H110051, •••, n, do:
+1
+End
+2 If max
+j/H20841xj(m/H110011)/H11002xj(m)/H20841/H11021 /H20841xj(m/H110011)/H20841 then OUTPUT x(m/H110011). Stop
+[Procedure completed successfully]
+End
+OUTPUT: “No solution satisfying the tolerance condition obtained after N
+iteration steps.” Stop 
+[Procedure completed unsuccessfully ]
+End GAUSS–SEIDELPxj(m/H110011)/H110051
+ajj  abj/H11002aj/H115461
+k/H110051 ajkxk(m/H110011)/H11002an
+k/H11005j/H110011 ajkxk(m)bxj(m) x(m)/H11005PPc20-a.qxd  11/2/10  8:57 PM  Page 860
+--- Page 18 ---
+Convergence and Matrix Norms
+An iteration method for solving is said to converge for an initial if the
+corresponding iterative sequence converges to a solution of the given
+system. Convergence depends on the relation between and . To get this relationfor the Gauss–Seidel method, we use (6). We first have
+and by multiplying by from the left,
+(7) where
+The Gauss–Seidel iteration converges for every if and only if all the eigenvalues
+(Sec. 8.1) of the “iteration matrix” have absolute value less than 1. (Proof inRef. [E5], p. 191, listed in App. 1.)
+CAUTION! If you want to get C, first divide the rows of Aby to have main diagonal
+If the spectral radius of C maximum of those absolute values) is small, then
+the convergence is rapid.
+Sufficient Convergence Condition. A sufficient condition for convergence is
+(8)
+Here is some matrix norm, such as
+(9) (Frobenius norm)
+or the greatest of the sums of the in a column of C
+(10) (Column “sum” norm)
+or the greatest of the sums of the in a rowof C
+(11) (Row “sum” norm).
+These are the most frequently used matrix norms in numerics.
+In most cases the choice of one of these norms is a matter of computational convenience.
+However, the following example shows that sometimes one of these norms is preferable
+to the others./H20648C
+ /H20648/H11005max
+jan
+k/H110051 ƒcjkƒƒcjkƒ/H20648C  /H20648/H11005max
+k an
+j/H110051 ƒcjkƒƒcjkƒ/H20648C  /H20648/H11005
+Ban
+j/H110051 an
+k/H110051 cjk2/H20648C  /H20648/H20648C  /H20648/H110211.(/H11005 1,Á, 1.ajjC/H11005[cjk]x(0)C/H11005/H11002 (I/H11001L)/H115461 U. x(m/H110011)/H11005Cx(m)/H11001(I/H11001L)/H115461 b(I/H11001L)/H115461(I/H11001L) x(m/H110011)/H11005b/H11002Ux(m)x(m/H110011)x(m)x(0), x(1), x(2), Áx(0)Ax/H11005bSEC. 20.3 Linear Systems: Solution by Iteration 861c20-a.qxd  11/2/10  8:57 PM  Page 861
+--- Page 19 ---
+EXAMPLE 2 Test of Convergence of the Gauss–Seidel Iteration
+Test whether the Gauss–Seidel iteration converges for the system
+written
+Solution. The decomposition (multiply the matrix by – why?) is
+It shows that
+We compute the Frobenius norm of C
+and conclude from (8) that this Gauss–Seidel iteration converges. It is interesting that the other two norms would
+permit no conclusion, as you should verify. Of course, this points to the fact that (8) is sufficient for convergencerather than necessary.
+Residual. Given a system the residual r of xwith respect to this system is
+defined by
+(12)Clearly, if and only if x is a solution. Hence for an approximate solution. In
+the Gauss–Seidel iteration, at each stage we modify or relax a component of an
+approximate solution in order to reduce a component of rto zero. Hence the Gauss–Seidel
+iteration belongs to a class of methods often called relaxation methods. More about the
+residual follows in the next section.
+Jacobi Iteration
+The Gauss–Seidel iteration is a method of successive corrections because for each
+component we successively replace an approximation of a component by a corresponding
+new approximation as soon as the latter has been computed. An iteration method is calleda method of simultaneous corrections if no component of an approximation is used
+until allthe components of have been computed. A method of this type is the Jacobi
+iteration , which is similar to the Gauss–Seidel iteration but involves notusing improved
+values until a step has been completed and then replacing by at once, directlybefore the beginning of the next step. Hence if we write ( with as before!)
+in the form the Jacobi iteration in matrix notation is
+(13) (a
+jj/H110051). x(m/H110011)/H11005b/H11001(I/H11002A)x(m)x/H11005b/H11001(I/H11002A)x,ajj/H110051 Ax/H11005bx(m/H110011)x(m)x(m)x(m)r/HS110050 r/H110050r/H11005b/H11002Ax.Ax/H11005b,/H17039/H20648C  /H20648/H11005A1
+4/H110011
+4/H110011
+16 /H110011
+16/H110011
+64/H110019
+64 B1>2/H11005A50
+64B1>2/H110050.884/H110211C/H11005/H11002 (I/H11001L)/H115461 U/H11005/H11002  D100
+/H110021
+2 10
+/H110021
+4 /H110021
+2 1T  D01
+21
+2
+001
+2
+000T/H11005D0/H110021
+2/H110021
+2
+01
+4 /H110021
+4 
+01
+8 3
+8 T .D11
+21
+2
+1
+2 11
+2
+1
+21
+2 1T/H11005I/H11001L/H11001U/H11005I/H11001D000
+1
+2 00
+1
+21
+2 0T/H11001D01
+21
+2
+001
+2
+000T .1
+2x/H110052/H110021
+2 y/H110021
+2 z
+y/H110052/H110021
+2 x/H110021
+2 z
+  z/H110052/H110021
+2 x/H110021
+2 y.2x/H11001y/H11001z/H110054
+x/H110012y/H11001z/H110054
+x/H11001y/H110012z/H110054862 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 862
+--- Page 20 ---
+This method converges for every choice of if and only if the spectral radius of 
+is less than 1. It has recently gained greater practical interest since on parallel processorsall nequations can be solved simultaneously at each iteration step.
+For Jacobi, see Sec. 10.3. For exercises, see the problem set.I/H11002A x
+(0)SEC. 20.3 Linear Systems: Solution by Iteration 863
+1.Verify the solution in Example 1 of the text.
+2.Show that for the system in Example 2 the Jacobi
+iteration diverges. Hint. Use eigenvalues.
+3.Verify the claim at the end of Example 2.
+4–10 GAUSS–SEIDEL ITERATION
+Do 5 steps, starting from and using 6S in
+the computation. Hint. Make sure that you solve each equation
+for the variable that has the largest coefficient (why?). Showthe details.
+4.
+5.6.7.8.9.
+10.4x
+1 /H110015x3/H11005 12.5
+x1/H110016x2/H110012x3/H11005 18.5
+8x1/H110012x2/H11001x3/H11005/H11002 11.55x1/H11001x2/H110012x3/H11005  19
+x1/H110014x2/H110022x3/H11005/H11002 2
+2x1/H110013x2/H110018x3/H11005  393x1/H110012x2/H11001x3/H110057
+x1/H110013x2/H110012x3/H110054
+2x1/H11001x2/H110013x3/H1100575x1/H110022x2 /H11005 18
+/H110022x 1/H1100110x 2/H110022x3/H11005/H11002 60
+/H110022x2/H1100115x 3/H11005128x2/H110017x3/H11005 25.5
+5x1/H11001x2 /H11005 0
+x1/H110016x2/H11001x3/H11005/H11002 10.510x 1/H11001 x2/H11001 x3/H110056
+x1/H1100110x 2/H11001 x3/H110056
+x1/H11001 x2/H1100110x 3/H1100564x1/H11002x2 /H11005 21
+/H11002x1/H110014x2/H11002x3/H11005/H11002 45
+/H11002x2/H110014x3/H11005 33x0/H11005[1 1 1]T11.Apply the Gauss–Seidel iteration (3 steps) to the system
+in Prob. 5, starting from (a) (b)Compare and comment.
+12.In Prob. 5, compute C (a) if you solve the first equation
+for the second for the third for provingconvergence; (b)if you nonsensically solve the third
+equation for the first for the second for provingdivergence.
+13. CAS Experiment. Gauss–Seidel Iteration. (a) Write
+a program for Gauss–Seidel iteration.
+(b)Apply the program to starting from
+where
+For determine the number of
+steps to obtain the exact solution to 6S and thecorresponding spectral radius of C. Graph the number
+of steps and the spectral radius as functions of tand
+comment.
+(c) Successive overrelaxation (SOR). Show that by
+adding and subtracting on the right, formula (6)
+can be written
+Anticipation of further corrections motivates the
+introduction of an overrelaxation factor to get
+the SOR formula for Gauss–Seidel
+(14)
+intended to give more rapid convergence. A rec-
+ommended value is where isthe spectral radius of C in (7). Apply SOR to the matrix
+in (b) for and 0.8 and notice the improvement ofconvergence. (Spectacular gains are made with largersystems.)t/H110050.5r v/H110052>(1/H1100111/H11002r
+),(ajj/H110051) /H11002(U/H11001I)x(m))x(m/H110011)/H11005x(m)/H11001v(b/H11002Lx(m/H110011)v/H110221(ajj/H110051).x(m/H110011)/H11005x(m)/H11001b/H11002Lx(m/H110011)/H11002(U/H11001I)x(m)x(m)t/H110050.2, 0.5, 0.8, 0.9A(t)/H11005D1 tt
+t 1 t
+tt 1T ,  b/H11005D2
+22T .[0
+ 0 0]T,A(t)x/H11005b,x3, x2, x1,x3, x2, x1,10, 10, 10. 0, 0, 0PROBLEM SET 20.3c20-a.qxd  11/2/10  8:57 PM  Page 863
+--- Page 21 ---
+20.4 Linear Systems: Ill-Conditioning, Norms
+One does not need much experience to observe that some systems are good,
+giving accurate solutions even under roundoff or coefficient inaccuracies, whereas othersare bad, so that these inaccuracies affect the solution strongly. We want to see what isgoing on and whether or not we can “trust” a linear system. Let us first formulate the tworelevant concepts (ill- and well-conditioned) for general numeric work and then turn tolinear systems and matrices.
+A computational problem is called ill-conditioned (or ill-posed ) if “small” changes in
+the data (the input) cause “large” changes in the solution (the output). On the other hand,a problem is called well-conditioned (or well-posed ) if “small” changes in the data cause
+only “small” changes in the solution.
+These concepts are qualitative. We would certainly regard a magnification of inaccuracies
+by a factor 100 as “large,” but could debate where to draw the line between “large” and“small,” depending on the kind of problem and on our viewpoint. Double precision maysometimes help, but if data are measured inaccurately, one should attempt changing the
+mathematical setting of the problem to a well-conditioned one.
+Let us now turn to linear systems. Figure 445 explains that ill-conditioning occurs if
+and only if the two equations give two nearly parallel lines, so that their intersection point(the solution of the system) moves substantially if we raise or lower a line just a little.For larger systems the situation is similar in principle, although geometry no longer helps.We shall see that we may regard ill-conditioning as an approach to singularity of thematrix.Ax/H11005b864 CHAP. 20 Numeric Linear Algebra
+14–17 JACOBI ITERATION
+Do 5 steps, starting from Compare with
+the Gauss–Seidel iteration. Which of the two seems to
+converge faster? Show the details of your work.
+14.The system in Prob. 4
+15.The system in Prob. 9
+16.The system in Prob. 10
+17.Show convergence in Prob. 16 by verifying that 
+where Ais the matrix in Prob. 16 with the rows divided
+by the corresponding main diagonal entries, has theeigenvalues and 0.259795 /H11006 0.246603i. /H110020.519589I/H11002A,x
+0/H11005[1 1 1].18–20 NORMS
+Compute the norms (9), (10), (11) for the following (square)matrices. Comment on the reasons for greater or smallerdifferences among the three numbers.
+18.The matrix in Prob. 10
+19.The matrix in Prob. 5
+20.D2k/H11002k/H11002k
+k/H110022kk
+/H11002k/H11002k 2kT
+y
+xγy
+x
+(a)( b)
+Fig. 445. (a) Well-conditioned and (b) ill-conditioned 
+linear system of two equations in two unknownsc20-a.qxd  11/2/10  8:57 PM  Page 864
+--- Page 22 ---
+EXAMPLE 1 An Ill-Conditioned System
+You may verify that the system
+has the solution whereas the system
+has the solution This shows that the system is ill-conditioned because
+a change on the right of magnitude produces a change in the solution of magnitude approximately.We see that the lines given by the equations have nearly the same slope.
+Well-conditioning can be asserted if the main diagonal entries of Ahave large absolute
+values compared to those of the other entries. Similarly if and Ahave maximum
+entries of about the same absolute value.
+Ill-conditioning is indicated if has entries of large absolute value compared to those
+of the solution (about 5000 in Example 1) and if poor approximate solutions may still
+produce small residuals.
+Residual. The residual rof an approximate solution xof is defined as
+(1)
+Now so that
+(2)Hence ris small if has high accuracy, but the converse may be false:
+EXAMPLE 2 Inaccurate Approximate Solution with a Small Residual
+The system
+has the exact solution Can you see this by inspection? The very inaccurate approximation
+has the very small residual (to 4D)
+From this, a naive person might draw the false conclusion that the approximation should be accurate to 3 or 4
+decimals.
+Our result is probably unexpected, but we shall see that it has to do with the fact that the system is 
+ill-conditioned.
+Our goal is to show that ill-conditioning of a linear system and of its coefficient matrix A
+can be measured by a number, the condition number Other measures for ill-conditioning /H9260(A)./H17039r/H11005c2.0001
+2.0001d/H11002c1.0001 1.00001.0000 1.0001d c2.00000.0001d/H11005c2.00012.0001d/H11002c2.00032.0001d/H11005c/H110020.0002
+0.0000d .x/H335221/H110052.0000, x/H335222/H110050.0001x1/H110051, x 2/H110051. x1/H110011.0001x 2/H110052.0001 1.0001x 1/H11001 x2/H110052.0001x/H33522r/H11005A(x/H11002Ax/H33522).b/H11005Ax,r/H11005b/H11002Ax/H33522.Ax/H11005b x/H33522A/H115461A/H115461/H170395000P, Px/H110050.5/H110015000.5P, y /H11005/H11002 0.5/H110014999.5P. x/H11002 y/H110051/H11001P 0.9999x /H110021.0001y /H110051x/H110050.5, y/H11005/H11002 0.5, x/H11002 y/H110051 0.9999x /H110021.0001y /H110051SEC. 20.4 Linear Systems: Ill-Conditioning, Norms 865c20-a.qxd  11/2/10  8:57 PM  Page 865
+--- Page 23 ---
+have also been proposed, but is probably the most widely used one. is defined in
+terms of norm, a concept of great general interest throughout numerics (and in modernmathematics in general!). We shall reach our goal in three steps, discussing
+1. Vector norms
+2. Matrix norms3. Condition number of a square matrix
+Vector Norms
+A vector norm for column vectors with n components (n fixed) is a generalized
+length or distance. It is denoted by and is defined by four properties of the usual
+length of vectors in three-dimensional space, namely,
+(a) is a nonnegative real number.
+(b) if and only if
+(3)(c) for all k.
+(d) (Triangle inequality).
+If we use several norms, we label them by a subscript. Most important in connection with
+computations is the p-norm defined by
+(4)
+where pis a fixed number and In practice, one usually takes and, as a
+third norm, (the latter as defined below), that is,(5) (“ -norm”)
+(6) (“Euclidean” or “ -norm”)
+(7) (“ -norm”).
+For the -norm is the usual length of a vector in three-dimensional space. The 
+-norm and -norm are generally more convenient in computation. But all three norms
+are in common use.
+EXAMPLE 3 Vector Norms
+If 
+In three-dimensional space, two points with position vectors xand have distance 
+from each other. For a linear system this suggests that we take as a
+measure of inaccuracy and call it the distance between an exact and an approximate
+solution, or the error of 
+Matrix Norm
+If Ais an matrix and x any vector with n components, then Axis a vector with n
+components. We now take a vector norm and consider and One can prove (see /H20648Ax/H20648. /H20648 x /H20648n/H11003nx/H33522./H20648x/H11002x/H33522/H20648 Ax/H11005b,ƒx/H11002x/H33522ƒ x/H33522/H17039 xT/H11005[2/H11002301/H110024], then /H20648  x /H206481/H1100510, /H20648 x /H206482/H11005130 , /H20648 x /H20648/H11557/H110054.l/H11557 l1l2 n/H110053l/H11557 /H20648 x /H20648/H11557/H11005max
+j ƒxjƒl2 /H20648 x /H206482/H110052x 12/H11001Á/H11001xn2l1 /H20648 x /H206481/H11005ƒx1ƒ/H11001Á/H11001ƒxnƒ/H20648 x /H20648/H11557p/H110051 or 2 p/H110841./H20648 x /H20648p/H11005(ƒx1ƒp/H11001ƒx2ƒp/H11001Á/H11001ƒxnƒp)1>p/H20648 x/H11001y /H20648/H11017/H20648 x /H20648/H11001/H20648 y /H20648/H20648 kx  /H20648/H11005ƒkƒ /H20648 x /H20648x/H110050. /H20648 x /H20648/H110050/H20648 x /H20648/H20648 x /H20648x/H11005[xj]/H9260/H9260(A) /H9260(A)866 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 866
+--- Page 24 ---
+Ref. [E17]. pp. 77, 92–93, listed in App. 1) that there is a number c(depending on A)
+such that
+(8) for all x.
+Let Then by (3b) and division gives We obtain the smallest
+possible cvalid for all x by taking the maximum on the left. This smallest cis
+called the matrix norm of A corresponding to the vector norm we picked and is denoted
+by Thus
+(9)the maximum being taken over all Alternatively [see (c) in Team Project 24],
+(10)
+The maximum in (10) and thus also in (9) exists. And the name “matrix norm” is
+justified because satisfies (3) with x and yreplaced by A and B. (Proofs in Ref. [E17]
+pp. 77, 92–93.)
+Note carefully that depends on the vector norm that we selected. In particular, one
+can show that
+for the -norm (5) one gets the column “sum” norm (10), Sec. 20.3,
+for the -norm (7) one gets the row “sum” norm (11), Sec. 20.3.
+By taking our best possible (our smallest) we have from (8)
+(11)
+This is the formula we shall need. Formula (9) also implies for two matrices (see
+Ref. [E17], p. 98)
+(12) thus
+See Refs. [E9] and [E17] for other useful formulas on norms.
+Before we go on, let us do a simple illustrative computation.
+EXAMPLE 4 Matrix Norms
+Compute the matrix norms of the coefficient matrix Ain Example 1 and of its inverse assuming that we
+use (a) the -vector norm, (b) the `-vector norm.
+Solution. We use Sec. 7.8, for the inverse and then (10) and (11) in Sec. 20.3. Thus
+(a)The -vector norm gives the column “sum” norm (10), Sec. 20.3; from Column 2 we thus obtain
+Similarly, /H20648 A/H115461/H20648/H1100510,000. /H20648 A /H20648/H11005ƒ/H110021.0001 ƒ/H11001ƒ/H110021.0000 ƒ/H110052.0001.l1A/H11005B0.9999 /H110021.0001
+1.0000 /H110021.0000R ,  A/H115461/H11005B/H110025000.0 5000.5
+/H110025000.0 4999.5R .(4*),l/H11009 l1A/H115461,/H20648 An/H20648/H11017/H20648 A /H20648n . /H20648 AB  /H20648/H11017/H20648 A /H20648 /H20648B/H20648,n/H11003n/H20648 Ax  /H20648/H11017/H20648 A /H20648 /H20648 x /H20648 .c/H11005/H20648 A /H20648l/H11009l1/H20648 A /H20648/H20648 A /H20648/H20648 A /H20648/H11005max
+/H20648 x /H20648/H110051 /H20648 Ax  /H20648.x/HS110050.(x/HS110050), /H20648A/H20648/H11005max /H20648 Ax  /H20648
+/H20648 x /H20648/H20648 A /H20648.(/HS11005 0)/H20648 Ax  /H20648>/H20648 x /H20648/H11017c. /H20648 x /H20648/H110220 x/HS110050./H20648 Ax  /H20648/H11017c/H20648 x /H20648SEC. 20.4 Linear Systems: Ill-Conditioning, Norms 867c20-a.qxd  11/2/10  8:57 PM  Page 867
+--- Page 25 ---
+(b)The -vector norm gives the row “sum” norm (11), Sec. 20.3; thus from
+Row 1. We notice that is surprisingly large, which makes the product large (20,001). We shall
+see below that this is typical of an ill-conditioned system.
+Condition Number of a Matrix
+We are now ready to introduce the key concept in our discussion of ill-conditioning, the
+condition number of a (nonsingular) square matrix A, defined by
+(13)
+The role of the condition number is seen from the following theorem.
+THEOREM 1 Condition Number
+A linear system of equations and its matrix Awhose condition number (13)
+is small are well-conditioned. A large condition number indicates ill-conditioning.
+PROOF and (11) give Let and Then division by 
+gives
+(14)
+Multiplying (2) by from the left and interchanging sides, we have
+Now (11) with and rinstead of A and xyields
+Division by [note that by (3b)] and use of (14) finally gives
+(15)Hence if is small, a small implies a small relative error so
+that the system is well-conditioned. However, this does not hold if is large; then a small does not necessarily imply a small relative error 
+EXAMPLE 5 Condition Numbers. Gauss–Seidel Iteration
+has the inverse
+Since Ais symmetric, (10) and (11) in Sec. 20.3 give the same condition number
+We see that a linear system with this A is well-conditioned. Ax/H11005b/H9260(A)/H11005/H20648 A /H20648 /H20648 A/H115461  /H20648/H110057#1
+56 #30/H110053.75.A/H115461/H110051
+56   D12/H110022/H110022
+/H1100221 9 /H110029
+/H110022/H1100291 9T . A/H11005D511
+142124T/H17039 /H20648 x/H11002x/H33522/H20648>/H20648 x /H20648. /H20648 r /H20648>/H20648 b /H20648/H9260(A)/H20648 x/H11002x/H33522 /H20648>/H20648 x /H20648, /H20648 r /H20648>/H20648 b /H20648 /H9260(A)/H20648 x/H11002x/H33522/H20648
+/H20648 x /H20648 /H110171
+/H20648 x /H20648  /H20648 A/H115461  /H20648 /H20648 r /H20648/H11017/H20648 A /H20648
+/H20648 b /H20648  /H20648 A/H115461/H20648 /H20648 r /H20648/H11005/H9260(A) /H20648 r /H20648
+/H20648 b /H20648 ./H20648 x /H20648/HS110050 /H20648 x /H20648/H20648 x/H11002x/H33522 /H20648/H11005/H20648 A/H115461r /H20648/H11017/H20648 A/H115461  /H20648 /H20648 r /H20648 .A/H115461x/H11002x/H33522/H11005A/H115461r.A/H115461r/H11005A(x/H11002x/H33522)1
+/H20648 x /H20648 /H11017/H20648 A /H20648
+/H20648 b /H20648 ./H20648 b /H20648 /H20648 x /H20648 x/HS110050. b/HS110050 /H20648 b /H20648/H11017/H20648 A /H20648 /H20648 x /H20648. b/H11005AxAx/H11005b/H9260(A)/H11005/H20648 A /H20648 /H20648 A/H115461  /H20648 ./H9260(A)/H20648 A /H20648 /H20648 A/H115461/H20648 /H20648 A/H115461  /H20648/H20648 A /H20648/H110052, /H20648  A/H115461/H20648/H1100510000.5 l/H11009868 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 868
+--- Page 26 ---
+For instance, if the Gauss algorithm gives the solution (confirm
+this). Since the main diagonal entries of A are relatively large, we can expect reasonably good convergence of
+the Gauss–Seidel iteration. Indeed, starting from, say, we obtain the first 8 steps (3D values)
+x1 x2 x3
+1.000 1.000 1.000
+2.400 /H110021.100 6.950
+1.630 /H110023.882 8.534
+1.870 /H110024.734 8.900
+1.967 /H110024.942 8.979
+1.993 /H110024.988 8.996
+1.998 /H110024.997 8.999
+2.000 /H110025.000 9.000
+2.000 /H110025.000 9.000
+EXAMPLE 6 Ill-Conditioned Linear System
+Example 4 gives by (10) or (11), Sec. 20.3, for the matrix in Example 1 the very large condition number
+This confirms that the system is very ill-conditioned.
+Similarly in Example 2, where by Sec. 7.8 and 6D-computation,
+so that (10), Sec. 20.3, gives a very large explaining the surprising result in Example 2,
+In practice, will not be known, so that in computing the condition number one
+must estimate A method for this (proposed in 1979) is explained in Ref. [E9] listedin App. 1.
+Inaccurate Matrix Entries. can be used for estimating the effect of an inaccuracy
+of A(errors of measurements of the for instance). Instead of we then have
+Multiplying out and subtracting on both sides, we obtain
+Multiplication by from the left and taking the second term to the right givesApplying (11) with and vector instead of Aand x, we get
+Applying (11) on the right, with and instead of Aand x, we obtain
+/H20648
+ dx  /H20648/H11017/H20648 A/H115461  /H20648 /H20648 dA/H20648 /H20648  x/H11001dx  /H20648.x/H11002dx dA/H20648 dx  /H20648/H11005/H20648 A/H115461dA(x/H11001dx)/H20648/H11017/H20648 A/H115461  /H20648 /H20648dA(x /H11001dx)  /H20648 .dA(x/H11001dx) A/H115461dx/H11005/H11002 A/H115461dA(x/H11001dx).A/H115461Adx/H11001dA(x/H11001dx)/H110050.Ax/H11005b(A/H11001dA)(x/H11001dx)/H11005b.Ax/H11005b ajk, dAdx /H9260(A)/H20648 A/H115461/H20648./H9260(A), A/H115461/H17039 /H9260(A)/H11005(1.0001 /H110011.0000)(5000.5 /H110015000.0) /H1101520,002./H9260(A),A/H115461/H110051
+0.0002  c1.0001 /H110021.0000
+/H110021.0000 1.0001d/H11005c5000.5 /H110025.000.0
+/H110025000.0 5000.5d(4*),/H9260(A)/H110052.0001 /H1155410000/H110052/H1155410000.5 /H11005200001./H17039x0/H11005[ 111 ]T,x/H11005[2/H1100259 ]T, b/H11005[14 0 28]T,SEC. 20.4 Linear Systems: Ill-Conditioning, Norms 869c20-a.qxd  11/2/10  8:57 PM  Page 869
+--- Page 27 ---
+Now by the definition of so that division by shows
+that the relative inaccuracy of x is related to that of A via the condition number by the
+inequality
+(16)
+Conclusion. If the system is well-conditioned, small inaccuracies can have
+only a small effect on the solution. However, in the case of ill-conditioning, if 
+is small, may be large.
+Inaccurate Right Side. You may show that, similarly, when Ais accurate, an inaccuracy
+of bcauses an inaccuracy satisfying
+(17)
+Hence must remain relatively small whenever is small.
+EXAMPLE 7 Inaccuracies. Bounds (16) and (17)
+If each of the nine entries of Ain Example 5 is measured with an inaccuracy of 0.1, then and
+(16) gives
+thus
+By experimentation you will find that the actual inaccuracy is only about of the bound 5.14. This is
+typical.
+Similarly, if in Example 5, so that (17) gives
+hence
+but this bound is again much greater than the actual inaccuracy, which is about 0.15.
+Further Comments on Condition Numbers. The following additional explanations
+may be helpful.
+1.There is no sharp dividing line between “well-conditioned” and “ill-conditioned,”
+but generally the situation will get worse as we go from systems with small to systems
+with larger Now always so that values of 10 or 20 or so give no reasonfor concern, whereas say, calls for caution, and systems such as those inExamples 1 and 2 are extremely ill-conditioned.
+2.If is large (or small) in one norm, it will be large (or small, respectively) in
+any other norm. See Example 5.
+3.The literature on ill-conditioning is extensive. For an introduction to it, see [E9].
+This is the end of our discussion of numerics for solving linear systems. In the next sectionwe consider curve fitting, an important area in which solutions are obtained from linear systems./H9260(A)/H9260(A)/H11005100,/H9260(A)/H110841, /H9260(A)./H9260(A)/H17039
+/H20648 dx  /H20648/H110170.0536 /H1155416/H110050.857/H20648 dx  /H20648
+/H20648 x /H20648 /H110177.5/H115540.3
+42/H110050.0536,db/H11005[0.1 0.1 0.1]T, then /H20648  db  /H20648/H110050.3 and /H20648  b /H20648/H110054230% /H20648 dx  /H20648/H20648 dx  /H20648/H110170.321 /H20648  x /H20648/H110050.321/H1155416/H110055.14./H20648 dx  /H20648
+/H20648 x /H20648 /H110177.5/H115543#0.1
+7/H110050.321/H20648 dA  /H20648/H110059/H115540.1/H9260(A) /H20648 dx  /H20648>/H20648 x /H20648/H20648 dx  /H20648
+/H20648 x /H20648 /H11017/H9260(A) /H20648 db  /H20648
+/H20648 b /H20648 .dx db/H20648 dx  /H20648>/H20648 x /H20648/H20648 dA  /H20648>/H20648 A /H20648/H20648 dA  /H20648>/H20648 A /H20648/H20648 dx  /H20648
+/H20648 x /H20648/H11015/H20648 dx  /H20648
+/H20648 x/H11001dx  /H20648/H11017/H20648 A/H115461/H20648 /H20648 dA  /H20648/H11005/H9260(A) /H20648 dA  /H20648
+/H20648 A /H20648 ./H20648 x/H11001dx  /H20648 /H9260(A), /H20648 A/H115461/H20648/H11005/H9260(A)> /H20648 A /H20648870 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 870
+--- Page 28 ---
+SEC. 20.4 Linear Systems: Ill-Conditioning, Norms 871
+1–6 VECTOR NORMS
+Compute the norms (5), (6), (7). Compute a corresponding
+unit vector (vector of norm 1) with respect to the -norm.
+1.
+2.3.4.5.6.7.For what will 
+8.Show that 
+9–16
+MATRIX NORMS, 
+CONDITION NUMBERS
+Compute the matrix norm and the condition number
+corresponding to the -vector norm.
+9. 10.
+11. 12.
+13. 14.
+15.
+16.
+17.Verify (11) for taken with the 
+-norm and the matrix in Prob. 13.
+18.Verify (12) for the matrices in Probs. 9 and 10.l/H11009x/H11005[31 5/H110024]TE21 10.5 7 5.25
+10.5 7 5.25 4.2
+7 5.25 4.2 3.5
+5.25 4.2 3.5 3UD/H1100220 0  0
+0 0.05  0
+ 0 0 20TD1 0.01 0
+0.01 1 0.01
+0 0.01 1T D/H1100224 /H110021
+/H1100223 0
+7/H1100212 2Tc76
+65d c15 5
+0/H1100215dc2.1 4.50.5 1.8d c2104dl1/H20648 x /H20648/H11009/H11017/H20648 x /H206482/H11017/H20648 x /H206481./H20648 x /H206481/H11005/H20648 x /H206482? x/H11005[a b c][0 0 0 1 0][1 1 1 1 1][k2, 4k, k3], k/H110224[0.2 0.6 /H110022.1 3.0][4 /H110021 8][1 /H110023 8 0 /H110026 0]l/H1100919–20 ILL-CONDITIONED SYSTEMS
+Solve Compare the solutions and
+comment. Compute the condition number of A.
+19.
+20.
+21. Residual. For in Prob. 19 guess what the
+residual of very poorly approx-
+imating might be. Then calculate and
+comment.
+22.Show that for the matrix norms (10), (11),Sec. 20.3, and for the Frobenius norm (9),
+Sec. 20.3.
+23. CAS EXPERIMENT. Hilbert Matrices. The 
+Hilbert matrix is
+The Hilbert matrix is where
+(Similar matrices occur in
+curve fitting by least squares.) Compute the condition
+number for the matrix norm corresponding tothe vector norm, for (or
+further if you wish). Try to find a formula that givesreasonable approximate values of these rapidlygrowing numbers.
+Solve a few linear systems of your choice, involving
+an 
+24. TEAM PROJECT. Norms. (a) Vector norms in our
+text are equivalent, that is, they are related by doubleinequalities; for instance,
+(18)(a)
+(b)
+Hence if for some x, one norm is large (or small), theother norm must also be large (or small). Thus in manyinvestigations the particular choice of a norm is notessential. Prove (18).
+(b) The Cauchy–Schwarz inequality is
+ƒx
+Tyƒ/H11017/H20648 x /H206482 /H20648 y /H206482.1
+n /H20648 x /H206481/H11017/H20648 x /H20648/H11009/H11017/H20648 x /H206481./H20648 x /H20648/H11009/H11017/H20648 x /H206481/H11017n/H20648 x /H20648/H11009Hn.n/H110052, 3, Á, 6 l/H11009- (or l 1-)/H9260(H n)hjk/H110051>( j/H11001k/H110021).Hn/H11005[hjk], n/H11003nH3/H11005D11
+2 1
+3 
+1
+2 1
+3 1
+4 
+1
+3 1
+4 1
+5 T .3/H110033/H9260(A)/H110841n/H9260(A)/H110841[/H1100224 ]T,x/H33522/H11005[/H1100210.0  14.1]T,Ax/H11005b1A/H11005c3.0 1.7
+1.7 1.0d, b1/H11005c4.72.7d, b2/H11005c4.72.71dA/H11005c4.50 3.553.55 2.80d, b1/H11005c5.24.1d, b2/H11005c5.24.0dAx/H11005b1, Ax/H11005b2.PROBLEM SET 20.4c20-a.qxd  11/2/10  8:57 PM  Page 871
+--- Page 29 ---
+20.5 Least Squares Method
+Having discussed numerics for linear systems, we now turn to an important application,
+curve fitting, in which the solutions are obtained from linear systems.
+In curve fitting we are given n points (pairs of numbers) and we
+want to determine a function such that
+approximately. The type of function (for example, polynomials, exponential functions,
+sine and cosine functions) may be suggested by the nature of the problem (the underlyingphysical law, for instance), and in many cases a polynomial of a certain degree will beappropriate.
+Let us begin with a motivation.If we require strict equality and use polynomials of
+sufficiently high degree, we may apply one of the methods discussed in Sec. 19.3 inconnection with interpolation. However, in certain situations this would not be theappropriate solution of the actual problem. For instance, to the four points
+(1)there corresponds the interpolation polynomial (Fig. 446), but if we
+graph the points, we see that they lie nearly on a straight line. Hence if these values
+are obtained in an experiment and thus involve an experimental error, and if the natureof the experiment suggests a linear relation, we better fit a straight line throughthe points (Fig. 446). Such a line may be useful for predicting values to be expectedfor other values of x . A widely used principle for fitting straight lines is the methodf
+ (x)/H11005x3/H11002x/H110011(/H110021.3, 0.103),   (/H110020.1, 1.099),   (0.2, 0.808),   (1.3, 1.897)f (x1)/H11005y1,Á,  f (xn)/H11005ynf (x1)/H11015y1,Á,  f (xn)/H11015yn,f (x)(x1, y1),Á, (xn, yn)872 CHAP. 20 Numeric Linear Algebra
+It is very important. (Proof in Ref. [GenRef7] listed
+in App. 1.) Use it to prove
+(19a)
+(19b)
+(c) Formula (10) is often more practical than (9).
+Derive (10) from (9).
+(d) Matrix norms. Illustrate (11) with examples. Give
+examples of (12) with equality as well as with strict1
+1n  /H20648 x /H206481/H11017/H20648 x /H206482/H11017/H20648 x /H206481./H20648 x /H206482/H11017/H20648 x /H206481/H110171n /H20648 x /H206482inequality. Prove that the matrix norms (10), (11) in
+Sec. 20.3 satisfy the axioms of a norm
+if and only if 
+25. WRITING PROJECT. Norms and Their Use in
+This Section. Make a list of the most important of the
+many ideas covered in this section and write a two-page report on them./H20648
+ A/H11001B /H20648/H11017/H20648 A /H20648/H11001/H20648 B /H20648./H20648 kA  /H20648/H11005ƒkƒ /H20648 A /H20648,A/H110050, /H20648 A /H20648/H110050/H20648 A /H20648/H110840.
+2y
+x –1 1
+Fig. 446. Approximate fitting of a straight linec20-a.qxd  11/2/10  8:57 PM  Page 872
+--- Page 30 ---
+of least squares by Gauss and Legendre. In the present situation it may be formulated
+as follows.
+Method of Least Squares. The straight line
+(2)
+should be fitted through the given points so that the sum of the
+squares of the distances of those points from the straight line is minimum, where
+the distance is measured in the vertical direction (the y-direction).
+The point on the line with abscissa has the ordinate Hence its distance from
+is (Fig. 447) and that sum of squares is
+qdepends on a and b. A necessary condition for qto be minimum is
+(3)
+(where we sum over j from 1 to n). Dividing by 2, writing each sum as three sums, and
+taking one of them to the right, we obtain the result
+(4)
+These equations are called the normal equations of our problem. aa xj/H11001ba xj2/H11005a xjyj.an  /H11001ba xj/H11005a yj 0q
+0b/H11005/H11002 2a xj ( yj/H11002a/H11002bxj)/H110050 0q
+0a/H11005/H11002 2a( yj/H11002a/H11002bxj)/H110050q/H11005an
+j/H110051 ( yj/H11002a/H11002bxj)2.ƒyj/H11002a/H11002bxjƒ (xj, yj)a/H11001bxj. xj(x1, y1),Á, (xn, yn)y/H11005a/H11001bxSEC. 20.5 Least Squares Method 873
+y
+x xjyj – a  – bxj
+y = a + bx
+a + bxj(xj, yj)
+00
+Fig. 447. Vetrical distance of a point 
+from a straight line y /H11005a/H11001bx(xj, yj)
+EXAMPLE 1 Straight Line
+Using the method of least squares, fit a straight line to the four points given in formula (1).
+Solution. We obtain
+n/H110054,  axj/H110050.1,  axj2/H110053.43,  ayj/H110053.907,  axjyj/H110052.3839.c20-a.qxd  11/2/10  8:57 PM  Page 873
+--- Page 31 ---
+Hence the normal equations are
+The solution (rounded to 4D) is and we obtain the straight line (Fig. 446)
+Curve Fitting by Polynomials of Degree m
+Our method of curve fitting can be generalized from a polynomial to a
+polynomial of degree m
+(5)where Then qtakes the form
+and depends on parameters Instead of (3) we then have 
+conditions
+(6)
+which give a system of normal equations.
+In the case of a quadratic polynomial
+(7)
+the normal equations are (summation from 1 to n)
+(8)
+The derivation of (8) is left to the reader.
+EXAMPLE 2 Quadratic Parabola by Least Squares
+Fit a parabola through the data 
+Solution. For the normal equations we need 
+Hence these equations are
+ 120b 0/H11001800b 1/H110015664b 2/H11005696. 20b0/H11001120b 1/H11001800b 2/H11005104 5b0/H1100120b1/H11001120b 2/H1100523gxj2yj/H11005696. gxjyj/H11005104, gyj/H1100523,gxj4/H110055664, gxj3/H11005800, gxj2/H11005120, gxj/H1100520, n/H110055,(0, 5), (2, 4), (4, 1), (6, 6), (8, 7).b0a xj2 /H11001b1a xj3/H11001b2a xj4 /H11005a xj2yj.b0a xj /H11001b1a xj2/H11001b2a xj3 /H11005a xjyjb0n  /H11001b1a xj/H11001b2a xj2 /H11005a yjp(x)/H11005b0/H11001b1x/H11001b2x2m/H1100110q
+0b0/H110050,  Á,   0q
+0bm/H110050m/H110011 b0,Á, bm. m/H110011q/H11005an
+j/H110051 ( yj/H11002p(xj))2m/H11017n/H110021.p(x)/H11005b0/H11001b1x/H11001Á/H11001bmxmy/H11005a/H11001bx/H17039 y/H110050.9601/H110010.6670x.a/H110050.9601, b /H110050.6670, 0.1a/H110013.43b/H110052.3839. 4a/H110010.10b/H110053.9070874 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 874
+--- Page 32 ---
+Solving them we obtain the quadratic least squares parabola (Fig. 448)
+/H17039 y/H110055.11429 /H110021.41429x /H110010.21429x2.SEC. 20.5 Least Squares Method 875
+y
+x 02 4 6 82468
+Fig. 448. Least squares parabola in Example 2
+For a general polynomial (5) the normal equations form a linear system of equations in
+the unknowns When its matrix Mis nonsingular, we can solve the system
+by Cholesky’s method (Sec. 20.2) because then Mis positive definite (and symmetric).
+When the equations are nearly linearly dependent, the normal equations may becomeill-conditioned and should be replaced by other methods; see [E5], Sec. 5.7, listed inApp. 1.
+The least squares method also plays a role in statistics (see Sec. 25.9).b
+0,Á, bm.
+1–6 FITTING A STRAIGHT LINE
+Fit a straight line to the given points by least squares.
+Show the details. Check your result by sketching the pointsand the line. Judge the goodness of fit.
+1.
+2.How does the line in Prob. 1 change if you add a point
+far above it, say, ? Guess first.
+3.
+4. Hooke’s law Estimate the spring modulus k
+from the force F [lb] and the elongation s[cm], where
+5. Average speed. Estimate the average speed of a
+car traveling according to (s distance
+traveled, t[hr] time) from 
+6. Ohm’s law  Estimate R from 
+7.Derive the normal equations (8).(10, 530). (6, 314), (4, 206),(i, U)/H11005(2, 104), U/H11005Ri.(12, 410). (11, 310),(10, 220), (t, s)/H11005(9, 140), /H11005/H11005 s/H11005v/H18528t [km]v
+av(20, 6.3).(10, 3.2), (6, 1.9), (4, 1.3), (2, 0.7), (F, s)/H11005(1, 0.3),F/H11005ks.(0, 1.8),  (1, 1.6),  (2, 1.1),  (3, 1.5),  (4, 2.3)(1, 3)(0, 2), (2, 0), (3, /H110022),  (5, /H110023)(x, y)8–11 FITTING A QUADRATIC PARABOLA
+Fit a parabola (7) to the points Check by sketching.
+8.
+9.
+10. Worker’s time on duty,
+reaction time,
+11.The data in Prob. 3. Plot the points, the line, and the
+parabola jointly. Compare and comment.
+12. Cubic parabola. Derive the formula for the normal
+equations of a cubic least squares parabola.
+13.Fit curves (2) and (7) and a cubic parabola by least squaresto 
+Graph these curves and the points on common
+axes. Comment on the goodness of fit.
+14. TEAM PROJECT. The least squares approximation
+of a function on an interval by a
+function
+F
+m(x)/H11005a0y0(x)/H11001a1 y1(x)/H11001Á/H11001am  ym(x)a/H11017x/H11017b f (x)(3, 68).(2, 22), (1, 4), (0, 4), (/H110021, /H110024), (x, y)/H11005(/H110022, /H1100230),(5, 2.70) (4, 2.35),(3, 1.90), (2, 1.78), (t, y)/H11005(1, 2.0),y [sec]/H11005His>her t [hr]/H11005(7, /H110022) (6, 0) (5, 1), (3, 0), (2, /H110023),(3, 8) (2, 4), (1, 3), (/H110021, 5),(x, y).PROBLEM SET 20.5c20-a.qxd  11/2/10  8:57 PM  Page 875
+--- Page 33 ---
+where are given functions, requires the
+determination of the coefficients such that
+(9)
+becomes minimum. This integral is denoted by
+and is called the -norm of
+(Lsuggesting Lebesgue5). A necessary condition
+for that minimum is given by 
+(a)Show that this
+leads to normal equations 
+where
+(10)
+bj/H11005/H20910b
+a f (x)y j(x) dx.hjk/H11005/H20910b
+a yj(x)y k(x) dx,am
+k/H110050 hjkak/H11005bj( j/H110050,Á, m) m/H110011j/H110050,Á, m [the analog of (6)].0/H20648 f/H11002Fm/H206482>0aj/H110050,f/H11002FmL2 /H20648 f/H11002Fm/H20648 /H20648 f/H11002Fm/H206482,/H20910b
+a [ f (x)/H11002Fm(x)]2 dxa0,Á, amy0(x), Á, ym(x)876 CHAP. 20 Numeric Linear Algebra
+(b) Polynomial. What form does (10) take if
+What is the
+coefficient matrix of (10) in this case when the interval
+is 
+(c) Orthogonal functions. What are the solutions of
+(10) if are orthogonal on the interval
+(For the definition, see Sec. 11.5. See also
+Sec. 11.6.)
+15. CAS EXPERIMENT. Least Squares versus Inter-
+polation. For the given data and for data of your
+choice find the interpolation polynomial and the least
+squares approximations (linear, quadratic, etc.).Compare and comment.
+(a)(b)
+(c)Choose five points on a straight line, e.g., 
+Move one point 1 unit upward and
+find the quadratic least squares polynomial. Do this for
+each point. Graph the five polynomials on commonaxes. Which of the five motions has the greatest effect?(1, 1), Á, (4, 4).(0, 0),(4, 0) (3, 0), (2, 0), (1, 0),(0, 1), (/H110021, 0), (/H110022, 0), (/H110023, 0), (/H110024, 0),(/H110022, 0),
+ (/H110021, 0),  (0, 1), (1, 0), (2, 0)a/H11017x/H11017b?y0(x), Á, ym(x)0/H11017x/H110171?Fm(x)/H11005a0/H11001a1x/H11001Á/H11001amxm?
+20.6 Matrix Eigenvalue Problems: Introduction
+We now come to the second part of our chapter on numeric linear algebra. In the first
+part of this chapter we discussed methods of solving systems of linear equations, which
+included Gauss elimination with backward substitution. This method is known as a direct
+method since it gives solutions after a prescribed amount of computation. The Gaussmethod was modified by Doolittle’s method, Crout’s method, and Cholesky’s method,each requiring fewer arithmetic operations than Gauss. Finally we presented indirectmethods of solving systems of linear equations, that is, the Gauss–Seidel method and theJacobi iteration. The indirect methods require an undetermined number of iterations. Thatnumber depends on how far we start from the true solution and what degree of accuracywe require. Moreover, depending on the problem, convergence may be fast or slow or ourcomputation cycle might not even converge. This led to the concepts of ill-conditionedproblems and condition numbers that help us gain some control over difficulties inherentin numerics.
+The second part of this chapter deals with some of the most important ideas and numeric
+methods for matrix eigenvalue problems. This very extensive part of numeric linear algebrais of great practical importance, with much research going on, and hundreds, if notthousands, of papers published in various mathematical journals (see the references in[E8], [E9], [E11], [E29]). We begin with the concepts and general results we shall needin explaining and applying numeric methods for eigenvalue problems. (For typical modelsof eigenvalue problems see Chap. 8.)
+5HENRI LEBESGUE (1875–1941), great French mathematician, creator of a modern theory of measure and
+integration in his famous doctoral thesis of 1902.c20-a.qxd  11/2/10  8:57 PM  Page 876
+--- Page 34 ---
+An eigenvalue or characteristic value (or latent root) of a given matrix 
+is a real or complex number such that the vector equation
+(1)has a nontrivial solution, that is, a solution which is then called an eigenvector or
+characteristic vector of Acorresponding to that eigenvalue The set of all eigenvalues
+of Ais called the spectrum of A.Equation (1) can be written
+(2)
+where Iis the unit matrix. This homogeneous system has a nontrivial solution if
+and only if the characteristic determinant is 0 (see Theorem 2 in Sec. 7.5).
+This gives (see Sec. 8.1)
+THEOREM 1 Eigenvalues
+The eigenvalues of Aare the solutions of the characteristic equation
+(3)
+Developing the characteristic determinant, we obtain the characteristic polynomial of A,
+which is of degree n in Hence Ahas at least one and at most n numerically different
+eigenvalues. If A is real, so are the coefficients of the characteristic polynomial. By familiar
+algebra it follows that then the roots (the eigenvalues of A) are real or complex conjugates
+in pairs.
+To give you some orientation of the underlying approaches of numerics for eigenvalue
+problems, note the following. For large or very large matrices it may be very difficult to
+determine the eigenvalues, since, in general, it is difficult to find the roots of characteristicpolynomials of higher degrees. We will discuss different numeric methods for findingeigenvalues that achieve different results. Some methods, such as in Sec. 20.7, will giveus only regions in which complex eigenvalues lie (Geschgorin’s method) or the intervalsin which the largest and smallest real eigenvalue lie (Collatz method). Other methodscompute all eigenvalues, such as the Householder tridiagonalization method and theQR-method in Sec. 20.9.
+To continue our discussion, we shall usually denote the eigenvalues of Aby
+with the understanding that some (or all) of them may be equal.
+The sum of these neigenvalues equals the sum of the entries on the main diagonal of
+A, called the trace of A; thus
+(4) trace A /H11005a
+n
+j/H110051 ajj/H11005an
+k/H110051 lk.l1, l2,Á, lnl.det (A/H11002lI)/H110055a11/H11002l a12Á a1n
+a21 a22/H11002l Á a2n
+## Á #
+an1 an2Á ann/H11002l5/H110050.ldet (A/H11002lI)n/H11003n(A/H11002lI)x/H110050l.x/HS110050,Ax/H11005lxlA/H11005[ajk] n/H11003nSEC. 20.6 Matrix Eigenvalue Problems: Introduction 877c20-a.qxd  11/2/10  8:57 PM  Page 877
+--- Page 35 ---
+Also, the product of the eigenvalues equals the determinant of A,
+(5)
+Both formulas follow from the product representation of the characteristic polynomial,
+which we denote by 
+If we take equal factors together and denote the numerically distinct eigenvalues of A by
+then the product becomes
+(6)
+The exponent is called the algebraic multiplicity of The maximum number of
+linearly independent eigenvectors corresponding to is called the geometric multiplicity
+of It is equal to or smaller than 
+A subspace S of or (if Ais complex) is called an invariant subspace of Aif
+for every v in Sthe vector Av is also in S. Eigenspaces of A(spaces of eigenvectors;
+Sec. 8.1) are important invariant subspaces of A.
+An matrix Bis called similar to Aif there is a nonsingular matrix T such that
+(7)
+Similarity is important for the following reason.
+THEOREM 2 Similar Matrices
+Similar matrices have the same eigenvalues. If xis an eigenvector of A,then
+is an eigenvector of B in (7)corresponding to the same eigenvalue. (Proof
+in Sec. 8.4.)
+Another theorem that has various applications in numerics is as follows.
+THEOREM 3 Spectral Shift
+If Ahas the eigenvalues then with arbitrary k has the eigenvalues
+This theorem is a special case of the following spectral mapping theorem.
+THEOREM 4 Polynomial Matrices
+If is an eigenvalue of A,then
+is an eigenvalue of the polynomial matrix
+q(A)/H11005as As/H11001as/H115461As/H115461/H11001Á/H11001a1A/H11001a0I.q(l)/H11005asls/H11001as/H115461ls/H115461/H11001Á/H11001a1l/H11001a0ll1/H11002k,Á, ln/H11002k.A/H11002k I l1,Á, ln,y/H11005T/H115461xB/H11005T/H115461AT.n/H11003n n/H11003nCnRnmj. lj.ljlj. mjf (l)/H11005(/H110021)n(l/H11002l1)m1(l/H11002l2)m2Á(l/H11002lr)mr.l1,Á, lr (r/H11017n),f (l)/H11005(/H110021)n(l/H11002l1)(l/H11002l2)Á(l/H11002ln).f (l),det A/H11005l1l2Áln.878 CHAP. 20 Numeric Linear Algebrac20-a.qxd  11/2/10  8:57 PM  Page 878
+--- Page 36 ---
+PROOF implies etc. Thus
+The eigenvalues of important special matrices can be characterized as follows.
+THEOREM 5 Special Matrices
+The eigenvalues of Hermitian matrices ( i.e., hence of real symmetric matrices
+(i.e., are real. The eigenvalues of skew-Hermitian matrices (i.e.,
+hence of real skew-symmetric matrices (i.e., are pure imaginary or 0.The
+eigenvalues of unitary matrices (i.e., hence of orthogonal matrices (i.e.,
+have absolute value 1. (Proofs in Secs. 8.3 and 8.5.)
+The choice of a numeric method for matrix eigenvalue problems depends essentially on
+two circumstances, on the kind of matrix (real symmetric, real general, complex, sparse,
+or full) and on the kind of information to be obtained, that is, whether one wants to knowall eigenvalues or merely specific ones, for instance, the largest eigenvalue, whethereigenvalues andeigenvectors are wanted, and so on. It is clear that we cannot enter into
+a systematic discussion of all these and further possibilities that arise in practice, but weshall concentrate on some basic aspects and methods that will give us a generalunderstanding of this fascinating field.A
+T/H11005A/H115461),A T/H11005A/H115461),AT/H11005/H11002 A),A T/H11005/H11002 A), AT/H11005A),A T/H11005A),/H17039  /H11005aslsx/H11001as/H115461ls/H115461x/H11001Á/H11005q(l) x. /H11005asAsx/H11001as/H115461As/H115461x/H11001Á q(A)x/H11005(asAs/H11001as/H115461As/H115461/H11001Á) xA2x/H11005Alx/H11005lAx/H11005l2x, A3x/H11005l3x, Ax/H11005lxSEC. 20.7 Inclusion of Matrix Eigenvalues 879
+20.7 Inclusion of Matrix Eigenvalues
+The whole of numerics for matrix eigenvalues is motivated by the fact that, except for a
+few trivial cases, we cannot determine eigenvalues exactly by a finite process because these
+values are the roots of a polynomial of nth degree. Hence we must mainly use iteration.
+In this section we state a few general theorems that give approximations and error
+bounds for eigenvalues. Our matrices will continue to be real (except in formula (5) below),but since (nonsymmetric) matrices may have complex eigenvalues, complex numbers willplay a (very modest) role in this section.
+The important theorem by Gerschgorin gives a region consisting of closed circular disks
+in the complex plane and including all the eigenvalues of a given matrix. Indeed, for each
+the inequality (1) in the theorem determines a closed circular disk in the
+complex -plane with center and radius given by the right side of (1); and Theorem 1states that each of the eigenvalues of Alies in one of these n disks.
+THEOREM 1 Gerschgorin’s Theorem6
+Let be an eigenvalue of an arbitrary matrix Then for some
+integer j we have
+(1) ƒajj/H11002lƒ/H11017ƒaj1ƒ/H11001ƒaj2ƒ/H11001Á/H11001ƒaj, j/H110021ƒ/H11001ƒaj, j/H110011ƒ/H11001Á/H11001ƒajnƒ.(1/H11017j/H11017n)A/H11005[ajk]. n/H11003n lajj lj/H110051,Á, n
+6SEMYON ARANOVICH GERSCHGORIN (1901–1933), Russian mathematician.c20-a.qxd  11/2/10  8:57 PM  Page 879
+--- Page 37 ---
+PROOF Let xbe an eigenvector corresponding to an eigenvalue of A. Then
+(2) or
+Let be a component of x that is largest in absolute value. Then we have 
+for The vector equation (2) is equivalent to a system of nequations for the
+ncomponents of the vectors on both sides. The jth of these n equations with j as just
+indicated is
+Division by (which cannot be zero; why?) and reshuffling terms gives
+By taking absolute values on both sides of this equation, applying the triangle inequality
+(where aand bare any complex numbers), and observing that
+because of the choice of j (which is crucial!), we obtain (1),
+and the theorem is proved.
+EXAMPLE 1 Gerschgorin’s Theorem
+For the eigenvalues of the matrix
+we get the Gerschgorin disks (Fig. 449)
+Center 0, radius 1, Center 5, radius 1.5, Center 1, radius 1.5.
+The centers are the main diagonal entries of A. These would be the eigenvalues of Aif Awere diagonal. We
+can take these values as crude approximations of the unknown eigenvalues (3D-values) 
+(verify this); then the radii of the disks are corresponding error bounds.
+Since Ais symmetric, it follows from Theorem 5, Sec. 20.6, that the spectrum of Amust actually lie in the
+intervals and 
+It is interesting that here the Gerschgorin disks form two disjoint sets, namely, which contains two
+eigenvalues, and which contains one eigenvalue. This is typical, as the following theorem shows. /H17039 D2,D1 ´ D3,[3.5, 6.5]. [/H110021, 2.5]l2/H110055.305, l 3/H110050.904l1/H11005/H11002 0.209,D3: D2: D1:A/H11005D01
+2 1
+2 
+1
+2 51
+1
+2 11T/H17039ƒx1>xjƒ/H110171,Á, ƒxn>xjƒ/H110171,ƒa/H11001bƒ/H11017ƒaƒ/H11001ƒbƒajj/H11002l/H11005/H11002 aj1 x1
+xj /H11002Á/H11002aj, j/H110021 xj/H110021
+xj /H11002aj, j/H110011 xj/H110011
+xj /H11002Á/H11002ajn xn
+xj .xjaj1x1/H11001Á/H11001aj, j/H115461xj/H115461/H11001(ajj/H11002l)x j/H11001aj, j/H110011xj/H110011/H11001Á/H11001ajnxn/H110050.m/H110051,Á, n.ƒxm>xjƒ/H110171 xj(A/H11002lI)x/H110050. Ax/H11005lxl880 CHAP. 20 Numeric Linear Algebra
+0D1D2D3
+15y
+x
+Fig. 449. Gerschgorin disks in Example 1c20-b.qxd  11/2/10  9:25 PM  Page 880
+--- Page 38 ---
+SEC. 20.7 Inclusion of Matrix Eigenvalues 881
+THEOREM 2 Extension of Gerschgorin’s Theorem
+If p Gerschgorin disks form a set S that is disjoint from the other disks of a
+given matrix A, then S contains precisely p eigenvalues of A(each counted with its
+algebraic multiplicity, as defined in Sec. 20.6).
+Idea of Proof. Set where Bis the diagonal matrix with entries and
+apply Theorem 1 to with real tgrowing from 0 to 1.
+EXAMPLE 2 Another Application of Gerschgorin’s Theorem. Similarity
+Suppose that we have diagonalized a matrix by some numeric method that left us with some off-diagonal entries
+of size say,
+What can we conclude about deviations of the eigenvalues from the main diagonal entries?
+Solution. By Theorem 2, one eigenvalue must lie in the disk of radius centered at 4 and two
+eigenvalues (or an eigenvalue of algebraic multiplicity 2) in the disk of radius centered at 2. Actually,
+since the matrix is symmetric, these eigenvalues must lie in the intersections of these disks and the real axis,by Theorem 5 in Sec. 20.6.
+We show how an isolated disk can always be reduced in size by a similarity transformation. The matrix
+is similar to A. Hence by Theorem 2, Sec. 20.6, it has the same eigenvalues as A. From Row 3 we get the
+smaller disk of radius Note that the other disks got bigger, approximately by a factor of And inchoosing Twe have to watch that the new disks do not overlap with the disk whose size we want to decrease.
+For further interesting facts, see the book [E28].
+By definition, a diagonally dominant matrix is an matrix such that
+(3)
+where we sum over all off-diagonal entries in Row j. The matrix is said to be strictly
+diagonally dominant if in (3) for all j. Use Theorem 1 to prove the following basic
+property.
+THEOREM 3 Strict Diagonal Dominance
+Strictly diagonally dominant matrices are nonsingular./H11022j/H110051,Á, n ƒajjƒ/H11084a
+k/HS11005j ƒajkƒn/H11003n A/H11005[ajk]/H17039105. 2/H1155410/H1154610. /H11005D21 0/H1154651
+10/H11546521
+10/H115461010/H11546104T B/H11005T/H115461AT/H11005D10 0
+01 0001 0
+/H115465T D21 0/H11546510/H115465
+10/H11546521 0/H115465
+10/H11546510/H1154654T D10 001 0001 0
+5T2/H1155410/H1154652/H1155410/H115465A/H11005D21 0/H11546510/H115465
+10/H11546521 0/H115465
+10/H11546510/H1154654T .10/H115465,/H17039 At/H11005B/H11001tCajj, A/H11005B/H11001C,n/H11002pc20-b.qxd  11/2/10  9:25 PM  Page 881
+--- Page 39 ---
+Further Inclusion Theorems
+An inclusion theorem is a theorem that specifies a set which contains at least one
+eigenvalue of a given matrix. Thus, Theorems 1 and 2 are inclusion theorems; they even
+include the whole spectrum. We now discuss some famous theorems that yield furtherinclusions of eigenvalues. We state the first two of them without proofs (which wouldexceed the level of this book).
+THEOREM 4 Schur’s Theorem7
+Let be a matrix. Then for each of its eigenvalues
+(4) (Schur’s inequality).
+In (4) the second equality sign holds if and only if Ais such that
+(5)
+Matrices that satisfy (5) are called normal matrices. It is not difficult to see that Hermitian,
+skew-Hermitian, and unitary matrices are normal, and so are real symmetric, skew-symmetric,and orthogonal matrices.
+EXAMPLE 3 Bounds for Eigenvalues Obtained from Schur’s Inequality
+For the matrix
+we obtain from Schur’s inequality You may verify that the eigenvalues are 30, 25,
+and 20. Thus in fact, Ais not normal.
+The preceding theorems are valid for every real or complex square matrix. Other theorems
+hold for special classes of matrices only. Famous is the following one, which has variousapplications, for instance, in economics.
+THEOREM 5 Perron’s Theorem8
+LetAbe a real matrix whose entries are all positive. Then Ahas a positive
+real eigenvalue of multiplicity 1. The corresponding eigenvector can be
+chosen with all components positive. (The other eigenvalues are less than in
+absolute value.)rl/H11005rn/H11003n/H17039 302/H11001252/H11001202/H110051925/H110211949;ƒlƒ/H1101711949 /H1100544.1475.A/H11005D26/H1100222
+22 1 4
+42 2 8TATA/H11005AAT.ƒlmƒ2/H11017an
+i/H110051 ƒliƒ2/H11017an
+j/H110051 an
+k/H110051 ƒajkƒ2l1,Á, ln, n/H11003n A/H11005[ajk]882 CHAP. 20 Numeric Linear Algebra
+7ISSAI SCHUR (1875–1941), German mathematician, also known by his important work in group theory.
+8OSKAR PERRON (1880–1975) and GEORG FROBENIUS (1849–1917), German mathematicians, known
+for their work in potential theory, ODEs (Sec. 5.4), and group theory.c20-b.qxd  11/2/10  9:25 PM  Page 882
+--- Page 40 ---
+For a proof see Ref. [B3], vol. II, pp. 53–62. The theorem also holds for matrices with
+nonnegative real entries (“Perron–Frobenius Theorem”8) provided A is irreducible , that
+is, it cannot be brought to the following form by interchanging rows and columns; hereBand Fare square and 0 is a zero matrix.
+Perron’s theorem has various applications, for instance, in economics. It is interesting
+that one can obtain from it a theorem that gives a numeric algorithm:
+THEOREM 6 Collatz Inclusion Theorem9
+Let be a real matrix whose elements are all positive. Let xbe any
+real vector whose components are positive, and let be thecomponents of the vector Then the closed interval on the real axis boundedby the smallest and the largest of the n quotients contains at least oneeigenvalue of A.
+PROOF We have or
+(6)The transpose satisfies the conditions of Theorem 5. Hence has a positive eigenvalue
+and, corresponding to this eigenvalue, an eigenvector uwhose components are all
+positive. Thus and by taking the transpose we obtain From this
+and (6) we have
+or written out
+Since all the components are positive, it follows that
+(7)that is, for at least one j,and
+that is, for at least one j.
+Since Aand have the same eigenvalues, is an eigenvalue of A, and from (7) the
+statement of the theorem follows. /H17039l A
+Tqj/H11017l yj/H11002lxj/H110170,qj/H11084l yj/H11002lxj/H110840,ujan
+j/H110051 uj(yj/H11002lxj)/H110050.uT(y/H11002Ax)/H11005uTy/H11002uTAx/H11005uTy/H11002luTx/H11005uT(y/H11002lx)/H110050uTA/H11005luT. ATu/H11005luuj lATATy/H11002Ax/H110050.Ax/H11005yqj/H11005yj>xjy/H11005Ax.y1,Á, yn x1,Á, xnn/H11003n A/H11005[ajk]cBC
+0FdSEC. 20.7 Inclusion of Matrix Eigenvalues 883
+9LOTHAR COLLATZ (1910–1990), German mathematician known for his work in numerics.c20-b.qxd  11/2/10  9:25 PM  Page 883
+--- Page 41 ---
+EXAMPLE 4 Bounds for Eigenvalues from Collatz’s Theorem. Iteration
+For a given matrix A with positive entries we choose an and iterate, that is, we compute 
+In each step, taking and we compute an inclusion interval
+by Collatz’s theorem. This gives (6S)
+and the intervals etc. These intervals
+have length
+j 1 2 3 1 01 52 0
+Length 0.32 0.113622 0.0539835 0.0004217 0.0000132 0.0000004
+Using the characteristic polynomial, you may verify that the eigenvalues of Aare 0.72, 0.36, 0.09, so that those
+intervals include the largest eigenvalue, 0.72. Their lengths decreased with j, so that the iteration was worthwhile.
+The reason will appear in the next section, where we discuss an iteration method for eigenvalues. /H170390.5/H11017l/H110170.82, 0.3186> 0.50/H110050.6372/H11017l/H110170.5481> 0.73/H110050.750822,Á, x19/H11005D0.00216309
+0.001081550.00216309T , x
+20/H11005D0.001557430.0007787130.00155743TA/H11005D0.49 0.02 0.220.02 0.28 0.200.22 0.20 0.40T , x
+0/H11005D111T , x
+1/H11005D0.730.500.82T , x
+2/H11005D0.54810.31860.5886T ,y/H11005Ax
+j/H11005xj/H110011 x/H11005xj x2/H11005Ax1,Á, x20/H11005Ax19.x1/H11005Ax0, x/H11005x0884 CHAP. 20 Numeric Linear Algebra
+1–6 GERSCHGORIN DISKS
+Find and sketch disks or intervals that contain the
+eigenvalues. If you have a CAS, find the spectrum andcompare.
+1. 2.
+3. 4.5. 6.
+7. Similarity. In Prob. 2, find such that the radius
+of the Gerschgorin circle with center 5 is reduced by a
+factor 
+8.By what integer factor can you at most reduce theGerschgorin circle with center 3 in Prob. 6?1>100.T
+/H11546TATD10 0.1 /H110020.2
+   0.1 6 0
+  /H110020.2 0 3T D2 i 1/H11001i
+/H11002i 30
+1/H11002i 08TD10 1
+04 313 1 2T D0 0.4 /H110020.1
+/H110020.4 0 0.3
+0.1/H110020.3 0TD51 0
+/H11546210/H115462
+10/H11546281 0/H115462
+10/H11546210/H1154629T D524
+/H11002202
+247T9.If a symmetric matrix has been
+diagonalized except for small off-diagonal entries ofsize what can you say about the eigenvalues?
+10. Optimality of Gerschgorin disks. Illustrate with a
+matrix that an eigenvalue may very well lie on
+a Gerschgorin circle, so that Gerschgorin disks cangenerally not be replaced with smaller disks withoutlosing the inclusion property.
+11. Spectral radius 
+/H9267 Using Theorem 1, show that
+cannot be greater than the row sum norm of A.
+12–16 SPECTRAL RADIUS
+Use (4) to obtain an upper bound for the spectral radius:
+12.In Prob. 4 13.In Prob. 1
+14.In Prob. 6 15.In Prob. 3
+16.In Prob. 5
+17.Verify that the matrix in Prob. 5 is normal.
+18. Normal matrices. Show that Hermitian, skew-
+Hermitian, and unitary matrices (hence real symmetric,
+skew-symmetric, and orthogonal matrices) are normal.Why is this of practical interest?
+19.Prove Theorem 3 by using Theorem 1.
+20. Extended Gerschgorin theorem. Prove Theorem 2.
+Hint. Let and let t increase continuously from 0 to 1.A/H11005B/H11001C, B/H11005diag (a
+jj), A t/H11005B/H11001tC,r(A)(A).2/H11003210/H115465,A/H11005[ajk] n/H11003nPROBLEM SET 20.7c20-b.qxd  11/2/10  9:25 PM  Page 884
+--- Page 42 ---
+SEC. 20.8 Power Method for Eigenvalues 885
+20.8 Power Method for Eigenvalues
+A simple standard procedure for computing approximate values of the eigenvalues of an
+matrix is the power method. In this method we start from any vector
+with ncomponents and compute successively
+For simplifying notation, we denote by xand by y, so that 
+The method applies to any matrix Athat has a dominant eigenvalue (a such
+that is greater than the absolute values of the other eigenvalues). If Ais symmetric, it
+also gives the error bound (2), in addition to the approximation (1).
+THEOREM 1 Power Method, Error Bounds
+LetAbe an real symmetric matrix. Let be any real vector with n
+components. Furthermore, let
+Then the quotient
+(1) (Rayleigh10quotient)
+is an approximation for an eigenvalue of A(usually that which is greatest in
+absolute value, but no general statements are possible).
+Furthermore, if we set so that is the error of q, then
+(2)
+PROOF denotes the radicand in (2). Since by (1), we have
+(3)
+Since Ais real symmetric, it has an orthogonal set of nreal unit eigenvectors 
+corresponding to the eigenvalues respectively (some of which may be equal).
+(Proof in Ref. [B3], vol. 1, pp. 270–272, listed in App. 1.) Then xhas a representation of
+the form
+x/H11005a1z1/H11001Á/H11001anzn.l1,Á, ln,z1,Á, zn(y/H11002qx)T(y/H11002qx)/H11005m2/H110022qm 1/H11001q2m0/H11005m2/H11002q2m0/H11005d2m0.m1/H11005qm0 d2ƒPƒ/H11017d/H11005
+Bm2
+m0/H11002q2.P q/H11005l/H11002P,lq/H11005  m1
+m0y/H11005Ax,  m0/H11005xTx,  m1/H11005xTy,  m2/H11005yTy.x (/HS11005 0) n/H11003nƒlƒl n/H11003ny/H11005Ax. xs xs/H115461x1/H11005Ax0,  x2/H11005Ax1,  Á,  xs/H11005Axs/H115461.x0 (/HS110050)A/H11005[ajk] n/H11003n
+10LORD RAYLEIGH (JOHN WILLIAM STRUTT) (1842–1919), great English physicist and mathematician,
+professor at Cambridge and London, known for his important contributions to various branches of applied
+mathematics and theoretical physics, in particular, the theory of waves, elasticity, and hydrodynamics. In 1904he received a Nobel Prize in physics.c20-b.qxd  11/2/10  9:25 PM  Page 885
+--- Page 43 ---
+Now etc., and we obtain
+and, since the are orthogonal unit vectors,
+(4)It follows that in (3),
+Since the are orthogonal unit vectors, we thus obtain from (3)
+(5)Now let be an eigenvalue of Ato which q is closest, where c suggests “closest.” Then
+for From this and (5) we obtain the inequality
+Dividing by taking square roots, and recalling the meaning of gives
+This shows that is a bound for the error of the approximation qof an eigenvalue of
+Aand completes the proof.
+The main advantage of the method is its simplicity. And it can handle sparse matrices
+too large to store as a full square array. Its disadvantage is its possibly slow convergence.
+From the proof of Theorem 1 we see that the speed of convergence depends on the ratioof the dominant eigenvalue to the next in absolute value (2:1 in Example 1, below).
+If we want a convergent sequence of eigenvectors, then at the beginning of each step
+we scale the vector, say, by dividing its components by an absolutely largest one, as in
+Example 1, as follows.
+EXAMPLE 1 Application of Theorem 1. Scaling
+For the symmetric matrix A in Example 4, Sec. 20.7, and we obtain from (1) and (2) and the
+indicated scaling
+x5/H11005D0.990663
+0.5046821T ,
+  x10/H11005D0.9997070.5001461T ,
+  x15/H11005D0.9999910.5000051T .A/H11005D0.49 0.02 0.220.02 0.28 0.200.22 0.20 0.40T ,
+ x0/H11005D111T ,
+ x1/H11005D0.8902440.6097561T ,
+ x2/H11005D0.9311930.5412841Tx
+0/H11005[1 1 1]T/H17039P dd/H11005
+Bm2
+m0/H11002q2/H11084ƒlc/H11002qƒ.d2m0,d2m0/H11084(lc/H11002q)2(a12/H11001Á/H11001an2)/H11005(lc/H11002q)2m0.j/H110051,Á, n. (lc/H11002q)2/H11017(lj/H11002q)2lcd2m0/H11005(y/H11002qx)T(y/H11002qx)/H11005a12(l1/H11002q)2/H11001Á/H11001an2(ln/H11002q)2.zjy/H11002qx/H11005a1(l1/H11002q)z1/H11001Á/H11001an(ln/H11002q)zn.m0/H11005xTx/H11005a12/H11001Á/H11001an2.zjy/H11005Ax/H11005a1l1z1/H11001Á/H11001anlnznAz1/H11005l1z1,886 CHAP. 20 Numeric Linear Algebrac20-b.qxd  11/2/10  9:25 PM  Page 886
+--- Page 44 ---
+Here scaled to etc. The dominant eigenvalue is
+0.72, an eigenvector The corresponding qand are computed each time before the next scaling.
+Thus in the first step,
+This gives the following values of and the error (calculations with 10D, rounded to 6D):
+j 125 1 0
+q 0.683333 0.716048 0.719944 0.720000
+0.134743 0.038887 0.004499 0.0001410.036667 0.003952 0.000056
+The error bounds are much larger than the actual errors. This is typical, although the bounds cannot be improved;
+that is, for special symmetric matrices they agree with the errors.
+Our present results are somewhat better than those of Collatz’s method in Example 4 of Sec. 20.7, at the
+expense of more operations.
+Spectral shift, the transition from A to shifts every eigenvalue by Although
+finding a good kcan hardly be made automatic, it may be helped by some other method
+or small preliminary computational experiments. In Example 1, Gerschgorin’s theorem
+gives for the whole spectrum (verify!). Shifting by might be too
+much (then so let us try 
+EXAMPLE 2 Power Method with Spectral Shift
+For with Aas in Example 1 we obtain the following substantial improvements (where the index 1
+refers to Example 1 and the index 2 to the present example).
+j 1251 0
+1 0.134743 0.038887 0.004499 0.000141
+2 0.134743 0.034474 0.000693 1.8 /H1852810/H115466
+1 0.036667 0.003952 0.000056 5 /H1852810/H115468
+2 0.036667 0.002477 1.3 /H1852810/H1154669/H1852810/H1154612/H17039 PPddA/H110020.2I/H110020.2. /H110020.42/H11017l/H110170.42),/H110020.4 /H110020.02/H11017l/H110170.82/H11002k. A/H11002kI,/H170395/H1155410/H115468PdP/H110050.72/H11002q q, d,d/H11005am2
+m0 /H11002q2b1>2
+/H11005a(Ax 0)TAx0
+x0T x0 /H11002q2b1>2
+/H11005a1.4553
+3 /H11002q2b1>2
+/H110050.134743.q/H11005m1
+m0/H11005x0T Ax0
+x0T x0/H110052.05
+3/H110050.683333d [1 0.5 1]T.x1/H11005[0.73> 0.82 0.5>0.82 1]T, Ax0/H11005[0.73 0.5 0.82]T,SEC. 20.8 Power Method for Eigenvalues 887
+1–4 POWER METHOD WITHOUT SCALING
+Apply the power method without scaling (3 steps), using
+or Give Rayleigh quotients and
+error bounds. Show the details of your work.
+1. 2. c7/H110023
+/H110023/H110021d c94
+43d[1 1 1]T. x0/H11005[1, 1]T 3. 4.
+5–8 POWER METHOD WITH SCALING
+Apply the power method (3 steps) with scaling, using
+or as applicable. Give[ 1111 ]T, x0/H11005[1 1 1]TD3.6/H110021.8 1.8
+/H110021.8 2.8 /H110022.6
+1.8/H110022.6 2.8T D2/H1100211
+/H1100213 2
+12 3TPROBLEM SET 20.8c20-b.qxd  11/2/10  9:25 PM  Page 887
+--- Page 45 ---
+888 CHAP. 20 Numeric Linear Algebra
+20.9 Tridiagonalization and QR-Factorization
+We consider the problem of computing all the eigenvalues of a real symmetric matrix
+discussing a method widely used in practice. In the first stage we reduce the
+given matrix stepwise to a tridiagonal matrix, that is, a matrix having all its nonzero
+entries on the main diagonal and in the positions immediately adjacent to the main diagonal(such as in Fig. 450, Third Step). This reduction was invented by A. S. Householder
+11
+(J. Assn. Comput. Machinery 5(1958), 335–342). See also Ref. [E29] in App. 1.
+This Householder tridiagonalization will simplify the matrix without changing its
+eigenvalues. The latter will then be determined (approximately) by factoring the tridiago-nalized matrix, as discussed later in this section.A
+3A/H110053ajk4,
+11ALSTON SCOTT HOUSEHOLDER (1904–1993), American mathematician, known for his work  in
+numerical analysis and mathematical biology. He was head of the mathematics division at Oakridge National
+Laboratory and later professor at the University of Tennessee. He was both president of ACM (Association forComputing Machinery) 1954–1956 and SIAM (Society for Industrial and Applied Mathematics) 1963–1964.Rayleigh quotients and error bounds. Show the details of
+your work.
+5.The matrix in Prob. 3
+6.
+7.
+8.
+9.Prove that if x is an eigenvector, then in (2).
+Give two examples.
+10. Rayleigh quotient. Why does qgenerally approximate
+the eigenvalue of greatest absolute value? When will
+qbe a good approximation?
+11. Spectral shift, smallest eigenvalue. In Prob. 3 set
+(as perhaps suggested by the diagonal
+entries) and see whether you may get a sequence of q’s
+converging to an eigenvalue of Athat is smallest (not
+largest) in absolute value. Use Do8 steps. Verify that A has the spectrum {0, 3, 5}.x
+0/H11005[1 1 1]T.B/H11005A/H110023Id/H110050E2401
+412802521820UE5100131001310015
+UD423276364T12. CAS EXPERIMENT. Power Method with
+Scaling. Shifting. (a) Write a program for 
+matrices that prints every step. Apply it to the
+(nonsymmetric!) matrix (20 steps), starting from
+(b)Experiment in (a) with shifting. Which shift do you
+find optimal?
+(c)Write a program as in (a) but for symmetric matrices
+that prints vectors, scaled vectors, q, and Apply it to
+the matrix in Prob. 8.
+(d). Optimality of 
+/H9254. Consider and 
+take Show that for all steps 
+and the eigenvalues are so that the interval
+cannot be shortened (by omitting 
+without losing the inclusion property. Experiment with
+other ’s.
+(e)Find a (nonsymmetric) matrix for which in (2) is
+no longer an error bound.(f)Experiment systematically with speed of conver-
+gence by choosing matrices with the second greatest
+eigenvalue (i) almost equal to the greatest, (ii) some-what different, (iii) much different.dx
+0/H110061) [q/H11002d, q/H11001d]/H110061,q/H110050, d/H110051 x0/H11005c3
+/H110021d .A/H11005c0.6 0.8
+0.8/H110020.6dd.A/H11005D15 12 318 44 18
+/H1100219/H1100236 /H110027T .[1
+ 1 1]T.n/H11003nc20-b.qxd  11/2/10  9:25 PM  Page 888
+--- Page 46 ---
+SEC. 20.9 Tridiagonalization and QR-Factorization 889
+Householder’s Tridiagonalization Method11
+An real symmetric matrix being given, we reduce it by successive
+similarity transformations (see Sec. 20.6) involving matrices to tridiagonalform. These matrices are orthogonal and symmetric. Thus and similarlyfor the others. These transformations produce, from the given , the matrices
+in the form
+(1)
+The transformations (1) create the necessary zeros, in the first step in Row 1 and Column 1,
+in the second step in Row 2 and Column 2, etc., as Fig. 450 illustrates for a matrix.Bis tridiagonal.5/H110035A
+1/H11005P1A0P1
+A2/H11005P2A1P2
+###########
+B/H11005An/H115462/H11005Pn/H115462An/H115463Pn/H115462..A1/H110053a(1)
+jk4, A 2/H110053a(2)jk4,Á, An/H110022/H110053a(n/H115462)
+jk4A0/H11005A/H110053ajk4P/H115461
+1/H11005P1T/H11005P1P1,Á, Pn/H115462n/H110022 A/H110053ajk4 n/H11003n
+*
+*******************
+*****
+*********
+*************
+First Step Second Step Third Step
+A1 = P1AP1A2 = P2 A1P2A3 = P3A2P3
+Fig. 450. Householder’s method for a matrix. 
+Positions left blank are zeros created by the method.5/H110035
+How do we determine ? Now, all these are of the form
+(2)
+where Iis the unit matrix and is a unit vector with its first rcomponents
+0; thus
+(3)
+where the asterisks denote the other components (which will be nonzero in general).v1/H11005G0
+**
+o
+*W ,
+  v2/H11005G00*
+o
+*W ,
+  Á,  vn/H115462/H11005G00
+o
+**Wv
+r/H11005[vjr] n/H11003n(r/H110051,Á, n/H110022) Pr/H11005I/H110022vrvrTPr P1, P2,Á, Pn/H115462c20-b.qxd  11/2/10  9:25 PM  Page 889
+--- Page 47 ---
+890 CHAP. 20 Numeric Linear Algebra
+Step 1. has the components
+(a)
+(4) (b)
+where
+(c)
+where and and With this we
+compute by (2) and then by (1). This was the first step.
+Step 2. We compute by (4) with all subscripts increased by 1 and the replaced
+by the entries of just computed. Thus [see also (3)]
+(4*)
+where
+With this we compute by (2) and then by (1).
+Step 3. We compute by with all subscripts increased by 1 and the replaced
+by the entries of and so on.
+EXAMPLE 1 Householder Tridiagonalization
+Tridiagonalize the real symmetric matrix
+Solution. Step 1. We compute from (4c). Since we have 
+in (4b) and get from (4) by straightforward computationsgn a 21/H11005/H11001 1 a21/H110054/H110220, S2
+1/H1100542/H1100112/H1100112/H1100518A/H11005A0/H11005E6411
+461111521125U .A2, a(2)
+jka(1)jk(4*) v3A2 P2S2/H110052a(1)2
+32/H11001a(1)2
+42/H11001Á/H11001a(1)2
+n2.j/H110054, 5, Á, n  vj2/H11005a(1)
+j2  sgn a(1)32
+2v32S2  v32/H11005
+B1
+2  a1/H11001ƒa(1)32ƒ
+S2 b v12/H11005v22/H110050A1 a(1)
+jk,ajk v2A1 P1sgn a 21/H11005/H11002 1 if a 21/H110210. sgn a 21/H11005/H11001 1 if a 21/H110840 S1/H110220,S1/H110052a221/H11001a231/H11001 Á /H11001a2n1j/H110053, 4, Á, n vj1/H11005aj1 sgn a 21
+2v21S1v21/H11005
+R1
+2 a1/H11001ƒa21ƒ
+S1bv11/H110050v1c20-b.qxd  11/2/10  9:25 PM  Page 890
+--- Page 48 ---
+From this and (2),
+From the first line in (1) we now get
+Step 2. From we compute and
+From this and (2),
+The second line in (1) now gives
+This matrix B is tridiagonal. Since our given matrix has order we needed steps to accomplish
+this reduction, as claimed. (Do you see that we got more zeros than we can expect in general?)
+Bis similar to A, as we now show in general. This is essential because Bthus has the same spectrum as A,
+by Theorem 2 in Sec. 20.6.
+BSimilar to A. We assert that B in (1) is similar to The matrix is symmetric;
+indeed,
+PT
+r/H11005(I/H110022vrvrT )T/H11005IT/H110022(vrvrT)T/H11005I/H110022vrvrT/H11005PrPr A/H11005A0./H17039n/H110022/H110052 n/H110054,B2/H11005A2/H11005P2A1P2/H11005E6/H11002118 00
+/H11002118 712  0
+012 60
+00 0 3U .P2/H11005E10 0 0
+01 0 000 /H110021>12
+/H110021>12
+00 /H110021>12/H110021>12U .v2/H11005E00v
+32
+v42U/H11005E000.923879530.38268343
+U .S2
+2/H110052 (4*)A1/H11005P1A0P1/H11005E6/H11002118 00
+/H11002118 7 /H110021/H110021
+0 /H1100219
+2 3
+2 
+0 /H1100213
+2 9
+2 U .P1/H11005E10 0 0
+0/H110020.94280904 /H110020.23570227 /H110020.23570227
+0/H110020.23570227 0.97140452 /H110020.02859548
+0/H110020.23570227 /H110020.02859548 0.97140452U .v1/H11005E0v
+21
+v31
+v41U/H11005E00.985598560.119573160.11957316
+U .SEC. 20.9 Tridiagonalization and QR-Factorization 891c20-b.qxd  11/2/10  9:25 PM  Page 891
+--- Page 49 ---
+Also, is orthogonal because is a unit vector, so that and thus
+Hence and from (1) we now obtain
+where This proves our assertion. 
+QR-Factorization Method
+In 1958 H. Rutishauser12of Switzerland proposed the idea of using the LU-factorization
+(Sec. 20.2; he called it LR-factorization) in solving eigenvalue problems. An improved
+version of Rutishauser’s method (avoiding breakdown if certain submatrices becomesingular, etc.; see Ref. [E29]) is the QR-method, independently proposed by the AmericanJ. G. F. Francis ( Computer J. 4(1961–62), 265–271, 332–345) and the Russian V. N.
+Kublanovskaya (Zhurnal Vych. Mat. i Mat. Fiz. 1(1961), 555–570). The QR-method uses
+the factorization QR with orthogonal Q and upper triangular R. We discuss the QR-method
+for a real symmetric matrix. (For extensions to general matrices see Ref. [E29] in App. 1.)
+In this method we first transform a given real symmetric matrix A into a
+tridiagonal matrix by Householder’s method. This creates many zeros and thusreduces the amount of further work. Then we compute stepwise according tothe following iteration method.
+Step 1. Factor with orthogonal and upper triangular Then compute
+Step 2. Factor Then compute 
+General Step 
+(5)(a) Factor
+(b)
+Here is orthogonal and upper triangular. The factorization (5a) will be explained
+below.
+Similar to B. Convergence to a Diagonal Matrix. From (5a) we have 
+Substitution into (5b) gives
+(6) B
+s/H110011/H11005RsQs/H11005Q/H115461
+sBsQs.Rs/H11005Q/H115461sBs. Bs/H110011Rs QsCompute B s/H110011/H11005RsQs.Bs/H11005QsRs.s/H110011.B2/H11005R1Q1. B1/H11005Q1R1.B1/H11005R0Q0.R0. Q0 B0/H11005Q0R0B1, B2,ÁB0/H11005Bn/H11003n/H17039 P/H11005P1P2ÁPn/H115462. /H11005P/H115461AP /H11005P/H115461n/H115462P/H115461n/H115463ÁP/H1154611AP1ÁPn/H115463Pn/H115462 Á/H11005Pn/H115462Pn/H115463ÁP1AP1ÁPn/H115463Pn/H115462 B/H11005Pn/H115462An/H115463Pn/H115462/H11005ÁP/H115461
+r/H11005PT
+r/H11005Pr /H11005I/H110024vrvrT/H110014vr(vrTvr)vrT/H11005I. PrPT
+r/H11005P2
+r/H11005(I/H110022vrvrT)2/H11005I/H110024vrvrT/H110014vrvrTvrvrTvT
+rvr/H110051 vr Pr892 CHAP. 20 Numeric Linear Algebra
+12HEINZ RUTISHAUSER (1918–1970). Swiss mathematician, professor at ETH Zurich. Known for his
+pioneering work in numerics and computer science.c20-b.qxd  11/2/10  9:25 PM  Page 892
+--- Page 50 ---
+Thus is similar to Hence is similar to for all s. By Theorem 2, Sec.
+20.6, this implies that has the same eigenvalues as B.
+Also, is symmetric. This follows by induction. Indeed, is symmetric.
+Assuming to be symmetric, that is, and using (since isorthogonal), we get from (6) the symmetry,
+If the eigenvalues of B are different in absolute value, say, 
+thenwhere Dis diagonal, with main diagonal entries (Proof in Ref. [E29] listed
+in App. 1.)
+How to Get the QR-Factorization, say, The tridiagonal matrix
+Bhas generally nonzero entries below the main diagonal. These are
+We multiply B from the left by a matrix such that 
+has We multiply this by a matrix such that has 
+etc. After such multiplications we are left with an upper triangular matrix namely,
+(7)These matrices are very simple. has the submatrix
+suitable)
+in Rows and jand Columns and j; everywhere else on the main diagonal the
+matrix has entries 1; and all its other entries are 0. (This submatrix is the matrix of a
+plane rotation through the angle see Team Project 30, Sec. 7.2.) For instance, if writing we have
+These are orthogonal. Hence their product in (7) is orthogonal, and so is the inverse
+of this product. We call this inverse Then from (7),
+(8)where, with (9) Q
+0/H11005(CnCn/H115461ÁC3C2)/H115461/H11005C2TC3TÁCn/H115461TCnT.Cj/H115461/H11005CjT,B0/H11005Q0R0Q0.CjC2/H11005Ec2 s2 00
+/H11002s 2 c2 00
+00 1 0
+00 0 1U , C3/H11005E100 00 c
+3 s3 0
+0/H11002s 3 c3 0
+000 1U , C4/H11005E10 0 001 0 000 c
+4 s4
+00 /H11002s 4 c4U .cj/H11005cos u j, sj/H11005sin u j,n/H110054, uj;Cjj/H110021 j/H110021(uj ccos u j sin u j
+/H11002sin u j cos u jd2/H110032 Cj Cj n/H11003nCnCn/H115461ÁC3C2B0/H11005R0.R0, n/H110021b32(3)/H110050, C3C2B/H11005[bjk(3)] C3 b21(2)/H110050.C2B/H11005[bjk(2)] C2 b21, b32,Á, bn,n/H115461 .n/H110021B/H11005B0/H11005[bjk]/H11005Q0R0.l1, l2,Á, ln.lim
+s:/H11557 Bs/H11005Dƒl1ƒ/H11022ƒl2ƒ/H11022 Á /H11022ƒlnƒ,BT
+s/H110011/H11005(QT
+sBsQs)T/H11005QT
+sBT
+sQs/H11005QT
+sBsQs/H11005Bs/H110011.Qs Q/H115461
+s/H11005QT
+s BT
+s/H11005Bs, BsB0/H11005B Bs/H110011Bs/H110011B0/H11005B Bs/H110011 Bs. Bs/H110011SEC. 20.9 Tridiagonalization and QR-Factorization 893c20-b.qxd  11/3/10  5:19 PM  Page 893
+--- Page 51 ---
+This is our QR-factorization of From it we have by (5b) with 
+(10)We do not need explicitly, but to get from (10), we first compute then
+etc. Similarly in the further steps that produce 
+Determination of cos
+/H9258jjand sin /H9258jj.We finally show how to find the angles of rotation.
+and in must be such that in the product
+Now is obtained by multiplying the second row of by the first column of B,
+Hence and
+(11)
+Similarly for The next example illustrates all this.
+EXAMPLE 2 QR-Factorization Method
+Compute all the eigenvalues of the matrix
+Solution. We first reduce A to tridiagonal form. Applying Householder’s method, we obtain (see Example 1)
+A2/H11005E6/H11002118 00
+/H11002118 712 0
+012 60
+00 0 3U .A/H11005E6411
+461111521125U .u3, u4,Á. sin u2/H11005tan u 2
+21/H11001tan2 u2/H11005b21>b11
+21/H11001(b21>b11)2 . cos u2/H110051
+21/H11001tan2 u2/H110051
+21/H11001(b21>b11)2tan u 2/H11005s2>c2/H11005b21>b11,b21(2)/H11005/H11002 s2b11/H11001c2b21/H11005/H11002 (sin u 2)b11/H11001(cos u 2)b21/H110050.C2 b21(2)C2B/H11005Ec2 s2 0 Á
+/H11002s2 c2 0 Á
+## # Á
+## # ÁU  Eb11 b12 b13Á
+b21 b22 b23Á
+### Á
+### ÁU .b21(2)/H110050 C2 sin u 2 cos u 2B2, B3,Á. (R0C2T)C3T,R0C2T, B1 Q0B1/H11005R0Q0/H11005R0C2TC3TÁCn/H115461TCnT.s/H110050 B0.894 CHAP. 20 Numeric Linear Algebrac20-b.qxd  11/2/10  9:25 PM  Page 894
+--- Page 52 ---
+From the characteristic determinant we see that hence A, has the eigenvalue 3. (Can you see this directly
+from ?) Hence it suffices to apply the QR-method to the tridiagonal matrix
+Step 1. We multiply B from the left by
+and then by
+Here gives (11) and With
+these values we compute
+In we get from the values and
+This gives
+From this we compute
+which is symmetric and tridiagonal. The off-diagonal entries in are still large in absolute value. Hence we
+have to go on.
+Step 2. We do the same computations as in the first step, with replaced by and and changed
+accordingly, the new angles being and We obtain
+and from this
+We see that the off-diagonal entries are somewhat smaller in absolute value than those of but still much too
+large for the diagonal entries to be good approximations of the eigenvalues of B.B
+1,B2/H11005D10.87987988 /H110020.79637918 0
+/H110020.79637918 5.44738664 1.50702500
+0 1.50702500 2.67273348T .R1/H11005D10.53565375 /H110022.80232241 /H110020.39114588
+0 4.08329584 3.98824028
+0 0 3.06832668Tu3/H110050.513415589. u2/H11005/H11002 0.196291533C3 C2 B1 B0/H11005BB1B1/H11005R0C2TC3T/H11005D10.33333333 /H110022.05480467 0
+/H110022.05480467 4.03508772 2.00553251
+0 2.00553251 4.63157895TR0/H11005C3C2B/H11005D7.34846923 /H110027.50555350 /H110020.81649658
+0 3.55902608 3.44378413
+0 0 5.04714615T .sin u 3/H110050.39735971.cos u 3/H110050.91766294 (/H11002sin u 3)#3.26598632 /H11001(cos u 3)#1.41421356 /H110050 C3C2B/H11005D7.34846923 /H110027.50555350 /H110020.81649658
+0 3.26598632 1.15470054
+0 1.41421356 6.00000000T .sin u 2/H11005/H11002 0.57735027. cos u 2/H110050.81649658 (/H11002sin u 2)#6/H11001(cos u 2)(/H11002118 )/H110050C3/H11005D10 00 cos u
+3 sin u 3
+0/H11002sin u 3 cos u 3T . C2B C2/H11005Dcos u 2 sin u 2 0
+/H11002sin u 2 cos u 2 0
+00 1TB0/H11005B/H11005D6/H11002118 0
+/H11002118 712
+0 12 6T .3/H110033 A2A2,SEC. 20.9 Tridiagonalization and QR-Factorization 895c20-b.qxd  11/2/10  9:25 PM  Page 895
+--- Page 53 ---
+Further Steps. We list the main diagonal entries and the absolutely largest off-diagonal entry, which is
+in all steps. You may show that the given matrix Ahas the spectrum 11, 6, 3, 2.
+Step jb11(j)b22(j)b33(j)maxj/HS11005k /H20841bjk(J)/H20841
+3 10.9668929 5.94589856 2.08720851 0.58523582
+5 10.9970872 6.00181541 2.00109738 0.120653347 10.9997421 6.00024439 2.00001355 0.035911079 10.9999772 6.00002267 2.00000017 0.01068477
+/H17039
+Looking back at our discussion, we recognize that the purpose of applying Householder’s
+tridiagonalization before the QR-factorization method is a substantial reduction of cost ineach QR-factorization, in particular if A is large.
+Convergence acceleration and thus further reduction of cost can be achieved by a
+spectral shift, that is, by taking instead of with a suitable Possible choices
+of are discussed in Ref. [E29], p. 510.k
+sks. Bs Bs/H11002ksIƒb12(j)ƒ/H11005ƒb21(j)ƒ896 CHAP. 20 Numeric Linear Algebra
+1–5 HOUSEHOLDER TRIDIAGONALIZATION
+Tridiagonalize. Show the details.
+1.
+2.3.
+4.
+E5411
+451111421124UD72 321 0636 7TD011101110TD0.98 0.04 0.440.04 0.56 0.400.44 0.40 0.80T5.
+6–9
+QR-FACTORIZATION
+Do three QR-steps to find approximations of the eigen-
+values of:
+6.The matrix in the answer to Prob. 1
+7.The matrix in the answer to Prob. 3
+8. 9.
+10.CAS EXPERIMENT. QR-Method. Try to find out
+experimentally on what properties of a matrix the speedof decrease of off-diagonal entries in the QR-methoddepends. For this purpose write a program that firsttridiagonalizes and then does QR-steps. Try theprogram out on the matrices in Probs. and 4.Summarize your findings in a short report.1,
+ 3,D140 10 0
+10 70 2
+02 /H1100230T D14.2/H110020.1 0
+/H110020.1 /H110026.3 0.2
+0 0.2 2.1TE35 21 04 2
+52 59 44 80
+10 44 39 4242 80 42 35UPROBLEM SET 20.9
+1.What are the main problem areas in numeric linear
+algebra?
+2.When would you apply Gauss elimination and whenGauss–Seidel iteration?CHAPTER 20 REVIEW QUESTIONS AND PROBLEMS
+3.What is pivoting? Why and how is it done?
+4.What happens if you apply Gauss elimination to asystem that has no solutions?
+5.What is Cholesky’s method? When would you apply it?c20-b.qxd  11/2/10  9:25 PM  Page 896
+--- Page 54 ---
+Chapter 20 Review Questions and Problems 897
+6.What do you know about the convergence of the
+Gauss–Seidel iteration?
+7.What is ill-conditioning? What is the condition numberand its significance?
+8.Explain the idea of least squares approximation .
+9.What are eigenvalues of a matrix? Why are theyimportant? Give typical examples.
+10.How did we use similarity transformations of matricesin designing numeric methods?
+11.What is the power method for eigenvalues? What areits advantages and disadvantages?
+12.State Gerschgorin’s theorem from memory. Give typicalapplications.
+13.What is tridiagonalization and QR? When would youapply it?
+14–17
+GAUSS ELIMINATION
+Solve
+14.
+15.
+16.17.
+18–20
+INVERSE MATRIX
+Compute the inverse of:
+18.
+19.D15 20 10
+20 35 1510 15 90TD2.0 0.1 3.31.6 4.4 0.50.3/H110024.3 2.8T42x
+1/H1100174x 2/H1100136x 3/H1100596
+/H1100246x 1/H1100212x 2/H110022x3/H1100582
+3x1/H1100125x 2/H110015x3/H11005195x1/H11001x2/H110023x3/H11005 17
+/H110025x2/H1100115x 3/H11005/H11002 10
+2x1/H110023x2/H110019x3/H11005 08x2/H110026x3/H11005 23.6
+10x 1/H110016x2/H110012x3/H11005 68.4
+12x 1/H1100214x 2/H110014x3/H11005/H11002 6.23x2/H110026x3/H11005 0
+4x1/H11002x2/H110012x3/H11005 16
+/H110025x 1/H110012x2/H110024x3/H11005/H11002 2020.
+21–23 GAUSS–SEIDEL ITERATION
+Do 3 steps without scaling, starting from21.
+22.
+23.
+24–26
+VECTOR NORMS
+Compute the -norms of the vectors.
+24.
+25.26.
+27–30
+MATRIX NORM
+Compute the matrix norm corresponding to the -vector
+norm for the coefficient matrix:
+27.In Prob. 15
+28.In Prob. 17
+29.In Prob. 21
+30.In Prob. 22
+31–33 CONDITION NUMBER
+Compute the condition number (corresponding to the 
+-vector norm) of the coefficient matrix:
+31.In Prob. 19
+32.In Prob. 18
+33.In Prob. 21
+34–35 FITTING BY LEAST SQUARES
+Fit and graph:34.A straight line to 
+35.A quadratic parabola to the data in Prob. 34.(3, 3)(/H110021, 0),
+ (0, 2), (1, 2), (2, 3),//H11557//H11557[0 0 0 /H110021 0]T[8 /H1100221 13 0]T[0.2 /H110028.1 0.4 0 0 /H110021.3 2]T/1-, /2-, and / /H1155710x 1/H11001 x2/H11002 x3/H1100517
+2x1/H1100120x 2/H11001 x3/H1100528
+3x1/H11002 x2/H1100125x 3/H110051050.2x 1/H110014.0x 2/H110020.4x 3/H11005 32.0
+0.5x 1/H110020.2x 2/H110012.5x 3/H11005/H11002 5.1
+7.5x 1/H110010.1x 2/H110021.5x 3/H11005/H11002 12.74x1/H11002x2 /H1100522.0
+4x2/H11002x3/H11005  13.4
+/H11002x1 /H110014x3/H11005/H11002 2.4[1 1 1]T.D511
+160108Tc20-b.qxd  11/2/10  9:25 PM  Page 897
+--- Page 55 ---
+898 CHAP. 20 Numeric Linear Algebra
+Main tasks are the numeric solution of linear systems (Secs. 20.1–20.4), curve fitting
+(Sec. 20.5), and eigenvalue problems (Secs. 20.6–20.9).
+Linear systems with written out
+(1)
+can be solved by a direct method (one in which the number of numeric operations
+can be specified in advance, e.g., Gauss’s elimination) or by an indirect or iterative
+method (in which an initial approximation is improved stepwise).
+The Gauss elimination (Sec. 20.1) is direct, namely, a systematic elimination
+process that reduces (1) stepwise to triangular form. In Step 1 we eliminate from
+equations to by subtracting from then from
+etc. Equation is called the pivot equation in this step and the pivot. In
+Step 2 we take the new second equation as pivot equation and eliminate , etc. Ifthe triangular form is reached, we get from the last equation, then fromthe second last, etc. Partial pivoting interchange of equations) is necessary if
+candidates for pivots are zero, and advisable if they are small in absolute value.
+Doolittle’s, Crout’s, and Cholesky’s methods in Sec. 20.2 are variants of the
+Gauss elimination. They factor (L lower triangular, U upper triangular)
+and solve by solving for yand then for x.
+In the Gauss–Seidel iteration (Sec. 20.3) we make 
+(by division) and write thus which
+suggests the iteration formula
+(2)in which we always take the most recent approximate ’s on the right. If 
+where then this process converges. Here, denotes any
+matrix norm (Sec. 20.3)./H20648C/H20648 C/H11005/H11002 (I/H11001L)
+/H115461U,/H20648C/H20648/H110211, xjx(m/H110011)/H11005b/H11002Lx(m/H110011)/H11002Ux(m)x/H11005b/H11002(L/H11001U)x, Ax/H11005(I/H11001L/H11001U)x/H11005b;a11/H11005a22/H11005Á/H11005ann/H110051Ux/H11005y Ly/H11005b Ax/H11005LUx/H11005bA/H11005LU(/H11005xn/H115461 xnx2a11 E1 E3,(a31>a11) E 1 E2, (a21>a11) E 1 En E2x1E1:  a11x1/H11001Á/H11001a1nxn/H11005b1
+E2:  a21x1/H11001Á/H11001a2nxn/H11005b2
+ÁÁÁÁÁÁÁÁÁÁ
+En:  an1x1/H11001Á/H11001annxn/H11005bnA/H11005[ajk], Ax/H11005bSUMMARY OF CHAPTER 20
+Numeric Linear Algebra36–39 EIGENVALUES
+Find and graph three circular disks that must contain all the
+eigenvalues of the matrix:
+36.In Prob. 18
+37.In Prob. 1938.In Prob. 20
+39.Of the coefficients in Prob. 14
+40. Power method. Do 4 steps with scaling for the matrix
+in Prob. 19, starting for and computing the
+Rayliegh quotients and error bounds.[1 1 1]c20-b.qxd  11/3/10  5:19 PM  Page 898
+--- Page 56 ---
+If the condition number of Ais large, then the system 
+is ill-conditioned (Sec. 20.4), and a small residual does notimply
+that is close to the exact solution.
+The fitting of a polynomial through given data
+(points in the xy-plane) by the method of least squares is
+discussed in Sec. 20.5 (and in statistics in Sec. 25.9). If , the least squares
+polynomial will be the same as an interpolating polynomial (uniqueness).
+Eigenvalues (values for which has a solution , called an
+eigenvector) can be characterized by inequalities (Sec. 20.7), e.g. in Gerschgorin’s
+theorem, which gives n circular disks which contain the whole spectrum (all
+eigenvalues) of A, of centers and radii (sum over k from 1 to n, 
+Approximations of eigenvalues can be obtained by iteration, starting from an
+and computing In this power
+method (Sec. 20.8) the Rayleigh quotient
+(3)
+gives an approximation of an eigenvalue (usually that of the greatest absolute value)
+and, if A is symmetric, an error bound is
+(4)
+Convergence may be slow but can be improved by a spectral shift.
+For determining all the eigenvalues of a symmetric matrix Ait is best to first
+tridiagonalize Aand then to apply the QR-method (Sec. 20.9), which is based on a
+factorization with orthogonal Qand upper triangular R and uses similarity
+transformations.A/H11005QRƒPƒ/H11017
+B(Ax)TAx
+xTx /H11002q2.(x/H11005xn) q/H11005(Ax)T)x
+xTxx1/H11005Ax0, x2/H11005Ax1,Á, xn/H11005Axn/H115461. x0/HS110050k/HS11005j). Sƒajkƒ ajjx/HS110050 Ax/H11005lx l lm/H11005n(x1, y1), Á, (xn, yn)p(x)/H11005b0/H11001b1x/H11001Á/H11001bmxm/H33522xr/H11005b/H11002A/H33522xAx/H11005b k(A)/H11005 /H20648 ˛A ˛/H20648 /H20648 ˛A/H115461/H20648Summary of Chapter 20 899c20-b.qxd  11/2/10  9:25 PM  Page 899

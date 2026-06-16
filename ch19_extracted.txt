@@ -1,0 +1,2124 @@
+--- Page 1 ---
+790CHAPTER 19
+Numerics in General
+Numeric analysis or briefly numerics has a distinct flavor that is different from basic
+calculus, from solving ODEs algebraically, or from other (nonnumeric) areas. Whereas in
+calculus and in ODEs there were very few choices on how to solve the problem and youranswer was an algebraic answer, in numerics you have many more choices and youranswers are given as tables of values (numbers) or graphs. You have to make judicouschoices as to what numeric method or algorithm you want to use, how accurate you needyour result to be, with what value (starting value) do you want to begin your computation,and others. This chapter is designed to provide a good transition from the algebraic typeof mathematics to the numeric type of mathematics.
+We begin with the general concepts such as floating point, roundoff errors, and general
+numeric errors and their propagation. This is followed in Sec. 19.2 by the important topicof solving equations of the type by various numeric methods, including the famousNewton method. Section 19.3 introduces interpolation methods. These are methods thatconstruct new (unknown) function values from known function values. The knowledgegained in Sec. 19.3 is applied to spline interpolation (Sec. 19.4) and is useful for under-standing numeric integration and differentiation covered in the last section.
+Numerics provides an invaluable extension to the knowledge base of the problem-
+solving engineer. Many problems have no solution formula (think of a complicated integralor a polynomial of high degree or the interpolation of values obtained by measurements).In other cases a complicated solution formula may exist but may be practically useless.It is for these kinds of problems that a numerical method may generate a good answer.Thus, it is very important that the applied mathematician, engineer, physicist, or scientistbecomes familiar with the essentials of numerics and its ideas, such as estimation of errors,order of convergence, numerical methods expressed in algorithms, and is also informedabout the important numeric methods.
+Prerequisite: Elementary calculus.
+References and Answers to Problems: App. 1 Part E, App. 2.
+19.1 Introduction
+As an engineer or physicist you may deal with problems in elasticity and need to solvean equation such as or a more difficult problem of finding the roots of ahigher order polynomial. Or you encounter an integral such as
+/H209101
+0 exp (/H11002x2) dxx cosh x /H110051f (x)/H110050
+c19-a.qxd  11/2/10  8:20 PM  Page 790
+--- Page 2 ---
+[see App. 3, formula (35)] that you cannot solve by elementary calculus. Such problems,
+which are difficult or impossible to solve algebraically, arise frequently in applications.They call for numeric methods, that is, systematic methods that are suitable for solving,numerically, the problems on computers or calculators. Such solutions result in tables ofnumbers, graphical representation (figures), or both. Typical numeric methods are iterativein nature and, for a well-choosen problem and a good starting value, will frequentlyconverge to a desired answer. The evolution from a given problem that you observed inan experimental lab or in an industrial setting (in engineering, physics, biology, chemistry,economics, etc.) to an approximation suitable for numerics to a final answer usuallyrequires the following steps.
+1. Modeling. We set up a mathematical model of our problem, such as an integral, a
+system of equations, or a differential equation.
+2. Choosing a numeric method and parameters (e.g., step size), perhaps with a
+preliminary error estimation.
+3. Programming. We use the algorithm to write a corresponding program in a CAS,
+such as Maple, Mathematica, Matlab, or Mathcad, or, say, in Java, C or orFORTRAN, selecting suitable routines from a software system as needed.
+4. Doing the computation.
+5. Interpreting the results in physical or other terms, also deciding to rerun if further
+results are needed.
+Steps 1 and 2 are related. A slight change of the model may often admit of a more efficient
+method. To choose methods, we must first get to know them. Chapters 19–21 contain efficient
+algorithms for the most important classes of problems occurring frequently in practice.
+In Step 3 the program consists of the given data and a sequence of instructions to be
+executed by the computer in a certain order for producing the answer in numeric or graphicform.
+To create a good understanding of the nature of numeric work, we continue in this
+section with some simple general remarks.
+Floating-Point Form of Numbers
+We know that in decimal notation, every real number is represented by a finite or aninfinite sequence of decimal digits. Now most computers have two ways of representingnumbers, called fixed point and floating point. In a fixed-point system all numbers are
+given with a fixed number of decimals after the decimal point; for example, numbersgiven with 3 decimals are 62.358, 0.014, 1.000. In a text we would write, say, 3 decimalsas 3D. Fixed-point representations are impractical in most scientific computations becauseof their limited range (explain!) and will not concern us.
+In a floating-point system we write, for instance,
+or sometimes also
+We see that in this system the number of significant digits is kept fixed, whereas the decimal
+point is “floating.” Here, a significant digit of a number c is any given digit of c, except/H110022.000 /H1155410
+/H115462. 1.735/H1155410/H1154614, 6.247/H11554102,/H110020.2000 /H1155410/H1154610.1735 /H1155410/H1154613, 0.6247 /H11554103,C/H11001/H11001,SEC. 19.1 Introduction 791c19-a.qxd  11/2/10  8:20 PM  Page 791
+--- Page 3 ---
+possibly for zeros to the left of the first nonzero digit; these zeros serve only to fix the
+position of the decimal point. (Thus any other zero is a significant digit of c.) For instance, 
+all have 5 significant digits. In a text we indicate, say, 5 significant digits, by 5S.
+The use of exponents permits us to represent very large and very small numbers. Indeed,
+theoretically any nonzero number acan be written as
+(1) ninteger.
+On modern computers, which use binary (base 2) numbers, mis limited to k binary digits (e.g.,
+and nis limited (see below), giving representations (for finitely many numbers only!)
+(2)
+These numbers are called k-digit binary machine numbers. Their fractional part m
+(or is called the mantissa. This is not identical with “mantissa” as used for logarithms.
+nis called the exponent of 
+It is important to realize that there are only finitely many machine numbers and that
+they become less and less “dense” with increasing a. For instance, there are as many
+numbers between 2 and 4 as there are between 1024 and 2048. Why?
+The smallest positive machine number eps with is called the machine
+accuracy. It is important to realize that there are no numbers in the intervals 
+This means that, if the mathematical
+answer to a computation would be the computer result will be either
+1024 or so it is impossible to achieve greater accuracy.Underflow and Overflow. The range of exponents that a typical computer can handle
+is very large. The IEEE (Institute of Electrical and Electronic Engineers) floating-point
+standard for single precision is from to and
+for double precision it is from 
+As a minor technicality, to avoid storing a minus in the exponent, the ranges are shifted
+from by adding 126 (for double precision 1022). Note that shifted exponents
+of 255 and 1047 are used for some special cases such as representing infinity.
+If, in a computation a number outside that range occurs, this is called underflow when
+the number is smaller and overflow when it is larger. In the case of underflow, the result
+is usually set to zero and computation continues. Overflow might cause the computer tohalt. Standard codes (by IMSL, NAG, etc.) are written to avoid overflow. Error messageson overflow may then indicate programming errors (incorrect input data, etc.). From hereon, we will be discussing the decimal results that we obtain from our computations.
+Roundoff
+An error is caused by chopping discarding all digits from some decimal on) or rounding.
+This error is called roundoff error, regardless of whether we chop or round. The rule forrounding off a number to kdecimals is as follows. (The rule for rounding off to ksignificant
+digits is the same, with “decimal” replaced by “significant digit.”)
+Roundoff Rule. To round a number xto kdecimals, and to x and chop the
+digits after the digit. (k/H110011)st5/H1155410
+/H11546(k/H110011)(/H11005[/H11002126, 128]2/H115461022 to 21024 (2.225 /H1100310/H11546308 to 1.798 /H1100310308).2128 (1.175 /H1100310/H1154638 to 3.403 /H110031038) 2/H115461261024/H11554eps1024/H110011024/H11554eps>2,[2, 2/H110012/H11554eps], Á, [1024, 1024 /H110011024/H11554eps], Á.[1, 1/H11001eps],1/H11001eps/H110221a.m)ad1/H110220. m/H110050.d1d2Ádk, a/H11005/H11006 m/H115542n,k/H110058)0.1/H11017ƒmƒ/H110211, a/H11005/H11006 m/H1155410n,13600,  1.3600,  0.0013600792 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 792
+--- Page 4 ---
+EXAMPLE 1 Roundoff Rule
+Round the number 1.23454621 to (a)2 decimals, (b) 3 decimals, (c) 4 decimals, (d) 5 decimals, and (e) 6 decimals.
+Solution. (a)For 2 decimals we add to the given number, that is,
+Then we chop off the digits “954621” after the space or equivalently
+(b) so that for 3 decimals we get 1.234.
+(c)1.23459621 after chopping give us 1.2345 (4 decimals).
+(d)1.23455121 yields 1.23455 (5 decimals).
+(e)1.23454671 yields 1.234546 (6 decimals).
+Can you round the number to 7 decimals?
+Chopping is not recommended because the corresponding error can be larger than that
+in rounding. (Nevertheless, some computers use it because it is simpler and faster. On the
+other hand, some computers and calculators improve accuracy of results by doingintermediate calculations using one or more extra digits, called guarding digits. )
+Error in Rounding. Let in (2) be the floating-point computer approximation of
+ain (1) obtained by rounding, where fl suggests floating. Then the roundoff rule gives (by
+dropping exponents) Since this implies (when 
+(3)
+The right side is called the rounding unit. If we write we
+have by algebra hence by (3). This shows that the rounding unit
+u is an error bound in rounding.
+Rounding errors may ruin a computation completely, even a small computation. In
+general, these errors become the more dangerous the more arithmetic operations (perhaps
+several millions!) we have to perform. It is therefore important to analyze computationalprograms for expected rounding errors and to find an arrangement of the computationssuch that the effect of rounding errors is as small as possible.
+As mentioned, the arithmetic in a computer is not exact and causes further errors;
+however, these will not be relevant to our discussion.
+Accuracy in Tables. Although available software has rendered various tables of function
+values superfluous, some tables (of higher functions, of coefficients of integration
+formulas, etc.) will still remain in occasional use. If a table shows ksignificant digits, it
+is conventionally assumed that any value in the table deviates from the exact value a
+by at most unit of the kth digit.
+Loss of Significant Digits
+This means that a result of a calculation has fewer correct digits than the numbers fromwhich it was obtained. This happens if we subtract two numbers of about the same size,for example, (“subtractive cancellation”). It may occur in simpleproblems, but it can be avoided in most cases by simple changes of the algorithm—if oneis aware of it! Let us illustrate this with the following basic problem.
+EXAMPLE 2 Quadratic Equation. Loss of Significant Digits
+Find the roots of the equation
+using 4 significant digits (abbreviated 4S) in the computation.x2/H1100140x/H110012/H110050,0.1439 /H110020.1426/H110061
+2a/H33522ƒdƒ/H11017u (a/H11002a)>a/H11005d,a/H11005a(1/H11001d), u/H110051
+2/H11554101/H11546k`a/H11002a
+a`/H11015 `m/H11002m
+m`/H110171
+2/H11554101/H11546k.a/HS110050) ƒmƒ/H110840.1, ƒm/H11002mƒ/H110171
+2 /H1155410/H11546k.a/H11005fl (a)/H170391.23454621 /H110010.0005 /H110051.235 04621,1.23954621 /H110020.00954621 /H110051.23.1.2345621 /H110010.005/H110051.23 954621.5/H1155410/H11546(k/H110011)/H110055/H1155410/H115463/H110050.005SEC. 19.1 Introduction 793c19-a.qxd  11/2/10  8:20 PM  Page 793
+--- Page 5 ---
+Solution. A formula for the roots of a quadratic equation is
+(4)
+Furthermore, since another formula for those roots
+(5) as in (4).
+We see that this avoids cancellation in for positive b.
+If calculate from (4) and then 
+For we obtain from (4) hence 
+involving no difficulty, and a poor value involving loss of digits by subtractive
+cancellation.
+In contrast, (5) gives the absolute value of the error being less than one
+unit of the last digit, as a computation with more digits shows. The 10S-value is 
+Errors of Numeric Results
+Final results of computations of unknown quantities generally are approximations; that
+is, they are not exact but involve errors. Such an error may result from a combination
+of the following effects. Roundoff errors result from rounding, as discussed above.
+Experimental errors are errors of given data (probably arising from measurements).
+Truncating errors result from truncating (prematurely breaking off), for instance, if we
+replace a Taylor series with the sum of its first few terms. These errors depend on thecomputational method used and must be dealt with individually for each method.[“Truncating” is sometimes used as a term for chopping off (see before), a terminologythat is not recommended.]
+Formulas for Errors. If is an approximate value of a quantity whose exact value is
+a, we call the difference(6)the error of Hence
+(6*)
+For instance, if is an approximation of its error is The
+error of an approximation of is 
+CAUTION! In the literature (“absolute error”) or are sometimes also
+used as definitions of error.
+The relative error of is defined by
+(7)
+This looks useless because ais unknown. But if is much less than then we can
+use instead of aand get
+P
+r/H11015P
+a/H33522  . (7r)a/H33522ƒa/H33522ƒ, ƒPƒ(a/HS110050). Pr/H11005P
+a /H11005a/H11002a/H33522
+a /H11005Error
+True value a/H33522Pra/H33522/H11002a ƒa/H11002a/H33522ƒP/H110050.22. a/H110051.82 a/H33522/H110051.60P/H11005/H11002 0.3. a/H1100510.2, a/H33522/H1100510.5a/H11005a/H33522/H11001P,  True  value/H11005Approximation /H11001Error.a/H33522.P/H11005a/H11002a/H33522a/H33522/H17039 /H110020.05006265674.x1/H110052.000> (/H1100239.95) /H11005/H11002 0.05006,x1/H11005/H11002 20.00/H1100119.95/H11005/H11002 0.05,x2/H11005/H11002 20.00/H1100219.95, x/H11005/H11002 20 /H11006 1398/H11005/H11002 20 /H11006 19.95, x2/H1100140x/H110012/H110050x2/H11005c>(ax1). x1 b/H110210,x1x1/H11005c
+ax2 ,  x2x1x2/H11005c>a,x1/H110051
+2a  (/H11002b/H110012b2/H110024ac),   x2/H110051
+2a  (/H11002b/H110022b2/H110024ac).ax2/H11001bx/H11001c/H110050 x1, x2794 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 794
+--- Page 6 ---
+This still looks problematic because is unknown—if it were known, we could get
+from (6) and we would be done. But what one often can obtain in practice is
+an error bound for that is, a number such that
+hence
+This tells us how far away from our computed the unknown acan at most lie. Similarly,
+for the relative error, an error bound is a number such that
+hence
+Error Propagation
+This is an important matter. It refers to how errors at the beginning and in later steps
+(roundoff, for example) propagate into the computation and affect accuracy, sometimesvery drastically. We state here what happens to error bounds. Namely, bounds for theerror add under addition and subtraction, whereas bounds for the relative error add under
+multiplication and division. You do well to keep this in mind.
+THEOREM 1 Error Propagation
+(a)In addition and subtraction, a bound for the error of the results is given by
+the sum of the error bounds for the terms.
+(b)In multiplication and division, an error bound for the relative error of the
+results is given (approximately) by the sum of the bounds for the relative errors
+of the given numbers.
+PROOF (a)We use the notations Then for the
+error of the difference we obtain
+The proof for the sum is similar and is left to the student.
+(b) For the relative error of we get from the relative errors and of 
+and bounds 
+This proof shows what “approximately” means: we neglected as small in absolute
+value compared to and The proof for the quotient is similar but slightly moretricky (see Prob. 13). /H17039ƒP
+yƒ. ƒPxƒPxPy /H11015 `Pxy/H11001Pyx
+xy`/H11017 `Px
+x`/H11001 `Py
+y`/H11005ƒPrxƒ/H11001ƒPryƒ/H11017brx/H11001bry. ƒPrƒ/H11005 `xy/H11002x/H33522y/H33522
+xy `/H11005 `xy/H11002(x/H11002Px)(y/H11002Py)
+xy`/H11005 `Pxy/H11001Pyx/H11002PxPy
+xy`brx, bryx/H33522, y/H33522Pry Prx x/H33522y/H33522Pr /H11005ƒPx/H11002Pyƒ/H11017ƒPxƒ/H11001ƒPyƒ/H11017bx/H11001by. /H11005ƒx/H11002x/H33522/H11002(y/H11002y/H33522)ƒ ƒPƒ/H11005ƒx/H11002y/H11002(x/H33522/H11002y/H33522)ƒPx/H11005x/H33522/H11001Px, y/H11005y/H33522/H11001Py, ƒPxƒ/H11017bx, ƒPyƒ/H11017by.`a/H11002a/H33522
+a `/H11017br. ƒPrƒ/H11017br,bra/H33522ƒa/H11002a/H33522ƒ/H11017b. ƒPƒ/H11017b,b a/H33522,a/H11005a/H33522/H11001PPSEC. 19.1 Introduction 795c19-a.qxd  11/2/10  8:20 PM  Page 795
+--- Page 7 ---
+Basic Error Principle
+Every numeric method should be accompanied by an error estimate. If such a formula is
+lacking, is extremely complicated, or is impractical because it involves information (forinstance, on derivatives) that is not available, the following may help.
+Error Estimation by Comparison. Do a calculation twice with different accuracy.
+Regard the difference of the results as a (perhaps crude ) estimate of the
+error of the inferior result Indeed, by formula This implies
+because is generally more accurate than so that is
+small compared to 
+Algorithm. Stability
+Numeric methods can be formulated as algorithms. An algorithm is a step-by-step
+procedure that states a numeric method in a form (a “pseudocode”) understandable to
+humans. (See Table 19.1 to see what an algorithm looks like.) The algorithm is then usedto write a program in a programming language that the computer can understand so thatit can execute the numeric method. Important algorithms follow in the next sections. Forroutine tasks your CAS or some other software system may contain programs that youcan use or include as parts of larger programs of your own.
+Stability. To be useful, an algorithm should be stable; that is, small changes in the initial
+data should cause only small changes in the final results. However, if small changes in the
+initial data can produce large changes in the final results, we call the algorithm unstable.
+This “numeric instability,” which in most cases can be avoided by choosing a better
+algorithm, must be distinguished from “ mathematical instability” of a problem, which is
+called “ill-conditioning,” a concept we discuss in the next section.
+Some algorithms are stable only for certain initial data, so that one must be careful in
+such a case.ƒP
+1ƒ.ƒP2ƒ a/H335221, a/H335222 a/H335222/H11002a/H335221/H11005P1/H11002P2/H11015P1(4*). a/H335221/H11001P1/H11005a/H335222/H11001P2 a/H335221. P1a/H335221, a/H335222 a/H335222/H11002a/H335221796 CHAP. 19 Numerics in General
+1. Floating point. Write 
+and in floating-point form, rounded to 5S
+(5 significant digits).
+2.Write and in floating-point form, rounded to 4S.
+3. Small differences of large numbers may be parti-
+cularly strongly affected by rounding errors. Illustratethis by computing asgiven with 5S, then rounding stepwise to 4S, 3S, and 2S,where “stepwise” means round the rounded numbers, notthe given ones.
+4. Order of terms, in adding with a fixed number of
+digits, will generally affect the sum. Give an example.Find empirically a rule for the best order.0.81534> (35/H11554724/H1100235.596)/H110020.00001 /H1100276.437125, 60100,/H110023620050.000924138, 84.175, /H11002528.685,
+PROBLEM SET 19.1
+5. Rounding and adding. Let be numbers with
+correctly rounded to digits. In calculating the sum
+retaining significant digits,
+is it essential that we first add and then round the resultor that we first round each number to S significant digits
+and then add?
+6. Nested form. Evaluate
+at using 3S arithmetic and rounding, in bothof the given forms. The latter, called the nested form,
+is usually preferable since it minimizes the number ofoperations and thus the effect of rounding.x/H110053.94 /H11005((x/H110027.5)x/H1100111.2)x /H110012.8 f
+ (x)/H11005x3/H110027.5x2/H1100111.2x/H110012.8S/H11005min S j a1/H11001Á/H11001an,Sj aja1,Á, anc19-a.qxd  11/2/10  8:20 PM  Page 796
+--- Page 8 ---
+SEC. 19.1 Introduction 797
+7. Quadratic equation. Solve by (4)
+and by (5), using 6S in the computation. Compare and
+comment.
+8.Solve using 4S-computation.
+9.Do the computations in Prob. 7 with 4S and 2S.
+10. Instability. For small the equation 
+has nearly a double root. Why do these roots showinstability?
+11. Theorems on errors. Prove Theorem 1(a) for addition.
+12. Overflow and underflow can sometimes be avoided
+by simple changes in a formula. Explain this in terms 
+of with and xso
+large that would cause overflow. Invent examples
+of your own.
+13. Division. Prove Theorem 1(b) for division.
+14. Loss of digits. Square root. Compute 
+with 6S arithmetic for (a)as given and
+(b)from (derive!).
+15. Logarithm. Compute with 6S arithmetic
+for and (a) as given and
+(b)from 
+16. Cosine. Compute with 6S arithmetic for
+(a)as given and (b)by (derive!).
+17.Discuss the numeric use of (12) in App. A3.1 for
+when 
+18. Quotient near (a) Compute with
+6S arithmetic for . (b) Looking at Prob. 16,
+find a much better formula.
+19. Exponential function. Calculate (6S)
+from the partial sums of 5–10 terms of the Maclaurinseries (a)of with (b)of with and
+then taking the reciprocal. Which is more accurate?
+20.Compute with 6S arithmetic in two ways (as inProb. 19).
+21. Binary conversion. Show that
+can be obtained by the division algorithm
+Remainder
+01 /H11005c
+40/H11005c3 2  21/H11005c2 2  51/H11005c1 2  111/H11005c0 2  23 /H1100524/H1100122/H1100121/H1100120/H11005(1 0 1 1 1.)2 23/H1100520#101/H110013#100/H1100516/H110014/H110012/H110011e/H1154610x/H110051 exx/H110051, e/H11546x1>e/H110050.367879x/H110050.005(1/H11002cos x)> sin x 0>0.u/H11015v. cos v/H11002cos u2 sin2 1
+2 x x/H110050.021/H11002cos xln (a>b).b/H110053.99900 a/H110054.00000ln a/H11002ln bx2>(2x2/H110014/H110012)x/H110050.0012x2/H110014/H110022x2x2/H11084y22x2/H11001y2/H11005x21/H11001(y>x)2(x/H11002k)2/H11005a ƒaƒx2/H1100240x/H110012/H110050,x2/H1100230x/H110011/H110050 22.Convert to by successivemultiplication by 2 and dropping (removing) the integerparts, which give the binary digits 
+23.Show that 0.1 is not a binary machine number.
+24.Prove that any binary machine number has a finitedecimal representation. Is the converse true?
+25. CAS EXPERIMENT. Approximations. Obtain 
+from Prob. 23. Which machine 
+number (partial sum) will first have the value 0.1to 30 decimal digits?
+26. CAS EXPERIMENT. Integration from Calculus.
+Integrating by parts, show that 
+(a) Compute 
+using 4S arithmetic, obtaining Why isthis nonsense? Why is the error so large?
+(b)Experiment in (a) with the number of digits 
+As you increase k, will the first negative value 
+occur earlier or later? Find an empirical formula for
+27. Backward Recursion. In Prob. 26. Using 
+conclude that as
+Solve the iteration formula for 
+start from and compute 4S values
+of 
+28. Harmonic series. diverges. Is the
+same true for the corresponding series of computer
+numbers?
+29. Approximations of are
+and Determine the corresponding errors
+and relative errors to 3 significant digits.
+30. Compute by Machin’s approximation 
+to 10S (which are correct). [In
+1986, D. H. Bailey (NASA Ames Research Center,Moffett Field, CA 94035) computed almost 30 milliondecimals of on a CRAY-2 in less than 30 hrs. Therace for more and more decimals is continuing. See theInternet under pi.]
+p(1
+5)/H110024 arctan (1
+239)16 arctan p355> 113. 22>7p/H115493.14159265358979 Á 1/H110011
+2 /H110011
+3 /H11001Á I14, I13,Á, I1.I15/H110150 (e/H11002In)>n,In/H115461/H11005 n:/H11009.ƒInƒ/H11017e>(n/H110011):  0  (0/H11021x/H110211),ex/H11021e N/H11005N (k).n/H11005Nk/H110224.I8/H11005/H11002 3.906.In, n/H110050,Á, e/H11002nIn/H115461, I0/H11005e/H110021.ex xn dx/H11005 In/H11005/H208481
+0Snx/H110050.1/H110053
+2 a/H11557
+m/H110051 2/H115464m c5/H11005 1  .0 c4/H11005 1  .5/H115542 c3/H11005 0  .75/H115542 c2/H11005 0  .375/H115542 c1/H11005 1  .1875/H1155420  .59375 /H115542c1, c2,Á:(0.10011) 2 (0.59375) 10c19-a.qxd  11/10/10  2:34 AM  Page 797
+--- Page 9 ---
+19.2 Solution of Equations by Iteration
+For each of the remaining sections of this chapter, we select basic kinds of problems and
+discuss numeric methods on how to solve them. The reader will learn about a variety ofimportant problems and become familiar with ways of thinking in numerical analysis.
+Perhaps the easiest conceptual problem is to find solutions of a single equation
+(1)
+where fis a given function. A solution of (1) is a number such that Here,
+ssuggests “solution,” but we shall also use other letters.
+It is interesting to note that the task of solving (1) is a question made for numeric
+algorithms, as in general there are no direct formulas, except in a few simple cases.
+Examples of single equations are 
+which can all be written in the form of (1). The first of the five equations
+is an algebraic equation because the corresponding fis a polynomial. In this case the
+solutions are called roots of the equation and the solution process is called finding roots. The
+other equations are transcendental equations because they involve transcendental functions.
+There are a very large number of applications in engineering, where we have to solve a
+single equation (1). You have seen such applications when solving characteristic equations
+in Chaps. 2, 4, and 8; partial fractions in Chap. 6; residue integration in Chap. 16, findingeigenvalues in Chap. 12, and finding zeros of Bessel functions, also in Chap. 12. Moreover,methods of finding roots are very important in areas outside of classical engineering. Forexample, in finance, the problem of determining how much a bond is worth amounts tosolving an algebraic equation.
+To solve (1) when there is no formula for the exact solution available, we can use an
+approximation method, such as an iteration method . This is a method in which we start from
+an initial guess (which may be poor) and compute step by step (in general better and better)approximations of an unknown solution of (1). We discuss three such methods thatare of particular practical importance and mention two others in the problem set.
+It is very important that the reader understand these methods and their underlying ideas.
+The reader will then be able to select judiciously the appropriate software from amongdifferent software packages that employ variations of such methods and not just treat thesoftware programs as “black boxes.”
+In general, iteration methods are easy to program because the computational operations
+are the same in each step—just the data change from step to step—and, more importantly,if in a concrete case a method converges, it is stable in general (see Sec. 19.1).
+Fixed-Point Iteration for Solving Equations 
+Note: Our present use of the word “fixed point” has absolutely nothing to do with that in
+the last section.
+By some algebraic steps we transform (1) into the form
+(2)
+Then we choose an and compute and in general(3) (n/H110050, 1, Á).
+xn/H110011/H11005g(xn)x1/H11005g(x0), x2/H11005g(x1), x0x/H11005g(x).f (x)/H110050x1, x2,Á x0cosh x cos x /H11005/H11002 1,x3/H11001x/H110051, sin x /H110050.5x, tan x /H11005x, cosh x /H11005sec x,f (s)/H110050. x/H11005sf (x)/H110050,798 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 798
+--- Page 10 ---
+A solution of (2) is called a fixed point of g, motivating the name of the method. This is a
+solution of (1), since from we can return to the original form From (1)
+we may get several different forms of (2). The behavior of corresponding iterative sequences
+may differ, in particular, with respect to their speed of convergence. Indeed, some
+of them may not converge at all. Let us illustrate these facts with a simple example.
+EXAMPLE 1 An Iteration Process (Fixed-Point Iteration)
+Set up an iteration process for the equation . Since we know the solutions
+thus 2.618034 and 0.381966,
+we can watch the behavior of the error as the iteration proceeds.
+Solution. The equation may be written
+(4a) , thus
+If we choose we obtain the sequence (Fig. 426a; computed with 6S and then rounded)
+which seems to approach the smaller solution. If we choose the situation is similar. If we choose
+we obtain the sequence (Fig. 426a, upper part)
+which diverges.
+Our equation may also be written (divide by x)
+(4b) thus
+and if we choose we obtain the sequence (Fig. 426b)
+which seems to approach the larger solution. Similarly, if we choose we obtain the sequence
+(Fig. 426b)
+x0/H110053.000,  x1/H110052.667,  x2/H110052.625,  x3/H110052.619,  x4/H110052.618, Á.x0/H110053,x0/H110051.000,  x1/H110052.000,  x2/H110052.500,  x3/H110052.600,  x4/H110052.615, Áx0/H110051,xn/H110011/H110053/H110021
+xn , x/H11005g2 (x)/H110053/H110021
+x  ,x0/H110053.000,  x1/H110053.333,  x2/H110054.037,  x3/H110055.766,  x4/H1100511.415, Áx0/H110053,x0/H110052,x0/H110051.000,  x1/H110050.667,  x2/H110050.481,  x3/H110050.411,  x4/H110050.390, Áx0/H110051,xn/H110011/H110051
+3 (xn2/H110011) . x/H11005g1(x)/H110051
+3 (x2/H110011)x/H110051.5 /H11006 11.25 ,f (x)/H11005x2/H110023x/H110011/H110050x0, x1,Áf (x)/H110050. x/H11005g(x)SEC. 19.2 Solution of Equations by Iteration 799
+005
+5x005
+5xg1(x)
+g2(x)
+(a) (b)
+Fig. 426. Example 1, iterations (4a) and (4b)c19-a.qxd  11/2/10  8:20 PM  Page 799
+--- Page 11 ---
+Our figures show the following. In the lower part of Fig. 426a the slope of is less than the slope of 
+which is 1, thus and we seem to have convergence. In the upper part, is steeper and we have divergence. In Fig. 426b the slope of is less near the intersection point fixedpoint of solution of and both sequences seem to converge. From all this we conclude thatconvergence seems to depend on the fact that, in a neighborhood of a solution, the curve of is less steep
+than the straight line and we shall now see that this condition is sufficientfor convergence.
+An iteration process defined by (3) is called convergent for an if the corresponding
+sequence is convergent.
+A sufficient condition for convergence is given in the following theorem, which has
+various practical applications.
+THEOREM 1 Convergence of Fixed-Point Iteration
+Let be a solution of and suppose that g has a continuous derivative
+in some interval J containing s. Then, if in J, the iteration processdefined by (3) converges for any in J. The limit of the sequence is s.
+PROOF By the mean value theorem of differential calculus there is a t between xand ssuch that
+(xin J).
+Since and we obtain from this and the condition on
+in the theorem
+Applying this inequality ntimes, for gives
+Since we have hence as 
+We mention that a function gsatisfying the condition in Theorem 1 is called a contraction
+because where Furthermore, Kgives information on
+the speed of convergence. For instance, if then the accuracy increases by at least
+2 digits in only 7 steps because 
+EXAMPLE 2 An Iteration Process. Illustration of Theorem 1
+Find a solution of by iteration.
+Solution. A sketch shows that a solution lies near . (a) We may write the equation as or
+so that Also
+for any x because so that by Theorem 1 we have convergence for
+any . Choosing , we obtain (Fig. 427)
+The solution exact to 6D is s/H110050.682328.x1/H110050.500, x2/H110050.800, x3/H110050.610, x4/H110050.729, x5/H110050.653, x6/H110050.701, Á.x0/H110051 x04x2>(1/H11001x2)4/H110054x2>(1/H110014x2/H11001Á)/H110211,ƒg1r(x)ƒ/H110052ƒxƒ
+(1/H11001x2)2/H110211 xn/H110011/H110051
+1/H11001xn2 . x/H11005g1 (x)/H110051
+1/H11001x2  ,(x2/H110011)x/H110051 x/H110051f (x)/H11005x3/H11001x/H110021/H1100500.57/H110210.01.K/H110050.5,K/H110211. ƒg(x)/H11002g(v)ƒ/H11017Kƒx/H11002vƒ,/H17039 n:/H11009. ƒxn/H11002sƒ:0 Kn:0; K/H110211,ƒxn/H11002sƒ/H11017Kƒxn/H115461/H11002sƒ/H11017K2ƒxn/H115462/H11002sƒ/H11017Á/H11017Knƒx0/H11002sƒ.n, n/H110021,Á, 1ƒxn/H11002sƒ/H11005ƒg(xn/H115461)/H11002g(s)ƒ/H11005ƒgr(t)ƒƒxn/H115461/H11002sƒ/H11017Kƒxn/H115461/H11002sƒ.ƒgr(x)ƒx1/H11005g(x0), x2/H11005g(x1),Á, g(s)/H11005sg(x)/H11002g(s)/H11005gr(t)(x/H11002s){xn} x0ƒgr(x)ƒ/H11017K/H110211x/H11005g(x) x/H11005sx0, x1,Áx0/H17039ƒgr(x)ƒ/H110211 (/H11005slope of y /H11005x) y/H11005x,g(x)f (x)/H110050), g2,(x/H110052.618, g2(x)(g1r(x)/H110221) g1(x) ƒg1r(x)ƒ/H110211,y/H11005x, g1(x)800 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 800
+--- Page 12 ---
+(b)The given equation may also be written
+Then
+and this is greater than 1 near the solution, so that we cannot apply Theorem 1 and assert convergence. Try
+and see what happens.
+The example shows that the transformation of a given into the form with gsatisfying
+may need some experimentation. /H17039 ƒgr(x)/H11017K/H110211x/H11005g(x) f (x)/H110050x0/H110051, x 0/H110050.5, x 0/H110052ƒg2r(x)ƒ/H110053x2x/H11005g2 (x)/H110051/H11002x3.SEC. 19.2 Solution of Equations by Iteration 801
+1JOSEPH RAPHSON (1648–1715), English mathematician who published a method similar to Newton’s
+method. For historical details, see Ref. [GenRef2], p. 203, listed in App. 1.001.0
+0.5
+1.0 0.5
+xg1(x)
+x1x2
+Fig. 427. Iteration in Example 2
+Newton’s Method for Solving Equations 
+Newton’s method, also known as Newton–Raphson’s method,1is another iteration
+method for solving equations where fis assumed to have a continuous derivative 
+The method is commonly used because of its simplicity and great speed. 
+The underlying idea is that we approximate the graph of fby suitable tangents. Using
+an approximate value obtained from the graph of f, we let be the point of intersection
+of the x-axis and the tangent to the curve of fat (see Fig. 428). Then
+hence
+In the second step we compute in the third step from again
+by the same formula, and so on. We thus have the algorithm shown in Table 19.1. Formula(5) in this algorithm can also be obtained if we algebraically solve Taylor’s formula
+(5*) f
+ (xn/H110011)/H11015f (xn)/H11001(xn/H110011/H11002xn)fr(xn)/H110050.x2 x3 x2/H11005x1/H11002f (x1)>fr(x1),x1/H11005x0/H11002f (x0)
+fr(x0)  . tan b/H11005fr(x0)/H11005f (x0)
+x0/H11002x1 ,x0x1 x0fr. f (x)/H110050,f (x)/H110050y
+xf(x0)y = f(x)
+x2x1x0β
+Fig. 428. Newton’s methodc19-a.qxd  11/2/10  8:20 PM  Page 801
+--- Page 13 ---
+802 CHAP. 19 Numerics in General
+Table 19.1 Newton’s Method for Solving Equations ƒ(x) /H115490
+ALGORITHM NEWTON 
+This algorithm computes a solution of ƒ( x) /H110050 given an initial approximation x0(starting
+value of the iteration). Here the function ƒ( x) is continuous and has a continuous
+derivative ƒ /H11032(x).
+INPUT: ƒ, ƒ /H11032, initial approximation x0, tolerance /H9280 /H110220, maximum number of
+iterations N.
+OUTPUT: Approximate solution xn(nN ) or message of failure.
+For n/H110050, 1, 2, •••, do:
+1 Compute ƒ /H11032(xn).
+2 If ƒ/H11032(xn) /H110050 then OUTPUT “Failure.” Stop.
+[Procedure completed unsuccessfully ]
+3 Else compute
+(5)
+4 If then OUTPUT Stop.
+[Procedure completed successfully]
+End
+5 OUTPUT “Failure”. Stop.
+[Procedure completed unsuccessfully after N iterations ]
+End NEWTONxn/H110011. ƒxn/H110011/H11002xnƒ/H11017Pƒxn/H110011ƒxn/H110011/H11005xn/H11002f (xn)
+fr(xn) .N/H110021/H11017(f, fr, x0, P, N )
+If it happens that for some n (see line 2 of the algorithm), then try another
+starting value . Line 3 is the heart of Newton’s method.
+The inequality in line 4 is a termination criterion . If the sequence of the converges
+and the criterion holds, we have reached the desired accuracy and stop. Note that this is just
+a form of the relative error test. It ensures that the result has the desired number of significantdigits. If the condition is satisfied if and only if otherwise
+must be sufficiently small. The factor is needed in the case of zeros
+of very small (or very large) absolute value because of the high density (or of the scarcity)of machine numbers for those x .
+WARNING! The criterion by itself does not imply convergence. Example. The
+harmonic series diverges, although its partial sums satisfy the criterion
+because lim (x
+n/H110011/H11002xn)/H11005lim (1> (n/H110011))/H110050.xn/H11005Sn
+k/H1100511/kƒxn/H110011ƒ ƒxn/H110011/H11002xnƒxn/H110011/H11005xn/H110050, ƒxn/H110011ƒ/H110050,xnx0fr(xn)/H110050c19-a.qxd  11/2/10  8:20 PM  Page 802
+--- Page 14 ---
+Line 5 gives another termination criterion and is needed because Newton’s method may
+diverge or, due to a poor choice of may not reach the desired accuracy by a reasonable
+number of iterations. Then we may try another If has more than one solution,different choices of may produce different solutions. Also, an iterative sequence maysometimes converge to a solution different from the expected one.
+EXAMPLE 3 Square Root
+Set up a Newton iteration for computing the square root xof a given positive number cand apply it to 
+Solution. We have , hence and (5) takes the form
+For choosing we obtain
+is exact to 6D.
+EXAMPLE 4 Iteration for a Transcendental Equation
+Find the positive solution of 
+Solution. Setting we have and (5) gives
+xn/H110011/H11005xn/H11002xn/H110022 sin x n
+1/H110022 cos x n /H110052(sin x n/H11002xn cos x n)
+1/H110022 cos x n /H11005Nn
+Dn .fr(x)/H110051/H110022 cos x, f (x)/H11005x/H110022 sin x,2 sin x /H11005x./H17039 x4x1/H110051.500000,   x2/H110051.416667,   x3/H110051.414216,   x4/H110051.414214, Á.x0/H110051, c/H110052,xn/H110011/H11005xn/H11002xn2/H11002c
+2xn /H110051
+2 axn/H11001c
+xn b .f (x)/H11005x2/H11002c/H110050, f r(x)/H110052x, x/H110051cc/H110052.x0f (x)/H110050 x0.x0,SEC. 19.2 Solution of Equations by Iteration 803
+nxn Nn Dn xn/H110011
+0 2.00000 3.48318 1.83229 1.90100
+1 1.90100 3.12470 1.64847 1.895522 1.89552 3.10500 1.63809 1.895503 1.89550 3.10493 1.63806 1.89549
+From the graph of f we conclude that the solution is near We compute:
+is exact to 5D since the solution to 6D is 1.895494.
+EXAMPLE 5 Newton’s Method Applied to an Algebraic Equation
+Apply Newton’s method to the equation 
+Solution. From (5) we have
+Starting from we obtain
+where has the error A comparison with Example 2 shows that the present convergence is much
+more rapid. This may motivate the concept of the order of an iteration process, to be discussed next. /H17039/H110021/H1155410/H115466. x4x1/H110050.750000,  x2/H110050.686047,  x3/H110050.682340,  x4/H110050.682328, Áx0/H110051,xn/H110011/H11005xn/H11002xn3/H11001xn/H110021
+3xn2/H110011 /H110052xn3/H110011
+3xn2/H110011 .f (x)/H11005x3/H11001x/H110021/H110050./H17039 x4/H110051.89549x0/H110052.c19-a.qxd  11/2/10  8:20 PM  Page 803
+--- Page 15 ---
+Order of an Iteration Method. 
+Speed of Convergence
+The quality of an iteration method may be characterized by the speed of convergence, as
+follows.
+Let define an iteration method, and let approximate a solution sof
+Then where is the error of Suppose that gis differentiable
+a number of times, so that the Taylor formula gives
+(6)
+The exponent of in the first nonvanishing term after is called the order of the
+iteration process defined by g. The order measures the speed of convergence.
+To see this, subtract on both sides of (6). Then on the left you get 
+where is the error of . And on the right the remaining expression equals
+approximately its first nonzero term because is small in the case of convergence.
+Thus
+(7)(a) in the case of first order,
+(b) in the case of second order, etc.
+Thus if in some step, then for second order, 
+so that the number of significant digits is about doubled in each step.
+Convergence of Newton’s Method
+In Newton’s method, By differentiation,
+(8)
+Since this shows that also Hence Newton’s method is at least of second
+order. If we differentiate again and set we find that
+which will not be zero in general. This proves
+THEOREM 2 Second-Order Convergence of Newton’s Method
+If is three times differentiable and and are not zero at a solution s of
+then for sufficiently close to s, Newton’s method is of second order. x0 f (x)/H110050,fs fr f (x)gs(s)/H11005fs(s)
+fr(s)(8*)x/H11005s,gr(s)/H110050. f (s)/H110050, /H11005f (x)fs(x)
+fr(x)2 . gr(x)/H110051/H11002fr(x)2/H11002f (x)fs(x)
+fr(x)2g(x)/H11005x/H11002f (x)>fr(x).Pn/H110011/H11005c/H11554 (10/H11546k)2/H11005c/H1155410/H115462k, Pn/H1100510/H11546k Pn/H110011/H11015/H110021
+2 gs (s)Pn2 Pn/H110011/H11015/H11001gr(s)PnƒPnƒxn/H110011 Pn/H110011 /H11002Pn/H110011,xn/H110011/H11002s/H11005 g(s)/H11005sg(s) Pn /H11005g(s)/H11002gr(s)Pn/H110011
+2 gs (s)Pn2/H11001Á. xn/H110011/H11005g(xn)/H11005g(s)/H11001gr(s)(x n/H11002s)/H110011
+2 gs(s)(x n/H11002s)2/H11001Áxn. Pn xn/H11005s/H11002Pn, x/H11005g(x).xn xn/H110011/H11005g(xn)804 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 804
+--- Page 16 ---
+Comments. For Newton’s method, (7b) becomes, by 
+(9)
+For the rapid convergence of the method indicated in Theorem 2 it is important that sbe
+a simple zero of (thus and that be close to s, because in Taylor’s formula
+we took only the linear term [see assuming the quadratic term to be negligibly small.
+(With a bad the method may even diverge!)
+EXAMPLE 6 Prior Error Estimate of the Number of Newton Iteration Steps
+Use and in Example 4 for estimating how many iteration steps we need to produce the
+solution to 5D-accuracy. This is an a priori estimate or prior estimate because we can compute it after only
+one iteration, prior to further iterations.
+Solution. We have Differentiation gives
+Hence (9) gives
+where We show below that Consequently, our
+condition becomesHence is the smallest possible n, according to this crude estimate, in good agreement with Example 4.
+is obtained from hence 
+or which gives 
+Difficulties in Newton’s Method. Difficulties may arise if is very small near a
+solution sof For instance, let s be a zero of of second or higher order. Then
+Newton’s method converges only linearly, as is shown by an application of l’Hopital’s rule
+to (8). Geometrically, small means that the tangent of near s almost coincides
+with the x -axis (so that double precision may be needed to get and accurately
+enough). Then for values far away from s we can still have small function values
+In this case we call the equation ill-conditioned. is called the residual of
+at . Thus a small residual guarantees a small error of only if the equation is
+notill-conditioned.
+EXAMPLE 7 An Ill-Conditioned Equation
+is ill-conditioned, is a solution. is small. At the residual
+is small, but the error is larger in absolute value by a factor 5000. Invent a more drastic
+example of your own.
+Secant Method for Solving 
+Newton’s method is very powerful but has the disadvantage that the derivative maysometimes be a far more difficult expression than fitself and its evaluation thereforef
+rf (x)/H110050/H17039/H110020.1 f (0.1)/H110052/H1155410/H115465s/H33522/H110050.1 fr(0)/H1100510/H115464x/H110050 f (x)/H11005x5/H1100110/H115464x/H110050s/H33522s/H33522f (x)/H110050R (s/H33522) f (x)/H110050R (s/H33522)/H11005f (s/H33522).x/H11005s/H33522fr(x) f (x)f (x) ƒfr(x)ƒf (x) f (x)/H110050.ƒfr(x)ƒ/H17039 P0/H11015/H110020.11. 0.57P 02/H11001P0/H110010.10 /H110150, /H110020.57P 02P1/H11005P0/H110010.10 /H11015 P1/H11002P0/H11005(P1/H11002s)/H11002(P0/H11002s)/H11005/H11002 x1/H11001x0/H110150.10, P0/H11015/H110020.11n/H1100520.57M0.11M/H110011/H110175/H1155410/H115466.P0/H11015/H110020.11. M/H110052n/H110012n/H115461/H11001Á/H110012/H110011/H110052n/H110011/H110021.ƒPn/H110011ƒ/H110150.57P n2/H110150.57(0.57P2
+n/H115461)2/H110050.573P4n/H115461/H11015Á/H110150.57MPM/H110011
+0/H110175/H1155410/H115466fs(s)
+2fr(s)/H11015fs(x1)
+2fr(x1) /H110052 sin x 1
+2(1/H110022 cos x 1)/H110150.57.f (x)/H11005x/H110022 sin x /H110050.x1/H110051.901 x0/H110052x0(5*)],x0 fr(s)/HS110050) f (x)Pn/H110011/H11015/H11002 fs(s)
+2fr(s) Pn2.(8*),SEC. 19.2 Solution of Equations by Iteration 805c19-a.qxd  11/2/10  8:20 PM  Page 805
+--- Page 17 ---
+806 CHAP. 19 Numerics in General
+computationally expensive. This situation suggests the idea of replacing the derivative
+with the difference quotient
+Then instead of (5) we have the formula of the popular secant methodfr(xn)/H11015f (xn)/H11002f (xn/H115461)
+xn/H11002xn/H115461  .
+Fig. 429. Secant methody
+xPn –1
+xn –1y = f(x)Secant
+Pn
+xnsxn +1
+(10)
+Geometrically, we intersect the x-axis at with the secant of passing through
+and in Fig. 429. We need two starting values and Evaluation of derivatives
+is now avoided. It can be shown that convergence is superlinear (that is, more rapid than
+linear, see [E5] in App. 1), almost quadratic like Newton’s
+method. The algorithm is similar to that of Newton’s method, as the student may show.
+CAUTION! It is not good to write (10) as
+because this may lead to loss of significant digits if and are about equal. (Can
+you see this from the formula?)
+EXAMPLE 8 Secant Method
+Find the positive solution of by the secant method, starting from 
+Solution. Here, (10) is
+Numeric values are:xn/H110011/H11005xn/H11002(xn/H110022 sin x n)(xn/H11002xn/H115461)
+xn/H11002xn/H115461/H110012(sin x n/H115461/H11002sin x n)/H11005xn/H11002Nn
+Dn .x0/H110052, x 1/H110051.9. f (x)/H11005x/H110022 sin x /H110050xn/H115461 xnxn/H110011/H11005xn/H115461 f (xn)/H11002xn f (xn/H115461)
+f (xn)/H11002f (xn/H115461)  ,ƒPn/H110011ƒ/H11015const #ƒPnƒ1.62;x1. x0 Pn Pn/H110021f (x) xn/H110011xn/H110011/H11005xn/H11002f (xn)  xn/H11002xn/H115461
+f(xn)/H11002f (xn/H115461)  .
+nxn/H115461 xn Nn Dn xn/H110011/H11002xn
+1 2.000000 1.900000 /H110020.000740 /H110020.174005 /H110020.004253
+2 1.900000 1.895747 /H110020.000002 /H110020.006986 /H110020.000252
+3 1.895747 1.895494 0 0
+is exact to 6D. See Example 4. /H17039 x3/H110051.895494c19-a.qxd  11/2/10  8:20 PM  Page 806
+--- Page 18 ---
+SEC. 19.2 Solution of Equations by Iteration 807
+1–13 FIXED-POINT ITERATION
+Solve by fixed-point iteration and answer related
+questions where indicated. Show details.
+1. Monotone sequence. Why is the sequence in Example 1
+monotone? Why not in Example 2?
+2.Do the iterations (b) in Example 2. Sketch a figure
+similar to Fig. 427. Explain what happens.
+3. Sketch a figure.
+4. the zero near 
+5.Sketch showingroots near and 5. Write 
+Find a root by starting from 
+Explain the (perhaps unexpected) results.
+6.Find a form of in Prob. 5 that yieldsconvergence to the root near 
+7.Find the smallest positive solution of 
+8.Solve by starting from 
+9.Find the negative solution of 
+10. Elasticity. Solve (Similar equations
+appear in vibrations of beams; see Problem Set 12.3.)
+11. Drumhead. Bessel functions. A partial sum of the
+Maclaurin series of (Sec. 5.5) is 
+Conclude from a sketch that 
+near Write as (by dividingby and taking the resulting x-term to the other side).
+Find the zero. (See Sec. 12.10 for the importance of thesezeros.)
+12. CAS EXPERIMENT. Convergence. Let
+Write this as for g choos-
+ing (1) (2) (3) (4) (5) and (6) and in each case Find out about convergenceand divergence and the number of steps to reach 6S-values of a root.
+13. Existence of fixed point. Prove that if g is continuous
+in a closed interval I and its range lies in I , then the
+equation has at least one solution in I. Illustrate
+that it may have more than one solution in I.x/H11005g(x)x
+0/H110051.5.x/H11002f>fr (2x2/H11002f )>(2x), (x3/H11002f )>x2,x/H110011
+3  f, (x2/H110021
+2 f)1>2, (x3/H11002f)1>3,x/H11005g(x), 2x2/H110023x/H110024/H110050.f (x)/H11005x3 /H110011
+4 xf (x) x/H11005g(x) f (x)/H110050 x/H110052.f (x)/H1100501
+64 x4/H110021
+2304 x6.f (x)/H110051/H110021
+4 x2 /H11001 J0(x)x cosh x /H110051.x4/H11002x/H110020.12/H110050.x0/H110051. x4/H11002x/H110020.12/H110050sin x/H11005e/H11546x.x/H110051.f (x)/H110050 x/H11005g(x)5, 4, 1, /H110021.x0 /H11005 1.01x/H110011.88)> x2.x/H11005g(x)/H11005(5.00x2 /H11002 /H110061f (x)/H11005x3/H110025.00x2/H110011.01x/H110011.88,x/H110051. f/H11005x/H11002cosec xf/H11005x/H110020.5 cos x /H110050, x0/H110051.PROBLEM SET 19.2
+14–23 NEWTON’S METHOD
+Apply Newton’s method (6S-accuracy). First sketch thefunction(s) to see what is going on.
+14. Cube root. Design a Newton iteration. Compute
+15. Compare with Prob. 3.
+16.What happens in Prob. 15 for any other ?
+17. Dependence on . Solve Prob. 5 by Newton’s method
+with Explain the result.
+18. Legendre polynomials. Find the largest root of
+the Legendre polynomial given by 
+(Sec. 5.3) (to be needed in
+Gauss integration in Sec. 19.5) (a) by Newton’s
+method, (b)from a quadratic equation.
+19. Associated Legendre functions. Find the smallest posi-
+tive zero of 
+(Sec. 5.3) (a) by Newton’s method, (b)exactly, by
+solving a quadratic equation.
+20.
+21.22. Heating, cooling. At what time x (4S-accuracy only) will
+the processes governed by and
+reach the same temperature? Also
+find the latter.
+23. Vibrating beam. Find the solution of 
+near (This determines a frequency of a
+vibrating beam; see Problem Set 12.3.)
+24. Method of False Position (Regula falsi). Figure 430
+shows the idea. We assume that fis continuous. We
+compute the x -intercept of the line through
+If we are done. If
+(as in Fig. 430), we set 
+and repeat to get etc. If then
+and we set etc.
+(a) Algorithm. Show that
+and write an algorithm for the method.c
+0/H11005a0 f (b0)/H11002b0 f(a0)
+f (b0)/H11002f (a0)a1/H11005c0, b1/H11005b0, f (c0) f (b0)/H110210f (a0)f (c0)/H110220, c1,a1/H11005a0, b1/H11005c0 f (a0) f (c0)/H110210f (c0)/H110050, (a0, f (a0)), (b 0, f (b0)).c0x/H110053
+2 p.cos x cosh x /H110051f2 (x)/H1100540e/H115460.01xf1 (x)/H11005100(1/H11002e/H115460.2x)f/H11005x3/H110025x/H110013/H110050, x0/H110052, 0, /H110022x/H11001ln x/H110052, x0/H110052(/H110027x4/H110018x2/H110021) P42/H11005(1/H11002x2)P4s/H1100515
+2 (63x5/H1100270x3/H1100115x)1
+8P5 (x)/H11005 P5 (x)x0/H110055, 4, 1, /H110023.x0x0f/H110052x/H11002cos x, x0/H110051.237, x0/H110052.Summary of Methods. The methods for computing solutions sof with given
+continuous (or differentiable) start with an initial approximation of s and generate
+a sequence by iteration .Fixed-point methods solve written as
+so that s is a fixed point of g, that is, For this is
+Newton’s method, which, for good and simple zeros, converges quadratically (and for
+multiple zeros linearly). From Newton’s method the secant method follows by replacing
+by a difference quotient. The bisection method and the method of false position in
+Problem Set 19.2 always converge, but often slowly.fr(x)x0g(x)/H11005x/H11002f (x)>fr(x) s/H11005g(s). x/H11005g(x),f (x)/H110050 x1, x2,Áx0 f (x)f (x)/H110050c19-a.qxd  11/2/10  8:20 PM  Page 807
+--- Page 19 ---
+808 CHAP. 19 Numerics in General
+19.3 Interpolation
+We are given the values of a function at different points We want to
+find approximate values of the function for “new” x’s that lie between these points
+for which the function values are given. This process is called interpolation. The student
+should pay close attention to this section as interpolation forms the underlying foundation
+for both Secs. 19.4 and 19.5. Indeed, interpolation allows us to develop formulas fornumeric integration and differentiation as shown in Sec. 19.5.
+Continuing our discussion, we write these given values of a function fin the form
+or as ordered pairs
+Where do these given function values come from? They may come from a “mathematical”
+function, such as a logarithm or a Bessel function. More frequently, they may be measuredor automatically recorded values of an “empirical” function, such as air resistance of acar or an airplane at different speeds. Other examples of functions that are “empirical”are the yield of a chemical process at different temperatures or the size of the U.S.population as it appears from censuses taken at 10-year intervals.
+A standard idea in interpolation now is to find a polynomial of degree n(or less)
+that assumes the given values; thus
+(1)We call this an interpolation polynomial and the nodes. And if is a
+mathematical function, we call an approximation of f(or a polynomial approximation,
+because there are other kinds of approximations, as we shall see later). We use to get
+(approximate) values of f for x’s between and (“interpolation”) or sometimes outside
+this interval (“extrapolation”). x
+0/H11017x/H11017xnxn x0pnpnf (x) x0,Á, xn pnpn(x0)/H11005f0,  pn(x1)/H11005f1,  Á,  pn(xn)/H11005fn .pn (x)(x0, f0),   (x1, f1),   Á, (xn, fn).f0/H11005f (x0),  f1/H11005f (x1),  Á,  fn/H11005f (xn)f(x)x0, x1,Á, xn. f (x)(b)Solve
+a/H110051, b/H110052.x4/H110052, cos x /H110051x, and x /H11001ln x/H110052, withmust be 0 somewhere on The solution is found
+by repeated bisection of the interval and in each iterationpicking that half which also satisfies that sign condition.
+(a) Algorithm. Write an algorithm for the method.
+(b) Comparison. Solve by Newton’s method
+and by bisection. Compare.
+(c)Solve by bisection.
+26–29
+SECANT METHOD
+Solve, using and as indicated:
+26.
+27.Prob. 21, 
+28.29.30. WRITING PROJECT. Solution of Equations.
+Compare the methods in this section and problem set,
+discussing advantages and disadvantages in terms ofexamples of your own. No proofs, just motivations andideas.sin x/H11005cot x,
+ x0/H110051, x1/H110050.5x/H11005cos x, x0/H110050.5, x1/H110051x0/H110051.0, x1/H110052.0e/H11546x/H11002tan x/H110050, x0/H110051, x1/H110050.7x1 x0e/H11546x/H11005ln x and ex/H11001x4/H11001x/H110052x/H11005cos x[a, b]. y
+xy = f(x)
+b0a0
+c0c1
+Fig. 430. Method of false position
+25. TEAM PROJECT. Bisection Method. This simple but
+slowly convergent method for finding a solution of
+with continuous fis based on the intermediate
+value theorem, which states that if a continuous function
+f has opposite signs at some and that
+is, either or then f f (b)/H110210,  f (a)/H110220, f (b)/H110220 f (a)/H110210,x/H11005b (/H11022a), x/H11005af (x)/H110050c19-a.qxd  11/2/10  8:20 PM  Page 808
+--- Page 20 ---
+Motivation. Polynomials are convenient to work with because we can readily differentiate
+and integrate them, again obtaining polynomials. Moreover, they approximate continuous
+functions with any desired accuracy. That is, for any continuous on an interval
+and error bound there is a polynomial (of sufficiently high
+degree n) such that
+for all x on J.
+This is the famous Weierstrass approximation theorem (for a proof see Ref. [GenRef7],
+App. 1).
+Existence and Uniqueness. Note that the interpolation polynomial satisfying (1) for
+given data exists and we shall give formulas for it below. Furthermore, is unique:
+Indeed, if another polynomial also satisfies then
+at but a polynomial of degree n (or less) with 
+roots must be identically zero, as we know from algebra; thus for all x, which
+means uniqueness.
+How Do We Find pn?We shall explain several standard methods that give us By
+the uniqueness proof above, we know that, for given data, the different methods must give
+us the same polynomial. However, the polynomials may be expressed in different forms
+suitable for different purposes.
+Lagrange Interpolation
+Given with arbitrarily spaced Lagrange had the idea of
+multiplying each by a polynomial that is 1 at and 0 at the other nnodes and then
+taking the sum of these polynomials. Clearly, this gives the unique interpolationpolynomial of degree n or less. Beginning with the simplest case, let us see how this
+works.
+Linear interpolation is interpolation by the straight line through see
+Fig. 431. Thus the linear Lagrange polynomial is a sum with 
+the linear polynomial that is 1 at and 0 at similarly, is 0 at and 1 at Obviously,
+This gives the linear Lagrange polynomial
+(2) p
+1(x)/H11005L0(x) f0/H11001L1(x) f 1/H11005x/H11002x1
+x0/H11002x1 /H11554f0/H11001x/H11002x0
+x1/H11002x0 /H11554 f1.L0(x)/H11005x/H11002x1
+x0/H11002x1 ,   L1(x)/H11005x/H11002x0
+x1/H11002x0 .x1. x0 L1 x1; x0L0 p1/H11005L0 f0/H11001L1 f1 p1(x0, f0), (x 1, f1);n/H110011xj fjxj, (x0, f0), (x 1, f1),Á, (xn, fn)pn./H17039pn(x)/H11005qn(x)n/H110011 pn/H11002qn x0,Á, xn, pn(x)/H11002qn(x)/H110050qn(x0)/H11005f0,Á, qn(xn)/H11005fn, qnpnpnƒf (x)/H11002pn(x)ƒ/H11021bpn (x) b/H110220, J: a/H11017x/H11017bf (x)SEC. 19.3 Interpolation 809
+y
+xy = f(x)Error
+p1(x)
+x0x1xf1f0
+Fig. 431. Linear Interpolationc19-a.qxd  11/2/10  8:20 PM  Page 809
+--- Page 21 ---
+EXAMPLE 1 Linear Lagrange Interpolation
+Compute a 4D-value of ln 9.2 from ln by linear Lagrange interpolation and
+determine the error, using ln (4D).
+Solution. . Ln (2) we need
+(see Fig. 432) and obtain the answer
+The error is Hence linear interpolation is not sufficient here to get
+4D accuracy; it would suffice for 3D accuracy. /H17039P/H11005a/H11002a/H33522/H110052.2192 /H110022.2188 /H110050.0004.ln 9.2 /H11015p1(9.2)/H11005L0(9.2) f 0/H11001L1(9.2) f 1/H110050.6/H115542.1972 /H110010.4/H115542.2513 /H110052.2188. L1(x)/H11005x/H110029.0
+0.5/H110052.0(x/H110029.0),  L1(9.2)/H110052/H115540.2/H110050.4 L0(x)/H11005x/H110029.5
+/H110020.5/H11005/H11002 2.0(x/H110029.5),  L0(9.2)/H11005/H11002 2.0(/H110020.3) /H110050.6x0/H110059.0, x 1/H110059.5,  f0/H11005ln 9.0,  f1/H11005ln 9.59.2/H110052.21929.0/H110052.1972, ln 9.5 /H110052.2513810 CHAP. 19 Numerics in General
+9 9.5 9.2 10 11x01yL0 L1
+Fig. 432. and in Example 1L1 L0
+Quadratic interpolation is interpolation of given by a second-
+degree polynomial which by Lagrange’s idea is
+(3a)with and etc. We claim that
+(3b)
+How did we get this? Well, the numerator makes if And the denominator
+makes because it equals the numerator at 
+EXAMPLE 2 Quadratic Lagrange Interpolation
+Compute ln 9.2 by (3) from the data in Example 1 and the additional third value ln 
+Solution. In (3),
+ L2(x)/H11005(x/H110029.0)(x/H110029.5)
+(11.0/H110029.0)(11.0 /H110029.5)/H110051
+3  (x2/H1100218.5x/H1100185.5),  L2(9.2)/H11005/H11002 0.0200, L1(x)/H11005(x/H110029.0)(x/H1100211.0)
+(9.5/H110029.0)(9.5 /H1100211.0)/H11005/H11002  1
+0.75 (x2/H1100220x/H1100199),  L1(9.2)/H110050.4800, L0(x)/H11005(x/H110029.5)(x/H1100211.0)
+(9.0/H110029.5)(9.0 /H1100211.0)/H11005x2/H1100220.5x/H11001104.5,  L0(9.2)/H110050.5400,11.0/H110052.3979.x/H11005xk. Lk (xk)/H110051j/HS11005k. Lk(xj)/H110050L2(x)/H11005l2(x)
+l2(x2)/H11005(x/H11002x0)(x/H11002x1)
+(x2/H11002x0)(x2/H11002x1) .L1(x)/H11005l1(x)
+l1(x1)/H11005(x/H11002x0)(x/H11002x2)
+(x1/H11002x0)(x1/H11002x2)L0(x)/H11005l0(x)
+l0(x0)/H11005(x/H11002x1)(x/H11002x2)
+(x0/H11002x1)(x0/H11002x2)L0(x1)/H11005L0(x2)/H110050, L0(x0)/H110051, L 1(x1)/H110051, L 2(x2)/H110051,p2(x)/H11005L0(x)f0/H11001L1(x)f1/H11001L2(x)f2p2(x),(x0,  f0), (x 1,  f1), (x 2,  f2)c19-a.qxd  11/2/10  8:20 PM  Page 810
+--- Page 22 ---
+(see Fig. 433), so that (3a) gives, exact to 4D,
+/H17039 ln 9.2 /H11015p2(9.2)/H110050.5400 /H115542.1972 /H110010.4800 /H115542.2513 /H110020.0200 /H115542.3979 /H110052.2192 .SEC. 19.3 Interpolation 811
+01
+9 9.5 10 11xyL0L2
+L1
+Fig. 433. , , in Example 2L2L1L0
+General Lagrange Interpolation Polynomial. For general n we obtain
+(4a)
+where and is 0 at the other nodes, and the are independent of the function
+fto be interpolated. We get (4a) if we take
+(4b)
+We can easily see that Indeed, inspection of (4b) shows that if
+so that for the sum in (4a) reduces to the single term 
+Error Estimate. If fis itself a polynomial of degree n (or less), it must coincide
+with because the data determine a polynomial uniquely,
+so the error is zero. Now the special f has its st derivative identically zero. This
+makes it plausible that for a general f its st derivative should measure the
+error
+It can be shown that this is true if exists and is continuous. Then, with a suitable
+tbetween and (or between and xif we extrapolate),
+(5)
+Thus is 0 at the nodes and small near them, because of continuity. The product
+is large for x away from the nodes. This makes extrapolation risky.
+And interpolation at an xwill be best if we choose nodes on both sides of that x. Also,
+we get error bounds by taking the smallest and the largest value of in (5) on the
+interval (or on the interval also containing xif we extrapolate). x0/H11017t/H11017xnf(n/H110011)(t)(x/H11002x0)Á(x/H11002xn)ƒPn(x)ƒPn(x)/H11005f (x)/H11002pn(x)/H11005(x/H11002x0)(x/H11002x1)Á(x/H11002xn)  f(n/H110011)(t)
+(n/H110011)! .x0, xn, xn x0f(n/H110011)Pn(x)/H11005f (x)/H11002pn(x).f(n/H110011)(n/H110011)(n/H110011)(x0, f0),Á, (xn, fn) n/H110011 pn(lk(xk)>lk(xk)) fk/H11005fk. x/H11005xk, j/HS11005k,lk (xj)/H110050 pn (xk)/H11005fk. ln(x)/H11005(x/H11002x0)(x/H11002x1)Á(x/H11002xn/H115461).0/H11021k/H11021n,  lk(x)/H11005(x/H11002x0)Á(x/H11002xk/H115461)(x/H11002xk/H110011)Á(x/H11002xn), l0(x)/H11005(x/H11002x1)(x/H11002x2)Á(x/H11002xn),Lk Lk Lk(xk)/H110051f (x)/H11015pn(x)/H11005an
+k/H110050  Lk(x) fk/H11005an
+k/H110050   lk(x)
+lk (xk)  fkc19-a.qxd  11/2/10  8:20 PM  Page 811
+--- Page 23 ---
+Most importantly, since is unique, as we have shown, we have
+THEOREM 1 Error of Interpolation
+Formula (5)gives the error for anypolynomial interpolation method if has a
+continuous st derivative.
+Practical error estimate. If the derivative in (5) is difficult or impossible to obtain, apply
+the Error Principle (Sec. 19.1), that is, take another node and the Lagrange polynomial
+and regard as a (crude) error estimate for 
+EXAMPLE 3 Error Estimate (5) of Linear Interpolation. Damage by Roundoff. Error Principle
+Estimate the error in Example 1 first by (5) directly and then by the Error Principle (Sec. 19.1).
+Solution. (A) Estimation by (5).We have Hence
+thus
+gives the maximum and gives the minimum so that
+we get or better, 0.00038 because 
+But the error 0.0004 in Example 1 disagrees, and we can learn something! Repetition of the computation there
+with 5D instead of 4D gives
+with an actual error which lies nicely near the middle between our two
+error bounds.
+This shows that the discrepancy (0.0004 vs. 0.00035) was caused by rounding, which is not taken into account
+in (5).
+(B) Estimation by the Error Principle. We calculate as before and then as in
+Example 2 but with 5D, obtaining
+The difference is the approximate error of that we wanted to obtain; this
+is an approximation of the actual error 0.00035 given above.
+Newton’s Divided Difference Interpolation
+For given data the interpolation polynomial satisfying (1) is
+unique, as we have shown. But for different purposes we may use in different forms.
+Lagrange’s form just discussed is useful for deriving formulas in numeric differentiation
+(approximation formulas for derivatives) and integration (Sec. 19.5).
+Practically more important are Newton’s forms of which we shall also use for solving
+ODEs (in Sec. 21.2). They involve fewer arithmetic operations than Lagrange’s form.Moreover, it often happens that we have to increase the degree nto reach a required accuracy.
+Then in Newton’s forms we can use all the previous work and just add another term, apossibility without counterpart for Lagrange’s form. This also simplifies the application ofthe Error Principle (used in Example 3 for Lagrange). The details of these ideas are as follows.
+Let be the st Newton polynomial (whose form we shall determine);
+thus Furthermore, let us write the
+nth Newton polynomial as
+(6) p
+n(x)/H11005pn/H115461(x)/H11001gn(x);pn/H115461(x0)/H11005f0, pn/H115461(x1)/H11005f1,Á, pn/H115461(xn/H115461)/H11005fn/H115461.(n/H110021) pn/H115461(x)pn(x),pn(x)pn(x) (x0, f0),Á, (xn, fn)/H17039p1(9.2) p2(9.2)/H11002p1(9.2)/H110050.00031p2(9.2)/H110050.54/H115542.19722 /H110010.48/H115542.25129 /H110020.02/H115542.39790 /H110052.21916.p2(9.2) p1(9.2)/H110052.21885P/H110052.21920 /H110022.21885 /H110050.00035,ln 9.2 /H11015p1(9.2)/H110050.6/H115542.19722 /H110010.4/H115542.25129 /H110052.218850.3>81/H110050.003703 Á. 0.00033 /H11017P1 (9.2)/H110170.00037,0.03> 9.52/H110050.00033, t/H110059.5 0.03> 92/H110050.00037 t/H110050.9P1(9.2)/H110050.03
+t2 . P1(x)/H11005(x/H110029.0)(x/H110029.5) (/H110021)
+2t2,n/H110051, f (t)/H11005ln t, f r(t)/H110051>t,  fs(t)/H11005/H11002 1>t2.pn(x). pn/H110011(x)/H11002pn(x) pn/H110011(x)(n/H110011)f (x)pn812 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 812
+--- Page 24 ---
+hence
+Here is to be determined so that 
+Since and agree at we see that is zero there. Also, will
+generally be a polynomial of nth degree because so is whereas can be of degree
+at most. Hence must be of the form
+We determine the constant For this we set and solve algebraically for 
+Replacing according to and using we see that this gives
+(7)
+We write instead of and show that equals the kth divided difference , recursively
+denoted and defined as follows:
+and in general
+(8)
+If then because is constant and equal to the value
+of at Hence (7) gives
+and (6) and give the Newton interpolation polynomial of the first degree
+If then this and (7) give
+where the last equality follows by straightforward calculation and comparison with the
+definition of the right side. (Verify it; be patient.) From (6) and we thus obtain thesecond Newton polynomial(6
+s)a2/H11005f2/H11002p1(x2)
+(x2/H11002x0)(x2/H11002x1)/H11005f2/H11002f0/H11002(x2/H11002x0) f [x0, x1]
+(x2/H11002x0)(x2/H11002x1)/H11005f [x0, x1, x2]p1 n/H110052,p1(x)/H11005f0/H11001(x/H11002x0) f [x0, x1].(6s)a1/H11005f1/H11002p0(x1)
+x1/H11002x0/H11005f1/H11002f0
+x1/H11002x0/H11005f [x0, x1],x0. f (x)f0, p0(x) pn/H115461(xn)/H11005p0(x1)/H11005f0 n/H110051,ak/H11005f [x0,Á, xk]/H11005f [x1,Á, xk]/H11002f [x0,Á, xk/H115461]
+xk/H11002x0 .a2/H11005f [x0, x1, x2]/H11005f [x1, x2]/H11002f [x0, x1]
+x2/H11002x0a1/H11005f [x0, x1]/H11005f1/H11002f0
+x1/H11002x0ak an akan/H11005fn/H11002pn/H115461(xn)
+(xn/H11002x0)(xn/H11002x1) Á (xn/H11002xn/H115461) .pn(xn)/H11005fn, (6r) gn(xn)an. (6s) x/H11005xn an.gn(x)/H11005an(x/H11002x0)(x/H11002x1)Á(x/H11002xn/H115461). (6s)gn n/H110021pn/H115461 pn,gn gn x0,Á, xn/H115461, pn/H115461 pnpn(x0)/H11005f0, pn(x1)/H11005f1,Á, pn(xn)/H11005fn. gn(x)gn(x)/H11005pn(x)/H11002pn/H115461(x). (6r)SEC. 19.3 Interpolation 813c19-a.qxd  11/2/10  8:20 PM  Page 813
+--- Page 25 ---
+For formula (6) gives
+(9)With by repeated application with this finally gives Newton’s
+divided difference interpolation formula
+(10)
+An algorithm is shown in Table 19.2. The first do-loop computes the divided differences
+and the second the desired value .
+Example 4 shows how to arrange differences near the values from which they are
+obtained; the latter always stand a half-line above and a half-line below in the precedingcolumn. Such an arrangement is called a (divided) difference table.p
+n(x)ˆ/H11001Á/H11001(x/H11002x0)(x/H11002x1)Á(x/H11002xn/H115461)f [x0,Á, xn].f (x)/H11015f0/H11001(x/H11002x0) f [x0, x1]/H11001(x/H11002x0)(x/H11002x1) f [x0, x1, x2]k/H110051,Á, n p0(x)/H11005f0pk(x)/H11005pk/H115461(x)/H11001(x/H11002x0)(x/H11002x1)Á(x/H11002xk/H115461) f [x0,Á, xk].n/H11005k,p2(x)/H11005f0/H11001(x/H11002x0) f [x0, x1]/H11001(x/H11002x0)(x/H11002x1)f [x0, x1, x2].814 CHAP. 19 Numerics in General
+Table 19.2 Newton’s Divided Difference Interpolation
+ALGORITHM INTERPOL (x0,,  xn; ƒ0,,  ƒn; )
+This algorithm computes an approximation pn( ) of ƒ( ) at .
+INPUT: Data ( x0, ƒ0), (x1, ƒ1), , (xn, ƒn); 
+OUTPUT: Approximation pn( ) of ƒ( )
+Set ƒ[ xj] /H11005ƒj(j/H110050, , n).
+For do:
+For do:
+End
+End
+Set p0(x) /H11005ƒ0.
+For k/H110051, , ndo:
+pk()  /H11005pk/H115461()  /H11001(/H11002x0)( /H11002xk/H115461)ƒ[x0,,  xk]
+EndOUTPUT p
+n()
+End INTERPOLxˆÁ xˆÁ xˆ xˆ xˆÁf [xj,Á, xj/H11001m]/H11005f [xj/H110011,Á, xj/H11001m]/H11002f [xj,Á, xj/H11001m/H115461 ]
+xj/H11001m/H11002xjj/H110050,Á, n/H11002mm/H110051,Á, n/H110021)Áxˆ xˆxˆ Áxˆ xˆ xˆxˆ Á Ác19-a.qxd  11/2/10  8:20 PM  Page 814
+--- Page 26 ---
+EXAMPLE 4 Newton’s Divided Difference Interpolation Formula
+Compute from the values shown in the first two columns of the following table. f (9.2)SEC. 19.3 Interpolation 815
+xj ƒj/H11005ƒ(xj)ƒ [xj, xj/H110011] ƒ[xj, xj/H110011, xj/H110012] ƒ[xj,•••, xj/H110013]
+8.0 2.079442
+0.117783
+9.0 2.197225 /H110020.006433
+0.108134 0.000411
+9.5 2.251292 /H110020.005200
+0.097735
+11.0 2.397895
+Solution. We compute the divided differences as shown. Sample computation:
+The values we need in (10) are circled. We have
+At 
+The value exact to 6D is Note that we can nicely see how the accuracy increases
+from term to term:
+Equal Spacing: Newton’s Forward Difference Formula
+Newton’s formula (10) is valid for arbitrarily spaced nodes as they may occur in practice in
+experiments or observations. However, in many applications the ’s are regularly spaced —
+for instance, in measurements taken at regular intervals of time. Then, denoting the distance
+by h, we can write
+(11)
+We show how (8) and (10) now simplify considerably!
+To get started, let us define the first forward difference of fat by
+the second forward difference of fat by
+and, continuing in this way, the kth forward difference of fat by
+(12) (k/H110051, 2, Á). ¢kfj/H11005¢k/H115461fj/H110011/H11002¢k/H115461fjxj¢2fj/H11005¢fj/H110011/H11002¢fj,xj¢fj/H11005fj/H110011/H11002fj,xjx0,  x1/H11005x0/H11001h, x2/H11005x0/H110012h, Á, xn/H11005x0/H11001nh.xj/H17039 p1(9.2)/H110052.220782,   p2(9.2)/H110052.219238,   p3(9.2)/H110052.219208.f (9.2)/H11005ln 9.2/H110052.219203.f (9.2) /H110152.079442 /H110010.141340 /H110020.001544 /H110020.000030 /H110052.219208.x/H110059.2,/H110010.000411(x /H110028.0)(x/H110029.0)(x/H110029.5).f (x)/H11015p3(x)/H110052.079442 /H110010.117783(x /H110028.0)/H110020.006433(x /H110028.0)(x/H110029.0)(0.097735 /H110020.108134)> (11/H110029)/H11005/H11002 0.005200.c19-a.qxd  11/2/10  8:20 PM  Page 815
+--- Page 27 ---
+Examples and an explanation of the name “forward” follow on the next page. What is the
+point of this? We show that if we have regular spacing (11), then
+(13)
+PROOF We prove (13) by induction. It is true for because so that
+Assuming (13) to be true for all forward differences of order k , we show that (13) holds for
+We use (8) with instead of k; then we use resulting
+from (11), and finally (12) with that is, This gives
+which is (13) with instead of k. Formula (13) is proved.
+In (10) we finally set . Then since
+and so on. With this and (13), formula (10) becomes Newton’s (or
+Gregory2–Newton’s) forward difference interpolation formula
+(14)
+where the binomial coefficients in the first line are defined by
+(15)
+and 
+Error. From (5) we get, with etc.,
+(16)
+with tas characterized in (5).Pn(x)/H11005f (x)/H11002pn(x)/H11005hn/H110011
+(n/H110011)! r ˛(r/H110021) Á (r/H11002n) f(n/H110011)(t)x/H11002x0/H11005rh, x/H11002x1/H11005(r/H110021)h,s!/H110051/H115542Ás.(s/H110220, integer) ar
+0b/H110051, ar
+sb/H11005r (r/H110021)(r/H110022)Á(r/H11002s/H110011)
+s! /H11005f0/H11001r¢f0/H11001r (r/H110021)
+2! ¢2f0/H11001Á/H11001r (r/H110021)Á(r/H11002n/H110011)
+n! ¢nf0(x/H11005x0/H11001rh, r/H11005(x/H11002x0)>h)  f (x)/H11015pn(x)/H11005an
+s/H110050 arsb¢
+s f0x1/H11002x0/H11005h,x/H11002x1/H11005(r/H110021)h x/H11002x0/H11005rh, x/H11005x0/H11001rh/H17039 k/H110011 /H110051
+(k/H110011)!hk/H110011  ¢k/H110011 f0 /H110051
+(k/H110011)h  c1
+k!hk ¢kf1/H110021
+k!hk ¢kf0d f [x0,Á, xk/H110011]/H11005f [x1,Á, xk/H110011]/H11002f [x0,Á, xk]
+(k/H110011)h¢k/H110011f0/H11005¢kf1/H11002¢kf0. j/H110050,(k/H110011)h/H11005xk/H110011/H11002x0, k/H110011 k/H110011.f [x0, x1]/H11005f1/H11002f0
+x1/H11002x0/H110051
+h  (f1/H11002f0)/H110051
+1!h  ¢f0.x1/H11005x0/H11001h, k/H110051f [x0,Á, xk]/H110051
+k!hk ¢kf0.816 CHAP. 19 Numerics in General
+2JAMES GREGORY (1638–1675), Scots mathematician, professor at St. Andrews and Edinburgh. /H9004in (14)
+and /H116122(on p. 818) have nothing to do with the Laplacian.c19-a.qxd  11/2/10  8:20 PM  Page 816
+--- Page 28 ---
+Formula (16) is an exact formula for the error, but it involves the unknown t. In
+Example 5 (below) we show how to use (16) for obtaining an error estimate and an
+interval in which the true value of must lie.
+Comments on Accuracy. (A) The order of magnitude of the error is about equal
+to that of the next difference not used in 
+(B)One should choose such that the xat which one interpolates is as well
+centered between as possible.
+The reason for (A) is that in (16),
+if
+(and actually for any r as long as we do not extrapolate). The reason for (B) is that
+becomes smallest for that choice.
+EXAMPLE 5 Newton’s Forward Difference Formula. Error Estimation
+Compute from (14) and the four values in the following table and estimate the error. cosh 0.56ƒr (r/H110021) Á (r/H11002n)ƒƒrƒ /H11017  1ƒr (r/H110021) Á (r/H11002n)ƒ
+1/H115542Á(n/H110011) /H11017  1 fn/H110011(t)/H11015¢n/H110011f (t)
+hn/H110011 ,x0,Á, xnx0,Á, xnpn(x).Pn(x)f (x)SEC. 19.3 Interpolation 817
+jxj ƒj/H11005cosh xj /H9004ƒj /H90042ƒj /H90043ƒj
+0 0.5 1.127626
+0.057839
+1 0.6 1.185465 0.011865
+0.069704 0.000697
+2 0.7 1.255169 0.012562
+0.082266
+3 0.8 1.337435
+Solution. We compute the forward differences as shown in the table. The values we need are circled. In (14)
+we have so that (14) gives
+Error estimate. From (16), since the fourth derivative is 
+where and We do not know t, but we get an inequality by taking the largest
+and smallest cosh t in that interval:
+Since
+f (x)/H11005p3(x)/H11001P3(x),A cosh 0.8 /H11017P3(0.62)/H11017A cosh 0.5.0.5/H11017t/H110170.8. A/H11005/H11002 0.00000336 /H11005A cosh t, P3(0.56)/H110050.14
+4!/H115540.6  (/H110020.4)(/H110021.4)(/H110022.4) cosh t cosh(4) t/H11005cosh t, /H110051.160944. /H110051.127626 /H110010.034703 /H110020.001424 /H110010.000039 cosh 0.56 /H110151.127626 /H110010.6/H115540.057839 /H110010.6(/H110020.4)
+2/H115540.011865 /H110010.6(/H110020.4)(/H110021.4)
+6/H115540.000697r/H11005(0.56/H110020.50)> 0.1/H110050.6,c19-a.qxd  11/2/10  8:20 PM  Page 817
+--- Page 29 ---
+this gives
+Numeric values areThe exact 6D-value is It lies within these bounds. Such bounds are not always so tight.
+Also, we did not consider roundoff errors, which will depend on the number of operations.
+This example also explains the name “forward difference formula”: we see that the
+differences in the formula slope forward in the difference table.
+Equal Spacing: Newton’s Backward Difference Formula
+Instead of forward-sloping differences we may also employ backward-sloping differ-
+ences. The difference table remains the same as before (same numbers, in the samepositions), except for a very harmless change of the running subscript j(which we explain
+in Example 6, below). Nevertheless, purely for reasons of convenience it is standard tointroduce a second name and notation for differences as follows. We define the first
+backward difference of fat by
+the second backward difference of fat by
+and, continuing in this way, the kth backward difference of fat by
+(17)
+A formula similar to (14) but involving backward differences is Newton’s (or
+Gregory–Newton’s) backward difference interpolation formula
+(18)
+EXAMPLE 6 Newton’s Forward and Backward Interpolations
+Compute a 7D-value of the Bessel function for from the four values in the following table, using
+(a) Newton’s forward formula (14), (b) Newton’s backward formula (18).x/H110051.72 J0(x) /H11005f0/H11001r/H11612f0/H11001r(r/H110011)
+2!  /H116122f0/H11001Á/H11001r(r/H110011)Á(r/H11001n/H110021)
+n!  /H11612nf0 .(x/H11005x0/H11001rh, r/H11005(x/H11002x0)>h)  f (x)/H11015pn(x)/H11005an
+s/H110050 ar/H11001s/H110021
+sb /H11612sf0(k/H110051, 2, Á). /H11612kfj/H11005/H11612k/H115461 fj/H11002/H11612k/H115461 fj/H115461xj/H116122fj/H11005/H11612  fj/H11002/H11612  fj/H115461,xj/H11612fj/H11005fj/H11002fj/H115461,xj/H17039cosh 0.56 /H110051.160941.1.160939 /H11017cosh 0.56 /H110171.160941.p3(0.56)/H11001A cosh 0.8 /H11017cosh 0.56 /H11017p3(0.56)/H11001A cosh 0.5.818 CHAP. 19 Numerics in Generalc19-a.qxd  11/2/10  8:20 PM  Page 818
+--- Page 30 ---
+SEC. 19.3 Interpolation 819
+1. Linear interpolation. Calculate in Example 1
+and from it 3.
+2. Error estimate. Estimate the error in Prob. 1 by (5).
+3. Quadratic interpolation. Gamma function. Calculate
+the Lagrange polynomial for the values
+of the gamma function [(24) in App. A3.1] and from it
+approximations of and 
+4. Error estimate for quadratic interpolation. Estimate
+the error for in Example 2 from (5).
+5. Linear and quadratic interpolation. Find and
+by linear interpolation of with 
+respectively. Then find
+by quadratic interpolation of with 
+and from it and 
+Compare the errors. Use 4S-values of e/H11546x.e/H115460.75. e/H115460.25x1/H110050.5, x 2/H110051x0/H110050, e/H11546xp2(x)x1/H110050.5 and x 0/H110050.5, x 1/H110051,x0/H110050, e/H11546xe/H115460.75e/H115460.25p2(9.2)/H9003(1.03). /H9003(1.01)/H9003(1.04) /H110050.9784 /H9003(1.00) /H110051.0000, /H9003 (1.02)/H110050.9888,p2(x)ln 9.p1(x) 6. Interpolation and extrapolation. Calculate in
+Example 2. Compute from it approximations of
+Compute the
+errors by using exact 5S-values and comment.
+7. Interpolation and extrapolation. Find the quadratic
+polynomial that agrees with at and use it for the interpolation and extrapolation of at Compute the errors.
+8. Extrapolation. Does a sketch of the product of the
+in (5) for the data in Example 2 indicate that
+extrapolation is likely to involve larger errors thaninterpolation does?
+9. Error function (35) in App. A3.1. Calculate the
+Lagrange polynomial for the 5S-values 
+and from
+an approximation of f
+ (0.75) ( /H110050.71116). p2(x)f (0.5)/H110050.52050, f  (1.0)/H110050.84270 0.27633,f (0.25) /H11005 p2(x)(x/H11002xj)x/H11005/H11002p>8, p>8, 3p>8, 5p>8.sin xx/H110050, p>4, p>2 sin xln 9.4, ln 10, ln 10.5, ln 11.5, and ln 12.p2(x)PROBLEM SET 19.3Solution. The computation of the differences is the same in both cases. Only their notation differs.
+(a) Forward. In (14) we have and jgoes from 0 to 3 (see first column). In
+each column we need the first given number, and (14) thus gives
+which is exact to 6D, the exact 7D-value being 0.3864185.
+(b) Backward. For (18) we use j shown in the second column, and in each column the last number. Since
+we thus get from (18)
+There is a third notation for differences, called the central difference notation . It
+is used in numerics for ODEs and certain interpolation formulas. See Ref. [E5] listed in
+App. 1./H17039  /H110050.3864184. /H110050.2238908 /H110010.1621978 /H110010.0006048 /H110020.0002750 J0(1.72) /H110150.2238908 /H110022.8  (/H110020.0579278) /H11001/H110022.8  (/H110021.8)
+2/H115540.0002400 /H11001/H110022.8(/H110021.8)(/H110020.8)
+6/H115540.0004093r/H11005(1.72/H110022.00)> 0.1/H11005/H11002 2.8, /H110050.3979849 /H110020.0115997 /H110010.0000135 /H110010.0000196 /H110050.3864183, J0 (1.72) /H110150.3979849 /H110010.2  (/H110020.0579985) /H110010.2(/H110020.8)
+2  (/H110020.0001693) /H110010.2(/H110020.8)(/H110021.8)
+6/H115540.0004093r/H11005(1.72/H110021.70)> 0.1/H110050.2,jfor jback xj J0(xj) 1st Diff. 2nd Diff. 3rd Diff.
+0 /H110023 1.7 0.3979849
+/H110020.0579985
+1 /H110022 1.8 0.3399864 /H110020.0001693
+/H110020.0581678 0.0004093
+2 /H110021 1.9 0.2818186 0.0002400
+/H110020.0579278
+3 0 2.0 0.2238908c19-a.qxd  11/2/10  8:20 PM  Page 819
+--- Page 31 ---
+820 CHAP. 19 Numerics in General
+10. Error bound. Derive an error bound in Prob. 9 from (5).
+11. Cubic Lagrange interpolation. Bessel function 
+Calculate and graph with 
+on common axes. Find 
+for the data 
+[values of the Bessel function 
+Find for and compare with the 6S-
+exact values 
+12. Newton’s forward formula (14). Sine integral. Using
+(14), find by linear, quadratic, and cubicinterpolation of the data (values of (40) in App. A31); 6S-value 
+and com-
+pute the errors. For the linear interpolation use 
+for the quadratic etc.
+13 Lower degree. Find the degree of the interpolation
+polynomial for the data 
+using a difference table. Find the polynomial.
+14. Newton’s forward formula (14). Gamma function.
+Set up (14) for the data in Prob. 3 and compute 
+15. Divided differences. Obtain in Example 2 from (10).
+16. Divided differences. Error function. Compute 
+from the data in Prob. 9 and Newton’s divided difference
+formula (10).
+17. Backward difference formula (18). Use in (18)
+and the values of in Table A4 of
+App. 5, compute and the error. (4S-exact 0.3286).erf 0.3 /H11005 erf 0.3erf x, x /H110050.2, 0.4, 0.6p
+2(x)p2(0.75)p2/H9003(1.03), /H9003(1.05)./H9003(1.01),(4, 18),(2, 2), (/H110024, 50), ( /H110022, 18), (0, 2),f (1.0), f (1.5), f  (2.0), and f  (1.5),f (1.0)1.77852, f (2.5)/H11005 1.32468, f  (2.0)/H110051.60541,f (1.5) /H11005 /H110050.94608, Si(1.25) /H110051.14645) f  (1.0)f (1.25)0.938470, 0.511828, /H110020.048384.x/H110050.5, 1.5, 2.5 p3J0(x)]. /H110020.260052)(3,(2, 0.223891), (1, 0.765198), (0, 1),p3(x) x1/H110051, x 2/H110052, x 3/H110053x0/H110050, L0, L1, L2, L3J0.18.In Example 5 of the text, write down the difference tableas needed for (18), then write (18) with general xand
+then with to verify the answer in Example 5.
+19. CAS EXPERIMENT. Adding Terms in Newton
+Formulas. Write a program for the forward formula
+(14). Experiment on the increase of accuracy bysuccessively adding terms. As data use values of somefunction of your choice for which your CAS gives thevalues needed in determining errors.
+20. TEAM PROJECT. Interpolation and Extrapolation.
+(a) Lagrange practical error estimate (after Theo-
+rem 1). Apply this to and for the data
+(6S-values).
+(b) Extrapolation. Given 
+Find
+from the quadratic interpolation polynomials
+based on 
+Compare the errors and comment. [Exact 
+(4S).]
+(c)Graph the product of factors in the error
+formula (5) for separately. What dothese graphs show regarding accuracy of interpolationand extrapolation?
+21. WRITING PROJECT. Comparison of interpolation
+methods. List 4–5 ideas that you feel are most important
+in this section. Arrange them in best logical order.Discuss them in a 2–3 page report.n/H110052,Á, 10(x/H11002x
+j)cos (1
+2 px2),  f  (0.7)/H110050.7181f(x)/H11005 0.6.(a) 0.6, 0.8, 1.0, ( b) 0.4, 0.6, 0.8, (g) 0.2, 0.4,f (0.7)(0.8, 0.5358), (1.0, 0). (0.6, 0.8443), (0.4, 0.9686),(xj,  f (xj))/H11005(0.2, 0.9980),f2/H11005ln x 2f1/H11005ln x 1, f0/H11005ln x 0, x2/H1100511.0, x1/H110059.5, x0/H110059.0,p2(9.2) p1(9.2)x/H110050.56
+19.4 Spline Interpolation
+Given data (function values, points in the xy-plane) can be
+interpolated by a polynomial of degree nor less so that the curve of passes
+through these points here See Sec. 19.3.
+Now if n is large, there may be trouble: may tend to oscillate for x between the nodes
+Hence we must be prepared for numeric instability (Sec. 19.1). Figure 434 shows
+a famous example by C. Runge3for which the maximum error even approaches as 
+(with the nodes kept equidistant and their number increased). Figure 435 illustrates the increase
+of the oscillation with n for some other function that is piecewise linear.
+Those undesirable oscillations are avoided by the method of splines initiated by I. J.
+Schoenberg in 1946 ( Quarterly of Applied Mathematics 4, pp. 45–99, 112–141). This
+method is widely used in practice. It also laid the foundation for much of modern CAD(computer-aided design) . Its name is borrowed from a draftman’s spline, which is an
+elastic rod bent to pass through given points and held in place by weights. The mathematicalidea of the method is as follows:n:/H11009 /H11009x
+0,Á, xn.Pn(x)f0/H11005f (x0),Á, fn/H11005f (xn), (xj, fj); n/H110011Pn(x) Pn(x)(x0, f0), (x 1, f1),Á, (xn, fn)
+3CARL RUNGE (1856–1927), German mathematician, also known for his work on ODEs (Sec. 21.1).c19-a.qxd  11/2/10  8:20 PM  Page 820
+--- Page 32 ---
+Instead of using a single high-degree polynomial over the entire interval 
+in which the nodes lie, that is,
+(1)we use n low-degree, e.g., cubic, polynomials
+one over each subinterval between adjacent nodes, hence from to then from
+to and so on. From this we compose an interpolation function called a spline,
+by fitting these polynomials together into a single continuous curve passing through the
+data points, that is,g(x), x
+2, x1q1 x1, x0 q0q0(x),  q1(x),  Á,  qn/H115461(x),a/H11005x0/H11021x1/H11021Á/H11021xn/H11005b,a/H11017x/H11017b PnSEC. 19.4 Spline Interpolation 821
+P10(x)
+f(x)
+05 –5y
+x
+ f(x) P2(x)
+ P4(x)
+ P8(x)4
+4
+4–4
+–4
+–4Fig. 434. Runge’s example ƒ(x) /H110051/(1 /H11001x2) and interpolating polynomial P10(x)
+Fig. 435. Piecewise linear function ƒ(x) and interpolation polynomials of increasing degrees
+(2)
+Note that when then when and so
+on, according to our construction of g.
+Thus spline interpolation is piecewise polynomial interpolation.
+The simplest ’s would be linear polynomials. However, the curve of a piecewise linear
+continuous function has corners and would be of little interest in general—think ofdesigning the body of a car or a ship.
+We shall consider cubic splines because these are the most important ones in applications.
+By definition, a cubic spline interpolating given data is a continuous
+function on the interval that has continuous first and second
+derivatives and satisfies the interpolation condition (2); furthermore, between adjacent nodes,
+is given by a polynomial of degree 3 or less.
+We claim that there is such a cubic spline. And if in addition to (2) we also require that
+(3) g
+r(x0)/H11005k0,   gr(xn)/H11005knqj (x) g(x)a/H11005x0/H11017x/H11017xn/H11005bÁ, (xn, fn) (x0, f0), g(x)qjx1/H11017x/H11017x2, g(x)/H11005q1(x) x0/H11017x/H11017x1, g(x)/H11005q0(x)g(x0)/H11005f (x0)/H11005f0,  g(x1)/H11005f (x1)/H11005f1, Á,  g(xn)/H11005f (xn)/H11005fn.c19-b.qxd  11/2/10  8:33 PM  Page 821
+--- Page 33 ---
+(given tangent directions of at the two endpoints of the interval then we
+have a uniquely determined cubic spline. This is the content of the following existence
+and uniqueness theorem, whose proof will also suggest the actual determination of splines.(Condition (3) will be discussed after the proof.)
+THEOREM 1 Existence and Uniqueness of Cubic Splines
+Let with given (arbitrarily spaced) [see (1)] and
+given Let and be any given numbers. Then there
+is one and only one cubic spline corresponding to (1)and satisfying (2)
+and (3).
+PROOF By definition, on every subinterval given by , the spline must agree
+with a polynomial of degree not exceeding 3 such that
+(4)For the derivatives we write(5)with and given and to be determined later. Equations (4) and (5) are
+four conditions for each By direct calculation, using the notation
+we can verify that the unique cubic polynomial satisfying (4)
+and (5) is
+(6)
+Differentiating twice, we obtain
+(7)
+(8)
+By definition, has continuous second derivatives. This gives the conditions
+(
+ j/H110051,Á, n/H110021). qj/H115461s(xj)/H11005qjs(xj)g(x)qjs(xj/H110011)/H110056cj2f (xj)/H110026cj2f (xj/H110011)/H110012cjkj/H110014cjkj/H110011.qjs(xj)/H11005/H11002 6cj2f (xj)/H110016cj2f (xj/H110011)/H110024cjkj/H110022cjkj/H110011 /H11001kj/H110011cj2(x/H11002xj)2(x/H11002xj/H110011). /H11001kjcj2(x/H11002xj)(x/H11002xj/H110011)2 /H11001f (xj/H110011)cj2(x/H11002xj)2[1/H110022cj(x/H11002xj/H110011)] qj(x)/H11005f (xj)cj2(x/H11002xj/H110011)2[1/H110012cj(x/H11002xj)]qj(x) (  j/H110050, 1, Á, n/H110021)( j/H110050, 1, Á, n/H110021) cj/H110051
+hj /H110051
+xj/H110011/H11002xj(6*)qj(x).k1,Á, kn/H115461 kn k0( j/H110050, 1, Á, n/H110021)  qjr(xj)/H11005kj,    qjr(xj/H110011)/H11005kj/H110011(j/H110050, 1, Á, n/H110021).  qj(xj)/H11005f (xj),    qj(xj/H110011)/H11005f (xj/H110011)qj(x)g(x) xj/H11017x/H11017xj/H110011 Ijg(x)kn k0 fj/H11005f (xj), j/H110050, 1, Á, n.xj (x0, f0), (x 1, f1),Á, (xn, fn)a/H11017x/H11017b), g(x)822 CHAP. 19 Numerics in Generalc19-b.qxd  11/2/10  8:33 PM  Page 822
+--- Page 34 ---
+If we use (8) with j replaced by and (7), these equations become
+(9)
+where and and as before.
+This linear system of equations has a unique solution since the coefficient
+matrix is strictly diagonally dominant (that is, in each row the (positive) diagonal entry is
+greater than the sum of the other (positive) entries). Hence the determinant of the matrixcannot be zero (as follows from Theorem 3 in Sec. 20.7), so that we may determine uniquevalues of the first derivative of at the nodes. This proves the theorem.
+Storage and Time Demands in solving (9) are modest, since the matrix of (9) is sparse
+(has few nonzero entries) and tridiagonal (may have nonzero entries only on the diagonal
+and on the two adjacent “parallels” above and below it). Pivoting (Sec. 7.3) is not necessarybecause of that dominance. This makes splines efficient in solving large problems withthousands of nodes or more. For some literature and some critical comments, see American
+Mathematical Monthly 105(1998), 929–941.
+Condition (3) includes the clamped conditions
+(10)
+in which the tangent directions and at the ends are given. Other conditions
+of practical interest are the free or natural conditions
+(11)
+(geometrically: zero curvature at the ends, as for the draftman’s spline), giving a natural
+spline. These names are motivated by Fig. 293 in Problem Set 12.3.Determination of Splines. Let and be given. Obtain by solving the
+linear system (9). Recall that the spline to be found consists of ncubic polynomials
+We write these polynomials in the form
+(12)
+where Using Taylor’s formula, we obtain
+by (2),
+by (5),
+(13) by (7),
+ a
+j3/H110051
+6  qjt(xj)/H110052
+hj3  ( fj/H11002fj/H110011)/H110011
+hj2  (kj/H110011/H11001kj) aj2/H110051
+2  qjs(xj)/H110053
+hj2  ( fj/H110011/H11002fj)/H110021
+hj  (kj/H110011/H110012kj) aj1/H11005qjr(xj)/H11005kj aj0/H11005qj(xj)/H11005fjj/H110050,Á, n/H110021.qj(x)/H11005aj0/H11001aj1(x/H11002xj)/H11001aj2(x/H11002xj)2/H11001aj3(x/H11002xj)3q0,Á, qn/H115461.g(x)k1,Á, kn/H115461 kn k0gs(x0)/H110050,  gs(xn)/H110050fr(xn) fr(x0)gr(x0)/H11005fr(x0),  gr(xn)/H11005fr(xn),/H17039 g(x) k1,Á, kn/H115461k1,Á, kn/H115461 n/H110021j/H110051,Á, n/H110021, /H11612fj/H110011/H11005f (xj/H110011)/H11002f (xj) /H11612fj/H11005f (xj)/H11002f (xj/H115461)cj/H115461kj/H115461/H110012(cj/H115461/H11001cj)kj/H11001cjkj/H110011/H110053[cj/H1154612/H11612fj/H11001cj2/H11612fj/H110011]n/H110021 j/H110021,SEC. 19.4 Spline Interpolation 823c19-b.qxd  11/2/10  8:33 PM  Page 823
+--- Page 35 ---
+with obtained by calculating from (12) and equating the result to (8),
+that is,
+and now subtracting from this as given in (13) and simplifying.
+Note that for equidistant nodes of distance we can write in 
+and have from (9) simply
+(14)
+EXAMPLE 1 Spline Interpolation. Equidistant Nodes
+Interpolate on the interval by the cubic spline corresponding to the nodes 
+and satisfying the clamped conditions 
+Solution. In our standard notation the given data are 
+We have and so that our spline consists of polynomials
+We determine the from (14) (equidistance!) and then the coefficients of the spline from (13). Since 
+the system (14) is a single equation (with and 
+Here (the value of at the ends) and the values of the derivative at the
+ends and 1. Hence
+From (13) we can now obtain the coefficients of namely, and
+Similarly, for the coefficients of we obtain from (13) the values and
+This gives the polynomials of which the spline consists, namely,
+Figure 436 shows and this spline. Do you see that we could have saved over half of our work by using
+symmetry?
+/H17039f (x)g(x)/H11005b q0(x)/H110051/H110024 (x/H110011)/H110015 (x/H110011)2/H110022 (x/H110011)3/H11005/H11002 x2/H110022x3if/H110021/H11017x/H110170
+q1(x)/H11005/H11002 x2/H110012x3if 0 /H11017x/H110171.g(x) a13/H110052( f1/H11002f2)/H11001(k2/H11001k1)/H110052(0/H110021)/H11001(4/H110010)/H110052. a12/H110053( f2/H11002f1)/H11002(k2/H110012k1)/H110053(1/H110020)/H11002(4/H110010)/H11005/H11002 1a10/H11005f1/H110050, a11/H11005k1/H110050, q1 a03/H110052
+13 ( f0/H11002f1)/H110011
+12 (k1/H11001k0)/H110052(1/H110020)/H11001(0/H110024)/H11005/H11002 2. a02/H110053
+12 ( f1/H11002f0)/H110021
+1 (k1/H110012k0)/H110053(0/H110021)/H11002(0/H110028)/H110055a00/H11005f0/H110051, a01/H11005k0/H11005/H11002 4, q0,/H110024/H110014k1/H110014/H110053(1/H110021)/H110050,  k1/H110050./H1100214x3k0/H11005/H11002 4, k 2/H110054, x4f0/H11005f2/H110051k0/H110014k1/H11001k2/H110053( f2/H11002f0).h/H110051) j/H110051n/H110052, kj(0/H11017x/H110171).  q1(x)/H11005a10/H11001a11x/H11001a12x2/H11001a13x3(/H110021/H11017x/H110170),  q0(x)/H11005a00/H11001a01(x/H110011)/H11001a02(x/H110011)2/H11001a03(x/H110011)3n/H110052 n/H110052, h/H110051f0/H11005f (/H110021)/H110051, f1/H11005f (0)/H110050, f2/H11005f (1)/H110051.gr(/H110021)/H11005fr(/H110021), g r(1)/H11005fr(1). x1/H110050, x 2/H110051x0/H11005/H11002 1, g(x) /H110021/H11017x/H110171 f (x)/H11005x4( j/H110051,Á, n/H110021). kj/H115461/H110014kj/H11001kj/H110011/H110053
+h  ( fj/H110011/H11002fj/H115461)(6*) cj/H11005c/H110051>h hj/H11005h2aj2qjs(xj/H110011)/H110052aj2/H110016aj3hj/H110056
+hj2  ( fj/H11002fj/H110011)/H110012
+hj  (kj/H110012kj/H110011),qjs(xj/H110011) aj3824 CHAP. 19 Numerics in Generalc19-b.qxd  11/2/10  8:33 PM  Page 824
+--- Page 36 ---
+EXAMPLE 2 Natural Spline. Arbitrarily Spaced Nodes
+Find a spline approximation and a polynomial approximation for the curve of the cross section of the circular-
+shaped Shrine of the Book in Jerusalem shown in Fig. 437.SEC. 19.4 Spline Interpolation 825
+1
+–1 1f(x)
+g(x)x
+Fig. 436. Function ƒ( x) /H11005x4and cubic spline g(x) in Example 1
+–6 –5 –4 –3 –2 –1 0 1123
+Fig. 437. Shrine of the Book in Jerusalem (Architects F. Kissler and A. M. Bartus)
+Solution. Thirteen points, about equally distributed along the contour (not along the x-axis!), give these data:
+xj/H110025.8 /H110025.0 /H110024.0 /H110022.5 /H110021.5 /H110020.8 0 0.8 1.5 2.5 4.0 5.0 5.8
+ƒj 0 1.5 1.8 2.2 2.7 3.5 3.9 3.5 2.7 2.2 1.8 1.5 0
+The figure shows the corresponding interpolation polynomial of 12th degree, which is useless because of its
+oscillation. (Because of roundoff your software will also give you small error terms involving odd powers of x.)
+The polynomial is
+The spline follows practically the contour of the roof, with a small error near the nodes and 0.8. The spline
+is symmetric. Its six polynomials corresponding to positive xhave the following coefficients of their
+representations (12). (Note well that (12) is in terms of powers of , not x!)
+jx -interval aj0 aj1 aj2 aj3
+0 0.0...0.8 3.9 0.00 /H110020.61 /H110020.015
+1 0.8...1.5 3.5 /H110021.01 /H110020.65 0.66
+2 1.5...2.5 2.7 /H110020.95 0.73 /H110020.27
+3 2.5...4.0 2.2 /H110020.32 /H110020.091 0.084
+4 4.0...5.0 1.8 /H110020.027 0.29 /H110020.56
+5 5.0...5.8 1.5 /H110021.13 /H110021.39 0.58x/H11002xj/H110020.8/H110010.000055595x10/H110020.00000071867x12.P12(x)/H110053.9000 /H110020.65083x2/H110010.033858x4/H110010.011041x6/H110020.0014010x8c19-b.qxd  11/2/10  8:33 PM  Page 825
+--- Page 37 ---
+826 CHAP. 19 Numerics in General
+1. WRITING PROJECT. Splines. In your own words,
+and using as few formulas as possible, write a short
+report on spline interpolation, its motivation, acomparison with polynomial interpolation, and itsapplications.
+2–9
+VERIFICATIONS. DERIVATIONS.
+COMPARISONS
+2. Individual polynomial Show that in (6)
+satisfies the interpolation condition (4) as well as the
+derivative condition (5).
+3.Verify the differentiations that give (7) and (8) from (6).
+4. System for derivatives. Derive the basic linear system
+(9) for as indicated in the text.
+5. Equidistant nodes. Derive (14) from (9).
+6. Coefficients. Give the details of the derivation of 
+and in (13).
+7.Verify the computations in Example 1.
+8. Comparison. Compare the spline g in Example 1 with
+the quadratic interpolation polynomial over the wholeinterval. Find the maximum deviations of gand 
+from f. Comment.
+9. Natural spline condition. Using the given coefficients,
+verify that the spline in Example 2 satisfies at the ends.
+10–16
+DETERMINATION OF SPLINES
+Find the cubic spline for the given data with and
+as given.
+10.
+11.If we started from the piecewise linear function in
+Fig. 438, we would obtain in Prob. 10 as the splinesatisfying Find and sketch or graph the corresponding interpolationpolynomial of 4th degree and compare it with the spline.Comment.g
+r(2)/H11005fr(2)/H110050. gr(/H110022)/H11005fr(/H110022)/H110050,g(x)k0/H11005k4/H110050f (0)/H110051, f (/H110022)/H11005f (/H110021)/H11005f (1)/H11005f (2)/H110050,knk0 g(x)gs(x)/H110050p2aj3aj2k1,Á, kn/H115461qj(x) qj.12.
+13.14. ,
+15. ,
+16. ,
+Can you obtain the
+answer from that of Prob. 15?
+17.If a cubic spline is three times continuously differen-
+tiable (that is, it has continuous first, second, and thirdderivatives), show that it must be a single polynomial.
+18. CAS EXPERIMENT. Spline versus Polynomial. If
+your CAS gives natural splines, find the natural splineswhen xis integer from to m, and and all
+other yequal to 0. Graph each such spline along with
+the interpolation polynomial . Do this for to10 (or more). What happens with increasing m?
+19. Natural conditions. Explain the remark after (11).
+20. TEAM PROJECT. Hermite Interpolation and Bezier
+Curves. In Hermite interpolation we are looking for
+a polynomial (of degree or less) such that
+and its derivative have given values at 
+nodes. (More generally, may be
+required to have given values at the nodes.)
+(a) Curves with given endpoints and tangents. Let
+Cbe a curve in the xy-plane parametrically represented
+by (see Sec. 9.5). Show
+that for given initial and terminal points of a curve and
+given initial and terminal tangents, say,
+A:
+B:
+we can find a curve C, namely,
+(15)
+/H11001(2(r
+0/H11002r1)/H11001v0/H11001v1)t3;/H11001(3(r 1/H11002r0)/H11002(2v0/H11001v1))t2r (t)/H11005r0/H11001v0 t /H11005[x1r, y1r] v1/H11005[xr(1), y r(1)] /H11005[x0r, y0r], v0/H11005[xr(0), y r(0)] /H11005[x1, y1] r1/H11005[x (1), y  (1)] /H11005[x0, y0], r0/H11005[x (0), y  (0)]r (t)/H11005[x (t), y  (t)], 0/H11017t/H110171p(x), p r(x), p s(x), Án/H110011 pr(x) p (x)2n/H110011 p(x)m/H110052 p2my (0)/H110051 /H11002mk3/H110050. k0/H11005 f3/H11005f (6)/H1100578,f2/H11005f (4)/H110052 f1/H11005f (2)/H11005/H11002 2, f0/H11005f (0)/H110052,k3/H110050 k0/H11005 f3/H11005f (6)/H1100580,f2/H11005f (4)/H110054 f1/H11005f (2)/H110050, f0/H11005f (0)/H110054,k3/H110050 k0/H11005 f3/H11005f (3)/H1100512,f2/H11005f (2)/H110058 f1/H11005f (1)/H110053, f0/H11005f (0)/H110052,k3/H11005/H11002 6 k0/H110050, f3/H11005f (3)/H110050,f2/H11005f (2)/H11005/H11002 1, f1/H11005f (1)/H110050, f0/H11005f (0)/H110051,k3/H11005/H11002 12 k0/H110050, f3/H11005f (6)/H1100541,f2/H11005f (4)/H1100541, f1/H11005f (2)/H110059, f0/H11005f (0)/H110051,PROBLEM SET 19.4
+02 1 –10.5
+–2
+x
+Fig. 438. Spline and interpolation polynomial in
+Probs. 10 and 11c19-b.qxd  11/2/10  8:33 PM  Page 826
+--- Page 38 ---
+in components,
+Note that this is a cubic Hermite interpolation poly-
+nomial, and because we have two nodes (theendpoints of C ). (This has nothing to do with the
+Hermite polynomials in Sec. 5.8.) The two points
+andare called guidepoints because the segments and
+specify the tangents graphically. A, B, 
+determine C, and C can be changed quickly by moving
+the points. A curve consisting of such Hermite
+interpolation polynomials is called a Bezier curve,after the French engineer P. Bezier of the RenaultG
+A, GB BGBAGA /H11005[x1/H11002x1r, y1/H11002y1r] GB: g1/H11005r1/H11002v1 /H11005[x0/H11001x0r, y0/H11001y0r] GA: g0/H11005r0/H11001v0n/H110051 /H11001(2(  y0/H11002y1)/H11001y0r/H11001y1r)t3. y (t)/H11005y0/H11001y0rt/H11001(3(  y1/H11002y0)/H11002(2y0r/H11001y1r))t2 /H11001(2(x 0/H11002x1)/H11001x0r/H11001x1r)t3 x (t)/H11005x0/H11001x0rt/H11001(3(x 1/H11002x0)/H11002(2x0r/H11001x1r))t2SEC. 19.5 Numeric Integration and Differentiation 827
+y
+x0.4
+0.2
+1GA(b)
+A BGB(b)(c)
+(b)GB(c)GA(c)
+Fig. 439. Team Project 20(b) and (c): Bezier curvesAutomobile Company, who introduced them in the
+early 1960s in designing car bodies. Bezier curves (andsurfaces) are used in computer-aided design (CAD) andcomputer-aided manufacturing (CAM). (For moredetails, see Ref. [E21] in App. 1.)
+(b)Find and graph the Bezier curve and its
+guidepoints if 
+(c) Changing guidepoints changes C. Moving guide-
+points farther away results in C “staying near the
+tangents for a longer time.” Confirm this by changing
+and in (b) to and (see Fig. 439).
+(d)Make experiments of your own. What happens if
+you change in (b) to If you rotate the tangents?
+If you multiply and by positive factors less than 1? v
+1 v0/H11002v1. v12v1 2v0 v1 v0v1/H11005[/H110021
+2 , /H110021
+4 13].v0/H11005[1
+2 , 1
+2 ], B: [1, 0], A: [0, 0],
+19.5 Numeric Integration and Differentiation
+In applications, the engineer often encounters integrals that are very difficult or even
+impossible to solve analytically. For example, the error function, the Fresnel integrals(see Probs. 16–25 on nonelementary integrals in this section), and others cannotbe evaluated by the usual methods of calculus (see App. 3, (24)–(44) for such“difficult” integrals). We then need methods from numerical analysis to evaluate suchintegrals. We also need numerics when the integrand of the integral to be evaluatedconsists of an empirical function, where we are given some recorded values of thatfunction. Methods that address these kinds of problems are called methods of numericintegration.
+Numeric integration means the numeric evaluation of integrals
+where aand bare given and f is a function given analytically by a formula or empirically
+by a table of values. Geometrically, J is the area under the curve of f between aand b
+(Fig. 440), taken with a minus sign where fis negative.J/H11005
+/H20910b
+a f (x) dxc19-b.qxd  11/2/10  8:33 PM  Page 827
+--- Page 39 ---
+We know that if f is such that we can find a differentiable function F whose derivative
+is f, then we can evaluate J directly, i.e., without resorting to numeric integration, by
+applying the familiar formula
+Your CAS (Mathematica, Maple, etc.) or tables of integrals may be helpful for this purpose.
+Rectangular Rule. Trapezoidal Rule
+Numeric integration methods are obtained by approximating the integrand fby functions
+that can easily be integrated.
+The simplest formula, the rectangular rule, is obtained if we subdivide the interval of
+integration into nsubintervals of equal length and in each
+subinterval approximate f by the constant , the value of fat the midpoint of the j th
+subinterval (Fig. 441). Then fis approximated by a step function (piecewise constant function),
+the nrectangles in Fig. 441 have the areas and the rectangular rule is
+(1)
+The trapezoidal rule is generally more accurate. We obtain it if we take the same
+subdivision as before and approximate fby a broken line of segments (chords) with
+endpoints on the curve of f(Fig. 442). Then the area
+under the curve of f between aand bis approximated by n trapezoids of areas
+1
+2 [ f (a)/H11001f (x1)]h,  1
+2 [ f (x1)/H11001f (x2)]h,  Á,   1
+2 [ f (xn/H115461)/H11001f (b)]h.[a,  f (a)], [x 1,  f (x1)],Á, [b,  f (b)]ah/H11005b/H11002a
+nb . J/H11005/H20910b
+a f (x) dx /H11015h[ f  (x1*)/H11001f (x2*)/H11001Á/H11001f (xn*)]f (x1*)h,Á, f (xn*)h,xj* f (xj*)h/H11005(b/H11002a)>n a/H11017x/H11017b[Fr(x)/H11005f (x)]. J/H11005/H20910b
+a f (x) dx/H11005F (b)/H11002F (a)828 CHAP. 19 Numerics in General
+y
+x aby = f (x)
+Ry
+x aby = f (x)
+x1* x2* xn*
+Fig. 440. Geometric interpretation
+of a definite integral Fig. 441. Rectangular rule
+y
+x aby = f (x)
+x1x2xn – 1
+Fig. 442. Trapezoidal rulec19-b.qxd  11/2/10  8:33 PM  Page 828
+--- Page 40 ---
+By taking their sum we obtain the trapezoidal rule
+(2)
+where as in (1). The ’s and aand bare called nodes.
+EXAMPLE 1 Trapezoidal Rule
+Evaluate by means of (2) with 
+Note that this integral cannot be evaluated by elementary calculus, but leads to the error function (see Eq. (35),
+App. 3).
+Solution. from Table 19.3.
+Table 19.3 Computations in Example 1
+jxj xj2e/H11546xj2
+0 0 0 1.000000
+1 0.1 0.01 0.990050
+2 0.2 0.04 0.960789
+3 0.3 0.09 0.913931
+4 0.4 0.16 0.852144
+5 0.5 0.25 0.778801
+6 0.6 0.36 0.697676
+7 0.7 0.49 0.612626
+8 0.8 0.64 0.527292
+9 0.9 0.81 0.444858
+10 1.0 1.00 0.367879
+Sums 1.367879 6.778167
+Error Bounds and Estimate for the Trapezoidal Rule
+An error estimate for the trapezoidal rule can be derived from (5) in Sec. 19.3 with 
+by integration as follows. For a single subinterval we have
+with a suitable t depending on x, between and Integration over xfrom to
+gives
+/H20910x0/H11001h
+x0 f (x) dx/H11002h
+2  [ f  (x0)/H11001f (x1)]/H11005/H20910x0/H11001h
+x0 (x/H11002x0)(x/H11002x0/H11002h)  fs(t (x))
+2  dx.x1/H11005x0/H11001ha/H11005x0 x1. x0f (x)/H11002p1(x)/H11005(x/H11002x0)(x/H11002x1)  fs(t)
+2n/H110051/H17039 J/H110150.1(0.5 /H115541.367879 /H110016.778167) /H110050.746211n/H1100510. J/H11005/H209101
+0 e/H11546x2 dxxj h/H11005(b/H11002a)>n,J/H11005/H20910b
+a f (x) dx /H11015h c1
+2  f (a)/H11001f (x1)/H11001f (x2)/H11001Á/H11001f (xn/H115461)/H110011
+2  f (b)dSEC. 19.5 Numeric Integration and Differentiation 829c19-b.qxd  11/2/10  8:33 PM  Page 829
+--- Page 41 ---
+Setting and applying the mean value theorem of integral calculus, which we can
+use because does not change sign, we find that the right side equals
+where is a (suitable, unknown) value between and This is the error for the
+trapezoidal rule with often called the local error.
+Hence the error of (2) with any n is the sum of such contributions from the n
+subintervals; since and we obtain
+(3)
+with (suitable, unknown) between aand b.
+Because of (3) the trapezoidal rule (2) is also written
+Error Bounds are now obtained by taking the largest value for say, and the
+smallest value, in the interval of integration. Then (3) gives (note that Kis negative)
+(4)Error Estimation by Halving h is advisable if is very complicated or unknown, for
+instance, in the case of experimental data. Then we may apply the Error Principle of
+Sec. 19.1. That is, we calculate by (2), first with h, obtaining, say, and then
+with obtaining Now if we replace in (3) with the error is
+multiplied by Hence (not exactly because may differ). Together,
+Thus Division by 3
+gives the error formula for 
+(5)
+EXAMPLE 2 Error Estimation for the Trapezoidal Rule by (4) and (5)
+Estimate the error of the approximate value in Example 1 by (4) and (5).
+Solution. (A) Error bounds by (4).By differentiation, Also, if 
+so that the minimum and maximum occur at the ends of the interval. We compute and
+Furthermore, and (4) gives
+.
+Hence the exact value of J must lie between
+and
+Actually, exact to 6D. J/H110050.746824,0.746211 /H110010.001667 /H110050.747878. 0.746211 /H110020.000614 /H110050.745597/H110020.000614 /H11017P/H110170.001667K/H11005/H11002 1>1200, M2*/H11005fs(0)/H11005/H11002 2.M2/H11005fs(1)/H110050.7357590/H11021x/H110211, f t(x)/H110220 fs(x)/H110052(2x2/H110021)e/H11546x2.Ph>2/H110151
+3  (Jh>2/H11002Jh).Jh>2Jh>2/H11002Jh/H11005(4/H110021)Ph>2. Jh>2/H11001Ph>2/H11005Jh/H11001Ph/H11015Jh/H110014Ph>2.tˆ Ph>2/H110151
+4 Ph1
+4 .(1
+2 h)2, h2J/H11005Jh>2/H11001Ph>2.1
+2 h,J/H11005Jh/H11001Ph,fsKM 2/H11017P/H11017KM 2*  where  K/H11005/H11002   (b/H11002a)3
+12n2/H11005/H11002  b/H11002a
+12 h2.M2*,M2, fs,J/H11005/H20910b
+a f (x) dx /H11015hc1
+2  f (a)/H11001f (x1)/H11001Á/H11001f (xn/H115461)/H110011
+2  f (b)d/H11002b/H11002a
+12  h2fs(tˆ). (2*)tˆP/H11005/H11002  (b/H11002a)3
+12n2  fs(tˆ)/H11005/H11002   b/H11002a
+12  h2fs(tˆ)(b/H11002a)2/H11005n2h2, h/H11005(b/H11002a)>n, nh3/H11005n(b/H11002a)3>n3,Pn/H110051,x1. x0 t~/H20910h
+0 v(v/H11002h) dv  fs(t~)
+2 /H11005ah3
+3 /H11002h3
+2 b  fs(t~)
+2 /H11005/H11002  h3
+12   fs(t~) (3*)(x/H11002x0)(x/H11002x0/H11002h)x/H11002x0/H11005v830 CHAP. 19 Numerics in Generalc19-b.qxd  11/2/10  8:33 PM  Page 830
+--- Page 42 ---
+(B) Error estimate by (5). in Example 1. Also,
+Hence and exact to 6D.
+Simpson’s Rule of Integration
+Piecewise constant approximation of fled to the rectangular rule (1), piecewise linear
+approximation to the trapezoidal rule (2), and piecewise quadratic approximation will lead
+to Simpson’s rule, which is of great practical importance because it is sufficiently accuratefor most problems, but still sufficiently simple.
+To derive Simpson’s rule, we divide the interval of integration into an even
+number of equal subintervals, say, into subintervals of length 
+with endpoints see Fig. 443. We now take the firsttwo subintervals and approximate in the interval by theLagrange polynomial through where From (3)in Sec. 19.3 we obtain
+(6)The denominators in (6) are and respectively. Setting we
+have
+and we obtain
+We now integrate with respect to xfrom to This corresponds to integrating with
+respect to s from to 1. Since the result is
+/H20910x2
+x0 f (x) dx /H11015/H20910x2
+x0 p2(x) dx/H11005h a1
+3  f0/H110014
+3  f1/H110011
+3  f2b
+ . (7*)dx/H11005h ds, /H110021x2. x0p2(x)/H110051
+2 s(s/H110021) f0/H11002(s/H110011)(s/H110021) f1/H110011
+2 (s/H110011)sf 2.x/H11002x2/H11005x/H11002(x1/H11001h)/H11005(s/H110021)hx/H11002x1/H11005sh,  x/H11002x0/H11005x/H11002(x1/H11002h)/H11005(s/H110011)hs/H11005(x/H11002x1)>h, 2h2, 2h2, /H11002h2,p2(x)/H11005(x/H11002x1)(x/H11002x2)
+(x0/H11002x1)(x0/H11002x2)  f0/H11001(x/H11002x0)(x/H11002x2)
+(x1/H11002x0)(x1/H11002x2)  f1/H11001(x/H11002x0)(x/H11002x1)
+(x2/H11002x0)(x2/H11002x1)  f2.fj/H11005f (xj). (x0, f0), (x 1, f1), (x 2, f2), p2(x)x0/H11017x/H11017x2/H11005x0/H110012h f (x)x0 (/H11005 a), x 1,Á, x2m/H115461 , x2m (/H11005 b);h/H11005(b/H11002a)>(2m), n/H110052ma/H11017x/H11017b/H17039 Jh>2/H11001Ph>2/H110050.746824, Ph>2/H110051
+3 (Jh>2/H11002Jh)/H110050.000153Jh>2/H110050.05  ca19
+j/H110051 e/H11546(  j>20)2/H110011
+2  (1/H110010.367879) d/H110050.746671.Jh/H110050.746211SEC. 19.5 Numeric Integration and Differentiation 831
+y
+x a b x1x2x3x4x2m–2x2m–1First parabola
+Last parabolaSecond parabola
+y = f (x)
+Fig. 443. Simpson’s rulec19-b.qxd  11/2/10  8:33 PM  Page 831
+--- Page 43 ---
+A similar formula holds for the next two subintervals from to and so on. By summing
+all these m formulas we obtain Simpson’s rule4
+(7)
+where and Table 19.4 shows an algorithm for Simpson’s
+rule.
+Table 19.4 Simpson’s Rule of Integration
+ALGORITHM SIMPSON (a, b, m, ƒ0, ƒ1, •••, ƒ2m)
+This algorithm computes the integral from given values ƒj/H11005ƒ(xj) at 
+equidistant x0/H11005a, x1/H11005x0/H11001h,•••, x2m/H11005x0/H110012mh/H11005bby Simpson’s rule (7),
+where 
+INPUT: a, b, m, ƒ0,•••, ƒ2m
+OUTPUT: Approximate value J/H33522of J
+Compute
+s1/H11005ƒ1/H11001ƒ3/H11001•••/H11001 ƒ2m/H115461
+s2/H11005ƒ2/H11001ƒ4/H11001•••/H11001 ƒ2m/H115462
+h/H11005(b/H11002a)/2m
+OUTPUT J/H33522. Stop.
+End SIMPSON
+Error of Simpson’s Rule (7). If the fourth derivative exists and is continuous on
+the error of (7), call it is
+(8)
+here is a suitable unknown value between aand b. This is obtained similarly to (3).
+With this we may also write Simpson’s rule (7) as
+/H20910b
+a f (x) dx/H11005h
+3  ( f0/H110014f1/H11001Á/H11001f2m)/H11002b/H11002a
+180  h4f(4)(tˆ). (7**)tˆPS/H11005/H11002  (b/H11002a)5
+180  (2m)4  f(4)(tˆ)/H11005/H11002   b/H11002a
+180  h4f(4)(tˆ);Ps, a/H11017x/H11017b,f(4)J/H33522/H11005h
+3  (s0/H110014s1/H110012s2)s0/H11005f0/H11001f2mh/H11005(b/H11002a)>(2m).J/H11005/H20848b
+a  f (x) dxfj/H11005f (xj). h/H11005(b/H11002a)>(2m)/H20910b
+a f (x) dx /H11015h
+3  (f0/H110014f1/H110012f2/H110014f3/H11001Á/H110012f2m/H115462/H110014f2m/H115461/H11001f2m),x4, x2832 CHAP. 19 Numerics in General
+4THOMAS SIMPSON (1710–1761), self-taught English mathematician, author of several popular textbooks.
+Simpson’s rule was used much earlier by Torricelli, Gregory (in 1668), and Newton (in 1676).c19-b.qxd  11/2/10  8:33 PM  Page 832
+--- Page 44 ---
+Error Bounds. By taking for in (8) the maximum and minimum on the interval
+of integration we obtain from (8) the error bounds (note that Cis negative)
+(9)
+Degree of Precision (DP) of an integration formula. This is the maximum degree of
+arbitrary polynomials for which the formula gives exact values of integrals over any
+intervals.
+Hence for the trapezoidal rule,
+because we approximate the curve of fby portions of straight lines (linear polynomials).
+For Simpson’s rule we might expect (why?). Actually,
+by (9) because is identically zero for a cubic polynomial. This makes Simpson’s rulesufficiently accurate for most practical problems and accounts for its popularity.
+Numeric Stability with respect to rounding is another important property of Simpson’s
+rule. Indeed, for the sum of the roundoff errors of the values in (7) we obtain,
+since 
+where uis the rounding unit ( if we round off to 6D; see Sec. 19.1). Also
+is the sum of the coefficients for a pair of intervals in (7); take in
+(7) to see this. The bound is independent of m, so that it cannot increase with
+increasing m, that is, with decreasing h. This proves stability.
+Newton–Cotes Formulas. We mention that the trapezoidal and Simpson rules are special
+closed Newton–Cotes formulas , that is, integration formulas in which is interpolated
+at equally spaced nodes by a polynomial of degree for trapezoidal, for
+Simpson), and closed means that a and bare nodes and higher
+nare used occasionally. From on, some of the coefficients become negative, so
+that a positive could make a negative contribution to an integral, which is absurd. Formore on this topic see Ref. [E25] in App. 1.
+EXAMPLE 3 Simpson’s Rule. Error Estimate
+Evaluate by Simpson’s rule with and estimate the error.
+Solution. Since , Table 19.5 gives
+J/H110150.1
+3  (1.367879 /H110014#3.740266 /H110012#3.037901) /H110050.746825.h/H110050.12m/H1100510 J/H11005/H209101
+0 e/H11546x2dxfjn/H110058(a/H11005x0, b/H11005xn). n/H110053n/H110052 n (n/H110051f (x)/H17039(b/H11002a)um/H110051 6/H110051/H110014/H110011u/H110051
+2/H1155410/H115466h
+3  ƒP0/H110014P1/H11001Á/H11001P2mƒ/H11017b/H11002a
+3.2m  6mu/H11005(b/H11002a)uh/H11005(b/H11002a)>2m,fj 2m/H110011 Pjf(4)DP/H110053DP/H110052DP/H110051CM 4/H11017PS/H11017CM 4*  where  C/H11005/H11002  (b/H11002a)5
+180(2m)4/H11005/H11002  b/H11002a
+180 h4.M4* M4 f(4)SEC. 19.5 Numeric Integration and Differentiation 833c19-b.qxd  11/2/10  8:33 PM  Page 833
+--- Page 45 ---
+Estimate of error. Differentiation gives By considering the derivative 
+of we find that the largest value of in the interval of integration occurs at 0 and the smallest value at
+Computation gives the values and Since
+and we obtain Therefore, from (9),
+Hence Jmust lie between and so that at
+least four digits of our approximate value are exact. Actually, the value 0.746825 is exact to 5D because
+(exact to 6D).
+Thus our result is much better than that in Example 1 obtained by the trapezoidal rule, whereas the number
+of operations is nearly the same in both cases. /H17039J/H110050.7468240.746825 /H110010.000005 /H110050.746830, 0.746825 /H110020.000007 /H110050.746818/H110020.000007 /H11017Ps/H110170.000005.C/H11005/H11002 1>1800000 /H11005/H11002 0.00000056. b/H11002a/H110051, 2m/H1100510M4*/H11005f(4)(x*)/H11005/H11002 7.419. M4/H11005f(4)(0)/H1100512 x*/H11005(2.5/H110020.5110 )1>2.f(4)f(4)f(5)f(4)(x)/H110054 (4x4/H1100212x2/H110013)e/H11546x2.834 CHAP. 19 Numerics in General
+Table 19.5 Computations in Example 3
+jxj xj2e/H11546xj2
+0 0 0 1.000000
+1 0.1 0.01 0.9900502 0.2 0.04 0.9607893 0.3 0.09 0.913931
+4 0.4 0.16 0.8521445 0.5 0.25 0.7788016 0.6 0.36 0.6976767 0.7 0.49 0.6126268 0.8 0.64 0.5272929 0.9 0.81 0.444858
+10 1.0 1.00 0.367879
+Sums 1.367879 3.740266 3.037901 
+Instead of picking an and then estimating the error by (9), as in Example 3, it is
+better to require an accuracy (e.g., 6D) and then determine from (9).
+EXAMPLE 4 Determination of in Simpson’s Rule from the Required Accuracy
+What nshould we choose in Example 3 to get 6D-accuracy?
+Solution. Using (which is bigger in absolute value than we get from (9), with and
+the required accuracy,
+thus .
+Hence we should choose Do the computation, which parallels that in Example 3.
+Note that the error bounds in (4) or (9) may sometimes be loose, so that in such a case a smaller 
+may already suffice.
+Error Estimation for Simpson’s Rule by Halving h.The idea is the same as in (5)
+and gives
+(10)
+is obtained by using hand by using and is the error of Jh>2. Ph>21
+2 h, Jh>2 JhPh>2/H110151
+15 (Jh>2/H11002Jh)./H17039n/H110052mn/H110052m/H1100520.m/H11005c2/H11554106/H1155412
+180/H1155424d1>4
+/H110059.55 ƒCM 4ƒ/H1100512
+180(2m)4/H110051
+2/H1155410/H115466,b/H11002a/H110051 M4*, M4/H1100512n/H110052mn/H110052mn/H110052mc19-b.qxd  11/2/10  8:33 PM  Page 834
+--- Page 46 ---
+Derivation. In (5) we had as the reciprocal of and resulted from
+in (3) by replacing h with In (10) we have as the reciprocal of 
+and results from in (8) by replacing h with 
+EXAMPLE 5 Error Estimation for Simpson’s Rule by Halving
+Integrate from 0 to 2 with and apply (10).
+Solution. The exact 5D-value of the integral is Simpson’s rule gives
+Hence (10) gives and thus with an
+error which is less in absolute value than of the error 0.02979 of Hence the use of (10) was
+well worthwhile.
+Adaptive Integration
+The idea is to adapt step h to the variability of That is, where f varies but little, we can
+proceed in large steps without causing a substantial error in the integral, but where fvaries
+rapidly, we have to take small steps in order to stay everywhere close enough to the curve
+of f.
+Changing his done systematically, usually by halving h, and automatically (not “by hand”)
+depending on the size of the (estimated) error over a subinterval. The subinterval is halvedif the corresponding error is still too large, that is, larger than a given tolerance TOL
+(maximum admissible absolute error), or is not halved if the error is less than or equal toTOL (or doubled if the error is very small).
+Adapting is one of the techniques typical of modern software. In connection with
+integration it can be applied to various methods. We explain it here for Simpson’s rule. InTable 19.6 an asterisk means that for that subinterval, TOL has been reached.
+EXAMPLE 6 Adaptive Integration with Simpson’s Rule
+Integrate from to 2 by adaptive integration and with Simpson’s rule and 
+TOL
+Solution. Table 19.6 shows the calculations. Figure 444 shows the integrand and the adapted intervals
+used. The first two intervals ([0, 0.5], [0.5, 1.0]) have length 0.5, hence [because we use 
+subintervals in Simpson’s rule The next two intervals ([1.00, 1.25], [1.25, 1.50]) have length 0.25(hence and the last four intervals have length 0.125. Sample computations. For 0.740480 see
+Example 5. Formula (10) gives Note that 0.123716 refers to [0, 0.5]
+and [0.5, 1], so that we must subtract the value corresponding to [0, 1] in the line before. Etc.
+gives 0.0001 for subintervals of length 1, 0.00005 for length 0.5, etc. The value of the
+integral obtained is the sum of the values marked by an asterisk (for which the error estimate has becomeless than TOL). This gives
+The exact 5D-value is . Hence the error is 0.00017. This is about of the absolute value of
+that in Example 5. Our more extensive computation has produced a much better result.
+/H170391>200 J/H110051.25953J/H110150.123716 /H110010.528895 /H110010.388263 /H110010.218483 /H110051.25936.TOL[0, 2] /H110050.0002(0.123716 /H110020.122794)> 15/H110050.000061.h/H110050.125)(7**)].2m/H110052 h/H110050.25f (x)[0, 2]/H110050.0002.x/H110050 f (x)/H110051
+4 px4 cos 1
+4 pxf (x)./H17039Jh>2.1
+10 /H110020.00283J/H11015Jh>2/H11001Ph>2/H110051.26236, Ph>2/H110051
+15 (1.22974 /H110020.74048) /H110050.032617 /H110051
+6 [0/H110014/H115540.045351 /H110012/H115540.555361 /H110014/H115541.521579 /H110010]/H110051.22974. Jh>2/H110051
+6  [ f (0)/H110014 f (1
+2)/H110012f (1)/H110014f (3
+2)/H11001f (2)] Jh/H110051
+3 3 f (0)/H110014f (1)/H11001f (2)4/H110051
+3 (0/H110014/H115540.555360 /H110010)/H110050.740480,J/H110051.25953.h/H110051 f (x)/H110051
+4 px4 cos 1
+4 px1
+2 h. h4 1
+16 /H11005(1
+2)415/H1100516/H1100211
+15 1
+2 h. h21
+4 /H11005(1
+2)23/H110054/H1100211
+3 SEC. 19.5 Numeric Integration and Differentiation 835c19-b.qxd  11/2/10  8:33 PM  Page 835
+--- Page 47 ---
+Gauss Integration Formulas 
+Maximum Degree of Precision
+Our integration formulas discussed so far use function values at predetermined
+(equidistant) x-values (nodes) and give exact results for polynomials not exceeding a836 CHAP. 19 Numerics in General
+Table 19.6 Computations in Example 6
+Interval Integral Error (10) TOL Comment
+[0, 2] 0.740480 0.0002
+[0, 1] 0.122794
+[1, 2] 1.10695
+Sum /H110051.22974 0.032617 0.0002 Divide further
+[0.0, 0.5] 0.004782
+[0.5, 1.0] 0.118934
+Sum /H110050.123716* 0.000061 0.0001 TOL reached
+[1.0, 1.5] 0.528176
+[1.5, 2.0] 0.605821
+Sum /H110051.13300 0.001803 0.0001 Divide further
+[1.00, 1.25] 0.200544
+[1.25, 1.50] 0.328351
+Sum /H110050.528895* 0.000048 0.00005 TOL reached
+[1.50, 1.75] 0.388235
+[1.75, 2.00] 0.218457
+Sum /H110050.606692 0.000058 0.00005 Divide further
+[1.500, 1.625] 0.196244
+[1.625, 1.750] 0.192019
+Sum /H110050.388263* 0.000002 0.000025 TOL reached
+[1.750, 1.875] 0.153405
+[1.875, 2.000] 0.065078
+Sum /H110050.218483* 0.000002 0.000025 TOL reached
+f(x)
+x01.5
+1.00.5
+0.5 0 1 1.5 2
+Fig. 444. Adaptive integration in Example 6c19-b.qxd  11/2/10  8:33 PM  Page 836
+--- Page 48 ---
+certain degree [called the degree of precision; see after (9)]. But we can get much more
+accurate integration formulas as follows. We set
+(11)
+with fixed n, and obtained from by setting 
+Then we determine the n coefficients and nnodes so that (11) gives
+exact results for polynomials of degree kas high as possible. Since is the
+number of coefficients of a polynomial of degree it follows that 
+Gauss has shown that exactness for polynomials of degree not exceeding (instead
+of for predetermined nodes) can be attained, and he has given the location of the
+the jth zero of the Legendre polynomial in Sec. 5.3) and the coefficients which
+depend on n but not on and are obtained by using Lagrange’s interpolation polynomial,
+as shown in Ref. [E5] listed in App. 1. With these and formula (11) is called a Gauss
+integration formula or Gauss quadrature formula. Its degree of precision is as
+just explained. Table 19.7 gives the values needed for (For larger n, see 
+pp. of Ref. [GenRef1] in App. 1.)916–919n/H110052,Á, 5.2n/H110021,Aj, tjf(t),Aj Pn tj (/H11005n/H1100212n/H110021k/H110172n/H110021. 2n/H110021,n/H11001n/H110052nt1,Á, tn A1,Á, Anx/H110051
+2 [a(t/H110021)/H11001b(t/H110011)]. x/H11005a, b t/H11005/H11006 1[ fj/H11005f (tj)] /H209101
+/H115461  f (t) dt /H11015an
+j/H110051 Aj fjSEC. 19.5 Numeric Integration and Differentiation 837
+Table 19.7 Gauss Integration: Nodes tjand Coefficients Aj
+n Nodes tj Coefficients Aj Degree of Precision
+/H110020.5773502692 13 20.5773502692 1
+/H110020.7745966692 0.5555555556
+3 0 0.8888888889 5
+0.7745966692 0.5555555556
+/H110020.8611363116 0.3478548451
+/H110020.3399810436 0.6521451549470.3399810436 0.6521451549
+0.8611363116 0.3478548451
+/H110020.9061798459 0.2369268851/H110020.5384693101 0.4786286705
+5 0 0.5688888889 9
+0.5384693101 0.47862867050.9061798459 0.2369268851
+EXAMPLE 7 Gauss Integration Formula with n 3
+Evaluate the integral in Example 3 by the Gauss integration formula (11) with 
+Solution. We have to convert our integral from 0 to 1 into an integral from to 1. We set 
+Then and (11) with and the above values of the nodes and the coefficients yields n/H110053 dx/H110051
+2 dt,x/H110051
+2 (t/H110011). /H110021n/H110053./H11549c19-b.qxd  11/2/10  8:33 PM  Page 837
+--- Page 49 ---
+(exact to 6D: 0.746825), which is almost as accurate as the Simpson result obtained in Example 3 with a much
+larger number of arithmetic operations. With 3 function values (as in this example) and Simpson’s rule we wouldget with an error over 30 times that of the Gauss integration.
+EXAMPLE 8 Gauss Integration Formula with n 4 and 5
+Integrate from to 2 by Gauss. Compare with the adaptive integration in Example 6
+and comment.
+Solution. gives as needed in (11). For we calculate (6S)
+The error is 0.00003 because (6S). Calculating with 10S and gives the same result; so the
+error is due to the formula, not rounding. For and 10S we get too large by the amount
+0.000000250 because The accuracy is impressive, particularly if we compare the amount
+of work with that in Example 6.
+Gauss integration is of considerable practical importance. Whenever the integrand fis
+given by a formula (not just by a table of numbers) or when experimental measurements
+can be set at times (or whatever t represents) shown in Table 19.7 or in Ref. [GenRef1],
+then the great accuracy of Gauss integration outweighs the disadvantage of the complicated
+and (which may have to be stored). Also, Gauss coefficients are positive for all
+n, in contrast with some of the Newton–Cotes coefficients for larger n.
+Of course, there are frequent applications with equally spaced nodes, so that Gauss
+integration does not apply (or has no great advantage if one first has to get the in (11)by interpolation).
+Since the endpoints and 1 of the interval of integration in (11) are not zeros of 
+they do not occur among and the Gauss formula (11) is called, therefore, anopen formula, in contrast with a closed formula, in which the endpoints of the interval
+of integration are and [For example, (2) and (7) are closed formulas.]
+Numeric Differentiation
+Numeric differentiation is the computation of values of the derivative of a function ffrom
+given values of f . Numeric differentiation should be avoided whenever possible. Whereas
+integration is a smoothing process and is not very sensitive to small inaccuracies in function
+values, differentiation tends to make matters rough and generally gives values of that are
+much less accurate than those of f. The difficulty with differentiation is tied in with the
+definition of the derivative, which is the limit of the difference quotient, and, in that quotient,you usually have the difference of a large quantity divided by a small quantity. This cancause numerical instability. While being aware of this caveat, we must still develop basicdifferentiation formulas for use in numeric solutions of differential equations.
+We use the notations etc., and may obtain rough approximation
+formulas for derivatives by remembering that
+f
+r(x)/H11005lim
+h:0  f (x/H11001h)/H11002f (x)
+h .fjr/H11005fr(xj),  fjs/H11005fs(xj),frtn. t0t0,Á, tn,Pn, /H110021tjAj Aj tjtj/H17039J/H110051.259525935 (10S).J/H110151.259526185, n/H110055n/H110054 J/H110051.25953 /H110050.347855(0.000290309 /H110011.02570) /H110010.652145(0.129464 /H110011.25459) /H110051.25950. J/H11015A1 f1/H11001Á/H11001A4 f4/H11005A1( f1/H11001f4)/H11001A2( f2/H11001f3)n/H110054 f (t)/H110051
+4 p(t/H110011)4 cos (1
+4 p (t/H110011)), x/H11005t/H110011x/H110050 f (x)/H110051
+4 px4 cos 1
+4 px/H11549/H170391
+6 (1/H110014e/H115460.25/H11001e/H115461)/H110050.747180,/H110151
+2  c5
+9  exp  a/H11002 1
+4 a1/H11002B3
+5b2
+b/H110018
+9  exp  a/H11002 1
+4 b/H110015
+9  exp  a/H11002 1
+4 a1/H11001B3
+5b2
+bd/H110050.746815/H209101
+0 exp (/H11002x2) dx/H110051
+2  /H209101
+/H115461 exp  a/H11002 1
+4 (t/H110011)2b 
+dt838 CHAP. 19 Numerics in Generalc19-b.qxd  11/2/10  8:33 PM  Page 838
+--- Page 50 ---
+This suggests
+(12)
+Similarly, for the second derivative we obtain
+(13) etc.
+More accurate approximations are obtained by differentiating suitable Lagrange
+polynomials. Differentiating (6) and remembering that the denominators in (6) are 
+we have
+Evaluating this at we obtain the “three-point formulas”
+(a)
+(14) (b)
+(c)
+Applying the same idea to the Lagrange polynomial we obtain similar formulas,
+in particular,
+(15)
+Some examples and further formulas are included in the problem set as well as in 
+Ref. [E5] listed in App. 1.f2r/H110151
+12h  ( f0/H110028f1/H110018f3/H11002f4).p4(x),f2r/H110151
+2h ( f0/H110024f1/H110013f2).f1r/H110151
+2h (/H11002f 0/H11001f2),f0r/H110151
+2h (/H110023f 0/H110014f1/H11002f2),x0, x1, x2,fr(x)/H11015p2r(x)/H110052x/H11002x1/H11002x2
+2h2  f0/H110022x/H11002x0/H11002x2
+h2  f1/H110012x/H11002x0/H11002x1
+2h2  f2./H11002h2, 2h2,2h2,f1s/H11015d2f1
+h2/H11005f2/H110022 f1/H11001f0
+h2 ,f1>2r/H11015df1>2
+h/H11005f1/H11002f0
+h .SEC. 19.5 Numeric Integration and Differentiation 839
+1–6 RECTANGULAR AND TRAPEZOIDAL RULES
+1. Rectangular rule. Evaluate the integral in Example
+1 by the rectangular rule (1) with subintervals of
+length 0.1. Compare with Example 1. (6S-exact:0.746824)
+2. Bounds for (1). Derive a formula for lower and upper
+bounds for the rectangular rule. Apply it to Prob. 1.PROBLEM SET 19.5
+3. Trapezoidal rule. To get a feel for increase in accuracy,
+integrate from 0 to 1 by (2) with 
+4. Error estimation by halfing. Integrate from
+0 to 1 by (2) with and esti-
+mate the error for and by (5).
+5. Error estimation. Do the tasks in Prob. 4 for
+f (x)/H11005sin 1
+2 px.h/H110050.25 h/H110050.5h/H110051, h/H110050.5, h/H110050.25f (x)/H11005x40.25, 0.1. h/H110051, 0.5, x2c19-b.qxd  11/2/10  8:33 PM  Page 839
+--- Page 51 ---
+840 CHAP. 19 Numerics in General
+6. Stability. Prove that the trapezoidal rule is stable with
+respect to rounding.
+7–15 SIMPSON’S RULE
+Evaluate the integrals 
+by Simpson’s rule with 2 mas indicated,
+and compare with the exact value known from calculus.
+7. 8.
+9. 10.
+11. 12.13. Error estimate. Compute the integral J by Simpson’s
+rule with and use the value and that in Prob.
+11 to estimate the error by (10).
+14. Error bounds and estimate. Integrate from 0 to 2
+by (7) with and with Give error boundsfor the value and an error estimate by (10).
+15. Given TOL. Find the smallest n in computing A (see
+Probs. 7 and 8) such that 5S-accuracy is guaranteed(a)by (4) in the use of (2), (b) by (9) in the use of (7).
+16–21
+NONELEMENTARY INTEGRALS
+The following integrals cannot be evaluated by the usualmethods of calculus. Evaluate them as indicated. Compareyour value with that possibly given by your CAS. isthe sine integral. and are the Fresnel integrals.See App. A3.1. They occur in optics.
+16. by (2), and apply (5).
+17. by (7), 
+18.Obtain a better value in Prob. 17. Hint. Use (10).
+19. by (7), 
+20. by (7), 
+21. by (7), 
+22–25
+GAUSS INTEGRATION
+Integrate by (11) with 
+22. from 0 to 
+23. from 0 to 1
+24. from 0 to 1.25
+25. from 0 to 1 exp (/H11002x2)sin (x2)xe/H11546x1
+2 p cos xn/H110055:2m/H1100510 C(1.25)2m/H1100510 S(1.25)2m/H1100510 Si (1)2m/H110052, 2m/H110054 Si (1)n/H110055, n/H1100510, Si (1)S(x)/H11005/H20910x
+0 sin (x*2) dx*, C(x)/H11005/H20910x
+0 cos (x*2) dx*Si(x)/H11005/H20910x
+0 sin x*
+x* dx*,C(x) S(x)Si (x)h/H110050.5h/H110050.5. h/H110051e/H11546x2m/H110058J, 2m/H1100510 J, 2m/H110054B, 2m/H1100510 B, 2m/H110054A, 2m/H1100510 A, 2m/H110054J/H11005/H209101
+0 dx
+1/H11001x2B/H11005/H209100.4
+0 xe/H11546x2 dx, A/H11005/H209102
+1 dx
+x ,26. TEAM PROJECT. Romberg Integration (W. Rom-
+berg, Norske Videnskab. Trondheim, F rh. 28, Nr. 7,
+1955). This method uses the trapezoidal rule and gains
+precision stepwise by halving h and adding an error
+estimate. Do this for the integral of from
+to with as follows.
+Step 1. Apply the trapezoidal rule (2) with 
+(hence to get an approximation . Halve h
+and use (2) to get and an error estimate
+If stop. The result is 
+Step 2. Show that hence
+and go on. Use (2) with to get 
+and add to it the error estimate to
+get the better Calculate
+If stop. The result is 
+(Why does come in?) Show that we obtain
+so that we can stop. Arrange your
+J- and -values in a kind of “difference table.” PP32/H11005/H11002 0.000266,24/H1100516J33/H11005J32/H11001P32. ƒP32ƒ/H11017TOL,P32/H110051
+24/H110021  (J32/H11002J22)/H110051
+15  (J32/H11002J22).J32/H11005J31/H11001P31.P31/H110051
+3 (J31/H11002J21)J31 h>4 ƒP21ƒ/H11022TOLP21/H11005/H11002 0.066596,J22/H11005J21/H11001P21. ƒP21ƒ/H11017TOL,P21/H110051
+22/H110021  (J21/H11002J11).J21J11 n/H110051)h/H110052TOL/H1100510/H115463, x/H110052 x/H110050f (x)/H11005e/H11546x/H9278
+J22 J21J11
+J31J33 J32/H928031/H928021
+/H928032
+If were greater than TOL, you would have to
+go on and calculate in the next step from (2) with
+then
+with
+with
+with
+where (How does this come in?)
+Apply the Romberg method to the integral
+of from to 2 with
+27–30 DIFFERENTIATION
+27.Consider for 
+Calculate from 
+Determine the errors. Compare and
+comment.(15). (14c),(14a), (14b), f2r x3/H110050.6, x 4/H110050.8.x0/H110050, x 1/H110050.2, x 2/H110050.4, f (x)/H11005x4TOL/H1100510/H115464.x/H110050 f (x)/H110051
+4 px4 cos 1
+4 px63/H1100526/H110021.P43/H110051
+63 (J43/H11002J33) J44/H11005J43/H11001P43P42/H110051
+15 (J42/H11002J32) J43/H11005J42/H11001P42P41/H110051
+3 (J41/H11002J31) J42/H11005J41/H11001P41h/H110051
+4 ;J41ƒP32ƒc19-b.qxd  11/2/10  8:33 PM  Page 840
+--- Page 52 ---
+28.A “four-point formula” for the derivative is
+Apply it to with as in Prob. 27,
+determine the error, and compare it with that in the caseof (15).
+29.The derivative can also be approximated interms of first-order and higher order differences (seeSec. 19.3):f
+r(x)x1,Á, x4 f (x)/H11005x4f2r/H110151
+6h  (/H110022f 1/H110023f2/H110016f3/H11002f4).
+Compute in Prob. 27 from this formula, usingdifferences up to and including first order, secondorder, third order, fourth order.
+30.Derive the formula in Prob. 29 from (14) in Sec. 19.3.f
+r(0.4)/H110011
+3 ¢3f0/H110021
+4 ¢4f0/H11001/H11002 Áb .fr(x0)/H110151
+h  a¢f0/H110021
+2 ¢2f0Chapter 19 Review Questions and Problems 841
+1.What is a numeric method? How has the computerinfluenced numerics?
+2.What is an error? A relative error? An error bound?
+3.Why are roundoff errors important? State the roundingrules.
+4.What is an algorithm? Which of its properties areimportant in software implementation?
+5.What do you know about stability?
+6.Why is the selection of a good method at least as
+important on a large computer as it is on a small one?
+7.Can the Newton (–Raphson) method diverge? Is it fast?Same questions for the bisection method.
+8.What is fixed-point iteration?
+9.What is the advantage of Newton’s interpolationformulas over Lagrange’s?
+10.What is spline interpolation? Its advantage overpolynomial interpolation?
+11.List and compare the integration methods we havediscussed.
+12.How did we use an interpolation polynomial in derivingSimpson’s rule?
+13.What is adaptive integration? Why is it useful?
+14.In what sense is Gauss integration optimal?
+15.How did we obtain formulas for numeric differentiation?
+16.Write infloating-point form with 5S (5 significant digits,properly rounded).
+17.Compute as given
+and then rounded stepwise to 3S, 2S, 1S. Comment.(“Stepwise” means rounding the rounded numbers, notthe given ones.)
+18.Compute as given and
+then rounded stepwise to 4S, 3S, 2S, 1S. Comment.
+19.Let 19.1 and 25.84 be correctly rounded. Find theshortest interval in which the sum s of the true
+(unrounded) numbers must lie.0.38755> (5.6815 /H110020.38419)(5.346/H110023.644)> (3.444/H110023.055)/H1100246.9028104, 0.000317399, 54> 7, /H11002890> 3CHAPTER 19 REVIEW QUESTIONS AND PROBLEMS
+20.Do the same task as in Prob. 19 for the difference
+21.What is the relative error of in terms of that of ?
+22.Show that the relative error of is about twice thatof 
+23.Solve in two ways (cf. Sec. 19.1).Use 4S-arithmetic.
+24.Solve Use 5S-arithmetic.
+25.Compute the solution of near bytransforming the equation algebraically to the form
+and starting from 
+26.Solve by Newton’s method, starting from
+27.Solve Prob. 25 by bisection (3S-accuracy).
+28.Compute from 
+by quadratic interpolation.
+29.Find the cubic spline for the data 
+30.Find the cubic spline q and the interpolation polynomial
+p for the data (0, 0), (1, 1), (2, 6), (3, 10), with
+and graph p and q on common
+axes.
+31.Compute the integral of from 0 to 1 by thetrapezoidal rule with What error bounds areobtained from (4) in Sec. 19.5? What is the actual errorof the result?
+32.Compute the integral of from 0 to 1 bySimpson’s rule with 
+33.Solve Prob. 32 by Gauss integration with and
+34.Compute for using (14b) in Sec. 19.5with (a) (b) Compare the accuracy.
+35.Compute for using (13) in Sec. 19.5with (a) (b) h/H110050.1. h/H110050.2,f
+ (x)/H11005x3fs(0.2)h/H110050.1. h/H110050.2,f (x)/H11005x3fr(0.2)n/H110055.n/H1100532m/H110054.cos (x2)n/H110055.x3qr(0)/H110050, qr(3)/H110050f (2)/H110054, k 0/H11005/H11002 1, k 2/H110055.f (0)/H110050,  f (1)/H110050,sinh 1.0 /H110051.175sinh 0.5 /H110050.521, sinh 0, sinh 0.4x/H110050.5.cos x/H11005x2x0/H110050. x/H11005g(x)x/H110050 x4/H11005x/H110010.1x2/H11002100x/H110011/H110050.x2/H1100240x/H110012/H110050a/H33522.a/H335222a/H33522 na/H335223.2/H110026.29.c19-b.qxd  11/2/10  8:33 PM  Page 841
+--- Page 53 ---
+842 CHAP. 19 Numerics in General
+In this chapter we discussed concepts that are relevant throughout numeric work as
+a whole and methods of a general nature, as opposed to methods for linear algebra(Chap. 20) or differential equations (Chap. 21).
+In scientific computations we use the floating-point representation of numbers
+(Sec. 19.1); fixed-point representation is less suitable in most cases.
+Numeric methods give approximate values of quantities. The error of is
+(1) (Sec. 19.1)
+where ais the exact value. The relative error of is Errors arise from rounding,
+inaccuracy of measured values, truncation (that is, replacement of integrals by sums,
+series by partial sums), and so on.
+An algorithm is called numerically stable if small changes in the initial data give
+only correspondingly small changes in the final results. Unstable algorithms aregenerally useless because errors may become so large that results will be veryinaccurate. The numeric instability of algorithms must not be confused with themathematical instability of problems (“ill-conditioned problems,” Sec. 19.2).
+Fixed-point iteration is a method for solving equations in which the
+equation is first transformed algebraically to an initial guess for thesolution is made, and then approximations are successively computedby iteration from (see Sec. 19.2)
+(2)
+Newton’s method for solving equations is an iteration
+(3) (Sec. 19.2).
+Here is the x-intercept of the tangent of the curve at the point 
+This method is of second order (Theorem 2, Sec. 19.2). If we replace in (3) by
+a difference quotient (geometrically: we replace the tangent by a secant), we obtainthe secant method; see (10) in Sec. 19.2. For the bisection method (which converges
+slowly) and the method of false position, see Problem Set 19.2.
+Polynomial interpolation means the determination of a polynomial such
+that where and are measured orobserved values, values of a function, etc. is called an interpolation polynomial.
+For given data, of degree n(or less) is unique. However, it can be written in
+different forms, notably in Lagrange’s form (4), Sec. 19.3, or in Newton’s divided
+difference form (10), Sec. 19.3, which requires fewer operations. For regularly
+spaced the latter becomes Newton’s forwarddifference formula (formula (14) in Sec. 19.3):x
+0, x1/H11005x0/H11001h,Á, xn/H11005x0/H11001nhpn(x)pn(x)(x0, f0),Á, (xn, fn) j/H110050,Á, n pn(xj)/H11005fj,pn(x)frxn. y/H11005f (x) xn/H110011xn/H110011/H11005xn/H11002f (xn)
+fr(xn)f (x)/H110050(n/H110050, 1, Á). xn/H110011/H11005g(xn)x1, x2,Á,x0 x/H11005g(x),f (x)/H110050P>a. a/H33522P/H11005a/H11002a/H33522a/H33522P a/H33522SUMMARY OF CHAPTER 19
+Numerics in Generalc19-b.qxd  11/2/10  8:33 PM  Page 842
+--- Page 54 ---
+(4)
+where and the forward differences are and
+A similar formula is Newton’s backward difference interpolation formula (formula
+(18) in Sec. 19.3).
+Interpolation polynomials may become numerically unstable as nincreases, and
+instead of interpolating and approximating by a single high-degree polynomial it is
+preferable to use a cubic spline that is, a twice continuously differentiable
+interpolation function [thus, which in each subinterval consists of a cubic polynomial see Sec. 19.4.
+Simpson’s rule of numeric integration is [see (7), Sec. 19.5]
+(5)
+with equally spaced nodes and
+It is simple but accurate enough for many applications. Its degree of
+precision is because the error (8), Sec. 19.5, involves A more practical
+error estimate is (10), Sec. 19.5,
+obtained by first computing with step h, then with step and then taking of
+the difference of the results.
+Simpson’s rule is the most important of the Newton–Cotes formulas, which are
+obtained by integrating Lagrange interpolation polynomials, linear ones for the
+trapezoidal rule (2), Sec. 19.5, quadratic for Simpson’s rule, cubic for the three-
+eights rule (see the Chap. 19 Review Problems), etc.
+Adaptive integration (Sec. 19.5, Example 6) is integration that adjusts
+(“adapts”) the step (automatically) to the variability of 
+Romberg integration (Team Project 26, Problem Set 19.5) starts from the
+trapezoidal rule (2), Sec. 19.5, with etc. and improves results by
+systematically adding error estimates.
+Gauss integration (11), Sec. 19.5, is important because of its great accuracy
+compared to Newton–Cotes’s or n). This is achieved
+by an optimal choice of the nodes, which are not equally spaced; see Table 19.7,Sec. 19.5.
+Numeric differentiation is discussed at the end of Sec. 19.5. (Its main application
+(to differential equations) follows in Chap. 21.)DP/H11005n/H110021 (DP/H110052n/H110021,h, h> 2, h> 4,f
+ (x).1
+15 h>2,Ph>2/H110051
+15 (Jh>2/H11002Jh),h4. DP/H110053fj/H11005f (xj).xj/H11005x0/H11001jh, j/H110051,Á, 2m, h /H11005(b/H11002a)>(2m),/H20910b
+a f (x) dx /H11015h
+3 ( f0/H110014f1/H110012f2/H110014f3/H11001Á/H110012f2m/H115462/H110014f2m/H115461/H11001f2m)qj(x);xj/H11017x/H11017xj/H110011 g(xj)/H11005fj],g(x),(k/H110052, 3, Á). ¢kfj/H11005¢k/H115461fj/H110011/H11002¢k/H115461fj¢fj/H11005fj/H110011/H11002fj r/H11005(x/H11002x0)>hf (x)/H11015pn(x)/H11005f0/H11001r ¢f0/H11001Á/H11001r (r/H110021)Á(r/H11002n/H110011)
+n! ¢nf0Summary of Chapter 19 843c19-b.qxd  11/2/10  8:33 PM  Page 843
