@@ -184,7 +184,7 @@ $$
 
 Figure 29 shows that at $x = 0$ it has the value $3.0$ and the slope $-0.5$, so that its tangent intersects the $x$-axis at $x = 3.0 / 0.5 = 6.0$. (The scales on the axes differ!)
 
-![Fig. 29. Particular solution and initial tangent in Example 4](../images/fig-2-29.png){#fig-2-29}
+![Fig. 29. Particular solution and initial tangent in Example 4](../images/chapter2/fig-2-29.png){#fig-2-29}
 
 **Observation.** Our choice of $y_1$ and $y_2$ was general enough to satisfy both initial conditions. Now let us take instead two proportional solutions $y_1 = \cos x$ and $y_2 = k \cos x$, so that $y_2 / y_1 = k = \text{const}$. Then we can write $y = c_1 y_1 + c_2 y_2$ in the form
 
@@ -507,7 +507,7 @@ $$
 
 Hence $c_1 = 1$ and $c_2 = 3$. This gives the answer $y = e^x + 3e^{-2x}$. Figure 30 shows that the curve begins at $(0, 4)$ with a negative slope (but note that the axes have different scales!), in agreement with the initial conditions.
 
-![Fig. 30. Solution in Example 2](../images/fig-2-30.png){#fig-2-30}
+![Fig. 30. Solution in Example 2](../images/chapter2/fig-2-30.png){#fig-2-30}
 
 ### Case II. Real Double Root
 
@@ -582,7 +582,7 @@ $$
 
 Hence $c_2 = -3.5 + 1.5 = -2$. The particular solution of the initial value problem is $y = (3.0 - 2x) e^{-0.5x}$. See Fig. 31.
 
-![Fig. 31. Solution in Example 4](../images/fig-2-31.png){#fig-2-31}
+![Fig. 31. Solution in Example 4](../images/chapter2/fig-2-31.png){#fig-2-31}
 
 ### Case III. Complex Roots
 
@@ -642,7 +642,7 @@ $$
 
 Figure 32 shows $y$ and the curves of $e^{-0.2x}$ and $-e^{-0.2x}$ (dashed), between which the curve of $y$ oscillates. Such "damped vibrations" (with $x$ being time $t$) have important mechanical and electrical applications, as we shall soon see (in Sec. 2.4).
 
-![Fig. 32. Solution in Example 5](../images/fig-2-32.png){#fig-2-32}
+![Fig. 32. Solution in Example 5](../images/chapter2/fig-2-32.png){#fig-2-32}
 
 ### EXAMPLE 6 Complex Roots
 A general solution of the ODE
@@ -868,7 +868,7 @@ Linear ODEs with constant coefficients have important applications in mechanics,
 
 We take an ordinary coil spring that resists extension as well as compression. We suspend it vertically from a fixed support and attach a body at its lower end, for instance, an iron ball, as shown in @fig-2-33. We let $y = 0$ denote the position of the ball when the system is at rest (@fig-2-33b). Furthermore, we choose the downward direction as positive, thus regarding downward forces as positive and upward forces as negative.
 
-![Fig. 33. Mechanical mass–spring system](../images/fig-2-33.png){#fig-2-33}
+![Fig. 33. Mechanical mass–spring system](../images/chapter2/fig-2-33.png){#fig-2-33}
 
 We now let the ball move, as follows. We pull it down by an amount $y > 0$ (@fig-2-33c). This causes a spring force
 
@@ -904,7 +904,7 @@ $$ {#eq-2-27}
 
 where $\omega_0 = \sqrt{k/m}$. This motion is called a **harmonic oscillation** (@fig-2-34). Its frequency is $f = \omega_0 / 2\pi$ Hertz (cycles/sec) because $\cos \omega_0 t$ and $\sin \omega_0 t$ in (@eq-2-27) have the period $2\pi/\omega_0$. The frequency $f$ is called the natural frequency of the system. (We write $\omega_0$ to reserve $\omega$ for Sec. 2.8.)
 
-![Fig. 34. Typical harmonic oscillations (4) and (4*) with the same $\omega_0$ and different initial velocities: positive (1), zero (2), negative (3)](../images/fig-2-34.png){#fig-2-34}
+![Fig. 34. Typical harmonic oscillations (4) and (4*) with the same $\omega_0$ and different initial velocities: positive (1), zero (2), negative (3)](../images/chapter2/fig-2-34.png){#fig-2-34}
 
 An alternative representation of (@eq-2-27), which shows the physical characteristics of amplitude and phase shift, is
 
@@ -928,7 +928,7 @@ $$
 
 (@fig-2-35). If you have a chance of experimenting with a mass–spring system, don't miss it. You will be surprised about the good agreement between theory and experiment, usually within a fraction of one percent if you measure carefully. $\square$
 
-![Fig. 35. Harmonic oscillation in Example 1](../images/fig-2-35.png){#fig-2-35}
+![Fig. 35. Harmonic oscillation in Example 1](../images/chapter2/fig-2-35.png){#fig-2-35}
 
 ### ODE of the Damped System
 
@@ -940,7 +940,7 @@ $$ {#eq-2-28}
 
 Physically this can be done by connecting the ball to a dashpot; see @fig-2-36. We assume this damping force to be proportional to the velocity $y' = dy/dt$. This is generally a good approximation for small velocities.
 
-![Fig. 36. Damped system](../images/fig-2-36.png){#fig-2-36}
+![Fig. 36. Damped system](../images/chapter2/fig-2-36.png){#fig-2-36}
 
 The constant $c$ is called the damping constant. Let us show that $c$ is positive. Indeed, the damping force acts against the motion; hence for a downward motion we have $y' > 0$ which for positive $c$ makes $F_2$ negative (an upward force), as it should be. Similarly, for an upward motion we have $y' < 0$ which makes $F_2$ positive (a downward force).
 
@@ -978,7 +978,7 @@ $$ {#eq-2-30}
 
 We see that in this case, damping takes out energy so quickly that the body does not oscillate. For both exponents in (@eq-2-30) are negative because $\alpha > 0$, $\beta > 0$, and $\beta^2 = \alpha^2 - k/m < \alpha^2 \Rightarrow \beta < \alpha$. Hence both terms in (@eq-2-30) approach zero as $t \to \infty$. Practically speaking, after a sufficiently long time the mass will be at rest at the static equilibrium position ($y = 0$). @fig-2-37 shows (@eq-2-30) for some typical initial conditions.
 
-![Fig. 37. Typical motions (7) in the overdamped case: (a) Positive initial displacement, (b) Negative initial displacement](../images/fig-2-37.png){#fig-2-37}
+![Fig. 37. Typical motions (7) in the overdamped case: (a) Positive initial displacement, (b) Negative initial displacement](../images/chapter2/fig-2-37.png){#fig-2-37}
 
 #### Case II. Critical Damping
 
@@ -990,7 +990,7 @@ $$ {#eq-2-31}
 
 This solution can pass through the equilibrium position at most once because $e^{-\alpha t}$ is never zero and $c_1 + c_2 t$ can have at most one positive zero. If both $c_1$ and $c_2$ are positive (or both negative), it has no positive zero, so that $y$ does not pass through $0$ at all. @fig-2-38 shows typical forms of (@eq-2-31). Note that they look almost like those in @fig-2-37.
 
-![Fig. 38. Critical damping [see (8)]](../images/fig-2-38.png){#fig-2-38}
+![Fig. 38. Critical damping [see (8)]](../images/chapter2/fig-2-38.png){#fig-2-38}
 
 #### Case III. Underdamping
 
@@ -1014,7 +1014,7 @@ This represents **damped oscillations**. Their curve lies between the dashed cur
 
 The frequency is $\omega^* / (2\pi)\text{ Hz}$. From (@eq-2-32) we see that the smaller $c$ is, the larger is $\omega^*$ and the more rapid the oscillations become. If $c$ approaches $0$, then $\omega^*$ approaches $\omega_0 = \sqrt{k/m}$, giving the harmonic oscillation (@eq-2-27), whose frequency is the natural frequency of the system.
 
-![Fig. 39. Damped oscillation in Case III [see (10)]](../images/fig-2-39.png){#fig-2-39}
+![Fig. 39. Damped oscillation in Case III [see (10)]](../images/chapter2/fig-2-39.png){#fig-2-39}
 
 ### EXAMPLE 2 The Three Cases of Damped Motion
 How does the motion in Example 1 change if we change the damping constant $c$ from one to another of the following three values, with $y(0) = 0.16\text{ [meter]}$ and $y'(0) = 0$ as before?
@@ -1083,7 +1083,7 @@ $$
 
 We see that these damped oscillations have a smaller frequency than the harmonic oscillations in Example 1 by about 1% (since 2.96 is smaller than 3.00 by about 1.3%). Their amplitude goes to zero. See @fig-2-40. $\square$
 
-![Fig. 40. The three solutions in Example 2](../images/fig-2-40.png){#fig-2-40}
+![Fig. 40. The three solutions in Example 2](../images/chapter2/fig-2-40.png){#fig-2-40}
 
 This section concerned free motions of mass–spring systems. Their models are homogeneous linear ODEs. Nonhomogeneous linear ODEs will arise as models of forced motions, that is, motions under the influence of a "driving force." We shall study them in Sec. 2.8, after we have learned how to solve those ODEs.
 
@@ -1096,29 +1096,29 @@ This section concerned free motions of mass–spring systems. Their models are h
 4. **Initial velocity.** Could you make a harmonic oscillation move faster by giving the body a greater initial push?
 5. **Springs in parallel.** What are the frequencies of vibration of a body of mass $m = 5\text{ kg}$ (i) on a spring of modulus $k_1 = 20\text{ nt/m}$, (ii) on a spring of modulus $k_2 = 45\text{ nt/m}$, (iii) on the two springs in parallel? See @fig-2-41.
 
-![Fig. 41. Parallel springs (Problem 5)](../images/fig-2-41.png){#fig-2-41}
+![Fig. 41. Parallel springs (Problem 5)](../images/chapter2/fig-2-41.png){#fig-2-41}
 
 6. **Springs in series.** If a body hangs on a spring of modulus $k_1$, which in turn hangs on a spring of modulus $k_2$, what is the modulus $k$ of this combination of springs?
 7. **Pendulum.** Find the frequency of oscillation of a pendulum of length $L$ (@fig-2-42), neglecting air resistance and the weight of the rod, and assuming the angle of displacement $\theta$ to be so small that $\sin \theta$ practically equals $\theta$.
 
-![Fig. 42. Pendulum (Problem 7)](../images/fig-2-42.png){#fig-2-42}
+![Fig. 42. Pendulum (Problem 7)](../images/chapter2/fig-2-42.png){#fig-2-42}
 
 8. **Archimedean principle.** This principle states that the buoyancy force equals the weight of the water displaced by the body (partly or totally submerged). A cylindrical buoy of diameter $60\text{ cm}$ in @fig-2-43 is floating in water with its axis vertical. When depressed downward in the water and released, it vibrates with period $2\text{ sec}$. What is its weight?
 
-![Fig. 43. Buoy (Problem 8)](../images/fig-2-43.png){#fig-2-43}
+![Fig. 43. Buoy (Problem 8)](../images/chapter2/fig-2-43.png){#fig-2-43}
 
 9. **Vibration of water in a U-tube.** If 1 liter of water (about 1.06 US quart) is vibrating up and down under the influence of gravitation in a U-shaped tube of diameter $2\text{ cm}$ (@fig-2-44), what is the frequency? Neglect friction.
 
-![Fig. 44. Tube (Problem 9)](../images/fig-2-44.png){#fig-2-44}
+![Fig. 44. Tube (Problem 9)](../images/chapter2/fig-2-44.png){#fig-2-44}
 
 10. **TEAM PROJECT. Harmonic Motions of Similar Models.** The unifying power of mathematical methods results to a large extent from the fact that different physical (or other) systems may have the same or very similar models. Illustrate this for the following three systems:
     (a) **Pendulum clock.** A clock has a 1-meter pendulum. The clock ticks once for each time the pendulum completes a full swing, returning to its original position. How many times a minute does the clock tick?
     (b) **Flat spring.** The harmonic oscillations of a flat spring (@fig-2-45) with a body attached at one end and horizontally clamped at the other are also governed by (@eq-2-26). Find its motions, assuming that the body weighs $8\text{ nt}$ (about 1.8 lb), the system has its static equilibrium $1\text{ cm}$ below the horizontal line, and we let it start from this position with initial velocity $10\text{ cm/sec}$.
     (c) **Torsional vibrations.** Undamped torsional vibrations (rotations back and forth) of a wheel attached to an elastic thin rod or wire (@fig-2-46) are governed by the equation $I_0 \theta'' + K \theta = 0$, where $\theta$ is the angle measured from the state of equilibrium. Solve this equation for $K/I_0 = 13.69\text{ sec}^{-2}$, initial angle $\theta(0) = 30^\circ\text{ (= 0.5235 rad)}$ and initial angular velocity $\theta'(0) = 20^\circ/\text{sec (= 0.349 rad/sec)}$.
 
-![Fig. 45. Flat spring](../images/fig-2-45.png){#fig-2-45}
+![Fig. 45. Flat spring](../images/chapter2/fig-2-45.png){#fig-2-45}
 
-![Fig. 46. Torsional vibrations](../images/fig-2-46.png){#fig-2-46}
+![Fig. 46. Torsional vibrations](../images/chapter2/fig-2-46.png){#fig-2-46}
 
 ### 11–20 DAMPED MOTION
 11. **Overdamping.** Show that for (@eq-2-30) to satisfy initial conditions $y(0) = y_0$ and $y'(0) = v_0$ we must have $c_1 = \frac{1}{2}[(1 + \alpha/\beta)y_0 + v_0/\beta]$ and $c_2 = \frac{1}{2}[(1 - \alpha/\beta)y_0 - v_0/\beta]$.
@@ -1142,7 +1142,7 @@ This section concerned free motions of mass–spring systems. Their models are h
     (d) Solve (A) analytically. Give a reason why the solution $t_2$ of $y(t_2) = -0.001$, with $y(t)$ being the solution of (A), will give you the best possible $c$ satisfying (11).
     (e) Consider (B) empirically as in (a) and (b). What is the main difference between (B) and (A)?
 
-![Fig. 47. CAS Project 20](../images/fig-2-47.png){#fig-2-47}
+![Fig. 47. CAS Project 20](../images/chapter2/fig-2-47.png){#fig-2-47}
 
 ## 2.5 Euler–Cauchy Equations {#sec-2-5}
 
@@ -1292,7 +1292,7 @@ $$
 
 Figure 49 shows that the potential is not a straight line, as it would be for a potential between two parallel plates. For example, on the sphere of radius $7.5\text{ cm}$ it is not $55\text{ V}$, but considerably less: $v(7.5) = -110 + 1100/7.5 \approx 36.7\text{ V}$. $\square$
 
-![Fig. 49. Potential in Example 4](../images/fig-2-49.png){#fig-2-49}
+![Fig. 49. Potential in Example 4](../images/chapter2/fig-2-49.png){#fig-2-49}
 
 ## PROBLEM SET 2.5
 
@@ -1663,7 +1663,7 @@ $$
 y = 0.002\cos x + 1.5\sin x + 0.001x^2 - 0.002.
 $$
 
-![Fig. 50. Solution in Example 1](../images/fig-2-50.png){#fig-2-50}
+![Fig. 50. Solution in Example 1](../images/chapter2/fig-2-50.png){#fig-2-50}
 
 Figure 50 shows $y$ as well as the quadratic parabola $y_p$ about which $y$ is oscillating, practically like a sine curve since the cosine term is smaller by a factor of about $1/1000$. $\square$
 
@@ -1703,7 +1703,7 @@ $$
 y = (1 + 1.5x - 5x^2)e^{-1.5x}.
 $$
 
-![Fig. 51. Solution in Example 2](../images/fig-2-51.png){#fig-2-51}
+![Fig. 51. Solution in Example 2](../images/chapter2/fig-2-51.png){#fig-2-51}
 
 The curve begins with a horizontal tangent, crosses the $x$-axis at $x \approx 0.6217$ (where $1 + 1.5x - 5x^2 = 0$) and approaches the axis from below as $x$ increases. $\square$
 
@@ -1745,7 +1745,7 @@ $$
 y = 3.1e^{-x/2} + \sin x + 0.12x - 0.32.
 $$
 
-![Fig. 52. Solution in Example 3](../images/fig-2-52.png){#fig-2-52}
+![Fig. 52. Solution in Example 3](../images/chapter2/fig-2-52.png){#fig-2-52}
 
 $\square$
 
@@ -1797,7 +1797,7 @@ Here $y(t)$ as a function of time $t$ is the displacement of the body of mass $m
 
 The mass–spring system of Sec. 2.4 exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia $m y''$, the damping force $c y'$ (if $c > 0$), and the spring force $k y$, a restoring force.
 
-![Fig. 53. Mass on a spring](../images/fig-2-53.png){#fig-2-53}
+![Fig. 53. Mass on a spring](../images/chapter2/fig-2-53.png){#fig-2-53}
 
 We now extend our model by including an additional force, that is, the external force $r(t)$ on the right. Then we have
 
@@ -1913,7 +1913,7 @@ $$
 
 depends on $\omega$ and $\omega_0$. If $\omega \to \omega_0$, then $\rho$ and $a_0$ tend to infinity. This excitation of large oscillations by matching input and natural frequencies is called **resonance**. $\rho$ is called the **resonance factor** (Fig. 54), and from (9) we see that $\rho$ is the ratio of the amplitude $a_0$ of the particular solution $y_p$ and the static displacement $F_0/k$ under a constant force $F_0$. We shall see later in this section that resonance is of basic importance in the study of vibrating systems.
 
-![Fig. 54. Resonance factor $\rho(\omega)$](../images/fig-2-54.png){#fig-2-54}
+![Fig. 54. Resonance factor $\rho(\omega)$](../images/chapter2/fig-2-54.png){#fig-2-54}
 
 In the case of resonance the nonhomogeneous ODE (2) becomes
 
@@ -1933,7 +1933,7 @@ $$
 y_p(t) = \frac{F_0}{2m\omega_0} t \sin \omega_0 t \tag{11}
 $$
 
-![Fig. 55. Particular solution in the case of resonance](../images/fig-2-55.png){#fig-2-55}
+![Fig. 55. Particular solution in the case of resonance](../images/chapter2/fig-2-55.png){#fig-2-55}
 
 We see that, because of the factor $t$, the amplitude of the vibration becomes larger and larger. Practically speaking, systems with very little damping may undergo large vibrations that can destroy the system. We shall return to this practical aspect of resonance later in this section.
 
@@ -1951,7 +1951,7 @@ $$
 
 Since $\omega$ is close to $\omega_0$, the difference $\omega_0 - \omega$ is small. Hence the period of the last sine function is large, and we obtain an oscillation of the type shown in Fig. 56, the dashed curve resulting from the first sine factor. This is what musicians are listening to when they tune their instruments.
 
-![Fig. 56. Forced undamped oscillation when the difference of the input and natural frequencies is small ("beats")](../images/fig-2-56.png){#fig-2-56}
+![Fig. 56. Forced undamped oscillation when the difference of the input and natural frequencies is small ("beats")](../images/chapter2/fig-2-56.png){#fig-2-56}
 
 ### Case 2. Damped Forced Oscillations
 
@@ -2006,9 +2006,9 @@ $$
 
 From (15*) we see that this solution increases as $c$ decreases and approaches $\omega_0$ as $c$ approaches zero. See also Fig. 57.
 
-![Fig. 57. Amplification as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/fig-2-57.png){#fig-2-57}
+![Fig. 57. Amplification as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/chapter2/fig-2-57.png){#fig-2-57}
 
-![Fig. 58. Phase lag as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/fig-2-58.png){#fig-2-58}
+![Fig. 58. Phase lag as a function of $\omega$ for $m=1, k=1$ and various values of the damping constant $c$](../images/chapter2/fig-2-58.png){#fig-2-58}
 
 The size of $C^*(\omega_{max})$ is obtained from (14), with $\omega^2$ given by (15*). For this we obtain in the radicand in the denominator of (14) from (15*):
 
@@ -2085,9 +2085,9 @@ Find the motion of the mass–spring system modeled by the ODE and the initial c
     (d) Take your ODE with $c$ fixed and an input of two terms, one with frequency close to the practical resonance frequency and the other not. Discuss and sketch or graph the output.
     (e) Give other applications (not in the book) in which resonance is important.
 
-![Fig. 59. Problem 24](../images/fig-2-59.png){#fig-2-59}
+![Fig. 59. Problem 24](../images/chapter2/fig-2-59.png){#fig-2-59}
 
-![Fig. 60. Typical solution curves in CAS Experiment 25](../images/fig-2-60.png){#fig-2-60}
+![Fig. 60. Typical solution curves in CAS Experiment 25](../images/chapter2/fig-2-60.png){#fig-2-60}
 
 24. **Gun barrel.** Solve $y'' + y = 1 - t^2/\pi^2$ if $0 \le t \le \pi$ and $0$ if $t > \pi$; here $y(0) = 0, y'(0) = 0$. This models an undamped system on which a force $F$ acts during some interval of time (see Fig. 59), for instance, the force on a gun barrel when a shell is fired, the barrel being braked by heavy springs (and then damped by a dashpot, which we disregard for simplicity). Hint: At $t = \pi$, both $y$ and $y'$ must be continuous.
 
@@ -2114,9 +2114,9 @@ $$
 I(t) = \frac{dQ}{dt}, \qquad \text{equivalently} \qquad Q(t) = \int I(t) \, dt.
 $$
 
-![Fig. 61. RLC-circuit](../images/fig-2-61.png){#fig-2-61}
+![Fig. 61. RLC-circuit](../images/chapter2/fig-2-61.png){#fig-2-61}
 
-![Fig. 62. Elements in an RLC-circuit](../images/fig-2-62.png){#fig-2-62}
+![Fig. 62. Elements in an RLC-circuit](../images/chapter2/fig-2-62.png){#fig-2-62}
 
 | Name | Symbol Notation | Unit | Voltage Drop |
 |:---|:---|:---|:---|
@@ -2324,7 +2324,7 @@ $$
 I_p(t) = 2.824 \sin(377t - 1.29). \qquad \square
 $$
 
-![Fig. 63. Transient (upper curve) and steady-state currents in Example 1](../images/fig-2-63.png){#fig-2-63}
+![Fig. 63. Transient (upper curve) and steady-state currents in Example 1](../images/chapter2/fig-2-63.png){#fig-2-63}
 
 ### Analogy of Electrical and Mechanical Quantities
 
@@ -2366,25 +2366,25 @@ Related to this analogy are transducers, devices that convert changes in a mecha
 
 1. **RC-Circuit.** Model the RC-circuit in Fig. 64. Find the current due to a constant $E$.
 
-![Fig. 64. RC-circuit](../images/fig-2-64.png){#fig-2-64}
+![Fig. 64. RC-circuit](../images/chapter2/fig-2-64.png){#fig-2-64}
 
-![Fig. 65. Current $I$ in Problem 1](../images/fig-2-65.png){#fig-2-65}
+![Fig. 65. Current $I$ in Problem 1](../images/chapter2/fig-2-65.png){#fig-2-65}
 
 2. **RC-Circuit.** Solve Prob. 1 when $E = E_0 \sin \omega t$, and $R, C, E_0$, and $\omega$ are arbitrary.
 
 3. **RL-Circuit.** Model the RL-circuit in Fig. 66. Find a general solution when $R, L, E$ are any constants. Graph or sketch solutions when $R = 10\ \Omega$, $L = 0.25\text{ H}$, and $E = 48\text{ V}$.
 
-![Fig. 66. RL-circuit](../images/fig-2-66.png){#fig-2-66}
+![Fig. 66. RL-circuit](../images/chapter2/fig-2-66.png){#fig-2-66}
 
-![Fig. 67. Currents in Problem 3](../images/fig-2-67.png){#fig-2-67}
+![Fig. 67. Currents in Problem 3](../images/chapter2/fig-2-67.png){#fig-2-67}
 
 4. **RL-Circuit.** Solve Prob. 3 when $E = E_0 \sin \omega t$ and $R, L$, and $E_0$ are arbitrary. Sketch a typical solution.
 
-![Fig. 68. Typical current in Problem 4](../images/fig-2-68.png){#fig-2-68}
+![Fig. 68. Typical current in Problem 4](../images/chapter2/fig-2-68.png){#fig-2-68}
 
 5. **LC-Circuit.** This is an RLC-circuit with negligibly small $R$ (analog of an undamped mass–spring system). Find the current when $L = 0.5\text{ H}$, $C = 0.005\text{ F}$, and $E = \sin t\text{ V}$, assuming zero initial current and charge.
 
-![Fig. 69. LC-circuit](../images/fig-2-69.png){#fig-2-69}
+![Fig. 69. LC-circuit](../images/chapter2/fig-2-69.png){#fig-2-69}
 
 6. **LC-Circuit.** Find the current when $L = 0.5\text{ H}$, $C = 0.005\text{ F}$, $E = 2 t^2\text{ V}$, and initial current and charge are zero.
 
@@ -2491,7 +2491,7 @@ $$
 
 Had we included integration constants in (2), then (2) would have given the additional $c_1 y_1 + c_2 y_2$, that is, a general solution of the given ODE directly from (2). This will always be the case. $\square$
 
-![Fig. 70. Particular solution $y_p$ and its first term in Example 1](../images/fig-2-70.png){#fig-2-70}
+![Fig. 70. Particular solution $y_p$ and its first term in Example 1](../images/chapter2/fig-2-70.png){#fig-2-70}
 
 ### Idea of the Method. Derivation of (2)
 
@@ -2656,9 +2656,9 @@ Solve the problem, showing the details of your work. Sketch or graph the solutio
 29. Show that the system in Fig. 72 with $m = 4\text{ kg}$, $c = 0$, $k = 36\text{ kg/sec}^2$, and driving force $r(t) = 61 \cos 3.1t\text{ N}$ exhibits beats. Hint: Choose zero initial conditions.
 30. In Fig. 72, let $m = 1\text{ kg}$, $c = 4\text{ kg/sec}$, $k = 24\text{ kg/sec}^2$, and driving force $r(t) = 10 \cos \omega t\text{ N}$. Determine $\omega$ such that you get the steady-state vibration of maximum possible amplitude. Determine this amplitude. Then find the general solution with this $\omega$ and check whether the results are in agreement.
 
-![Fig. 71. RLC-circuit](../images/fig-2-71.png){#fig-2-71}
+![Fig. 71. RLC-circuit](../images/chapter2/fig-2-71.png){#fig-2-71}
 
-![Fig. 72. Mass–spring system](../images/fig-2-72.png){#fig-2-72}
+![Fig. 72. Mass–spring system](../images/chapter2/fig-2-72.png){#fig-2-72}
 
 ---
 
