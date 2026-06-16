@@ -98,8 +98,8 @@ In algorithmic form, using the notations $k_1 = hf(x_n, y_n)$ in (@eq-sec211-7a)
 
 **Table 21.1: Improved Euler Method (Heun’s Method)**
 
----
----
+***
+***
 ```{.algorithm}
 **ALGORITHM EULER ($f, x_0, y_0, h, N$)**  
 This algorithm computes the solution of the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$ at equidistant points $x_1 = x_0 + h, x_2 = x_0 + 2h, \dots, x_N = x_0 + Nh$; here $f$ is such that this problem has a unique solution on the interval $[x_0, x_N]$ (see Sec. 1.6).  
@@ -122,8 +122,8 @@ $$
 **Stop**  
 **End EULER**  
 ```
----
-This algorithm computes the solution of the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$ at equidistant points $x_1 = x_0 + h, x_2 = x_0 + 2h, \dots, x_N = x_0 + Nh$; here $f$ is such that this problem has a unique solution on the interval $[x_0, x_N]$ (see Sec. 1.6).  
+***
+This algorithm computes the solution of the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$ at equidistant points x_1 = x_0 + h, x_2 = x_0 + 2h, \dots, x_N = x_0 + Nh$; here $f$ is such that this problem has a unique solution on the interval $[x_0, x_N]$ (see Sec. 1.6).  
 
 **INPUT:** Initial values $x_0, y_0$, step size $h$, number of steps $N$  
 **OUTPUT:** Approximation $y_{n+1}$ to the solution $y(x_{n+1})$ at $x_{n+1} = x_0 + (n+1)h$, where $n = 0, \dots, N-1$  
@@ -141,7 +141,7 @@ $$
 **End**  
 **Stop**  
 **End EULER**  
----
+***
 
 ### EXAMPLE 1: Improved Euler Method. Comparison with Euler Method
 Apply the improved Euler method to the initial value problem (@eq-sec211-6), choosing $h = 0.2$ as in Sec. 1.2.
@@ -204,7 +204,7 @@ Note that, if $f$ depends only on $x$, this method reduces to Simpson’s rule o
 
 **Table 21.3: Classical Runge–Kutta Method of Fourth Order**
 
----
+***
 **ALGORITHM RUNGE–KUTTA ($f, x_0, y_0, h, N$)**  
 This algorithm computes the solution of the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$ at equidistant points $x_1 = x_0 + h, x_2 = x_0 + 2h, \dots, x_N = x_0 + Nh$; here $f$ is such that this problem has a unique solution on the interval $[x_0, x_N]$ (see Sec. 1.7).  
 
@@ -226,7 +226,7 @@ $$ {#eq-sec211-9}
 **End**  
 **Stop**  
 **End RUNGE–KUTTA**  
----
+***
 
 ### EXAMPLE 2: Classical Runge–Kutta Method
 Apply the Runge–Kutta method to the initial value problem in Example 1, choosing $h = 0.2$, as before, and computing five steps.

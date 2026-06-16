@@ -13,6 +13,8 @@ book:
     - chapters/ch6.qmd
     - chapters/ch7.qmd
     - chapters/ch8.qmd
+    - chapters/ch9.qmd
+    - chapters/ch10.qmd
     - chapters/ch17.qmd
     # - chapters/ch21.qmd
     - chapters/intro.qmd
