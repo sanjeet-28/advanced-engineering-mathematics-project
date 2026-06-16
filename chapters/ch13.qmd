@@ -1,0 +1,1438 @@
+---
+title: "CHAPTER 13: Complex Numbers and Functions. Complex Differentiation"
+---
+
+The transition from "real calculus" to "complex calculus" starts with a discussion of complex numbers and their geometric representation in the complex plane. We then progress to analytic functions in @sec-derivative-analytic-function. We desire functions to be analytic because these are the "useful functions" in the sense that they are differentiable in some domain and operations of complex analysis can be applied to them. The most important equations are therefore the Cauchy–Riemann equations in @sec-cauchy-riemann because they allow a test of analyticity of such functions. Moreover, we show how the Cauchy–Riemann equations are related to the important Laplace equation.
+
+The remaining sections of the chapter are devoted to elementary complex functions (exponential, trigonometric, hyperbolic, and logarithmic functions). These generalize the familiar real functions of calculus. Detailed knowledge of them is an absolute necessity in practical work, just as that of their real counterparts is in calculus.
+
+**Prerequisite:** Elementary calculus.
+
+**References and Answers to Problems:** App. 1 Part D, App. 2.
+
+## 13.1 Complex Numbers and Their Geometric Representation {#sec-complex-representation}
+
+The material in this section will most likely be familiar to the student and serve as a review.
+
+Equations without real solutions, such as $x^2 + 1 = 0$ or $x^2 - 10x + 40 = 0$, were observed early in history and led to the introduction of complex numbers.[^1] By definition, a complex number $z$ is an ordered pair $(x, y)$ of real numbers $x$ and $y$, written
+$$
+z = (x, y)
+$$
+
+$x$ is called the real part and $y$ the imaginary part of $z$, written
+$$
+x = \text{Re } z, \quad y = \text{Im } z
+$$
+
+By definition, two complex numbers are equal if and only if their real parts are equal and their imaginary parts are equal.
+
+$(0, 1)$ is called the imaginary unit and is denoted by $i$:
+$$
+i = (0, 1)
+$$ {#eq-13-1-1}
+
+### Addition, Multiplication. Notation
+
+Addition of two complex numbers $z_1 = (x_1, y_1)$ and $z_2 = (x_2, y_2)$ is defined by
+$$
+z_1 + z_2 = (x_1 + x_2, y_1 + y_2)
+$$ {#eq-13-1-2}
+
+Multiplication is defined by
+$$
+z_1 z_2 = (x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1)
+$$ {#eq-13-1-3}
+
+These two definitions imply that
+$$
+(x_1, 0) + (x_2, 0) = (x_1 + x_2, 0)
+$$
+and
+$$
+(x_1, 0)(x_2, 0) = (x_1 x_2, 0)
+$$
+as for real numbers. Hence the complex numbers "extend" the real numbers. We can thus write
+$$
+(x, 0) = x
+$$
+Similarly, $(0, y) = iy$ because by @eq-13-1-1 and the definition of multiplication, we have
+$$
+iy = (0, 1)y = (0, 1)(y, 0) = (0 \cdot y - 1 \cdot 0, 0 \cdot 0 + 1 \cdot y) = (0, y)
+$$
+Together we have, by addition:
+$$
+(x, y) = (x, 0) + (0, y) = x + iy
+$$
+In practice, complex numbers are written
+$$
+z = x + iy
+$$ {#eq-13-1-4}
+or $z = x + yi$, e.g., $17 + 4i$ (instead of $17 + i4$).
+
+Electrical engineers often write $j$ instead of $i$ because they need $i$ for the current.
+
+If $x = 0$, then $z = iy$ and $z$ is called pure imaginary. Also, @eq-13-1-1 and @eq-13-1-3 give
+$$
+i^2 = -1
+$$ {#eq-13-1-5}
+because, by the definition of multiplication,
+$$
+i^2 = ii = (0, 1)(0, 1) = (-1, 0) = -1
+$$
+
+For addition the standard notation @eq-13-1-4 gives [see @eq-13-1-2]:
+$$
+(x_1 + iy_1) + (x_2 + iy_2) = (x_1 + x_2) + i(y_1 + y_2)
+$$
+
+For multiplication the standard notation gives the following very simple recipe. Multiply each term by each other term and use $i^2 = -1$ when it occurs [see @eq-13-1-3]:
+$$
+(x_1 + iy_1)(x_2 + iy_2) = x_1 x_2 + ix_1 y_2 + iy_1 x_2 + i^2 y_1 y_2 = (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)
+$$
+This agrees with @eq-13-1-3. And it shows that $x+iy$ is a more practical notation for complex numbers than $(x, y)$.
+
+If you know vectors, you see that @eq-13-1-2 is vector addition, whereas the multiplication @eq-13-1-3 has no counterpart in the usual vector algebra.
+
+### EXAMPLE 1 Real Part, Imaginary Part, Sum and Product of Complex Numbers
+Let $z_1 = 8 + 3i$ and $z_2 = 9 - 2i$. Then $\text{Re } z_1 = 8$, $\text{Im } z_1 = 3$, $\text{Re } z_2 = 9$, $\text{Im } z_2 = -2$.
+$$
+z_1 + z_2 = (8 + 3i) + (9 - 2i) = 17 + i
+$$
+$$
+z_1 z_2 = (8 + 3i)(9 - 2i) = 72 + 6 + i(-16 + 27) = 78 + 11i
+$$
+
+### Subtraction, Division
+Subtraction and division are defined as the inverse operations of addition and multiplication, respectively. Thus the difference $z_1 - z_2$ is the complex number $z = x + iy$ for which $z_1 = z + z_2$. Hence by @eq-13-1-2:
+$$
+z_1 - z_2 = (x_1 - x_2) + i(y_1 - y_2)
+$$ {#eq-13-1-6}
+
+The quotient $z_1 / z_2$ is the complex number $z = x + iy$ for which $z_1 = z z_2$ ($z_2 \neq 0$). If we equate the real and imaginary parts on both sides of this equation, setting
+$$
+x_1 = x_2 x - y_2 y, \quad y_1 = y_2 x + x_2 y
+$$
+we obtain the solution:
+$$
+x = \frac{x_1 x_2 + y_1 y_2}{x_2^2 + y_2^2}, \quad y = \frac{x_2 y_1 - x_1 y_2}{x_2^2 + y_2^2}
+$$ {#eq-13-1-7star}
+
+The practical rule used to get this is by multiplying numerator and denominator of $z_1 / z_2$ by $x_2 - iy_2$ and simplifying:
+$$
+\frac{z_1}{z_2} = \frac{x_1 + iy_1}{x_2 + iy_2} = \frac{(x_1 + iy_1)(x_2 - iy_2)}{(x_2 + iy_2)(x_2 - iy_2)} = \frac{x_1 x_2 + y_1 y_2}{x_2^2 + y_2^2} + i \frac{x_2 y_1 - x_1 y_2}{x_2^2 + y_2^2}
+$$ {#eq-13-1-7}
+
+### EXAMPLE 2 Difference and Quotient of Complex Numbers
+For $z_1 = 8 + 3i$ and $z_2 = 9 - 2i$ we get:
+$$
+z_1 - z_2 = (8 + 3i) - (9 - 2i) = -1 + 5i
+$$
+$$
+\frac{z_1}{z_2} = \frac{8 + 3i}{9 - 2i} = \frac{(8 + 3i)(9 + 2i)}{(9 - 2i)(9 + 2i)} = \frac{66 + 43i}{81 + 4} = \frac{66}{85} + \frac{43}{85}i
+$$
+Check the division by multiplication to get $8 + 3i$.
+
+Complex numbers satisfy the same commutative, associative, and distributive laws as real numbers (see the problem set).
+
+### Complex Plane
+So far we discussed the algebraic manipulation of complex numbers. Consider the geometric representation of complex numbers, which is of great practical importance. We choose two perpendicular coordinate axes, the horizontal $x$-axis, called the real axis, and the vertical $y$-axis, called the imaginary axis. On both axes we choose the same unit of length (@fig-13-318). This is called a Cartesian coordinate system.
+
+![Fig. 318. The complex plane](../images/fig-13-318.png){#fig-13-318}
+
+![Fig. 319. The number $4 - 3i$ in the complex plane](../images/fig-13-319.png){#fig-13-319}
+
+We now plot a given complex number $z = x + iy$ as the point $P$ with coordinates $x, y$. The $xy$-plane in which the complex numbers are represented in this way is called the complex plane.[^2] @fig-13-319 shows an example.
+
+Instead of saying "the point represented by $z$ in the complex plane" we say briefly and simply "the point $z$ in the complex plane." This will cause no misunderstanding.
+
+Addition and subtraction can now be visualized as illustrated in @fig-13-320 and @fig-13-321.
+
+![Fig. 320. Addition of complex numbers](../images/fig-13-320.png){#fig-13-320}
+
+![Fig. 321. Subtraction of complex numbers](../images/fig-13-321.png){#fig-13-321}
+
+### Complex Conjugate Numbers
+The complex conjugate of a complex number $z = x + iy$ is defined by
+$$
+\bar{z} = x - iy
+$$
+It is obtained geometrically by reflecting the point $z$ in the real axis. @fig-13-322 shows this for $z = 5 + 2i$ and its conjugate $\bar{z} = 5 - 2i$.
+
+![Fig. 322. Complex conjugate numbers](../images/fig-13-322.png){#fig-13-322}
+
+The complex conjugate is important because it permits us to switch from complex to real. Indeed, by multiplication,
+$$
+z\bar{z} = x^2 + y^2
+$$
+By addition and subtraction,
+$$
+z + \bar{z} = 2x, \quad z - \bar{z} = 2iy
+$$
+We thus obtain for the real part $x$ and the imaginary part $y$ of $z$ the important formulas:
+$$
+\text{Re } z = \frac{1}{2}(z + \bar{z}), \quad \text{Im } z = \frac{1}{2i}(z - \bar{z})
+$$ {#eq-13-1-8}
+
+If $z$ is real, then $\bar{z} = z$, and conversely. Working with conjugates is easy, since we have:
+$$
+\overline{z_1 + z_2} = \bar{z}_1 + \bar{z}_2, \quad \overline{z_1 - z_2} = \bar{z}_1 - \bar{z}_2, \quad \overline{z_1 z_2} = \bar{z}_1 \bar{z}_2, \quad \overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2}
+$$ {#eq-13-1-9}
+
+### EXAMPLE 3 Illustration of (8) and (9)
+Let $z_1 = 4 + 3i$ and $z_2 = 2 + 5i$. Then by @eq-13-1-8,
+$$
+\text{Im } z_1 = \frac{1}{2i}[(4 + 3i) - (4 - 3i)] = \frac{6i}{2i} = 3
+$$
+Also, the multiplication formula in @eq-13-1-9 is verified by
+$$
+\overline{(z_1 z_2)} = \overline{(4 + 3i)(2 + 5i)} = \overline{-7 + 26i} = -7 - 26i
+$$
+$$
+\bar{z}_1 \bar{z}_2 = (4 - 3i)(2 - 5i) = -7 - 26i
+$$
+
+[^1]: First to use complex numbers for this purpose was the Italian mathematician GIROLAMO CARDANO (1501–1576), who found the formula for solving cubic equations. The term "complex number" was introduced by CARL FRIEDRICH GAUSS (see the footnote in Sec. 5.4), who also paved the way for a general use of complex numbers.
+[^2]: Sometimes called the Argand diagram, after the French mathematician JEAN ROBERT ARGAND (1768–1822), born in Geneva and later librarian in Paris. His paper on the complex plane appeared in 1806, nine years after a similar memoir by the Norwegian mathematician CASPAR WESSEL (1745–1818), a surveyor of the Danish Academy of Science.
+
+## PROBLEM SET 13.1
+
+### 1–3 POWERS AND ROTATIONS
+1. **Powers of $i$.** Show that $i^2 = -1, i^3 = -i, i^4 = 1, i^5 = i, \dots$ and $1/i = -i, 1/i^2 = -1, 1/i^3 = i, \dots$.
+2. **Rotation.** Multiplication by $i$ is geometrically a counterclockwise rotation through $\pi/2$ (90°). Verify this by graphing $z$ and $iz$ and the angle of rotation for $z = 1 + i$, $z = -1 + 2i$, $z = 4 - 3i$.
+3. **Division.** Verify the calculation in @eq-13-1-7. Apply @eq-13-1-7 to $(26 - 18i)/(6 - 2i)$.
+
+### 4–7 GENERAL PROPERTIES
+4. **Law for conjugates.** Verify @eq-13-1-9 for $z_1 = -11 + 10i, z_2 = -1 + 4i$.
+5. **Pure imaginary number.** Show that $z = x + iy$ is pure imaginary if and only if $\bar{z} = -z$.
+6. **Multiplication.** If the product of two complex numbers is zero, show that at least one factor must be zero.
+7. **Laws of addition and multiplication.** Derive the following laws for complex numbers from the corresponding laws for real numbers:
+   - $z_1 + z_2 = z_2 + z_1, \quad z_1 z_2 = z_2 z_1$ (Commutative laws)
+   - $(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3), \quad (z_1 z_2)z_3 = z_1(z_2 z_3)$ (Associative laws)
+   - $z_1(z_2 + z_3) = z_1 z_2 + z_1 z_3$ (Distributive law)
+   - $0 + z = z + 0 = z, \quad z + (-z) = (-z) + z = 0, \quad z \cdot 1 = z$.
+
+### 8–15 COMPLEX ARITHMETIC
+Let $z_1 = -2 + 11i, z_2 = 2 - i$. Showing the details of your work, find, in the form $x + iy$:
+8. $z_1 z_2, \quad \overline{(z_1 z_2)}$
+9. $\text{Re}(z_1^2), \quad (\text{Re } z_1)^2$
+10. $\text{Re}(1/z_2^2), \quad 1/\text{Re}(z_2^2)$
+11. $(z_1 - z_2)^2 / 16, \quad (z_1/4 - z_2/4)^2$
+12. $z_1/z_2, \quad z_2/z_1$
+13. $(z_1 + z_2)(z_1 - z_2), \quad z_1^2 - z_2^2$
+14. $\bar{z}_1/\bar{z}_2, \quad \overline{(z_1/z_2)}$
+15. $4(z_1 + z_2)/(z_1 - z_2)$
+
+### 16–20 PROPERTIES OF VARIABLES
+Let $z = x + iy$. Showing details, find, in terms of $x$ and $y$:
+16. $\text{Im}(1/z), \quad \text{Im}(1/z^2)$
+17. $\text{Re } z^4 - (\text{Re } z^2)^2$
+18. $\text{Re}[(1 + i)^{16} z^2]$
+19. $\text{Re}(z/\bar{z}), \quad \text{Im}(z/\bar{z})$
+20. $\text{Im}(1/\bar{z}^2)$
+
+## 13.2 Polar Form of Complex Numbers. Powers and Roots {#sec-polar-form}
+
+We gain further insight into the arithmetic operations of complex numbers if, in addition to the $xy$-coordinates in the complex plane, we also employ the usual polar coordinates $r, \theta$ defined by
+$$
+x = r \cos \theta, \quad y = r \sin \theta
+$$ {#eq-13-2-1}
+
+We see that then $z = x + iy$ takes the so-called **polar form**
+$$
+z = r(\cos \theta + i \sin \theta)
+$$ {#eq-13-2-2}
+
+$r$ is called the absolute value or modulus of $z$ and is denoted by $|z|$. Hence
+$$
+|z| = r = \sqrt{x^2 + y^2} = \sqrt{z\bar{z}}
+$$ {#eq-13-2-3}
+
+Geometrically, $|z|$ is the distance of the point $z$ from the origin (@fig-13-323). Similarly, $|z_1 - z_2|$ is the distance between $z_1$ and $z_2$ (@fig-13-324).
+
+$\theta$ is called the argument of $z$ and is denoted by $\arg z$. Thus $\cos \theta = x/r$ and $\sin \theta = y/r$ (@fig-13-323), and
+$$
+\tan \theta = \frac{y}{x} \quad (z \neq 0)
+$$ {#eq-13-2-4}
+
+Geometrically, $\theta$ is the directed angle from the positive $x$-axis to $OP$ in @fig-13-323. Here, as in calculus, all angles are measured in radians and positive in the counterclockwise sense.
+
+![Fig. 323. Complex plane, polar form of a complex number](../images/fig-13-323.png){#fig-13-323}
+
+![Fig. 324. Distance between two points in the complex plane](../images/fig-13-324.png){#fig-13-324}
+
+For $z = 0$, this angle $\theta$ is undefined. (Why?) For a given $z \neq 0$, it is determined only up to integer multiples of $2\pi$, since cosine and sine are periodic with period $2\pi$. But one often wants to specify a unique value of $\arg z$ of a given $z$. For this reason one defines the **principal value** $\text{Arg } z$ (with capital A!) of $\arg z$ by the double inequality
+$$
+-\pi < \text{Arg } z \le \pi
+$$ {#eq-13-2-5}
+
+Then we have $\arg z = \text{Arg } z \pm 2n\pi$ ($n = 1, 2, \dots$). Obviously, for positive real $z$, $\text{Arg } z = 0$, and for negative real $z$, $\text{Arg } z = \pi$ (not $-\pi$). The principal value @eq-13-2-5 will be important in connection with roots, the complex logarithm (@sec-logarithm), and certain integrals.
+
+### EXAMPLE 1 Polar Form of Complex Numbers. Principal Value $\text{Arg } z$
+$z = 1 + i$ (@fig-13-325) has the polar form $z = \sqrt{2} (\cos \frac{1}{4}\pi + i \sin \frac{1}{4}\pi)$. Hence we obtain
+$$
+|z| = \sqrt{2}, \quad \arg z = \frac{1}{4}\pi \pm 2n\pi \ (n = 0, 1, \dots), \quad \text{and} \quad \text{Arg } z = \frac{1}{4}\pi \text{ (the principal value).}
+$$
+
+Similarly, $z = 3 + 3\sqrt{3}i = 6(\cos \frac{1}{3}\pi + i \sin \frac{1}{3}\pi)$, $|z| = 6$, and $\text{Arg } z = \frac{1}{3}\pi$.
+
+![Fig. 325. Example 1](../images/fig-13-325.png){#fig-13-325}
+
+**CAUTION!** In using @eq-13-2-4, we must pay attention to the quadrant in which $z$ lies, since $\tan \theta$ has period $\pi$, so that the arguments of $z$ and $-z$ have the same tangent. Example: for $\theta_1 = \arg(1 + i)$ and $\theta_2 = \arg(-1 - i)$ we have $\tan \theta_1 = \tan \theta_2 = 1$.
+
+### Triangle Inequality
+Inequalities such as $z_1 < z_2$ make no sense for complex numbers, but they do make sense for absolute values (which are real!). The daily bread of the complex analyst is the **triangle inequality**
+$$
+|z_1 + z_2| \le |z_1| + |z_2|
+$$ {#eq-13-2-6}
+
+which we shall use quite frequently (@fig-13-326). This inequality follows by noting that the three points $0, z_1,$ and $z_1 + z_2$ are the vertices of a triangle with sides $|z_1|, |z_2|,$ and $|z_1 + z_2|$, and one side cannot exceed the sum of the other two sides. A formal proof is left to the reader (Prob. 33). (The triangle degenerates if $z_1$ and $z_2$ lie on the same straight line through the origin.)
+
+![Fig. 326. Triangle inequality](../images/fig-13-326.png){#fig-13-326}
+
+By induction we obtain from @eq-13-2-6 the generalized triangle inequality
+$$
+|z_1 + z_2 + \dots + z_n| \le |z_1| + |z_2| + \dots + |z_n|
+$$ {#eq-13-2-6star}
+that is, the absolute value of a sum cannot exceed the sum of the absolute values of the terms.
+
+### EXAMPLE 2 Triangle Inequality
+If $z_1 = 1 + i$ and $z_2 = -2 + 3i$, then
+$$
+|z_1 + z_2| = | -1 + 4i | = \sqrt{17} \approx 4.123 < |z_1| + |z_2| = \sqrt{2} + \sqrt{13} \approx 5.020.
+$$
+
+### Multiplication and Division in Polar Form
+This will give us a "geometrical" understanding of multiplication and division. Let
+$$
+z_1 = r_1(\cos \theta_1 + i \sin \theta_1) \quad \text{and} \quad z_2 = r_2(\cos \theta_2 + i \sin \theta_2)
+$$
+
+**Multiplication.** By multiplication we have:
+$$
+z_1 z_2 = r_1 r_2 [(\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2) + i(\sin \theta_1 \cos \theta_2 + \cos \theta_1 \sin \theta_2)]
+$$
+The addition rules for the sine and cosine now yield
+$$
+z_1 z_2 = r_1 r_2 [\cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2)]
+$$ {#eq-13-2-7}
+
+Taking absolute values on both sides of @eq-13-2-7, we see that the absolute value of a product equals the product of the absolute values of the factors:
+$$
+|z_1 z_2| = |z_1| |z_2|
+$$ {#eq-13-2-8}
+
+Taking arguments in @eq-13-2-7 shows that the argument of a product equals the sum of the arguments of the factors:
+$$
+\arg(z_1 z_2) = \arg z_1 + \arg z_2 \quad (\text{up to multiples of } 2\pi)
+$$ {#eq-13-2-9}
+
+**Division.** We have $z_1 = (z_1 / z_2) z_2$. Hence $|z_1| = |z_1 / z_2| |z_2|$ and by division by $|z_2|$:
+$$
+\left| \frac{z_1}{z_2} \right| = \frac{|z_1|}{|z_2|} \quad (z_2 \neq 0)
+$$ {#eq-13-2-10}
+
+Similarly, $\arg z_1 = \arg((z_1/z_2) z_2) = \arg(z_1/z_2) + \arg z_2$, and by subtraction of $\arg z_2$:
+$$
+\arg \left( \frac{z_1}{z_2} \right) = \arg z_1 - \arg z_2 \quad (\text{up to multiples of } 2\pi)
+$$ {#eq-13-2-11}
+
+Combining @eq-13-2-10 and @eq-13-2-11 we also have the analog of @eq-13-2-7:
+$$
+\frac{z_1}{z_2} = \frac{r_1}{r_2} [\cos(\theta_1 - \theta_2) + i \sin(\theta_1 - \theta_2)]
+$$ {#eq-13-2-12}
+
+### EXAMPLE 3 Illustration of Formulas (8)–(11)
+Let $z_1 = -2 + 2i$ and $z_2 = 3i$. Then $z_1 z_2 = -6 - 6i$, and $z_1 / z_2 = \frac{2}{3} + \frac{2}{3}i$. Hence $|z_1 z_2| = 6\sqrt{2} = |z_1| |z_2|$, $|z_1 / z_2| = \frac{2}{3}\sqrt{2} = |z_1|/|z_2|$, and for the arguments we obtain:
+$$
+\text{Arg } z_1 = \frac{3}{4}\pi, \quad \text{Arg } z_2 = \frac{1}{2}\pi, \quad \text{Arg } (z_1 z_2) = -\frac{3}{4}\pi = \text{Arg } z_1 + \text{Arg } z_2 - 2\pi, \quad \text{Arg } \left( \frac{z_1}{z_2} \right) = \frac{1}{4}\pi = \text{Arg } z_1 - \text{Arg } z_2.
+$$
+
+### EXAMPLE 4 Integer Powers of $z$. De Moivre's Formula
+From @eq-13-2-8 and @eq-13-2-9 with $z_1 = z_2 = z$ we obtain by induction for $n = 0, 1, 2, \dots$:
+$$
+z^n = r^n (\cos n\theta + i \sin n\theta)
+$$ {#eq-13-2-13}
+For $r = 1$, formula @eq-13-2-13 becomes **De Moivre's formula**[^3]
+$$
+(\cos \theta + i \sin \theta)^n = \cos n\theta + i \sin n\theta
+$$ {#eq-13-2-13star}
+
+We can use this to express $\cos n\theta$ and $\sin n\theta$ in terms of powers of $\cos \theta$ and $\sin \theta$. For instance, for $n = 2$ we have on the left:
+$$
+(\cos \theta + i \sin \theta)^2 = \cos^2 \theta - \sin^2 \theta + 2i \cos \theta \sin \theta
+$$
+Taking the real and imaginary parts on both sides of @eq-13-2-13star with $n = 2$ gives the familiar formulas:
+$$
+\cos 2\theta = \cos^2 \theta - \sin^2 \theta, \quad \sin 2\theta = 2 \cos \theta \sin \theta
+$$
+
+### Roots
+If $z = w^n$ ($n = 1, 2, \dots$), then to each value of $w$ there corresponds one value of $z$. We shall immediately see that, conversely, to a given $z \neq 0$ there correspond precisely $n$ distinct values of $w$. Each of these values is called an **$n$th root of $z$**, and we write
+$$
+w = \sqrt[n]{z}
+$$ {#eq-13-2-14}
+Hence this symbol is multivalued, namely, $n$-valued. The $n$ values of $w$ can be obtained as follows. We write $z$ and $w$ in polar form:
+$$
+z = r(\cos \theta + i \sin \theta) \quad \text{and} \quad w = R(\cos \phi + i \sin \phi)
+$$
+Then $w^n = z$ becomes, by @eq-13-2-13:
+$$
+R^n(\cos n\phi + i \sin n\phi) = r(\cos \theta + i \sin \theta)
+$$
+The absolute values on both sides must be equal; thus, $R^n = r$, so that $R = \sqrt[n]{r}$ where $\sqrt[n]{r}$ is positive real (an absolute value must be nonnegative!) and thus uniquely determined.
+
+Equating the arguments $n\phi$ and $\theta$ and recalling that $\theta$ is determined only up to integer multiples of $2\pi$, we obtain:
+$$
+n\phi = \theta + 2k\pi, \quad \text{thus} \quad \phi = \frac{\theta}{n} + \frac{2k\pi}{n}
+$$
+where $k$ is an integer. For $k = 0, 1, \dots, n - 1$ we get $n$ distinct values of $w$. Consequently, for $z \neq 0$, $w = \sqrt[n]{z}$ has the $n$ distinct values:
+$$
+w_k = \sqrt[n]{r} \left[ \cos \left( \frac{\theta + 2k\pi}{n} \right) + i \sin \left( \frac{\theta + 2k\pi}{n} \right) \right], \quad k = 0, 1, \dots, n - 1.
+$$ {#eq-13-2-15}
+
+These $n$ values lie on a circle of radius $\sqrt[n]{r}$ with center at the origin and constitute the vertices of a regular polygon of $n$ sides. The value of $\sqrt[n]{z}$ obtained by taking the principal value of $\arg z$ and $k = 0$ in @eq-13-2-15 is called the **principal value of $\sqrt[n]{z}$**.
+
+Taking $z = 1$ in @eq-13-2-15, we have $r = 1$ and $\text{Arg } z = 0$. Then @eq-13-2-15 gives
+$$
+\omega_k = \cos \frac{2k\pi}{n} + i \sin \frac{2k\pi}{n}, \quad k = 0, 1, \dots, n - 1
+$$ {#eq-13-2-16}
+These $n$ values are called the **$n$th roots of unity**. They lie on the circle of radius 1 and center 0, briefly called the **unit circle** (and used quite frequently!). Figures 327–329 show $\omega_0 = 1, \omega_1 = i, \omega_2 = -1, \omega_3 = -i$ for $n=4$, and the corresponding roots for $n=3$ and $n=5$.
+
+![Fig. 327. 3rd roots of unity](../images/fig-13-327.png){#fig-13-327}
+
+![Fig. 328. 4th roots of unity](../images/fig-13-328.png){#fig-13-328}
+
+![Fig. 329. 5th roots of unity](../images/fig-13-329.png){#fig-13-329}
+
+If $\omega$ denotes the value corresponding to $k = 1$ in @eq-13-2-16, then the $n$ values of $\sqrt[n]{1}$ can be written as:
+$$
+1, \omega, \omega^2, \dots, \omega^{n-1}
+$$
+More generally, if $w_1$ is any $n$th root of an arbitrary complex number $z \neq 0$, then the $n$ values of $\sqrt[n]{z}$ are:
+$$
+w_1, \quad w_1 \omega, \quad w_1 \omega^2, \quad \dots, \quad w_1 \omega^{n-1}
+$$ {#eq-13-2-17}
+because multiplying $w_1$ by $\omega^k$ corresponds to increasing the argument of $w_1$ by $2k\pi/n$.
+
+[^3]: ABRAHAM DE MOIVRE (1667–1754), French mathematician, who pioneered the use of complex numbers in trigonometry and also contributed to probability theory (see Sec. 24.8).
+
+## PROBLEM SET 13.2
+
+### 1–8 POLAR FORM
+Represent in polar form and graph in the complex plane as in @fig-13-325. Show details.
+1. $1 + i$
+2. $-4 + 4i$
+3. $2i, \quad -2i$
+4. $-5$
+5. $\frac{\sqrt{2} + i/3}{-\sqrt{8} - 2i/3}$
+6. $\frac{\sqrt{3} - 10i}{-\frac{1}{2}\sqrt{3} + 5i}$
+7. $1 + \frac{1}{2}\pi i$
+8. $\frac{-4 + 19i}{2 + 5i}$
+
+### 9–14 PRINCIPAL ARGUMENT
+Determine the principal value of the argument and graph it as in @fig-13-325.
+9. $-1 + i$
+10. $-5, \quad -5 - i, \quad -5 + i$
+11. $3 \pm 4i$
+12. $-\pi - \pi i$
+13. $(1 + i)^{20}$
+14. $-1 + 0.1i, \quad -1 - 0.1i$
+
+### 15–18 CONVERSION TO $x + iy$
+Graph in the complex plane and represent in the form $x + iy$:
+15. $3(\cos \frac{1}{2}\pi - i \sin \frac{1}{2}\pi)$
+16. $6(\cos \frac{1}{3}\pi + i \sin \frac{1}{3}\pi)$
+17. $\sqrt{8}(\cos \frac{1}{4}\pi + i \sin \frac{1}{4}\pi)$
+18. $\sqrt{50}(\cos \frac{3}{4}\pi + i \sin \frac{3}{4}\pi)$
+
+### 19 CAS PROJECT
+**Roots of Unity and Their Graphs.** Write a program for calculating these roots and for graphing them as points on the unit circle. Apply the program to $z^n = 1$ with $n = 2, 3, \dots, 10$. Then extend the program to one for arbitrary roots, and apply it to examples of your choice.
+
+### 20 TEAM PROJECT
+**Square Root.**
+(a) Show that $w^2 = z$ has the values
+$$
+w_1 = \sqrt{r} \left[ \cos \frac{\theta}{2} + i \sin \frac{\theta}{2} \right], \quad w_2 = -w_1
+$$ {#eq-13-2-18}
+(b) Obtain from @eq-13-2-18 the often more practical formula
+$$
+\sqrt{z} = \pm \left[ \sqrt{\frac{|z| + x}{2}} + i (\text{sign } y) \sqrt{\frac{|z| - x}{2}} \right]
+$$ {#eq-13-2-19}
+where $\text{sign } y = 1$ if $y \ge 0$, and $\text{sign } y = -1$ if $y < 0$.
+(c) Find the square roots of $-14i$, $-9 - 40i$, and $1 + \sqrt{48}i$ by both methods.
+
+### 21–27 ROOTS
+Find and graph all roots in the complex plane:
+21. $\sqrt[3]{1+i}$
+22. $\sqrt[3]{3+4i}$
+23. $\sqrt[3]{216}$
+24. $\sqrt[4]{-4}$
+25. $\sqrt[4]{i}$
+26. $\sqrt[8]{1}$
+27. $\sqrt[5]{-1}$
+
+### 28–31 EQUATIONS
+Solve and graph the solutions:
+28. $z^2 - (6 - 2i)z + 17 - 6i = 0$
+29. $z^2 + z + 1 - i = 0$
+30. $z^4 + 324 = 0$. Using the solutions, factor $z^4 + 324$ into quadratic factors with real coefficients.
+31. $z^4 - 6iz^2 + 16 = 0$
+
+## 13.3 Derivative. Analytic Function {#sec-derivative-analytic-function}
+
+Just as the study of calculus or real analysis required concepts such as domain, neighborhood, function, limit, continuity, derivative, etc., so does the study of complex analysis. Since the functions live in the complex plane, the concepts are slightly more difficult or different from those in real analysis.
+
+### Circles and Disks. Half-Planes
+The unit circle $|z| = 1$ (@fig-13-330) has already occurred in @sec-polar-form. @fig-13-331 shows a general circle of radius $\rho$ and center $a$. Its equation is
+$$
+|z - a| = \rho
+$$ {#eq-13-3-1}
+
+because it is the set of all $z$ whose distance from the center $a$ equals $\rho$.
+
+Its interior ("open circular disk") is given by $|z - a| < \rho$, its interior plus the circle itself ("closed circular disk") by $|z - a| \le \rho$, and its exterior by $|z - a| > \rho$. As an example, sketch this for $a = 1 + i$ and $\rho = 2$.
+
+An open circular disk is also called a **neighborhood** of $a$ or, more precisely, a **$\delta$-neighborhood** of $a$ (where $\delta = \rho > 0$). And $a$ has infinitely many of them, one for each positive value of $\delta$.
+
+In modern literature any set containing a $\delta$-neighborhood of $a$ is also called a neighborhood of $a$.
+
+@fig-13-332 shows an **open annulus** (circular ring) which we shall need later. This is the set of all $z$ whose distance from $a$ is greater than $\rho_1$ but less than $\rho_2$:
+$$
+\rho_1 < |z - a| < \rho_2
+$$ {#eq-13-3-2}
+
+Similarly, the closed annulus includes the two circles, i.e., $\rho_1 \le |z - a| \le \rho_2$.
+
+![Fig. 330. Unit circle](../images/fig-13-330.png){#fig-13-330}
+
+![Fig. 331. Circle in the complex plane](../images/fig-13-331.png){#fig-13-331}
+
+![Fig. 332. Annulus in the complex plane](../images/fig-13-332.png){#fig-13-332}
+
+**Half-Planes.** By the (open) upper half-plane we mean the set of all points $z = x + iy$ such that $y > 0$. Similarly, the condition $y < 0$ defines the lower half-plane, $x > 0$ the right half-plane, and $x < 0$ the left half-plane.
+
+### Concepts on Sets in the Complex Plane
+By a **point set** in the complex plane we mean any sort of collection of finitely many or infinitely many points.
+
+A set $S$ is called **open** if every point of $S$ has a neighborhood consisting entirely of points that belong to $S$. For example, the points in the interior of a circle or a square form an open set, and so do the points of the right half-plane $\text{Re } z > 0$.
+
+A set $S$ is called **connected** if any two of its points can be joined by a chain of finitely many straight-line segments all of whose points belong to $S$. An open and connected set is called a **domain**. Thus an open disk and an open annulus are domains. An open square with a diagonal removed is not a domain since this set is not connected. (Why?)
+
+The **complement** of a set $S$ in the complex plane is the set of all points of the complex plane that do not belong to $S$. A set $S$ is called **closed** if its complement is open. For example, the points on and inside the unit circle form a closed set ("closed unit disk") since its complement is open.
+
+A **boundary point** of a set $S$ is a point every neighborhood of which contains both points that belong to $S$ and points that do not belong to $S$. For example, the boundary points of an annulus are the points on the two bounding circles. Clearly, if a set $S$ is open, then no boundary point belongs to $S$; if $S$ is closed, then every boundary point belongs to $S$. The set of all boundary points of a set $S$ is called the **boundary** of $S$.
+
+A **region** is a set consisting of a domain plus, perhaps, some or all of its boundary points.
+
+**WARNING!** "Domain" is the modern term for an open connected set. Nevertheless, some authors still call a domain a "region" and others make no distinction between the two terms.
+
+### Complex Function
+Complex analysis is concerned with complex functions that are differentiable in some domain. A function $f$ defined on a set $S$ of complex numbers is a rule that assigns to every $z$ in $S$ a complex number $w$, called the value of $f$ at $z$. We write
+$$
+w = f(z)
+$$
+Here $z$ varies in $S$ and is called a complex variable. The set $S$ is called the domain of definition of $f$.
+
+The set of all values of a function $f$ is called the range of $f$.
+
+$w$ is complex, and we write $w = u + iv$, where $u$ and $v$ are the real and imaginary parts, respectively. Now $w$ depends on $z = x + iy$. Hence $u$ becomes a real function of $x$ and $y$, and so does $v$. We may thus write
+$$
+f(z) = u(x, y) + i v(x, y)
+$$ {#eq-13-3-3}
+This shows that a complex function $f(z)$ is equivalent to a pair of real functions $u(x, y)$ and $v(x, y)$, each depending on the two real variables $x$ and $y$.
+
+### EXAMPLE 1 Function of a Complex Variable
+Let $w = f(z) = z^2 + 3z$. Find $u$ and $v$ and the value of $f$ at $z = 1 + 3i$.
+**Solution.** $z^2 = (x + iy)^2 = x^2 - y^2 + 2ixy$. Hence $u = \text{Re } f(z) = x^2 - y^2 + 3x$, and $v = \text{Im } f(z) = 2xy + 3y$. Also,
+$$
+f(1 + 3i) = (1 + 3i)^2 + 3(1 + 3i) = 1 - 9 + 6i + 3 + 9i = -5 + 15i
+$$
+Check this using the expressions for $u$ and $v$: $u(1, 3) = 1 - 9 + 3 = -5$ and $v(1, 3) = 6 + 9 = 15$.
+
+### EXAMPLE 2 Function of a Complex Variable
+Let $w = f(z) = 2iz + 6\bar{z}$. Find $u$ and $v$ and calculate the value of $f$ at $z = \frac{1}{2} + 4i$.
+**Solution.** $f(z) = 2i(x + iy) + 6(x - iy) = 2ix - 2y + 6x - 6iy$. Thus $u(x, y) = 6x - 2y$ and $v(x, y) = 2x - 6y$. At $z = \frac{1}{2} + 4i$, we have:
+$$
+f\left(\frac{1}{2} + 4i\right) = 2i\left(\frac{1}{2} + 4i\right) + 6\left(\frac{1}{2} - 4i\right) = i - 8 + 3 - 24i = -5 - 23i
+$$
+
+### Limit, Continuity
+A function $f(z)$ is said to have the **limit** $l$ as $z$ approaches a point $z_0$, written
+$$
+\lim_{z \to z_0} f(z) = l
+$$ {#eq-13-3-4}
+if $f$ is defined in a neighborhood of $z_0$ (except perhaps at $z_0$ itself) and if the values of $f(z)$ are "close" to $l$ for all $z$ "close" to $z_0$: in precise terms, if for every $\epsilon > 0$ we can find a $\delta > 0$ such that for all $z \neq z_0$ in the disk $|z - z_0| < \delta$ we have
+$$
+|f(z) - l| < \epsilon
+$$ {#eq-13-3-5}
+Geometrically, if for every $z$ in that $\delta$-disk the value of $f(z)$ lies in the $\epsilon$-disk @eq-13-3-5 (@fig-13-333).
+
+Formally, this definition is similar to that in calculus, but there is a big difference. Whereas in the real case, $x$ can approach $x_0$ only along the real line, here $z$ may approach $z_0$ from any direction in the complex plane (@fig-13-333).
+
+![Fig. 333. Limit](../images/fig-13-333.png){#fig-13-333}
+
+If a limit exists, it is unique (see Team Project 24).
+
+A function $f(z)$ is said to be **continuous** at $z_0$ if $f(z_0)$ is defined and
+$$
+\lim_{z \to z_0} f(z) = f(z_0)
+$$ {#eq-13-3-6}
+Note that by definition of a limit this implies that $f(z)$ is defined in some neighborhood of $z_0$.
+
+$f(z)$ is said to be continuous in a domain if it is continuous at each point of this domain.
+
+### Derivative
+The **derivative** of a complex function $f$ at a point $z_0$ is written $f'(z_0)$ and is defined by
+$$
+f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}
+$$ {#eq-13-3-7}
+provided this limit exists. If we write $z = z_0 + \Delta z$, we have $\Delta z = z - z_0$ and @eq-13-3-7 takes the form:
+$$
+f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}
+$$ {#eq-13-3-7star}
+
+Remember that $\Delta z$ in @eq-13-3-7 may approach $0$ from any direction in the complex plane. Hence differentiability at $z_0$ means that, along whatever path $z$ approaches $z_0$, the quotient in @eq-13-3-7star always approaches the same value $f'(z_0)$.
+
+### EXAMPLE 3 Differentiability. Derivative
+The function $f(z) = z^2$ is differentiable for all $z$ and has the derivative $f'(z) = 2z$ because:
+$$
+f'(z) = \lim_{\Delta z \to 0} \frac{(z + \Delta z)^2 - z^2}{\Delta z} = \lim_{\Delta z \to 0} (2z + \Delta z) = 2z
+$$
+
+The differentiation rules are the same as in real calculus. Thus for any differentiable functions $f$ and $g$ and constant $c$ we have:
+$$
+(cf)' = c f', \quad (f + g)' = f' + g', \quad (fg)' = f'g + f g', \quad \left(\frac{f}{g}\right)' = \frac{f'g - f g'}{g^2}
+$$
+as well as the chain rule and the power rule $(z^n)' = n z^{n-1}$ ($n$ integer).
+
+Also, if $f(z)$ is differentiable at $z_0$, it is continuous at $z_0$ (see Team Project 24).
+
+### EXAMPLE 4 $\bar{z}$ is Not Differentiable
+It may come as a surprise that there are many complex functions that do not have a derivative at any point. For instance, $f(z) = \bar{z} = x - iy$ is such a function. To see this, we write $\Delta z = \Delta x + i\Delta y$ and obtain:
+$$
+\frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{\overline{z + \Delta z} - \bar{z}}{\Delta z} = \frac{\Delta x - i\Delta y}{\Delta x + i\Delta y}
+$$ {#eq-13-3-8}
+If $\Delta y = 0$, this is $\Delta x / \Delta x = 1$ (Path I in @fig-13-334). If $\Delta x = 0$, this is $-i\Delta y / (i\Delta y) = -1$ (Path II in @fig-13-334). Thus @eq-13-3-8 approaches 1 along path I but -1 along path II. Hence, the limit as $\Delta z \to 0$ does not exist at any $z$.
+
+![Fig. 334. Paths in (5)](../images/fig-13-334.png){#fig-13-334}
+
+Differentiability of a complex function is a rather severe requirement. The idea of proof (approach of $z$ from different directions) is basic and will be used again in the next section.
+
+### Analytic Functions
+Complex analysis is concerned with the theory and application of "analytic functions."
+
+### DEFINITION Analyticity
+A function $f(z)$ is said to be **analytic** in a domain $D$ if $f(z)$ is defined and differentiable at all points of $D$. The function $f(z)$ is said to be analytic at a point $z_0$ in $D$ if $f(z)$ is analytic in a neighborhood of $z_0$.
+
+Also, by an **analytic function** we mean a function that is analytic in some domain.
+
+Analyticity of $f(z)$ at $z_0$ means that $f(z)$ has a derivative at every point in some neighborhood of $z_0$ (including $z_0$ itself). This concept is motivated by the fact that it is of no practical interest if a function is differentiable merely at a single point but not throughout some neighborhood. A more modern term for analytic in $D$ is **holomorphic** in $D$.
+
+### EXAMPLE 5 Polynomials, Rational Functions
+The nonnegative integer powers $1, z, z^2, \dots$ are analytic in the entire complex plane, and so are polynomials, i.e.,
+$$
+f(z) = c_0 + c_1 z + c_2 z^2 + \dots + c_n z^n
+$$
+where $c_k$ are complex constants. A function that is analytic in the entire complex plane is called an **entire function**.
+
+The quotient of two polynomials $g(z)$ and $h(z)$:
+$$
+f(z) = \frac{g(z)}{h(z)}
+$$
+is called a **rational function**. This $f$ is analytic except at the points where $h(z) = 0$.
+
+## PROBLEM SET 13.3
+
+### 1–8 REGIONS OF PRACTICAL INTEREST
+Determine and sketch or graph the sets in the complex plane given by:
+1. $|z + 1 - 5i| \le \frac{3}{2}$
+2. $0 < |z| < 1$
+3. $\pi < |z - 4 + 2i| < 3\pi$
+4. $-\pi < \text{Im } z < \pi$
+5. $|\arg z| < \frac{1}{4}\pi$
+6. $\text{Re}(1/z) < 1$
+7. $\text{Re } z \ge -1$
+8. $|z + i| \ge |z - i|$
+
+9. **WRITING PROJECT. Sets in the Complex Plane.** Write a report by formulating the corresponding portions of the text in your own words and illustrating them with examples of your own.
+
+### 10–12 COMPLEX FUNCTIONS
+Find $\text{Re } f$ and $\text{Im } f$ and their values at the given point $z$:
+10. $f(z) = 5z^2 - 12z + 3 + 2i$ at $z = 4 - 3i$
+11. $f(z) = 1/(1 - z)$ at $z = 1 - i$
+12. $f(z) = (z - 2)/(z + 2)$ at $z = 8i$
+
+13. **CAS PROJECT. Graphing Functions.** Find and graph $\text{Re } f$, $\text{Im } f$, and $|f|$ as surfaces over the $z$-plane. Also graph the two families of curves $\text{Re } f(z) = \text{const}$ and $\text{Im } f(z) = \text{const}$ for (a) $f(z) = z^2$, (b) $f(z) = 1/z$.
+
+### 14–17 CONTINUITY
+Find out, and give reason, whether $f(z)$ is continuous at $z = 0$ if $f(0) = 0$ and for $z \neq 0$:
+14. $f(z) = (\text{Re } z^2)/|z|$
+15. $f(z) = \text{Im }(1/z)$
+16. $f(z) = |z|^2 \text{Im }(1/z)$
+17. $f(z) = (\text{Re } z)/(1 - |z|)$
+
+### 18–23 DIFFERENTIATION
+Find the value of the derivative of:
+18. $(z - 4i)^8$ at $z = 3 + 4i$
+19. $(z - i)/(z + i)$ at $z = i$
+20. $(\text{Re } z)$ at any $z$. Explain.
+21. $(1.5z + 2i)/(3iz - 4)$ at $z = 0$
+22. $i(1 - z)^n$ at $z = 2i$
+23. $(iz^3 + 3z^2)^3$ at $z = i$
+
+### 24 TEAM PROJECT
+**Limit, Continuity, Derivative.**
+(a) **Limit.** Prove that $\lim_{z \to z_0} f(z) = l$ is equivalent to the pair of relations $\lim_{z \to z_0} \text{Re } f(z) = \text{Re } l$ and $\lim_{z \to z_0} \text{Im } f(z) = \text{Im } l$.
+(b) **Limit.** If a limit exists, show that it is unique.
+(c) **Continuity.** If $z_1, z_2, \dots$ are complex numbers for which $\lim_{n \to \infty} z_n = a$, and $f(z)$ is continuous at $z=a$, show that $\lim_{n \to \infty} f(z_n) = f(a)$.
+(d) **Continuity.** If $f(z)$ is differentiable at $z_0$, show that $f(z)$ is continuous at $z_0$.
+(e) **Differentiability.** Show that $f(z) = \text{Re } z = x$ is not differentiable at any $z$.
+(f) **Differentiability.** Show that $f(z) = |z|^2$ is differentiable only at $z = 0$, hence it is nowhere analytic.
+
+25. **WRITING PROJECT. Comparison with Calculus.** Summarize the second part of this section beginning with "Complex Function", and indicate what is conceptually analogous to calculus and what is not.
+
+## 13.4 Cauchy–Riemann Equations. Laplace’s Equation {#sec-cauchy-riemann}
+
+The Cauchy–Riemann equations are the most important equations in this chapter and one of the pillars on which complex analysis rests. They provide a criterion (a test) for the analyticity of a complex function $f(z) = u(x, y) + i v(x, y)$.
+
+Roughly, $f$ is analytic in a domain $D$ if and only if the first partial derivatives of $u$ and $v$ satisfy the two **Cauchy–Riemann equations**[^4]
+$$
+u_x = v_y, \quad u_y = -v_x
+$$ {#eq-13-4-1}
+everywhere in $D$; here $u_x = \partial u/\partial x$ and $u_y = \partial u/\partial y$ are the partial derivatives.
+
+Example: $f(z) = z^2 = x^2 - y^2 + 2ixy$ is analytic for all $z$, and $u = x^2 - y^2$ and $v = 2xy$ satisfy @eq-13-4-1, namely, $u_x = 2x = v_y$ and $u_y = -2y = -v_x$.
+
+### THEOREM 1 Cauchy–Riemann Equations
+Let $f(z) = u(x, y) + iv(x, y)$ be defined and continuous in some neighborhood of a point $z = x + iy$ and differentiable at $z$ itself. Then, at that point, the first-order partial derivatives of $u$ and $v$ exist and satisfy the Cauchy–Riemann equations @eq-13-4-1.
+
+Hence, if $f(z)$ is analytic in a domain $D$, those partial derivatives exist and satisfy @eq-13-4-1 at all points of $D$.
+
+**PROOF** By assumption, the derivative $f'(z)$ exists. It is given by:
+$$
+f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}
+$$ {#eq-13-4-2}
+By the definition of a limit in complex (@sec-derivative-analytic-function), we can let $\Delta z$ approach zero along any path. We choose the two paths I and II in @fig-13-335 and equate the results.
+
+We write $\Delta z = \Delta x + i\Delta y$. Then $f(z+\Delta z) - f(z) = [u(x+\Delta x, y+\Delta y) + iv(x+\Delta x, y+\Delta y)] - [u(x, y) + iv(x, y)]$.
+
+![Fig. 335. Paths in (2)](../images/fig-13-335.png){#fig-13-335}
+
+**Path I.** We let first $\Delta y = 0$ and then $\Delta x \to 0$. After $\Delta y$ is zero, $\Delta z = \Delta x$. Then @eq-13-4-2 becomes:
+$$
+f'(z) = \lim_{\Delta x \to 0} \frac{u(x + \Delta x, y) - u(x, y)}{\Delta x} + i \lim_{\Delta x \to 0} \frac{v(x + \Delta x, y) - v(x, y)}{\Delta x}
+$$
+These two real limits are the partial derivatives of $u$ and $v$ with respect to $x$. Hence:
+$$
+f'(z) = u_x + i v_x
+$$ {#eq-13-4-4}
+
+**Path II.** We let first $\Delta x = 0$ and then $\Delta y \to 0$. After $\Delta x$ is zero, $\Delta z = i\Delta y$. Then from @eq-13-4-2 we obtain:
+$$
+f'(z) = \lim_{\Delta y \to 0} \frac{u(x, y + \Delta y) - u(x, y)}{i\Delta y} + i \lim_{\Delta y \to 0} \frac{v(x, y + \Delta y) - v(x, y)}{i\Delta y}
+$$
+Since $1/i = -i$, this gives:
+$$
+f'(z) = -i u_y + v_y
+$$ {#eq-13-4-5}
+
+By equating the real parts and imaginary parts in @eq-13-4-4 and @eq-13-4-5, we obtain:
+$$
+u_x = v_y, \quad v_x = -u_y
+$$
+which are the Cauchy–Riemann equations @eq-13-4-1. This proves the theorem. $\square$
+
+Formulas @eq-13-4-4 and @eq-13-4-5 are also practical for calculating derivatives.
+
+### EXAMPLE 1 Cauchy–Riemann Equations
+$f(z) = z^2$ is analytic for all $z$ (and the Cauchy–Riemann equations are satisfied).
+For $f(z) = \bar{z} = x - iy$ we have $u = x, v = -y$. Thus $u_x = 1, v_y = -1$. Since $u_x \neq v_y$, $f(z) = \bar{z}$ is not analytic, confirming Example 4 of @sec-derivative-analytic-function.
+
+The Cauchy–Riemann equations are also sufficient for a function to be analytic:
+
+### THEOREM 2 Cauchy–Riemann Equations
+If two real-valued continuous functions $u(x, y)$ and $v(x, y)$ of two real variables $x$ and $y$ have continuous first partial derivatives that satisfy the Cauchy–Riemann equations @eq-13-4-1 in some domain $D$, then the complex function $f(z) = u(x, y) + i v(x, y)$ is analytic in $D$.
+
+### EXAMPLE 2 Cauchy–Riemann Equations. Exponential Function
+Is $f(z) = e^x(\cos y + i \sin y)$ analytic?
+**Solution.** We have $u = e^x \cos y$ and $v = e^x \sin y$. By differentiation:
+$$
+u_x = e^x \cos y = v_y, \quad u_y = -e^x \sin y = -v_x
+$$
+We see that the Cauchy–Riemann equations are satisfied. Thus $f(z)$ is analytic for all $z$.
+
+### EXAMPLE 3 An Analytic Function of Constant Absolute Value Is Constant
+Show that if $f(z)$ is analytic in a domain $D$ and $|f(z)| = \text{const}$ in $D$, then $f(z) = \text{const}$ in $D$.
+**Solution.** By assumption, $|f(z)|^2 = u^2 + v^2 = k^2 = \text{const}$. By differentiation with respect to $x$ and $y$:
+$$
+u u_x + v v_x = 0, \quad u u_y + v v_y = 0
+$$
+Now use $v_y = u_x$ and $v_x = -u_y$ in these equations to get:
+$$
+u u_x - v u_y = 0 \quad \text{(a)}
+$$
+$$
+u u_y + v u_x = 0 \quad \text{(b)}
+$$ {#eq-13-4-6}
+To eliminate $u_y$, multiply @eq-13-4-6a by $u$ and @eq-13-4-6b by $v$ and add. This yields $(u^2 + v^2) u_x = 0$.
+If $k^2 = u^2 + v^2 = 0$, then $f(z) = 0 = \text{const}$. If $k^2 > 0$, then $u_x = 0$. By the CR equations, $v_y = 0$. Similarly, eliminating $u_x$ gives $(u^2+v^2)u_y = 0$, so $u_y = 0$ and $v_x = 0$. Together this implies $u = \text{const}$ and $v = \text{const}$; hence $f = u + iv = \text{const}$.
+
+If we use polar form $z = r(\cos \theta + i \sin \theta)$ and set $f(z) = u(r, \theta) + i v(r, \theta)$, the Cauchy–Riemann equations are (Prob. 1):
+$$
+u_r = \frac{1}{r} v_\theta, \quad v_r = -\frac{1}{r} u_\theta \quad (r > 0)
+$$ {#eq-13-4-7}
+
+### Laplace’s Equation. Harmonic Functions
+The great importance of complex analysis in engineering mathematics results mainly from the fact that both the real part and the imaginary part of an analytic function satisfy Laplace’s equation, the most important PDE of physics.
+
+### THEOREM 3 Laplace’s Equation
+If $f(z) = u(x, y) + i v(x, y)$ is analytic in a domain $D$, then both $u$ and $v$ satisfy Laplace’s equation
+$$
+\nabla^2 u = u_{xx} + u_{yy} = 0
+$$ {#eq-13-4-8}
+and
+$$
+\nabla^2 v = v_{xx} + v_{yy} = 0
+$$ {#eq-13-4-9}
+in $D$ and have continuous second partial derivatives in $D$.
+
+**PROOF** Differentiating $u_x = v_y$ with respect to $x$ and $u_y = -v_x$ with respect to $y$, we have:
+$$
+u_{xx} = v_{yx}, \quad u_{yy} = -v_{xy}
+$$ {#eq-13-4-10}
+Since $v_{xy} = v_{yx}$ (mixed second derivatives are equal), adding @eq-13-4-10 yields @eq-13-4-8. Similarly, @eq-13-4-9 is obtained by differentiating $u_x = v_y$ with respect to $y$ and $u_y = -v_x$ with respect to $x$ and subtracting. $\square$
+
+Solutions of Laplace’s equation having continuous second-order partial derivatives are called **harmonic functions**. Hence the real and imaginary parts of an analytic function are harmonic functions.
+
+If two harmonic functions $u$ and $v$ satisfy the Cauchy–Riemann equations in a domain $D$, they are the real and imaginary parts of an analytic function $f$ in $D$. Then $v$ is said to be a **harmonic conjugate function** of $u$ in $D$.
+
+### EXAMPLE 4 How to Find a Harmonic Conjugate Function by the CR Equations
+Verify that $u = x^2 - y^2 - y$ is harmonic in the whole complex plane and find a harmonic conjugate function $v$ of $u$.
+**Solution.** $u_{xx} = 2, u_{yy} = -2$, so $\nabla^2 u = 0$, hence harmonic. Now $u_x = 2x$ and $u_y = -2y - 1$. Hence because of the CR equations, a conjugate $v$ must satisfy:
+$$
+v_y = u_x = 2x, \quad v_x = -u_y = 2y + 1
+$$
+Integrating $v_y = 2x$ with respect to $y$ gives $v = 2xy + h(x)$. Differentiating this with respect to $x$, we get $v_x = 2y + h'(x)$.
+A comparison with the second equation shows that $h'(x) = 1$. This gives $h(x) = x + c$. Hence:
+$$
+v = 2xy + x + c \quad (c \text{ any real constant})
+$$
+is the most general harmonic conjugate of the given $u$. The corresponding analytic function is:
+$$
+f(z) = u + iv = x^2 - y^2 - y + i(2xy + x + c) = z^2 + iz + ic.
+$$
+
+[^4]: The French mathematician AUGUSTIN-LOUIS CAUCHY (see Sec. 2.5) and the German mathematicians BERNHARD RIEMANN (1826–1866) and KARL WEIERSTRASS (1815–1897; see also Sec. 15.5) are the founders of complex analysis. Riemann received his Ph.D. under Gauss at Göttingen, where he also taught. He introduced the Riemann integral, and made important contributions to differential geometry and physics.
+
+## PROBLEM SET 13.4
+
+1. **CR Equations in polar form.** Derive @eq-13-4-7 from @eq-13-4-1 using the chain rule.
+
+### 2–11 CAUCHY–RIEMANN EQUATIONS
+Are the following functions analytic?
+2. $f(z) = i z \bar{z}$
+3. $f(z) = e^{-2x}(\cos 2y - i \sin 2y)$
+4. $f(z) = e^x(\cos y - i \sin y)$
+5. $f(z) = \text{Re}(z^2) - i \text{Im}(z^2)$
+6. $f(z) = 1/(z - z^5)$
+7. $f(z) = i/z^8$
+8. $f(z) = \text{Arg } 2\pi z$
+9. $f(z) = 3\pi^2/(z^3 + 4\pi^2 z)$
+10. $f(z) = \ln |z| + i \text{Arg } z$
+11. $f(z) = \cos x \cosh y - i \sin x \sinh y$
+
+### 12–19 HARMONIC FUNCTIONS
+Are the following functions harmonic? If yes, find a corresponding analytic function $f(z) = u(x, y) + i v(x, y)$:
+12. $u = x^2 + y^2$
+13. $u = xy$
+14. $v = (2x + 1)y$
+15. $u = \sin x \cosh y$
+16. $u = x/(x^2 + y^2)$
+17. $v = xy$
+18. $v = e^x \sin 2y$
+19. $u = x^3 - 3xy^2$
+
+20. **Laplace’s equation.** Give the details of the derivation of @eq-13-4-9.
+
+### 21–24 HARMONIC PARAMETERS
+Determine $a$ and $b$ so that the given function is harmonic and find a harmonic conjugate:
+21. $u = a x^3 + b xy$
+22. $u = \cosh ax \cos y$
+23. $u = \cos ax \cosh 2y$
+24. $u = e^{px} \cos ay$
+
+25. **CAS PROJECT. Equipotential Lines.** Write a program for graphing equipotential lines of a harmonic function $u$ and of its conjugate $v$ on the same axes. Apply the program to (a) $u = x^2 - y^2$, $v = 2xy$, and (b) $u = x^3 - 3xy^2$, $v = 3x^2 y - y^3$.
+
+26. Apply the program in Prob. 25 to $u = e^x \cos y, v = e^x \sin y$.
+
+27. **Harmonic conjugate.** Show that if $u$ is harmonic and $v$ is a harmonic conjugate of $u$, then $-u$ is a harmonic conjugate of $v$.
+28. Illustrate Prob. 27 by an example.
+29. **Two further formulas for the derivative.** Derive $f'(z) = u_x - i u_y$ and $f'(z) = v_y + i v_x$.
+30. **TEAM PROJECT. Conditions for $f'(z) = 0$.** Let $f(z)$ be analytic. Prove that each of the following conditions is sufficient for $f(z) = \text{const}$:
+    (a) $\text{Re } f(z) = \text{const}$
+    (b) $\text{Im } f(z) = \text{const}$
+    (c) $f'(z) = 0$
+    (d) $|f(z)| = \text{const}$.
+
+## 13.5 Exponential Function {#sec-exponential-function}
+
+We begin our discussion of elementary complex functions with the complex exponential function
+$$
+e^z \quad \text{also written} \quad \exp z
+$$
+The definition of $e^z$ in terms of the real functions $e^x$, $\cos y$, and $\sin y$ is:
+$$
+e^z = e^x(\cos y + i \sin y)
+$$ {#eq-13-5-1}
+
+This definition is motivated by the fact that it extends the real exponential function of calculus in a natural fashion:
+(A) For real $z = x$ ($y = 0$), $e^z = e^x$ because $\cos 0 = 1$ and $\sin 0 = 0$.
+(B) $e^z$ is analytic for all $z$ (proved in Example 2 of @sec-cauchy-riemann).
+(C) The derivative of $e^z$ is $e^z$, that is,
+$$
+(e^z)' = e^z
+$$ {#eq-13-5-2}
+
+This follows from $f'(z) = u_x + i v_x$ in @sec-cauchy-riemann:
+$$
+(e^z)' = (e^x \cos y)_x + i(e^x \sin y)_x = e^x \cos y + i e^x \sin y = e^z
+$$
+
+**REMARK.** We could define $e^z$ by the familiar Maclaurin series, but we would then have to discuss complex series at this early stage. (We show the connection in Sec. 15.4.)
+
+A function that is analytic for all $z$ is called an **entire function**. Thus, $e^z$ is entire.
+
+### Further Properties
+Just as in calculus, the functional relation
+$$
+e^{z_1 + z_2} = e^{z_1} e^{z_2}
+$$ {#eq-13-5-3}
+holds for any $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$. Indeed, by @eq-13-5-1,
+$$
+e^{z_1} e^{z_2} = e^{x_1}(\cos y_1 + i \sin y_1) e^{x_2}(\cos y_2 + i \sin y_2) = e^{x_1 + x_2}[\cos(y_1 + y_2) + i \sin(y_1 + y_2)] = e^{z_1 + z_2}
+$$
+
+An interesting special case of @eq-13-5-3 is $z_1 = x, z_2 = iy$; then
+$$
+e^z = e^x e^{iy}
+$$
+Furthermore, for $z = iy$ we have from @eq-13-5-1 the so-called **Euler formula**
+$$
+e^{iy} = \cos y + i \sin y
+$$ {#eq-13-5-5}
+Hence the polar form of a complex number, $z = r(\cos \theta + i \sin \theta)$, may now be written
+$$
+z = r e^{i\theta}
+$$ {#eq-13-5-6}
+
+From @eq-13-5-5 we obtain:
+$$
+e^{i\pi/2} = i, \quad e^{i\pi} = -1, \quad e^{-i\pi/2} = -i, \quad e^{-i\pi} = -1
+$$ {#eq-13-5-7}
+as well as the important formulas
+$$
+e^{2\pi i} = 1
+$$ {#eq-13-5-8}
+Another consequence of @eq-13-5-5 is
+$$
+|e^{iy}| = |\cos y + i \sin y| = \sqrt{\cos^2 y + \sin^2 y} = 1
+$$ {#eq-13-5-9}
+That is, for pure imaginary exponents, the exponential function has absolute value 1. From @eq-13-5-9 and @eq-13-5-1:
+$$
+|e^z| = e^x
+$$ {#eq-13-5-10}
+Hence $\arg e^z = y \pm 2n\pi$ ($n = 0, 1, 2, \dots$), since @eq-13-5-1 is actually in polar form.
+
+From $e^x > 0$ in @eq-13-5-10 we see that
+$$
+e^z \neq 0
+$$ {#eq-13-5-11}
+for all $z$. So here we have an entire function that never vanishes, in contrast to (nonconstant) polynomials.
+
+### Periodicity of $e^z$ with period $2\pi i$
+$$
+e^{z + 2\pi i} = e^z \quad \text{for all } z
+$$ {#eq-13-5-12}
+follows from @eq-13-5-1 and the periodicity of $\cos y$ and $\sin y$. Hence all the values that $e^z$ can assume are already assumed in the horizontal strip of width $2\pi$
+$$
+-\pi < \text{Im } z \le \pi
+$$ {#eq-13-5-13}
+This infinite strip is called a **fundamental region** of $e^z$ (@fig-13-336).
+
+![Fig. 336. Fundamental region of the exponential function $e^z$ in the $z$-plane](../images/fig-13-336.png){#fig-13-336}
+
+### EXAMPLE 1 Function Values. Solution of Equations
+Find the values of $e^z$ at $z = 1.4 - 0.6i$ and solve $e^z = 3 + 4i$.
+**Solution.** $e^{1.4-0.6i} = e^{1.4}(\cos 0.6 - i \sin 0.6) \approx 4.055(0.8253 - 0.5646i) \approx 3.347 - 2.289i$. $|e^{1.4-0.6i}| = e^{1.4} \approx 4.055$, $\text{Arg } e^{1.4-0.6i} = -0.6$.
+
+To solve $e^z = 3 + 4i$, note first that $|e^z| = e^x = |3 + 4i| = 5$, so $x = \ln 5 \approx 1.609$.
+Now, since $e^z = e^x(\cos y + i \sin y) = 3 + 4i$, we have $5\cos y = 3, 5\sin y = 4$, so $\cos y = 0.6, \sin y = 0.8$, and $y = 0.927 \pm 2n\pi$.
+Ans. $z = 1.609 + 0.927i \pm 2n\pi i$ ($n = 0, 1, 2, \dots$).
+
+## PROBLEM SET 13.5
+
+1. **$e^z$ is entire.** Prove this.
+
+### 2–7 FUNCTION VALUES
+Find in the form $u + iv$ and $|e^z|$ if $z$ equals:
+2. $2\pi i(1 + i)$
+3. $-3 + \frac{1}{2}\pi i$
+4. $2 + 3\pi i$
+5. $0.6 - 1.8i$
+6. $11\pi i/2$
+7. $2 + \pi i$
+
+### 8–13 POLAR FORM
+Write in exponential form $z = r e^{i\theta}$:
+8. $\frac{1}{1 - i}$
+9. $4 + 3i$
+10. $\sqrt{i}$
+11. $-6.3i$
+12. $1 + i$
+13. $\frac{1 - i}{1 + i}$
+
+### 16–17 REAL AND IMAGINARY PARTS
+Find $\text{Re}$ and $\text{Im}$ of:
+14. $e^{-2\pi z}$
+15. $\exp(z^2)$
+16. $\exp(z^3)$
+17. $e^{1/z}$
+
+### 18 TEAM PROJECT
+**Further Properties of the Exponential Function.**
+(a) **Analyticity.** Show that $e^z$ is entire. What about $e^{\bar{z}}$? $e^{z^2}$? $e^{1/z}$?
+(b) **Special values.** Find all $z$ such that (i) $e^z$ is real, (ii) $|e^{-z}| < 1$, (iii) $e^{\bar{z}} = e^z$.
+(c) **Harmonic function.** Show that $u = e^{x^2-y^2} \cos 2xy$ is harmonic and find a conjugate.
+(d) **Uniqueness.** Show that $f(z) = e^z$ is uniquely determined by the properties $f'(z) = f(z)$ and $f(0) = 1$, where $f$ is assumed to be entire.
+
+### 19–22 EQUATIONS
+Find all solutions and graph some of them in the complex plane:
+19. $e^z = 1$
+20. $e^z = -2$
+21. $e^z = 4 + 3i$
+22. $e^z = 0$
+
+## 13.6 Trigonometric and Hyperbolic Functions. Euler’s Formula {#sec-trig-hyperbolic}
+
+Just as we extended the real exponential to the complex in @sec-exponential-function, we now want to extend the familiar real trigonometric functions to complex trigonometric functions. We can do this by the use of the Euler formulas [see @eq-13-5-5]:
+$$
+e^{ix} = \cos x + i \sin x, \quad e^{-ix} = \cos x - i \sin x
+$$
+By addition and subtraction we obtain:
+$$
+\cos x = \frac{1}{2}(e^{ix} + e^{-ix}), \quad \sin x = \frac{1}{2i}(e^{ix} - e^{-ix})
+$$
+This suggests the following definitions for complex values $z = x + iy$:
+$$
+\cos z = \frac{1}{2}(e^{iz} + e^{-iz}), \quad \sin z = \frac{1}{2i}(e^{iz} - e^{-iz})
+$$ {#eq-13-6-1}
+
+Furthermore, as in calculus we define:
+$$
+\tan z = \frac{sin z}{\cos z}, \quad \cot z = \frac{\cos z}{\sin z}, \quad \sec z = \frac{1}{\cos z}, \quad \csc z = \frac{1}{\sin z}
+$$ {#eq-13-6-2}
+
+Since $e^z$ is entire, $\cos z$ and $\sin z$ are entire functions. $\tan z$ and $\sec z$ are analytic except at the points where $\cos z = 0$; and $\cot z$ and $\csc z$ are analytic except where $\sin z = 0$.
+
+Formulas for the derivatives follow readily from @eq-13-5-2 and @eq-13-6-1:
+$$
+(\cos z)' = -\sin z, \quad (\sin z)' = \cos z, \quad (\tan z)' = \sec^2 z
+$$ {#eq-13-6-4}
+
+Equation @eq-13-6-1 also shows that Euler’s formula is valid in complex:
+$$
+e^{iz} = \cos z + i \sin z
+$$ {#eq-13-6-5}
+
+The real and imaginary parts of $\cos z$ and $\sin z$ are needed in computing values:
+$$
+\cos z = \cos x \cosh y - i \sin x \sinh y
+$$ {#eq-13-6-6a}
+$$
+\sin z = \sin x \cosh y + i \cos x \sinh y
+$$ {#eq-13-6-6b}
+and
+$$
+|\cos z|^2 = \cos^2 x + \sinh^2 y
+$$ {#eq-13-6-7a}
+$$
+|\sin z|^2 = \sin^2 x + \sinh^2 y
+$$ {#eq-13-6-7b}
+
+### EXAMPLE 1 Real and Imaginary Parts. Absolute Value. Periodicity
+Show that @eq-13-6-6 and @eq-13-6-7 hold.
+**Solution.** From @eq-13-6-1,
+$$
+\cos z = \frac{1}{2}(e^{i(x+iy)} + e^{-i(x+iy)}) = \frac{1}{2} e^{-y}(\cos x + i \sin x) + \frac{1}{2} e^y(\cos x - i \sin x)
+$$
+$$
+= \frac{1}{2}(e^y + e^{-y}) \cos x - \frac{1}{2}i(e^y - e^{-y}) \sin x = \cos x \cosh y - i \sin x \sinh y
+$$
+This yields @eq-13-6-6a since:
+$$
+\cosh y = \frac{1}{2}(e^y + e^{-y}), \quad \sinh y = \frac{1}{2}(e^y - e^{-y})
+$$ {#eq-13-6-8}
+@eq-13-6-6b is obtained similarly. From @eq-13-6-6a and $\cosh^2 y = 1 + \sinh^2 y$ we obtain:
+$$
+|\cos z|^2 = \cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y = \cos^2 x (1 + \sinh^2 y) + \sin^2 x \sinh^2 y
+$$
+Since $\sin^2 x + \cos^2 x = 1$, this gives @eq-13-6-7a, and @eq-13-6-7b is obtained similarly.
+
+For instance, $\cos(2 + 3i) = \cos 2 \cosh 3 - i \sin 2 \sinh 3 \approx -4.190 - 9.109i$.
+
+From @eq-13-6-6 we see that $\cos z$ and $\sin z$ are periodic with period $2\pi$. Periodicity of $\tan z$ and $\cot z$ with period $\pi$ follows.
+
+Formula @eq-13-6-7 points to an essential difference between the real and the complex cosine and sine: the complex cosine and sine are no longer bounded but approach infinity in absolute value as $y \to \pm\infty$.
+
+### EXAMPLE 2 Solutions of Equations. Zeros of $\cos z$ and $\sin z$
+Solve (a) $\cos z = 5$, (b) $\cos z = 0$, (c) $\sin z = 0$.
+**Solution.**
+(a) From @eq-13-6-1, $\cos z = \frac{1}{2}(e^{iz} + e^{-iz}) = 5$. Multiplication by $e^{iz}$ gives the quadratic equation $e^{2iz} - 10 e^{iz} + 1 = 0$. The solutions are $e^{iz} = 5 \pm \sqrt{24} = 9.899 \text{ and } 0.101$.
+Since $e^{iz} = e^{-y} e^{ix}$, we have $e^{-y} = 9.899$ or $0.101$, so $y = \mp 2.292$, and $e^{ix} = 1$, so $x = \pm 2n\pi$ ($n = 0, 1, \dots$).
+Ans. $z = \pm 2n\pi \pm 2.292i$.
+(b) $\cos x \cosh y = 0$ and $\sin x \sinh y = 0$ by @eq-13-6-6a. Since $\cosh y \ge 1$, we must have $\cos x = 0$, so $x = \pm \frac{1}{2}(2n+1)\pi$ ($n = 0, 1, \dots$). For these $x$, $\sin x \neq 0$, so $\sinh y = 0$, which means $y = 0$.
+Ans. $z = \pm \frac{1}{2}(2n+1)\pi$.
+(c) $\sin x \cosh y = 0$ and $\cos x \sinh y = 0$ by @eq-13-6-6b.
+Ans. $z = \pm n\pi$ ($n = 0, 1, \dots$).
+
+General formulas for the real trigonometric functions continue to hold for complex values:
+$$
+\cos^2 z + \sin^2 z = 1
+$$ {#eq-13-6-10}
+$$
+\cos(z_1 \pm z_2) = \cos z_1 \cos z_2 \mp \sin z_1 \sin z_2
+$$
+$$
+\sin(z_1 \pm z_2) = \sin z_1 \cos z_2 \pm \cos z_1 \sin z_2
+$$
+
+### Hyperbolic Functions
+The complex hyperbolic cosine and sine are defined by:
+$$
+\cosh z = \frac{1}{2}(e^z + e^{-z}), \quad \sinh z = \frac{1}{2}(e^z - e^{-z})
+$$ {#eq-13-6-11}
+These functions are entire, with derivatives:
+$$
+(\cosh z)' = \sinh z, \quad (\sinh z)' = \cosh z
+$$ {#eq-13-6-12}
+The other hyperbolic functions are defined by:
+$$
+\tanh z = \frac{\sinh z}{\cosh z}, \quad \coth z = \frac{\cosh z}{\sinh z}, \quad \text{sech } z = \frac{1}{\cosh z}, \quad \text{csch } z = \frac{1}{\sinh z}
+$$ {#eq-13-6-13}
+
+**Trigonometric and Hyperbolic Functions Are Related.** Replacing $z$ by $iz$ in @eq-13-6-11 gives:
+$$
+\cosh iz = \cos z, \quad \sinh iz = i \sin z
+$$ {#eq-13-6-14}
+Similarly, replacing $z$ by $iz$ in @eq-13-6-1 gives conversely:
+$$
+\cos iz = \cosh z, \quad \sin iz = i \sinh z
+$$ {#eq-13-6-15}
+
+## PROBLEM SET 13.6
+
+### 1–3 FORMULAS FOR HYPERBOLIC FUNCTIONS
+Show that:
+1. $\cosh(z_1 + z_2) = \cosh z_1 \cosh z_2 + \sinh z_1 \sinh z_2$
+2. $\sinh(z_1 + z_2) = \sinh z_1 \cosh z_2 + \cosh z_1 \sinh z_2$
+3. $\cosh^2 z - \sinh^2 z = 1, \quad \cosh^2 z + \sinh^2 z = \cosh 2z$
+
+4. **Entire Functions.** Prove that $\cos z$, $\sin z$, $\cosh z$, and $\sinh z$ are entire.
+5. **Harmonic Functions.** Verify by differentiation that $\text{Re } \sin z$ and $\text{Im } \cos z$ are harmonic.
+
+### 6–12 FUNCTION VALUES
+Find, in the form $u + iv$:
+6. $\sin 2\pi i$
+7. $\cos \pi i, \quad \cosh \pi i$
+8. $\cos i, \quad \sin i$
+9. $\cosh(-1 + 2i), \quad \cos(-2 - i)$
+10. $\sinh(3 + 4i), \quad \cosh(3 + 4i)$
+11. $\sin \pi i, \quad \cos(\frac{1}{2}\pi - \pi i)$
+12. $\cos \frac{1}{2}\pi i, \quad \cos[\frac{1}{2}\pi(1 + i)]$
+
+### 13–15 EQUATIONS AND INEQUALITIES
+Using the definitions, prove:
+13. $\cos(-z) = \cos z, \quad \sin(-z) = -\sin z$
+14. $|\sinh y| \le |\cos z| \le \cosh y, \quad |\sinh y| \le |\sin z| \le \cosh y$. Conclude that the complex cosine and sine are not bounded in the whole complex plane.
+15. $\sin z_1 \cos z_2 = \frac{1}{2}[\sin(z_1 + z_2) + \sin(z_1 - z_2)]$
+
+### 16–19 EQUATIONS
+Find all solutions:
+16. $\sin z = 100$
+17. $\cosh z = 0$
+18. $\cosh z = -1$
+19. $\sinh z = 0$
+
+20. Show that:
+    $$
+    \text{Re } \tan z = \frac{\sin x \cos x}{\cos^2 x + \sinh^2 y}, \quad \text{Im } \tan z = \frac{\sinh y \cosh y}{\cos^2 x + \sinh^2 y}
+    $$
+
+## 13.7 Logarithm. General Power. Principal Value {#sec-logarithm}
+
+We finally introduce the complex logarithm, which is more complicated than the real logarithm and is infinitely many-valued.
+
+The natural logarithm of $z = x + iy$ is denoted by $\ln z$ (sometimes also by $\log z$) and is defined as the inverse of the exponential function; that is, $w = \ln z$ is defined for $z \neq 0$ by the relation:
+$$
+e^w = z
+$$ {#eq-13-7-1}
+(Note that $z = 0$ is impossible, since $e^w \neq 0$ for all $w$.) If we set $w = u + iv$ and $z = r e^{i\theta}$, @eq-13-7-1 becomes:
+$$
+e^{u+iv} = e^u e^{iv} = r e^{i\theta}
+$$
+Equating absolute values and arguments gives:
+$$
+e^u = r, \quad v = \theta
+$$
+From $e^u = r$ we obtain $u = \ln r$, where $\ln r$ is the familiar real natural logarithm. Hence $w = \ln z$ is given by:
+$$
+\ln z = \ln r + i\theta = \ln |z| + i \arg z \quad (z \neq 0)
+$$ {#eq-13-7-2}
+
+Since the argument of $z$ is determined only up to integer multiples of $2\pi$, the complex natural logarithm $\ln z$ is infinitely many-valued:
+$$
+\ln z = \ln |z| + i \text{Arg } z \pm 2n\pi i \quad (n = 0, 1, 2, \dots)
+$$ {#eq-13-7-3}
+
+The value of $\ln z$ corresponding to the principal value $\text{Arg } z$ is denoted by $\text{Ln } z$ and is called the **principal value of $\ln z$**:
+$$
+\text{Ln } z = \ln |z| + i \text{Arg } z
+$$ {#eq-13-7-4}
+
+The uniqueness of $\text{Arg } z$ for given $z \neq 0$ implies that $\text{Ln } z$ is single-valued. The other values of $\ln z$ are given by:
+$$
+\ln z = \text{Ln } z \pm 2n\pi i \quad (n = 1, 2, \dots)
+$$ {#eq-13-7-5}
+
+If $z$ is positive real, $\text{Arg } z = 0$, and $\text{Ln } z$ becomes identical with the real natural logarithm. If $z$ is negative real, $\text{Arg } z = \pi$, and:
+$$
+\text{Ln } z = \ln |z| + i\pi \quad (z \text{ negative real}).
+$$
+From @eq-13-7-2 and for positive real $r$ we obtain:
+$$
+e^{\ln z} = z
+$$ {#eq-13-7-6a}
+but since $\arg(e^z)$ is multivalued, so is:
+$$
+\ln(e^z) = z \pm 2n\pi i \quad (n = 0, 1, 2, \dots)
+$$ {#eq-13-7-6b}
+
+### EXAMPLE 1 Natural Logarithm. Principal Value
+$$
+\text{Ln } 1 = 0, \quad \ln 1 = \pm 2n\pi i
+$$
+$$
+\text{Ln } (-1) = i\pi, \quad \ln(-1) = (2n+1)i\pi
+$$
+$$
+\text{Ln } i = \frac{1}{2}i\pi, \quad \ln i = (2n + \frac{1}{2})i\pi
+$$
+$$
+\text{Ln } 4i = \ln 4 + \frac{1}{2}i\pi \approx 1.386 + 1.571i
+$$
+$$
+\text{Ln } (3 - 4i) = \ln 5 + i \text{Arg }(3 - 4i) \approx 1.609 - 0.927i \quad (@fig-13-337)
+$$
+
+![Fig. 337. Some values of $\ln(3 - 4i)$ in Example 1](../images/fig-13-337.png){#fig-13-337}
+
+The familiar relations for the natural logarithm continue to hold for complex values:
+$$
+\ln(z_1 z_2) = \ln z_1 + \ln z_2, \quad \ln\left(\frac{z_1}{z_2}\right) = \ln z_1 - \ln z_2
+$$ {#eq-13-7-7}
+but these relations are to be understood in the sense that each value of one side is also contained among the values of the other side.
+
+### EXAMPLE 2 Illustration of the Functional Relation (5) in Complex
+Let $z_1 = z_2 = e^{i\pi} = -1$. If we take the principal values:
+$$
+\text{Ln } z_1 = \text{Ln } z_2 = i\pi
+$$
+we have:
+$$
+\text{Ln } z_1 + \text{Ln } z_2 = 2i\pi
+$$
+However, $z_1 z_2 = 1$, so:
+$$
+\text{Ln }(z_1 z_2) = \text{Ln } 1 = 0 \neq 2i\pi.
+$$
+
+### THEOREM 1 Analyticity of the Logarithm
+For every $n = 0, \pm 1, \dots$, @eq-13-7-5 defines a function, which is analytic except at $0$ and on the negative real axis, and has the derivative:
+$$
+(\ln z)' = \frac{1}{z} \quad (z \text{ not } 0 \text{ or negative real})
+$$ {#eq-13-7-8}
+
+**PROOF** We show that the CR equations are satisfied. We have $\ln z = \ln r + i(\theta + c) = \frac{1}{2}\ln(x^2 + y^2) + i(\arctan(y/x) + c)$. By differentiation:
+$$
+u_x = \frac{x}{x^2 + y^2} = v_y = \frac{1}{1 + (y/x)^2} \cdot \frac{1}{x}
+$$
+$$
+u_y = \frac{y}{x^2 + y^2} = -v_x = -\frac{1}{1 + (y/x)^2} \left(-\frac{y}{x^2}\right)
+$$
+Hence the Cauchy–Riemann equations hold. From @eq-13-4-4 in @sec-cauchy-riemann, the derivative is:
+$$
+(\ln z)' = u_x + i v_x = \frac{x - iy}{x^2 + y^2} = \frac{\bar{z}}{z\bar{z}} = \frac{1}{z}. \quad \square
+$$
+
+Each of the infinitely many functions in @eq-13-7-5 is called a **branch** of the logarithm. The negative real axis is known as a **branch cut** (@fig-13-338). The branch for $n = 0$ is called the **principal branch** of $\ln z$.
+
+![Fig. 338. Branch cut for $\ln z$](../images/fig-13-338.png){#fig-13-338}
+
+### General Powers
+General powers of a complex number $z \neq 0$ are defined by:
+$$
+z^c = e^{c \ln z}
+$$ {#eq-13-7-9}
+where $c$ is complex. Since $\ln z$ is infinitely many-valued, $z^c$ will, in general, be multivalued. The value
+$$
+z^c = e^{c \text{Ln } z}
+$$
+is called the **principal value of $z^c$**.
+
+If $c = n = 1, 2, \dots$, then $z^n$ is single-valued and identical with the usual $n$th power of $z$. If $c = 1/n$, where $n = 2, 3, \dots$, then $z^{1/n} = \sqrt[n]{z} = e^{(1/n)\ln z}$, and we obtain the $n$ distinct values of the $n$th root. If $c = p/q$, the situation is similar. However, if $c$ is real irrational or complex, then $z^c$ is infinitely many-valued.
+
+### EXAMPLE 3 General Power
+$$
+i^i = e^{i \ln i} = \exp\left(i \left( \frac{1}{2}i\pi \pm 2n\pi i \right)\right) = e^{-\pi/2 \mp 2n\pi}.
+$$
+All these values are real, and the principal value ($n = 0$) is $e^{-\pi/2} \approx 0.208$.
+Similarly,
+$$
+(1 + i)^{1-i} = e^{(1-i)\ln(1+i)} = \exp\left((1-i) \left[ \frac{1}{2}\ln 2 + i\frac{\pi}{4} \pm 2n\pi i \right]\right)
+$$
+$$
+= 2^{(1-i)/2} e^{\pi/4 \pm 2n\pi} [\cos(\frac{1}{2}\ln 2) - i \sin(\frac{1}{2}\ln 2)].
+$$
+
+It is a convention that for real positive $z = x$ the expression $x^c$ means $e^{c \ln x}$, where $\ln x$ is the real natural logarithm. Also, $e^z$ is conventionally regarded as the unique value obtained from @sec-exponential-function.
+
+From @eq-13-7-9 we see that for any complex number $a$:
+$$
+a^z = e^{z \ln a}
+$$ {#eq-13-7-10}
+
+## PROBLEM SET 13.7
+
+### 1–4 VERIFICATIONS
+1. Verify the computations in Example 1.
+2. Verify @eq-13-7-7 for $z_1 = -i$ and $z_2 = -1$.
+3. Prove analyticity of $\text{Ln } z$ by means of the CR equations in polar form @eq-13-4-7.
+4. Prove @eq-13-7-6a and @eq-13-7-6b.
+
+### 5–11 PRINCIPAL VALUE $\text{Ln } z$
+Find $\text{Ln } z$ when $z$ equals:
+5. $0.6 + 0.8i$
+6. $1 + i$
+7. $-1 - i$
+8. $-15 \pm 0.1i$
+9. $4 - 4i$
+10. $-4 + 4i$
+11. $-11$
+
+### 12–16 ALL VALUES OF $\ln z$
+Find all values and graph some of them in the complex plane:
+12. $\ln e$
+13. $\ln 1$
+14. $\ln(-7)$
+15. $\ln(ei)$
+16. $\ln(4 + 3i)$
+
+17. Show that the set of values of $\ln(i^2)$ differs from the set of values of $2\ln i$.
+
+### 18–21 EQUATIONS
+Solve for $z$:
+18. $\ln z = -\pi i/2$
+19. $\ln z = e - \pi i$
+20. $\ln z = 4 - 3i$
+21. $\ln z = 0.6 + 0.4i$
+
+### 22–28 GENERAL POWERS
+Find the principal value. Show details.
+22. $(1 + i)^{1-i}$
+23. $(2i)^{2i}$
+24. $i^{i/2}$
+25. $(-1)^{2-i}$
+26. $(3 + 4i)^{1/3}$
+27. $(1 - i)^{1+i}$
+28. $(-3)^{3-i}$
+
+29. How can you find the answer to Prob. 24 from the answer to Prob. 23?
+
+### 30 TEAM PROJECT
+**Inverse Trigonometric and Hyperbolic Functions.**
+Show that:
+(a) $\arcsin z = -i \ln (iz + \sqrt{1 - z^2})$
+(b) $\arccos z = -i \ln (z + \sqrt{z^2 - 1})$
+(c) $\arctan z = \frac{i}{2} \ln \frac{i + z}{i - z}$
+(d) $\text{arccosh } z = \ln (z + \sqrt{z^2 - 1})$
+(e) $\text{arcsinh } z = \ln (z + \sqrt{z^2 + 1})$
+(f) $\text{arctanh } z = \frac{1}{2} \ln \frac{1 + z}{1 - z}$
+(g) Show that $\arcsin z$ is infinitely many-valued, and if $w_1$ is one of these values, the others are of the form $w_1 + 2n\pi$ and $\pi - w_1 + 2n\pi$ ($n = 0, \pm 1, \dots$).
+
+## SUMMARY OF CHAPTER 13
+
+1. **Arithmetic operations:** For addition, subtraction, multiplication, and division see @sec-complex-representation.
+2. **Polar form:** $z = r(\cos \theta + i \sin \theta) = r e^{i\theta}$, see @sec-polar-form.
+3. **Analyticity:** $f(z) = u + iv$ is analytic in $D$ if it has a derivative $f'(z)$ in $D$.
+4. **Cauchy-Riemann equations:** $u_x = v_y, u_y = -v_x$, see @sec-cauchy-riemann.
+5. **Laplace's equation:** $\nabla^2 u = u_{xx} + u_{yy} = 0$, $\nabla^2 v = v_{xx} + v_{yy} = 0$.
+6. **Exponential function:** $e^z = e^x(\cos y + i \sin y)$, see @sec-exponential-function.
+7. **Trigonometric and hyperbolic functions:** See @sec-trig-hyperbolic.
+8. **Logarithm:** $\ln z = \ln |z| + i \arg z = \text{Ln } z \pm 2n\pi i$, see @sec-logarithm.
+9. **General powers:** $z^c = e^{c \ln z}$.
+
+---
+
+## CHAPTER 13 REVIEW QUESTIONS AND PROBLEMS
+
+### 1–10 GENERAL QUESTIONS
+1. Divide $15 + 23i$ by $-3 + 7i$. Check the result by multiplication.
+2. What happens to a quotient if you take the complex conjugates of the two numbers? If you take the absolute values?
+3. Write $15 + 23i$ and $-3 + 7i$ in polar form. Find the principal values of their arguments.
+4. State the definition of the derivative from memory. Explain the big difference from that in calculus.
+5. What is an analytic function of a complex variable?
+6. Can a function be differentiable at a point without being analytic there? If yes, give an example.
+7. State the Cauchy–Riemann equations. Why are they of basic importance?
+8. Discuss how $e^z, \cos z, \sin z, \cosh z, \sinh z$ are related.
+9. $\ln z$ is more complicated than $\ln x$. Explain. Give examples.
+10. How are general powers defined? Give an example.
+
+### 11–16 COMPLEX NUMBERS
+Find, in the form $x + iy$, showing details:
+11. $(1 - i)^{10}(2 + 3i)^2$
+12. $1/(4 + 3i)$
+13. $2i$
+14. $(1/2 + i)/(1/2 - i)$
+15. $(-4 - 4i)/(1 + i)$
+16. $(1 + i)/(1 - i)$
+
+### 17–20 POLAR FORM
+Represent in polar form, with the principal argument:
+17. $-4 - 4i$
+18. $e^{i\pi/2}$
+19. $e^{-i\pi/2}$
+20. $0.6 + 0.8i$
+
+### 21–24 ROOTS
+Find and graph all values of:
+21. $\sqrt[3]{1}$
+22. $\sqrt[4]{-1}$
+23. $\sqrt[2]{-32i}$
+24. $\sqrt[8]{1}$
+
+### 25–30 ANALYTIC FUNCTIONS
+Find $f(z) = u(x, y) + i v(x, y)$ with $u$ or $v$ as given. Check by the Cauchy–Riemann equations for analyticity:
+25. $u = xy$
+26. $v = y/(x^2 + y^2)$
+27. $v = -e^{-2x} \sin 2y$
+28. $u = \cos 3x \cosh 3y$
+29. $u = \exp(-(x^2 - y^2)/2) \cos xy$
+30. $v = \cos 2x \sinh 2y$
+
+### 31–35 SPECIAL FUNCTION VALUES
+Find the value of:
+31. $\cos(3 - i)$
+32. $\text{Ln}(0.6 + 0.8i)$
+33. $\tan i$
+34. $\sinh(1 + \pi i), \quad \sin(1 + \pi i)$
+35. $\cosh(\pi + \pi i)$
