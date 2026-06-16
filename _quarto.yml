@@ -17,10 +17,11 @@ book:
     - chapters/ch9.qmd
     - chapters/ch10.qmd
     - chapters/ch17.qmd
+    - chapters/ch18.qmd
     - chapters/ch21.qmd
     - chapters/ch22.qmd
     - chapters/intro.qmd
-    - chapters/ch18.qmd
+    
 
 
 format:
