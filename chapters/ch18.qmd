@@ -1,0 +1,892 @@
+---
+title: "CHAPTER 18: Complex Analysis and Potential Theory"
+---
+
+In Chapter 17 we studied conformal mappings by analytic functions. In this chapter we now reap the fruits of that work. We show that **conformal mapping** is a highly effective method for solving **boundary value problems** in **potential theory**—the theory of solutions of Laplace's equation. This gives us the third major approach to problems in complex analysis.
+
+The key idea rests on the following simple but far-reaching fact: *harmonic functions (solutions of Laplace's equation) remain harmonic under conformal mappings*. Consequently, a difficult potential problem in a complicated domain can be transformed by a conformal mapping to a simpler problem in a simpler domain (such as a disk or half-plane), solved there, and the solution then mapped back to the original domain.
+
+We cover three main physical applications of this method: **electrostatics** (Sec. 18.1), **heat flow** (Sec. 18.3), and **fluid flow** (Sec. 18.4). The common mathematical foundation is that of **complex potentials**, i.e., analytic functions whose real and imaginary parts are conjugate harmonic functions. In Sec. 18.2 we establish the general theorem and modeling strategy. In Sec. 18.5 we derive **Poisson's integral formula**, which gives the values of a harmonic function inside a disk or upper half-plane directly from its boundary values.
+
+**Prerequisite:** Chap. 17 (Secs. 17.1–17.3).
+**Sections that may be omitted in a shorter course:** 18.5.
+**References and Answers to Problems:** App. 1 Part D, App. 2.
+
+## 18.1 Electrostatic Fields {#sec-electrostatic-fields}
+
+Potential theory has its roots in physics. Its primary example is **electrostatics**. An electrostatic field in a region of the plane free of charges is characterized by an **electrostatic potential** $\Phi(x, y)$, a real-valued function whose gradient gives the electric field intensity vector
+
+$$
+\mathbf{E} = -\text{grad}\, \Phi = -\left(\frac{\partial \Phi}{\partial x}\,\mathbf{i} + \frac{\partial \Phi}{\partial y}\,\mathbf{j}\right).
+$$ {#eq-sec181-1}
+
+In any charge-free region, the potential $\Phi$ satisfies **Laplace's equation**
+
+$$
+\nabla^2 \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = 0.
+$$ {#eq-sec181-2}
+
+A real-valued function satisfying Laplace's equation in a domain $D$ is called **harmonic** in $D$.
+
+### Complex Potential
+
+Recall from Sec. 13.4 that if $F(z) = \Phi(x, y) + i\Psi(x, y)$ is **analytic** in a domain $D$, then both $\Phi$ and $\Psi$ are harmonic in $D$ (since the Cauchy–Riemann equations imply each satisfies (@eq-sec181-2)). We call $F(z)$ the **complex potential**, $\Phi$ the (real) **electrostatic potential**, and $\Psi$ the **stream function** or **conjugate potential**.
+
+The **equipotential lines** are the curves $\Phi(x, y) = \text{const}$, and the **lines of force (flux lines)** are the curves $\Psi(x, y) = \text{const}$. Since $\Phi$ and $\Psi$ are conjugate harmonic functions, the Cauchy–Riemann equations guarantee that these two families of curves are **orthogonal** wherever $F'(z) \neq 0$.
+
+From $F(z)$ we can recover the electric field intensity directly. Since $F'(z) = \partial\Phi/\partial x + i\,\partial\Psi/\partial x = \partial\Phi/\partial x - i\,\partial\Phi/\partial y$, we have
+
+$$
+\overline{F'(z)} = \frac{\partial \Phi}{\partial x} + i\frac{\partial \Phi}{\partial y} = -\mathbf{E}.
+$$ {#eq-sec181-3}
+
+The magnitude of the electric field is $|\mathbf{E}| = |F'(z)|$.
+
+### EXAMPLE 1 Parallel Plates
+
+Find the complex potential and the electric field between two long parallel conducting plates lying along the lines $y = 0$ and $y = d$, maintained at potentials $\Phi = 0$ and $\Phi = U_0$, respectively.
+
+**Solution.** We need a harmonic function $\Phi$ depending only on $y$ (by symmetry) with $\Phi(x, 0) = 0$ and $\Phi(x, d) = U_0$. This is
+
+$$
+\Phi = \frac{U_0}{d}\, y.
+$$ {#eq-sec181-4}
+
+The conjugate harmonic function is $\Psi = -U_0 x/d$ (verify by Cauchy–Riemann). Hence the **complex potential** is
+
+$$
+F(z) = \Phi + i\Psi = \frac{U_0}{d}(y - ix) = -\frac{iU_0}{d}\,z.
+$$ {#eq-sec181-5}
+
+The equipotential lines $\Phi = \text{const}$ are horizontal lines $y = \text{const}$, and the lines of force are vertical lines $x = \text{const}$. The electric field is $\mathbf{E} = -(U_0/d)\,\mathbf{j}$, pointing downward from the plate at $y = d$ to the plate at $y = 0$. See @fig-18-01.
+
+![Fig. 396. Parallel-plate capacitor: equipotential lines (horizontal) and lines of force (vertical)](../images/fig-18-01.png){#fig-18-01}
+
+### EXAMPLE 2 Coaxial Cylinders
+
+Find the complex potential between two long coaxial conducting cylinders of radii $r_1 < r_2$, maintained at potentials $\Phi_1$ and $\Phi_2$, respectively.
+
+**Solution.** By symmetry, $\Phi$ depends only on $r = |z|$. In polar coordinates, Laplace's equation becomes $\Phi_{rr} + (1/r)\Phi_r = 0$. Multiplying by $r$: $(r\Phi_r)_r = 0$, so $r\Phi_r = A$ (constant), giving $\Phi = A\ln r + B$. Applying boundary conditions:
+
+$$
+\Phi_1 = A\ln r_1 + B, \quad \Phi_2 = A\ln r_2 + B.
+$$
+
+Solving:
+
+$$
+A = \frac{\Phi_2 - \Phi_1}{\ln(r_2/r_1)}, \qquad B = \Phi_1 - A\ln r_1.
+$$ {#eq-sec181-6}
+
+Since $\Phi = A\ln r = \text{Re}(A\,\text{Ln}\,z)$, the **complex potential** is
+
+$$
+F(z) = A\,\text{Ln}\,z + B.
+$$ {#eq-sec181-7}
+
+The equipotential lines are circles $|z| = r = \text{const}$, and the lines of force are rays $\arg z = \text{const}$. See @fig-18-02.
+
+![Fig. 397. Coaxial cylinders: circular equipotential lines and radial lines of force](../images/fig-18-02.png){#fig-18-02}
+
+### EXAMPLE 3 Two Parallel Half-Planes (Edge of a Condenser)
+
+Consider two semi-infinite conducting plates lying along $y = 0, x < 0$ (potential $\Phi = 0$) and $y = \pi, x < 0$ (potential $\Phi = U_0$). Find the complex potential.
+
+**Solution.** The mapping $w = e^z$ maps the horizontal strip $0 < y < \pi$ conformally onto the upper $w$-half-plane. In the $w$-plane, the boundary condition $\Phi = 0$ applies on the positive real $u$-axis (image of $y = 0, x < 0$: $u < 1$) and $\Phi = U_0$ on the negative real $u$-axis. The complex potential in the $w$-plane that is harmonic in the upper half-plane and takes the boundary values 0 and $U_0$ on the positive and negative real axes is
+
+$$
+F^*(w) = \frac{U_0}{\pi}\,\text{Arg}\,w.
+$$
+
+Since $\text{Arg}(e^z) = y$, we obtain in the $z$-plane
+
+$$
+\Phi = \frac{U_0}{\pi}\,y, \qquad F(z) = \frac{U_0}{\pi}\,(-iz) = -\frac{iU_0}{\pi}\,z.
+$$
+
+(This is as expected for an infinite strip!)
+
+### PROBLEM SET 18.1
+
+#### 1–5 COMPLEX POTENTIAL
+
+Find the complex potential, equipotential lines, and lines of force for the given field.
+
+1. Two conducting planes at $x = 1$ (potential 0) and $x = 4$ (potential 120 V).
+
+2. Two coaxial cylinders of radii $r_1 = 1$ and $r_2 = 10$, with potentials $\Phi_1 = -100$ V and $\Phi_2 = 100$ V.
+
+3. A conducting plane at $y = 0$ (potential 0) and another at $y = 1$ (potential 220 V).
+
+4. **Concentric squares.** Could you model the field between two concentric square conductors as in Example 2? What would you have to change?
+
+5. Show that $F(z) = z^2$ represents an electrostatic field. Find $\Phi$, $\Psi$, and sketch some equipotential lines and lines of force.
+
+#### 6–10 ELECTRIC FIELD INTENSITY
+
+Find the magnitude $|\mathbf{E}|$ of the electric field intensity.
+
+6. Complex potential $F(z) = \cosh z$.
+
+7. Complex potential $F(z) = z^3$.
+
+8. Complex potential $F(z) = iz + e^{iz}$.
+
+9. Complex potential $F(z) = 1/z$.
+
+10. Complex potential $F(z) = \text{Ln}\,z$.
+
+#### 11–16 BOUNDARY VALUE PROBLEMS
+
+Find the electrostatic potential $\Phi$ satisfying the given boundary conditions. Sketch the equipotential lines.
+
+11. $\Phi = 0$ on the positive $x$-axis and $\Phi = 100$ on the positive $y$-axis. *Hint.* Use $F(z) = (200/\pi)\,\text{Ln}\,z$.
+
+12. $\Phi = 50$ for $y > 0$ and $\Phi = -50$ for $y < 0$ on the imaginary axis.
+
+13. $\Phi = 0$ on $y = 0, x > 0$ and $\Phi = 50$ on $y = \pi, x > 0$. (The strip $0 < y < \pi$.)
+
+14. Two conducting cylinders $|z| = 1$ and $|z| = 2$ at potentials 0 and 100, respectively.
+
+15. The conducting planes $\arg z = 0$ and $\arg z = \pi/3$ at potentials 0 and 60, respectively.
+
+16. **Charged wire.** Show that the complex potential $F(z) = -(q/2\pi\varepsilon_0)\,\text{Ln}\,z$ corresponds to the field of an infinitely long straight wire of charge density $q$ per unit length lying along the $z$-axis.
+
+## 18.2 Use of Conformal Mapping. Modeling {#sec-conformal-modeling}
+
+In Sec. 18.1 we found complex potentials for simple geometries by inspection. For more complicated domains we use **conformal mappings** to reduce the problem to a simpler one. The mathematical basis is the following fundamental theorem.
+
+### THEOREM 1 Invariance of Harmonic Functions Under Conformal Mapping
+
+If $\Phi^*(u, v)$ is harmonic in a domain $D^*$ of the $w$-plane, and if $w = f(z) = u(x, y) + iv(x, y)$ is analytic in a domain $D$ of the $z$-plane and maps $D$ conformally onto $D^*$, then the function
+
+$$
+\Phi(x, y) = \Phi^*(u(x, y),\, v(x, y))
+$$ {#eq-sec182-1}
+
+is harmonic in $D$.
+
+**PROOF** By the chain rule,
+
+$$
+\frac{\partial \Phi}{\partial x} = \frac{\partial \Phi^*}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial \Phi^*}{\partial v}\frac{\partial v}{\partial x}.
+$$
+
+A second differentiation and use of the Cauchy–Riemann equations ($u_x = v_y$, $u_y = -v_x$) together with the harmonicity of $\Phi^*$ give
+
+$$
+\frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = \left(\nabla^2\Phi^*\right)\left[\left(\frac{\partial u}{\partial x}\right)^2 + \left(\frac{\partial u}{\partial y}\right)^2\right] = 0 \cdot |f'(z)|^2 = 0. \quad \blacksquare
+$$ {#eq-sec182-2}
+
+This theorem is the key to the modeling strategy for boundary value problems by conformal mapping:
+
+**Modeling Procedure:**
+
+1. **Transform:** Map the given domain $D$ in the $z$-plane conformally onto a simpler domain $D^*$ in the $w$-plane by $w = f(z)$.
+2. **Solve:** Solve the (simpler) Dirichlet problem in $D^*$, obtaining the potential $\Phi^*(u, v)$.
+3. **Pull back:** Set $\Phi(x, y) = \Phi^*(u(x, y), v(x, y))$.
+
+Furthermore, if $F^*(w)$ is the complex potential in the $w$-plane, then the **complex potential in the $z$-plane** is
+
+$$
+F(z) = F^*(f(z)).
+$$ {#eq-sec182-3}
+
+This follows because $F^*(f(z))$ is analytic in $D$ (composite of analytic functions), and its real part is $\Phi^*(u(x,y), v(x,y)) = \Phi(x,y)$.
+
+### EXAMPLE 1 Potential Between Non-Coaxial Cylinders
+
+Find the potential $\Phi$ in the region between two non-concentric cylinders: the cylinder $|z| = 1$ at $\Phi = 0$ and the cylinder $|z - d| = r$ at $\Phi = U_0$, where $d$ and $r$ are chosen so the cylinders do not overlap and the smaller one lies inside the unit disk.
+
+**Solution.** Use the linear fractional transformation (Sec. 17.3)
+
+$$
+w = \frac{z - z_0}{1 - \bar{z}_0 z}
+$$
+
+which maps the unit disk onto itself, taking the point $z_0$ to $w = 0$. By choosing $z_0$ appropriately, we can map our configuration to the coaxial case (the two boundary circles become concentric in the $w$-plane). We then apply Example 2 of Sec. 18.1, giving the potential $\Phi^*(u,v) = A\ln|w| + B$, and pull back to the $z$-plane via (@eq-sec182-1).
+
+### EXAMPLE 2 Dirichlet Problem for the Upper Half-Plane
+
+Find the harmonic function $\Phi$ in the upper half-plane $y > 0$ that takes the value $U_1$ for $x > 0$ and $U_2$ for $x < 0$ on the boundary $y = 0$.
+
+**Solution.** The function $\text{Arg}\,z$ is harmonic in the upper half-plane and equals 0 on the positive $x$-axis and $\pi$ on the negative $x$-axis. Hence
+
+$$
+\Phi(x, y) = U_1 + \frac{U_2 - U_1}{\pi}\,\text{Arg}\,z = U_1 + \frac{U_2 - U_1}{\pi}\arctan\frac{y}{x}.
+$$ {#eq-sec182-4}
+
+The corresponding complex potential is
+
+$$
+F(z) = U_1 - \frac{i(U_2 - U_1)}{\pi}\,\text{Ln}\,z.
+$$ {#eq-sec182-5}
+
+See @fig-18-03.
+
+![Fig. 398. Dirichlet problem for the upper half-plane with piecewise constant boundary values](../images/fig-18-03.png){#fig-18-03}
+
+### EXAMPLE 3 Potential in an Angular Region
+
+Find the potential $\Phi$ in the angular region $0 < \arg z < \alpha$ (where $0 < \alpha \leq 2\pi$), with $\Phi = U_1$ on the ray $\arg z = 0$ and $\Phi = U_2$ on the ray $\arg z = \alpha$.
+
+**Solution.** The mapping $w = z^{\pi/\alpha}$ maps the angular region onto the upper half-plane. By Example 2 (with the $w$-plane), $\text{Arg}\,w = (\pi/\alpha)\,\arg z$. Therefore
+
+$$
+\Phi(r, \theta) = U_1 + \frac{U_2 - U_1}{\alpha}\,\theta, \quad \theta = \arg z.
+$$ {#eq-sec182-6}
+
+The equipotential lines are the rays $\arg z = \text{const}$, which are straight lines through the origin. The lines of force are circular arcs centered at the origin.
+
+### EXAMPLE 4 Potential in a Strip
+
+Find the harmonic function $\Phi$ in the infinite strip $0 < y < \pi$ that takes the boundary values $\Phi(x, 0) = 0$ and $\Phi(x, \pi) = 1$ for all $x$.
+
+**Solution.** The mapping $w = e^z$ maps the strip $0 < \text{Im}\,z < \pi$ onto the upper $w$-half-plane (Sec. 17.1). On the image boundary:
+
+- $y = 0$: the positive real $u$-axis ($u > 0$) — here $\Phi = 0$.
+- $y = \pi$: the negative real $u$-axis ($u < 0$) — here $\Phi = 1$.
+
+From Example 2 with $U_1 = 0$, $U_2 = 1$:
+
+$$
+\Phi^*(u, v) = \frac{1}{\pi}\,\text{Arg}\,w.
+$$
+
+Pulling back, $\text{Arg}(e^z) = y$, so $\Phi(x, y) = y/\pi$. The complex potential is $F(z) = z/\pi$ (note $\text{Re}(z/\pi) = x/\pi$? Let us re-examine. Actually $F(z) = \frac{1}{\pi}(-iz) = \frac{y}{\pi} - i\frac{x}{\pi}$, giving $\Phi = y/\pi$, as required.) $\blacksquare$
+
+### PROBLEM SET 18.2
+
+1. **CAS PROJECT.** Graph the potential and field lines for Examples 1–4 in this section.
+
+2. Find the potential $\Phi$ in the first quadrant ($x > 0$, $y > 0$) with $\Phi = U_1$ on the positive $x$-axis and $\Phi = U_2$ on the positive $y$-axis. *Hint.* Use $w = z^2$.
+
+3. Find $\Phi$ in the strip $0 < x < 1$ with $\Phi(0, y) = 100$ and $\Phi(1, y) = 0$ for all $y$. *Hint.* Try $\Phi = a + bx$.
+
+4. A conducting plate lies along $y = 0, -1 < x < 1$ at potential 0, and conducting walls along $x = \pm 1, y > 0$ are at potential 100. Find $\Phi$ using $w = \sin z$ (cf. Sec. 17.4).
+
+5. Find the potential in the region $0 < \arg z < \pi/4$ with $\Phi = 0$ on $\arg z = 0$ and $\Phi = 200$ on $\arg z = \pi/4$.
+
+6. Find $\Phi$ in the upper half-plane such that $\Phi = U_k$ for $a_{k-1} < x < a_k$, $k = 1, 2, 3$ on the $x$-axis (where $a_0 = -\infty$, $a_3 = +\infty$). *Hint.* Superpose results from Example 2.
+
+#### 7–12 DIRICHLET PROBLEM
+
+Solve the Dirichlet problem (find $\Phi$ harmonic in the given domain with the given boundary values). Use conformal mappings from Chap. 17.
+
+7. Unit disk $|z| < 1$: $\Phi = 100$ on the upper semicircle and $\Phi = 0$ on the lower semicircle. *Hint.* Use the Cayley transformation.
+
+8. Strip $0 < y < 1$: $\Phi(x, 0) = 0$, $\Phi(x, 1) = 50$.
+
+9. Right half-plane $x > 0$: $\Phi(0, y) = 100$ for $y > 0$ and $\Phi(0, y) = -100$ for $y < 0$.
+
+10. Strip $0 < y < \pi$: $\Phi = 0$ for $y = 0$ and $\Phi = 100$ for $y = \pi$.
+
+11. Sector $0 < \arg z < \pi/3$: $\Phi = 0$ on $\arg z = 0$ and $\Phi = 240$ on $\arg z = \pi/3$.
+
+12. Semi-disk $|z| < 1$, $y > 0$: $\Phi = 0$ on the diameter $-1 < x < 1$ and $\Phi = U_0$ on the semicircle $|z| = 1$, $y > 0$. *Hint.* Use $w = z + 1/z$.
+
+#### 13–16 MISCELLANEOUS
+
+13. **Equipotential lines.** Show that the equipotential lines of $F(z) = \text{Ln}\,z$ are circles centered at the origin.
+
+14. **Lines of force.** Show that the lines of force of $F(z) = z^2$ are rectangular hyperbolas.
+
+15. Verify that $F(z) = \cosh z$ satisfies Laplace's equation (i.e., that $\text{Re}(\cosh z)$ is harmonic).
+
+16. Find an analytic function $F(z)$ whose real part equals $\Phi = xy^2 - x^3/3$. Is $\Phi$ harmonic? Verify.
+
+## 18.3 Heat Problems {#sec-heat-problems}
+
+In **steady-state heat flow**, the temperature distribution $T(x, y)$ in a homogeneous heat-conducting body (independent of time $t$, so $\partial T/\partial t = 0$) satisfies Laplace's equation
+
+$$
+\nabla^2 T = \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = 0.
+$$ {#eq-sec183-1}
+
+This is entirely analogous to the electrostatic case. The **heat flux vector** (flow of heat per unit time per unit area) is
+
+$$
+\mathbf{q} = -K\,\text{grad}\,T
+$$ {#eq-sec183-2}
+
+where $K > 0$ is the thermal conductivity of the material. The minus sign indicates heat flows from hot to cold.
+
+The **complex temperature function** (or thermal complex potential)
+
+$$
+F(z) = T(x, y) + iS(x, y)
+$$ {#eq-sec183-3}
+
+is analytic in the domain of interest. Here $T$ is the temperature and $S$ is the **stream function** for heat flow. The curves $T = \text{const}$ are **isotherms** (curves of equal temperature), and the curves $S = \text{const}$ are the **heat flow lines** (paths along which heat flows). These two families are orthogonal.
+
+By Theorem 1 of Sec. 18.2, the method of conformal mapping applies directly to heat problems.
+
+### EXAMPLE 1 Temperature Between Parallel Plates
+
+Find the temperature distribution $T$ between two long parallel plates at $y = 0$ (temperature $T_1$) and $y = d$ (temperature $T_2$).
+
+**Solution.** By symmetry $T$ depends only on $y$. The general harmonic function of $y$ alone is $T = ay + b$. Applying boundary conditions: $b = T_1$, $a = (T_2 - T_1)/d$. Hence
+
+$$
+T(x, y) = T_1 + \frac{T_2 - T_1}{d}\,y, \qquad F(z) = -\frac{i(T_2-T_1)}{d}\,z + T_1.
+$$ {#eq-sec183-4}
+
+The isotherms are horizontal lines $y = \text{const}$, and heat flows vertically.
+
+### EXAMPLE 2 Temperature in a Wedge
+
+Find the steady-state temperature $T$ in a wedge-shaped region $0 < \arg z < \alpha$ with the two faces $\arg z = 0$ (temperature $T_1$) and $\arg z = \alpha$ (temperature $T_2$).
+
+**Solution.** Directly from (@eq-sec182-6) of Sec. 18.2:
+
+$$
+T(r, \theta) = T_1 + \frac{T_2 - T_1}{\alpha}\,\theta, \qquad 0 \leq \theta \leq \alpha.
+$$ {#eq-sec183-5}
+
+Isotherms are rays $\theta = \text{const}$ through the origin. Heat flows along circular arcs centered at the origin.
+
+### EXAMPLE 3 Temperature Between Concentric Cylinders
+
+Find $T$ between two coaxial cylinders of radii $r_1 < r_2$, maintained at temperatures $T_1$ and $T_2$.
+
+**Solution.** By the analogy with Sec. 18.1, Example 2 (replacing potential by temperature):
+
+$$
+T(r) = T_1 + \frac{T_2 - T_1}{\ln(r_2/r_1)}\ln\frac{r}{r_1},
+$$ {#eq-sec183-6}
+
+and the complex temperature function is $F(z) = A\,\text{Ln}\,z + B$ with appropriate constants $A$, $B$.
+
+### EXAMPLE 4 Temperature in a Semi-Infinite Strip
+
+Find the steady-state temperature $T$ in the semi-infinite strip $0 < x < 1$, $y > 0$, where $T = 0$ on the sides $x = 0$ and $x = 1$ (for $y > 0$), and $T = T_0 \sin(\pi x)$ on the bottom edge $y = 0$.
+
+**Solution.** Try $T = f(y)\sin(\pi x)$. Substituting into $T_{xx} + T_{yy} = 0$: $-\pi^2 f \sin(\pi x) + f'' \sin(\pi x) = 0$, so $f'' = \pi^2 f$. The general solution is $f(y) = Ae^{\pi y} + Be^{-\pi y}$. For $T$ to be bounded as $y \to \infty$, we need $A = 0$, so $f(y) = Be^{-\pi y}$. From $T(x, 0) = B\sin(\pi x) = T_0\sin(\pi x)$, we get $B = T_0$. Hence
+
+$$
+T(x, y) = T_0 e^{-\pi y}\sin(\pi x).
+$$ {#eq-sec183-7}
+
+See @fig-18-04.
+
+![Fig. 399. Isotherms (solid) and heat flow lines (dashed) in Example 4](../images/fig-18-04.png){#fig-18-04}
+
+### EXAMPLE 5 Mapping of the Upper Half-Plane. A Heat Problem
+
+Find the temperature distribution $T$ in the upper half-plane $y > 0$ such that $T = T_1$ for $-1 < x < 1$ on the $x$-axis and $T = T_2$ for $|x| > 1$ on the $x$-axis.
+
+**Solution.** We use the mapping $w = \text{Ln}\,\frac{z+1}{z-1}$ (see Prob. 25 in Sec. 17.4), which maps the upper half-plane onto the horizontal strip $0 < v < \pi$. On the boundary of the $z$-half-plane:
+
+- $-1 < x < 1$: mapped onto the line $v = \pi$ (where $w = u + i\pi$), so $T = T_1$ there.
+- $|x| > 1$: mapped onto $v = 0$, so $T = T_2$ there.
+
+From Example 1 in the $w$-strip (with $y$ replaced by $v$, $d = \pi$):
+
+$$
+T^*(u, v) = T_2 + \frac{T_1 - T_2}{\pi}\,v.
+$$
+
+Since $v = \text{Im}\left(\text{Ln}\,\frac{z+1}{z-1}\right) = \arg\frac{z+1}{z-1}$, we have
+
+$$
+T(x, y) = T_2 + \frac{T_1 - T_2}{\pi}\arg\frac{z+1}{z-1}.
+$$ {#eq-sec183-8}
+
+See @fig-18-05.
+
+![Fig. 400. Isotherms in the upper half-plane for Example 5](../images/fig-18-05.png){#fig-18-05}
+
+### EXAMPLE 6 Temperature in a Wall with a Semicircular Notch
+
+Find the temperature in the right half-plane $x > 0$ with a unit semicircular notch (the region $x > 0$, $|z| > 1$), where the flat boundary $x = 0$ (for $|y| > 1$) is at $T = T_1$ and the curved notch $|z| = 1$, $x > 0$ is at $T = T_2$.
+
+**Solution.** Use the mapping $w = z + 1/z$ (the Joukowski mapping from Sec. 17.1). On the semicircle $|z| = 1$, $x > 0$: $w = 2\cos\theta$ ($-\pi/2 < \theta < \pi/2$), which maps onto the real segment $-2 < u < 2$ in the $w$-plane. The right half-plane exterior maps onto the upper $w$-half-plane, so the problem reduces to Example 5 of this section with the appropriate identification of $T_1$, $T_2$, and a scaling.
+
+### PROBLEM SET 18.3
+
+#### 1–6 TEMPERATURE DISTRIBUTION
+
+Find the temperature $T$ in the given region with the given boundary temperatures.
+
+1. Horizontal strip $0 < y < 1$: $T = 20°$ on $y = 0$ and $T = 80°$ on $y = 1$.
+
+2. Angular region $0 < \arg z < \pi/2$: $T = 100°$ on $\arg z = 0$ and $T = 0°$ on $\arg z = \pi/2$.
+
+3. Between the concentric circles $|z| = 1$ and $|z| = 2$: $T = 0°$ on $|z| = 1$ and $T = 100°$ on $|z| = 2$.
+
+4. Upper half-plane $y > 0$: $T = 80°$ for $-\infty < x < 0$ and $T = 20°$ for $0 < x < \infty$ on the boundary.
+
+5. Strip $0 < y < \pi$: $T = 0$ for $y = 0$ and $T = 100$ for $y = \pi$.
+
+6. Region bounded by $0 < \arg z < \pi/4$: $T = 40°$ on $\arg z = 0$ and $T = 120°$ on $\arg z = \pi/4$.
+
+#### 7–12 USING CONFORMAL MAPPING
+
+7. Using $w = \sin z$, find the temperature in the semi-infinite strip $|x| < \pi/2$, $y > 0$, with $T = 0$ on both vertical sides and $T = T_0$ on the bottom.
+
+8. In a wall occupying $0 < x < a$, find $T$ if $T(0, y) = T_1$ and $T(a, y) = T_2$.
+
+9. Find the temperature in the upper half-plane if $T = 100$ for $|x| < 1$ and $T = 0$ for $|x| > 1$ on the real axis.
+
+10. Find $T$ in the half-strip $0 < x < \pi$, $y > 0$, if $T(0, y) = T(π, y) = 0$ and $T(x, 0) = \sin x$.
+
+11. Find the isotherms in the region obtained from the upper half-plane by removing a semicircular bump of radius 1 centered at the origin, given that the flat boundary is at $T = 0$ and the bump at $T = 1$.
+
+12. **CAS PROJECT.** Using the mapping $w = \cosh z$, solve the heat problem in a semi-infinite strip $0 < x < 1$, $y > 0$. Refer to @fig-17-16 of Sec. 17.4. Graph the isotherms.
+
+## 18.4 Fluid Flow {#sec-fluid-flow}
+
+We consider **two-dimensional ideal fluid flow**, that is, flow that is:
+
+- **Two-dimensional:** the velocity vector $\mathbf{V} = (V_x, V_y)$ is independent of the $z$-coordinate (in the sense of 3D space),
+- **Incompressible:** $\text{div}\,\mathbf{V} = \partial V_x/\partial x + \partial V_y/\partial y = 0$,
+- **Irrotational:** $\text{curl}\,\mathbf{V} = \partial V_y/\partial x - \partial V_x/\partial y = 0$.
+
+The irrotationality implies the existence of a **velocity potential** $\Phi$ such that
+
+$$
+\mathbf{V} = \text{grad}\,\Phi, \quad V_x = \frac{\partial \Phi}{\partial x}, \quad V_y = \frac{\partial \Phi}{\partial y}.
+$$ {#eq-sec184-1}
+
+The incompressibility condition then gives $\nabla^2\Phi = 0$, so $\Phi$ is harmonic. The **stream function** $\Psi$, the harmonic conjugate of $\Phi$, has the property
+
+$$
+V_x = \frac{\partial \Psi}{\partial y}, \qquad V_y = -\frac{\partial \Psi}{\partial x}.
+$$ {#eq-sec184-2}
+
+The curves $\Psi = \text{const}$ are the **streamlines** (paths of fluid particles). The curves $\Phi = \text{const}$ are the **equipotential lines**, which are orthogonal to the streamlines.
+
+The **complex potential** is
+
+$$
+F(z) = \Phi(x,y) + i\Psi(x,y),
+$$ {#eq-sec184-3}
+
+and the **complex velocity** is
+
+$$
+\overline{V} = V_x - iV_y = F'(z).
+$$ {#eq-sec184-4}
+
+(The bar denotes the complex conjugate; $\overline{V}$ is the conjugate of the velocity vector.)
+
+Solid boundaries (walls) must be **streamlines** (since fluid does not cross a solid boundary).
+
+### Standard Flows
+
+Several important flow patterns have simple complex potentials.
+
+**Uniform flow** with speed $v_0$ in the direction of the positive $x$-axis:
+$$
+F(z) = v_0 z, \quad V_x = v_0, \quad V_y = 0.
+$$ {#eq-sec184-5}
+
+**Source at the origin** of strength $Q > 0$ (volume of fluid per unit time emerging from the origin):
+$$
+F(z) = \frac{Q}{2\pi}\,\text{Ln}\,z.
+$$ {#eq-sec184-6}
+
+**Vortex at the origin** with circulation $\Gamma$ (counterclockwise positive):
+$$
+F(z) = -\frac{i\Gamma}{2\pi}\,\text{Ln}\,z.
+$$ {#eq-sec184-7}
+
+**Dipole at the origin** of moment $M$ (directed along positive $x$-axis):
+$$
+F(z) = \frac{M}{2\pi z}.
+$$ {#eq-sec184-8}
+
+### EXAMPLE 1 Flow Around a Circular Cylinder
+
+Find the complex potential for ideal fluid flow around a circular cylinder of radius $c$, with a uniform stream of speed $v_0$ far from the cylinder.
+
+**Solution.** We require $F(z)$ such that:
+- $F'(z) \to v_0$ as $|z| \to \infty$ (uniform flow at infinity),
+- The circle $|z| = c$ is a streamline (i.e., $\text{Im}\,F(z) = \text{const}$ on $|z| = c$).
+
+Try the superposition of a uniform flow and a dipole:
+
+$$
+F(z) = v_0\left(z + \frac{c^2}{z}\right).
+$$ {#eq-sec184-9}
+
+On $|z| = c$ (i.e., $z = ce^{i\theta}$):
+
+$$
+F(ce^{i\theta}) = v_0\left(ce^{i\theta} + ce^{-i\theta}\right) = 2v_0 c\cos\theta,
+$$
+
+which is **real**, so $\Psi = 0$ on the circle — it is indeed a streamline (the cylinder surface). See @fig-18-06.
+
+The complex velocity is
+
+$$
+F'(z) = v_0\left(1 - \frac{c^2}{z^2}\right).
+$$ {#eq-sec184-10}
+
+At $z = \pm c$ (the stagnation points), $F'(z) = 0$; the fluid is momentarily at rest there.
+
+The pressure at any point follows from **Bernoulli's law**:
+
+$$
+p + \frac{1}{2}\rho |V|^2 = \text{const},
+$$ {#eq-sec184-11}
+
+where $\rho$ is the fluid density and $|V| = |F'(z)|$.
+
+![Fig. 401. Flow around a circular cylinder: streamlines $\Psi = \text{const}$ (solid) and equipotential lines $\Phi = \text{const}$ (dashed)](../images/fig-18-06.png){#fig-18-06}
+
+### EXAMPLE 2 Flow Around a Cylinder with Circulation
+
+Add a vortex to the flow in Example 1 to obtain flow around a cylinder with **circulation** $\Gamma$:
+
+$$
+F(z) = v_0\left(z + \frac{c^2}{z}\right) - \frac{i\Gamma}{2\pi}\,\text{Ln}\,z.
+$$ {#eq-sec184-12}
+
+On $|z| = c$, $\text{Im}(F) = \Gamma\theta/(2\pi) - 0$... Let us check: for $z = ce^{i\theta}$,
+
+$$
+F(ce^{i\theta}) = v_0 \cdot 2c\cos\theta - \frac{i\Gamma}{2\pi}(\ln c + i\theta) = 2v_0c\cos\theta + \frac{\Gamma\theta}{2\pi} - i\frac{\Gamma\ln c}{2\pi}.
+$$
+
+So $\Psi = \text{Im}(F) = -\Gamma\ln c/(2\pi) = \text{const}$ on $|z| = c$, confirming the cylinder remains a streamline. See @fig-18-07.
+
+This model is fundamental to **airfoil theory**: the lift force on a cylinder per unit length is given by the **Kutta–Joukowski theorem**
+
+$$
+L = -\rho v_0 \Gamma.
+$$ {#eq-sec184-13}
+
+![Fig. 402. Flow around a cylinder with circulation $\Gamma > 0$: asymmetric streamlines](../images/fig-18-07.png){#fig-18-07}
+
+### EXAMPLE 3 Flow in a Corner
+
+Find the flow in the first quadrant ($x > 0$, $y > 0$) near the corner at the origin, if the axes are rigid boundaries (streamlines).
+
+**Solution.** Try $F(z) = Az^2$ (for some constant $A > 0$). Then
+
+$$
+F(z) = A(x^2 - y^2) + 2Axy\,i, \qquad \Phi = A(x^2 - y^2), \quad \Psi = 2Axy.
+$$
+
+On $y = 0$: $\Psi = 0$. On $x = 0$: $\Psi = 0$. So both axes are the streamline $\Psi = 0$ ✓. The streamlines are rectangular hyperbolas $xy = \text{const}$. The velocity is $F'(z) = 2Az$, with speed $2A|z|$, so the flow is faster farther from the corner. See @fig-18-08.
+
+![Fig. 403. Flow in a right-angle corner: streamlines $xy = \text{const}$](../images/fig-18-08.png){#fig-18-08}
+
+### EXAMPLE 4 Source Near a Wall
+
+Find the flow due to a source of strength $Q$ at the point $z_0 = ia$ ($a > 0$) near the rigid wall along the $x$-axis.
+
+**Solution.** Use the **method of images**: place an equal source at the mirror image $\bar{z}_0 = -ia$. The combined complex potential (for the upper half-plane only) is
+
+$$
+F(z) = \frac{Q}{2\pi}\left[\text{Ln}(z - ia) + \text{Ln}(z + ia)\right] = \frac{Q}{2\pi}\,\text{Ln}(z^2 + a^2).
+$$ {#eq-sec184-14}
+
+On the real axis $y = 0$: $\text{Im}(z^2 + a^2) = 0$, so $\text{Im}\,F = \text{const}$, and the $x$-axis is a streamline ✓.
+
+### EXAMPLE 5 Joukowski Airfoil
+
+By applying the Joukowski mapping $w = z + 1/z$ (Sec. 17.1) to the flow around a circle (Example 1), we obtain the flow around a **Joukowski airfoil**. If the circle passes near the critical points $z = \pm 1$, the image in the $w$-plane has a cusped trailing edge that resembles a realistic airfoil profile. The complex potential for the flow around the airfoil in the $w$-plane is
+
+$$
+F_{\text{airfoil}}(w) = F(z(w)),
+$$
+
+where $z(w)$ is the inverse of the Joukowski transformation. See @fig-18-09.
+
+![Fig. 404. Joukowski airfoil flow: streamlines around a typical airfoil shape](../images/fig-18-09.png){#fig-18-09}
+
+### PROBLEM SET 18.4
+
+1. **Verify** that $F(z) = v_0(z + c^2/z)$ gives $\Psi = 0$ on $|z| = c$.
+
+2. **Speed on the cylinder.** For the flow $F(z) = v_0(z + c^2/z)$, show that the speed on the circle $|z| = c$ is $|V| = 2v_0|\sin\theta|$.
+
+3. **Stagnation points.** Find the stagnation points ($F'(z) = 0$) for the flow with circulation in Example 2.
+
+4. Show that $F(z) = Az^n$ for $n \geq 2$ represents flow in a corner of opening $\pi/n$ (angle between the walls = $\pi/n$). Describe the flow for $n = 3$.
+
+#### 5–8 UNIFORM FLOW AT AN ANGLE
+
+Find the complex potential for uniform flow with speed $v_0$ in the direction making angle $\alpha$ with the positive $x$-axis.
+
+5. $\alpha = 0$ (horizontal flow). 
+6. $\alpha = \pi/4$ (northeast). 
+7. $\alpha = \pi/2$ (vertical, upward). 
+8. $\alpha = -\pi/6$.
+
+#### 9–14 FLOW WITH SOURCES AND SINKS
+
+9. Find the flow due to a source of strength $Q$ at $z = 0$ and a sink of equal strength at $z = a$ (a doublet as $a \to 0$ gives a dipole).
+
+10. Find the streamlines of the flow $F(z) = z + \text{Ln}\,z$.
+
+11. Show that $F(z) = v_0 z + \frac{Q}{2\pi}\,\text{Ln}\,z$ represents uniform flow past a line source. Find the stagnation point.
+
+12. **Flow past a half-body.** Show that $F(z) = v_0 z + \frac{Q}{2\pi}\,\text{Ln}\,z$ produces a Rankine half-body (a body bounded by the streamline $\Psi = Q/2$). Find the width of the body far downstream.
+
+13. Two equal sources of strength $Q$ at $z = \pm a$ on the real axis. Find the flow in the upper half-plane if the $x$-axis is a rigid wall.
+
+14. **Vortex pair.** Find the motion of two equal and opposite vortices of circulation $\pm\Gamma$ at $z = \pm d$ by showing that each vortex moves with the velocity induced by the other.
+
+#### 15–20 CONFORMAL MAPPING OF FLOWS
+
+Using conformal mapping, find the flow in the given domain that corresponds to uniform flow in a standard domain.
+
+15. Flow in the strip $0 < y < 1$ from left to right. *Hint.* Use $w = e^{\pi z}$.
+
+16. Flow around the outside of the ellipse $u^2/a^2 + v^2/b^2 = 1$ using the Joukowski transformation.
+
+17. Flow in the upper half-plane past a bump: $y \geq 0$ with the semicircle $|z| \leq 1$ removed. *Hint.* Use $w = z + 1/z$.
+
+18. **CAS PROJECT.** Graph the streamlines for Examples 1–4 of this section using a CAS.
+
+19. Find the flow in the region $|z| > 1$ (exterior of unit disk) given that the boundary $|z| = 1$ is a streamline and the flow is uniform at infinity.
+
+20. Using the method of images, find the complex potential for a vortex of circulation $\Gamma$ at $z = ia$ above an infinite wall along the $x$-axis.
+
+## 18.5 Poisson's Integral Formula for Potentials {#sec-poisson-formula}
+
+In Sec. 18.2 we showed how to *transform* a Dirichlet problem to a simpler domain. Here we give a direct formula for the solution of the Dirichlet problem for two fundamental domains: the **unit disk** and the **upper half-plane**. These are Poisson's integral formulas.
+
+### Dirichlet Problem for the Unit Disk
+
+Given a continuous function $f(\theta)$ defined on the unit circle $|z| = 1$ (where $z = e^{i\theta}$), find a harmonic function $\Phi$ in $|z| < 1$ with boundary values $\Phi(e^{i\theta}) = f(\theta)$.
+
+### THEOREM 1 Poisson's Integral Formula for the Disk
+
+If $f$ is continuous on the unit circle $|z| = 1$, then the harmonic function in $|z| < 1$ with these boundary values is
+
+$$
+\Phi(r, \theta) = \frac{1}{2\pi}\int_0^{2\pi} P(r, \theta - \phi)\,f(\phi)\,d\phi,
+$$ {#eq-sec185-1}
+
+where the **Poisson kernel** is
+
+$$
+P(r, \psi) = \frac{1 - r^2}{1 - 2r\cos\psi + r^2} = \text{Re}\,\frac{e^{i\psi} + r}{e^{i\psi} - r}.
+$$ {#eq-sec185-2}
+
+For $r < 1$ this is positive: $P(r, \psi) > 0$, and $\frac{1}{2\pi}\int_0^{2\pi} P(r,\psi)\,d\psi = 1$.
+
+**PROOF** (Sketch.) Write the harmonic function $\Phi$ as the real part of an analytic function whose boundary values on $|z|=1$ are $f(\phi)$. Using the Cauchy integral formula for the unit disk and manipulating gives (@eq-sec185-1). $\blacksquare$
+
+In Cartesian coordinates, with $z = x + iy$ and $z_0 = e^{i\phi}$, the formula (@eq-sec185-1) can be written
+
+$$
+\Phi(x, y) = \frac{1}{2\pi}\int_0^{2\pi} \frac{(1 - x^2 - y^2)\,f(\phi)}{|z - e^{i\phi}|^2}\,d\phi.
+$$ {#eq-sec185-3}
+
+### EXAMPLE 1 Harmonic Function in the Unit Disk
+
+Find the harmonic function $\Phi$ in $|z| < 1$ with $f(\phi) = \cos\phi$ on the boundary.
+
+**Solution.** By (@eq-sec185-1):
+
+$$
+\Phi(r, \theta) = \frac{1}{2\pi}\int_0^{2\pi} \frac{(1-r^2)\cos\phi}{1 - 2r\cos(\theta-\phi) + r^2}\,d\phi.
+$$
+
+Using the known evaluation of this Poisson integral (or by noting that $\Phi = r\cos\theta = x$ is harmonic in the disk and equals $\cos\phi$ on $|z|=1$):
+
+$$
+\Phi(r, \theta) = r\cos\theta = x.
+$$ {#eq-sec185-4}
+
+Indeed, $\Phi = x$ is harmonic and $\Phi(1, \phi) = \cos\phi$ ✓.
+
+### EXAMPLE 2 Piecewise Constant Boundary Values
+
+Find $\Phi$ in the unit disk where $f(\phi) = 1$ for $0 < \phi < \pi$ (upper semicircle) and $f(\phi) = 0$ for $\pi < \phi < 2\pi$ (lower semicircle).
+
+**Solution.** Evaluating (@eq-sec185-1) using the Poisson kernel:
+
+$$
+\Phi(r, \theta) = \frac{1}{2} + \frac{1}{\pi}\arctan\frac{2r\sin\theta}{1 - r^2}.
+$$ {#eq-sec185-5}
+
+Check: as $r \to 1^-$ with $0 < \theta < \pi$, $\arctan \to \pi/2$, giving $\Phi \to 1$ ✓; with $\pi < \theta < 2\pi$, $\arctan \to -\pi/2$, giving $\Phi \to 0$ ✓. See @fig-18-10.
+
+![Fig. 405. Level curves of $\Phi$ in Example 2](../images/fig-18-10.png){#fig-18-10}
+
+### Dirichlet Problem for the Upper Half-Plane
+
+Given boundary values $f(t) = \Phi(t, 0)$ (continuous) on the real axis, find $\Phi$ harmonic in $y > 0$.
+
+### THEOREM 2 Poisson's Integral Formula for the Upper Half-Plane
+
+$$
+\Phi(x, y) = \frac{y}{\pi}\int_{-\infty}^{\infty} \frac{f(t)}{(x-t)^2 + y^2}\,dt.
+$$ {#eq-sec185-6}
+
+**Derivation.** Apply the Cayley transformation $w = (z - i)/(z + i)$, which maps the upper half $z$-plane onto the unit disk in the $w$-plane. Transform Poisson's formula (@eq-sec185-1) for the disk into the $z$-plane. After a change of variable the formula (@eq-sec185-6) results. $\blacksquare$
+
+Note that $y/[\pi((x-t)^2 + y^2)]$ is the **Poisson kernel for the half-plane**. It is positive for $y > 0$ and integrates to 1 over $-\infty < t < \infty$.
+
+### EXAMPLE 3 Boundary Value Problem for the Upper Half-Plane
+
+Find $\Phi$ in $y > 0$ with $f(t) = 1$ for $0 < t < a$ and $f(t) = 0$ elsewhere.
+
+**Solution.** Applying (@eq-sec185-6):
+
+$$
+\Phi(x, y) = \frac{y}{\pi}\int_0^a \frac{dt}{(x-t)^2 + y^2} = \frac{1}{\pi}\left[\arctan\frac{a-x}{y} + \arctan\frac{x}{y}\right].
+$$ {#eq-sec185-7}
+
+(using $\int dt/((x-t)^2+y^2) = -(1/y)\arctan((x-t)/y) + C$). This can also be written
+
+$$
+\Phi(x,y) = \frac{1}{\pi}\,\text{Arg}\,\frac{z - a}{z},
+$$
+
+which is the angle subtended by the segment $[0, a]$ as seen from the point $z = x + iy$.
+
+### EXAMPLE 4 Superposition
+
+Find $\Phi$ in $y > 0$ where $f(t) = U_1$ for $t < 0$ and $f(t) = U_2$ for $t > 0$ (step function boundary data).
+
+**Solution.** From (@eq-sec185-6) or from Example 2 of Sec. 18.2:
+
+$$
+\Phi(x, y) = U_1 + \frac{U_2 - U_1}{\pi}\arctan\frac{x}{y} = U_1 + \frac{U_2 - U_1}{\pi}\left(\frac{\pi}{2} - \arctan\frac{y}{x}\right).
+$$ {#eq-sec185-8}
+
+This is exactly consistent with (@eq-sec182-4) of Sec. 18.2 (where $\text{Arg}\,z = \arctan(y/x)$).
+
+### PROBLEM SET 18.5
+
+1. **Verify** that $P(r, \psi) > 0$ for $r < 1$ and that $\frac{1}{2\pi}\int_0^{2\pi} P(r, \psi)\,d\psi = 1$.
+
+2. Using (@eq-sec185-1), find $\Phi$ in $|z| < 1$ if $f(\phi) = \sin\phi$ on the boundary. Answer: $\Phi = r\sin\theta = y$.
+
+3. Using (@eq-sec185-1), find $\Phi$ in $|z| < 1$ if $f(\phi) = \cos^2\phi$. *Hint.* Write $\cos^2\phi = \frac{1}{2}(1 + \cos 2\phi)$ and use Example 1 for each term.
+
+4. Use (@eq-sec185-5) to find the value of $\Phi$ at the center $z = 0$. Verify by the **mean value property** of harmonic functions: $\Phi(z_0) = \frac{1}{2\pi}\int_0^{2\pi}\Phi(z_0 + re^{i\theta})\,d\theta$.
+
+5. Show that the Poisson formula (@eq-sec185-6) reduces to the correct result when $f(t)$ is a constant $f(t) = C$. *Hint.* The integral $\int_{-\infty}^{\infty} y/[(x-t)^2+y^2]\,dt = \pi$.
+
+6. Apply (@eq-sec185-6) with $f(t) = 1$ for $|t| < 1$ and $f(t) = 0$ for $|t| > 1$. Interpret $\Phi$ geometrically.
+
+#### 7–10 POISSON'S FORMULA FOR THE HALF-PLANE
+
+Use (@eq-sec185-6) to find $\Phi(x, y)$ harmonic in $y > 0$ with the given boundary values $f(t) = \Phi(t, 0)$.
+
+7. $f(t) = t$ for $0 < t < 1$ and $f(t) = 0$ otherwise.
+
+8. $f(t) = e^{-|t|}$.
+
+9. $f(t) = 1$ for $a < t < b$ and $f(t) = 0$ otherwise. (Generalize Example 3.)
+
+10. $f(t) = |t|$ for $|t| \leq 1$ and $f(t) = 0$ for $|t| > 1$.
+
+#### 11–14 POISSON'S FORMULA FOR THE DISK
+
+Use (@eq-sec185-1) to find $\Phi(r, \theta)$ in $|z| < 1$ with the given boundary values.
+
+11. $f(\phi) = \phi$ for $0 \leq \phi < 2\pi$. *Hint.* Use the formula for $\sin n\phi$ and $\cos n\phi$ terms.
+
+12. $f(\phi) = |\cos\phi|$.
+
+13. $f(\phi) = \text{sign}(\sin\phi)$ ($+1$ for $0 < \phi < \pi$, $-1$ for $\pi < \phi < 2\pi$). Verify that your answer approaches $\pm 1$ as $r \to 1$.
+
+14. **Mean value property.** Show from (@eq-sec185-1) that $\Phi(0) = \frac{1}{2\pi}\int_0^{2\pi} f(\phi)\,d\phi$. State the physical meaning.
+
+15. **Maximum principle.** Using the Poisson formula and the positivity of the Poisson kernel, show that if $f(\phi) \geq 0$ for all $\phi$, then $\Phi(r, \theta) \geq 0$ for $|z| < 1$. State the result more generally.
+
+## CHAPTER 18 REVIEW QUESTIONS AND PROBLEMS {#sec-ch18-review}
+
+1. What is the complex potential? How is it related to the physical potential and stream function?
+
+2. What is the connection between analytic functions and harmonic functions? Why is this important in potential theory?
+
+3. State Theorem 1 (invariance of harmonic functions under conformal mapping) and explain its role in solving boundary value problems.
+
+4. How do you solve a Dirichlet problem by conformal mapping? Outline the steps.
+
+5. What are the differences and similarities between electrostatic, heat, and fluid flow problems in potential theory?
+
+6. What is the complex velocity? How do you obtain the speed of the fluid from the complex potential?
+
+7. State Poisson's integral formula for the unit disk. What is the Poisson kernel? List its key properties.
+
+8. What is Bernoulli's law and how does it relate to the complex potential?
+
+9. What is the Kutta–Joukowski theorem? How does it relate the circulation to the lift force?
+
+10. How does the method of images work in fluid flow and electrostatics? Give an example.
+
+#### 11–16 COMPLEX POTENTIALS
+
+Find the complex potential $F(z)$ and sketch or describe the equipotential lines and streamlines for the given physical situation.
+
+11. Parallel plates at $y = 0$ (potential 0) and $y = 5$ (potential 250 V).
+
+12. Two long wires (in cross section: points) of charges $+q$ at $z = 1$ and $-q$ at $z = -1$.
+
+13. Uniform flow of speed $v_0 = 2$ in the direction $\pi/6$ (30° from horizontal).
+
+14. A source of strength $Q = 4\pi$ at the origin in an otherwise uniform horizontal stream of speed 1.
+
+15. Vortex of circulation $\Gamma = 2\pi$ at $z = i$ above the wall $y = 0$ (use method of images).
+
+16. Flow around a cylinder of radius $a = 2$ with uniform stream speed $v_0 = 3$.
+
+#### 17–22 BOUNDARY VALUE PROBLEMS
+
+Solve the given Dirichlet problem.
+
+17. Harmonic in $|z| < 1$ with $\Phi = 100\sin\theta$ on $|z| = 1$.
+
+18. Harmonic in the strip $0 < y < 2$, with $\Phi(x, 0) = 0$ and $\Phi(x, 2) = \sin(\pi x)$.
+
+19. Harmonic in the first quadrant ($x > 0$, $y > 0$), with $\Phi(x, 0) = 0$ and $\Phi(0, y) = e^{-y}$.
+
+20. Harmonic in the upper half-plane, with $\Phi(x, 0) = x$ for $-1 < x < 1$ and $\Phi(x, 0) = 0$ for $|x| > 1$.
+
+21. Harmonic in the sector $0 < \theta < 2\pi/3$, with $\Phi = 0$ on $\theta = 0$ and $\Phi = 120$ on $\theta = 2\pi/3$.
+
+22. Harmonic in the unit disk $|z| < 1$, with $\Phi = 1$ for the arc $0 < \theta < \pi/2$ and $\Phi = 0$ elsewhere on $|z| = 1$.
+
+#### 23–28 FLUID FLOW
+
+23. **Corner flow.** Find the speed of the fluid at the point $z = 1 + i$ for $F(z) = z^2$.
+
+24. **Source-sink pair.** Find $F(z)$ for equal source and sink at $z = 0$ and $z = 1$.
+
+25. Show that for the flow $F(z) = v_0(z + c^2/z)$, the speed on the cylinder $|z| = c$ is $2v_0|\sin\theta|$ and the maximum speed $2v_0$ occurs at $\theta = \pm\pi/2$.
+
+26. For the flow of Example 2 in Sec. 18.4 (cylinder with circulation $\Gamma$), find the stagnation points on $|z| = c$. When do these points merge?
+
+27. **Pressure distribution.** Using Bernoulli's law, find the pressure on the cylinder $|z| = c$ in the flow $F(z) = v_0(z + c^2/z)$. Show that the net force on the cylinder is zero (d'Alembert's paradox).
+
+28. Verify that the Joukowski transformation $w = z + 1/z$ maps the circle $|z| = r > 1$ to an ellipse and that the circle $|z| = 1$ maps to the line segment $[-2, 2]$.
+
+## SUMMARY OF CHAPTER 18: Complex Analysis and Potential Theory {#sec-ch18-summary}
+
+This chapter has applied complex analysis—specifically conformal mapping—to **potential theory** (Laplace's equation $\nabla^2\Phi = 0$).
+
+The central idea is that **harmonic functions are invariant under conformal mapping** (Theorem 1, Sec. 18.2): if $w = f(z)$ is analytic and $\Phi^*(u,v)$ is harmonic in the image domain, then $\Phi(x,y) = \Phi^*(u(x,y), v(x,y))$ is harmonic. This allows a difficult **Dirichlet problem** (find a harmonic function with prescribed boundary values) in a complicated domain to be reduced, by a suitable conformal mapping, to a simple problem in the half-plane or disk.
+
+**Complex potential** $F(z) = \Phi + i\Psi$ is an analytic function whose real part $\Phi$ is the physical potential. Its imaginary part $\Psi$ (the stream function) is the conjugate harmonic function. The **equipotential lines** $\Phi = \text{const}$ and the **field/flow lines** $\Psi = \text{const}$ are orthogonal families of curves.
+
+Applications covered:
+
+**Electrostatics** (Sec. 18.1): $\Phi$ is the electrostatic potential. The electric field intensity is $\mathbf{E} = -\text{grad}\,\Phi$, and $|{\mathbf{E}}| = |F'(z)|$.
+
+**Heat flow** (Sec. 18.3): $\Phi$ is the temperature $T$. Heat flows from hot to cold along the flow lines $\Psi = \text{const}$.
+
+**Fluid flow** (Sec. 18.4): $\Phi$ is the velocity potential, $\Psi$ is the stream function, and the **complex velocity** is $\overline{V} = F'(z)$. Solid walls are streamlines ($\Psi = \text{const}$). Standard flows include uniform flow $F = v_0 z$, source $F = (Q/2\pi)\text{Ln}\,z$, vortex $F = -(i\Gamma/2\pi)\text{Ln}\,z$, and dipole $F = M/(2\pi z)$. Flow around a cylinder is $F = v_0(z + c^2/z)$ (and with circulation $-i(\Gamma/2\pi)\text{Ln}\,z$ added). The **Kutta–Joukowski theorem** $L = -\rho v_0 \Gamma$ gives the lift.
+
+**Poisson's integral formula** (Sec. 18.5) gives the harmonic function explicitly from boundary values:
+
+$$
+\Phi(r,\theta) = \frac{1}{2\pi}\int_0^{2\pi}\frac{(1-r^2)\,f(\phi)}{1-2r\cos(\theta-\phi)+r^2}\,d\phi \quad (\text{unit disk})
+$$
+
+$$
+\Phi(x,y) = \frac{y}{\pi}\int_{-\infty}^{\infty}\frac{f(t)\,dt}{(x-t)^2+y^2} \quad (\text{upper half-plane}).
+$$
+
+The Poisson kernel is positive and integrates to 1, so $\Phi$ is a weighted average of the boundary values.
