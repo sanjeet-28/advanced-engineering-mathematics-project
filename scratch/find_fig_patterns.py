@@ -1,15 +1,10 @@
 import re
 
-def main():
-    txt_path = r"c:\Users\acer\Music\advanced-engineering-mathematics-project\garbage\ch10_text.txt"
-    with open(txt_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-        
-    # Search for all occurrences of "fig" case-insensitively and print context
-    matches = re.findall(r'.{0,30}fig.{0,50}', content, re.IGNORECASE)
-    print(f"Total fig matches: {len(matches)}")
-    for m in matches[:30]:
-        print(f"Match: {m.strip()}")
+with open(r"C:\Users\sanje\.gemini\antigravity-ide\brain\9b994fc8-50cc-41e7-bea6-9f520c2c767c\scratch\ch4_text_raw.txt", "r", encoding="utf-8") as f:
+    text = f.read()
 
-if __name__ == "__main__":
-    main()
+patterns = re.findall(r"/H\d+", text)
+from collections import Counter
+c = Counter(patterns)
+for pat, count in c.most_common():
+    print(f"{pat}: {count}")
