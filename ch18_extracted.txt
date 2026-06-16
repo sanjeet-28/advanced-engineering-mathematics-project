@@ -1,0 +1,1185 @@
+--- Page 1 ---
+758CHAPTER 18
+Complex Analysis
+and Potential Theory
+In Chapter 17 we developed the geometric approach of conformal mapping . This meant
+that, for a complex analytic function defined in a domain D of the z-plane, we
+associated with each point in D a corresponding point in the w-plane. This gave us a
+conformal mapping (angle-preserving), except at critical points where 
+Now, in this chapter, we shall apply conformal mappings to potential problems. This
+will lead to boundary value problems and many engineering applications in electrostatics,
+heat flow, and fluid flow. More details are as follows.
+Recall that Laplace’s equation is one of the most important PDEs in
+engineering mathematics because it occurs in gravitation (Secs. 9.7, 12.11), electrostatics(Sec. 9.7), steady-state heat conduction (Sec. 12.5), incompressible fluid flow, and otherareas. The theory of this equation is called potential theory (although “potential” is also
+used in a more general sense in connection with gradients (see Sec. 9.7)). Because wewant to treat this equation with complex analytic methods, we restrict our discussion tothe “two-dimensional case.” Then depends only on two Cartesian coordinates x and y,
+and Laplace’s equation becomes
+An important idea then is that its solutions are closely related to complex analytic
+functions as shown in Sec. 13.4. ( Remark: We use the notation to free
+uand v, which will be needed in conformal mapping This important relation is
+the main reason for using complex analysis in problems of physics and engineering.
+We shall examine this connection between Laplace’s equation and complex analytic
+functions and illustrate it by modeling applications from electrostatics (Secs. 18.1,18.2), heat conduction (Sec. 18.3), and hydrodynamics (Sec. 18.4). This in turn willlead to boundary value problems in two-dimensional potential theory. As a result,
+some of the functions of Chap. 17 will be used to transform complicated regions intosimpler ones.
+Section 18.5 will derive the important Poisson formula for potentials in a circular disk.
+Section 18.6 will deal with harmonic functions, which, as you recall, are solutions of
+Laplace’s equation and have continuous second partial derivatives. In that section we willshow how results on analytic functions can be used to characterize properties of harmonicfunctions.
+Prerequisite: Chaps. 13, 14, 17.
+References and Answers to Problems: App. 1 Part D, App. 2.u/H11001iv.)£/H11001i° £/H11001i°£/H11612
+2£/H11005£xx/H11001£yy/H110050.£/H116122£/H110050f r(z)/H110050.w/H11005f (z)
+c18.qxd  11/2/10  6:54 PM  Page 758
+--- Page 2 ---
+18.1 Electrostatic Fields
+The electrical force of attraction or repulsion between charged particles is governed by
+Coulomb’s law (see Sec. 9.7). This force is the gradient of a function called theelectrostatic potential . At any points free of charges, is a solution of Laplace’s equation
+The surfaces are called equipotential surfaces . At each point P at which
+the gradient of is not the zero vector, it is perpendicular to the surface through P; that is, the electrical force has the direction perpendicular to the equipotential
+surface. (See also Secs. 9.7 and 12.11.)
+The problems we shall discuss in this entire chapter are two-dimensional (for the
+reason just given in the chapter opening), that is, they model physical systems that liein three-dimensional space (of course!), but are such that the potential is independentof one of the space coordinates, so that depends only on two coordinates, which wecall xand y. Then Laplace’s equation becomes
+(1)
+Equipotential surfaces now appear as equipotential lines (curves) in the xy-plane.
+Let us illustrate these ideas by a few simple examples.
+EXAMPLE 1 Potential Between Parallel Plates
+Find the potential of the field between two parallel conducting plates extending to infinity (Fig. 396), which
+are kept at potentials and respectively.
+Solution. From the shape of the plates it follows that depends only on x, and Laplace’s equation becomes
+By integrating twice we obtain where the constants aand bare determined by the given
+boundary values of on the plates. For example, if the plates correspond to and the solution is
+The equipotential surfaces are parallel planes.
+EXAMPLE 2 Potential Between Coaxial Cylinders
+Find the potential between two coaxial conducting cylinders extending to infinity on both ends (Fig. 397)
+and kept at potentials and respectively.
+Solution. Here depends only on for reasons of symmetry, and Laplace’s equation
+[(5), Sec. 12.10] with and becomes By separating
+variables and integrating we obtain
+and aand bare determined by the given values of on the cylinders. Although no infinitely extended conductors
+exist, the field in our idealized conductor will approximate the field in a long finite conductor in that part which
+is far away from the two ends of the cylinders. /H17039££s
+£r/H11005/H11002  1
+r ,  ln £r/H11005/H11002 ln r/H11001a/H33522,  £r/H11005a
+r ,  £/H11005a ln r/H11001br£s/H11001£r/H110050. u/H11005£ uuu/H110050 r2urr/H11001rur/H11001uuu/H110050r/H110052x2/H11001y2, ££2, £1£/H17039£(x)/H110051
+2 (£2/H11002£1)x/H110011
+2 (£2/H11001£1).x/H110051, x/H11005/H11002 1 ££/H11005ax/H11001b, £s/H110050.££2, £1£/H116122£/H1100502£
+0x2/H1100102£
+0y2/H110050.£££/H11005const ££/H11005const/H116122£/H110050.££,SEC. 18.1 Electrostatic Fields 759
+xy
+Fig. 396. Potential
+in Example 1c18.qxd  11/2/10  6:55 PM  Page 759
+--- Page 3 ---
+EXAMPLE 3 Potential in an Angular Region
+Find the potential between the conducting plates in Fig. 398, which are kept at potentials (the lower plate)
+and and make an angle where (In the figure we have 
+Solution. is constant on rays It is harmonic since it is the imaginary
+part of an analytic function, (Sec. 13.7). Hence the solution is
+with aand bdetermined from the two boundary conditions (given values on the plates)
+Thus The answer is
+Complex Potential
+Let be harmonic in some domain D and a harmonic conjugate of in D.
+(Note the change of notation from uand vof Sec. 13.4 to and . From the next section
+on, we had to free u and vfor use in conformal mapping. Then
+(2)
+is an analytic function of This function Fis called the complex potential
+corresponding to the real potential Recall from Sec. 13.4 that for given a conjugate
+is uniquely determined except for an additive real constant. Hence we may say the
+complex potential, without causing misunderstandings.
+The use of F has two advantages, a technical one and a physical one. Technically, F
+is easier to handle than real or imaginary parts, in connection with methods of complex
+analysis. Physically, has a meaning. By conformality, the curves intersectthe equipotential lines in the xy-plane at right angles [except where Hence they have the direction of the electrical force and, therefore, are called linesof force . They are the paths of moving charged particles (electrons in an electron
+microscope, etc.).F
+ r(z)/H110050]. £/H11005const°/H11005const °°£, £.z/H11005x/H11001iy.F(z)/H11005£(x, y)/H11001i°(x, y)° ££ °(x, y) £(x, y)/H17039 u/H11005arctan y
+x . £(x, y)/H110051
+2  (£2/H11001£1)/H110011
+a  (£2/H11002£1) u,a/H11005(£2/H11001£1)>2, b/H11005(£2/H11002£1)>a.a/H11001b(1
+2 a)/H11005£2. a/H11001b(/H110021
+2 a)/H11005£1,£(x, y)/H11005a/H11001b Arg zLn zu/H11005const. u/H11005Arg z (z /H11005x/H11001iy/HS110050)a/H11005120°/H110052p>3.) 0/H11021a/H11017p. a, £2,£1 £760 CHAP. 18 Complex Analysis and Potential Theory
+xy
+Fig. 398. Potential
+in Example 3xy
+Fig. 397. Potential in Example 2c18.qxd  11/2/10  6:55 PM  Page 760
+--- Page 4 ---
+EXAMPLE 4 Complex Potential
+In Example 1, a conjugate is It follows that the complex potential is
+and the lines of force are horizontal straight lines parallel to the x-axis.
+EXAMPLE 5 Complex Potential
+In Example 2 we have A conjugate is Hence the complex
+potential isand the lines of force are straight lines through the origin. may also be interpreted as the complex potential
+of a source line (a wire perpendicular to the xy-plane) whose trace in the xy-plane is the origin.
+EXAMPLE 6 Complex Potential
+In Example 3 we get by noting that multiplying this by and adding a:
+We see from this that the lines of force are concentric circles Can you sketch them?
+Superposition
+More complicated potentials can often be obtained by superposition.
+EXAMPLE 7 Potential of a Pair of Source Lines (a Pair of Charged Wires)
+Determine the potential of a pair of oppositely charged source lines of the same strength at the points and
+on the real axis.
+Solution. From Examples 2 and 5 it follows that the potential of each of the source lines is
+and
+respectively. Here the real constant K measures the strength (amount of charge). These are the real parts of the
+complex potentials
+and
+Hence the complex potential of the combination of the two source lines is
+(3)The equipotential lines are the curves
+thus
+These are circles, as you may show by direct calculation. The lines of force are
+We write this briefly (Fig. 399)
+°/H11005K(u
+1/H11002u2)/H11005const.°/H11005Im F(z) /H11005K[Arg (z /H11002c)/H11002Arg (z/H11001c)]/H11005const.` z/H11002c
+z/H11001c`/H11005const. £/H11005Re F(z) /H11005K  ln ` z/H11002c
+z/H11001c`/H11005const,F(z)/H11005F1(z)/H11001F2(z)/H11005K [Ln (z /H11002c)/H11002Ln (z/H11001c)] .F2(z)/H11005/H11002 K Ln (z /H11001c). F1(z)/H11005K  Ln (z/H11002c)£2/H11005/H11002 K  ln ƒz/H11001cƒ, £1/H11005K  ln ƒz/H11002cƒz/H11005/H11002 cz/H11005c/H17039 ƒzƒ/H11005const.F(z)/H11005a/H11002ib Ln z /H11005a/H11001b Arg z /H11002ib ln ƒzƒ./H11002b, i  Ln z/H11005i ln ƒzƒ/H11002Arg z, F(z)/H17039F(z)F(z)/H11005a Ln z/H11001b°/H11005a Arg z. £/H11005a ln r/H11001b/H11005a ln ƒzƒ/H11001b./H17039 y/H11005constF(z)/H11005az/H11001b/H11005ax/H11001b/H11001iay,°/H11005ay.SEC. 18.1 Electrostatic Fields 761c18.qxd  11/2/10  6:55 PM  Page 761
+--- Page 5 ---
+Now is the angle between the line segments from zto cand (Fig. 399). Hence the lines of force
+are the curves along each of which the line segment S: appears under a constant angle. These curves
+are the totality of circular arcs over S, as is (or should be) known from elementary geometry. Hence the lines
+of force are circles. Figure 400 shows some of them together with some equipotential lines.
+In addition to the interpretation as the potential of two source lines, this potential could also be thought of as
+the potential between two circular cylinders whose axes are parallel but do not coincide, or as the potentialbetween two equal cylinders that lie outside each other, or as the potential between a cylinder and a plane wall.Explain this using Fig. 400.
+The idea of the complex potential as just explained is the key to a close relation of potential
+theory to complex analysis and will recur in heat flow and fluid flow./H17039/H11002c/H11017x/H11017c/H11002c u1/H11002u2762 CHAP. 18 Complex Analysis and Potential Theory
+1–4 COAXIAL CYLINDERS
+Find and sketch the potential between two coaxial cylinders
+of radii and having potential and respectively.
+1.
+2.
+3.
+4.If and 
+respectively, is the potential at equal to200 V? Less? More? Answer without calculation. Thencalculate and explain.
+5–7
+PARALLEL PLATES
+Find and sketch the potential between the parallel plateshaving potentials and . Find the complex potential.
+5.Plates at potentials 
+respectively.
+6.Plates at and potentials 
+respectively.
+7.Plates at potentials 
+respectively.
+8. CAS EXPERIMENT. Complex Potentials. Graph
+the equipotential lines and lines of force in (a)–(d) (fourU
+2/H110058  kV, 20 kV,U1/H11005 x2/H1100524   cm, x1/H1100512   cm,U2/H11005220   V,U1/H110050 V, y/H11005x/H11001k, y/H11005xU2/H11005500 V, 250 V,U1/H11005 x2/H110055 cm, x1/H11005/H11002 5 cm,U2 U1r /H11005  4 cm100 V, U2/H11005 U1/H11005300 V, r1/H110052 cm, r 2/H110056 cmU2/H11005/H11002 10 kVr1/H1100510 cm,  r2/H110051 m, U1/H1100510 kV,r1/H110051 cm, r2/H110052 cm, U1/H11005400 V,  U2/H110050 VU2/H11005220 Vr1/H110052.5 mm,  r2/H110054.0 cm,  U1/H110050 V,U2, U1 r2 r1graphs, and on the same axes). Thenexplore further complex potentials of your choice withthe purpose of discovering configurations that mightbe of practical interest.
+(a) (b)(c) (d)
+9. Argument. Show that arctan
+is harmonic in the upper half-plane and satisfies the
+boundary condition if and 0 if
+and the corresponding complex potential is
+10. Conformal mapping. Map the upper z-half-plane
+onto so that are mapped onto respectively. What are the boundary conditions on
+resulting from the potential in Prob. 9? What
+is the potential at 
+11. Text Example 7. Verify, by calculation, that the equipo-
+tential lines are circles.
+12–15
+OTHER CONFIGURATIONS
+12.Find and sketch the potential between the axes(potential 500 V) and the hyperbola (potential100 V).xy/H110054w/H110050?ƒwƒ/H1100511, i, /H11002i, 0, /H11009, /H110021 ƒwƒ/H110171F(z)/H11005/H11002 (i>
+p) Ln z.x/H110220,x/H110210 £(x, 0)/H110051( y>x) £/H11005u>p/H11005(1>p)F(z)/H11005i>z F(z)/H110051>zF(z)/H11005iz2F(z)/H11005z2Im F(z) Re F(z)PROBLEM SET 18.1x cz
+–c1 – 2
+21θ
+θθ
+θ
+Fig. 399. Arguments in Example 7 Fig. 400. Equipotential lines and lines 
+of force (dashed) in Example 7c18.qxd  11/2/10  6:55 PM  Page 762
+--- Page 6 ---
+SEC. 18.2 Use of Conformal Mapping. Modeling 763
+14. Arccos. Show that in Prob. 13 gives the potentials
+in Fig. 402.F(z)15. Sector. Find the real and complex potentials in the
+sector between the boundary 
+kept at 0 V, and the curve kept
+at 220 V.x3/H110023xy2/H110051, /H11006p>6,u/H11005 /H11002p>6/H11017u/H11017p>6
+18.2 Use of Conformal Mapping. Modeling
+We have just explored the close relation between potential theory and complex analysis.
+This relationship is so close because complex potentials can be modeled in complexanalysis. In this section we shall explore the close relation that results from the use ofconformal mapping in modeling and solving boundary value problems for the Laplace
+equation. The process consists of finding a solution of the equation in some domain,assuming given values on the boundary ( Dirichlet problem, see also Sec. 12.6). The key
+idea is then to use conformal mapping to map a given domain onto one for which thesolution is known or can be found more easily. This solution thus obtained is then mappedback to the given domain. The reason this approach works is due to Theorem 1, whichasserts that harmonic functions remain harmonic under conformal mapping:
+THEOREM 1 Harmonic Functions Under Conformal Mapping
+Let be harmonic in a domain in the w-plane. Suppose that is analytic in a domain D in the z-plane and maps D conformally onto Thenthe function
+(1)is harmonic in D.
+PROOF The composite of analytic functions is analytic, as follows from the chain rule. Hence, taking
+a harmonic conjugate of as defined in Sec. 13.4, and forming the analyticfunction we conclude that is analytic in D .
+Hence its real part is harmonic in D . This completes the proof.
+We mention without proof that if is simply connected (Sec. 14.2), then a harmonic
+conjugate of exists. Another proof of Theorem 1 without the use of a harmonicconjugate is given in App. 4. /H17039£*D*£(x, y)/H11005Re F(z)F(z)/H11005F*
+ ( f (z)) F*(w)/H11005£*(u, v)/H11001i°*(u, v)£*, °* (u, v)£(x, y)/H11005£* (u(x, y), v(x, y))D*.w/H11005u/H11001iv/H11005f (z) D* £*13. Arccos. Show that (defined in Problem
+Set 13.7) gives the potential of a slit in Fig. 401.F(z)/H11005arccos z
+Fig. 401. Slity
+x1 –1
+Fig. 402. Other aperturesy
+x xy
+1
+1–1c18.qxd  11/2/10  6:55 PM  Page 763
+--- Page 7 ---
+EXAMPLE 1 Potential Between Noncoaxial Cylinders
+Model the electrostatic potential between the cylinders and in Fig. 403. Then give
+the solution for the case that is grounded, and has the potential 
+Solution. We map the unit disk onto the unit disk in such a way that is mapped onto
+some cylinder By (3), Sec. 17.3, a linear fractional transformation mapping the unit disk onto the
+unit disk is
+(2) w/H11005z/H11002b
+bz/H110021C2*: ƒwƒ/H11005r0.C2 ƒwƒ/H110051 ƒzƒ/H110051U2/H11005110 V. C2 U1/H110050 V, C1C2: ƒz/H110022
+5ƒ/H110052
+5 C1: ƒzƒ/H110051764 CHAP. 18 Complex Analysis and Potential Theory
+C1U1 = 0
+U2 = 110 Vy
+xC2
+Fig. 403. Example 1: z-planev
+uU1 = 0
+U2 = 110 V
+r0
+Fig. 404. Example 1: w-plane
+where we have chosen real without restriction. is of no immediate help here because centers of circles
+do not map onto centers of the images, in general. However, we now have two free constants band and shall
+succeed by imposing two reasonable conditions, namely, that 0 and (Fig. 403) should be mapped onto and
+(Fig. 404), respectively. This gives by (2)
+and with this,
+a quadratic equation in with solutions (no good because and Hence our mappingfunction (2) with becomes that in Example 5 of Sec. 17.3,
+(3)
+From Example 5 in Sec. 18.1, writing wfor zwe have as the complex potential in the w-plane the function
+and from this the real potential
+This is our model. We now determine aand kfrom the boundary conditions. If then 
+hence . If then hence Substitution of (3)
+now gives the desired solution in the given domain in the z-plane
+The real potential is
+Can we “see” this result? Well, if and only if that is, 
+by (2) with These circles are images of circles in the z-plane because the inverse of a linear fractional
+transformation is linear fractional (see (4), Sec. 17.2), and any such mapping maps circles onto circles (or straightlines), by Theorem 1 in Sec. 17.2. Similarly for the rays Hence the equipotential lines
+are circles, and the lines of force are circular arcs (dashed in Fig. 404). These two families of
+curves intersect orthogonally, that is, at right angles, as shown in Fig. 404.
+/H17039£(x, y)/H11005constarg w/H11005const.b/H110051
+2 .ƒwƒ/H11005const ƒ(2z/H110021)>(z/H110022)ƒ/H11005const, £(x, y)/H11005consta/H11005/H11002 158.7. £(x, y)/H11005Re F(z) /H11005a ln `2z/H110021
+z/H110022`,F(z)/H11005F* ( f (z))/H11005a Ln 2z/H110021
+z/H110022 .a/H11005110> ln (1
+2 )/H11005/H11002 158.7. £*/H11005a ln (1
+2 )/H11005110, ƒwƒ/H11005r0/H110051
+2 , k/H110050£*/H11005a ln 1/H11001k/H110050, ƒwƒ/H110051,£* (u, v)/H11005Re F * (w)/H11005a ln ƒwƒ/H11001k.F*(w)/H11005a Ln w /H11001kw/H11005f (z)/H110052z/H110021
+z/H110022 .b/H110051
+2 r0/H110051
+2 . r0/H110211) r0/H110052 r0/H11002r0/H110054
+5 /H11002b
+4b>5/H110021/H110054
+5 /H11002r0
+4r0>5/H110021 , r0/H110050/H11002b
+0/H110021/H11005b,/H11002r0r04
+5 r0z0 b/H11005z0c18.qxd  11/2/10  6:55 PM  Page 764
+--- Page 8 ---
+EXAMPLE 2 Potential Between Two Semicircular Plates
+Model the potential between two semicircular plates and in Fig. 405 having potentials and
+3000 V, respectively. Use Example 3 in Sec. 18.1 and conformal mapping.
+Solution. Step 1. We map the unit disk in Fig. 405 onto the right half of the w-plane (Fig. 406) by using
+the linear fractional transformation in Example 3, Sec. 17.3:
+w/H11005f (z)/H110051/H11001z
+1/H11002z ./H110023000 V P2 P1SEC. 18.2 Use of Conformal Mapping. Modeling 765
+y
+xP2: 3 kV
+P1: –3 kV2
+1
+0
+–1
+–2
+–3
+Fig. 405. Example 2: z-planev
+u03 kV
+–3 kV
+–2 kV–1 kV1 kV2 kV
+Fig. 406. Example 2: w-plane
+The boundary is mapped onto the boundary (the v-axis), with going onto 
+respectively, and onto Hence the upper semicircle of is mapped onto the upper half,
+and the lower semicircle onto the lower half of the v-axis, so that the boundary conditions in the w-plane are
+as indicated in Fig. 406.
+Step 2. We determine the potential in the right half-plane of the w-plane. Example 3 in Sec. 18.1 with
+and [with instead of yields
+On the positive half of the imaginary axis this equals 3000 and on the negative half as it
+should be. is the real part of the complex potential
+Step 3. We substitute the mapping function into to get the complex potential in Fig. 405 in the form
+The real part of this is the potential we wanted to determine:
+As in Example 1 we conclude that the equipotential lines are circular arcs because they
+correspond to hence to Also, are rays from 0
+to the images of and respectively. Hence the equipotential lines all have and 1 (the
+points where the boundary potential jumps) as their endpoints (Fig. 405). The lines of force are circular arcs,too, and since they must be orthogonal to the equipotential lines, their centers can be obtained as intersectionsof tangents to the unit circle with the x -axis, (Explain!)
+Further examples can easily be constructed. Just take any mapping in Chap. 17,
+a domain D in the z-plane, its image in the w-plane, and a potential in Then (1)
+gives a potential in D. Make up some examples of your own, involving, for instance,linear fractional transformations.D*. £* D*w/H11005f
+ (z)/H17039/H110021 z/H110051, z/H11005/H11002 1 /H11009,Arg w/H11005const Arg w/H11005const. Arg [(1 /H11001z)>(1/H11002z)]/H11005const,£(x, y)/H11005const£(x, y)/H11005Re F(z) /H110056000
+p Im Ln 1/H11001z
+1/H11002z/H110056000
+p Arg 1/H11001z
+1/H11002z .F(z)/H11005F* ( f (z))/H11005/H11002   6000 i
+p Ln 1/H11001z
+1/H11002z .F(z) F*F* (w)/H11005/H11002   6000 i
+p Ln w.£*/H110023000, (/H9272/H11005p>2),/H9272/H11005arctan v
+u . £* (u, v)/H110056000
+p  /H9272,£(x, y)] £* (u, v) U2/H110053000 a/H11005p, U1/H11005/H11002 3000,£* (u, v)ƒzƒ/H110051 w/H11005/H11002 i. z/H11005/H11002 iw/H110050, i, /H11009, z/H11005/H11002 1, i, 1 u/H110050 ƒzƒ/H110051c18.qxd  11/2/10  6:55 PM  Page 765
+--- Page 9 ---
+766 CHAP. 18 Complex Analysis and Potential Theory
+1. Derivation of (3) from (2). Verify the steps.
+2. Second proof. Give the details of the steps given on
+p. A93 of the book. What is the point of that proof?
+3–5 APPLICATION OF THEOREM 1
+3.Find the potential in the region Rin the first quadrant
+of the z-plane bounded by the axes (having potential
+) and the hyperbola (having potential 
+by mapping R onto a suitable infinite strip. Show that
+is harmonic. What are its boundary values?
+4.Let and 
+Find What are its boundary values?
+5. CAS PROJECT. Graphing Potential Fields. 
+Graph equipotential lines (a) in Example 1 of the text,
+(b) if the complex potential is 
+(c)Graph the equipotential surfaces for as
+cylinders in space.
+6.Apply Theorem 1 to 
+and any domain D, showing that the resulting
+potential is harmonic.
+7. Rectangle, Let D: 
+the image of D under and 
+What is the corresponding potential in D? What are
+its boundary values? Sketch Dand 
+8. Conjugate potential. What happens in Prob. 7 if you
+replace the potential by its conjugate harmonic?
+9. Translation. What happens in Prob. 7 if we replace
+by 
+10. Noncoaxial Cylinders. Find the potential between
+the cylinders (potential and
+(potential where
+Sketch or graph equipotential lines and
+their orthogonal trajectories for Can you guess
+how the graph changes if you increase c (/H110211
+2 )?c/H110051
+4 .0/H11021c/H110211
+2 .U2/H11005220 V), C2: ƒz/H11002cƒ/H11005cU1/H110050) C1: ƒzƒ/H110051cos z/H11005sin (z/H110011
+2 p)? sin zD*.££*/H11005u2/H11002v2. w/H11005sin z;0/H11017x/H110171
+2 p, 0/H11017y/H110171; D* sin z.£f (z)/H11005ez,w/H11005 £* (u, v)/H11005u2/H11002v2,F(z)/H11005Ln zF(z)/H11005z2, iz2, ez.£. 0/H11021y/H11021p.D: x/H110210, w/H11005f (z)/H11005ez, £*/H110054uv,£U2) y/H110051>x U1£11. On Example 2. Verify the calculations.
+12.Show that in Example 2 the y-axis is mapped onto the
+unit circle in the w-plane.
+13.At in Fig. 405 the tangents to the equipotentiallines as shown make equal angles. Why?
+14.Figure 405 gives the impression that the potential onthe y-axis changes more rapidly near 0 than near 
+Can you verify this?
+15. Angular region. By applying a suitable conformal
+mapping, obtain from Fig. 406 the potential in thesector such that if
+and if 
+16.Solve Prob. 15 if the sector is 
+17. Another extension of Example 2. Find the linear
+fractional transformation that maps onto with being mapped onto Show that is mapped onto 
+and onto so that the
+equipotential lines of Example 2 look in asshown in Fig. 407.ƒZƒ/H110171z/H110051, Z
+2/H11005/H11002 0.6/H110010.8iz/H11005/H11002 1 Z1/H110050.6/H110010.8iz/H110050. Z/H11005i>2 ƒzƒ/H110171ƒZƒ/H110171 z/H11005g (Z)/H11002 1
+8 p/H11021Arg z/H110211
+8 p.Arg z/H110051
+4 p. £/H110053 kV Arg z/H11005/H110021
+4 p£/H11005/H11002 3 kV /H110021
+4 p/H11021Arg z/H110211
+4 p£/H11006i.z/H11005/H11006 1PROBLEM SET 18.2Basic Comment on Modeling
+We formulated the examples in this section as models on the electrostatic potential. It is
+quite important to realize that this is accidental. We could equally well have phrasedeverything in terms of (time-independent) heat flow; then instead of voltages we wouldhave had temperatures, the equipotential lines would have become isotherms ( lines ofconstant temperature), and the lines of the electrical force would have become lines alongwhich heat flows from higher to lower temperatures (more on this in the next section).Or we could have talked about fluid flow; then the electrostatic lines of force would havebecome streamlines (more on this in Sec. 18.4). What we again see here is the unifying
+power of mathematics: different phenomena and systems from different areas in physicshaving the same types of model can be treated by the same mathematical methods. Whatdiffers from area to area is just the kinds of problems that are of practical interest./H11005
+Y
+XZ2 Z1–3 kV
+3 kV210
+Fig. 407. Problem 17c18.qxd  11/2/10  6:55 PM  Page 766
+--- Page 10 ---
+SEC. 18.3 Heat Problems 767
+18.3 Heat Problems
+Heat conduction in a body of homogeneous material is modeled by the heat equation
+where the function T is temperature, tis time, and is a positive constant
+(specific to the material of the body; see Sec. 12.6).
+Now if a heat flow problem is steady, that is, independent of time, we have If
+it is also two-dimensional, then the heat equation reduces to
+(1)which is the two-dimensional Laplace equation. Thus we have shown that we can model
+a two-dimensional steady heat flow problem by Laplace’s equation.
+Furthermore we can treat this heat flow problem by methods of complex analysis, since
+T(or ) is the real part of the complex heat potential
+We call the heat potential. The curves are called isotherms , which
+means lines of constant temperature. The curves are called heat flow
+lines because heat flows along them from higher temperatures to lower temperatures.
+It follows that all the examples considered so far (Secs. 18.1, 18.2) can now be
+reinterpreted as problems on heat flow. The electrostatic equipotential lines now become isotherms and the lines of electrical force become lines of
+heat flow, as in the following two problems.
+EXAMPLE 1 Temperature Between Parallel Plates
+Find the temperature between two parallel plates and in Fig. 408 having temperatures 0 and 
+respectively.
+Solution. As in Example 1 of Sec. 18.1 we conclude that From the boundary conditions,
+and The answer is
+The corresponding complex potential is Heat flows horizontally in the negative x-direction
+along the lines 
+EXAMPLE 2 Temperature Distribution Between a Wire and a Cylinder
+Find the temperature field around a long thin wire of radius mm that is electrically heated to and is surrounded by a circular cylinder of radius which is kept at temperature bycooling it with air. See Fig. 409. (The wire is at the origin of the coordinate system.)T
+2/H1100560°F r2/H11005100 mm,T1/H11005500°F r1/H110051/H17039 y/H11005const.F(z)/H11005(100> d)z.T (x, y)/H11005100
+d x [°C].a/H11005100> d. b/H110050T (x, y)/H11005ax/H11001b.100°C, x/H11005d x/H110050T (x, y)/H11005const,£(x, y)/H11005const° (x, y)/H11005constT (x, y)/H11005const T (x, y)F(z)/H11005T (x, y)/H11001i°(x, y).T (x, y)/H116122T/H11005Txx/H11001Tyy/H110050,Tt/H110050.c2Tt/H110050T>0t,Tt/H11005c2/H116122T18.The equipotential lines in Prob. 17 are circles. Why?
+19. Jump on the boundary. Find the complex and real
+potentials in the upper half-plane with boundary values
+5 kV if and 0 if on the x-axis. x/H110222 x/H11021220. Jumps. Do the same task as in Prob. 19 if the boundary
+values on the x-axis are when and 0
+elsewhere./H11002a/H11021x/H11021a V0c18.qxd  11/2/10  6:55 PM  Page 767
+--- Page 11 ---
+Solution. Tdepends only on r, for reasons of symmetry. Hence, as in Sec. 18.1 (Example 2),
+The boundary conditions are
+Hence (since and The answer isThe isotherms are concentric circles. Heat flows from the wire radially outward to the cylinder. Sketch Tas a
+function of r. Does it look physically reasonable?
+/H17039T (x, y)/H11005500/H1100295.54 ln r  [°F].a/H11005(60/H11002b)>ln 100/H11005/H11002 95.54. ln 1/H110050) b/H11005500T1/H11005500/H11005a ln 1/H11001b,  T2/H1100560/H11005a ln 100 /H11001b.T (x, y)/H11005a ln r/H11001b.768 CHAP. 18 Complex Analysis and Potential Theory
+y
+xT = 60°F
+Fig. 409. Example 2y
+xT = 100°CT = 0°C
+Fig. 408. Example 1y
+xT = 20°C
+T = 50°C1
+0Insulated
+Fig. 410. Example 3
+Mathematically the calculations remain the same in the transition to another field of
+application. Physically, new problems may arise, with boundary conditions that wouldmake no sense physically or would be of no practical interest. This is illustrated by thenext two examples.
+EXAMPLE 3 A Mixed Boundary Value Problem
+Find the temperature distribution in the region in Fig. 410 (cross section of a solid quarter-cylinder), whose
+vertical portion of the boundary is at the horizontal portion at and the circular portion is insulated.
+Solution. The insulated portion of the boundary must be a heat flow line, since, by the insulation, heat is
+prevented from crossing such a curve, hence heat must flow along the curve. Thus the isotherms must meetsuch a curve at right angles. Since Tis constant along an isotherm, this means that
+(2) along an insulated portion of the boundary.
+Here is the normal derivative of T, that is, the directional derivative (Sec. 9.7) in the direction normal
+(perpendicular) to the insulated boundary. Such a problem in which Tis prescribed on one portion of the boundary
+and on the other portion is called a mixed boundary value problem.
+In our case, the normal direction to the insulated circular boundary curve is the radial direction toward the
+origin. Hence (2) becomes meaning that along this curve the solution must not depend on r. Now
+satisfies (1), as well as this condition, and is constant (0 and on the straight portions of the
+boundary. Hence the solution is of the form
+The boundary conditions yield and This gives
+u/H11005arctan 
+ y
+x . T (x, y)/H1100550/H1100260
+p  u,a#0/H11001b/H1100550. a#p>2/H11001b/H1100520T (x, y)/H11005au/H11001b.p>2) Arg z/H11005u0T>0r/H110050,0T>0n0T>0n0T
+0n/H11005050°C, 20°C,c18.qxd  11/2/10  6:55 PM  Page 768
+--- Page 12 ---
+The isotherms are portions of rays Heat flows from the x -axis along circles (dashed in
+Fig. 410) to the y-axis. /H17039r/H11005const u/H11005const.SEC. 18.3 Heat Problems 769
+y
+xT = 20°C1 –1 T = 0°C Insulated
+Fig. 411. Example 4: z-planeuT* = 0°C
+T* = 20°C
+π__
+2π__
+2–v
+Insulated
+Fig. 412. Example 4: w-plane
+EXAMPLE 4 Another Mixed Boundary Value Problem in Heat Conduction
+Find the temperature field in the upper half-plane when the x-axis is kept at for is insulated
+for and is kept at for (Fig. 411).
+Solution. We map the half-plane in Fig. 411 onto the vertical strip in Fig. 412, find the temperature 
+there, and map it back to get the temperature in the half-plane.
+The idea of using that strip is suggested by Fig. 391 in Sec. 17.4 with the roles of and 
+interchanged. The figure shows that maps our present strip onto our half-plane in Fig. 411. Hence the
+inverse function
+maps that half-plane onto the strip in the w-plane. This is the mapping function that we need according to
+Theorem 1 in Sec. 18.2.
+The insulated segment on the x-axis maps onto the segment on the u-axis.
+The rest of the x-axis maps onto the two vertical boundary portions and of the strip.
+This gives the transformed boundary conditions in Fig. 412 for where on the insulated horizontal
+boundary, because vis a coordinate normal to that segment.
+Similarly to Example 1 we obtain
+which satisfies all the boundary conditions. This is the real part of the complex potential Hence the complex potential in the z-plane is
+and is the solution. The isotherms are in the strip and the hyperbolas in the z-plane,
+perpendicular to which heat flows along the dashed ellipses from the -portion to the cooler -portion of theboundary, a physically very reasonable result.
+Sections 18.3 and 18.5 show some of the usefulness of conformal mappings and complex
+potentials. Furthermore, complex potential models fluid flow in Sec. 18.4./H170390° 20°u/H11005const T (x, y)/H11005Re F(z)F(z)/H11005F* ( f (z))/H1100510/H1100120
+p arcsin zF*(w)/H1100510/H11001(20>p) w.T*(u, v)/H1100510/H1100120
+p u0T *>0n/H110050T *>0v/H110050T* (u, v),p>2, v/H110220, u/H11005/H11002p>2/H11002p>2/H11021u/H11021p>2 /H110021/H11021x/H110211w/H11005f (z)/H11005arcsin zz/H11005sin ww/H11005u/H11001iv z/H11005x/H11001iyT (x, y)T* (u, v)x/H110221 T/H1100520°C /H110021/H11021x/H110211,x/H11021/H11002 1, T/H110050°C
+1. Parallel plates. Find the temperature between the
+plates and kept at and respec-
+tively. (i) Proceed directly. (ii) Use Example 1 and asuitable mapping.100°C, 20 y/H11005d y/H1100502. Infinite plate. Find the temperature and the complex
+potential in an infinite plate with edges and
+kept at and respectively (Fig. 413).
+In what case will this be an approximate model?40°C, /H1100220 y/H11005x/H110014y/H11005x/H110024PROBLEM SET 18.3c18.qxd  11/2/10  6:55 PM  Page 769
+--- Page 13 ---
+770 CHAP. 18 Complex Analysis and Potential Theory
+Fig. 413. Problem 2: Infinite plate
+3. CAS PROJECT. Isotherms. Graph isotherms and
+lines of heat flow in Examples 2–4. Can you see from
+the graphs where the heat flow is very rapid?
+4–18 TEMPERATURE T(x, y) IN PLATES
+Find the temperature distribution and the complexpotential in the given thin metal plate whose facesare insulated and whose edges are kept at the indicatedtemperatures or are insulated as shown.
+4. 5.
+6. 7.
+8.
+9.
+y
+xT = 0 T* = T1T = 0abv
+xT* = T2T* = T1aT = T1T = T2y
+xx T = 0°C60°
+0T = 50°CT = 20°C
+T = –20°C45°
+45°y
+xy = 10/x 
+T = 200°CT = 0°CT = 200°CF(z)T (x, y)10.
+11.
+12.
+Hint. Apply to Prob. 11.
+13. 14.
+15.
+16.
+17.First quadrant of the z-plane with y-axis kept at 
+the segment of the x-axis insulated and the
+x-axis for kept at Hint. Use Example 4.
+18.Figure 410, 
+19. Interpretation. Formulate Prob. 11 in terms of electro-
+statics.
+20. Interpretation. Interpret Prob. 17 in Sec. 18.2 as a heat
+problem, with boundary temperatures, say, on theupper part and on the lower. 200°C10°CT
+ (0, y)/H11005/H11002 30°C, T (x, 0)/H11005100°C200°C. x/H1102210/H11021x/H110211100°C,xT = 20°C–20
+T = 500°CInsulated
+y = √3 x x T = –20°C45° T = 60°CInsulatedy
+xT = 0°CInsulatedT = 200°C
+T = 0°C T = 100°C0°C 100°Cy
+x11w/H11005cosh zy
+xT = 100°CT = 0°C
+T = 0°C0πy
+xT = 0 T = 100°C T = 01 –1y
+xT = T3T = T2T = T1ab
+xy
+T = 40°C
+T = 20°C4 –4c18.qxd  11/2/10  6:55 PM  Page 770
+--- Page 14 ---
+18.4 Fluid Flow
+Laplace’s equation also plays a basic role in hydrodynamics, in steady nonviscous fluid
+flow under physical conditions discussed later in this section. For methods of complexanalysis to be applicable, our problems will be two-dimensional, so that the velocity vector
+Vby which the motion of the fluid can be given depends only on two space variables x
+and y, and the motion is the same in all planes parallel to the xy-plane.
+Then we can use for the velocity vector Va complex function
+(1)
+giving the magnitude and direction of the velocity at each point 
+Here and are the components of the velocity in the xand ydirections. Vis tangential
+to the path of the moving particles, called a streamline of the motion (Fig. 414).
+We show that under suitable assumptions (explained in detail following the examples),
+for a given flow there exists an analytic function
+(2)
+called the complex potential of the flow, such that the streamlines are given by
+and the velocity vector or, briefly, the velocity is given by
+(3)
+V/H11005V1/H11001iV2/H11005F r(z)°(x, y)/H11005const,F(z)/H11005£(x, y)/H11001i°(x, y),V2 V1z/H11005x/H11001iy. Arg V ƒVƒV/H11005V1/H11001iV2SEC. 18.4 Fluid Flow 771
+Fig. 414. Velocityy
+xV1V2V
+Streamline
+where the bar denotes the complex conjugate. is called the stream function . The
+function is called the velocity potential. The curves are called
+equipotential lines . The velocity vector V is the gradient of by definition, this
+means that
+(4)
+Indeed, for Eq. (4) in Sec. 13.4 is with by
+the second Cauchy–Riemann equation. Together we obtain (3):
+F r(z)/H11005£x/H11002i°x/H11005£x/H11001i£y/H11005V1/H11001iV2/H11005V.°x/H11005/H11002 £y F r/H11005£x/H11001i°x F/H11005£/H11001i°,V1/H110050£
+0x ,  V2/H110050£
+0y .£;£(x, y)/H11005const £°c18.qxd  11/2/10  6:55 PM  Page 771
+--- Page 15 ---
+Furthermore, since is analytic, and satisfy Laplace’s equation
+(5)
+Whereas in electrostatics the boundaries (conducting plates) are equipotential lines, in
+fluid flow the boundaries across which fluid cannot flow must be streamlines. Hence in
+fluid flow the stream function is of particular importance.
+Before discussing the conditions for the validity of the statements involving (2)–(5), let
+us consider two flows of practical interest, so that we first see what is going on from apractical point of view. Further flows are included in the problem set.
+EXAMPLE 1 Flow Around a Corner
+The complex potential models a flow with
+Equipotential lines (Hyperbolas)
+Streamlines (Hyperbolas).
+From (3) we obtain the velocity vector
+that is,
+The speed (magnitude of the velocity) is
+The flow may be interpreted as the flow in a channel bounded by the positive coordinates axes and a hyperbola,
+say, (Fig. 415). We note that the speed along a streamline Shas a minimum at the point Pwhere the
+cross section of the channel is large. /H17039xy/H110051ƒVƒ/H110052V 12/H11001V22/H1100522x2/H11001y2.V1/H110052x,  V2/H11005/H11002 2y. V/H110052z/H110052 (x/H11002iy),°/H110052xy/H11005const£/H11005x2/H11002y2/H11005constF(z)/H11005z2/H11005x2/H11002y2/H110012ixy/H116122£/H1100502£
+0x2/H1100102£
+0y2/H110050,  /H116122°/H1100502°
+0x2/H1100102°
+0y2/H110050.° £ F(z)772 CHAP. 18 Complex Analysis and Potential Theory
+Fig. 415. Flow around a corner (Example 1)y
+xS
+0P
+EXAMPLE 2 Flow Around a Cylinder
+Consider the complex potential
+Using the polar form we obtain
+Hence the streamlines are
+°(x, y)/H11005ar/H110021
+r b  sin u/H11005const.F(z)/H11005reiu/H110011
+r e/H11546iu/H11005ar/H110011
+r b  cos u/H11001i ar/H110021
+r b  sin u.z/H11005reiu,F(z)/H11005£(x, y)/H11001i°(x, y)/H11005z/H110011
+z .c18.qxd  11/2/10  6:55 PM  Page 772
+--- Page 16 ---
+In particular, gives or Hence this streamline consists of the unit circle
+gives and the x-axis and For large the term in is small in absolute
+value, so that for these zthe flow is nearly uniform and parallel to the x-axis. Hence we can interpret this as a
+flow around a long circular cylinder of unit radius that is perpendicular to the z-plane and intersects it in the
+unit circle and whose axis corresponds to 
+The flow has two stagnation points (that is, points at which the velocity Vis zero), at This follows
+from (3) and
+hence (See Fig. 416.) /H17039 z2/H110021/H110050. F r(z)/H110051/H110021
+z2 ,z/H11005/H11006 1.z/H110050. ƒzƒ/H110051F(z) 1>z ƒzƒ u/H11005p). (u/H110050 r/H110051) (r/H110051>rsin u/H110050. r/H110021>r/H110050 °(x, y)/H110050SEC. 18.4 Fluid Flow 773
+Fig. 416. Flow around a cylinder (Example 2)y
+x
+Fig. 417. Tangential component of the 
+velocity with respect to a curve Cy
+xC
+VαVtAssumptions and Theory Underlying (2)–(5)
+THEOREM 1 Complex Potential of a Flow
+If the domain of flow is simply connected and the flow is irrotational and
+incompressible, then the statements involving (2)–(5) hold. In particular, then the
+flow has a complex potential which is an analytic function. (Explanation of
+terms below.)
+PROOF We prove this theorem, along with a discussion of basic concepts related to fluid flow.
+(a)First Assumption: Irrotational. Let Cbe any smooth curve in the z-plane given
+by where sis the arc length of C . Let the real variable be the
+component of the velocity V tangent to C (Fig. 417). Then the value of the real line
+integral
+(6) /H20910
+C Vt dsVt z(s)/H11005x(s)/H11001iy(s),F(z),c18.qxd  11/2/10  6:55 PM  Page 773
+--- Page 17 ---
+taken along C in the sense of increasing s is called the circulation of the fluid along C,
+a name that will be motivated as we proceed in this proof. Dividing the circulation by the
+length of C, we obtain the mean velocity1of the flow along the curve C. Now
+(Fig. 417).
+Hence is the dot product (Sec. 9.2) of Vand the tangent vector of C (Sec. 17.1);
+thus in (6),
+The circulation (6) along C now becomes
+(7)
+As the next idea, let C be a closed curve satisfying the assumption as in Green’s theorem
+(Sec. 10.4), and let Cbe the boundary of a simply connected domain D. Suppose further
+that Vhas continuous partial derivatives in a domain containing Dand C. Then we can
+use Green’s theorem to represent the circulation around C by a double integral,
+(8)
+The integrand of this double integral is called the vorticity of the flow. The vorticity
+divided by 2 is called the rotation
+(9)
+We assume the flow to be irrotational, that is, throughout the flow; thus,
+(10)
+To understand the physical meaning of vorticity and rotation, take for Cin (8) a circle.
+Let rbe the radius of C. Then the circulation divided by the length of Cis the mean 2pr0V2
+0x/H110020V1
+0y/H110050.v(x, y) /H110130v(x, y) /H110051
+2  a0V2
+0x/H110020V1
+0yb ./H20911
+C (V1 dx/H11001V2 dy)/H11005/H20910
+D /H20910a0V2
+0x/H110020V1
+0y b dx dy./H20910
+C Vt ds/H11005/H20910
+C (V1 dx/H11001V2 dy).Vt ds/H11005aV1  dx
+ds/H11001V2  dy
+dsb ds/H11005V1  dx/H11001V2  dy.dz>ds VtVt/H11005ƒVƒ cos a774 CHAP. 18 Complex Analysis and Potential Theory
+1Definitions: mean value of fon the interval 
+mean value of fon C
+mean value of fon D (A/H11005area of D).1
+A /H20910
+D /H20910 f (x, y) dx dy /H11005(L/H11005length of C  ),1
+L  /H20910
+C  f (s) ds/H11005a/H11017x/H11017b,1
+b/H11002a /H20910b
+a f (x) dx/H11005c18.qxd  11/2/10  6:55 PM  Page 774
+--- Page 18 ---
+velocity of the fluid along C. Hence by dividing this by rwe obtain the mean angular
+velocity of the fluid about the center of the circle:
+If we now let the limit of is the value of at the center of C. Hence is
+the limiting angular velocity of a circular element of the fluid as the circle shrinks to the
+point (x, y). Roughly speaking, if a spherical element of the fluid were suddenly solidified
+and the surrounding fluid simultaneously annihilated, the element would rotate with theangular velocity
+(b)Second Assumption: Incompressible. Our second assumption is that the fluid is
+incompressible. (Fluids include liquids, which are incompressible, and gases, such as air,which are compressible.) Then
+(11)in every region that is free of sources or sinks, that is, points at which fluid is produced
+or disappears, respectively. The expression in (11) is called the divergence of Vand is
+denoted by div V. (See also (7) in Sec. 9.8.)
+(c)Complex Velocity Potential. If the domain D of the flow is simply connected
+(Sec. 14.2) and the flow is irrotational, then (10) implies that the line integral (7) is
+independent of path in D(by Theorem 3 in Sec. 10.2, where 
+and zis the third coordinate in space and has nothing to do with our present z). Hence if
+we integrate from a fixed point (a, b) in D to a variable point (x, y) in D, the integral
+becomes a function of the point ( x, y), say, 
+(12)
+We claim that the flow has a velocity potential which is given by (12). To prove
+this, all we have to do is to show that (4) holds. Now since the integral (7) isindependent of path, is exact (Sec. 10.2), namely, the differential of 
+that is,
+From this we see that and which gives (4).
+That is harmonic follows at once by substituting (4) into (11), which gives the first
+Laplace equation in (5).
+We finally take a harmonic conjugate of Then the other equation in (5) holds.
+Also, since the second partial derivatives of and are continuous, we see that the
+complex function
+F(z)/H11005£(x, y)/H11001i°(x, y)° ££. °£V
+2/H110050£>0y, V1/H110050£>0xV1 dx/H11001V2 dy/H110050£
+0x dx/H110010£
+0y dy.£, V1 dx/H11001V2 dy£,£(x, y)/H11005/H20910(x,y)
+(a,b) (V1 dx/H11001V2 dy).£(x, y):F1/H11005V1, F2/H11005V2, F3/H110050,0V1
+0x/H110010V2
+0y/H110050v.v(x, y) v v0 r:0,v0/H110051
+2pr2  /H20910
+D /H20910 a0V2
+0x/H110020V1
+0yb dx dy /H110051
+pr2 /H20910
+D /H20910 v(x, y) dx dy.v0SEC. 18.4 Fluid Flow 775c18.qxd  11/2/10  6:55 PM  Page 775
+--- Page 19 ---
+is analytic in D. Since the curves are perpendicular to the equipotential
+curves (except where we conclude that are
+the streamlines. Hence is the stream function and is the complex potential of the
+flow. This completes the proof of Theorem 1 as well as our discussion of the importantrole of complex analysis in compressible fluid flow. /H17039F(z) °°(x, y)/H11005const F
+ r(z)/H110050), £(x, y)/H11005const°(x, y)/H11005const776 CHAP. 18 Complex Analysis and Potential Theory
+1. Differentiability. Under what condition on the velocity
+vector V in (1) will in (2) be analytic?
+2. Corner flow. Along what curves will the speed in
+Example 1 be constant? Is this obvious from Fig. 415?
+3. Cylinder. Guess from physics and from Fig. 416 where
+on the y -axis the speed is maximum. Then calculate.
+4. Cylinder. Calculate the speed along the cylinder wall
+in Fig. 416, also confirming the answer to Prob. 3.
+5. Irrotational flow. Show that the flow in Example 2 is
+irrotational.
+6. Extension of Example 1. Sketch or graph and
+interpret the flow in Example 1 on the whole upper
+half-plane.
+7. Parallel flow. Sketch and interpret the flow with
+complex potential 
+8. Parallel flow. What is the complex potential of an
+upward parallel flow of speed in the directionof ? Sketch the flow.
+9. Corner. What would be suitable in Example 1 if
+the angle of the corner were instead of ?
+10. Corner. Show that also models a flow
+around a corner. Sketch streamlines and equipotentiallines. Find V.
+11.What flow do you obtain from Kpositive
+real?
+12. Conformal mapping. Obtain the flow in Example 1
+from that in Prob. 11 by a suitable conformal mapping.
+13. - Sector. What would be suitable in Example 1
+if the angle at the corner were ?
+14.Sketch or graph streamlines and equipotential lines of Find V. Find all points at which V is
+horizontal.
+15.Change in Example 2 slightly to obtain a flowaround a cylinder of radius that gives the flow inExample 2 if 
+16. Cylinder. What happens in Example 2 if you replace
+z by ? Sketch and interpret the resulting flow in the
+first quadrant.
+17. Elliptic cylinder. Show that gives
+confocal ellipses as streamlines, with foci at z /H11005/H11006 1,F(z)/H11005arccos zz
+2r0:1.r0F(z)F(z)/H11005iz3.p>3F(z) 60/H11543F(z)/H11005/H11002 iKz,F(z)/H11005iz2p>2 p>4F(z)y/H11005xK/H110220F(z)/H11005z.F(z)and that the flow circulates around an elliptic cylinderor a plate (the segment from to 1 in Fig. 418). /H110021PROBLEM SET 18.4
+Fig. 418. Flow around a plate in Prob. 17.
+18. Aperture. Show that gives confocal
+hyperbolas as streamlines, with foci at and theflow may be interpreted as a flow through an aperture(Fig. 419).z/H11005/H11006 1,F(z)/H11005arccosh z
+19. Potential Show that the streamlines of
+and circles through the origin with centers
+on the y-axis.
+20. TEAM PROJECT. Role of the Natural Logarithm
+in Modeling Flows. (a) Basic flows: Source and sink.Show that ln z with constant positive
+real cgives a flow directed radially outward (Fig. 420),
+so that F models a point source at (that is, a
+source line in space) at which fluid is
+produced. cis called the strength or discharge of the
+source. If c is negative real, show that the flow is
+directed radially inward, so that F models a sink at
+a point at which fluid disappears. Note that
+is the singular point of F(z). z/H110050z/H110050,x/H110050, y/H110050z/H110050F(z)/H11005(c>2
+p)F(z)/H110051>zF(z)/H110051>z.–1 1
+Fig. 419. Flow through an aperture in Prob. 18.–1 1c18.qxd  11/2/10  6:55 PM  Page 776
+--- Page 20 ---
+18.5 Poisson’s Integral Formula for Potentials
+So far in this chapter we have seen powerful methods based on conformal mappings and
+complex potentials. They were used for modeling and solving two-dimensional potentialproblems and demonstrated the importance of complex analysis.
+Now we introduce a further method that results from complex integration. It will yield
+the very important Poisson integral formula (5) for potentials in a standard domainSEC. 18.5 Poisson’s Integral Formula for Potentials 777
+if they are at as K increases they move up
+on the unit circle until they unite at see
+Fig. 422), and if they lie on the imaginary axis(one lies in the field of flow and the other one lies insidethe cylinder and has no physical meaning).K/H110224
+pz/H11005i (K/H110054p,/H110061; K/H110050z/H11005iK
+4p/H11006B/H11002K2
+16p2/H110011;
+(d) Source and sink combined. Find the complex
+potentials of a flow with a source of strength 1 at and of a flow with a sink of strength 1 at Addboth and sketch or graph the streamlines. Show that forsmall these lines look similar to those in Prob. 19.
+(e) Flow with circulation around a cylinder. Add
+the potential in (b) to that in Example 2. Show that this
+gives a flow for which the cylinder wall is astreamline. Find the speed and show that the stagnationpoints areƒzƒ/H110051ƒaƒz/H11005a.z/H11005/H11002 a(b) Basic flows: Vortex. Show that 
+ln zwith positive real K gives a flow circulating coun-
+terclockwise around (Fig. 421). is called avortex. Note that each time we travel around the vortex,the potential increases by K .
+(c) Addition of flows. Show that addition of the
+velocity vectors of two flows gives a flow whosecomplex potential is obtained by adding the complexpotentials of those flows.z/H110050 z/H110050F(z)/H11005/H11002 (Ki>2
+p)Fig. 420. Point sourcey
+x
+Fig. 422. Flow around a cylinder without circulation
+(K 0) and with circulation/H11549K = 0
+K = 2.8πK = 4π
+K = 6πFig. 421. Vortex flowy
+xc18.qxd  11/2/10  6:55 PM  Page 777
+--- Page 21 ---
+(a circular disk). In addition, from (5), we will derive a useful series (7) for these potentials.
+This allows us to solve problems for disks and then map solutions conformally onto otherdomains.
+Derivation of Poisson’s Integral Formula
+Poisson’s formula will follow from Cauchy’s integral formula (Sec. 14.3)
+(1)
+Here Cis the circle (counterclockwise, and we assume that 
+is analytic in a domain containing Cand its full interior. Since 
+we obtain from (1)
+(2)
+Now comes a little trick. If instead of z inside Cwe take a Z outside C, the integrals (1)
+and (2) are zero by Cauchy’s integral theorem (Sec. 14.2). We choose 
+which is outside C because From (2) we thus have
+and by straightforward simplification of the last expression on the right,
+We subtract this from (2) and use the following formula that you can verify by direct
+calculation cancels):
+(3)
+We then have
+(4)
+From the polar representations of z and we see that the quotient in the integrand is real
+and equal to
+R2/H11002r2
+(Reia/H11002reiu)(Re/H11546ia/H11002re/H11546iu)/H11005R2/H11002r2
+R2/H110022Rr cos (u /H11002a)/H11001r2 .z*F(z)/H110051
+2p /H209102p
+0F(z*) z*z*/H11002zz
+(z*/H11002z)(  z*/H11002z ) da.z*
+z*/H11002z/H11002z
+z/H11002z*/H11005z*z*/H11002zz
+(z*/H11002z)(z*/H11002z) .(zz*0/H110051
+2p /H209102p
+0 F(z*)   z
+z/H11002z*  da.0/H110051
+2p /H209102p
+0 F(z*) z*
+z*/H11002Z da/H110051
+2p /H209102p
+0F(z*) z*
+z*/H11002z*z*
+z  daƒZƒ/H11005R2>ƒzƒ/H11005R2>r/H11022R.Z/H11005z*z*>z/H11005R2>z,(z*/H11005Reia, z/H11005reiu). F(z)/H110051
+2p /H209102p
+0 F(z*)   z*
+z*/H11002z  dadz*/H11005iReia da/H11005iz* da,F(z*) 0/H11017a/H110172p), z*/H11005ReiaF(z)/H110051
+2pi  /H20911
+C  F(z*)
+z*/H11002z dz*.778 CHAP. 18 Complex Analysis and Potential Theoryc18.qxd  11/2/10  6:55 PM  Page 778
+--- Page 22 ---
+We now write and take the real part on both sides of (4). Then
+we obtain Poisson’s integral formula2
+(5)
+This formula represents the harmonic function in the disk in terms of its values
+on the boundary (the circle) 
+Formula (5) is still valid if the boundary function is merely piecewise
+continuous (as is practically often the case; see Figs. 405 and 406 in Sec. 18.2 for an
+example). Then (5) gives a function harmonic in the open disk, and on the circle equal to the given boundary function, except at points where the latter is discontinuous.A proof can be found in Ref. [D1] in App. 1.
+Series for Potentials in Disks
+From (5) we may obtain an important series development of in terms of simple harmonicfunctions. We remember that the quotient in the integrand of (5) was derived from (3).We claim that the right side of (3) is the real part of
+Indeed, the last denominator is real and so is in the numerator, whereas
+in the numerator is pure imaginary. This verifies our claim.
+Now by the use of the geometric series we obtain (develop the denominator)
+(6)
+Since and we have
+On the right, Hence from (6) we obtain
+ /H110051/H110012a
+/H11557
+n/H110051 ar
+R bn
+ (cos nu cos na /H11001sin nu sin na). Re z*/H11001z
+z*/H11002z /H110051/H110012a/H11557
+n/H110051 Re az
+z*bn
+(6*)cos (nu /H11002na)/H11005cos nu cos na /H11001sin nu sin na.Re caz
+z*bn
+d/H11005Re crn
+Rn einue/H11546inad/H11005ar
+R bn 
+cos (nu /H11002na).z*/H11005Reia, z/H11005reiuz*/H11001z
+z*/H11002z/H110051/H11001(z>z*)
+1/H11002(z>z*)/H11005a1/H11001z
+z*b a/H11557
+n/H110050 az
+z*bn
+/H110051/H110012 a/H11557
+n/H110051 az
+z*bn
+./H11002z*z/H11001zz*/H110052i Im (zz *)z*z*/H11002zzz*/H11001z
+z*/H11002z/H11005(z*/H11001z)(z*/H11002z)
+(z*/H11002z)(z*/H11002z)/H11005z*z*/H11002zz/H11002z*z/H11001zz*
+ƒz*/H11002zƒ2 .£ƒzƒ/H11005R£(R, a)ƒzƒ/H11005R. £(R, a)ƒzƒ/H11017R ££(r, u)/H110051
+2p /H209102p
+0£(R, a) R2/H11002r2
+R2/H110022Rr cos ( u/H11002a)/H11001r2 da.F(z)/H11005£(r, u)/H11001i°(r, u)SEC. 18.5 Poisson’s Integral Formula for Potentials 779
+2SIMÉON DENIS POISSON (1781–1840), French mathematician and physicist, professor in Paris from 1809.
+His work includes potential theory, partial differential equations (Poisson equation, Sec. 12.1), and probability
+(Sec. 24.7).c18.qxd  11/2/10  6:55 PM  Page 779
+--- Page 23 ---
+This expression is equal to the quotient in (5), as we have mentioned before, and
+by inserting it into (5) and integrating term by term with respect to from 0 to we obtain
+(7)
+where the coefficients are [the 2 in cancels the 2 in in (5)]
+(8)
+the Fourier coefficients of see Sec. 11.1. Now, for the series (7) becomes
+the Fourier series of Hence the representation (7) will be valid whenever thegiven on the boundary can be represented by a Fourier series.
+EXAMPLE 1 Dirichlet Problem for the Unit Disk
+Find the electrostatic potential in the unit disk having the boundary values
+(Fig. 423).
+Solution. Since is even, and from (8) we obtain and
+Hence, if nis odd, if and the potential is
+Figure 424 shows the unit disk and some of the equipotential lines (curves /H17039 £/H11005const).£(r, u)/H110051
+2/H110024
+p2  cr cos u /H11001r3
+32  cos 3u/H11001r5
+52  cos 5u/H11001Ád .n/H110052, 4, Á, an/H110050 an/H11005/H11002 4>(n2p2)an/H110051
+p  c/H11002/H209100
+/H11546p a
+p  cos na da /H11001/H20910p
+0 a
+p  cos na da d/H110052
+n2p2 (cos n p/H110021).a0/H110051
+2 bn/H110050, £(1, a)£(1, a)/H11005b/H11002a>p  if /H11002p/H11021a/H110210
+a>p  if 0/H11021a/H11021pr/H110211 £(r, u)£(R, a)£(R, a).r/H11005R, £(R, a);bn/H110051
+p /H209102p
+0£(R, a) sin na da,n/H110051, 2, Á,a0/H110051
+2p /H209102p
+0£(R, a) da,    an/H110051
+p  /H209102p
+0£(R, a) cos na da,1>(2p) (6*)£(r, u) /H11005a0/H11001a/H11557
+n/H110051 ar
+R bn 
+(an cos nu/H11001bn sin nu)2p a780 CHAP. 18 Complex Analysis and Potential Theory
+1
+π 0 αΦ(1, α)
+–π
+Fig. 423. Boundary values in Example 10.10.20.30.40.6
+0.7
+0.8Φ = 0.9
+xy
+Fig. 424. Potential in Example 1c18.qxd  11/2/10  6:55 PM  Page 780
+--- Page 24 ---
+SEC. 18.6 General Properties of Harmonic Functions 781
+1.Give the details of the derivation of the series (7) from
+the Poisson formula (5).
+2.Verify (3).
+3.Show that each term of (7) is a harmonic function inthe disk 
+4.Why does the series in Example 1 reduce to a cosine
+series?
+5–18
+HARMONIC FUNCTIONS IN A DISK
+Using (7), find the potential in the unit disk having the given boundary values Using the sumof the first few terms of the series, compute some valuesof and sketch a figure of the equipotential lines.
+5.
+6.7.8.9.
+10.11.12. and 0 otherwise
+13. and 0 otherwise
+14.15. and 0 otherwise £(1, u)/H110051
+ if /H11002 1
+2 p/H11021u/H110211
+2 p£(1, u)/H11005ƒuƒ>p if /H11002p/H11021u/H11021p£(1, u)/H11005u if /H110021
+2 p/H11021u/H110211
+2 p£(1, u)/H11005k if 0/H11021u/H11021p£(1, u)/H11005u>p if /H11002p/H11021u/H11021p£(1, u)/H1100516 cos3 2u£(1, u)/H110058 sin4 u£(1, u)/H110054 sin3 u£(1, u)/H11005a cos2 4u£(1, u)/H110055/H11002cos 2u£(1, u)/H110053
+2  sin 3u££(1, u).r/H110211 £(r, u)r/H11021R.16.
+17.
+18.19. CAS EXPERIMENT. Series (7). Write a program for
+series developments (7). Experiment on accuracy by
+computing values from partial sums and comparing themwith values that you obtain from your CAS graph. Dothis (a)for Example 1 and Fig. 424, (b)for in Prob. 11
+(which is discontinuous on the boundary!), (c)for a 
+of your choice with continuous boundary values, and(d)for with discontinuous boundary values.
+20. TEAM PROJECT. Potential in a Disk. (a) Mean
+value property. Show that the value of a harmonic
+function at the center of a circle Cequals the mean
+of the value of on C(see Sec. 18.4, footnote 1, for
+definitions of mean values).
+(b) Separation of variables. Show that the terms of
+(7) appear as solutions in separating the Laplace
+equation in polar coordinates.
+(c) Harmonic conjugate. Find a series for a harmonic
+conjugate of from (7). Hint. Use the Cauchy–
+Riemann equations.(d) Power series. Find a series for F(z) /H11005£/H11001i°.£ °££££££(1, u)/H11005b 0
+ if /H11002p/H11021u/H110210
+u if  0/H11021u/H11021p£(1, u)/H11005u2>p2 if /H11002p/H11021u/H11021p£(1, u)/H11005b u/H11001p if /H11002p/H11021u/H110210
+u/H11002p if 0/H11021u/H11021pPROBLEM SET 18.5
+18.6 General Properties of Harmonic Functions.
+Uniqueness Theorem for the Dirichlet Problem
+Recall from Sec. 10.8 that harmonic functions are solutions to Laplace’s equation and
+their second-order partial derivatives are continuous. In this section we explore howgeneral properties of harmonic functions often can be obtained from properties of analyticfunctions. This can frequently be done in a simple fashion. Specifically, important meanvalue properties of harmonic functions follow readily from those of analytic functions.The details are as follows.
+THEOREM 1 Mean Value Property of Analytic Functions
+Let be analytic in a simply connected domain D. Then the value of at a point
+in D is equal to the mean value of on any circle in D with center at z 0. F(z) z0F(z) F(z)c18.qxd  11/19/10  8:22 PM  Page 781
+--- Page 25 ---
+PROOF In Cauchy’s integral formula (Sec. 14.3)
+(1)
+we choose for C the circle in D. Then and
+(1) becomes
+(2)
+The right side is the mean value of Fon the circle ( value of the integral divided by the
+length of the interval of integration). This proves the theorem.
+For harmonic functions, Theorem 1 implies
+THEOREM 2 Two Mean Value Properties of Harmonic Functions
+Let be harmonic in a simply connected domain D. Then the value of
+at a point in D is equal to the mean value of on any circle in D withcenter at This value is also equal to the mean value of on anycircular disk in D with center [See footnote 1 in Sec. 18.4.]
+PROOF The first part of the theorem follows from (2) by taking the real parts on both sides,
+The second part of the theorem follows by integrating this formula over rfrom 0 to (the
+radius of the disk) and dividing by 
+(3)
+The right side is the indicated mean value (integral divided by the area of the region of
+integration).
+Returning to analytic functions, we state and prove another famous consequence of Cauchy’s
+integral formula. The proof is indirect and shows quite a nice idea of applying the ML-
+inequality. (A bounded region is a region that lies entirely in some circle about the origin.)
+THEOREM 3 Maximum Modulus Theorem for Analytic Functions
+Let be analytic and nonconstant in a domain containing a bounded region Rand its boundary. Then the absolute value cannot have a maximum at aninterior point of R. Consequently, the maximum of is taken on the boundaryof R. If in R, the same is true with respect to the minimum of ƒF(z) ƒ. F(z)/HS110050ƒF(z) ƒƒF(z) ƒF(z)/H17039£(x
+0, y0)/H110051
+pr02
+  /H20910r0
+0/H209102p
+0 £(x 0/H11001r cos a, y 0/H11001r sin a)r da dr.r02>2,r0£(x 0, y0)/H11005Re F(x 0/H11001iy0)/H110051
+2p /H209102p
+0£(x0/H11001r cos a, y 0/H11001r sin a) da.(x0, y0).£(x, y) (x0, y0).£(x, y) (x0, y0)£(x, y) £(x, y)/H17039 2p/H11005F(z0)/H110051
+2p  /H209102p
+0 F(z0/H11001reia) da.z/H11002z0/H11005reia, dz/H11005ireia da, z/H11005z0/H11001reiaF(z0)/H110051
+2pi  /H20911
+C   F(z)
+z/H11002z0 dz782 CHAP. 18 Complex Analysis and Potential Theoryc18.qxd  11/2/10  6:55 PM  Page 782
+--- Page 26 ---
+PROOF We assume that has a maximum at an interior point of Rand show that this
+leads to a contradiction. Let be this maximum. Since is not constant,
+is not constant, as follows from Example 3 in Sec. 13.4. Consequently, we can find
+a circle C of radius r with center at such that the interior of C is in R and is
+smaller than M at some point P of C. Since is continuous, it will be smaller than
+Mon an arc of C that contains P (see Fig. 425), say,
+for all z on 
+Let have the length Then the complementary arc of C has the length 
+We now apply the ML-inequality (Sec. 14.1) to (1) and note that We then
+obtain (using straightforward calculation in the second line of the formula)
+that is, which is impossible. Hence our assumption is false and the first statement
+is proved.
+Next we prove the second statement. If in R, then is analytic in R.
+From the statement already proved it follows that the maximum of lies on theboundary of R. But this maximum corresponds to the minimum of This completes
+the proof. /H17039ƒF(z) ƒ.1>ƒF(z) ƒ1>F(z) F(z)/HS110050M/H11021M, /H110171
+2p aM/H11002k
+r b L1/H110011
+2p aM
+r b (2pr/H11002L1)/H11005M/H11002kL1
+2pr /H11021M M/H11005ƒF(z0)ƒ/H110171
+2p `/H20910
+C1 F(z)
+z/H11002z0 dz `/H110011
+2p `/H20910
+C2 F(z)
+z/H11002z0 dz `ƒz/H11002z0ƒ/H11005r.2pr/H11002L1. C2 L1. C1C1. ƒF(z) ƒ/H11017M/H11002k (k/H110220)C1ƒF(z) ƒƒF(z) ƒ z0ƒF(z) ƒF(z) ƒF(z0)ƒ/H11005Mz0 ƒF(z) ƒSEC. 18.6 General Properties of Harmonic Functions 783
+Fig. 425. Proof of Theorem 3C1z0PC2
+This theorem has several fundamental consequences for harmonic functions, as follows.
+THEOREM 4 Harmonic Functions
+Let be harmonic in a domain containing a simply connected bounded region
+R and its boundary curve C. Then:
+(I)(Maximum principle) If is not constant, it has neither a maximum
+nor a minimum in R. Consequently, the maximum and the minimum are taken onthe boundary of R.
+(II) If is constant on C, then is a constant.
+(III) If is harmonic in R and on C and if on C, then
+everywhere in R. h(x, y)/H11005£(x, y)h(x, y)/H11005£(x, y) h(x, y)£(x, y) £(x, y)£(x, y)£(x, y)c18.qxd  11/2/10  6:55 PM  Page 783
+--- Page 27 ---
+PROOF (I)Let be a conjugate harmonic function of in R. Then the complex
+function is analytic in R, and so is Its absolute
+value is
+From Theorem 3 it follows that cannot have a maximum at an interior point of R.
+Since is a monotone increasing function of the real variable the statement about
+the maximum of follows. From this, the statement about the minimum follows byreplacing by 
+(II) By (I) the function takes its maximum and its minimum on C. Thus, if
+is constant on C, its minimum must equal its maximum, so that must be
+a constant.
+(III) If hand are harmonic in R and on C, then is also harmonic in Rand
+on C, and by assumption, everywhere on C. By (II) we thus have 
+everywhere in R, and (III) is proved.
+The last statement of Theorem 4 is very important. It means that a harmonic function is
+uniquely determined in R by its values on the boundary of R. Usually, is required
+to be harmonic in R and continuous on the boundary of R, that is,
+where is on the boundary and is in R.
+Under these assumptions the maximum principle (I) is still applicable. The problem of
+determining when the boundary values are given is called the Dirichlet problem
+for the Laplace equation in two variables, as we know. From (III) we thus have, as ahighlight of our discussion,
+THEOREM 5 Uniqueness Theorem for the Dirichlet Problem
+If for a given region and given boundary values the Dirichlet problem for the Laplaceequation in two variables has a solution, the solution is unique.£(x, y)(x, y) (x
+0, y0) lim
+x:x0y:y0 £(x, y) /H11005£(x 0, y0),£(x, y)/H17039h/H11002£/H110050 h/H11002£/H110050h/H11002£ ££(x, y) £(x, y)£(x, y)/H11002£. £££, e£ƒG (z)ƒƒG (z)ƒ/H11005eRe F(z)/H11005e£(x, y).G (z)/H11005eF(z). F(z)/H11005£(x, y) /H11001i°(x, y)£(x, y) °(x, y)784 CHAP. 18 Complex Analysis and Potential Theory
+PROBLEMS RELATED TO THEOREMS 1 AND 2
+1–4 Verify Theorem 1 for the given and
+circle of radius 1.
+1.
+2.3.4.5.Integrate around the unit circle. Does the result
+contradict Theorem 1?
+6.Derive the first statement in Theorem 2 from Poisson’sintegral formula.ƒzƒ(z/H110021)
+/H115462, z0/H11005/H11002 1(3z/H110022)2, z0/H1100542z4, z0/H11005/H11002 2(z/H110011)3, z0/H110055
+2 F(z), z 0,7–9 Verify (3) in Theorem 2 for the given 
+and circle of radius 1.
+7.
+8.9.
+10.Verify the calculations involving the inequalities in the
+proof of Theorem 3.
+11. CAS EXPERIMENT. Graphing Potentials. Graph
+the potentials in Probs. 7 and 9 and for two otherfunctions of your choice as surfaces over a rectanglein the xy-plane. Find the locations of the maxima andminima by inspecting these graphs.x/H11001y/H11001xy,
+ (1, 1)x2/H11002y2, (3, 8)(x/H110021)(  y/H110021), (2, /H110022)(x0, y0),£(x, y),PROBLEM SET 18.6c18.qxd  11/2/10  6:55 PM  Page 784
+--- Page 28 ---
+12. TEAM PROJECT. Maximum Modulus of Analytic
+Functions. (a) Verify Theorem 3 for (i) and
+the rectangle (ii) 
+and the unit disk, and (iii) and any boundeddomain.
+(b) is not zero in the disk and
+has a minimum at an interior point. Does this contradict
+Theorem 3?
+(c) (xreal) has a maximum 1 at 
+Why can this not be a maximum of in
+a domain containing ?
+(d)If is analytic and not constant in the closed
+unit disk D: and on the unit
+circle, show that must have a zero in D.
+13–17
+MAXIMUM MODULUS
+Find the location and size of the maximum of in the
+unit disk 
+13.F(z)/H11005cos zƒzƒ/H110171.ƒF(z) ƒF(z)ƒF(z) ƒ/H11005c/H11005const ƒzƒ/H110171F(z)z/H11005p>2ƒF(z) ƒ/H11005ƒsin z ƒp>2. F(x)/H11005sin xƒzƒ/H110172 F(z)/H110051/H11001ƒzƒF(z)/H11005ezF(z)/H11005sin z 1/H11017x/H110175, 2/H11017y/H110174,F(z)/H11005z2Chapter 18 Review Questions and Problems 785
+1.Why can potential problems be modeled and solved by
+methods of complex analysis? For what dimensions?
+2.What parts of complex analysis are mainly of interestto the engineer and physicist?
+3.What is a harmonic function? A harmonic conjugate?
+4.What areas of physics did we consider? Could youthink of others?
+5.Give some examples of potential problems consideredin this chapter. Make a list of corresponding functions.
+6.What does the complex potential give physically?
+7.Write a short essay on the various assumptions madein fluid flow in this chapter.
+8.Explain the use of conformal mapping in potentialtheory.
+9.State the maximum modulus theorem and mean valuetheorems for harmonic functions.
+10.State Poisson’s integral formula. Derive it from Cauchy’sformula.
+11.Find the potential and the complex potential betweenthe plates and kept at 10 V and 110 V,respectively.
+12.Find the potential and complex potential between thecoaxial cylinders of axis 0 (hence the vertical axisin space) and radii kept at
+potential and respectively.
+13.Do the task in Prob. 12 if and the outer
+cylinder is grounded, U
+2/H110050.U1/H11005220 VU2/H110052 kV, U1/H11005200 Vr1/H110051 cm, r 2/H1100510 cm,y/H11005x/H1100110 y/H11005x14.If plates at and are kept at potentials
+is the potential at 
+larger or smaller than the potential at in Prob. 12?No calculation. Give reason.
+15.Make a list of important potential functions, withapplications, from memory.
+16.Find the equipotential lines of 
+17.Find the potential in the first quadrant of the xy-plane if
+the x-axis has potential 2 kV and the y-axis is grounded.
+18.Find the potential in the angular region between theplates kept at 800 V and kept at 600 V.
+19.Find the temperature T in the upper half-plane if, on
+the x-axis, for and for 
+20.Interpret Prob. 18 as an electrostatic problem. What arethe lines of electric force?
+21.Find the streamlines and the velocity for the complexpotential Describe the flow.
+22.Describe the streamlines for 
+23.Show that the isotherms of are
+hyperbolas.
+24.State the theorem on the behavior of harmonicfunctions under conformal mapping. Verify it for
+and 
+25.Find Vin Prob. 22 and verify that it gives vectors
+tangent to the streamlines.w/H11005u/H11001iv/H11005z
+2. £*/H11005eu sin vF(z)/H11005/H11002 iz2/H11001zF(z)/H110051
+2 z2/H11001z.F(z)/H11005(1/H11001i)z.x/H110211. /H1100230°C x/H110221 T/H1100530°CArg z/H11005p>3 Arg z/H11005p>6F(z)/H11005i Ln z.r/H110055x/H110055 U1/H11005200 V, U 2/H110052 kV,x2/H1100510 x1/H110051CHAPTER 18 REVIEW QUESTIONS AND PROBLEMS14.
+15.16. (a, bcomplex, 
+17.18.Verify the maximum principle for 
+and the rectangle 
+19. Harmonic conjugate. Do and a harmonic conjugate
+in a region R have their maximum at the same point
+of R?
+20. Conformal mapping. Find the location of the
+maximum of in 
+where Find the region R that is mapped
+onto by Find the potential in R
+resulting from and the location of themaximum. Is the image of ? If so, isthis just by chance?(x
+1, y1) (u1, v1)(x1, y1) £*w/H11005f (z)/H11005z2. R*w/H11005u/H11001iv.R*: ƒwƒ/H110171, v/H110840, £*/H11005eu cos v(u1, v1)°£a/H11017x/H11017b, 0/H11017y/H110172p.£(x, y)/H11005ex sin yF(z)/H110052z2/H110022a/HS110050) F(z)/H11005az/H11001bF(z)/H11005sinh 2zF(z)/H11005exp z2c18.qxd  11/2/10  6:55 PM  Page 785
+--- Page 29 ---
+786 CHAP. 18 Complex Analysis and Potential Theory
+Potential theory is the theory of solutions of Laplace’s equation
+(1)
+Solutions whose second partial derivatives are continuous are called harmonic
+functions. Equation (1) is the most important PDE in physics, where it is of interest
+in two and three dimensions. It appears in electrostatics (Sec. 18.1), steady-stateheat problems (Sec. 18.3), fluid flow (Sec. 18.4), gravity, etc. Whereas the three-dimensional case requires other methods (see Chap. 12), two-dimensional potentialtheory can be handled by complex analysis, since the real and imaginary parts ofan analytic function are harmonic (Sec. 13.4). They remain harmonic underconformal mapping (Sec. 18.2), so that conformal mapping becomes a powerful
+tool in solving boundary value problems for (1), as is illustrated in this chapter.With a real potential in (1) we can associate a complex potential
+(2) (Sec. 18.1).
+Then both families of curves and have a physical meaning.
+In electrostatics, they are equipotential lines and lines of electrical force (Sec. 18.1).In heat problems, they are isotherms (curves of constant temperature) and lines ofheat flow (Sec. 18.3). In fluid flow, they are equipotential lines of the velocitypotential and streamlines (Sec. 18.4).
+For the disk, the solution of the Dirichlet problem is given by the Poisson formula
+(Sec. 18.5) or by a series that on the boundary circle becomes the Fourier series ofthe given boundary values (Sec. 18.5).
+Harmonic functions, like analytic functions, have a number of general properties;
+particularly important are the mean value property and the maximum modulus
+property (Sec. 18.6), which implies the uniqueness of the solution of the Dirichlet
+problem (Theorem 5 in Sec. 18.6).°/H11005const £/H11005constF(z)/H11005£/H11001i°£/H11612
+2£/H110050.SUMMARY OF CHAPTER 18
+Complex Analysis and Potential Theoryc18.qxd  11/2/10  6:55 PM  Page 786

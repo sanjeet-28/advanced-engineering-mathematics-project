@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; CHAPTER 18: Complex Analysis and Potential Theory – Advanced Engineering Mathematics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch18.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Advanced Engineering Mathematics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Advanced Engineering Mathematics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Contents</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">CHAPTER 01: First-Order ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">CHAPTER 02: Second-Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">CHAPTER 03: Higher Order Linear ODEs</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">CHAPTER 07: Linear Algebra: Matrices, Vectors, Determinants. Linear Systems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">CHAPTER 08: Linear Algebra: Matrix Eigenvalue Problems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-electrostatic-fields" id="toc-sec-electrostatic-fields" class="nav-link active" data-scroll-target="#sec-electrostatic-fields"><span class="header-section-number">12.1</span> 18.1 Electrostatic Fields</a>
+  <ul class="collapse">
+  <li><a href="#example-1-potential-between-parallel-plates" id="toc-example-1-potential-between-parallel-plates" class="nav-link" data-scroll-target="#example-1-potential-between-parallel-plates"><span class="header-section-number">12.1.1</span> EXAMPLE 1 Potential Between Parallel Plates</a></li>
+  <li><a href="#example-2-potential-between-coaxial-cylinders" id="toc-example-2-potential-between-coaxial-cylinders" class="nav-link" data-scroll-target="#example-2-potential-between-coaxial-cylinders"><span class="header-section-number">12.1.2</span> EXAMPLE 2 Potential Between Coaxial Cylinders</a></li>
+  <li><a href="#example-3-potential-in-an-angular-region" id="toc-example-3-potential-in-an-angular-region" class="nav-link" data-scroll-target="#example-3-potential-in-an-angular-region"><span class="header-section-number">12.1.3</span> EXAMPLE 3 Potential in an Angular Region</a></li>
+  <li><a href="#complex-potential" id="toc-complex-potential" class="nav-link" data-scroll-target="#complex-potential"><span class="header-section-number">12.1.4</span> Complex Potential</a></li>
+  <li><a href="#example-4-complex-potential" id="toc-example-4-complex-potential" class="nav-link" data-scroll-target="#example-4-complex-potential"><span class="header-section-number">12.1.5</span> EXAMPLE 4 Complex Potential</a></li>
+  <li><a href="#example-5-complex-potential" id="toc-example-5-complex-potential" class="nav-link" data-scroll-target="#example-5-complex-potential"><span class="header-section-number">12.1.6</span> EXAMPLE 5 Complex Potential</a></li>
+  <li><a href="#example-6-complex-potential" id="toc-example-6-complex-potential" class="nav-link" data-scroll-target="#example-6-complex-potential"><span class="header-section-number">12.1.7</span> EXAMPLE 6 Complex Potential</a></li>
+  <li><a href="#superposition" id="toc-superposition" class="nav-link" data-scroll-target="#superposition"><span class="header-section-number">12.1.8</span> Superposition</a></li>
+  <li><a href="#example-7-potential-of-a-pair-of-source-lines-a-pair-of-charged-wires" id="toc-example-7-potential-of-a-pair-of-source-lines-a-pair-of-charged-wires" class="nav-link" data-scroll-target="#example-7-potential-of-a-pair-of-source-lines-a-pair-of-charged-wires"><span class="header-section-number">12.1.9</span> EXAMPLE 7 Potential of a Pair of Source Lines (a Pair of Charged Wires)</a></li>
+  <li><a href="#sec-ps18-1" id="toc-sec-ps18-1" class="nav-link" data-scroll-target="#sec-ps18-1"><span class="header-section-number">12.1.10</span> PROBLEM SET 18.1</a></li>
+  </ul></li>
+  <li><a href="#sec-conformal-modeling" id="toc-sec-conformal-modeling" class="nav-link" data-scroll-target="#sec-conformal-modeling"><span class="header-section-number">12.2</span> 18.2 Use of Conformal Mapping. Modeling</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-harmonic-functions-under-conformal-mapping" id="toc-theorem-1-harmonic-functions-under-conformal-mapping" class="nav-link" data-scroll-target="#theorem-1-harmonic-functions-under-conformal-mapping"><span class="header-section-number">12.2.1</span> THEOREM 1 Harmonic Functions Under Conformal Mapping</a></li>
+  <li><a href="#example-1-potential-between-noncoaxial-cylinders" id="toc-example-1-potential-between-noncoaxial-cylinders" class="nav-link" data-scroll-target="#example-1-potential-between-noncoaxial-cylinders"><span class="header-section-number">12.2.2</span> EXAMPLE 1 Potential Between Noncoaxial Cylinders</a></li>
+  <li><a href="#example-2-potential-between-two-semicircular-plates" id="toc-example-2-potential-between-two-semicircular-plates" class="nav-link" data-scroll-target="#example-2-potential-between-two-semicircular-plates"><span class="header-section-number">12.2.3</span> EXAMPLE 2 Potential Between Two Semicircular Plates</a></li>
+  <li><a href="#sec-ps18-2" id="toc-sec-ps18-2" class="nav-link" data-scroll-target="#sec-ps18-2"><span class="header-section-number">12.2.4</span> PROBLEM SET 18.2</a></li>
+  </ul></li>
+  <li><a href="#sec-heat-problems" id="toc-sec-heat-problems" class="nav-link" data-scroll-target="#sec-heat-problems"><span class="header-section-number">12.3</span> 18.3 Heat Problems</a>
+  <ul class="collapse">
+  <li><a href="#example-1-temperature-between-parallel-plates" id="toc-example-1-temperature-between-parallel-plates" class="nav-link" data-scroll-target="#example-1-temperature-between-parallel-plates"><span class="header-section-number">12.3.1</span> EXAMPLE 1 Temperature Between Parallel Plates</a></li>
+  <li><a href="#example-2-temperature-distribution-between-a-wire-and-a-cylinder" id="toc-example-2-temperature-distribution-between-a-wire-and-a-cylinder" class="nav-link" data-scroll-target="#example-2-temperature-distribution-between-a-wire-and-a-cylinder"><span class="header-section-number">12.3.2</span> EXAMPLE 2 Temperature Distribution Between a Wire and a Cylinder</a></li>
+  <li><a href="#example-3-a-mixed-boundary-value-problem" id="toc-example-3-a-mixed-boundary-value-problem" class="nav-link" data-scroll-target="#example-3-a-mixed-boundary-value-problem"><span class="header-section-number">12.3.3</span> EXAMPLE 3 A Mixed Boundary Value Problem</a></li>
+  <li><a href="#example-4-another-mixed-boundary-value-problem-in-heat-conduction" id="toc-example-4-another-mixed-boundary-value-problem-in-heat-conduction" class="nav-link" data-scroll-target="#example-4-another-mixed-boundary-value-problem-in-heat-conduction"><span class="header-section-number">12.3.4</span> EXAMPLE 4 Another Mixed Boundary Value Problem in Heat Conduction</a></li>
+  <li><a href="#sec-ps18-3" id="toc-sec-ps18-3" class="nav-link" data-scroll-target="#sec-ps18-3"><span class="header-section-number">12.3.5</span> PROBLEM SET 18.3</a></li>
+  </ul></li>
+  <li><a href="#sec-fluid-flow" id="toc-sec-fluid-flow" class="nav-link" data-scroll-target="#sec-fluid-flow"><span class="header-section-number">12.4</span> 18.4 Fluid Flow</a>
+  <ul class="collapse">
+  <li><a href="#example-1-flow-around-a-corner" id="toc-example-1-flow-around-a-corner" class="nav-link" data-scroll-target="#example-1-flow-around-a-corner"><span class="header-section-number">12.4.1</span> EXAMPLE 1 Flow Around a Corner</a></li>
+  <li><a href="#example-2-flow-around-a-cylinder" id="toc-example-2-flow-around-a-cylinder" class="nav-link" data-scroll-target="#example-2-flow-around-a-cylinder"><span class="header-section-number">12.4.2</span> EXAMPLE 2 Flow Around a Cylinder</a></li>
+  <li><a href="#assumptions-and-theory-underlying-25" id="toc-assumptions-and-theory-underlying-25" class="nav-link" data-scroll-target="#assumptions-and-theory-underlying-25"><span class="header-section-number">12.4.3</span> Assumptions and Theory Underlying (2)–(5)</a></li>
+  <li><a href="#theorem-1-complex-potential-of-a-flow" id="toc-theorem-1-complex-potential-of-a-flow" class="nav-link" data-scroll-target="#theorem-1-complex-potential-of-a-flow"><span class="header-section-number">12.4.4</span> THEOREM 1 Complex Potential of a Flow</a></li>
+  <li><a href="#sec-ps18-4" id="toc-sec-ps18-4" class="nav-link" data-scroll-target="#sec-ps18-4"><span class="header-section-number">12.4.5</span> PROBLEM SET 18.4</a></li>
+  </ul></li>
+  <li><a href="#sec-poisson-formula" id="toc-sec-poisson-formula" class="nav-link" data-scroll-target="#sec-poisson-formula"><span class="header-section-number">12.5</span> 18.5 Poisson’s Integral Formula for Potentials</a>
+  <ul class="collapse">
+  <li><a href="#derivation-of-poissons-integral-formula" id="toc-derivation-of-poissons-integral-formula" class="nav-link" data-scroll-target="#derivation-of-poissons-integral-formula"><span class="header-section-number">12.5.1</span> Derivation of Poisson’s Integral Formula</a></li>
+  <li><a href="#series-for-potentials-in-disks" id="toc-series-for-potentials-in-disks" class="nav-link" data-scroll-target="#series-for-potentials-in-disks"><span class="header-section-number">12.5.2</span> Series for Potentials in Disks</a></li>
+  <li><a href="#example-1-dirichlet-problem-for-the-unit-disk" id="toc-example-1-dirichlet-problem-for-the-unit-disk" class="nav-link" data-scroll-target="#example-1-dirichlet-problem-for-the-unit-disk"><span class="header-section-number">12.5.3</span> EXAMPLE 1 Dirichlet Problem for the Unit Disk</a></li>
+  <li><a href="#sec-ps18-5" id="toc-sec-ps18-5" class="nav-link" data-scroll-target="#sec-ps18-5"><span class="header-section-number">12.5.4</span> PROBLEM SET 18.5</a></li>
+  </ul></li>
+  <li><a href="#sec-harmonic-properties" id="toc-sec-harmonic-properties" class="nav-link" data-scroll-target="#sec-harmonic-properties"><span class="header-section-number">12.6</span> 18.6 General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem</a>
+  <ul class="collapse">
+  <li><a href="#theorem-1-mean-value-property-of-analytic-functions" id="toc-theorem-1-mean-value-property-of-analytic-functions" class="nav-link" data-scroll-target="#theorem-1-mean-value-property-of-analytic-functions"><span class="header-section-number">12.6.1</span> THEOREM 1 Mean Value Property of Analytic Functions</a></li>
+  <li><a href="#theorem-2-two-mean-value-properties-of-harmonic-functions" id="toc-theorem-2-two-mean-value-properties-of-harmonic-functions" class="nav-link" data-scroll-target="#theorem-2-two-mean-value-properties-of-harmonic-functions"><span class="header-section-number">12.6.2</span> THEOREM 2 Two Mean Value Properties of Harmonic Functions</a></li>
+  <li><a href="#theorem-3-maximum-modulus-theorem-for-analytic-functions" id="toc-theorem-3-maximum-modulus-theorem-for-analytic-functions" class="nav-link" data-scroll-target="#theorem-3-maximum-modulus-theorem-for-analytic-functions"><span class="header-section-number">12.6.3</span> THEOREM 3 Maximum Modulus Theorem for Analytic Functions</a></li>
+  <li><a href="#theorem-4-harmonic-functions" id="toc-theorem-4-harmonic-functions" class="nav-link" data-scroll-target="#theorem-4-harmonic-functions"><span class="header-section-number">12.6.4</span> THEOREM 4 Harmonic Functions</a></li>
+  <li><a href="#theorem-5-uniqueness-theorem-for-the-dirichlet-problem" id="toc-theorem-5-uniqueness-theorem-for-the-dirichlet-problem" class="nav-link" data-scroll-target="#theorem-5-uniqueness-theorem-for-the-dirichlet-problem"><span class="header-section-number">12.6.5</span> THEOREM 5 Uniqueness Theorem for the Dirichlet Problem</a></li>
+  <li><a href="#sec-ps18-6" id="toc-sec-ps18-6" class="nav-link" data-scroll-target="#sec-ps18-6"><span class="header-section-number">12.6.6</span> PROBLEM SET 18.6</a></li>
+  </ul></li>
+  <li><a href="#sec-ch18-review" id="toc-sec-ch18-review" class="nav-link" data-scroll-target="#sec-ch18-review"><span class="header-section-number">12.7</span> CHAPTER 18 REVIEW QUESTIONS AND PROBLEMS</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In Chapter 17 we developed the geometric approach of conformal mapping. This meant that, for a complex analytic function <span class="math inline">\(w = f(z)\)</span> defined in a domain <span class="math inline">\(D\)</span> of the <span class="math inline">\(z\)</span>-plane, we associated with each point in <span class="math inline">\(D\)</span> a corresponding point in the <span class="math inline">\(w\)</span>-plane. This gave us a conformal mapping (angle-preserving), except at critical points where <span class="math inline">\(f'(z) = 0\)</span>.</p>
+<p>Now, in this chapter, we shall apply conformal mappings to potential problems. This will lead to boundary value problems and many engineering applications in electrostatics, heat flow, and fluid flow. More details are as follows.</p>
+<p>Recall that Laplace’s equation is one of the most important PDEs in engineering mathematics because it occurs in gravitation (Secs. 9.7, 12.11), electrostatics (Sec. 9.7), steady-state heat conduction (Sec. 12.5), incompressible fluid flow, and other areas. The theory of this equation is called potential theory (although “potential” is also used in a more general sense in connection with gradients (see Sec. 9.7)). Because we want to treat this equation with complex analytic methods, we restrict our discussion to the “two-dimensional case.” Then the potential <span class="math inline">\(\Phi\)</span> depends only on two Cartesian coordinates <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and Laplace’s equation becomes</p>
+<p><span class="math display">\[
+abla^2 \Phi = rac{\partial^2 \Phi}{\partial x^2} + rac{\partial^2 \Phi}{\partial y^2} = 0\]</span></p>
+<p>An important idea then is that its solutions are closely related to complex analytic functions as shown in Sec. 13.4. (Remark: We use the notation <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Psi\)</span> to free <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>, which will be needed in conformal mapping: <span class="math inline">\(w = u + iv\)</span>.) This important relation is the main reason for using complex analysis in problems of physics and engineering.</p>
+<p>We shall examine this connection between Laplace’s equation and complex analytic functions and illustrate it by modeling applications from electrostatics (Secs. 18.1, 18.2), heat conduction (Sec. 18.3), and hydrodynamics (Sec. 18.4). This in turn will lead to boundary value problems in two-dimensional potential theory. As a result, some of the functions of Chap. 17 will be used to transform complicated regions into simpler ones.</p>
+<p>Section 18.5 will derive the important Poisson formula for potentials in a circular disk.</p>
+<p>Section 18.6 will deal with harmonic functions, which, as you recall, are solutions of Laplace’s equation and have continuous second partial derivatives. In that section we will show how results on analytic functions can be used to characterize properties of harmonic functions.</p>
+<p><strong>Prerequisite:</strong> Chaps. 13, 14, 17.<br>
+<strong>References and Answers to Problems:</strong> App. 1 Part D, App. 2.</p>
+<section id="sec-electrostatic-fields" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-electrostatic-fields"><span class="header-section-number">12.1</span> 18.1 Electrostatic Fields</h2>
+<p>The electrical force of attraction or repulsion between charged particles is governed by Coulomb’s law (see Sec. 9.7). This force is the gradient of a function <span class="math inline">\(\Phi\)</span> called the <strong>electrostatic potential</strong>. At any points free of charges, <span class="math inline">\(\Phi\)</span> is a solution of Laplace’s equation</p>
+<p><span class="math display">\[
+abla^2 \Phi = rac{\partial^2 \Phi}{\partial x^2} + rac{\partial^2 \Phi}{\partial y^2} = 0\]</span></p>
+<p>The surfaces <span class="math inline">\(\Phi =    ext{const}\)</span> are called <strong>equipotential surfaces</strong>. At each point <span class="math inline">\(P\)</span> at which the gradient of <span class="math inline">\(\Phi\)</span> is not the zero vector, it is perpendicular to the surface through <span class="math inline">\(P\)</span>; that is, the electrical force has the direction perpendicular to the equipotential surface. (See also Secs. 9.7 and 12.11.)</p>
+<p>The problems we shall discuss in this entire chapter are two-dimensional (for the reason just given in the chapter opening), that is, they model physical systems that lie in three-dimensional space (of course!), but are such that the potential is independent of one of the space coordinates, so that <span class="math inline">\(\Phi\)</span> depends only on two coordinates, which we call <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Then Laplace’s equation becomes</p>
+<p><span id="eq-sec181-1"><span class="math display">\[rac{\partial^2 \Phi}{\partial x^2} + rac{\partial^2 \Phi}{\partial y^2} = 0 \tag{12.1}\]</span></span></p>
+<p>Equipotential surfaces now appear as equipotential lines (curves) in the <span class="math inline">\(xy\)</span>-plane. Let us illustrate these ideas by a few simple examples.</p>
+<section id="example-1-potential-between-parallel-plates" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-1-potential-between-parallel-plates"><span class="header-section-number">12.1.1</span> EXAMPLE 1 Potential Between Parallel Plates</h3>
+<p>Find the potential <span class="math inline">\(\Phi\)</span> of the field between two parallel conducting plates extending to infinity (Fig. 396), which are kept at potentials <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> respectively.</p>
+<div id="fig-18-01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-01.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.1: Fig. 396. Potential in Example 1
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> From the shape of the plates it follows that <span class="math inline">\(\Phi\)</span> depends only on <span class="math inline">\(x\)</span>, and Laplace’s equation becomes <span class="math inline">\(\Phi'' = 0\)</span>. By integrating twice we obtain <span class="math inline">\(\Phi = ax + b\)</span>, where the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are determined by the given boundary values of <span class="math inline">\(\Phi\)</span> on the plates. For example, if the plates correspond to <span class="math inline">\(x = -1\)</span> and <span class="math inline">\(x = 1\)</span> and have potentials <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> respectively, the solution is</p>
+<p><span class="math display">\[\Phi(x) = rac{1}{2}(U_2 - U_1)x + rac{1}{2}(U_2 + U_1)\]</span></p>
+<p>The equipotential surfaces are parallel planes.</p>
+</section>
+<section id="example-2-potential-between-coaxial-cylinders" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="example-2-potential-between-coaxial-cylinders"><span class="header-section-number">12.1.2</span> EXAMPLE 2 Potential Between Coaxial Cylinders</h3>
+<p>Find the potential <span class="math inline">\(\Phi\)</span> between two coaxial conducting cylinders extending to infinity on both ends (Fig. 397) and kept at potentials <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> respectively.</p>
+<div id="fig-18-02" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-02.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.2: Fig. 397. Potential in Example 2
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> Here <span class="math inline">\(\Phi\)</span> depends only on <span class="math inline">\(r = \sqrt{x^2 + y^2}\)</span> for reasons of symmetry, and Laplace’s equation [(5), Sec. 12.10] with <span class="math inline">\(\Phi_  heta = 0\)</span> and <span class="math inline">\(\Phi_{zz} = 0\)</span> becomes <span class="math inline">\(r\Phi_{rr} + \Phi_r = 0\)</span>. By separating variables and integrating we obtain</p>
+<p><span class="math display">\[\Phi_r = rac{a}{r}, \quad    ext{so} \quad \Phi = a \ln r + b\]</span></p>
+<p>and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are determined by the given values of <span class="math inline">\(\Phi\)</span> on the cylinders. Although no infinitely extended conductors exist, the field in our idealized conductor will approximate the field in a long finite conductor in that part which is far away from the two ends of the cylinders.</p>
+</section>
+<section id="example-3-potential-in-an-angular-region" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="example-3-potential-in-an-angular-region"><span class="header-section-number">12.1.3</span> EXAMPLE 3 Potential in an Angular Region</h3>
+<p>Find the potential <span class="math inline">\(\Phi\)</span> between the conducting plates in Fig. 398, which are kept at potentials <span class="math inline">\(U_1\)</span> (the lower plate) and <span class="math inline">\(U_2\)</span> (the upper plate) and make an angle <span class="math inline">\(lpha\)</span> where <span class="math inline">\(0 &lt; lpha \le \pi\)</span>. (In the figure we have <span class="math inline">\(lpha = 120^\circ = 2\pi/3\)</span>.)</p>
+<div id="fig-18-03" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-03.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.3: Fig. 398. Potential in Example 3
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> <span class="math inline">\(\Phi\)</span> is constant on rays $ heta = ext{const}$. It is harmonic since it is the imaginary part of an analytic function, $ ext{Ln } z = r + i heta$ (Sec. 13.7). Hence the solution is</p>
+<p><span class="math display">\[\Phi(x, y) = a + b    ext{Arg } z\]</span></p>
+<p>with <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> determined from the two boundary conditions (given values on the plates):</p>
+<p><span class="math display">\[U_1 = a + b\left(-rac{lpha}{2}
+ight), \quad U_2 = a + b\left(rac{lpha}{2}
+ight)\]</span></p>
+<p>Thus <span class="math inline">\(a = (U_2 + U_1)/2, b = (U_2 - U_1)/lpha\)</span>. The answer is</p>
+<p><span class="math display">\[\Phi(x, y) = rac{1}{2}(U_2 + U_1) + rac{1}{lpha}(U_2 - U_1)    heta\]</span></p>
+</section>
+<section id="complex-potential" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="complex-potential"><span class="header-section-number">12.1.4</span> Complex Potential</h3>
+<p>Let <span class="math inline">\(\Phi(x, y)\)</span> be harmonic in some domain <span class="math inline">\(D\)</span> and <span class="math inline">\(\Psi(x, y)\)</span> a harmonic conjugate of <span class="math inline">\(\Phi\)</span> in <span class="math inline">\(D\)</span>. (Note the change of notation from <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> of Sec. 13.4 to <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Psi\)</span>. From the next section on, we had to free <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> for use in conformal mapping.) Then</p>
+<p><span id="eq-sec181-2"><span class="math display">\[F(z) = \Phi(x, y) + i\Psi(x, y) \tag{12.2}\]</span></span></p>
+<p>is an analytic function of <span class="math inline">\(z = x + iy\)</span>. This function <span class="math inline">\(F\)</span> is called the <strong>complex potential</strong> corresponding to the real potential <span class="math inline">\(\Phi\)</span>.</p>
+<p>The use of <span class="math inline">\(F\)</span> has two advantages, a technical one and a physical one. Technically, <span class="math inline">\(F\)</span> is easier to handle than real or imaginary parts, in connection with methods of complex analysis. Physically, <span class="math inline">\(\Psi(x, y)\)</span> has a meaning. By conformality, the curves <span class="math inline">\(\Psi(x, y) =     ext{const}\)</span> intersect the equipotential lines <span class="math inline">\(\Phi(x, y) =     ext{const}\)</span> in the <span class="math inline">\(xy\)</span>-plane at right angles [except where <span class="math inline">\(F'(z) = 0\)</span>]. Hence they have the direction of the electrical force and, therefore, are called <strong>lines of force</strong>. They are the paths of moving charged particles (electrons in an electron microscope, etc.).</p>
+</section>
+<section id="example-4-complex-potential" class="level3" data-number="12.1.5">
+<h3 data-number="12.1.5" class="anchored" data-anchor-id="example-4-complex-potential"><span class="header-section-number">12.1.5</span> EXAMPLE 4 Complex Potential</h3>
+<p>In Example 1, a conjugate is <span class="math inline">\(\Psi = ay\)</span>. It follows that the complex potential is</p>
+<p><span class="math display">\[F(z) = az + b = ax + b + iay\]</span></p>
+<p>and the lines of force are horizontal straight lines parallel to the <span class="math inline">\(x\)</span>-axis.</p>
+</section>
+<section id="example-5-complex-potential" class="level3" data-number="12.1.6">
+<h3 data-number="12.1.6" class="anchored" data-anchor-id="example-5-complex-potential"><span class="header-section-number">12.1.6</span> EXAMPLE 5 Complex Potential</h3>
+<p>In Example 2 we have <span class="math inline">\(\Phi = a\ln r + b\)</span>. A conjugate is <span class="math inline">\(\Psi = a  heta = a    ext{Arg } z\)</span>. Hence the complex potential is</p>
+<p><span class="math display">\[F(z) = a  ext{Ln } z + b = a \ln |z| + b + ia     ext{Arg } z\]</span></p>
+<p>and the lines of force are straight lines through the origin. <span class="math inline">\(F(z)\)</span> may also be interpreted as the complex potential of a source line (a wire perpendicular to the <span class="math inline">\(xy\)</span>-plane) whose trace in the <span class="math inline">\(xy\)</span>-plane is the origin.</p>
+</section>
+<section id="example-6-complex-potential" class="level3" data-number="12.1.7">
+<h3 data-number="12.1.7" class="anchored" data-anchor-id="example-6-complex-potential"><span class="header-section-number">12.1.7</span> EXAMPLE 6 Complex Potential</h3>
+<p>In Example 3 we get <span class="math inline">\(F(z) = a - ib  ext{Ln } z\)</span> by noting that <span class="math inline">\(i   ext{Ln } z = i \ln |z| -    ext{Arg } z\)</span>, multiplying this by <span class="math inline">\(-b\)</span> and adding <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[F(z) = a + b  ext{Arg } z - ib \ln |z|\]</span></p>
+<p>We see from this that the lines of force are concentric circles <span class="math inline">\(|z| =  ext{const}\)</span>.</p>
+</section>
+<section id="superposition" class="level3" data-number="12.1.8">
+<h3 data-number="12.1.8" class="anchored" data-anchor-id="superposition"><span class="header-section-number">12.1.8</span> Superposition</h3>
+<p>More complicated potentials can often be obtained by superposition.</p>
+</section>
+<section id="example-7-potential-of-a-pair-of-source-lines-a-pair-of-charged-wires" class="level3" data-number="12.1.9">
+<h3 data-number="12.1.9" class="anchored" data-anchor-id="example-7-potential-of-a-pair-of-source-lines-a-pair-of-charged-wires"><span class="header-section-number">12.1.9</span> EXAMPLE 7 Potential of a Pair of Source Lines (a Pair of Charged Wires)</h3>
+<p>Determine the potential of a pair of oppositely charged source lines of the same strength at the points <span class="math inline">\(c\)</span> and <span class="math inline">\(-c\)</span> on the real axis.</p>
+<p><strong>Solution.</strong> From Examples 2 and 5 it follows that the potential of each of the source lines is <span class="math inline">\(\Phi_1 = K\ln |z - c|\)</span> and <span class="math inline">\(\Phi_2 = -K\ln |z + c|\)</span> respectively. Here the real constant <span class="math inline">\(K\)</span> measures the strength (amount of charge). These are the real parts of the complex potentials <span class="math inline">\(F_1(z) = K ext{Ln}(z - c)\)</span> and <span class="math inline">\(F_2(z) = -K    ext{Ln}(z + c)\)</span>. Hence the complex potential of the combination of the two source lines is</p>
+<p><span id="eq-sec181-3"><span class="math display">\[F(z) = F_1(z) + F_2(z) = K[   ext{Ln}(z - c) -    ext{Ln}(z + c)] = K     ext{Ln}\left(rac{z - c}{z + c}
+ight) \tag{12.3}\]</span></span></p>
+<p>The equipotential lines are the curves <span class="math inline">\(\Phi =  ext{Re } F(z) = K \ln |(z - c)/(z + c)| =   ext{const}\)</span>, thus</p>
+<p><span class="math display">\[\left| rac{z - c}{z + c}
+ight| =     ext{const}\]</span></p>
+<p>These are circles, as you may show by direct calculation. The lines of force are <span class="math inline">\(\Psi =    ext{Im } F(z) = K[  ext{Arg}(z - c) -   ext{Arg}(z + c)] =  ext{const}\)</span>. We write this briefly (see <a href="#fig-18-04" class="quarto-xref">Figure&nbsp;<span>12.4</span></a> and <a href="#fig-18-05" class="quarto-xref">Figure&nbsp;<span>12.5</span></a>):</p>
+<p><span class="math display">\[\Psi = K( heta_1 -    heta_2) =   ext{const}\]</span></p>
+<div id="fig-18-04" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-04.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.4: Fig. 399. Arguments in Example 7
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-05" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-05.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.5: Fig. 400. Equipotential lines and lines of force (dashed) in Example 7
+</figcaption>
+</figure>
+</div>
+<p>Now $ heta_1 - heta_2$ is the angle between the line segments from <span class="math inline">\(z\)</span> to <span class="math inline">\(c\)</span> and <span class="math inline">\(-c\)</span>. Hence the lines of force are the curves along each of which the line segment <span class="math inline">\(S: -c \le x \le c\)</span> appears under a constant angle. These curves are the totality of circular arcs over <span class="math inline">\(S\)</span>, as is known from elementary geometry. Hence the lines of force are circles. Figure 400 shows some of them together with some equipotential lines.</p>
+<p>In addition to the interpretation as the potential of two source lines, this potential could also be thought of as the potential between two circular cylinders whose axes are parallel but do not coincide, or as the potential between two equal cylinders that lie outside each other, or as the potential between a cylinder and a plane wall. Explain this using Figure 400.</p>
+<p>The idea of the complex potential as just explained is the key to a close relation of potential theory to complex analysis and will recur in heat flow and fluid flow.</p>
+</section>
+<section id="sec-ps18-1" class="level3" data-number="12.1.10">
+<h3 data-number="12.1.10" class="anchored" data-anchor-id="sec-ps18-1"><span class="header-section-number">12.1.10</span> PROBLEM SET 18.1</h3>
+<section id="coaxial-cylinders" class="level4" data-number="12.1.10.1">
+<h4 data-number="12.1.10.1" class="anchored" data-anchor-id="coaxial-cylinders"><span class="header-section-number">12.1.10.1</span> 1–4 COAXIAL CYLINDERS</h4>
+<p>Find and sketch the potential between two coaxial cylinders of radii <span class="math inline">\(r_1\)</span> and <span class="math inline">\(r_2\)</span> having potential <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> respectively. 1. <span class="math inline">\(r_1 = 2.5   ext{ mm}, r_2 = 4.0 ext{ cm}, U_1 = 0   ext{ V}, U_2 = 220  ext{ V}\)</span>. 2. <span class="math inline">\(r_1 = 1 ext{ cm}, r_2 = 2   ext{ cm}, U_1 = 400 ext{ V}, U_2 = 0    ext{ V}\)</span>. 3. <span class="math inline">\(r_1 = 10    ext{ cm}, r_2 = 1   ext{ m}, U_1 = 10   ext{ kV}, U_2 = -10 ext{ kV}\)</span>. 4. If <span class="math inline">\(r_1 = 2  ext{ cm}\)</span> and <span class="math inline">\(r_2 = 6  ext{ cm}\)</span>, and the potentials are <span class="math inline">\(U_1 = 300    ext{ V}\)</span> and <span class="math inline">\(U_2 = 100 ext{ V}\)</span> respectively, is the potential at <span class="math inline">\(r = 4   ext{ cm}\)</span> equal to 200 V? Less? More? Answer without calculation. Then calculate and explain.</p>
+</section>
+<section id="parallel-plates" class="level4" data-number="12.1.10.2">
+<h4 data-number="12.1.10.2" class="anchored" data-anchor-id="parallel-plates"><span class="header-section-number">12.1.10.2</span> 5–7 PARALLEL PLATES</h4>
+<p>Find and sketch the potential between the parallel plates having potentials <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span>. Find the complex potential. 5. Plates at <span class="math inline">\(x = -5    ext{ cm}\)</span> and <span class="math inline">\(x = 5    ext{ cm}\)</span> at potentials <span class="math inline">\(U_1 = 250  ext{ V}\)</span> and <span class="math inline">\(U_2 = 500 ext{ V}\)</span> respectively. 6. Plates at <span class="math inline">\(y = x\)</span> and <span class="math inline">\(y = x + k\)</span> at potentials <span class="math inline">\(U_1 = 0 ext{ V}\)</span> and <span class="math inline">\(U_2 = 220 ext{ V}\)</span> respectively. 7. Plates at <span class="math inline">\(x_1 = 12  ext{ cm}, x_2 = 24  ext{ cm}\)</span> at potentials <span class="math inline">\(U_1 = 20   ext{ kV}, U_2 = 8   ext{ kV}\)</span> respectively.</p>
+</section>
+<section id="other-configurations" class="level4" data-number="12.1.10.3">
+<h4 data-number="12.1.10.3" class="anchored" data-anchor-id="other-configurations"><span class="header-section-number">12.1.10.3</span> 8–15 OTHER CONFIGURATIONS</h4>
+<ol start="8" type="1">
+<li><p><strong>CAS EXPERIMENT. Complex Potentials.</strong> Graph the equipotential lines and lines of force in (a)–(d) (four graphs, and on the same axes). Then explore further complex potentials of your choice with the purpose of discovering configurations that might be of practical interest.</p>
+<ol type="a">
+<li><span class="math inline">\(F(z) = z^2\)</span>   (b) <span class="math inline">\(F(z) = iz^2\)</span>   (c) <span class="math inline">\(F(z) = 1/z\)</span>   (d) <span class="math inline">\(F(z) = i/z\)</span>.</li>
+</ol></li>
+<li><p><strong>Argument.</strong> Show that <span class="math inline">\(\Phi = rac{1}{\pi} ext{Arg}\,z = rac{1}{\pi}rctan(y/x)\)</span> is harmonic in the upper half-plane and satisfies the boundary condition <span class="math inline">\(\Phi(x, 0) = 1\)</span> if <span class="math inline">\(x &lt; 0\)</span> and <span class="math inline">\(0\)</span> if <span class="math inline">\(x &gt; 0\)</span>. Show that the corresponding complex potential is <span class="math inline">\(F(z) = -rac{i}{\pi}  ext{Ln}\,z\)</span>.</p></li>
+<li><p><strong>Conformal mapping.</strong> Map the upper <span class="math inline">\(z\)</span>-half-plane onto the unit disk <span class="math inline">\(|w| \le 1\)</span> so that <span class="math inline">\(-1, 0, 1\)</span> are mapped onto <span class="math inline">\(-i, 1, i\)</span>, respectively. What are the boundary conditions on the disk resulting from the potential in Prob. 9? What is the potential at <span class="math inline">\(w = 0\)</span>?</p></li>
+<li><p><strong>Text Example 7.</strong> Verify, by calculation, that the equipotential lines in Example 7 are circles.</p></li>
+<li><p>Find and sketch the potential between the axes (potential 500 V) and the hyperbola <span class="math inline">\(xy = 4\)</span> (potential 100 V).</p></li>
+<li><p><strong>Arccos.</strong> Show that <span class="math inline">\(F(z) =   ext{arccos } z\)</span> gives the potential of a slit in Fig. 401.</p>
+<div id="fig-18-06" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-06.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.6: Fig. 401. Slit
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>Arccos.</strong> Show that <span class="math inline">\(F(z)\)</span> in Prob. 13 gives the potentials in Fig. 402.</p>
+<div id="fig-18-07" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-07.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.7: Fig. 402. Other apertures
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>Sector.</strong> Find the real and complex potentials in the sector <span class="math inline">\(-\pi/6 \le  heta \le \pi/6, |z| \le 1\)</span> kept at 0 V, and the curve <span class="math inline">\(x^3 - 3xy^2 = 1\)</span> kept at 220 V.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="sec-conformal-modeling" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-conformal-modeling"><span class="header-section-number">12.2</span> 18.2 Use of Conformal Mapping. Modeling</h2>
+<p>We have just explored the close relation between potential theory and complex analysis. This relationship is so close because complex potentials can be modeled in complex analysis. In this section we shall explore the close relation that results from the use of conformal mapping in modeling and solving boundary value problems for the Laplace equation. The process consists of finding a solution of the equation in some domain, assuming given values on the boundary (Dirichlet problem, see also Sec. 12.6). The key idea is then to use conformal mapping to map a given domain onto one for which the solution is known or can be found more easily. This solution thus obtained is then mapped back to the given domain. The reason this approach works is due to Theorem 1, which asserts that harmonic functions remain harmonic under conformal mapping:</p>
+<section id="theorem-1-harmonic-functions-under-conformal-mapping" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="theorem-1-harmonic-functions-under-conformal-mapping"><span class="header-section-number">12.2.1</span> THEOREM 1 Harmonic Functions Under Conformal Mapping</h3>
+<p>Let <span class="math inline">\(\Phi^*(u, v)\)</span> be harmonic in a domain <span class="math inline">\(D^*\)</span> in the <span class="math inline">\(w\)</span>-plane. Suppose that <span class="math inline">\(w = f(z) = u(x, y) + iv(x, y)\)</span> is analytic in a domain <span class="math inline">\(D\)</span> in the <span class="math inline">\(z\)</span>-plane and maps <span class="math inline">\(D\)</span> conformally onto <span class="math inline">\(D^*\)</span>. Then the function</p>
+<p><span id="eq-sec182-1"><span class="math display">\[\Phi(x, y) = \Phi^*(u(x, y), v(x, y)) \tag{12.4}\]</span></span></p>
+<p>is harmonic in <span class="math inline">\(D\)</span>.</p>
+<p><strong>PROOF</strong> The composite of analytic functions is analytic, as follows from the chain rule. Hence, taking a harmonic conjugate <span class="math inline">\(\Psi^*(u, v)\)</span> of <span class="math inline">\(\Phi^*\)</span>, and forming the analytic function <span class="math inline">\(F^*(w) = \Phi^*(u, v) + i\Psi^*(u, v)\)</span>, we conclude that <span class="math inline">\(F(z) = F^*(f(z))\)</span> is analytic in <span class="math inline">\(D\)</span>. Hence its real part <span class="math inline">\(\Phi(x, y) =  ext{Re } F(z) =     ext{Re } F^*(f(z))\)</span> is harmonic in <span class="math inline">\(D\)</span>. This completes the proof. <span class="math inline">\(lacksquare\)</span></p>
+<p>We mention without proof that if <span class="math inline">\(D^*\)</span> is simply connected (Sec. 14.2), then a harmonic conjugate of <span class="math inline">\(\Phi^*\)</span> exists. Another proof of Theorem 1 without the use of a harmonic conjugate is given in App. 4.</p>
+</section>
+<section id="example-1-potential-between-noncoaxial-cylinders" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="example-1-potential-between-noncoaxial-cylinders"><span class="header-section-number">12.2.2</span> EXAMPLE 1 Potential Between Noncoaxial Cylinders</h3>
+<p>Model the electrostatic potential between the cylinders <span class="math inline">\(C_1: |z| = 1\)</span> and <span class="math inline">\(C_2: |z - 2/5| = 2/5\)</span> in Fig. 403. Then give the solution for the case that <span class="math inline">\(C_1\)</span> is grounded, and <span class="math inline">\(C_2\)</span> has the potential 110 V.</p>
+<div id="fig-18-08" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-08.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.8: Fig. 403. Example 1: z-plane
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-09" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-09.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.9: Fig. 404. Example 1: w-plane
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> We map the unit disk <span class="math inline">\(|z| \le 1\)</span> onto the unit disk <span class="math inline">\(|w| \le 1\)</span> in such a way that <span class="math inline">\(C_2\)</span> is mapped onto some cylinder <span class="math inline">\(C_2^*: |w| = r_0\)</span> coaxial with the unit circle. A linear fractional transformation mapping the unit disk onto the unit disk is</p>
+<p><span id="eq-sec182-2"><span class="math display">\[w = rac{z - b}{bz - 1} \tag{12.5}\]</span></span></p>
+<p>where we have chosen <span class="math inline">\(b\)</span> real without restriction. Equation (2) is of no immediate help here because centers of circles do not map onto centers of the images, in general. However, we now have two free constants <span class="math inline">\(b\)</span> and <span class="math inline">\(r_0\)</span> and shall succeed by imposing two reasonable conditions, namely, that <span class="math inline">\(z_1 = 0\)</span> and <span class="math inline">\(z_2 = 4/5\)</span> (Fig. 403) should be mapped onto <span class="math inline">\(w_1 = r_0\)</span> and <span class="math inline">\(w_2 = -r_0\)</span> (Fig. 404), respectively. This gives by (2)</p>
+<p><span class="math display">\[r_0 = b, \quad -r_0 = rac{4/5 - b}{4b/5 - 1}\]</span></p>
+<p>and with this, <span class="math inline">\(b^2 - 5b/2 + 1 = 0\)</span>, a quadratic equation in <span class="math inline">\(b\)</span> with solutions <span class="math inline">\(b = 2\)</span> (no good because <span class="math inline">\(|b| &lt; 1\)</span>) and <span class="math inline">\(b = 1/2\)</span>. Hence our mapping function (2) with <span class="math inline">\(b = 1/2\)</span> becomes</p>
+<p><span id="eq-sec182-3"><span class="math display">\[w = rac{2z - 1}{z - 2} \tag{12.6}\]</span></span></p>
+<p>and <span class="math inline">\(r_0 = 1/2\)</span>.</p>
+<p>From Example 5 in Sec. 18.1, writing <span class="math inline">\(w\)</span> for <span class="math inline">\(z\)</span>, we have as the complex potential in the <span class="math inline">\(w\)</span>-plane the function <span class="math inline">\(F^*(w) = a    ext{Ln } w + k\)</span> and from this the real potential <span class="math inline">\(\Phi^*(u, v) = a\ln |w| + k\)</span>. This is our model. We now determine <span class="math inline">\(a\)</span> and <span class="math inline">\(k\)</span> from the boundary conditions. If <span class="math inline">\(|w| = 1\)</span>, then <span class="math inline">\(\Phi^* = 0\)</span>; hence <span class="math inline">\(a\ln 1 + k = 0\)</span>, which gives <span class="math inline">\(k = 0\)</span>. If <span class="math inline">\(|w| = r_0 = 1/2\)</span>, then <span class="math inline">\(\Phi^* = 110\)</span>; hence <span class="math inline">\(a\ln(1/2) = 110\)</span>, which gives <span class="math inline">\(a = -110/\ln 2 pprox -158.7\)</span>. Substitution of (3) now gives the desired solution in the given domain in the <span class="math inline">\(z\)</span>-plane</p>
+<p><span class="math display">\[F(z) = F^*(f(z)) = a  ext{Ln}\left(rac{2z - 1}{z - 2}
+ight)\]</span></p>
+<p>The real potential is</p>
+<p><span class="math display">\[\Phi(x, y) = a \ln \left| rac{2z - 1}{z - 2}
+ight| pprox -158.7 \ln \left| rac{2z - 1}{z - 2}
+ight|\]</span></p>
+<p>Can we “see” this result? Well, <span class="math inline">\(\Phi(x, y) =   ext{const}\)</span> if and only if <span class="math inline">\(|w| =   ext{const}\)</span>, that is, <span class="math inline">\(|(2z - 1)/(z - 2)| =     ext{const}\)</span>. These circles are images of circles in the <span class="math inline">\(z\)</span>-plane because the inverse of a linear fractional transformation is linear fractional, and any such mapping maps circles onto circles (or straight lines). Similarly for the rays $ ext{arg } w = ext{const}$. Hence the equipotential lines are circles, and the lines of force are circular arcs (dashed in Fig. 404). These two families of curves intersect orthogonally, that is, at right angles, as shown in Fig. 404.</p>
+</section>
+<section id="example-2-potential-between-two-semicircular-plates" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="example-2-potential-between-two-semicircular-plates"><span class="header-section-number">12.2.3</span> EXAMPLE 2 Potential Between Two Semicircular Plates</h3>
+<p>Model the potential between two semicircular plates <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span> in Fig. 405 having potentials <span class="math inline">\(-3000    ext{ V}\)</span> and <span class="math inline">\(3000  ext{ V}\)</span>, respectively. Use Example 3 in Sec. 18.1 and conformal mapping.</p>
+<div id="fig-18-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-10.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.10: Fig. 405. Example 2: z-plane
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-11.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.11: Fig. 406. Example 2: w-plane
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> <strong>Step 1.</strong> We map the unit disk in Fig. 405 onto the right half of the <span class="math inline">\(w\)</span>-plane (Fig. 406) by using the linear fractional transformation in Example 3, Sec. 17.3:</p>
+<p><span class="math display">\[w = rac{1 + z}{1 - z}\]</span></p>
+<p>The boundary <span class="math inline">\(|z| = 1\)</span> is mapped onto the boundary <span class="math inline">\(u = 0\)</span> (the <span class="math inline">\(v\)</span>-axis), with <span class="math inline">\(z = -1, i, 1\)</span> going onto <span class="math inline">\(w = 0, i, \infty\)</span> respectively, and <span class="math inline">\(z = -i\)</span> onto <span class="math inline">\(w = -i\)</span>. Hence the upper semicircle of <span class="math inline">\(|z| = 1\)</span> is mapped onto the upper half, and the lower semicircle onto the lower half of the <span class="math inline">\(v\)</span>-axis, so that the boundary conditions in the <span class="math inline">\(w\)</span>-plane are as indicated in Fig. 406.</p>
+<p><strong>Step 2.</strong> We determine the potential in the right half-plane of the <span class="math inline">\(w\)</span>-plane. Example 3 in Sec. 18.1 with <span class="math inline">\(U_1 = -3000, U_2 = 3000\)</span>, and <span class="math inline">\(lpha = \pi\)</span> yields</p>
+<p><span class="math display">\[\Phi^*(u, v) = rac{6000}{\pi}\phi = rac{6000}{\pi}  ext{Arg } w\]</span></p>
+<p>On the positive half of the imaginary axis this equals 3000, and on the negative half <span class="math inline">\(-3000\)</span> as it should be. <span class="math inline">\(\Phi^*\)</span> is the real part of the complex potential</p>
+<p><span class="math display">\[F^*(w) = -rac{6000 i}{\pi}   ext{Ln } w\]</span></p>
+<p><strong>Step 3.</strong> We substitute the mapping function into <span class="math inline">\(F^*\)</span> to get the complex potential in Fig. 405 in the form</p>
+<p><span class="math display">\[F(z) = -rac{6000 i}{\pi} ext{Ln}\left(rac{1 + z}{1 - z}
+ight)\]</span></p>
+<p>The real part of this is the potential we wanted to determine:</p>
+<p><span class="math display">\[\Phi(x, y) = rac{6000}{\pi}  ext{Arg}\left(rac{1 + z}{1 - z}
+ight)\]</span></p>
+<p>As in Example 1 we conclude that the equipotential lines are circular arcs because they correspond to $ ext{Arg } w = ext{const}$. Also, they are rays from <span class="math inline">\(0\)</span> to the images of <span class="math inline">\(z = -1\)</span> and <span class="math inline">\(z = 1\)</span>, respectively. Hence the equipotential lines all have <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> (the points where the boundary potential jumps) as their endpoints (Fig. 405). The lines of force are circular arcs, too, and since they must be orthogonal to the equipotential lines, their centers can be obtained as intersections of tangents to the unit circle with the <span class="math inline">\(x\)</span>-axis.</p>
+<p>Further examples can easily be constructed. Just take any mapping <span class="math inline">\(w = f(z)\)</span> in Chap. 17, a domain <span class="math inline">\(D\)</span> in the <span class="math inline">\(z\)</span>-plane, its image <span class="math inline">\(D^*\)</span> in the <span class="math inline">\(w\)</span>-plane, and a potential <span class="math inline">\(\Phi^*\)</span> in <span class="math inline">\(D^*\)</span>. Then <span class="math inline">\(\Phi(x, y) = \Phi^*(u(x, y), v(x, y))\)</span> gives a potential in <span class="math inline">\(D\)</span>.</p>
+</section>
+<section id="sec-ps18-2" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="sec-ps18-2"><span class="header-section-number">12.2.4</span> PROBLEM SET 18.2</h3>
+<ol type="1">
+<li><p><strong>Derivation of (3) from (2).</strong> Verify the quadratic equation for <span class="math inline">\(b\)</span> and its solutions in Example 1.</p></li>
+<li><p><strong>Second proof.</strong> Give the details of the steps in App. 4 for the proof of Theorem 1 without using harmonic conjugates.</p></li>
+<li><p><strong>Application of Theorem 1.</strong> Find the potential in the region <span class="math inline">\(R\)</span> in the first quadrant of the <span class="math inline">\(z\)</span>-plane bounded by the axes (having potential 0) and the hyperbola <span class="math inline">\(xy = 1\)</span> (having potential <span class="math inline">\(U_2\)</span>) by mapping <span class="math inline">\(R\)</span> onto a suitable infinite strip. Show that <span class="math inline">\(\Phi\)</span> is harmonic. What are its boundary values?</p></li>
+<li><p>Let <span class="math inline">\(F^*(w) =    ext{Ln } w\)</span> and <span class="math inline">\(w = f(z) = e^z\)</span>. Find <span class="math inline">\(F(z)\)</span>. What are its boundary values?</p></li>
+<li><p><strong>CAS PROJECT. Graphing Potential Fields.</strong> Graph equipotential lines (a) in Example 1 of the text, (b) if the complex potential is <span class="math inline">\(F(z) = z^2\)</span>, <span class="math inline">\(iz^2\)</span>, <span class="math inline">\(e^z\)</span>, $ ext{Ln } z$. (c) Graph the equipotential surfaces for <span class="math inline">\(F(z) =   ext{Ln } z\)</span> as cylinders in space.</p></li>
+<li><p>Apply Theorem 1 to <span class="math inline">\(\Phi^*(u, v) = u^2 - v^2\)</span> and <span class="math inline">\(w = f(z) = e^z\)</span>, showing that the resulting potential is harmonic.</p></li>
+<li><p><strong>Rectangle.</strong> Let <span class="math inline">\(D: 0 \le x \le \pi/2, 0 \le y \le 1\)</span> and <span class="math inline">\(w = \sin z\)</span>. Let <span class="math inline">\(\Phi^*(u, v) = u^2 - v^2\)</span>. What is the corresponding potential in <span class="math inline">\(D\)</span>? What are its boundary values? Sketch <span class="math inline">\(D\)</span> and <span class="math inline">\(D^*\)</span>.</p></li>
+<li><p><strong>Conjugate potential.</strong> What happens in Prob. 7 if you replace the potential by its conjugate harmonic?</p></li>
+<li><p><strong>Translation.</strong> What happens in Prob. 7 if we replace <span class="math inline">\(z\)</span> by <span class="math inline">\(z + i\pi/2\)</span>?</p></li>
+<li><p><strong>Noncoaxial Cylinders.</strong> Find the potential between the cylinders <span class="math inline">\(C_1: |z| = 1\)</span> (potential 0) and <span class="math inline">\(C_2: |z - c| = c\)</span> (potential <span class="math inline">\(U_2\)</span>), where <span class="math inline">\(0 &lt; c &lt; 1/2\)</span>. Sketch or graph equipotential lines and their orthogonal trajectories for <span class="math inline">\(c = 1/4\)</span>. Can you guess how the graph changes if you increase <span class="math inline">\(c\)</span>?</p></li>
+<li><p><strong>On Example 2.</strong> Verify the calculations in Example 2.</p></li>
+<li><p>Show that in Example 2 the <span class="math inline">\(y\)</span>-axis is mapped onto the unit circle in the <span class="math inline">\(w\)</span>-plane.</p></li>
+<li><p>At <span class="math inline">\(z = \pm 1\)</span> in Fig. 405 the tangents to the equipotential lines as shown make equal angles. Why?</p></li>
+<li><p>Figure 405 gives the impression that the potential on the <span class="math inline">\(y\)</span>-axis changes more rapidly near 0 than near <span class="math inline">\(\pm 1\)</span>. Can you verify this?</p></li>
+<li><p><strong>Angular region.</strong> By applying a suitable conformal mapping, obtain from Fig. 406 the potential in the sector <span class="math inline">\(-\pi/4 \le  ext{Arg } z \le \pi/4\)</span> such that <span class="math inline">\(\Phi = -3 ext{ kV}\)</span> if $ ext{Arg } z = -/4$ and <span class="math inline">\(\Phi = 3 ext{ kV}\)</span> if $ ext{Arg } z = /4$.</p></li>
+<li><p>Solve Prob. 15 if the sector is <span class="math inline">\(-\pi/8 \le     ext{Arg } z \le \pi/8\)</span>.</p></li>
+<li><p><strong>Another extension of Example 2.</strong> Find the linear fractional transformation that maps <span class="math inline">\(|z| \le 1\)</span> onto <span class="math inline">\(|Z| \le 1\)</span> with <span class="math inline">\(z = -1, 1\)</span> being mapped onto <span class="math inline">\(Z_1 = 0.6 + 0.8i, Z_2 = -0.6 - 0.8i\)</span>. Show that <span class="math inline">\(z = 0\)</span> is mapped onto <span class="math inline">\(Z = i/2\)</span>. Show that the equipotential lines look as shown in Fig. 407.</p>
+<div id="fig-18-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-12.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.12: Fig. 407. Problem 17
+</figcaption>
+</figure>
+</div></li>
+</ol>
+<section id="basic-comment-on-modeling" class="level4" data-number="12.2.4.1">
+<h4 data-number="12.2.4.1" class="anchored" data-anchor-id="basic-comment-on-modeling"><span class="header-section-number">12.2.4.1</span> Basic Comment on Modeling</h4>
+<p>We formulated the examples in this section as models on the electrostatic potential. It is quite important to realize that this is accidental. We could equally well have phrased everything in terms of (time-independent) heat flow; then instead of voltages we would have had temperatures, the equipotential lines would have become isotherms (lines of constant temperature), and the lines of the electrical force would have become lines along which heat flows from higher to lower temperatures (more on this in the next section). Or we could have talked about fluid flow; then the electrostatic lines of force would have become streamlines (more on this in Sec. 18.4). What we again see here is the unifying power of mathematics: different phenomena and systems from different areas in physics having the same types of model can be treated by the same mathematical methods. What differs from area to area is just the kinds of problems that are of practical interest.</p>
+</section>
+</section>
+</section>
+<section id="sec-heat-problems" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-heat-problems"><span class="header-section-number">12.3</span> 18.3 Heat Problems</h2>
+<p>Heat conduction in a body of homogeneous material is modeled by the heat equation</p>
+<p><span class="math display">\[rac{\partial T}{\partial t} = c^2
+abla^2 T\]</span></p>
+<p>where the function <span class="math inline">\(T\)</span> is temperature, <span class="math inline">\(t\)</span> is time, and <span class="math inline">\(c^2\)</span> is a positive constant (specific to the material of the body; see Sec. 12.6).</p>
+<p>Now if a heat flow problem is steady, that is, independent of time, we have <span class="math inline">\(\partial T/\partial t = 0\)</span>. If it is also two-dimensional, then the heat equation reduces to Laplace’s equation</p>
+<p><span id="eq-sec183-1"><span class="math display">\[
+abla^2 T = rac{\partial^2 T}{\partial x^2} + rac{\partial^2 T}{\partial y^2} = 0 \tag{12.7}\]</span></span></p>
+<p>Thus we have shown that we can model a two-dimensional steady heat flow problem by Laplace’s equation.</p>
+<p>Furthermore we can treat this heat flow problem by methods of complex analysis, since <span class="math inline">\(T(x, y)\)</span> is the real part of the complex heat potential</p>
+<p><span class="math display">\[F(z) = T(x, y) + i\Psi(x, y)\]</span></p>
+<p>We call <span class="math inline">\(T\)</span> the heat potential. The curves <span class="math inline">\(T(x, y) =   ext{const}\)</span> are called <strong>isotherms</strong>, which means lines of constant temperature. The curves <span class="math inline">\(\Psi(x, y) =   ext{const}\)</span> are called <strong>heat flow lines</strong> because heat flows along them from higher temperatures to lower temperatures.</p>
+<p>It follows that all the examples considered so far (Secs. 18.1, 18.2) can now be reinterpreted as problems on heat flow. The electrostatic equipotential lines now become isotherms and the lines of electrical force become lines of heat flow, as in the following two problems.</p>
+<section id="example-1-temperature-between-parallel-plates" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="example-1-temperature-between-parallel-plates"><span class="header-section-number">12.3.1</span> EXAMPLE 1 Temperature Between Parallel Plates</h3>
+<p>Find the temperature between two parallel plates <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(x = d\)</span> (Fig. 408) having temperatures <span class="math inline">\(0\)</span> and <span class="math inline">\(100^\circ  ext{C}\)</span> respectively.</p>
+<div id="fig-18-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-13.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.13: Fig. 408. Example 1
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> As in Example 1 of Sec. 18.1 we conclude that <span class="math inline">\(T(x, y) = ax + b\)</span>. From the boundary conditions, <span class="math inline">\(T(0, y) = b = 0\)</span> and <span class="math inline">\(T(d, y) = ad = 100\)</span>. The answer is</p>
+<p><span class="math display">\[T(x, y) = rac{100}{d} x\]</span></p>
+<p>The corresponding complex potential is <span class="math inline">\(F(z) = (100/d)z\)</span>. Heat flows horizontally in the negative <span class="math inline">\(x\)</span>-direction along the lines <span class="math inline">\(y =    ext{const}\)</span>.</p>
+</section>
+<section id="example-2-temperature-distribution-between-a-wire-and-a-cylinder" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="example-2-temperature-distribution-between-a-wire-and-a-cylinder"><span class="header-section-number">12.3.2</span> EXAMPLE 2 Temperature Distribution Between a Wire and a Cylinder</h3>
+<p>Find the temperature field around a long thin wire of radius <span class="math inline">\(r_1 = 1   ext{ mm}\)</span> that is electrically heated to <span class="math inline">\(T_1 = 500^\circ   ext{F}\)</span> and is surrounded by a circular cylinder of radius <span class="math inline">\(r_2 = 100   ext{ mm}\)</span> which is kept at temperature <span class="math inline">\(T_2 = 60^\circ  ext{F}\)</span> by cooling it with air. See Fig. 409. (The wire is at the origin of the coordinate system.)</p>
+<div id="fig-18-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-14.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.14: Fig. 409. Example 2
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> <span class="math inline">\(T\)</span> depends only on <span class="math inline">\(r\)</span>, for reasons of symmetry. Hence, as in Sec. 18.1 (Example 2), <span class="math inline">\(T(x, y) = a\ln r + b\)</span>. The boundary conditions are</p>
+<p><span class="math display">\[T_1 = a\ln 1 + b = 500, \quad T_2 = a\ln 100 + b = 60\]</span></p>
+<p>Hence <span class="math inline">\(b = 500\)</span> (since <span class="math inline">\(\ln 1 = 0\)</span>) and <span class="math inline">\(a = (60 - 500)/\ln 100 pprox -95.54\)</span>. The answer is</p>
+<p><span class="math display">\[T(x, y) = 500 - 95.54 \ln r \quad [^\circ ext{F}]\]</span></p>
+<p>The isotherms are concentric circles. Heat flows from the wire radially outward to the cylinder.</p>
+<p>Mathematically the calculations remain the same in the transition to another field of application. Physically, new problems may arise, with boundary conditions that would make no sense physically or would be of no practical interest. This is illustrated by the next two examples.</p>
+</section>
+<section id="example-3-a-mixed-boundary-value-problem" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="example-3-a-mixed-boundary-value-problem"><span class="header-section-number">12.3.3</span> EXAMPLE 3 A Mixed Boundary Value Problem</h3>
+<p>Find the temperature distribution in the region in Fig. 410 (cross section of a solid quarter-cylinder), whose vertical portion of the boundary is at <span class="math inline">\(20^\circ ext{C}\)</span>, the horizontal portion at <span class="math inline">\(50^\circ    ext{C}\)</span>, and the circular portion is insulated.</p>
+<div id="fig-18-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-15.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.15: Fig. 410. Example 3
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> The insulated portion of the boundary must be a heat flow line, since, by the insulation, heat is prevented from crossing such a curve, hence heat must flow along the curve. Thus the isotherms must meet such a curve at right angles. Since <span class="math inline">\(T\)</span> is constant along an isotherm, this means that</p>
+<p><span id="eq-sec183-2"><span class="math display">\[rac{\partial T}{\partial n} = 0 \tag{12.8}\]</span></span></p>
+<p>along an insulated portion of the boundary. Here <span class="math inline">\(\partial T/\partial n\)</span> is the normal derivative of <span class="math inline">\(T\)</span>, that is, the directional derivative (Sec. 9.7) in the direction normal (perpendicular) to the insulated boundary. Such a problem in which <span class="math inline">\(T\)</span> is prescribed on one portion of the boundary and <span class="math inline">\(\partial T/\partial n = 0\)</span> on the other portion is called a <strong>mixed boundary value problem</strong>.</p>
+<p>In our case, the normal direction to the insulated circular boundary curve is the radial direction toward the origin. Hence (2) becomes <span class="math inline">\(\partial T/\partial r = 0\)</span>, meaning that along this curve the solution must not depend on <span class="math inline">\(r\)</span>. Now <span class="math inline">\(T(x, y) = a + b    ext{Arg } z = a + b heta\)</span> satisfies (1), as well as this condition, and is constant (<span class="math inline">\(50^\circ  ext{C}\)</span> and <span class="math inline">\(20^\circ   ext{C}\)</span>) on the straight portions of the boundary. Hence the solution is of the form <span class="math inline">\(T(x, y) = a + b   heta\)</span>. The boundary conditions yield <span class="math inline">\(T(0) = a = 50\)</span> and <span class="math inline">\(T(\pi/2) = a + b\pi/2 = 20\)</span>. This gives <span class="math inline">\(b = -60/\pi\)</span>. The temperature distribution is</p>
+<p><span class="math display">\[T(x, y) = 50 - rac{60}{\pi}  heta = 50 - rac{60}{\pi}   ext{arctan}\left(rac{y}{x}
+ight)\]</span></p>
+<p>The isotherms are portions of rays $ heta = ext{const}$. Heat flows from the <span class="math inline">\(x\)</span>-axis along circles <span class="math inline">\(r =    ext{const}\)</span> to the <span class="math inline">\(y\)</span>-axis.</p>
+</section>
+<section id="example-4-another-mixed-boundary-value-problem-in-heat-conduction" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="example-4-another-mixed-boundary-value-problem-in-heat-conduction"><span class="header-section-number">12.3.4</span> EXAMPLE 4 Another Mixed Boundary Value Problem in Heat Conduction</h3>
+<p>Find the temperature field in the upper half-plane when the <span class="math inline">\(x\)</span>-axis is kept at <span class="math inline">\(T = 0^\circ    ext{C}\)</span> for <span class="math inline">\(x &lt; -1\)</span>, is insulated for <span class="math inline">\(-1 &lt; x &lt; 1\)</span>, and is kept at <span class="math inline">\(T = 20^\circ   ext{C}\)</span> for <span class="math inline">\(x &gt; 1\)</span> (Fig. 411).</p>
+<div id="fig-18-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-16.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.16: Fig. 411. Example 4: z-plane
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-17.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.17: Fig. 412. Example 4: w-plane
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> We map the half-plane in Fig. 411 onto the vertical strip in Fig. 412, find the temperature <span class="math inline">\(T^*(u, v)\)</span> there, and map it back to get the temperature <span class="math inline">\(T(x, y)\)</span> in the half-plane. The idea of using that strip is suggested by Fig. 391 in Sec. 17.4 with the roles of <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> interchanged. The figure shows that <span class="math inline">\(z = \sin w\)</span> maps our present strip onto our half-plane in Fig. 411. Hence the inverse function</p>
+<p><span class="math display">\[w = f(z) =    ext{arcsin } z\]</span></p>
+<p>maps that half-plane onto the strip in the <span class="math inline">\(w\)</span>-plane. This is the mapping function that we need according to Theorem 1 in Sec. 18.2.</p>
+<p>The insulated segment <span class="math inline">\(-1 &lt; x &lt; 1\)</span> on the <span class="math inline">\(x\)</span>-axis maps onto the segment <span class="math inline">\(-\pi/2 &lt; u &lt; \pi/2\)</span> on the <span class="math inline">\(u\)</span>-axis. The rest of the <span class="math inline">\(x\)</span>-axis maps onto the two vertical boundary portions <span class="math inline">\(u = -\pi/2, v \ge 0\)</span> and <span class="math inline">\(u = \pi/2, v \ge 0\)</span> of the strip. This gives the transformed boundary conditions in Fig. 412 for <span class="math inline">\(T^*(u, v)\)</span>, where <span class="math inline">\(\partial T^*/\partial v = 0\)</span> on the insulated horizontal boundary, because <span class="math inline">\(v\)</span> is a coordinate normal to that segment.</p>
+<p>Similarly to Example 1 we obtain</p>
+<p><span class="math display">\[T^*(u, v) = 10 + rac{20}{\pi} u\]</span></p>
+<p>which satisfies all the boundary conditions. This is the real part of the complex potential <span class="math inline">\(F^*(w) = 10 + (20/\pi)w\)</span>. Hence the complex potential in the <span class="math inline">\(z\)</span>-plane is</p>
+<p><span class="math display">\[F(z) = F^*(f(z)) = 10 + rac{20}{\pi} ext{arcsin } z\]</span></p>
+<p>and <span class="math inline">\(T(x, y) =  ext{Re } F(z)\)</span> is the solution. The isotherms <span class="math inline">\(T =  ext{const}\)</span> are <span class="math inline">\(u =    ext{const}\)</span> in the strip and the hyperbolas in the <span class="math inline">\(z\)</span>-plane, perpendicular to which heat flows along the dashed ellipses from the <span class="math inline">\(x &gt; 1\)</span> portion to the cooler <span class="math inline">\(x &lt; -1\)</span> portion of the boundary, a physically very reasonable result.</p>
+</section>
+<section id="sec-ps18-3" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="sec-ps18-3"><span class="header-section-number">12.3.5</span> PROBLEM SET 18.3</h3>
+<ol type="1">
+<li><p><strong>Parallel plates.</strong> Find the temperature <span class="math inline">\(T(x, y)\)</span> between the plates <span class="math inline">\(y = 0\)</span> and <span class="math inline">\(y = d\)</span> kept at <span class="math inline">\(100^\circ    ext{C}\)</span> and <span class="math inline">\(20^\circ   ext{C}\)</span>, respectively. (i) Proceed directly. (ii) Use Example 1 and a suitable mapping.</p></li>
+<li><p><strong>Infinite plate.</strong> Find the temperature and the complex potential in an infinite plate with edges <span class="math inline">\(y = x - 4\)</span> and <span class="math inline">\(y = x + 4\)</span> kept at <span class="math inline">\(0^\circ  ext{C}\)</span> and <span class="math inline">\(40^\circ   ext{C}\)</span>, respectively (Fig. 413). In what case will this be an approximate model?</p>
+<div id="fig-18-18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-18.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.18: Fig. 413. Problem 2: Infinite plate
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>CAS PROJECT. Isotherms.</strong> Graph isotherms and lines of heat flow in Examples 2–4. Can you see from the graphs where the heat flow is very rapid?</p></li>
+</ol>
+<section id="temperature-tx-y-in-plates" class="level4" data-number="12.3.5.1">
+<h4 data-number="12.3.5.1" class="anchored" data-anchor-id="temperature-tx-y-in-plates"><span class="header-section-number">12.3.5.1</span> 4–18 TEMPERATURE <span class="math inline">\(T(x, y)\)</span> IN PLATES</h4>
+<p>Find the temperature distribution and the complex potential in the given thin metal plate whose faces are insulated and whose edges are kept at the indicated temperatures or are insulated as shown.</p>
+<ol start="4" type="1">
+<li>Plate bounded by <span class="math inline">\(x = -1, x = 1\)</span> kept at <span class="math inline">\(T = 0^\circ    ext{C}\)</span> and <span class="math inline">\(T = 100^\circ  ext{C}\)</span> respectively, with horizontal edges insulated.</li>
+<li>Sector <span class="math inline">\(0 \le    heta \le \pi/3\)</span>, <span class="math inline">\(r \le 1\)</span>, with $ heta = 0$ at <span class="math inline">\(T = 50^\circ  ext{C}\)</span>, $ heta = /3$ at <span class="math inline">\(T = 20^\circ  ext{C}\)</span>, and circular boundary <span class="math inline">\(r = 1\)</span> insulated.</li>
+<li>Semi-infinite strip <span class="math inline">\(0 \le x \le \pi, y \ge 0\)</span>, with bottom edge <span class="math inline">\(y = 0\)</span> at <span class="math inline">\(T = 100^\circ   ext{C}\)</span>, and vertical edges <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(x = \pi\)</span> at <span class="math inline">\(T = 0^\circ   ext{C}\)</span>.</li>
+<li>Wedge <span class="math inline">\(0 \le     heta \le \pi/4\)</span> with $ heta = 0$ insulated, $ heta = /4$ at <span class="math inline">\(T = 60^\circ  ext{C}\)</span>, and circular boundary <span class="math inline">\(r = 1\)</span> at <span class="math inline">\(T = -20^\circ    ext{C}\)</span>.</li>
+<li>Infinite plate with a slit along the segment <span class="math inline">\(-1 \le x \le 1, y = 0\)</span>, where the slit is insulated, and the upper half-plane is kept at <span class="math inline">\(T = 200^\circ    ext{C}\)</span> for <span class="math inline">\(x &gt; 1\)</span> and <span class="math inline">\(T = 0^\circ    ext{C}\)</span> for <span class="math inline">\(x &lt; -1\)</span>.</li>
+<li>Upper half-plane with boundary values on the <span class="math inline">\(x\)</span>-axis: <span class="math inline">\(T = 200^\circ    ext{C}\)</span> for <span class="math inline">\(x &gt; 1\)</span>, <span class="math inline">\(T = 0^\circ   ext{C}\)</span> for <span class="math inline">\(-1 &lt; x &lt; 1\)</span>, and <span class="math inline">\(T = 200^\circ    ext{C}\)</span> for <span class="math inline">\(x &lt; -1\)</span>.</li>
+<li>Semi-infinite plate <span class="math inline">\(x \ge 0\)</span>, with the segment <span class="math inline">\(0 \le y \le 1\)</span> of the <span class="math inline">\(y\)</span>-axis insulated, the rest of the <span class="math inline">\(y\)</span>-axis at <span class="math inline">\(T = 0^\circ ext{C}\)</span>, and the boundary curve <span class="math inline">\(y = 10/x\)</span> kept at <span class="math inline">\(T = 200^\circ   ext{C}\)</span>.</li>
+<li>First quadrant of the <span class="math inline">\(z\)</span>-plane with <span class="math inline">\(y\)</span>-axis kept at <span class="math inline">\(T(0, y) = -30^\circ  ext{C}\)</span>, the segment <span class="math inline">\(0 &lt; x &lt; 1\)</span> of the <span class="math inline">\(x\)</span>-axis insulated, and the <span class="math inline">\(x\)</span>-axis for <span class="math inline">\(x &gt; 1\)</span> kept at <span class="math inline">\(T = 100^\circ ext{C}\)</span>. Hint. Use Example 4.</li>
+<li>Figure 410, but the circular boundary has temperature <span class="math inline">\(T = 50^\circ ext{C}\)</span>, and the horizontal and vertical boundaries are insulated. Hint. Apply <span class="math inline">\(w = \cosh z\)</span> or similar mapping.</li>
+<li>Bounded plate <span class="math inline">\(0 \le x \le \pi, 0 \le y \le \pi\)</span>, with top and bottom edges at <span class="math inline">\(T = 100^\circ   ext{C}\)</span> and <span class="math inline">\(T = 0^\circ    ext{C}\)</span>, and vertical edges at <span class="math inline">\(T = 0^\circ ext{C}\)</span>.</li>
+<li>Bounded plate <span class="math inline">\(0 \le x \le 1, 0 \le y \le 1\)</span>, with top edge <span class="math inline">\(y = 1\)</span> at <span class="math inline">\(T = 100^\circ   ext{C}\)</span>, and the other three edges at <span class="math inline">\(T = 0^\circ  ext{C}\)</span>.</li>
+<li>Semi-infinite strip <span class="math inline">\(x \ge 0, 0 \le y \le \pi\)</span>, with vertical edge <span class="math inline">\(x = 0\)</span> at <span class="math inline">\(T = T_1\)</span> for <span class="math inline">\(0 &lt; y &lt; \pi/2\)</span> and <span class="math inline">\(T = T_2\)</span> for <span class="math inline">\(\pi/2 &lt; y &lt; \pi\)</span>, and horizontal edges insulated.</li>
+<li>Plate bounded by <span class="math inline">\(y = \sqrt{3}x\)</span> and <span class="math inline">\(y = -\sqrt{3}x\)</span> for <span class="math inline">\(x \ge 0\)</span>, with boundaries at <span class="math inline">\(T = 40^\circ   ext{C}\)</span> and <span class="math inline">\(T = 20^\circ   ext{C}\)</span> respectively, and the outer circular boundary at <span class="math inline">\(r = 4\)</span> insulated.</li>
+<li>Bounded quarter-disk <span class="math inline">\(r \le 1, 0 \le    heta \le \pi/2\)</span>, with radial boundaries insulated and the circular boundary kept at <span class="math inline">\(T = 100\cos^2  heta\)</span>.</li>
+<li>Solve Prob. 17 if the circular boundary is kept at <span class="math inline">\(T = 100\sin 2   heta\)</span>.</li>
+</ol>
+</section>
+<section id="interpretation" class="level4" data-number="12.3.5.2">
+<h4 data-number="12.3.5.2" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">12.3.5.2</span> 19–20 INTERPRETATION</h4>
+<ol start="19" type="1">
+<li>Formulate Prob. 11 in terms of electrostatics.</li>
+<li>Interpret Prob. 17 in Sec. 18.2 as a heat problem, with boundary temperatures, say, <span class="math inline">\(200^\circ  ext{C}\)</span> on the upper part and <span class="math inline">\(10^\circ ext{C}\)</span> on the lower part.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="sec-fluid-flow" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-fluid-flow"><span class="header-section-number">12.4</span> 18.4 Fluid Flow</h2>
+<p>Laplace’s equation also plays a basic role in hydrodynamics, in steady nonviscous fluid flow under physical conditions discussed later in this section. For methods of complex analysis to be applicable, our problems will be two-dimensional, so that the velocity vector <span class="math inline">\(V\)</span> by which the motion of the fluid can be given depends only on two space variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and the motion is the same in all planes parallel to the <span class="math inline">\(xy\)</span>-plane.</p>
+<p>Then we can use for the velocity vector <span class="math inline">\(V\)</span> a complex function</p>
+<p><span id="eq-sec184-1"><span class="math display">\[V = V_1 + iV_2 \tag{12.9}\]</span></span></p>
+<p>giving the magnitude and direction of the velocity at each point <span class="math inline">\(z = x + iy\)</span>. Here <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> are the components of the velocity in the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> directions. <span class="math inline">\(V\)</span> is tangential to the path of the moving particles, called a <strong>streamline</strong> of the motion (Fig. 414).</p>
+<div id="fig-18-19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-19.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.19: Fig. 414. Velocity
+</figcaption>
+</figure>
+</div>
+<p>We show that under suitable assumptions (explained in detail following the examples), for a given flow there exists an analytic function</p>
+<p><span id="eq-sec184-2"><span class="math display">\[F(z) = \Phi(x, y) + i\Psi(x, y) \tag{12.10}\]</span></span></p>
+<p>called the <strong>complex potential</strong> of the flow, such that the streamlines are given by <span class="math inline">\(\Psi(x, y) =  ext{const}\)</span>, and the velocity vector (or, briefly, the velocity) is given by</p>
+<p><span id="eq-sec184-3"><span class="math display">\[V = V_1 + iV_2 = \overline{F'(z)} \tag{12.11}\]</span></span></p>
+<p>where the bar denotes the complex conjugate. <span class="math inline">\(\Psi\)</span> is called the <strong>stream function</strong>. The function <span class="math inline">\(\Phi\)</span> is called the <strong>velocity potential</strong>. The curves <span class="math inline">\(\Phi(x, y) =   ext{const}\)</span> are called <strong>equipotential lines</strong>. The velocity vector <span class="math inline">\(V\)</span> is the gradient of <span class="math inline">\(\Phi\)</span>; by definition, this means that</p>
+<p><span id="eq-sec184-4"><span class="math display">\[V_1 = rac{\partial \Phi}{\partial x}, \quad V_2 = rac{\partial \Phi}{\partial y} \tag{12.12}\]</span></span></p>
+<p>Indeed, for <span class="math inline">\(F = \Phi + i\Psi\)</span> Eq. (4) in Sec. 13.4 is <span class="math inline">\(F'(z) = \Phi_x + i\Psi_x = \Phi_x - i\Phi_y\)</span> by the second Cauchy–Riemann equation. Together we obtain (3):</p>
+<p><span class="math display">\[\overline{F'(z)} = \Phi_x + i\Phi_y = V_1 + iV_2 = V\]</span></p>
+<p>Furthermore, since <span class="math inline">\(F(z)\)</span> is analytic, <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Psi\)</span> satisfy Laplace’s equation</p>
+<p><span id="eq-sec184-5"><span class="math display">\[
+abla^2 \Phi = 0, \quad
+abla^2 \Psi = 0 \tag{12.13}\]</span></span></p>
+<p>Whereas in electrostatics the boundaries (conducting plates) are equipotential lines, in fluid flow the boundaries across which fluid cannot flow must be streamlines. Hence in fluid flow the stream function <span class="math inline">\(\Psi\)</span> is of particular importance.</p>
+<p>Before discussing the conditions for the validity of the statements involving (2)–(5), let us consider two flows of practical interest, so that we first see what is going on from a practical point of view. Further flows are included in the problem set.</p>
+<section id="example-1-flow-around-a-corner" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="example-1-flow-around-a-corner"><span class="header-section-number">12.4.1</span> EXAMPLE 1 Flow Around a Corner</h3>
+<p>The complex potential <span class="math inline">\(F(z) = z^2\)</span> models a flow with - Equipotential lines (Hyperbolas): <span class="math inline">\(\Phi = x^2 - y^2 =     ext{const}\)</span> - Streamlines (Hyperbolas): <span class="math inline">\(\Psi = 2xy =   ext{const}\)</span>.</p>
+<p>From (3) we obtain the velocity vector <span class="math inline">\(V = \overline{F'(z)} = 2\overline{z} = 2(x - iy)\)</span>, that is,</p>
+<p><span class="math display">\[V_1 = 2x, \quad V_2 = -2y\]</span></p>
+<p>The speed (magnitude of the velocity) is</p>
+<p><span class="math display">\[|V| = \sqrt{V_1^2 + V_2^2} = 2\sqrt{x^2 + y^2} = 2|z|\]</span></p>
+<p>The flow may be interpreted as the flow in a channel bounded by the positive coordinate axes and a hyperbola, say, <span class="math inline">\(xy = 1\)</span> (Fig. 415). We note that the speed along a streamline <span class="math inline">\(S\)</span> has a minimum at the point <span class="math inline">\(P\)</span> where the cross section of the channel is large.</p>
+<div id="fig-18-20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-20.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.20: Fig. 415. Flow around a corner (Example 1)
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="example-2-flow-around-a-cylinder" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="example-2-flow-around-a-cylinder"><span class="header-section-number">12.4.2</span> EXAMPLE 2 Flow Around a Cylinder</h3>
+<p>Consider the complex potential</p>
+<p><span class="math display">\[F(z) = z + rac{1}{z}\]</span></p>
+<p>Using the polar form <span class="math inline">\(z = re^{i heta}\)</span> we obtain</p>
+<p><span class="math display">\[F(z) = re^{i  heta} + rac{1}{r}e^{-i heta} = \left(r + rac{1}{r}
+ight)\cos   heta + i\left(r - rac{1}{r}
+ight)\sin   heta\]</span></p>
+<p>Hence the streamlines are</p>
+<p><span class="math display">\[\Psi(x, y) = \left(r - rac{1}{r}
+ight)\sin   heta =  ext{const}\]</span></p>
+<p>In particular, <span class="math inline">\(\Psi(x, y) = 0\)</span> gives <span class="math inline">\(r - 1/r = 0\)</span> or <span class="math inline">\(\sin    heta = 0\)</span>. Hence this streamline consists of the unit circle <span class="math inline">\(r = 1\)</span> and the <span class="math inline">\(x\)</span>-axis ($ heta = 0$ and $ heta = $). For large <span class="math inline">\(|z|\)</span> the term <span class="math inline">\(1/z\)</span> in <span class="math inline">\(F(z)\)</span> is small in absolute value, so that for these <span class="math inline">\(z\)</span> the flow is nearly uniform and parallel to the <span class="math inline">\(x\)</span>-axis. Hence we can interpret this as a flow around a long circular cylinder of unit radius that is perpendicular to the <span class="math inline">\(z\)</span>-plane and intersects it in the unit circle <span class="math inline">\(|z| = 1\)</span> and whose axis corresponds to <span class="math inline">\(z = 0\)</span>.</p>
+<p>The flow has two stagnation points (that is, points at which the velocity <span class="math inline">\(V\)</span> is zero), at <span class="math inline">\(z = \pm 1\)</span>. This follows from (3) and</p>
+<p><span class="math display">\[F'(z) = 1 - rac{1}{z^2} = rac{z^2 - 1}{z^2}\]</span></p>
+<p>hence <span class="math inline">\(z^2 - 1 = 0\)</span>. (See Fig. 416.)</p>
+<div id="fig-18-21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-21.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.21: Fig. 416. Flow around a cylinder (Example 2)
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-22.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.22: Fig. 417. Tangential component of the velocity with respect to a curve C
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="assumptions-and-theory-underlying-25" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="assumptions-and-theory-underlying-25"><span class="header-section-number">12.4.3</span> Assumptions and Theory Underlying (2)–(5)</h3>
+</section>
+<section id="theorem-1-complex-potential-of-a-flow" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="theorem-1-complex-potential-of-a-flow"><span class="header-section-number">12.4.4</span> THEOREM 1 Complex Potential of a Flow</h3>
+<p>If the domain of flow is simply connected and the flow is irrotational and incompressible, then the statements involving (2)–(5) hold. In particular, then the flow has a complex potential <span class="math inline">\(F(z)\)</span> which is an analytic function.</p>
+<p><strong>PROOF</strong> We prove this theorem, along with a discussion of basic concepts related to fluid flow.</p>
+<p><strong>(a) First Assumption: Irrotational.</strong> Let <span class="math inline">\(C\)</span> be any smooth curve in the <span class="math inline">\(z\)</span>-plane given by <span class="math inline">\(z(s) = x(s) + iy(s)\)</span>, where <span class="math inline">\(s\)</span> is the arc length of <span class="math inline">\(C\)</span>. Let the real variable <span class="math inline">\(V_t\)</span> be the component of the velocity <span class="math inline">\(V\)</span> tangent to <span class="math inline">\(C\)</span> (Fig. 417). Then the value of the real line integral</p>
+<p><span id="eq-sec184-6"><span class="math display">\[\int_C V_t \, ds \tag{12.14}\]</span></span></p>
+<p>taken along <span class="math inline">\(C\)</span> in the sense of increasing <span class="math inline">\(s\)</span> is called the <strong>circulation</strong> of the fluid along <span class="math inline">\(C\)</span>. Dividing the circulation by the length of <span class="math inline">\(C\)</span>, we obtain the mean velocity of the flow along the curve <span class="math inline">\(C\)</span>. (See footnote 1.)</p>
+<p>Now <span class="math inline">\(V_t = |V| \cos lpha\)</span> (Fig. 417). Hence <span class="math inline">\(V_t \, ds\)</span> is the dot product of <span class="math inline">\(V\)</span> and the tangent vector of <span class="math inline">\(C\)</span>; thus in (6),</p>
+<p><span class="math display">\[V_t \, ds = \left(V_1 rac{dx}{ds} + V_2 rac{dy}{ds}
+ight) ds = V_1 \, dx + V_2 \, dy\]</span></p>
+<p>The circulation (6) along <span class="math inline">\(C\)</span> now becomes</p>
+<p><span id="eq-sec184-7"><span class="math display">\[\int_C V_t \, ds = \int_C (V_1 \, dx + V_2 \, dy) \tag{12.15}\]</span></span></p>
+<p>As the next idea, let <span class="math inline">\(C\)</span> be a closed curve and let <span class="math inline">\(C\)</span> be the boundary of a simply connected domain <span class="math inline">\(D\)</span>. Suppose further that <span class="math inline">\(V\)</span> has continuous partial derivatives in a domain containing <span class="math inline">\(D\)</span> and <span class="math inline">\(C\)</span>. Then we can use Green’s theorem (Sec. 10.4) to represent the circulation around <span class="math inline">\(C\)</span> by a double integral:</p>
+<p><span id="eq-sec184-8"><span class="math display">\[\oint_C (V_1 \, dx + V_2 \, dy) = \iint_D \left(rac{\partial V_2}{\partial x} - rac{\partial V_1}{\partial y}
+ight) dx \, dy \tag{12.16}\]</span></span></p>
+<p>The integrand of this double integral is called the <strong>vorticity</strong> of the flow. The vorticity divided by 2 is called the <strong>rotation</strong></p>
+<p><span id="eq-sec184-9"><span class="math display">\[\omega(x, y) = rac{1}{2}\left(rac{\partial V_2}{\partial x} - rac{\partial V_1}{\partial y}
+ight) \tag{12.17}\]</span></span></p>
+<p>We assume the flow to be irrotational, that is, <span class="math inline">\(\omega(x, y) = 0\)</span> throughout the flow; thus,</p>
+<p><span id="eq-sec184-10"><span class="math display">\[rac{\partial V_2}{\partial x} - rac{\partial V_1}{\partial y} = 0 \tag{12.18}\]</span></span></p>
+<p>To understand the physical meaning of vorticity and rotation, take for <span class="math inline">\(C\)</span> in (8) a circle. Let <span class="math inline">\(r\)</span> be the radius of <span class="math inline">\(C\)</span>. Then the circulation divided by the length of <span class="math inline">\(C\)</span> is the mean velocity of the fluid along <span class="math inline">\(C\)</span>. Hence by dividing this by <span class="math inline">\(r\)</span> we obtain the mean angular velocity <span class="math inline">\(\omega_0\)</span> of the fluid about the center of the circle:</p>
+<p><span class="math display">\[\omega_0 = rac{1}{2\pi r^2} \iint_D \left(rac{\partial V_2}{\partial x} - rac{\partial V_1}{\partial y}
+ight) dx \, dy = rac{1}{\pi r^2} \iint_D \omega(x, y) \, dx \, dy\]</span></p>
+<p>If we now let <span class="math inline">\(r    o 0\)</span>, the limit of <span class="math inline">\(\omega_0\)</span> is the value of <span class="math inline">\(\omega\)</span> at the center of <span class="math inline">\(C\)</span>. Hence <span class="math inline">\(\omega(x, y)\)</span> is the limiting angular velocity of a circular element of the fluid as the circle shrinks to the point <span class="math inline">\((x, y)\)</span>. Roughly speaking, if a spherical element of the fluid were suddenly solidified and the surrounding fluid simultaneously annihilated, the element would rotate with the angular velocity <span class="math inline">\(\omega(x, y)\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong><sup>1</sup> Definitions:</strong><br>
+- Mean value of <span class="math inline">\(f\)</span> on the interval <span class="math inline">\([a, b]\)</span>: $rac{1}{b-a} _a^b f(x) , dx$<br>
+- Mean value of <span class="math inline">\(f\)</span> on <span class="math inline">\(C\)</span> (length <span class="math inline">\(L\)</span>): $rac{1}{L} _C f(s) , ds$<br>
+- Mean value of <span class="math inline">\(f\)</span> on <span class="math inline">\(D\)</span> (area <span class="math inline">\(A\)</span>): $rac{1}{A} _D f(x, y) , dx , dy$</p>
+</blockquote>
+<p><strong>(b) Second Assumption: Incompressible.</strong> Our second assumption is that the fluid is incompressible. (Fluids include liquids, which are incompressible, and gases, such as air, which are compressible.) Then</p>
+<p><span id="eq-sec184-11"><span class="math display">\[rac{\partial V_1}{\partial x} + rac{\partial V_2}{\partial y} = 0 \tag{12.19}\]</span></span></p>
+<p>in every region that is free of sources or sinks, that is, points at which fluid is produced or disappears, respectively. The expression in (11) is called the <strong>divergence</strong> of <span class="math inline">\(V\)</span> and is denoted by $ ext{div } V$. (See also (7) in Sec. 9.8.)</p>
+<p><strong>(c) Complex Velocity Potential.</strong> If the domain <span class="math inline">\(D\)</span> of the flow is simply connected (Sec. 14.2) and the flow is irrotational, then (10) implies that the line integral (7) is independent of path in <span class="math inline">\(D\)</span> (by Theorem 3 in Sec. 10.2). Hence if we integrate from a fixed point <span class="math inline">\((a, b)\)</span> in <span class="math inline">\(D\)</span> to a variable point <span class="math inline">\((x, y)\)</span> in <span class="math inline">\(D\)</span>, the integral becomes a function of the point <span class="math inline">\((x, y)\)</span>, say, <span class="math inline">\(\Phi(x, y)\)</span>:</p>
+<p><span id="eq-sec184-12"><span class="math display">\[\Phi(x, y) = \int_{(a, b)}^{(x, y)} (V_1 \, dx + V_2 \, dy) \tag{12.20}\]</span></span></p>
+<p>We claim that the flow has a velocity potential which is given by (12). To prove this, all we have to do is to show that (4) holds. Now since the integral (7) is independent of path, <span class="math inline">\(V_1 \, dx + V_2 \, dy\)</span> is exact, namely, the differential of <span class="math inline">\(\Phi\)</span>, that is,</p>
+<p><span class="math display">\[V_1 \, dx + V_2 \, dy = rac{\partial \Phi}{\partial x} \, dx + rac{\partial \Phi}{\partial y} \, dy\]</span></p>
+<p>From this we see that <span class="math inline">\(V_1 = \partial\Phi/\partial x\)</span> and <span class="math inline">\(V_2 = \partial\Phi/\partial y\)</span>, which gives (4). That <span class="math inline">\(\Phi\)</span> is harmonic follows at once by substituting (4) into (11), which gives the first Laplace equation in (5).</p>
+<p>We finally take a harmonic conjugate <span class="math inline">\(\Psi(x, y)\)</span> of <span class="math inline">\(\Phi(x, y)\)</span>. Then the other equation in (5) holds. Also, since the second partial derivatives of <span class="math inline">\(\Phi\)</span> and <span class="math inline">\(\Psi\)</span> are continuous, we see that the complex function <span class="math inline">\(F(z) = \Phi(x, y) + i\Psi(x, y)\)</span> is analytic in <span class="math inline">\(D\)</span>. Since the curves <span class="math inline">\(\Psi(x, y) =  ext{const}\)</span> are perpendicular to the equipotential curves <span class="math inline">\(\Phi(x, y) =     ext{const}\)</span> (except where <span class="math inline">\(F'(z) = 0\)</span>), we conclude that the curves <span class="math inline">\(\Psi =     ext{const}\)</span> are the streamlines. Hence <span class="math inline">\(\Psi\)</span> is the stream function and <span class="math inline">\(F(z)\)</span> is the complex potential of the flow. This completes the proof of Theorem 1. <span class="math inline">\(lacksquare\)</span></p>
+</section>
+<section id="sec-ps18-4" class="level3" data-number="12.4.5">
+<h3 data-number="12.4.5" class="anchored" data-anchor-id="sec-ps18-4"><span class="header-section-number">12.4.5</span> PROBLEM SET 18.4</h3>
+<ol type="1">
+<li><p><strong>Differentiability.</strong> Under what condition on the velocity vector <span class="math inline">\(V\)</span> in (1) will <span class="math inline">\(F(z)\)</span> in (2) be analytic?</p></li>
+<li><p><strong>Corner flow.</strong> Along what curves will the speed in Example 1 be constant? Is this obvious from Fig. 415?</p></li>
+<li><p><strong>Cylinder.</strong> Guess from physics and from Fig. 416 where on the <span class="math inline">\(y\)</span>-axis the speed is maximum. Then calculate.</p></li>
+<li><p><strong>Cylinder.</strong> Calculate the speed along the cylinder wall in Fig. 416, also confirming the answer to Prob. 3.</p></li>
+<li><p><strong>Irrotational flow.</strong> Show that the flow in Example 2 is irrotational.</p></li>
+<li><p><strong>Extension of Example 1.</strong> Sketch or graph and interpret the flow in Example 1 on the whole upper half-plane.</p></li>
+<li><p><strong>Parallel flow.</strong> Sketch and interpret the flow with complex potential <span class="math inline">\(F(z) = z\)</span>.</p></li>
+<li><p><strong>Parallel flow.</strong> What is the complex potential of an upward parallel flow of speed <span class="math inline">\(v_0\)</span> in the direction of <span class="math inline">\(y = x\)</span>? Sketch the flow.</p></li>
+<li><p><strong>Corner.</strong> What would be a suitable complex potential <span class="math inline">\(F(z)\)</span> in Example 1 if the angle of the corner were <span class="math inline">\(60^\circ\)</span> (<span class="math inline">\(\pi/3\)</span> rad) instead of <span class="math inline">\(90^\circ\)</span>?</p></li>
+<li><p><strong>Corner.</strong> Show that <span class="math inline">\(F(z) = iz^2\)</span> also models a flow around a corner. Sketch streamlines and equipotential lines. Find <span class="math inline">\(V\)</span>.</p></li>
+<li><p>What flow do you obtain from <span class="math inline">\(F(z) = z\)</span> with <span class="math inline">\(K\)</span> positive real?</p></li>
+<li><p><strong>Conformal mapping.</strong> Obtain the flow in Example 1 from that in Prob. 11 by a suitable conformal mapping.</p></li>
+<li><p><strong>Sector.</strong> What would be a suitable <span class="math inline">\(F(z)\)</span> in Example 1 if the angle at the corner were <span class="math inline">\(45^\circ\)</span>?</p></li>
+<li><p>Sketch or graph streamlines and equipotential lines of <span class="math inline">\(F(z) = iz^3\)</span>. Find <span class="math inline">\(V\)</span>. Find all points at which <span class="math inline">\(V\)</span> is horizontal.</p></li>
+<li><p>Change <span class="math inline">\(F(z)\)</span> in Example 2 slightly to obtain a flow around a cylinder of radius <span class="math inline">\(R_0\)</span> that gives the flow in Example 2 if <span class="math inline">\(R_0 = 1\)</span>.</p></li>
+<li><p><strong>Cylinder.</strong> What happens in Example 2 if you replace <span class="math inline">\(z\)</span> by <span class="math inline">\(z^2\)</span>? Sketch and interpret the resulting flow in the first quadrant.</p></li>
+<li><p><strong>Elliptic cylinder.</strong> Show that <span class="math inline">\(F(z) =    ext{arccos } z\)</span> gives confocal ellipses as streamlines, with foci at <span class="math inline">\(z = \pm 1\)</span>, and that the flow circulates around an elliptic cylinder or a plate (the segment from <span class="math inline">\(-1\)</span> to 1 in Fig. 418).</p>
+<div id="fig-18-23" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-23.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.23: Fig. 418. Flow around a plate in Prob. 17
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>Aperture.</strong> Show that <span class="math inline">\(F(z) =     ext{arccosh } z\)</span> gives confocal hyperbolas as streamlines, with foci at <span class="math inline">\(z = \pm 1\)</span>; the flow may be interpreted as a flow through an aperture (Fig. 419).</p>
+<div id="fig-18-24" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-24.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.24: Fig. 419. Flow through an aperture in Prob. 18
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>Potential.</strong> Show that the streamlines of <span class="math inline">\(F(z) = 1/z\)</span> are circles through the origin with centers on the <span class="math inline">\(y\)</span>-axis.</p></li>
+<li><p><strong>TEAM PROJECT. Role of the Natural Logarithm in Modeling Flows.</strong></p>
+<ol type="a">
+<li><strong>Basic flows: Source and sink.</strong> Show that <span class="math inline">\(F(z) = (Q/2\pi)    ext{Ln } z\)</span> with constant positive real <span class="math inline">\(Q\)</span> gives a flow directed radially outward (Fig. 420), so that <span class="math inline">\(F\)</span> models a point source at <span class="math inline">\(z = 0\)</span> (that is, a source line in space) at which fluid is produced. <span class="math inline">\(Q\)</span> is called the strength or discharge of the source. If <span class="math inline">\(Q\)</span> is negative real, show that the flow is directed radially inward, so that <span class="math inline">\(F\)</span> models a sink at a point at which fluid disappears. Note that <span class="math inline">\(z = 0\)</span> is the singular point of <span class="math inline">\(F(z)\)</span>.</li>
+</ol>
+<div id="fig-18-25" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-25.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.25: Fig. 420. Point source
+</figcaption>
+</figure>
+</div>
+<ol start="2" type="a">
+<li><strong>Basic flows: Vortex.</strong> Show that <span class="math inline">\(F(z) = -(i\Gamma/2\pi)  ext{Ln } z\)</span> with positive real <span class="math inline">\(\Gamma\)</span> gives a flow circulating counterclockwise around <span class="math inline">\(z = 0\)</span> (Fig. 421). This is called a vortex. Note that each time we travel around the vortex, the potential increases by <span class="math inline">\(\Gamma\)</span>.</li>
+</ol>
+<div id="fig-18-26" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-26.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.26: Fig. 421. Vortex flow
+</figcaption>
+</figure>
+</div>
+<ol start="3" type="a">
+<li><strong>Addition of flows.</strong> Show that addition of the velocity vectors of two flows gives a flow whose complex potential is obtained by adding the complex potentials of those flows.</li>
+<li><strong>Source and sink combined.</strong> Find the complex potentials of a flow with a source of strength <span class="math inline">\(1\)</span> at <span class="math inline">\(z = -a\)</span> and of a flow with a sink of strength <span class="math inline">\(1\)</span> at <span class="math inline">\(z = a\)</span>. Add both and sketch or graph the streamlines. Show that for small <span class="math inline">\(|a|\)</span> these lines look similar to those in Prob. 19.</li>
+<li><strong>Flow with circulation around a cylinder.</strong> Add the potential in (b) to that in Example 2. Show that this gives a flow for which the cylinder wall <span class="math inline">\(|z| = 1\)</span> is a streamline. Find the speed and show that the stagnation points are <span class="math inline">\(z = i\left( rac{\Gamma}{4\pi} \pm \sqrt{1 - rac{\Gamma^2}{16\pi^2}}
+ight)\)</span>. (See Fig. 422.)</li>
+</ol>
+<div id="fig-18-27" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-27.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.27: Fig. 422. Flow around a cylinder with circulation
+</figcaption>
+</figure>
+</div></li>
+</ol>
+</section>
+</section>
+<section id="sec-poisson-formula" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-poisson-formula"><span class="header-section-number">12.5</span> 18.5 Poisson’s Integral Formula for Potentials</h2>
+<p>So far in this chapter we have seen powerful methods based on conformal mappings and complex potentials. They were used for modeling and solving two-dimensional potential problems and demonstrated the importance of complex analysis.</p>
+<p>Now we introduce a further method that results from complex integration. It will yield the very important Poisson integral formula (5) for potentials in a standard domain (a circular disk). In addition, from (5), we will derive a useful series (7) for these potentials. This allows us to solve problems for disks and then map solutions conformally onto other domains.</p>
+<section id="derivation-of-poissons-integral-formula" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="derivation-of-poissons-integral-formula"><span class="header-section-number">12.5.1</span> Derivation of Poisson’s Integral Formula</h3>
+<p>Poisson’s formula will follow from Cauchy’s integral formula (Sec. 14.3)</p>
+<p><span id="eq-sec185-1"><span class="math display">\[F(z) = rac{1}{2\pi i} \oint_C rac{F(z^*)}{z^* - z} dz^* \tag{12.21}\]</span></span></p>
+<p>Here <span class="math inline">\(C\)</span> is the circle <span class="math inline">\(z^* = Re^{ilpha}\)</span> (counterclockwise), and we assume that <span class="math inline">\(F(z)\)</span> is analytic in a domain containing <span class="math inline">\(C\)</span> and its full interior. Since <span class="math inline">\(dz^* = iRe^{ilpha} dlpha = iz^* dlpha\)</span>, we obtain from (1)</p>
+<p><span id="eq-sec185-2"><span class="math display">\[F(z) = rac{1}{2\pi} \int_0^{2\pi} F(z^*) rac{z^*}{z^* - z} dlpha \tag{12.22}\]</span></span></p>
+<p>Now comes a little trick. If instead of <span class="math inline">\(z\)</span> inside <span class="math inline">\(C\)</span> we take a point <span class="math inline">\(Z\)</span> outside <span class="math inline">\(C\)</span>, the integrals (1) and (2) are zero by Cauchy’s integral theorem (Sec. 14.2). We choose <span class="math inline">\(Z = z^* \overline{z^*} / \overline{z} = R^2 / \overline{z}\)</span>, which is outside <span class="math inline">\(C\)</span> because <span class="math inline">\(|Z| = R^2 / |z| &gt; R\)</span> (since <span class="math inline">\(|z| = r &lt; R\)</span>). From (2) we thus have</p>
+<p><span class="math display">\[0 = rac{1}{2\pi} \int_0^{2\pi} F(z^*) rac{z^*}{z^* - Z} dlpha = rac{1}{2\pi} \int_0^{2\pi} F(z^*) rac{z^*}{z^* - R^2/\overline{z}} dlpha\]</span></p>
+<p>and by straightforward simplification using <span class="math inline">\(R^2 = z^* \overline{z^*}\)</span>,</p>
+<p><span class="math display">\[0 = rac{1}{2\pi} \int_0^{2\pi} F(z^*) rac{\overline{z}}{\overline{z} - \overline{z^*}} dlpha\]</span></p>
+<p>We subtract this from (2) and use the following formula that you can verify by direct calculation (<span class="math inline">\(z^*\overline{z^*}\)</span> cancels):</p>
+<p><span id="eq-sec185-3"><span class="math display">\[rac{z^*}{z^* - z} - rac{\overline{z}}{\overline{z} - \overline{z^*}} = rac{z^*\overline{z^*} - z\overline{z}}{(z^* - z)(\overline{z^*} - \overline{z})} \tag{12.23}\]</span></span></p>
+<p>We then have</p>
+<p><span id="eq-sec185-4"><span class="math display">\[F(z) = rac{1}{2\pi} \int_0^{2\pi} F(z^*) rac{z^*\overline{z^*} - z\overline{z}}{(z^* - z)(\overline{z^*} - \overline{z})} dlpha \tag{12.24}\]</span></span></p>
+<p>From the polar representations <span class="math inline">\(z^* = Re^{ilpha}\)</span> and <span class="math inline">\(z = re^{i   heta}\)</span> we see that the quotient in the integrand is real and equal to</p>
+<p><span class="math display">\[rac{R^2 - r^2}{(Re^{ilpha} - re^{i  heta})(Re^{-ilpha} - re^{-i    heta})} = rac{R^2 - r^2}{R^2 - 2Rr\cos(    heta - a) + r^2}\]</span></p>
+<p>We now write <span class="math inline">\(F(z) = \Phi(r,    heta) + i\Psi(r,    heta)\)</span> and take the real part on both sides of (4). Then we obtain <strong>Poisson’s integral formula</strong>:</p>
+<p><span id="eq-sec185-5"><span class="math display">\[\Phi(r,   heta) = rac{1}{2\pi} \int_0^{2\pi} \Phi(R, a) rac{R^2 - r^2}{R^2 - 2Rr\cos(   heta - a) + r^2} dlpha \tag{12.25}\]</span></span></p>
+<p>This formula represents the harmonic function <span class="math inline">\(\Phi\)</span> in the disk <span class="math inline">\(|z| &lt; R\)</span> in terms of its values on the boundary (the circle) <span class="math inline">\(|z| = R\)</span>.</p>
+<p>Formula (5) is still valid if the boundary function <span class="math inline">\(\Phi(R, a)\)</span> is merely piecewise continuous (as is practically often the case; see Figs. 405 and 406 in Sec. 18.2 for an example). Then (5) gives a function harmonic in the open disk, and on the circle equal to the given boundary function, except at points where the latter is discontinuous. A proof can be found in Ref. [D1] in App. 1.</p>
+</section>
+<section id="series-for-potentials-in-disks" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="series-for-potentials-in-disks"><span class="header-section-number">12.5.2</span> Series for Potentials in Disks</h3>
+<p>From (5) we may obtain an important series development of <span class="math inline">\(\Phi\)</span> in terms of simple harmonic functions. We remember that the quotient in the integrand of (5) was derived from (3). We claim that the right side of (3) is the real part of</p>
+<p><span class="math display">\[rac{z^* + z}{z^* - z}\]</span></p>
+<p>Indeed, the last denominator is real and so is <span class="math inline">\(z^*\overline{z^*} - z\overline{z}\)</span> in the numerator, whereas <span class="math inline">\(2i    ext{Im}(z^*\overline{z})\)</span> in the numerator is pure imaginary. This verifies our claim.</p>
+<p>Now by the use of the geometric series we obtain (develop the denominator in terms of <span class="math inline">\(z/z^*\)</span>):</p>
+<p><span id="eq-sec185-6"><span class="math display">\[rac{z^* + z}{z^* - z} = rac{1 + z/z^*}{1 - z/z^*} = \left(1 + rac{z}{z^*}
+ight) \sum_{n=0}^\infty \left(rac{z}{z^*}
+ight)^n = 1 + 2 \sum_{n=1}^\infty \left(rac{z}{z^*}
+ight)^n \tag{12.26}\]</span></span></p>
+<p>Since <span class="math inline">\(z^* = Re^{ilpha}\)</span> and <span class="math inline">\(z = re^{i    heta}\)</span>, we have</p>
+<p><span class="math display">\[\left(rac{z}{z^*}
+ight)^n = \left(rac{r}{R}
+ight)^n e^{in(  heta - a)}\]</span></p>
+<p>On the right, <span class="math inline">\(e^{in(   heta - a)} = \cos n(    heta - a) + i\sin n(    heta - a)\)</span>. Hence from (6) we obtain</p>
+<p><span id="eq-sec185-6star"><span class="math display">\[  ext{Re}\left( rac{z^* + z}{z^* - z}
+ight) = 1 + 2 \sum_{n=1}^\infty \left(rac{r}{R}
+ight)^n \cos n( heta - a) \tag{12.27}\]</span></span></p>
+<p>This expression is equal to the quotient in (5), as we have mentioned before, and by inserting it into (5) and integrating term by term with respect to <span class="math inline">\(lpha\)</span> from 0 to <span class="math inline">\(2\pi\)</span>, we obtain</p>
+<p><span id="eq-sec185-7"><span class="math display">\[\Phi(r,   heta) = a_0 + \sum_{n=1}^\infty \left(rac{r}{R}
+ight)^n (a_n \cos n heta + b_n \sin n   heta) \tag{12.28}\]</span></span></p>
+<p>where the coefficients are [the 2 in (6*) cancels the <span class="math inline">\(1/(2\pi)\)</span> in (5)]:</p>
+<p><span id="eq-sec185-8"><span class="math display">\[a_0 = rac{1}{2\pi}\int_0^{2\pi} \Phi(R, a) \, dlpha, \quad a_n = rac{1}{\pi}\int_0^{2\pi} \Phi(R, a)\cos na \, dlpha, \quad b_n = rac{1}{\pi}\int_0^{2\pi} \Phi(R, a)\sin na \, dlpha \tag{12.29}\]</span></span></p>
+<p>the Fourier coefficients of <span class="math inline">\(\Phi(R, a)\)</span>. Now, for <span class="math inline">\(r = R\)</span>, the series (7) becomes the Fourier series of <span class="math inline">\(\Phi(R, a)\)</span>. Hence the representation (7) will be valid whenever the <span class="math inline">\(\Phi(R, a)\)</span> given on the boundary can be represented by a Fourier series.</p>
+</section>
+<section id="example-1-dirichlet-problem-for-the-unit-disk" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="example-1-dirichlet-problem-for-the-unit-disk"><span class="header-section-number">12.5.3</span> EXAMPLE 1 Dirichlet Problem for the Unit Disk</h3>
+<p>Find the electrostatic potential <span class="math inline">\(\Phi(r,   heta)\)</span> in the unit disk <span class="math inline">\(r &lt; 1\)</span> having the boundary values (Fig. 423)</p>
+<p><span class="math display">\[\Phi(1, a) = egin{cases} -a/\pi &amp;    ext{if } -\pi &lt; a &lt; 0 \ a/\pi &amp;     ext{if } 0 &lt; a &lt; \pi \end{cases}\]</span></p>
+<div id="fig-18-28" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-28.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.28: Fig. 423. Boundary values in Example 1
+</figcaption>
+</figure>
+</div>
+<div id="fig-18-29" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-29-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-29.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-29-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.29: Fig. 424. Potential in Example 1
+</figcaption>
+</figure>
+</div>
+<p><strong>Solution.</strong> Since <span class="math inline">\(\Phi(1, a)\)</span> is even, <span class="math inline">\(b_n = 0\)</span>, and from (8) we obtain <span class="math inline">\(a_0 = 1/2\)</span> and</p>
+<p><span class="math display">\[a_n = rac{1}{\pi} \left[ \int_{-\pi}^0 \left(-rac{a}{\pi}
+ight) \cos na \, dlpha + \int_0^\pi rac{a}{\pi} \cos na \, dlpha
+ight] = rac{2}{n^2\pi^2}(\cos n\pi - 1)\]</span></p>
+<p>Hence, <span class="math inline">\(a_n = 0\)</span> if <span class="math inline">\(n\)</span> is even, <span class="math inline">\(a_n = -4/(n^2\pi^2)\)</span> if <span class="math inline">\(n\)</span> is odd, and the potential is</p>
+<p><span class="math display">\[\Phi(r,   heta) = rac{1}{2} - rac{4}{\pi^2}\left( r\cos heta + rac{r^3}{3^2}\cos 3 heta + rac{r^5}{5^2}\cos 5 heta + \dots
+ight)\]</span></p>
+<p>Figure 424 shows the unit disk and some of the equipotential lines (<span class="math inline">\(\Phi =     ext{const}\)</span>).</p>
+</section>
+<section id="sec-ps18-5" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="sec-ps18-5"><span class="header-section-number">12.5.4</span> PROBLEM SET 18.5</h3>
+<ol type="1">
+<li>Give the details of the derivation of the series (7) from the Poisson formula (5).</li>
+<li>Verify formula (3).</li>
+<li>Show that each term of (7) is a harmonic function in the disk <span class="math inline">\(r &lt; R\)</span>.</li>
+<li>Why does the series in Example 1 reduce to a cosine series?</li>
+</ol>
+<section id="harmonic-functions-in-a-disk" class="level4" data-number="12.5.4.1">
+<h4 data-number="12.5.4.1" class="anchored" data-anchor-id="harmonic-functions-in-a-disk"><span class="header-section-number">12.5.4.1</span> 5–18 HARMONIC FUNCTIONS IN A DISK</h4>
+<p>Using (7), find the potential in the unit disk <span class="math inline">\(r &lt; 1\)</span> having the given boundary values <span class="math inline">\(\Phi(1,    heta)\)</span>. Using the sum of the first few terms of the series, compute some values of <span class="math inline">\(\Phi\)</span> and sketch a figure of the equipotential lines. 5. <span class="math inline">\(\Phi(1,     heta) = 3 \sin 3    heta\)</span>. 6. <span class="math inline">\(\Phi(1,     heta) = 5 - \cos 2  heta\)</span>. 7. <span class="math inline">\(\Phi(1,     heta) = \cos^2 4    heta\)</span>. 8. <span class="math inline">\(\Phi(1,     heta) = 4\sin^3 heta\)</span>. 9. <span class="math inline">\(\Phi(1,     heta) = 8\sin^4 heta\)</span>. 10. <span class="math inline">\(\Phi(1,    heta) = 16\cos^3 2  heta\)</span>. 11. <span class="math inline">\(\Phi(1,    heta) =     heta/\pi\)</span> if <span class="math inline">\(-\pi &lt;    heta &lt; \pi\)</span>. 12. <span class="math inline">\(\Phi(1,    heta) = k\)</span> if <span class="math inline">\(0 &lt;  heta &lt; \pi\)</span>, and 0 otherwise. 13. <span class="math inline">\(\Phi(1,    heta) =     heta\)</span> if <span class="math inline">\(-\pi/2 &lt;  heta &lt; \pi/2\)</span>, and 0 otherwise. 14. <span class="math inline">\(\Phi(1,    heta) = |   heta|/\pi\)</span> if <span class="math inline">\(-\pi &lt;   heta &lt; \pi\)</span>. 15. <span class="math inline">\(\Phi(1,    heta) = 1\)</span> if <span class="math inline">\(-\pi/2 &lt;     heta &lt; \pi/2\)</span>, and 0 otherwise. 16. <span class="math inline">\(\Phi(1,    heta) = 0\)</span> if <span class="math inline">\(-\pi &lt;   heta &lt; 0\)</span>, and $ heta$ if <span class="math inline">\(0 &lt;   heta &lt; \pi\)</span>. 17. <span class="math inline">\(\Phi(1,    heta) =     heta^2/\pi^2\)</span> if <span class="math inline">\(-\pi &lt;    heta &lt; \pi\)</span>. 18. <span class="math inline">\(\Phi(1,    heta) =     heta + \pi\)</span> if <span class="math inline">\(-\pi &lt;  heta &lt; 0\)</span>, and $ heta - $ if <span class="math inline">\(0 &lt;     heta &lt; \pi\)</span>.</p>
+</section>
+<section id="team-projects" class="level4" data-number="12.5.4.2">
+<h4 data-number="12.5.4.2" class="anchored" data-anchor-id="team-projects"><span class="header-section-number">12.5.4.2</span> 19–20 TEAM PROJECTS</h4>
+<ol start="19" type="1">
+<li><strong>CAS EXPERIMENT. Series (7).</strong> Write a program for series developments (7). Experiment on accuracy by computing values from partial sums and comparing them with values that you obtain from your CAS graph. Do this (a) for Example 1 and Fig. 424, (b) for <span class="math inline">\(\Phi(1,  heta)\)</span> in Prob. 12 (which is discontinuous on the boundary!), (c) for a <span class="math inline">\(\Phi(1,    heta)\)</span> of your choice with continuous boundary values, and (d) for a <span class="math inline">\(\Phi(1,   heta)\)</span> with discontinuous boundary values.</li>
+<li><strong>TEAM PROJECT. Potential in a Disk.</strong>
+<ol type="a">
+<li><strong>Mean value property.</strong> Show that the value of a harmonic function at the center of a circle <span class="math inline">\(C\)</span> equals the mean of the values of <span class="math inline">\(\Phi\)</span> on <span class="math inline">\(C\)</span>.</li>
+<li><strong>Separation of variables.</strong> Show that the terms of (7) appear as solutions in separating the Laplace equation in polar coordinates.</li>
+<li><strong>Harmonic conjugate.</strong> Find a series for a harmonic conjugate of <span class="math inline">\(\Phi\)</span> from (7). Hint. Use the Cauchy–Riemann equations.</li>
+<li><strong>Power series.</strong> Find a series for <span class="math inline">\(F(z) = \Phi + i\Psi\)</span> from (7).</li>
+</ol></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="sec-harmonic-properties" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sec-harmonic-properties"><span class="header-section-number">12.6</span> 18.6 General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem</h2>
+<p>Recall from Sec. 10.8 that harmonic functions are solutions to Laplace’s equation and their second-order partial derivatives are continuous. In this section we explore how general properties of harmonic functions often can be obtained from properties of analytic functions. This can frequently be done in a simple fashion. Specifically, important mean value properties of harmonic functions follow readily from those of analytic functions. The details are as follows.</p>
+<section id="theorem-1-mean-value-property-of-analytic-functions" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="theorem-1-mean-value-property-of-analytic-functions"><span class="header-section-number">12.6.1</span> THEOREM 1 Mean Value Property of Analytic Functions</h3>
+<p>Let <span class="math inline">\(F(z)\)</span> be analytic in a simply connected domain <span class="math inline">\(D\)</span>. Then the value of <span class="math inline">\(F(z)\)</span> at a point <span class="math inline">\(z_0\)</span> in <span class="math inline">\(D\)</span> is equal to the mean value of <span class="math inline">\(F(z)\)</span> on any circle in <span class="math inline">\(D\)</span> with center at <span class="math inline">\(z_0\)</span>.</p>
+<p><strong>PROOF</strong> In Cauchy’s integral formula (Sec. 14.3)</p>
+<p><span id="eq-sec186-1"><span class="math display">\[F(z_0) = rac{1}{2\pi i} \oint_C rac{F(z)}{z - z_0} dz \tag{12.30}\]</span></span></p>
+<p>we choose for <span class="math inline">\(C\)</span> the circle <span class="math inline">\(z = z_0 + re^{ilpha}\)</span> in <span class="math inline">\(D\)</span>. Then <span class="math inline">\(z - z_0 = re^{ilpha}\)</span> and <span class="math inline">\(dz = ire^{ilpha} dlpha\)</span>, and (1) becomes</p>
+<p><span id="eq-sec186-2"><span class="math display">\[F(z_0) = rac{1}{2\pi} \int_0^{2\pi} F(z_0 + re^{ilpha}) dlpha \tag{12.31}\]</span></span></p>
+<p>The right side is the mean value of <span class="math inline">\(F(z)\)</span> on the circle. This proves the theorem. <span class="math inline">\(lacksquare\)</span></p>
+<p>For harmonic functions, Theorem 1 implies</p>
+</section>
+<section id="theorem-2-two-mean-value-properties-of-harmonic-functions" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="theorem-2-two-mean-value-properties-of-harmonic-functions"><span class="header-section-number">12.6.2</span> THEOREM 2 Two Mean Value Properties of Harmonic Functions</h3>
+<p>Let <span class="math inline">\(\Phi(x, y)\)</span> be harmonic in a simply connected domain <span class="math inline">\(D\)</span>. Then the value of <span class="math inline">\(\Phi(x, y)\)</span> at a point <span class="math inline">\((x_0, y_0)\)</span> in <span class="math inline">\(D\)</span> is equal to the mean value of <span class="math inline">\(\Phi(x, y)\)</span> on any circle in <span class="math inline">\(D\)</span> with center at <span class="math inline">\((x_0, y_0)\)</span>. This value is also equal to the mean value of <span class="math inline">\(\Phi(x, y)\)</span> on any circular disk in <span class="math inline">\(D\)</span> with center <span class="math inline">\((x_0, y_0)\)</span>.</p>
+<p><strong>PROOF</strong> The first part of the theorem follows from (2) by taking the real parts on both sides,</p>
+<p><span class="math display">\[\Phi(x_0, y_0) =  ext{Re } F(z_0) = rac{1}{2\pi} \int_0^{2\pi} \Phi(x_0 + r\coslpha, y_0 + r\sinlpha) dlpha\]</span></p>
+<p>The second part of the theorem follows by integrating this formula over <span class="math inline">\(r\)</span> from 0 to <span class="math inline">\(r_0\)</span> (the radius of the disk) and dividing by <span class="math inline">\(r_0^2/2\)</span>:</p>
+<p><span id="eq-sec186-3"><span class="math display">\[\Phi(x_0, y_0) = rac{1}{\pi r_0^2} \int_0^{r_0} \int_0^{2\pi} \Phi(x_0 + r\coslpha, y_0 + r\sinlpha) r \, dlpha \, dr \tag{12.32}\]</span></span></p>
+<p>The right side is the indicated mean value (integral divided by the area of the region of integration). <span class="math inline">\(lacksquare\)</span></p>
+<p>Returning to analytic functions, we state and prove another famous consequence of Cauchy’s integral formula. The proof is indirect and shows quite a nice idea of applying the <span class="math inline">\(ML\)</span>-inequality. (A bounded region is a region that lies entirely in some circle about the origin.)</p>
+</section>
+<section id="theorem-3-maximum-modulus-theorem-for-analytic-functions" class="level3" data-number="12.6.3">
+<h3 data-number="12.6.3" class="anchored" data-anchor-id="theorem-3-maximum-modulus-theorem-for-analytic-functions"><span class="header-section-number">12.6.3</span> THEOREM 3 Maximum Modulus Theorem for Analytic Functions</h3>
+<p>Let <span class="math inline">\(F(z)\)</span> be analytic and nonconstant in a domain containing a bounded region <span class="math inline">\(R\)</span> and its boundary. Then the absolute value <span class="math inline">\(|F(z)|\)</span> cannot have a maximum at an interior point of <span class="math inline">\(R\)</span>. Consequently, the maximum of <span class="math inline">\(|F(z)|\)</span> is taken on the boundary of <span class="math inline">\(R\)</span>. If <span class="math inline">\(F(z)
+eq 0\)</span> in <span class="math inline">\(R\)</span>, the same is true with respect to the minimum of <span class="math inline">\(|F(z)|\)</span>.</p>
+<div id="fig-18-30" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-18-30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../images/fig-18-30.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.30: Fig. 425. Proof of Theorem 3
+</figcaption>
+</figure>
+</div>
+<p><strong>PROOF</strong> We assume that <span class="math inline">\(|F(z)|\)</span> has a maximum at an interior point <span class="math inline">\(z_0\)</span> of <span class="math inline">\(R\)</span> and show that this leads to a contradiction. Let <span class="math inline">\(|F(z_0)| = M\)</span> be this maximum. Since <span class="math inline">\(F(z)\)</span> is not constant, <span class="math inline">\(|F(z)|\)</span> is not constant, as follows from Example 3 in Sec. 13.4. Consequently, we can find a circle <span class="math inline">\(C\)</span> of radius <span class="math inline">\(r\)</span> with center at <span class="math inline">\(z_0\)</span> such that the interior of <span class="math inline">\(C\)</span> is in <span class="math inline">\(R\)</span> and <span class="math inline">\(|F(z)|\)</span> is smaller than <span class="math inline">\(M\)</span> at some point <span class="math inline">\(P\)</span> of <span class="math inline">\(C\)</span>. Since <span class="math inline">\(|F(z)|\)</span> is continuous, it will be smaller than <span class="math inline">\(M\)</span> on an arc <span class="math inline">\(C_1\)</span> of <span class="math inline">\(C\)</span> that contains <span class="math inline">\(P\)</span> (see Fig. 425), say,</p>
+<p><span class="math display">\[|F(z)| \le M - k \quad (k &gt; 0)\]</span></p>
+<p>for all <span class="math inline">\(z\)</span> on <span class="math inline">\(C_1\)</span>. Let <span class="math inline">\(C_1\)</span> have the length <span class="math inline">\(L_1\)</span>. Then the complementary arc <span class="math inline">\(C_2\)</span> of <span class="math inline">\(C\)</span> has the length <span class="math inline">\(2\pi r - L_1\)</span>. We now apply the <span class="math inline">\(ML\)</span>-inequality (Sec. 14.1) to (1) and note that <span class="math inline">\(|z - z_0| = r\)</span>. We then obtain (using straightforward calculation in the second line of the formula)</p>
+<p><span class="math display">\[egin{aligned}
+M = |F(z_0)| &amp;\le rac{1}{2\pi} \left| \int_{C_1} rac{F(z)}{z - z_0} dz
+ight| + rac{1}{2\pi} \left| \int_{C_2} rac{F(z)}{z - z_0} dz
+ight| \
+&amp;\le rac{1}{2\pi} (M - k) rac{L_1}{r} + rac{1}{2\pi} M rac{2\pi r - L_1}{r} = M - rac{k L_1}{2\pi r} &lt; M
+\end{aligned}\]</span></p>
+<p>that is, <span class="math inline">\(M &lt; M\)</span>, which is impossible. Hence our assumption is false and the first statement is proved.</p>
+<p>Next we prove the second statement. If <span class="math inline">\(F(z)
+eq 0\)</span> in <span class="math inline">\(R\)</span>, then <span class="math inline">\(1/F(z)\)</span> is analytic in <span class="math inline">\(R\)</span>. From the statement already proved it follows that the maximum of <span class="math inline">\(1/|F(z)|\)</span> lies on the boundary of <span class="math inline">\(R\)</span>. But this maximum corresponds to the minimum of <span class="math inline">\(|F(z)|\)</span>. This completes the proof. <span class="math inline">\(lacksquare\)</span></p>
+<p>This theorem has several fundamental consequences for harmonic functions, as follows.</p>
+</section>
+<section id="theorem-4-harmonic-functions" class="level3" data-number="12.6.4">
+<h3 data-number="12.6.4" class="anchored" data-anchor-id="theorem-4-harmonic-functions"><span class="header-section-number">12.6.4</span> THEOREM 4 Harmonic Functions</h3>
+<p>Let <span class="math inline">\(\Phi(x, y)\)</span> be harmonic in a domain containing a simply connected bounded region <span class="math inline">\(R\)</span> and its boundary curve <span class="math inline">\(C\)</span>. Then: - <strong>(I) (Maximum principle)</strong> If <span class="math inline">\(\Phi(x, y)\)</span> is not constant, it has neither a maximum nor a minimum in <span class="math inline">\(R\)</span>. Consequently, the maximum and the minimum are taken on the boundary of <span class="math inline">\(R\)</span>. - <strong>(II)</strong> If <span class="math inline">\(\Phi(x, y)\)</span> is constant on <span class="math inline">\(C\)</span>, then <span class="math inline">\(\Phi(x, y)\)</span> is a constant. - <strong>(III)</strong> If <span class="math inline">\(h(x, y)\)</span> and <span class="math inline">\(\Phi(x, y)\)</span> are harmonic in <span class="math inline">\(R\)</span> and on <span class="math inline">\(C\)</span>, and if <span class="math inline">\(h(x, y) = \Phi(x, y)\)</span> on <span class="math inline">\(C\)</span>, then <span class="math inline">\(h(x, y) = \Phi(x, y)\)</span> everywhere in <span class="math inline">\(R\)</span>.</p>
+<p><strong>PROOF</strong> <strong>(I)</strong> Let <span class="math inline">\(\Psi(x, y)\)</span> be a conjugate harmonic function of <span class="math inline">\(\Phi(x, y)\)</span> in <span class="math inline">\(R\)</span>. Then the complex function <span class="math inline">\(F(z) = \Phi(x, y) + i\Psi(x, y)\)</span> is analytic in <span class="math inline">\(R\)</span>, and so is <span class="math inline">\(G(z) = e^{F(z)}\)</span>. Its absolute value is</p>
+<p><span class="math display">\[|G(z)| = e^{  ext{Re } F(z)} = e^{\Phi(x, y)}\]</span></p>
+<p>From Theorem 3 it follows that <span class="math inline">\(|G(z)|\)</span> cannot have a maximum at an interior point of <span class="math inline">\(R\)</span>. Since <span class="math inline">\(e^\Phi\)</span> is a monotone increasing function of the real variable <span class="math inline">\(\Phi\)</span>, the statement about the maximum of <span class="math inline">\(\Phi\)</span> follows. From this, the statement about the minimum follows by replacing <span class="math inline">\(\Phi\)</span> by <span class="math inline">\(-\Phi\)</span>.</p>
+<p><strong>(II)</strong> By (I) the function <span class="math inline">\(\Phi\)</span> takes its maximum and its minimum on <span class="math inline">\(C\)</span>. Thus, if <span class="math inline">\(\Phi\)</span> is constant on <span class="math inline">\(C\)</span>, its minimum must equal its maximum, so that <span class="math inline">\(\Phi\)</span> must be a constant.</p>
+<p><strong>(III)</strong> If <span class="math inline">\(h\)</span> and <span class="math inline">\(\Phi\)</span> are harmonic in <span class="math inline">\(R\)</span> and on <span class="math inline">\(C\)</span>, then <span class="math inline">\(h - \Phi\)</span> is also harmonic in <span class="math inline">\(R\)</span> and on <span class="math inline">\(C\)</span>, and by assumption, <span class="math inline">\(h - \Phi = 0\)</span> everywhere on <span class="math inline">\(C\)</span>. By (II) we thus have <span class="math inline">\(h - \Phi = 0\)</span> everywhere in <span class="math inline">\(R\)</span>, and (III) is proved. <span class="math inline">\(lacksquare\)</span></p>
+<p>The last statement of Theorem 4 is very important. It means that a harmonic function is uniquely determined in <span class="math inline">\(R\)</span> by its values on the boundary of <span class="math inline">\(R\)</span>. Usually, <span class="math inline">\(\Phi(x, y)\)</span> is required to be harmonic in <span class="math inline">\(R\)</span> and continuous on the boundary of <span class="math inline">\(R\)</span>, that is,</p>
+<p><span class="math display">\[\lim_{(x, y)  o (x_0, y_0)} \Phi(x, y) = \Phi(x_0, y_0)\]</span></p>
+<p>where <span class="math inline">\((x_0, y_0)\)</span> is on the boundary and <span class="math inline">\((x, y)\)</span> is in <span class="math inline">\(R\)</span>. Under these assumptions the maximum principle (I) is still applicable. The problem of determining <span class="math inline">\(\Phi\)</span> when the boundary values are given is called the Dirichlet problem for the Laplace equation in two variables, as we know. From (III) we thus have, as a highlight of our discussion:</p>
+</section>
+<section id="theorem-5-uniqueness-theorem-for-the-dirichlet-problem" class="level3" data-number="12.6.5">
+<h3 data-number="12.6.5" class="anchored" data-anchor-id="theorem-5-uniqueness-theorem-for-the-dirichlet-problem"><span class="header-section-number">12.6.5</span> THEOREM 5 Uniqueness Theorem for the Dirichlet Problem</h3>
+<p>If for a given region and given boundary values the Dirichlet problem for the Laplace equation in two variables has a solution, the solution is unique.</p>
+</section>
+<section id="sec-ps18-6" class="level3" data-number="12.6.6">
+<h3 data-number="12.6.6" class="anchored" data-anchor-id="sec-ps18-6"><span class="header-section-number">12.6.6</span> PROBLEM SET 18.6</h3>
+<section id="application-of-theorem-1" class="level4" data-number="12.6.6.1">
+<h4 data-number="12.6.6.1" class="anchored" data-anchor-id="application-of-theorem-1"><span class="header-section-number">12.6.6.1</span> 1–4 APPLICATION OF THEOREM 1</h4>
+<p>Verify Theorem 1 for the given <span class="math inline">\(F(z)\)</span> and circle of radius 1 with center <span class="math inline">\(z_0\)</span>. 1. <span class="math inline">\(F(z) = (z + 1)^3\)</span>, <span class="math inline">\(z_0 = 5\)</span>. 2. <span class="math inline">\(F(z) = 2z^4\)</span>, <span class="math inline">\(z_0 = -2\)</span>. 3. <span class="math inline">\(F(z) = (3z - 2)^2\)</span>, <span class="math inline">\(z_0 = 4\)</span>. 4. <span class="math inline">\(F(z) = (z - 1)^{-2}\)</span>, <span class="math inline">\(z_0 = -1\)</span>. 5. Integrate <span class="math inline">\(|z|\)</span> around the unit circle. Does the result contradict Theorem 1? 6. Derive the first statement in Theorem 2 from Poisson’s integral formula.</p>
+</section>
+<section id="disk-mean-value" class="level4" data-number="12.6.6.2">
+<h4 data-number="12.6.6.2" class="anchored" data-anchor-id="disk-mean-value"><span class="header-section-number">12.6.6.2</span> 7–9 DISK MEAN VALUE</h4>
+<p>Verify formula (3) in Theorem 2 for the given <span class="math inline">\(\Phi(x, y)\)</span> and circle of radius 1 with center <span class="math inline">\((x_0, y_0)\)</span>. 7. <span class="math inline">\(\Phi(x, y) = x^2 - y^2\)</span>, <span class="math inline">\((x_0, y_0) = (1, 1)\)</span>. 8. <span class="math inline">\(\Phi(x, y) = (x - 1)(y - 1)\)</span>, <span class="math inline">\((x_0, y_0) = (3, 8)\)</span>. 9. <span class="math inline">\(\Phi(x, y) = x + y + xy\)</span>, <span class="math inline">\((x_0, y_0) = (2, -2)\)</span>. 10. Verify the calculations involving the inequalities in the proof of Theorem 3. 11. <strong>CAS EXPERIMENT. Graphing Potentials.</strong> Graph the potentials in Probs. 7 and 9 and for two other functions of your choice as surfaces over a rectangle in the <span class="math inline">\(xy\)</span>-plane. Find the locations of the maxima and minima by inspecting these graphs. 12. <strong>TEAM PROJECT. Maximum Modulus of Analytic Functions.</strong> (a) Verify Theorem 3 for (i) <span class="math inline">\(F(z) = z^2\)</span> and the rectangle <span class="math inline">\(1 \le x \le 5\)</span>, <span class="math inline">\(2 \le y \le 4\)</span>, (ii) <span class="math inline">\(F(z) = \sin z\)</span> and the unit disk, and (iii) <span class="math inline">\(F(z) = e^z\)</span> and any bounded domain. (b) <span class="math inline">\(F(z) = 1/(1+|z|)\)</span> is not zero in the disk <span class="math inline">\(|z| \le 2\)</span> and has a minimum at an interior point. Does this contradict Theorem 3? (c) <span class="math inline">\(F(x) = \sin x\)</span> (<span class="math inline">\(x\)</span> real) has a maximum 1 at <span class="math inline">\(x = \pi/2\)</span>. Why can this not be a maximum of <span class="math inline">\(|F(z)|\)</span> in a domain containing <span class="math inline">\(z = \pi/2\)</span>? (d) If <span class="math inline">\(F(z)\)</span> is analytic and not constant in the closed unit disk <span class="math inline">\(D: |z| \le 1\)</span> and <span class="math inline">\(|F(z)| = c =     ext{const}\)</span> on the unit circle, show that <span class="math inline">\(F(z)\)</span> must have a zero in <span class="math inline">\(D\)</span>.</p>
+</section>
+<section id="maximum-modulus" class="level4" data-number="12.6.6.3">
+<h4 data-number="12.6.6.3" class="anchored" data-anchor-id="maximum-modulus"><span class="header-section-number">12.6.6.3</span> 13–17 MAXIMUM MODULUS</h4>
+<p>Find the location and size of the maximum of <span class="math inline">\(|F(z)|\)</span> in the unit disk <span class="math inline">\(|z| \le 1\)</span>. 13. <span class="math inline">\(F(z) = \cos z\)</span>. 14. <span class="math inline">\(F(z) = \sinh 2z\)</span>. 15. <span class="math inline">\(F(z) = \exp z^2\)</span>. 16. <span class="math inline">\(F(z) = az + b\)</span> (<span class="math inline">\(a, b\)</span> complex, <span class="math inline">\(a
+eq 0\)</span>). 17. <span class="math inline">\(F(z) = \cosh z\)</span>. 18. Verify the maximum principle for <span class="math inline">\(\Phi(x, y) = e^x \sin y\)</span> and the rectangle <span class="math inline">\(0 \le x \le 1, 0 \le y \le 2\pi\)</span>. 19. <strong>Harmonic conjugate.</strong> Do <span class="math inline">\(\Phi(x, y)\)</span> and a harmonic conjugate <span class="math inline">\(\Psi(x, y)\)</span> in a region <span class="math inline">\(R\)</span> have their maximum at the same point of <span class="math inline">\(R\)</span>? 20. <strong>Conformal mapping.</strong> Find the location of the maximum of <span class="math inline">\(|F(z)|\)</span> in <span class="math inline">\(R: |z| \le 1, y \ge 0\)</span>, where <span class="math inline">\(F(z) = z^2\)</span>. Find the region <span class="math inline">\(R^*\)</span> in the <span class="math inline">\(w\)</span>-plane that is mapped onto <span class="math inline">\(R\)</span> by <span class="math inline">\(w = f(z) = z^2\)</span>. Find the potential <span class="math inline">\(\Phi\)</span> in <span class="math inline">\(R\)</span> resulting from <span class="math inline">\(\Phi^* = e^u \cos v\)</span> and the location of the maximum. Is the image of <span class="math inline">\((x_1, y_1)\)</span> equal to <span class="math inline">\((u_1, v_1)\)</span>? If so, is this just by chance?</p>
+</section>
+</section>
+</section>
+<section id="sec-ch18-review" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="sec-ch18-review"><span class="header-section-number">12.7</span> CHAPTER 18 REVIEW QUESTIONS AND PROBLEMS</h2>
+<ol type="1">
+<li>Why can potential problems be modeled and solved by methods of complex analysis? For what dimensions?</li>
+<li>What parts of complex analysis are mainly of interest to the engineer and physicist?</li>
+<li>What is a harmonic function? A harmonic conjugate?</li>
+<li>What areas of physics did we consider? Could you think of others?</li>
+<li>Give some examples of potential problems considered in this chapter. Make a list of corresponding functions.</li>
+<li>What does the complex potential give physically?</li>
+<li>Write a short essay on the various assumptions made in fluid flow in this chapter.</li>
+<li>Explain the use of conformal mapping in potential theory.</li>
+<li>State the maximum modulus theorem and mean value theorems for harmonic functions.</li>
+<li>State Poisson’s integral formula. Derive it from Cauchy’s formula.</li>
+<li>Find the potential and the complex potential between the plates <span class="math inline">\(y = x\)</span> and <span class="math inline">\(y = x + 10\)</span> kept at 10 V and 110 V, respectively.</li>
+<li>Find the potential and complex potential between the coaxial cylinders of axis 0 (hence the vertical axis in space) and radii <span class="math inline">\(r_1 = 1  ext{ cm}, r_2 = 10  ext{ cm}\)</span>, kept at potential <span class="math inline">\(U_1 = 200 ext{ V}\)</span> and <span class="math inline">\(U_2 = 2   ext{ kV}\)</span>, respectively.</li>
+<li>Do the task in Prob. 12 if <span class="math inline">\(U_1 = 220   ext{ V}\)</span> and the outer cylinder is grounded, <span class="math inline">\(U_2 = 0\)</span>.</li>
+<li>If plates at <span class="math inline">\(x_1 = 1\)</span> and <span class="math inline">\(x_2 = 10\)</span> are kept at potentials <span class="math inline">\(U_1 = 200 ext{ V}\)</span> and <span class="math inline">\(U_2 = 2   ext{ kV}\)</span>, respectively, is the potential at <span class="math inline">\(x = 5\)</span> larger or smaller than the potential at <span class="math inline">\(r = 5\)</span> in Prob. 12? No calculation. Give reason.</li>
+<li>Make a list of important potential functions, with applications, from memory.</li>
+<li>Find the equipotential lines of <span class="math inline">\(F(z) = i   ext{Ln } z\)</span>.</li>
+<li>Find the potential in the first quadrant of the <span class="math inline">\(xy\)</span>-plane if the <span class="math inline">\(x\)</span>-axis has potential 2 kV and the <span class="math inline">\(y\)</span>-axis is grounded.</li>
+<li>Find the potential in the angular region between the plates $ ext{Arg } z = /6$ kept at 800 V and $ ext{Arg } z = /3$ kept at 600 V.</li>
+<li>Find the temperature <span class="math inline">\(T\)</span> in the upper half-plane if, on the <span class="math inline">\(x\)</span>-axis, <span class="math inline">\(T = 30^\circ ext{C}\)</span> for <span class="math inline">\(x &gt; 1\)</span>, <span class="math inline">\(T = -30^\circ ext{C}\)</span> for <span class="math inline">\(x &lt; -1\)</span>, and <span class="math inline">\(T = 0^\circ  ext{C}\)</span> for <span class="math inline">\(-1 &lt; x &lt; 1\)</span>.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/intro.html" class="pagination-link" aria-label="gutka">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">gutka</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

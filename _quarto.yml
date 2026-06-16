@@ -15,6 +15,7 @@ book:
     - chapters/ch8.qmd
     - chapters/ch17.qmd
     - chapters/intro.qmd
+    - chapters/ch18.qmd
 
 
 format:
