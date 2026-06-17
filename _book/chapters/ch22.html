@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; CHAPTER 22: Unconstrained Optimization. Linear Programming – Advanced Engineering Mathematics</title>
+<title>18&nbsp; CHAPTER 22: Unconstrained Optimization. Linear Programming – Advanced Engineering Mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch22.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch22.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -219,26 +219,38 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 19: Numerics in General</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 20: Numeric Linear Algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/ch21.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch22.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">gutka</span></span></a>
   </div>
 </li>
     </ul>
@@ -251,37 +263,37 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#part-f-optimization-graphs" id="toc-part-f-optimization-graphs" class="nav-link active" data-scroll-target="#part-f-optimization-graphs"><span class="header-section-number">15.0.1</span> PART F: Optimization, Graphs</a></li>
-  <li><a href="#chapter-22-unconstrained-optimization.-linear-programming" id="toc-chapter-22-unconstrained-optimization.-linear-programming" class="nav-link" data-scroll-target="#chapter-22-unconstrained-optimization.-linear-programming"><span class="header-section-number">16</span> CHAPTER 22: Unconstrained Optimization. Linear Programming</a>
+  <li><a href="#part-f-optimization-graphs" id="toc-part-f-optimization-graphs" class="nav-link active" data-scroll-target="#part-f-optimization-graphs"><span class="header-section-number">18.0.1</span> PART F: Optimization, Graphs</a></li>
+  <li><a href="#chapter-22-unconstrained-optimization.-linear-programming" id="toc-chapter-22-unconstrained-optimization.-linear-programming" class="nav-link" data-scroll-target="#chapter-22-unconstrained-optimization.-linear-programming"><span class="header-section-number">19</span> CHAPTER 22: Unconstrained Optimization. Linear Programming</a>
   <ul class="collapse">
-  <li><a href="#sec-basic-concepts-unconstrained" id="toc-sec-basic-concepts-unconstrained" class="nav-link" data-scroll-target="#sec-basic-concepts-unconstrained"><span class="header-section-number">16.1</span> 22.1 Basic Concepts. Unconstrained Optimization: Method of Steepest Descent</a>
+  <li><a href="#sec-basic-concepts-unconstrained" id="toc-sec-basic-concepts-unconstrained" class="nav-link" data-scroll-target="#sec-basic-concepts-unconstrained"><span class="header-section-number">19.1</span> 22.1 Basic Concepts. Unconstrained Optimization: Method of Steepest Descent</a>
   <ul class="collapse">
-  <li><a href="#example-1-method-of-steepest-descent" id="toc-example-1-method-of-steepest-descent" class="nav-link" data-scroll-target="#example-1-method-of-steepest-descent"><span class="header-section-number">16.1.1</span> EXAMPLE 1: Method of Steepest Descent</a></li>
-  <li><a href="#problem-set-22.1" id="toc-problem-set-22.1" class="nav-link" data-scroll-target="#problem-set-22.1"><span class="header-section-number">16.1.2</span> PROBLEM SET 22.1</a></li>
+  <li><a href="#example-1-method-of-steepest-descent" id="toc-example-1-method-of-steepest-descent" class="nav-link" data-scroll-target="#example-1-method-of-steepest-descent"><span class="header-section-number">19.1.1</span> EXAMPLE 1: Method of Steepest Descent</a></li>
+  <li><a href="#problem-set-22.1" id="toc-problem-set-22.1" class="nav-link" data-scroll-target="#problem-set-22.1"><span class="header-section-number">19.1.2</span> PROBLEM SET 22.1</a></li>
   </ul></li>
-  <li><a href="#sec-linear-programming" id="toc-sec-linear-programming" class="nav-link" data-scroll-target="#sec-linear-programming"><span class="header-section-number">16.2</span> 22.2 Linear Programming</a>
+  <li><a href="#sec-linear-programming" id="toc-sec-linear-programming" class="nav-link" data-scroll-target="#sec-linear-programming"><span class="header-section-number">19.2</span> 22.2 Linear Programming</a>
   <ul class="collapse">
-  <li><a href="#example-1-production-plan" id="toc-example-1-production-plan" class="nav-link" data-scroll-target="#example-1-production-plan"><span class="header-section-number">16.2.1</span> EXAMPLE 1: Production Plan</a></li>
-  <li><a href="#normal-form-of-a-linear-programming-problem" id="toc-normal-form-of-a-linear-programming-problem" class="nav-link" data-scroll-target="#normal-form-of-a-linear-programming-problem"><span class="header-section-number">16.2.2</span> Normal Form of a Linear Programming Problem</a></li>
-  <li><a href="#example-2-conversion-of-inequalities-by-the-use-of-slack-variables" id="toc-example-2-conversion-of-inequalities-by-the-use-of-slack-variables" class="nav-link" data-scroll-target="#example-2-conversion-of-inequalities-by-the-use-of-slack-variables"><span class="header-section-number">16.2.3</span> EXAMPLE 2: Conversion of Inequalities by the Use of Slack Variables</a></li>
-  <li><a href="#problem-set-22.2" id="toc-problem-set-22.2" class="nav-link" data-scroll-target="#problem-set-22.2"><span class="header-section-number">16.2.4</span> PROBLEM SET 22.2</a></li>
+  <li><a href="#example-1-production-plan" id="toc-example-1-production-plan" class="nav-link" data-scroll-target="#example-1-production-plan"><span class="header-section-number">19.2.1</span> EXAMPLE 1: Production Plan</a></li>
+  <li><a href="#normal-form-of-a-linear-programming-problem" id="toc-normal-form-of-a-linear-programming-problem" class="nav-link" data-scroll-target="#normal-form-of-a-linear-programming-problem"><span class="header-section-number">19.2.2</span> Normal Form of a Linear Programming Problem</a></li>
+  <li><a href="#example-2-conversion-of-inequalities-by-the-use-of-slack-variables" id="toc-example-2-conversion-of-inequalities-by-the-use-of-slack-variables" class="nav-link" data-scroll-target="#example-2-conversion-of-inequalities-by-the-use-of-slack-variables"><span class="header-section-number">19.2.3</span> EXAMPLE 2: Conversion of Inequalities by the Use of Slack Variables</a></li>
+  <li><a href="#problem-set-22.2" id="toc-problem-set-22.2" class="nav-link" data-scroll-target="#problem-set-22.2"><span class="header-section-number">19.2.4</span> PROBLEM SET 22.2</a></li>
   </ul></li>
-  <li><a href="#sec-simplex-method" id="toc-sec-simplex-method" class="nav-link" data-scroll-target="#sec-simplex-method"><span class="header-section-number">16.3</span> 22.3 Simplex Method</a>
+  <li><a href="#sec-simplex-method" id="toc-sec-simplex-method" class="nav-link" data-scroll-target="#sec-simplex-method"><span class="header-section-number">19.3</span> 22.3 Simplex Method</a>
   <ul class="collapse">
-  <li><a href="#problem-set-22.3" id="toc-problem-set-22.3" class="nav-link" data-scroll-target="#problem-set-22.3"><span class="header-section-number">16.3.1</span> PROBLEM SET 22.3</a></li>
+  <li><a href="#problem-set-22.3" id="toc-problem-set-22.3" class="nav-link" data-scroll-target="#problem-set-22.3"><span class="header-section-number">19.3.1</span> PROBLEM SET 22.3</a></li>
   </ul></li>
-  <li><a href="#sec-simplex-difficulties" id="toc-sec-simplex-difficulties" class="nav-link" data-scroll-target="#sec-simplex-difficulties"><span class="header-section-number">16.4</span> 22.4 Simplex Method: Difficulties</a>
+  <li><a href="#sec-simplex-difficulties" id="toc-sec-simplex-difficulties" class="nav-link" data-scroll-target="#sec-simplex-difficulties"><span class="header-section-number">19.4</span> 22.4 Simplex Method: Difficulties</a>
   <ul class="collapse">
-  <li><a href="#degeneracy" id="toc-degeneracy" class="nav-link" data-scroll-target="#degeneracy"><span class="header-section-number">16.4.1</span> Degeneracy</a></li>
-  <li><a href="#example-1-simplex-method-degenerate-feasible-solution" id="toc-example-1-simplex-method-degenerate-feasible-solution" class="nav-link" data-scroll-target="#example-1-simplex-method-degenerate-feasible-solution"><span class="header-section-number">16.4.2</span> EXAMPLE 1: Simplex Method, Degenerate Feasible Solution</a></li>
-  <li><a href="#difficulties-in-starting" id="toc-difficulties-in-starting" class="nav-link" data-scroll-target="#difficulties-in-starting"><span class="header-section-number">16.4.3</span> Difficulties in Starting</a></li>
-  <li><a href="#example-2-simplex-method-difficult-start-artificial-variable" id="toc-example-2-simplex-method-difficult-start-artificial-variable" class="nav-link" data-scroll-target="#example-2-simplex-method-difficult-start-artificial-variable"><span class="header-section-number">16.4.4</span> EXAMPLE 2: Simplex Method: Difficult Start, Artificial Variable</a></li>
-  <li><a href="#problem-set-22.4" id="toc-problem-set-22.4" class="nav-link" data-scroll-target="#problem-set-22.4"><span class="header-section-number">16.4.5</span> PROBLEM SET 22.4</a></li>
+  <li><a href="#degeneracy" id="toc-degeneracy" class="nav-link" data-scroll-target="#degeneracy"><span class="header-section-number">19.4.1</span> Degeneracy</a></li>
+  <li><a href="#example-1-simplex-method-degenerate-feasible-solution" id="toc-example-1-simplex-method-degenerate-feasible-solution" class="nav-link" data-scroll-target="#example-1-simplex-method-degenerate-feasible-solution"><span class="header-section-number">19.4.2</span> EXAMPLE 1: Simplex Method, Degenerate Feasible Solution</a></li>
+  <li><a href="#difficulties-in-starting" id="toc-difficulties-in-starting" class="nav-link" data-scroll-target="#difficulties-in-starting"><span class="header-section-number">19.4.3</span> Difficulties in Starting</a></li>
+  <li><a href="#example-2-simplex-method-difficult-start-artificial-variable" id="toc-example-2-simplex-method-difficult-start-artificial-variable" class="nav-link" data-scroll-target="#example-2-simplex-method-difficult-start-artificial-variable"><span class="header-section-number">19.4.4</span> EXAMPLE 2: Simplex Method: Difficult Start, Artificial Variable</a></li>
+  <li><a href="#problem-set-22.4" id="toc-problem-set-22.4" class="nav-link" data-scroll-target="#problem-set-22.4"><span class="header-section-number">19.4.5</span> PROBLEM SET 22.4</a></li>
   </ul></li>
-  <li><a href="#sec-ch22-review" id="toc-sec-ch22-review" class="nav-link" data-scroll-target="#sec-ch22-review"><span class="header-section-number">16.5</span> CHAPTER 22 REVIEW QUESTIONS AND PROBLEMS</a></li>
-  <li><a href="#sec-ch22-summary" id="toc-sec-ch22-summary" class="nav-link" data-scroll-target="#sec-ch22-summary"><span class="header-section-number">16.6</span> SUMMARY OF CHAPTER 22</a>
+  <li><a href="#sec-ch22-review" id="toc-sec-ch22-review" class="nav-link" data-scroll-target="#sec-ch22-review"><span class="header-section-number">19.5</span> CHAPTER 22 REVIEW QUESTIONS AND PROBLEMS</a></li>
+  <li><a href="#sec-ch22-summary" id="toc-sec-ch22-summary" class="nav-link" data-scroll-target="#sec-ch22-summary"><span class="header-section-number">19.6</span> SUMMARY OF CHAPTER 22</a>
   <ul class="collapse">
-  <li><a href="#unconstrained-optimization.-linear-programming" id="toc-unconstrained-optimization.-linear-programming" class="nav-link" data-scroll-target="#unconstrained-optimization.-linear-programming"><span class="header-section-number">16.6.1</span> Unconstrained Optimization. Linear Programming</a></li>
+  <li><a href="#unconstrained-optimization.-linear-programming" id="toc-unconstrained-optimization.-linear-programming" class="nav-link" data-scroll-target="#unconstrained-optimization.-linear-programming"><span class="header-section-number">19.6.1</span> Unconstrained Optimization. Linear Programming</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -292,7 +304,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 22: Unconstrained Optimization. Linear Programming</span></h1>
 </div>
 
 
@@ -309,8 +321,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-f-optimization-graphs" class="level3" data-number="15.0.1">
-<h3 data-number="15.0.1" class="anchored" data-anchor-id="part-f-optimization-graphs"><span class="header-section-number">15.0.1</span> PART F: Optimization, Graphs</h3>
+<section id="part-f-optimization-graphs" class="level3" data-number="18.0.1">
+<h3 data-number="18.0.1" class="anchored" data-anchor-id="part-f-optimization-graphs"><span class="header-section-number">18.0.1</span> PART F: Optimization, Graphs</h3>
 <p><strong>CHAPTER 22: Unconstrained Optimization. Linear Programming</strong><br>
 <strong>CHAPTER 23: Graphs. Combinatorial Optimization</strong></p>
 <p>The material of Part F is particularly useful in modeling large-scale real-world problems. Just as it is in numerics in Part E, where the greater availability of quality software and computing power is a deciding factor in the continued growth of the field, so it is also in the fields of optimization and combinatorial optimization. Problems, such as optimizing production plans for different industries (microchips, pharmaceuticals, cars, aluminum, steel, chemicals), optimizing usage of transportation systems (usage of runways in airports, tracks of subways), efficiency in running of power plants, optimal shipping (delivery services, shipping of containers, shipping goods from factories to warehouses and from warehouses to stores), designing optimal financial portfolios, and others are all examples where the size of the problem usually requires the use of optimization software. More recently, environmental concerns have put new aspects into the picture, where an important concern, added to these problems, is the minimization of environmental impact. The main task becomes to model these problems correctly. The purpose of Part F is to introduce the main ideas and methods of unconstrained and constrained optimization (Chap. 22), and graphs and combinatorial optimization (Chap. 23).</p>
@@ -318,16 +330,16 @@ window.Quarto = {
 <p>Graphs let us model problems in transportation logistics, efficient use of communication networks, best assignment of workers to jobs, and others. We consider shortest path problems (Secs. 22.2, 22.3), shortest spanning trees (Secs. 23.4, 23.5), flow problems in networks (Secs. 23.6, 23.7), and assignment problems (Sec. 23.8). We discuss algorithms of Moore, Dijkstra (both for shortest path), Kruskal, Prim (shortest spanning trees), and Ford–Fulkerson (for flow).</p>
 <hr>
 </section>
-<section id="chapter-22-unconstrained-optimization.-linear-programming" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> CHAPTER 22: Unconstrained Optimization. Linear Programming</h1>
+<section id="chapter-22-unconstrained-optimization.-linear-programming" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> CHAPTER 22: Unconstrained Optimization. Linear Programming</h1>
 <p>Optimization is a general term used to describe types of problems and solution techniques that are concerned with the best (“optimal”) allocation of limited resources in projects. The problems are called optimization problems and the methods optimization methods. Typical problems are concerned with planning and making decisions, such as selecting an optimal production plan. A company has to decide how many units of each product from a choice of (distinct) products it should make. The objective of the company may be to maximize overall profit when the different products have different individual profits. In addition, the company faces certain limitations (constraints). It may have a certain number of machines, it takes a certain amount of time and usage of these machines to make a product, it requires a certain number of workers to handle the machines, and other possible criteria. To solve such a problem, you assign the first variable to number of units to be produced of the first product, the second variable to the second product, up to the number of different (distinct) products the company makes. When you multiply these, for example, by the price, you obtain a linear function called the objective function. You also express the constraints in terms of these variables, thereby obtaining several inequalities, called the constraints. Because the variables in the objective function also occur in the constraints, the objective function and the constraints are tied mathematically to each other and you have set up a linear optimization problem, also called a linear programming problem.</p>
 <p>The main focus of this chapter is to set up (Sec. 22.2) and solve (Secs. 22.3, 22.4) such linear programming problems. A famous and versatile method for doing so is the simplex method. In the simplex method, the objective function and the constraints are set up in the form of an augmented matrix as in Sec. 7.3, however, the method of solving such linear constrained optimization problems is a new approach.</p>
 <p>The beauty of the simplex method is that it allows us to scale problems up to thousands or more constraints, thereby modeling real-world situations. We can start with a small model and gradually add more and more constraints. The most difficult part is modeling the problem correctly. The actual task of solving large optimization problems is done by software implementations for the simplex method or perhaps by other optimization methods.</p>
 <p>Besides optimal production plans, problems in optimal shipping, optimal location of warehouses and stores, easing traffic congestion, efficiency in running power plants are all examples of applications of optimization. More recent applications are in minimizing environmental damages due to pollutants, carbon dioxide emissions, and other factors. Indeed, new fields of green logistics and green manufacturing are evolving and naturally make use of optimization methods.</p>
 <p><strong>Prerequisite:</strong> a modest working knowledge of linear systems of equations.<br>
 <strong>References and Answers to Problems:</strong> App. 1 Part F, App. 2.</p>
-<section id="sec-basic-concepts-unconstrained" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="sec-basic-concepts-unconstrained"><span class="header-section-number">16.1</span> 22.1 Basic Concepts. Unconstrained Optimization: Method of Steepest Descent</h2>
+<section id="sec-basic-concepts-unconstrained" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="sec-basic-concepts-unconstrained"><span class="header-section-number">19.1</span> 22.1 Basic Concepts. Unconstrained Optimization: Method of Steepest Descent</h2>
 <p>In an optimization problem the objective is to optimize (maximize or minimize) some function <span class="math inline">\(f\)</span>. This function <span class="math inline">\(f\)</span> is called the <strong>objective function</strong>. It is the focal point or goal of our optimization problem.</p>
 <p>For example, an objective function <span class="math inline">\(f\)</span> to be maximized may be the revenue in a production of TV sets, the rate of return of a financial portfolio, the yield per minute in a chemical process, the mileage per gallon of a certain type of car, the hourly number of customers served in a bank, the hardness of steel, or the tensile strength of a rope.</p>
 <p>Similarly, we may want to minimize <span class="math inline">\(f\)</span> if <span class="math inline">\(f\)</span> is the cost per unit of producing certain cameras, the operating cost of some power plant, the daily loss of heat in a heating system, <span class="math inline">\(\text{CO}_2\)</span> emissions from a fleet of trucks for freight transport, the idling time of some lathe, or the time needed to produce a fender.</p>
@@ -347,20 +359,20 @@ f(\mathbf{x}) \ge f(\mathbf{X}_0)
 \]</span> where <span class="math inline">\(\mathbf{X}_0 = (X_1, \dots, X_n)\)</span> and <span class="math inline">\(r &gt; 0\)</span> is sufficiently small. Similarly, <span class="math inline">\(f\)</span> has a <strong>local maximum</strong> at <span class="math inline">\(\mathbf{X}_0\)</span> if <span class="math inline">\(f(\mathbf{x}) \le f(\mathbf{X}_0)\)</span> for all <span class="math inline">\(\mathbf{x}\)</span> satisfying <span class="math inline">\(\|\mathbf{x} - \mathbf{X}_0\| &lt; r\)</span>.</p>
 <p>If <span class="math inline">\(f\)</span> is differentiable and has an extremum at a point <span class="math inline">\(\mathbf{X}_0\)</span> in the interior of a region <span class="math inline">\(R\)</span> (that is, not on the boundary), then the partial derivatives <span class="math inline">\(\partial f/\partial x_1, \dots, \partial f/\partial x_n\)</span> must be zero at <span class="math inline">\(\mathbf{X}_0\)</span>. These are the components of a vector that is called the <strong>gradient</strong> of <span class="math inline">\(f\)</span> and denoted by <span class="math inline">\(\operatorname{grad} f\)</span> or <span class="math inline">\(\nabla f\)</span>. Thus <span id="eq-sec221-1"><span class="math display">\[
 \nabla f(\mathbf{X}_0) = \mathbf{0}
-\tag{16.1}\]</span></span></p>
-<p>A point <span class="math inline">\(\mathbf{X}_0\)</span> at which (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>16.1</span></a>) holds is called a <strong>stationary point</strong> of <span class="math inline">\(f\)</span>.</p>
-<p>Condition (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>16.1</span></a>) is necessary for an extremum of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{X}_0\)</span> in the interior of <span class="math inline">\(R\)</span>, but is not sufficient. Indeed, if <span class="math inline">\(n = 1\)</span>, then for <span class="math inline">\(y = f(x)\)</span>, condition (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>16.1</span></a>) is <span class="math inline">\(y' = f'(X_0) = 0\)</span>; and, for instance, <span class="math inline">\(y = x^3\)</span> satisfies <span class="math inline">\(y' = 3x^2 = 0\)</span> at <span class="math inline">\(x = X_0 = 0\)</span> where <span class="math inline">\(f\)</span> has no extremum but a point of inflection. Similarly, for <span class="math inline">\(f(\mathbf{x}) = x_1 x_2\)</span> we have <span class="math inline">\(\nabla f(\mathbf{0}) = \mathbf{0}\)</span>, and <span class="math inline">\(f\)</span> does not have an extremum but has a saddle point at <span class="math inline">\(\mathbf{0}\)</span>. Hence, after solving (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>16.1</span></a>), one must still find out whether one has obtained an extremum. In the case <span class="math inline">\(n = 1\)</span> the conditions <span class="math inline">\(y'(X_0) = 0, y''(X_0) &gt; 0\)</span> guarantee a local minimum at <span class="math inline">\(X_0\)</span> and the conditions <span class="math inline">\(y'(X_0) = 0, y''(X_0) &lt; 0\)</span> a local maximum, as is known from calculus. For <span class="math inline">\(n &gt; 1\)</span> there exist similar criteria. However, in practice, even solving (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>16.1</span></a>) will often be difficult. For this reason, one generally prefers solution by iteration, that is, by a search process that starts at some point and moves stepwise to points at which <span class="math inline">\(f\)</span> is smaller (if a minimum of <span class="math inline">\(f\)</span> is wanted) or larger (in the case of a maximum).</p>
+\tag{19.1}\]</span></span></p>
+<p>A point <span class="math inline">\(\mathbf{X}_0\)</span> at which (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>) holds is called a <strong>stationary point</strong> of <span class="math inline">\(f\)</span>.</p>
+<p>Condition (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>) is necessary for an extremum of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{X}_0\)</span> in the interior of <span class="math inline">\(R\)</span>, but is not sufficient. Indeed, if <span class="math inline">\(n = 1\)</span>, then for <span class="math inline">\(y = f(x)\)</span>, condition (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>) is <span class="math inline">\(y' = f'(X_0) = 0\)</span>; and, for instance, <span class="math inline">\(y = x^3\)</span> satisfies <span class="math inline">\(y' = 3x^2 = 0\)</span> at <span class="math inline">\(x = X_0 = 0\)</span> where <span class="math inline">\(f\)</span> has no extremum but a point of inflection. Similarly, for <span class="math inline">\(f(\mathbf{x}) = x_1 x_2\)</span> we have <span class="math inline">\(\nabla f(\mathbf{0}) = \mathbf{0}\)</span>, and <span class="math inline">\(f\)</span> does not have an extremum but has a saddle point at <span class="math inline">\(\mathbf{0}\)</span>. Hence, after solving (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>), one must still find out whether one has obtained an extremum. In the case <span class="math inline">\(n = 1\)</span> the conditions <span class="math inline">\(y'(X_0) = 0, y''(X_0) &gt; 0\)</span> guarantee a local minimum at <span class="math inline">\(X_0\)</span> and the conditions <span class="math inline">\(y'(X_0) = 0, y''(X_0) &lt; 0\)</span> a local maximum, as is known from calculus. For <span class="math inline">\(n &gt; 1\)</span> there exist similar criteria. However, in practice, even solving (<a href="#eq-sec221-1" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>) will often be difficult. For this reason, one generally prefers solution by iteration, that is, by a search process that starts at some point and moves stepwise to points at which <span class="math inline">\(f\)</span> is smaller (if a minimum of <span class="math inline">\(f\)</span> is wanted) or larger (in the case of a maximum).</p>
 <p>The <strong>method of steepest descent</strong> or <strong>gradient method</strong> is of this type. We present it here in its standard form. (For refinements see Ref. [E25] listed in App. 1.)</p>
 <p>The idea of this method is to find a minimum of <span class="math inline">\(f(\mathbf{x})\)</span> by repeatedly computing minima of a function <span class="math inline">\(g(t)\)</span> of a single variable <span class="math inline">\(t\)</span>, as follows. Suppose that <span class="math inline">\(f\)</span> has a minimum at <span class="math inline">\(\mathbf{X}_0\)</span> and we start at a point <span class="math inline">\(\mathbf{x}\)</span>. Then we look for a minimum of <span class="math inline">\(f\)</span> closest to <span class="math inline">\(\mathbf{x}\)</span> along the straight line in the direction of <span class="math inline">\(-\nabla f(\mathbf{x})\)</span>, which is the direction of steepest descent (= direction of maximum decrease) of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{x}\)</span>. That is, we determine the value of <span class="math inline">\(t\)</span> and the corresponding point <span id="eq-sec221-2"><span class="math display">\[
 \mathbf{z}(t) = \mathbf{x} - t\nabla f(\mathbf{x})
-\tag{16.2}\]</span></span> at which the function <span id="eq-sec221-3"><span class="math display">\[
+\tag{19.2}\]</span></span> at which the function <span id="eq-sec221-3"><span class="math display">\[
 g(t) = f(\mathbf{z}(t))
-\tag{16.3}\]</span></span> has a minimum. We take this <span class="math inline">\(\mathbf{z}(t)\)</span> as our next approximation to <span class="math inline">\(\mathbf{X}_0\)</span>.</p>
-<section id="example-1-method-of-steepest-descent" class="level3" data-number="16.1.1">
-<h3 data-number="16.1.1" class="anchored" data-anchor-id="example-1-method-of-steepest-descent"><span class="header-section-number">16.1.1</span> EXAMPLE 1: Method of Steepest Descent</h3>
+\tag{19.3}\]</span></span> has a minimum. We take this <span class="math inline">\(\mathbf{z}(t)\)</span> as our next approximation to <span class="math inline">\(\mathbf{X}_0\)</span>.</p>
+<section id="example-1-method-of-steepest-descent" class="level3" data-number="19.1.1">
+<h3 data-number="19.1.1" class="anchored" data-anchor-id="example-1-method-of-steepest-descent"><span class="header-section-number">19.1.1</span> EXAMPLE 1: Method of Steepest Descent</h3>
 <p>Determine a minimum of <span id="eq-sec221-4"><span class="math display">\[
 f(\mathbf{x}) = x_1^2 + 3x_2^2
-\tag{16.4}\]</span></span> starting from <span class="math inline">\(\mathbf{x}_0 = (6, 3) = 6\mathbf{i} + 3\mathbf{j}\)</span> and applying the method of steepest descent.</p>
+\tag{19.4}\]</span></span> starting from <span class="math inline">\(\mathbf{x}_0 = (6, 3) = 6\mathbf{i} + 3\mathbf{j}\)</span> and applying the method of steepest descent.</p>
 <p><strong>Solution.</strong><br>
 Clearly, inspection shows that <span class="math inline">\(f(\mathbf{x})\)</span> has a minimum at <span class="math inline">\(\mathbf{0}\)</span>. Knowing the solution gives us a better feel of how the method works. We obtain <span class="math inline">\(\nabla f(\mathbf{x}) = 2x_1\mathbf{i} + 6x_2\mathbf{j}\)</span> and from this <span class="math display">\[
 \begin{aligned}
@@ -371,14 +383,14 @@ g(t) &amp;= f(\mathbf{z}(t)) = (1 - 2t)^2x_1^2 + 3(1 - 6t)^2x_2^2
 g'(t) = 2(1 - 2t)x_1^2(-2) + 6(1 - 6t)x_2^2(-6)
 \]</span> set <span class="math inline">\(g'(t) = 0\)</span>, and solve for <span class="math inline">\(t\)</span>, finding <span class="math display">\[
 t = \frac{x_1^2 + 9x_2^2}{2x_1^2 + 54x_2^2}
-\]</span> Starting from <span class="math inline">\(\mathbf{x}_0 = 6\mathbf{i} + 3\mathbf{j}\)</span>, we compute the values in Table 22.1, which are shown in <a href="#fig-22-01" class="quarto-xref">Figure&nbsp;<span>16.1</span></a>. Figure 473 suggests that in the case of slimmer ellipses (“a long narrow valley”), convergence would be poor. You may confirm this by replacing the coefficient 3 in (<a href="#eq-sec221-4" class="quarto-xref">Equation&nbsp;<span>16.4</span></a>) with a large coefficient. For more sophisticated descent and other methods, some of them also applicable to vector functions of vector variables, we refer to the references listed in Part F of App. 1; see also [E25]. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> Starting from <span class="math inline">\(\mathbf{x}_0 = 6\mathbf{i} + 3\mathbf{j}\)</span>, we compute the values in Table 22.1, which are shown in <a href="#fig-22-01" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>. Figure 473 suggests that in the case of slimmer ellipses (“a long narrow valley”), convergence would be poor. You may confirm this by replacing the coefficient 3 in (<a href="#eq-sec221-4" class="quarto-xref">Equation&nbsp;<span>19.4</span></a>) with a large coefficient. For more sophisticated descent and other methods, some of them also applicable to vector functions of vector variables, we refer to the references listed in Part F of App. 1; see also [E25]. <span class="math inline">\(\blacksquare\)</span></p>
 <div id="fig-22-01" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-22-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-22-01.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-22-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.1: Fig. 22-01: Method of steepest descent in Example 1
+Figure&nbsp;19.1: Fig. 22-01: Method of steepest descent in Example 1
 </figcaption>
 </figure>
 </div>
@@ -454,14 +466,14 @@ Figure&nbsp;16.1: Fig. 22-01: Method of steepest descent in Example 1
 </tbody>
 </table>
 </section>
-<section id="problem-set-22.1" class="level3" data-number="16.1.2">
-<h3 data-number="16.1.2" class="anchored" data-anchor-id="problem-set-22.1"><span class="header-section-number">16.1.2</span> PROBLEM SET 22.1</h3>
+<section id="problem-set-22.1" class="level3" data-number="19.1.2">
+<h3 data-number="19.1.2" class="anchored" data-anchor-id="problem-set-22.1"><span class="header-section-number">19.1.2</span> PROBLEM SET 22.1</h3>
 <ol type="1">
 <li><strong>Orthogonality.</strong> Show that in Example 1, successive gradients are orthogonal (perpendicular). Why?</li>
 <li>What happens if you apply the method of steepest descent to <span class="math inline">\(f(\mathbf{x}) = x_1^2 + x_2^2\)</span>? First guess, then calculate.</li>
 </ol>
-<section id="steepest-descent" class="level4" data-number="16.1.2.1">
-<h4 data-number="16.1.2.1" class="anchored" data-anchor-id="steepest-descent"><span class="header-section-number">16.1.2.1</span> 3–9: STEEPEST DESCENT</h4>
+<section id="steepest-descent" class="level4" data-number="19.1.2.1">
+<h4 data-number="19.1.2.1" class="anchored" data-anchor-id="steepest-descent"><span class="header-section-number">19.1.2.1</span> 3–9: STEEPEST DESCENT</h4>
 <p>Do steepest descent steps when:</p>
 <ol start="3" type="1">
 <li><p><span class="math inline">\(f(\mathbf{x}) = 2x_1^2 + x_2^2 - 4x_1 + 4x_2\)</span>, <span class="math inline">\(\mathbf{x}_0 = \mathbf{0}\)</span>, 3 steps.</p></li>
@@ -483,29 +495,29 @@ Figure&nbsp;16.1: Fig. 22-01: Method of steepest descent in Example 1
 </section>
 </section>
 </section>
-<section id="sec-linear-programming" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="sec-linear-programming"><span class="header-section-number">16.2</span> 22.2 Linear Programming</h2>
+<section id="sec-linear-programming" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="sec-linear-programming"><span class="header-section-number">19.2</span> 22.2 Linear Programming</h2>
 <p>Linear programming or linear optimization consists of methods for solving optimization problems with constraints, that is, methods for finding a maximum (or a minimum) <span class="math inline">\(\mathbf{x} = (x_1, \dots, x_n)\)</span> of a linear objective function <span id="eq-sec222-1star"><span class="math display">\[
 z = f(\mathbf{x}) = a_1x_1 + a_2x_2 + \dots + a_nx_n
-\tag{16.5}\]</span></span> satisfying the constraints. The latter are linear inequalities, such as <span class="math inline">\(3x_1 + 4x_2 \le 36\)</span>, or <span class="math inline">\(x_1 \ge 0\)</span>, etc. (examples below). Problems of this kind arise frequently, almost daily, for instance, in production, inventory management, bond trading, operation of power plants, routing delivery vehicles, airplane scheduling, and so on. Progress in computer technology has made it possible to solve programming problems involving hundreds or thousands or more variables. Let us explain the setting of a linear programming problem and the idea of a “geometric” solution, so that we shall see what is going on.</p>
-<section id="example-1-production-plan" class="level3" data-number="16.2.1">
-<h3 data-number="16.2.1" class="anchored" data-anchor-id="example-1-production-plan"><span class="header-section-number">16.2.1</span> EXAMPLE 1: Production Plan</h3>
+\tag{19.5}\]</span></span> satisfying the constraints. The latter are linear inequalities, such as <span class="math inline">\(3x_1 + 4x_2 \le 36\)</span>, or <span class="math inline">\(x_1 \ge 0\)</span>, etc. (examples below). Problems of this kind arise frequently, almost daily, for instance, in production, inventory management, bond trading, operation of power plants, routing delivery vehicles, airplane scheduling, and so on. Progress in computer technology has made it possible to solve programming problems involving hundreds or thousands or more variables. Let us explain the setting of a linear programming problem and the idea of a “geometric” solution, so that we shall see what is going on.</p>
+<section id="example-1-production-plan" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="example-1-production-plan"><span class="header-section-number">19.2.1</span> EXAMPLE 1: Production Plan</h3>
 <p>Energy Savers, Inc., produces heaters of types S and L. The wholesale price is $40 per heater for S and $88 for L. Two time constraints result from the use of two machines <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span>. On <span class="math inline">\(M_1\)</span> one needs 2 min for an S heater and 8 min for an L heater. On <span class="math inline">\(M_2\)</span> one needs 5 min for an S heater and 2 min for an L heater. Determine production figures <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> for S and L, respectively (number of heaters produced per hour), so that the hourly revenue <span id="eq-sec222-2star"><span class="math display">\[
 z = f(\mathbf{x}) = 40x_1 + 88x_2
-\tag{16.6}\]</span></span> is maximum.</p>
+\tag{19.6}\]</span></span> is maximum.</p>
 <p><strong>Solution.</strong><br>
 Production figures <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> must be nonnegative. Hence the objective function (to be maximized) and the four constraints are: <span id="eq-sec222-eq0"><span class="math display">\[
 z = 40x_1 + 88x_2
-\tag{16.7}\]</span></span> <span id="eq-sec222-eq1"><span class="math display">\[
+\tag{19.7}\]</span></span> <span id="eq-sec222-eq1"><span class="math display">\[
 2x_1 + 8x_2 \le 60 \quad \text{min time on machine } M_1
-\tag{16.8}\]</span></span> <span id="eq-sec222-eq2"><span class="math display">\[
+\tag{19.8}\]</span></span> <span id="eq-sec222-eq2"><span class="math display">\[
 5x_1 + 2x_2 \le 60 \quad \text{min time on machine } M_2
-\tag{16.9}\]</span></span> <span id="eq-sec222-eq3"><span class="math display">\[
+\tag{19.9}\]</span></span> <span id="eq-sec222-eq3"><span class="math display">\[
 x_1 \ge 0
-\tag{16.10}\]</span></span> <span id="eq-sec222-eq4"><span class="math display">\[
+\tag{19.10}\]</span></span> <span id="eq-sec222-eq4"><span class="math display">\[
 x_2 \ge 0
-\tag{16.11}\]</span></span></p>
-<p><a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>16.2</span></a> shows (<a href="#eq-sec222-eq0" class="quarto-xref">Equation&nbsp;<span>16.7</span></a>)–(<a href="#eq-sec222-eq4" class="quarto-xref">Equation&nbsp;<span>16.11</span></a>) as follows. Constancy lines <span class="math inline">\(z = \text{const}\)</span> are marked (0). These are lines of constant revenue. Their slope is <span class="math inline">\(-40/88 = -5/11\)</span>. To increase <span class="math inline">\(z\)</span> we must move the line upward (parallel to itself), as the arrow shows. Equation (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>16.8</span></a>) with the equality sign is marked (1). It intersects the coordinate axes at <span class="math inline">\(x_1 = 60/2 = 30\)</span> (set <span class="math inline">\(x_2 = 0\)</span>) and <span class="math inline">\(x_2 = 60/8 = 7.5\)</span> (set <span class="math inline">\(x_1 = 0\)</span>). The arrow marks the side on which the points <span class="math inline">\((x_1, x_2)\)</span> lie that satisfy the inequality in (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>16.8</span></a>). Similarly for Eqs. (<a href="#eq-sec222-eq2" class="quarto-xref">Equation&nbsp;<span>16.9</span></a>)–(<a href="#eq-sec222-eq4" class="quarto-xref">Equation&nbsp;<span>16.11</span></a>). The blue quadrangle thus obtained is called the <strong>feasibility region</strong>. It is the set of all feasible solutions, meaning solutions that satisfy all four constraints. The figure also lists the revenue at <span class="math inline">\(O\)</span>, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>. The optimal solution is obtained by moving the line of constant revenue up as much as possible without leaving the feasibility region completely. Obviously, this optimum is reached when that line passes through <span class="math inline">\(B\)</span>, the intersection <span class="math inline">\((10, 5)\)</span> of (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>16.8</span></a>) and (<a href="#eq-sec222-eq2" class="quarto-xref">Equation&nbsp;<span>16.9</span></a>). We see that the optimal revenue <span class="math display">\[
+\tag{19.11}\]</span></span></p>
+<p><a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>19.2</span></a> shows (<a href="#eq-sec222-eq0" class="quarto-xref">Equation&nbsp;<span>19.7</span></a>)–(<a href="#eq-sec222-eq4" class="quarto-xref">Equation&nbsp;<span>19.11</span></a>) as follows. Constancy lines <span class="math inline">\(z = \text{const}\)</span> are marked (0). These are lines of constant revenue. Their slope is <span class="math inline">\(-40/88 = -5/11\)</span>. To increase <span class="math inline">\(z\)</span> we must move the line upward (parallel to itself), as the arrow shows. Equation (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>19.8</span></a>) with the equality sign is marked (1). It intersects the coordinate axes at <span class="math inline">\(x_1 = 60/2 = 30\)</span> (set <span class="math inline">\(x_2 = 0\)</span>) and <span class="math inline">\(x_2 = 60/8 = 7.5\)</span> (set <span class="math inline">\(x_1 = 0\)</span>). The arrow marks the side on which the points <span class="math inline">\((x_1, x_2)\)</span> lie that satisfy the inequality in (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>19.8</span></a>). Similarly for Eqs. (<a href="#eq-sec222-eq2" class="quarto-xref">Equation&nbsp;<span>19.9</span></a>)–(<a href="#eq-sec222-eq4" class="quarto-xref">Equation&nbsp;<span>19.11</span></a>). The blue quadrangle thus obtained is called the <strong>feasibility region</strong>. It is the set of all feasible solutions, meaning solutions that satisfy all four constraints. The figure also lists the revenue at <span class="math inline">\(O\)</span>, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>. The optimal solution is obtained by moving the line of constant revenue up as much as possible without leaving the feasibility region completely. Obviously, this optimum is reached when that line passes through <span class="math inline">\(B\)</span>, the intersection <span class="math inline">\((10, 5)\)</span> of (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>19.8</span></a>) and (<a href="#eq-sec222-eq2" class="quarto-xref">Equation&nbsp;<span>19.9</span></a>). We see that the optimal revenue <span class="math display">\[
 z_{\max} = 40 \cdot 10 + 88 \cdot 5 = \$840
 \]</span> is obtained by producing twice as many S heaters as L heaters. <span class="math inline">\(\blacksquare\)</span></p>
 <div id="fig-22-02" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -514,16 +526,16 @@ z_{\max} = 40 \cdot 10 + 88 \cdot 5 = \$840
 <img src="../images/fig-22-02.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-22-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.2: Fig. 22-02: Linear programming in Example 1
+Figure&nbsp;19.2: Fig. 22-02: Linear programming in Example 1
 </figcaption>
 </figure>
 </div>
 <p>Note well that the problem in Example 1 or similar optimization problems cannot be solved by setting certain partial derivatives equal to zero, because crucial to such problems is the region in which the control variables are allowed to vary.</p>
 <p>Furthermore, our “geometric” or graphic method illustrated in Example 1 is confined to two variables <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>. However, most practical problems involve much more than two variables, so that we need other methods of solution.</p>
 </section>
-<section id="normal-form-of-a-linear-programming-problem" class="level3" data-number="16.2.2">
-<h3 data-number="16.2.2" class="anchored" data-anchor-id="normal-form-of-a-linear-programming-problem"><span class="header-section-number">16.2.2</span> Normal Form of a Linear Programming Problem</h3>
-<p>To prepare for general solution methods, we show that constraints can be written more uniformly. Let us explain the idea in terms of (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>16.8</span></a>), <span class="math display">\[
+<section id="normal-form-of-a-linear-programming-problem" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="normal-form-of-a-linear-programming-problem"><span class="header-section-number">19.2.2</span> Normal Form of a Linear Programming Problem</h3>
+<p>To prepare for general solution methods, we show that constraints can be written more uniformly. Let us explain the idea in terms of (<a href="#eq-sec222-eq1" class="quarto-xref">Equation&nbsp;<span>19.8</span></a>), <span class="math display">\[
 2x_1 + 8x_2 \le 60
 \]</span> This inequality implies <span class="math inline">\(60 - 2x_1 - 8x_2 \ge 0\)</span> (and conversely), that is, the quantity <span class="math display">\[
 x_3 = 60 - 2x_1 - 8x_2
@@ -532,8 +544,8 @@ x_3 = 60 - 2x_1 - 8x_2
 \]</span> where <span class="math inline">\(x_3 \ge 0\)</span>.</p>
 <p>Here <span class="math inline">\(x_3\)</span> is a nonnegative auxiliary variable introduced for converting inequalities to equations. Such a variable is called a <strong>slack variable</strong>, because it “takes up the slack” or difference between the two sides of the inequality.</p>
 </section>
-<section id="example-2-conversion-of-inequalities-by-the-use-of-slack-variables" class="level3" data-number="16.2.3">
-<h3 data-number="16.2.3" class="anchored" data-anchor-id="example-2-conversion-of-inequalities-by-the-use-of-slack-variables"><span class="header-section-number">16.2.3</span> EXAMPLE 2: Conversion of Inequalities by the Use of Slack Variables</h3>
+<section id="example-2-conversion-of-inequalities-by-the-use-of-slack-variables" class="level3" data-number="19.2.3">
+<h3 data-number="19.2.3" class="anchored" data-anchor-id="example-2-conversion-of-inequalities-by-the-use-of-slack-variables"><span class="header-section-number">19.2.3</span> EXAMPLE 2: Conversion of Inequalities by the Use of Slack Variables</h3>
 <p>With the help of two slack variables <span class="math inline">\(x_3, x_4\)</span> we can write the linear programming problem in Example 1 in the following form. Maximize <span class="math display">\[
 f = 40x_1 + 88x_2
 \]</span> subject to the constraints <span class="math display">\[
@@ -544,7 +556,7 @@ f = 40x_1 + 88x_2
 \]</span> <span class="math display">\[
 x_i \ge 0 \quad (i = 1, \dots, 4)
 \]</span></p>
-<p>We now have <span class="math inline">\(n = 4\)</span> variables and <span class="math inline">\(m = 2\)</span> (linearly independent) equations, so that two of the four variables, for example, <span class="math inline">\(x_1, x_2\)</span>, determine the others. Also note that each of the four sides of the quadrangle in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>16.2</span></a> now has an equation of the form <span class="math inline">\(x_i = 0\)</span>: <span class="math display">\[
+<p>We now have <span class="math inline">\(n = 4\)</span> variables and <span class="math inline">\(m = 2\)</span> (linearly independent) equations, so that two of the four variables, for example, <span class="math inline">\(x_1, x_2\)</span>, determine the others. Also note that each of the four sides of the quadrangle in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>19.2</span></a> now has an equation of the form <span class="math inline">\(x_i = 0\)</span>: <span class="math display">\[
 \begin{aligned}
 OA: \quad &amp;x_2 = 0 \\
 AB: \quad &amp;x_4 = 0 \\
@@ -554,19 +566,19 @@ CO: \quad &amp;x_1 = 0
 \]</span> A vertex of the quadrangle is the intersection of two sides. Hence at a vertex, <span class="math inline">\(n - m = 4 - 2 = 2\)</span> of the variables are zero and the others are nonnegative. Thus at <span class="math inline">\(A\)</span> we have <span class="math inline">\(x_2 = 0, x_4 = 0\)</span>, and so on. <span class="math inline">\(\blacksquare\)</span></p>
 <p>Our example suggests that a general linear optimization problem can be brought to the following <strong>normal form</strong>. Maximize <span id="eq-sec222-5"><span class="math display">\[
 f = c_1x_1 + c_2x_2 + \dots + c_nx_n
-\tag{16.12}\]</span></span> subject to the constraints <span id="eq-sec222-6"><span class="math display">\[
+\tag{19.12}\]</span></span> subject to the constraints <span id="eq-sec222-6"><span class="math display">\[
 \begin{aligned}
 a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &amp;= b_1 \\
 a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &amp;= b_2 \\
 &amp;\dots \\
 a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n &amp;= b_m
 \end{aligned}
-\tag{16.13}\]</span></span> <span class="math display">\[
+\tag{19.13}\]</span></span> <span class="math display">\[
 x_i \ge 0 \quad (i = 1, \dots, n)
-\]</span> with all <span class="math inline">\(b_j\)</span> nonnegative. (If a <span class="math inline">\(b_j &lt; 0\)</span>, multiply the equation by <span class="math inline">\(-1\)</span>.) Here <span class="math inline">\(x_1, \dots, x_n\)</span> include the slack variables (for which the <span class="math inline">\(c_j\)</span>’s in <span class="math inline">\(f\)</span> are zero). We assume that the equations in (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>16.13</span></a>) are linearly independent. Then, if we choose values for <span class="math inline">\(n - m\)</span> of the variables, the system uniquely determines the others. Of course, since we must have <span class="math inline">\(x_1 \ge 0, \dots, x_n \ge 0\)</span>, this choice is not entirely free.</p>
+\]</span> with all <span class="math inline">\(b_j\)</span> nonnegative. (If a <span class="math inline">\(b_j &lt; 0\)</span>, multiply the equation by <span class="math inline">\(-1\)</span>.) Here <span class="math inline">\(x_1, \dots, x_n\)</span> include the slack variables (for which the <span class="math inline">\(c_j\)</span>’s in <span class="math inline">\(f\)</span> are zero). We assume that the equations in (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>19.13</span></a>) are linearly independent. Then, if we choose values for <span class="math inline">\(n - m\)</span> of the variables, the system uniquely determines the others. Of course, since we must have <span class="math inline">\(x_1 \ge 0, \dots, x_n \ge 0\)</span>, this choice is not entirely free.</p>
 <p>Our problem also includes the minimization of an objective function <span class="math inline">\(f\)</span> since this corresponds to maximizing <span class="math inline">\(-f\)</span> and thus needs no separate consideration.</p>
-<p>An <span class="math inline">\(n\)</span>-tuple <span class="math inline">\((x_1, \dots, x_n)\)</span> that satisfies all the constraints in (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>16.13</span></a>) is called a <strong>feasible point</strong> or <strong>feasible solution</strong>. A feasible solution is called an <strong>optimal solution</strong> if, for it, the objective function <span class="math inline">\(f\)</span> becomes maximum, compared with the values of <span class="math inline">\(f\)</span> at all feasible solutions.</p>
-<p>Finally, by a <strong>basic feasible solution</strong> we mean a feasible solution for which at least <span class="math inline">\(n - m\)</span> of the variables <span class="math inline">\(x_1, \dots, x_n\)</span> are zero. For instance, in Example 2 we have <span class="math inline">\(n = 4\)</span>, <span class="math inline">\(m = 2\)</span>, and the basic feasible solutions are the four vertices <span class="math inline">\(O, A, B, C\)</span> in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>16.2</span></a>. Here <span class="math inline">\(B\)</span> is an optimal solution (the only one in this example).</p>
+<p>An <span class="math inline">\(n\)</span>-tuple <span class="math inline">\((x_1, \dots, x_n)\)</span> that satisfies all the constraints in (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>19.13</span></a>) is called a <strong>feasible point</strong> or <strong>feasible solution</strong>. A feasible solution is called an <strong>optimal solution</strong> if, for it, the objective function <span class="math inline">\(f\)</span> becomes maximum, compared with the values of <span class="math inline">\(f\)</span> at all feasible solutions.</p>
+<p>Finally, by a <strong>basic feasible solution</strong> we mean a feasible solution for which at least <span class="math inline">\(n - m\)</span> of the variables <span class="math inline">\(x_1, \dots, x_n\)</span> are zero. For instance, in Example 2 we have <span class="math inline">\(n = 4\)</span>, <span class="math inline">\(m = 2\)</span>, and the basic feasible solutions are the four vertices <span class="math inline">\(O, A, B, C\)</span> in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>. Here <span class="math inline">\(B\)</span> is an optimal solution (the only one in this example).</p>
 <p>The following theorem is fundamental.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -578,15 +590,15 @@ x_i \ge 0 \quad (i = 1, \dots, n)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Some optimal solution of a linear programming problem (<a href="#eq-sec222-5" class="quarto-xref">Equation&nbsp;<span>16.12</span></a>), (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>16.13</span></a>) is also a basic feasible solution of (<a href="#eq-sec222-5" class="quarto-xref">Equation&nbsp;<span>16.12</span></a>), (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>16.13</span></a>).</p>
+<p>Some optimal solution of a linear programming problem (<a href="#eq-sec222-5" class="quarto-xref">Equation&nbsp;<span>19.12</span></a>), (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>19.13</span></a>) is also a basic feasible solution of (<a href="#eq-sec222-5" class="quarto-xref">Equation&nbsp;<span>19.12</span></a>), (<a href="#eq-sec222-6" class="quarto-xref">Equation&nbsp;<span>19.13</span></a>).</p>
 </div>
 </div>
 <p>For a proof, see Ref. [F5], Chap. 3 (listed in App. 1). A problem can have many optimal solutions and not all of them may be basic feasible solutions; but the theorem guarantees that we can find an optimal solution by searching through the basic feasible solutions only. This is a great simplification; but since there are <span class="math inline">\(\binom{n}{n-m} = \binom{n}{m}\)</span> different ways of equating <span class="math inline">\(n - m\)</span> of the <span class="math inline">\(n\)</span> variables to zero, considering all these possibilities, dropping those which are not feasible and then searching through the rest would still involve very much work, even when <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are relatively small. Hence a systematic search is needed. We shall explain an important method of this type in the next section.</p>
 </section>
-<section id="problem-set-22.2" class="level3" data-number="16.2.4">
-<h3 data-number="16.2.4" class="anchored" data-anchor-id="problem-set-22.2"><span class="header-section-number">16.2.4</span> PROBLEM SET 22.2</h3>
-<section id="regions-constraints" class="level4" data-number="16.2.4.1">
-<h4 data-number="16.2.4.1" class="anchored" data-anchor-id="regions-constraints"><span class="header-section-number">16.2.4.1</span> 1–6: REGIONS, CONSTRAINTS</h4>
+<section id="problem-set-22.2" class="level3" data-number="19.2.4">
+<h3 data-number="19.2.4" class="anchored" data-anchor-id="problem-set-22.2"><span class="header-section-number">19.2.4</span> PROBLEM SET 22.2</h3>
+<section id="regions-constraints" class="level4" data-number="19.2.4.1">
+<h4 data-number="19.2.4.1" class="anchored" data-anchor-id="regions-constraints"><span class="header-section-number">19.2.4.1</span> 1–6: REGIONS, CONSTRAINTS</h4>
 <p>Describe and graph the regions in the first quadrant of the <span class="math inline">\(x_1x_2\)</span>-plane determined by the given inequalities.</p>
 <ol type="1">
 <li><p><span class="math inline">\(x_1 - 3x_2 \ge -6, \quad x_1 + x_2 \le 6\)</span></p></li>
@@ -595,14 +607,14 @@ x_i \ge 0 \quad (i = 1, \dots, n)
 <li><p><span class="math inline">\(-x_1 + 2x_2 \le 10, \quad 2x_1 + x_2 \ge 10, \quad x_2 \ge 4, \quad 10x_1 + 15x_2 \le 150\)</span></p></li>
 <li><p><span class="math inline">\(-x_1 + x_2 \ge 0, \quad x_1 + x_2 \le 5, \quad -2x_1 + x_2 \le 16\)</span></p></li>
 <li><p><span class="math inline">\(x_1 - 2x_2 \ge -3, \quad 3x_1 + 5x_2 \ge 15, \quad x_1 + x_2 \le 6\)</span></p></li>
-<li><p><strong>Location of maximum.</strong> Could we find a profit <span class="math inline">\(f(x_1, x_2) = a_1x_1 + a_2x_2\)</span> whose maximum is at an interior point of the quadrangle in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>16.2</span></a>? Give reason for your answer.</p></li>
+<li><p><strong>Location of maximum.</strong> Could we find a profit <span class="math inline">\(f(x_1, x_2) = a_1x_1 + a_2x_2\)</span> whose maximum is at an interior point of the quadrangle in <a href="#fig-22-02" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>? Give reason for your answer.</p></li>
 <li><p><strong>Slack variables.</strong> Why are slack variables always nonnegative? How many of them do we need?</p></li>
 <li><p>What is the meaning of the slack variables <span class="math inline">\(x_3, x_4\)</span> in Example 2 in terms of the problem in Example 1?</p></li>
 <li><p><strong>Uniqueness.</strong> Can we always expect a unique solution (as in Example 1)?</p></li>
 </ol>
 </section>
-<section id="maximization-minimization" class="level4" data-number="16.2.4.2">
-<h4 data-number="16.2.4.2" class="anchored" data-anchor-id="maximization-minimization"><span class="header-section-number">16.2.4.2</span> 11–16: MAXIMIZATION, MINIMIZATION</h4>
+<section id="maximization-minimization" class="level4" data-number="19.2.4.2">
+<h4 data-number="19.2.4.2" class="anchored" data-anchor-id="maximization-minimization"><span class="header-section-number">19.2.4.2</span> 11–16: MAXIMIZATION, MINIMIZATION</h4>
 <p>Maximize or minimize the given objective function <span class="math inline">\(f\)</span> subject to the given constraints.</p>
 <ol start="11" type="1">
 <li><p>Maximize <span class="math inline">\(f = 30x_1 + 10x_2\)</span> in the region in Prob. 5.</p></li>
@@ -621,18 +633,18 @@ x_i \ge 0 \quad (i = 1, \dots, n)
 </section>
 </section>
 </section>
-<section id="sec-simplex-method" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="sec-simplex-method"><span class="header-section-number">16.3</span> 22.3 Simplex Method</h2>
+<section id="sec-simplex-method" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="sec-simplex-method"><span class="header-section-number">19.3</span> 22.3 Simplex Method</h2>
 <p>From the last section we recall the following. A linear optimization problem (linear programming problem) can be written in normal form; that is: Maximize <span id="eq-sec223-1"><span class="math display">\[
 z = f(\mathbf{x}) = c_1x_1 + \dots + c_nx_n
-\tag{16.14}\]</span></span> subject to the constraints <span id="eq-sec223-2"><span class="math display">\[
+\tag{19.14}\]</span></span> subject to the constraints <span id="eq-sec223-2"><span class="math display">\[
 \begin{aligned}
 a_{11}x_1 + \dots + a_{1n}x_n &amp;= b_1 \\
 a_{21}x_1 + \dots + a_{2n}x_n &amp;= b_2 \\
 &amp;\dots \\
 a_{m1}x_1 + \dots + a_{mn}x_n &amp;= b_m
 \end{aligned}
-\tag{16.15}\]</span></span> <span class="math display">\[
+\tag{19.15}\]</span></span> <span class="math display">\[
 x_i \ge 0 \quad (i = 1, \dots, n)
 \]</span></p>
 <p>For finding an optimal solution of this problem, we need to consider only the basic feasible solutions (defined in Sec. 22.2), but there are still so many that we have to follow a systematic search procedure. In 1948 G. B. Dantzig<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> published an iterative method, called the <strong>simplex method</strong>, for that purpose. In this method, one proceeds stepwise from one basic feasible solution to another in such a way that the objective function <span class="math inline">\(f\)</span> always increases its value. Let us explain this method in terms of the example in the last section.</p>
@@ -650,7 +662,7 @@ z - 40x_1 - 88x_2 &amp;= 0 \\
 2x_1 + 8x_2 + x_3 &amp;= 60 \\
 5x_1 + 2x_2 + x_4 &amp;= 60
 \end{aligned}
-\tag{16.16}\]</span></span> where <span class="math inline">\(x_1 \ge 0, \dots, x_4 \ge 0\)</span>. This is a linear system of equations. To find an optimal solution of it, we may consider its augmented matrix (see Sec. 7.3) <span id="eq-sec223-4"><span class="math display">\[
+\tag{19.16}\]</span></span> where <span class="math inline">\(x_1 \ge 0, \dots, x_4 \ge 0\)</span>. This is a linear system of equations. To find an optimal solution of it, we may consider its augmented matrix (see Sec. 7.3) <span id="eq-sec223-4"><span class="math display">\[
 T_0 = \begin{array}{c|ccccc|c}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; b \\
 \hline
@@ -659,22 +671,22 @@ T_0 = \begin{array}{c|ccccc|c}
 \text{Row 2} &amp; 0 &amp; 2 &amp; 8 &amp; 1 &amp; 0 &amp; 60 \\
 \text{Row 3} &amp; 0 &amp; 5 &amp; 2 &amp; 0 &amp; 1 &amp; 60
 \end{array}
-\tag{16.17}\]</span></span></p>
+\tag{19.17}\]</span></span></p>
 <p>This matrix is called a <strong>simplex tableau</strong> or <strong>simplex table</strong> (the initial simplex table). These are standard names. The dashed lines and the letters <span class="math inline">\(z, x_1, \dots, b\)</span> are for ease in further manipulation.</p>
-<p>Every simplex table contains two kinds of variables <span class="math inline">\(x_j\)</span>. By <strong>basic variables</strong> we mean those whose columns have only one nonzero entry. Thus <span class="math inline">\(x_3, x_4\)</span> in (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>16.17</span></a>) are basic variables and <span class="math inline">\(x_1, x_2\)</span> are nonbasic variables.</p>
-<p>Every simplex table gives a basic feasible solution. It is obtained by setting the nonbasic variables to zero. Thus (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>16.17</span></a>) gives the basic feasible solution <span class="math display">\[
+<p>Every simplex table contains two kinds of variables <span class="math inline">\(x_j\)</span>. By <strong>basic variables</strong> we mean those whose columns have only one nonzero entry. Thus <span class="math inline">\(x_3, x_4\)</span> in (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>19.17</span></a>) are basic variables and <span class="math inline">\(x_1, x_2\)</span> are nonbasic variables.</p>
+<p>Every simplex table gives a basic feasible solution. It is obtained by setting the nonbasic variables to zero. Thus (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>19.17</span></a>) gives the basic feasible solution <span class="math display">\[
 x_1 = 0, \quad x_2 = 0, \quad x_3 = \frac{60}{1} = 60, \quad x_4 = \frac{60}{1} = 60, \quad z = 0
 \]</span> with <span class="math inline">\(x_3\)</span> obtained from the second row and <span class="math inline">\(x_4\)</span> from the third.</p>
 <p>The optimal solution (its location and value) is now obtained stepwise by pivoting, designed to take us to basic feasible solutions with higher and higher values of <span class="math inline">\(z\)</span> until the maximum of <span class="math inline">\(z\)</span> is reached. Here, the choice of the pivot equation and pivot are quite different from that in the Gauss elimination. The reason is that <span class="math inline">\(x_1, x_2, x_3, x_4\)</span> are restricted to nonnegative values.</p>
-<section id="step-1" class="level4" data-number="16.3.0.1">
-<h4 data-number="16.3.0.1" class="anchored" data-anchor-id="step-1"><span class="header-section-number">16.3.0.1</span> Step 1</h4>
+<section id="step-1" class="level4" data-number="19.3.0.1">
+<h4 data-number="19.3.0.1" class="anchored" data-anchor-id="step-1"><span class="header-section-number">19.3.0.1</span> Step 1</h4>
 <p><strong>Operation O1: Selection of the Column of the Pivot.</strong><br>
-Select as the column of the pivot the first column with a negative entry in Row 1. In (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>16.17</span></a>) this is Column 2 (because of <span class="math inline">\(-40 &lt; 0\)</span>).</p>
+Select as the column of the pivot the first column with a negative entry in Row 1. In (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>19.17</span></a>) this is Column 2 (because of <span class="math inline">\(-40 &lt; 0\)</span>).</p>
 <p><strong>Operation O2: Selection of the Row of the Pivot.</strong><br>
-Divide the right sides <a href="#eq-sec223-4" class="quarto-xref"><span class="math inline">\(60\)</span> and <span class="math inline">\(60\)</span> in (&nbsp;<span>16.17</span></a> by the corresponding entries of the column just selected (<span class="math inline">\(60/2 = 30\)</span>, <span class="math inline">\(60/5 = 12\)</span>). Take as the pivot equation the equation that gives the smallest quotient. Thus the pivot is <span class="math inline">\(5\)</span> because <span class="math inline">\(60/5\)</span> is smallest.</p>
+Divide the right sides <a href="#eq-sec223-4" class="quarto-xref"><span class="math inline">\(60\)</span> and <span class="math inline">\(60\)</span> in (&nbsp;<span>19.17</span></a> by the corresponding entries of the column just selected (<span class="math inline">\(60/2 = 30\)</span>, <span class="math inline">\(60/5 = 12\)</span>). Take as the pivot equation the equation that gives the smallest quotient. Thus the pivot is <span class="math inline">\(5\)</span> because <span class="math inline">\(60/5\)</span> is smallest.</p>
 <p><strong>Operation O3: Elimination by Row Operations.</strong><br>
 This gives zeros above and below the pivot (as in Gauss–Jordan, Sec. 7.8).</p>
-<p>With the notation for row operations as introduced in Sec. 7.3, the calculations in Step 1 give from the simplex table <span class="math inline">\(T_0\)</span> in (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>16.17</span></a>) the following simplex table (augmented matrix): <span id="eq-sec223-5"><span class="math display">\[
+<p>With the notation for row operations as introduced in Sec. 7.3, the calculations in Step 1 give from the simplex table <span class="math inline">\(T_0\)</span> in (<a href="#eq-sec223-4" class="quarto-xref">Equation&nbsp;<span>19.17</span></a>) the following simplex table (augmented matrix): <span id="eq-sec223-5"><span class="math display">\[
 T_1 = \begin{array}{c|ccccc|c|l}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; b &amp; \text{Row Operations} \\
 \hline
@@ -683,17 +695,17 @@ T_1 = \begin{array}{c|ccccc|c|l}
 \text{Row 2} &amp; 0 &amp; 0 &amp; 7.2 &amp; 1 &amp; -0.4 &amp; 36 &amp; \text{Row 2} - 0.4 \text{Row 3} \\
 \text{Row 3} &amp; 0 &amp; 5 &amp; 2 &amp; 0 &amp; 1 &amp; 60 &amp;
 \end{array}
-\tag{16.18}\]</span></span></p>
+\tag{19.18}\]</span></span></p>
 <p>We see that basic variables are now <span class="math inline">\(x_1, x_3\)</span> and nonbasic variables are <span class="math inline">\(x_2, x_4\)</span>. Setting the latter to zero, we obtain the basic feasible solution given by <span class="math inline">\(T_1\)</span>, <span class="math display">\[
 x_1 = \frac{60}{5} = 12, \quad x_2 = 0, \quad x_3 = \frac{36}{1} = 36, \quad x_4 = 0, \quad z = 480
 \]</span></p>
 <p>This is <span class="math inline">\(A\)</span> in Fig. 474 (Sec. 22.2). We thus have moved from <span class="math inline">\(O: (0, 0)\)</span> with <span class="math inline">\(z = 0\)</span> to <span class="math inline">\(A: (12, 0)\)</span> with the greater <span class="math inline">\(z = 480\)</span>. The reason for this increase is our elimination of a term (<span class="math inline">\(-40x_1\)</span>) with a negative coefficient. Hence elimination is applied only to negative entries in Row 1 but to no others. This motivates the selection of the column of the pivot.</p>
 <p>We now motivate the selection of the row of the pivot. Had we taken the second row of <span class="math inline">\(T_0\)</span> instead (thus <span class="math inline">\(2\)</span> as the pivot), we would have obtained <span class="math inline">\(z = 1200\)</span> (verify!), but this line of constant revenue <span class="math inline">\(z = 1200\)</span> lies entirely outside the feasibility region in Fig. 474. This motivates our cautious choice of the entry <span class="math inline">\(5\)</span> as our pivot because it gave the smallest quotient (<span class="math inline">\(60/5 = 12\)</span>).</p>
 </section>
-<section id="step-2" class="level4" data-number="16.3.0.2">
-<h4 data-number="16.3.0.2" class="anchored" data-anchor-id="step-2"><span class="header-section-number">16.3.0.2</span> Step 2</h4>
-<p>The basic feasible solution given by (<a href="#eq-sec223-5" class="quarto-xref">Equation&nbsp;<span>16.18</span></a>) is not yet optimal because of the negative entry <span class="math inline">\(-72\)</span> in Row 1. Accordingly, we perform the operations O1 to O3 again, choosing a pivot in the column of <span class="math inline">\(-72\)</span>.</p>
-<p><strong>Operation O1.</strong> Select Column 3 of <span class="math inline">\(T_1\)</span> in (<a href="#eq-sec223-5" class="quarto-xref">Equation&nbsp;<span>16.18</span></a>) as the column of the pivot (because <span class="math inline">\(-72 &lt; 0\)</span>).</p>
+<section id="step-2" class="level4" data-number="19.3.0.2">
+<h4 data-number="19.3.0.2" class="anchored" data-anchor-id="step-2"><span class="header-section-number">19.3.0.2</span> Step 2</h4>
+<p>The basic feasible solution given by (<a href="#eq-sec223-5" class="quarto-xref">Equation&nbsp;<span>19.18</span></a>) is not yet optimal because of the negative entry <span class="math inline">\(-72\)</span> in Row 1. Accordingly, we perform the operations O1 to O3 again, choosing a pivot in the column of <span class="math inline">\(-72\)</span>.</p>
+<p><strong>Operation O1.</strong> Select Column 3 of <span class="math inline">\(T_1\)</span> in (<a href="#eq-sec223-5" class="quarto-xref">Equation&nbsp;<span>19.18</span></a>) as the column of the pivot (because <span class="math inline">\(-72 &lt; 0\)</span>).</p>
 <p><strong>Operation O2.</strong> We have <span class="math inline">\(36/7.2 = 5\)</span> and <span class="math inline">\(60/2 = 30\)</span>. Select <span class="math inline">\(7.2\)</span> as the pivot (because <span class="math inline">\(5 &lt; 30\)</span>).</p>
 <p><strong>Operation O3.</strong> Elimination by row operations gives: <span id="eq-sec223-6"><span class="math display">\[
 T_2 = \begin{array}{c|ccccc|c|l}
@@ -704,20 +716,20 @@ T_2 = \begin{array}{c|ccccc|c|l}
 \text{Row 2} &amp; 0 &amp; 0 &amp; 7.2 &amp; 1 &amp; -0.4 &amp; 36 &amp; \\
 \text{Row 3} &amp; 0 &amp; 5 &amp; 0 &amp; -\frac{1}{3.6} &amp; \frac{1}{0.9} &amp; 50 &amp; \text{Row 3} - \frac{2}{7.2} \text{Row 2}
 \end{array}
-\tag{16.19}\]</span></span></p>
+\tag{19.19}\]</span></span></p>
 <p>We see that now <span class="math inline">\(x_1, x_2\)</span> are basic and <span class="math inline">\(x_3, x_4\)</span> nonbasic. Setting the latter to zero, we obtain from <span class="math inline">\(T_2\)</span> the basic feasible solution <span class="math display">\[
 x_1 = \frac{50}{5} = 10, \quad x_2 = \frac{36}{7.2} = 5, \quad x_3 = 0, \quad x_4 = 0, \quad z = 840
 \]</span></p>
 <p>This is <span class="math inline">\(B\)</span> in Fig. 474 (Sec. 22.2). In this step, <span class="math inline">\(z\)</span> has increased from <span class="math inline">\(480\)</span> to <span class="math inline">\(840\)</span>, due to the elimination of <span class="math inline">\(-72\)</span> in <span class="math inline">\(T_1\)</span>. Since <span class="math inline">\(T_2\)</span> contains no more negative entries in Row 1, we conclude that <span class="math inline">\(z = f(10, 5) = 40 \cdot 10 + 88 \cdot 5 = 840\)</span> is the maximum possible revenue. It is obtained if we produce twice as many S heaters as L heaters. This is the solution of our problem by the simplex method of linear programming. <span class="math inline">\(\blacksquare\)</span></p>
 <p><strong>Minimization.</strong> If we want to minimize <span class="math inline">\(z = f(\mathbf{x})\)</span> (instead of maximize), we take as the columns of the pivots those whose entry in Row 1 is positive (instead of negative). In such a Column <span class="math inline">\(k\)</span> we consider only positive entries <span class="math inline">\(t_{jk}\)</span> and take as pivot a <span class="math inline">\(t_{jk}\)</span> for which <span class="math inline">\(b_j/t_{jk}\)</span> is smallest (as before). For examples, see the problem set.</p>
 </section>
-<section id="problem-set-22.3" class="level3" data-number="16.3.1">
-<h3 data-number="16.3.1" class="anchored" data-anchor-id="problem-set-22.3"><span class="header-section-number">16.3.1</span> PROBLEM SET 22.3</h3>
+<section id="problem-set-22.3" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="problem-set-22.3"><span class="header-section-number">19.3.1</span> PROBLEM SET 22.3</h3>
 <ol type="1">
 <li>Verify the calculations in Example 1 of the text.</li>
 </ol>
-<section id="simplex-method" class="level4" data-number="16.3.1.1">
-<h4 data-number="16.3.1.1" class="anchored" data-anchor-id="simplex-method"><span class="header-section-number">16.3.1.1</span> 2–14: SIMPLEX METHOD</h4>
+<section id="simplex-method" class="level4" data-number="19.3.1.1">
+<h4 data-number="19.3.1.1" class="anchored" data-anchor-id="simplex-method"><span class="header-section-number">19.3.1.1</span> 2–14: SIMPLEX METHOD</h4>
 <p>Write in normal form and solve by the simplex method, assuming all <span class="math inline">\(x_j\)</span> to be nonnegative.</p>
 <ol start="2" type="1">
 <li><p>The problem in the example in the text with the constraints interchanged.</p></li>
@@ -752,16 +764,16 @@ x_1 = \frac{50}{5} = 10, \quad x_2 = \frac{36}{7.2} = 5, \quad x_3 = 0, \quad x_
 </section>
 </section>
 </section>
-<section id="sec-simplex-difficulties" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="sec-simplex-difficulties"><span class="header-section-number">16.4</span> 22.4 Simplex Method: Difficulties</h2>
+<section id="sec-simplex-difficulties" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="sec-simplex-difficulties"><span class="header-section-number">19.4</span> 22.4 Simplex Method: Difficulties</h2>
 <p>In solving a linear optimization problem by the simplex method, we proceed stepwise from one basic feasible solution to another. By so doing, we increase the value of the objective function <span class="math inline">\(f\)</span>. We continue this stepwise procedure, until we reach an optimal solution. This was all explained in Sec. 22.3. However, the method does not always proceed so smoothly. Occasionally, but rather infrequently in practice, we encounter two kinds of difficulties. The first one is degeneracy and the second one concerns difficulties in starting.</p>
-<section id="degeneracy" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="degeneracy"><span class="header-section-number">16.4.1</span> Degeneracy</h3>
+<section id="degeneracy" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="degeneracy"><span class="header-section-number">19.4.1</span> Degeneracy</h3>
 <p>A <strong>degenerate feasible solution</strong> is a feasible solution at which more than the usual number <span class="math inline">\(n - m\)</span> of variables are zero. Here <span class="math inline">\(n\)</span> is the number of variables (slack and others) and <span class="math inline">\(m\)</span> the number of constraints (not counting the <span class="math inline">\(x_j \ge 0\)</span> conditions). In the last section, <span class="math inline">\(n = 4\)</span> and <span class="math inline">\(m = 2\)</span>, and the occurring basic feasible solutions were nondegenerate; <span class="math inline">\(n - m = 2\)</span> variables were zero in each such solution.</p>
 <p>In the case of a degenerate feasible solution we do an extra elimination step in which a basic variable that is zero for that solution becomes nonbasic (and a nonbasic variable becomes basic instead). We explain this in a typical case. For more complicated cases and techniques (rarely needed in practice) see Ref. [F5] in App. 1.</p>
 </section>
-<section id="example-1-simplex-method-degenerate-feasible-solution" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="example-1-simplex-method-degenerate-feasible-solution"><span class="header-section-number">16.4.2</span> EXAMPLE 1: Simplex Method, Degenerate Feasible Solution</h3>
+<section id="example-1-simplex-method-degenerate-feasible-solution" class="level3" data-number="19.4.2">
+<h3 data-number="19.4.2" class="anchored" data-anchor-id="example-1-simplex-method-degenerate-feasible-solution"><span class="header-section-number">19.4.2</span> EXAMPLE 1: Simplex Method, Degenerate Feasible Solution</h3>
 <p>AB Steel, Inc., produces two kinds of iron <span class="math inline">\(I_1, I_2\)</span> by using three kinds of raw material <span class="math inline">\(R_1, R_2, R_3\)</span> (scrap iron and two kinds of ore) as shown. Maximize the daily profit.</p>
 <table class="caption-top table">
 <colgroup>
@@ -808,7 +820,7 @@ x_1 = \frac{50}{5} = 10, \quad x_2 = \frac{36}{7.2} = 5, \quad x_3 = 0, \quad x_
 <p><strong>Solution.</strong><br>
 Let <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> denote the amount (in tons) of iron <span class="math inline">\(I_1\)</span> and <span class="math inline">\(I_2\)</span>, respectively, produced per day. Then our problem is as follows. Maximize <span id="eq-sec224-1"><span class="math display">\[
 z = f(\mathbf{x}) = 150x_1 + 300x_2
-\tag{16.20}\]</span></span> subject to the constraints <span class="math inline">\(x_1 \ge 0, x_2 \ge 0\)</span> and <span class="math display">\[
+\tag{19.20}\]</span></span> subject to the constraints <span class="math inline">\(x_1 \ge 0, x_2 \ge 0\)</span> and <span class="math display">\[
 \begin{aligned}
 2x_1 + x_2 &amp;\le 16 \quad \text{(raw material } R_1\text{)} \\
 x_1 + x_2 &amp;\le 8 \quad \text{(raw material } R_2\text{)} \\
@@ -821,8 +833,8 @@ x_2 &amp;\le 3.5 \quad \text{(raw material } R_3\text{)}
 x_1 + x_2 + x_4 &amp;= 8 \\
 x_2 + x_5 &amp;= 3.5
 \end{aligned}
-\tag{16.21}\]</span></span> <span class="math inline">\(x_i \ge 0 \quad (i = 1, \dots, 5)\)</span>.</p>
-<p>As in the last section we obtain from (<a href="#eq-sec224-1" class="quarto-xref">Equation&nbsp;<span>16.20</span></a>) and (<a href="#eq-sec224-2" class="quarto-xref">Equation&nbsp;<span>16.21</span></a>) the initial simplex table: <span id="eq-sec224-3"><span class="math display">\[
+\tag{19.21}\]</span></span> <span class="math inline">\(x_i \ge 0 \quad (i = 1, \dots, 5)\)</span>.</p>
+<p>As in the last section we obtain from (<a href="#eq-sec224-1" class="quarto-xref">Equation&nbsp;<span>19.20</span></a>) and (<a href="#eq-sec224-2" class="quarto-xref">Equation&nbsp;<span>19.21</span></a>) the initial simplex table: <span id="eq-sec224-3"><span class="math display">\[
 T_0 = \begin{array}{c|cccccc|c}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b \\
 \hline
@@ -832,12 +844,12 @@ T_0 = \begin{array}{c|cccccc|c}
 \text{Row 3} &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 8 \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 3.5
 \end{array}
-\tag{16.22}\]</span></span></p>
-<p>We see that <span class="math inline">\(x_1, x_2\)</span> are nonbasic variables and <span class="math inline">\(x_3, x_4, x_5\)</span> are basic. With <span class="math inline">\(x_1 = x_2 = 0\)</span> we have from (<a href="#eq-sec224-3" class="quarto-xref">Equation&nbsp;<span>16.22</span></a>) the basic feasible solution <span class="math display">\[
+\tag{19.22}\]</span></span></p>
+<p>We see that <span class="math inline">\(x_1, x_2\)</span> are nonbasic variables and <span class="math inline">\(x_3, x_4, x_5\)</span> are basic. With <span class="math inline">\(x_1 = x_2 = 0\)</span> we have from (<a href="#eq-sec224-3" class="quarto-xref">Equation&nbsp;<span>19.22</span></a>) the basic feasible solution <span class="math display">\[
 x_1 = 0, \quad x_2 = 0, \quad x_3 = \frac{16}{1} = 16, \quad x_4 = \frac{8}{1} = 8, \quad x_5 = \frac{3.5}{1} = 3.5, \quad z = 0
-\]</span> This is <span class="math inline">\(O: (0, 0)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>. We have <span class="math inline">\(n = 5\)</span> variables <span class="math inline">\(x_j\)</span>, <span class="math inline">\(m = 3\)</span> constraints, and <span class="math inline">\(n - m = 2\)</span> variables equal to zero in our solution, which thus is nondegenerate.</p>
-<section id="step-1-of-pivoting" class="level4" data-number="16.4.2.1">
-<h4 data-number="16.4.2.1" class="anchored" data-anchor-id="step-1-of-pivoting"><span class="header-section-number">16.4.2.1</span> Step 1 of Pivoting</h4>
+\]</span> This is <span class="math inline">\(O: (0, 0)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>. We have <span class="math inline">\(n = 5\)</span> variables <span class="math inline">\(x_j\)</span>, <span class="math inline">\(m = 3\)</span> constraints, and <span class="math inline">\(n - m = 2\)</span> variables equal to zero in our solution, which thus is nondegenerate.</p>
+<section id="step-1-of-pivoting" class="level4" data-number="19.4.2.1">
+<h4 data-number="19.4.2.1" class="anchored" data-anchor-id="step-1-of-pivoting"><span class="header-section-number">19.4.2.1</span> Step 1 of Pivoting</h4>
 <p><strong>Operation O1: Column Selection of Pivot.</strong> Column 3 (since <span class="math inline">\(-300 &lt; 0\)</span>, which is the most negative entry in Row 1).<br>
 <strong>Operation O2: Row Selection of Pivot.</strong> <span class="math inline">\(16/1 = 16\)</span>, <span class="math inline">\(8/1 = 8\)</span>, <span class="math inline">\(3.5/1 = 3.5\)</span>. We choose Row 4 because <span class="math inline">\(3.5\)</span> is the smallest quotient. The pivot is <span class="math inline">\(1\)</span> in Row 4, Column 3.<br>
 <strong>Operation O3: Elimination by Row Operations.</strong> This gives the simplex table: <span id="eq-sec224-4"><span class="math display">\[
@@ -850,13 +862,13 @@ T_1 = \begin{array}{c|cccccc|c|l}
 \text{Row 3} &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 4.5 &amp; \text{Row 3} - \text{Row 4} \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 3.5 &amp;
 \end{array}
-\tag{16.23}\]</span></span></p>
+\tag{19.23}\]</span></span></p>
 <p>We see that the basic variables are <span class="math inline">\(x_3, x_4, x_2\)</span> and the nonbasic are <span class="math inline">\(x_1, x_5\)</span>. Setting the nonbasic variables to zero, we obtain from <span class="math inline">\(T_1\)</span> the basic feasible solution <span class="math display">\[
 x_1 = 0, \quad x_2 = 3.5, \quad x_3 = 12.5, \quad x_4 = 4.5, \quad x_5 = 0, \quad z = 1050
-\]</span> This is <span class="math inline">\(C: (0, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>. This solution is nondegenerate.</p>
+\]</span> This is <span class="math inline">\(C: (0, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>. This solution is nondegenerate.</p>
 </section>
-<section id="step-2-of-pivoting" class="level4" data-number="16.4.2.2">
-<h4 data-number="16.4.2.2" class="anchored" data-anchor-id="step-2-of-pivoting"><span class="header-section-number">16.4.2.2</span> Step 2 of Pivoting</h4>
+<section id="step-2-of-pivoting" class="level4" data-number="19.4.2.2">
+<h4 data-number="19.4.2.2" class="anchored" data-anchor-id="step-2-of-pivoting"><span class="header-section-number">19.4.2.2</span> Step 2 of Pivoting</h4>
 <p><strong>Operation O1: Column Selection of Pivot.</strong> Column 2 (since <span class="math inline">\(-150 &lt; 0\)</span>).<br>
 <strong>Operation O2: Row Selection of Pivot.</strong> <span class="math inline">\(12.5/2 = 6.25\)</span>, <span class="math inline">\(4.5/1 = 4.5\)</span>, <span class="math inline">\(3.5/0\)</span> (not possible). We choose Row 3 because <span class="math inline">\(4.5\)</span> is the smallest quotient. The pivot is <span class="math inline">\(1\)</span> in Row 3, Column 2.<br>
 <strong>Operation O3: Elimination by Row Operations.</strong> This gives the following simplex table: <span id="eq-sec224-5"><span class="math display">\[
@@ -869,10 +881,10 @@ T_2 = \begin{array}{c|cccccc|c|l}
 \text{Row 3} &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 4.5 &amp; \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 3.5 &amp;
 \end{array}
-\tag{16.24}\]</span></span></p>
+\tag{19.24}\]</span></span></p>
 <p>We see that the basic variables are <span class="math inline">\(x_3, x_1, x_2\)</span> and the nonbasic are <span class="math inline">\(x_4, x_5\)</span>. By equating the nonbasic variables to zero we obtain from <span class="math inline">\(T_2\)</span> the basic feasible solution <span class="math display">\[
 x_1 = 4.5, \quad x_2 = 3.5, \quad x_3 = 3.5, \quad x_4 = 0, \quad x_5 = 0, \quad z = 1725
-\]</span> This is <span class="math inline">\(B: (4.5, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>. Since Row 1 of <span class="math inline">\(T_2\)</span> has no negative entries, we have reached the maximum daily profit <span class="math inline">\(z_{\max} = f(4.5, 3.5) = 150 \cdot 4.5 + 300 \cdot 3.5 = \$1725\)</span>. This is obtained by using 4.5 tons of iron <span class="math inline">\(I_1\)</span> and 3.5 tons of iron <span class="math inline">\(I_2\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> This is <span class="math inline">\(B: (4.5, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>. Since Row 1 of <span class="math inline">\(T_2\)</span> has no negative entries, we have reached the maximum daily profit <span class="math inline">\(z_{\max} = f(4.5, 3.5) = 150 \cdot 4.5 + 300 \cdot 3.5 = \$1725\)</span>. This is obtained by using 4.5 tons of iron <span class="math inline">\(I_1\)</span> and 3.5 tons of iron <span class="math inline">\(I_2\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 <p><em>Note:</em> The textbook lists another example of degeneracy where an intermediate step is degenerate. Let us include that path of pivoting too. If we started from <span class="math inline">\(T_0\)</span> and chose Column 2 first (for <span class="math inline">\(x_1\)</span>, since <span class="math inline">\(-150 &lt; 0\)</span>): Quotients are <span class="math inline">\(16/2 = 8\)</span>, <span class="math inline">\(8/1 = 8\)</span>, <span class="math inline">\(3.5/0\)</span> (not possible). If we chose Row 2 (with pivot 2): <span class="math display">\[
 T_1' = \begin{array}{c|cccccc|c|l}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b &amp; \text{Row Operations} \\
@@ -885,7 +897,7 @@ T_1' = \begin{array}{c|cccccc|c|l}
 \end{array}
 \]</span> Setting nonbasic variables <span class="math inline">\(x_2, x_3\)</span> to zero: <span class="math display">\[
 x_1 = 8, \quad x_2 = 0, \quad x_3 = 0, \quad x_4 = 0, \quad x_5 = 3.5, \quad z = 1200
-\]</span> This is <span class="math inline">\(A: (8, 0)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>. This solution is degenerate because <span class="math inline">\(x_4 = 0\)</span> (in addition to nonbasic <span class="math inline">\(x_2 = 0, x_3 = 0\)</span>). Geometrically, the line <span class="math inline">\(x_4 = 0\)</span> also passes through <span class="math inline">\(A\)</span>. This requires the next step, in which <span class="math inline">\(x_4\)</span> will become nonbasic.</p>
+\]</span> This is <span class="math inline">\(A: (8, 0)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>. This solution is degenerate because <span class="math inline">\(x_4 = 0\)</span> (in addition to nonbasic <span class="math inline">\(x_2 = 0, x_3 = 0\)</span>). Geometrically, the line <span class="math inline">\(x_4 = 0\)</span> also passes through <span class="math inline">\(A\)</span>. This requires the next step, in which <span class="math inline">\(x_4\)</span> will become nonbasic.</p>
 <p><strong>Step 2 of Pivoting (Degenerate path)</strong><br>
 <strong>Operation O1:</strong> Column Selection of Pivot. Column 3 (since <span class="math inline">\(-225 &lt; 0\)</span>).<br>
 <strong>Operation O2:</strong> Row Selection of Pivot. <span class="math inline">\(16/1 = 16\)</span>, <span class="math inline">\(0/0.5 = 0\)</span>. Hence <span class="math inline">\(0.5\)</span> in Row 3 must serve as the pivot.<br>
@@ -917,28 +929,28 @@ T_3' = \begin{array}{c|cccccc|c|l}
 \end{array}
 \]</span> We see that basic variables are <span class="math inline">\(x_1, x_2, x_3\)</span> and nonbasic are <span class="math inline">\(x_4, x_5\)</span>. Equating the latter to zero we obtain the basic feasible solution <span class="math display">\[
 x_1 = 4.5, \quad x_2 = 3.5, \quad x_3 = 3.5, \quad x_4 = 0, \quad x_5 = 0, \quad z = 1725
-\]</span> This is <span class="math inline">\(B: (4.5, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>. Since Row 1 has no negative entries, we have reached the maximum daily profit <span class="math inline">\(z_{\max} = \$1725\)</span>.</p>
+\]</span> This is <span class="math inline">\(B: (4.5, 3.5)\)</span> in <a href="#fig-22-03" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>. Since Row 1 has no negative entries, we have reached the maximum daily profit <span class="math inline">\(z_{\max} = \$1725\)</span>.</p>
 <div id="fig-22-03" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-22-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-22-03.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-22-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.3: Fig. 22-03: Example 1, where A is degenerate
+Figure&nbsp;19.3: Fig. 22-03: Example 1, where A is degenerate
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
-<section id="difficulties-in-starting" class="level3" data-number="16.4.3">
-<h3 data-number="16.4.3" class="anchored" data-anchor-id="difficulties-in-starting"><span class="header-section-number">16.4.3</span> Difficulties in Starting</h3>
+<section id="difficulties-in-starting" class="level3" data-number="19.4.3">
+<h3 data-number="19.4.3" class="anchored" data-anchor-id="difficulties-in-starting"><span class="header-section-number">19.4.3</span> Difficulties in Starting</h3>
 <p>As a second kind of difficulty, it may sometimes be hard to find a basic feasible solution to start from. In such a case the idea of an <strong>artificial variable</strong> (or several such variables) is helpful. We explain this method in terms of a typical example.</p>
 </section>
-<section id="example-2-simplex-method-difficult-start-artificial-variable" class="level3" data-number="16.4.4">
-<h3 data-number="16.4.4" class="anchored" data-anchor-id="example-2-simplex-method-difficult-start-artificial-variable"><span class="header-section-number">16.4.4</span> EXAMPLE 2: Simplex Method: Difficult Start, Artificial Variable</h3>
+<section id="example-2-simplex-method-difficult-start-artificial-variable" class="level3" data-number="19.4.4">
+<h3 data-number="19.4.4" class="anchored" data-anchor-id="example-2-simplex-method-difficult-start-artificial-variable"><span class="header-section-number">19.4.4</span> EXAMPLE 2: Simplex Method: Difficult Start, Artificial Variable</h3>
 <p>Maximize <span id="eq-sec224-7"><span class="math display">\[
 z = f(\mathbf{x}) = 2x_1 + x_2
-\tag{16.25}\]</span></span> subject to the constraints <span class="math inline">\(x_1 \ge 0, x_2 \ge 0\)</span> and <span class="math display">\[
+\tag{19.25}\]</span></span> subject to the constraints <span class="math inline">\(x_1 \ge 0, x_2 \ge 0\)</span> and <span class="math display">\[
 \begin{aligned}
 x_1 - \frac{1}{2}x_2 &amp;\ge 1 \\
 x_1 - x_2 &amp;\le 2 \\
@@ -953,8 +965,8 @@ x_1 - \frac{1}{2}x_2 - x_3 &amp;= 1 \\
 x_1 - x_2 + x_4 &amp;= 2 \\
 x_1 + x_2 + x_5 &amp;= 4
 \end{aligned}
-\tag{16.26}\]</span></span> <span class="math inline">\(x_i \ge 0 \quad (i = 1, \dots, 5)\)</span>.</p>
-<p>Note that the first slack variable is negative (or zero), which makes <span class="math inline">\(x_3\)</span> nonnegative within the feasibility region (and negative outside). From (<a href="#eq-sec224-7" class="quarto-xref">Equation&nbsp;<span>16.25</span></a>) and (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>16.26</span></a>) we obtain the simplex table: <span class="math display">\[
+\tag{19.26}\]</span></span> <span class="math inline">\(x_i \ge 0 \quad (i = 1, \dots, 5)\)</span>.</p>
+<p>Note that the first slack variable is negative (or zero), which makes <span class="math inline">\(x_3\)</span> nonnegative within the feasibility region (and negative outside). From (<a href="#eq-sec224-7" class="quarto-xref">Equation&nbsp;<span>19.25</span></a>) and (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>19.26</span></a>) we obtain the simplex table: <span class="math display">\[
 T_0 = \begin{array}{c|cccccc|c}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b \\
 \hline
@@ -967,16 +979,16 @@ T_0 = \begin{array}{c|cccccc|c}
 \]</span> <span class="math inline">\(x_1, x_2\)</span> are nonbasic, and we would like to take <span class="math inline">\(x_3, x_4, x_5\)</span> as basic variables. By our usual process of equating the nonbasic variables to zero we obtain from this table: <span class="math display">\[
 x_1 = 0, \quad x_2 = 0, \quad x_3 = -1, \quad x_4 = 2, \quad x_5 = 4, \quad z = 0
 \]</span> <span class="math inline">\(x_3 &lt; 0\)</span> indicates that <span class="math inline">\((0, 0)\)</span> lies outside the feasibility region. Since <span class="math inline">\(x_3 &lt; 0\)</span>, we cannot proceed immediately.</p>
-<p>Now, instead of searching for other basic variables, we use the following idea. Solving the second equation in (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>16.26</span></a>) for <span class="math inline">\(x_3\)</span>, we have: <span class="math display">\[
+<p>Now, instead of searching for other basic variables, we use the following idea. Solving the second equation in (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>19.26</span></a>) for <span class="math inline">\(x_3\)</span>, we have: <span class="math display">\[
 x_3 = -1 + x_1 - \frac{1}{2}x_2
 \]</span> To this we now add a variable <span class="math inline">\(x_6\)</span> on the right, <span id="eq-sec224-9"><span class="math display">\[
 x_3 = -1 + x_1 - \frac{1}{2}x_2 + x_6
-\tag{16.27}\]</span></span></p>
+\tag{19.27}\]</span></span></p>
 <p>Here <span class="math inline">\(x_6\)</span> is called an <strong>artificial variable</strong> and is subject to the constraint <span class="math inline">\(x_6 \ge 0\)</span>.</p>
-<p>We must take care that <span class="math inline">\(x_6\)</span> (which is not part of the given problem!) will disappear eventually. We shall see that we can accomplish this by adding a term <span class="math inline">\(-Mx_6\)</span> with very large <span class="math inline">\(M\)</span> to the objective function. Because of (<a href="#eq-sec224-7" class="quarto-xref">Equation&nbsp;<span>16.25</span></a>) and (<a href="#eq-sec224-9" class="quarto-xref">Equation&nbsp;<span>16.27</span></a>) (solved for <span class="math inline">\(x_6\)</span>) this gives the modified objective function for this “extended problem”: <span id="eq-sec224-10"><span class="math display">\[
+<p>We must take care that <span class="math inline">\(x_6\)</span> (which is not part of the given problem!) will disappear eventually. We shall see that we can accomplish this by adding a term <span class="math inline">\(-Mx_6\)</span> with very large <span class="math inline">\(M\)</span> to the objective function. Because of (<a href="#eq-sec224-7" class="quarto-xref">Equation&nbsp;<span>19.25</span></a>) and (<a href="#eq-sec224-9" class="quarto-xref">Equation&nbsp;<span>19.27</span></a>) (solved for <span class="math inline">\(x_6\)</span>) this gives the modified objective function for this “extended problem”: <span id="eq-sec224-10"><span class="math display">\[
 \hat{z} = z - Mx_6 = 2x_1 + x_2 - Mx_6 = (2 + M)x_1 + \left(1 - \frac{1}{2}M\right)x_2 - Mx_3 - M
-\tag{16.28}\]</span></span></p>
-<p>We see that the simplex table corresponding to (<a href="#eq-sec224-10" class="quarto-xref">Equation&nbsp;<span>16.28</span></a>) and (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>16.26</span></a>) is: <span id="eq-sec224-t0prime"><span class="math display">\[
+\tag{19.28}\]</span></span></p>
+<p>We see that the simplex table corresponding to (<a href="#eq-sec224-10" class="quarto-xref">Equation&nbsp;<span>19.28</span></a>) and (<a href="#eq-sec224-8" class="quarto-xref">Equation&nbsp;<span>19.26</span></a>) is: <span id="eq-sec224-t0prime"><span class="math display">\[
 T_0' = \begin{array}{c|ccccccc|c}
 &amp; \hat{z} &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp; b \\
 \hline
@@ -986,8 +998,8 @@ T_0' = \begin{array}{c|ccccccc|c}
 \text{Row 3} &amp; 0 &amp; 1 &amp; -1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 2 \\
 \text{Row 4} &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 4
 \end{array}
-\tag{16.29}\]</span></span></p>
-<p>The last row of this table (when constraint 1 is placed at the bottom, or Constraint 1 row itself) results from (<a href="#eq-sec224-9" class="quarto-xref">Equation&nbsp;<span>16.27</span></a>) written as <span class="math inline">\(x_1 - \frac{1}{2}x_2 - x_3 + x_6 = 1\)</span>. We see that we can now start, taking <span class="math inline">\(x_4, x_5, x_6\)</span> as the basic variables and <span class="math inline">\(x_1, x_2, x_3\)</span> as the nonbasic variables. Column 2 has a negative first entry. We can take the second entry (1 in Row 2) as the pivot. This gives: <span id="eq-sec224-t1prime"><span class="math display">\[
+\tag{19.29}\]</span></span></p>
+<p>The last row of this table (when constraint 1 is placed at the bottom, or Constraint 1 row itself) results from (<a href="#eq-sec224-9" class="quarto-xref">Equation&nbsp;<span>19.27</span></a>) written as <span class="math inline">\(x_1 - \frac{1}{2}x_2 - x_3 + x_6 = 1\)</span>. We see that we can now start, taking <span class="math inline">\(x_4, x_5, x_6\)</span> as the basic variables and <span class="math inline">\(x_1, x_2, x_3\)</span> as the nonbasic variables. Column 2 has a negative first entry. We can take the second entry (1 in Row 2) as the pivot. This gives: <span id="eq-sec224-t1prime"><span class="math display">\[
 T_1' = \begin{array}{c|ccccccc|c|l}
 &amp; \hat{z} &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp; b &amp; \text{Row Operations} \\
 \hline
@@ -997,8 +1009,8 @@ T_1' = \begin{array}{c|ccccccc|c|l}
 \text{Row 3} &amp; 0 &amp; 0 &amp; -0.5 &amp; 1 &amp; 1 &amp; 0 &amp; -1 &amp; 1 &amp; \text{Row 3} - \text{Row 2} \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1.5 &amp; 1 &amp; 0 &amp; 1 &amp; -1 &amp; 3 &amp; \text{Row 4} - \text{Row 2}
 \end{array}
-\tag{16.30}\]</span></span></p>
-<p>This corresponds to <span class="math inline">\(x_1 = 1, x_2 = 0\)</span> (point <span class="math inline">\(A\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>16.4</span></a>), <span class="math inline">\(x_3 = 0, x_4 = 1, x_5 = 3, x_6 = 0\)</span>. We can now drop Row 5 (the artificial row/column elements) and Column 7. In this way we get rid of <span class="math inline">\(x_6\)</span>, as wanted, and obtain: <span id="eq-sec224-t2prime"><span class="math display">\[
+\tag{19.30}\]</span></span></p>
+<p>This corresponds to <span class="math inline">\(x_1 = 1, x_2 = 0\)</span> (point <span class="math inline">\(A\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>19.4</span></a>), <span class="math inline">\(x_3 = 0, x_4 = 1, x_5 = 3, x_6 = 0\)</span>. We can now drop Row 5 (the artificial row/column elements) and Column 7. In this way we get rid of <span class="math inline">\(x_6\)</span>, as wanted, and obtain: <span id="eq-sec224-t2prime"><span class="math display">\[
 T_2' = \begin{array}{c|cccccc|c}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b \\
 \hline
@@ -1008,7 +1020,7 @@ T_2' = \begin{array}{c|cccccc|c}
 \text{Row 3} &amp; 0 &amp; 0 &amp; -0.5 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1.5 &amp; 1 &amp; 0 &amp; 1 &amp; 3
 \end{array}
-\tag{16.31}\]</span></span></p>
+\tag{19.31}\]</span></span></p>
 <p>In Column 3 we choose <span class="math inline">\(1.5\)</span> (or <span class="math inline">\(3/2\)</span>) as the next pivot. We obtain: <span id="eq-sec224-t3prime"><span class="math display">\[
 T_3' = \begin{array}{c|cccccc|c|l}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b &amp; \text{Row Operations} \\
@@ -1019,8 +1031,8 @@ T_3' = \begin{array}{c|cccccc|c|l}
 \text{Row 3} &amp; 0 &amp; 0 &amp; 0 &amp; \frac{4}{3} &amp; 1 &amp; \frac{1}{3} &amp; 2 &amp; \text{Row 3} + \frac{1}{3}\text{Row 4} \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1 &amp; \frac{2}{3} &amp; 0 &amp; \frac{2}{3} &amp; 2 &amp; \frac{2}{3}\text{Row 4}
 \end{array}
-\tag{16.32}\]</span></span></p>
-<p>This corresponds to <span class="math inline">\(x_1 = 2, x_2 = 2\)</span> (this is <span class="math inline">\(B\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>16.4</span></a>), <span class="math inline">\(x_3 = 0, x_4 = 2, x_5 = 0\)</span>. In Column 4 we choose <span class="math inline">\(\frac{4}{3}\)</span> as the pivot, by the usual principle. This gives: <span id="eq-sec224-t4prime"><span class="math display">\[
+\tag{19.32}\]</span></span></p>
+<p>This corresponds to <span class="math inline">\(x_1 = 2, x_2 = 2\)</span> (this is <span class="math inline">\(B\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>19.4</span></a>), <span class="math inline">\(x_3 = 0, x_4 = 2, x_5 = 0\)</span>. In Column 4 we choose <span class="math inline">\(\frac{4}{3}\)</span> as the pivot, by the usual principle. This gives: <span id="eq-sec224-t4prime"><span class="math display">\[
 T_4' = \begin{array}{c|cccccc|c|l}
 &amp; z &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; b &amp; \text{Row Operations} \\
 \hline
@@ -1030,22 +1042,22 @@ T_4' = \begin{array}{c|cccccc|c|l}
 \text{Row 3} &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0.75 &amp; 0.25 &amp; 1.5 &amp; \frac{3}{4}\text{Row 3} \\
 \text{Row 4} &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -0.5 &amp; 0.5 &amp; 1 &amp; \text{Row 4} - 0.5\text{Row 3}
 \end{array}
-\tag{16.33}\]</span></span></p>
-<p>This corresponds to <span class="math inline">\(x_1 = 3, x_2 = 1\)</span> (point <span class="math inline">\(C\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>16.4</span></a>), <span class="math inline">\(x_3 = 1.5, x_4 = 0, x_5 = 0\)</span>. This is the maximum <span class="math inline">\(f_{\max} = f(3, 1) = 7\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+\tag{19.33}\]</span></span></p>
+<p>This corresponds to <span class="math inline">\(x_1 = 3, x_2 = 1\)</span> (point <span class="math inline">\(C\)</span> in <a href="#fig-22-04" class="quarto-xref">Figure&nbsp;<span>19.4</span></a>), <span class="math inline">\(x_3 = 1.5, x_4 = 0, x_5 = 0\)</span>. This is the maximum <span class="math inline">\(f_{\max} = f(3, 1) = 7\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 <div id="fig-22-04" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-22-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../images/fig-22-04.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-22-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.4: Fig. 22-04: Feasibility region in Example 2
+Figure&nbsp;19.4: Fig. 22-04: Feasibility region in Example 2
 </figcaption>
 </figure>
 </div>
 <p>We have reached the end of our discussion on linear programming. We have presented the simplex method in great detail as this method has many beautiful applications and works well on most practical problems. Indeed, problems of optimization appear in civil engineering, chemical engineering, environmental engineering, management science, logistics, strategic planning, operations management, industrial engineering, finance, and other areas. Furthermore, the simplex method allows your problem to be scaled up from a small modeling attempt to a larger modeling attempt, by adding more constraints and variables, thereby making your model more realistic. The area of optimization is an active field of development and research and optimization methods, besides the simplex method, are being explored and experimented with.</p>
 </section>
-<section id="problem-set-22.4" class="level3" data-number="16.4.5">
-<h3 data-number="16.4.5" class="anchored" data-anchor-id="problem-set-22.4"><span class="header-section-number">16.4.5</span> PROBLEM SET 22.4</h3>
+<section id="problem-set-22.4" class="level3" data-number="19.4.5">
+<h3 data-number="19.4.5" class="anchored" data-anchor-id="problem-set-22.4"><span class="header-section-number">19.4.5</span> PROBLEM SET 22.4</h3>
 <ol type="1">
 <li>Maximize <span class="math inline">\(z = f_1(\mathbf{x}) = 7x_1 + 14x_2\)</span> subject to <span class="math inline">\(0 \le x_1 \le 6, \quad 0 \le x_2 \le 3, \quad 7x_1 + 14x_2 \le 84\)</span>.</li>
 <li>Do Prob. 1 with the last two constraints interchanged.</li>
@@ -1075,8 +1087,8 @@ x_2 + x_3 + x_4 &amp;= 1
 </ol>
 </section>
 </section>
-<section id="sec-ch22-review" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="sec-ch22-review"><span class="header-section-number">16.5</span> CHAPTER 22 REVIEW QUESTIONS AND PROBLEMS</h2>
+<section id="sec-ch22-review" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="sec-ch22-review"><span class="header-section-number">19.5</span> CHAPTER 22 REVIEW QUESTIONS AND PROBLEMS</h2>
 <ol type="1">
 <li>What is unconstrained optimization? Constrained optimization? To which one do methods of calculus apply?</li>
 <li>State the idea and the formulas of the method of steepest descent.</li>
@@ -1091,8 +1103,8 @@ x_2 + x_3 + x_4 &amp;= 1
 <li>In Prob. 10, could you start from <span class="math inline">\([0 \quad 0]^T\)</span> and do 5 steps?</li>
 <li>Show that the gradients in Prob. 11 are orthogonal. Give a reason.</li>
 </ol>
-<section id="regions-constraints-1" class="level4" data-number="16.5.0.1">
-<h4 data-number="16.5.0.1" class="anchored" data-anchor-id="regions-constraints-1"><span class="header-section-number">16.5.0.1</span> 13–16: REGIONS, CONSTRAINTS</h4>
+<section id="regions-constraints-1" class="level4" data-number="19.5.0.1">
+<h4 data-number="19.5.0.1" class="anchored" data-anchor-id="regions-constraints-1"><span class="header-section-number">19.5.0.1</span> 13–16: REGIONS, CONSTRAINTS</h4>
 <p>Graph or sketch the region in the first quadrant of the <span class="math inline">\(x_1x_2\)</span>-plane determined by the following inequalities.</p>
 <ol start="13" type="1">
 <li><span class="math inline">\(x_1 - 2x_2 \le -2, \quad 0.8x_1 + x_2 \le 6\)</span></li>
@@ -1101,8 +1113,8 @@ x_2 + x_3 + x_4 &amp;= 1
 <li><span class="math inline">\(x_1 + x_2 \ge 2, \quad 2x_1 - 3x_2 \ge -12, \quad x_1 \le 15\)</span></li>
 </ol>
 </section>
-<section id="maximization-minimization-1" class="level4" data-number="16.5.0.2">
-<h4 data-number="16.5.0.2" class="anchored" data-anchor-id="maximization-minimization-1"><span class="header-section-number">16.5.0.2</span> 17–20: MAXIMIZATION, MINIMIZATION</h4>
+<section id="maximization-minimization-1" class="level4" data-number="19.5.0.2">
+<h4 data-number="19.5.0.2" class="anchored" data-anchor-id="maximization-minimization-1"><span class="header-section-number">19.5.0.2</span> 17–20: MAXIMIZATION, MINIMIZATION</h4>
 <p>Maximize or minimize as indicated.</p>
 <ol start="17" type="1">
 <li>Maximize <span class="math inline">\(f = 10x_1 + 20x_2\)</span> subject to <span class="math inline">\(x_1 \le 5, \quad x_1 + x_2 \le 6, \quad x_2 \le 4\)</span>.</li>
@@ -1117,20 +1129,20 @@ x_2 + x_3 + x_4 &amp;= 1
 </ol>
 </section>
 </section>
-<section id="sec-ch22-summary" class="level2" data-number="16.6">
-<h2 data-number="16.6" class="anchored" data-anchor-id="sec-ch22-summary"><span class="header-section-number">16.6</span> SUMMARY OF CHAPTER 22</h2>
-<section id="unconstrained-optimization.-linear-programming" class="level3" data-number="16.6.1">
-<h3 data-number="16.6.1" class="anchored" data-anchor-id="unconstrained-optimization.-linear-programming"><span class="header-section-number">16.6.1</span> Unconstrained Optimization. Linear Programming</h3>
+<section id="sec-ch22-summary" class="level2" data-number="19.6">
+<h2 data-number="19.6" class="anchored" data-anchor-id="sec-ch22-summary"><span class="header-section-number">19.6</span> SUMMARY OF CHAPTER 22</h2>
+<section id="unconstrained-optimization.-linear-programming" class="level3" data-number="19.6.1">
+<h3 data-number="19.6.1" class="anchored" data-anchor-id="unconstrained-optimization.-linear-programming"><span class="header-section-number">19.6.1</span> Unconstrained Optimization. Linear Programming</h3>
 <p>In optimization problems we maximize or minimize an objective function <span class="math inline">\(z = f(\mathbf{x})\)</span> depending on control variables <span class="math inline">\(x_1, \dots, x_m\)</span> whose domain is either unrestricted (“unconstrained optimization,” Sec. 22.1) or restricted by constraints in the form of inequalities or equations or both (“constrained optimization,” Sec. 22.2).</p>
 <p>If the objective function is linear and the constraints are linear inequalities in <span class="math inline">\(x_1, \dots, x_m\)</span>, then by introducing slack variables <span class="math inline">\(x_{m+1}, \dots, x_n\)</span> we can write the optimization problem in normal form with the objective function given by <span id="eq-sec22summary-1"><span class="math display">\[
 f_1 = c_1x_1 + \dots + c_nx_n
-\tag{16.34}\]</span></span> (where <span class="math inline">\(c_{m+1} = \dots = c_n = 0\)</span>) and the constraints given by <span id="eq-sec22summary-2"><span class="math display">\[
+\tag{19.34}\]</span></span> (where <span class="math inline">\(c_{m+1} = \dots = c_n = 0\)</span>) and the constraints given by <span id="eq-sec22summary-2"><span class="math display">\[
 \begin{aligned}
 a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &amp;= b_1 \\
 &amp;\dots \\
 a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n &amp;= b_m
 \end{aligned}
-\tag{16.35}\]</span></span> <span class="math display">\[
+\tag{19.35}\]</span></span> <span class="math display">\[
 x_1 \ge 0, \dots, x_n \ge 0.
 \]</span></p>
 <p>In this case we can then apply the widely used simplex method (Sec. 22.3), a systematic stepwise search through a very much reduced subset of all feasible solutions. Section 22.4 shows how to overcome difficulties with this method.</p>
@@ -1550,12 +1562,12 @@ x_1 \ge 0, \dots, x_n \ge 0.
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/ch21.html" class="pagination-link" aria-label="CHAPTER 21: Numerics for ODEs and PDEs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 21: Numerics for ODEs and PDEs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/intro.html" class="pagination-link" aria-label="gutka">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">gutka</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">gutka</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
