@@ -114,13 +114,13 @@ $$ |R_n(x_1)| = |s(x_1) - s_n(x_1)| < \epsilon \quad \text{for all } n > N $$ {#
 
 Geometrically, this means that all $s_n(x_1)$ with $n > N$ lie between $s(x_1) - \epsilon$ and $s(x_1) + \epsilon$ (Fig. 104). Practically, this means that in the case of convergence we can approximate the sum $s(x_1)$ of (@eq-sec51-1) at $x_1$ by $s_n(x_1)$ as accurately as we please, by taking $n$ large enough.
 
-![Fig. 104. Inequality (9)](../images/fig-5-1.png){#fig-5-1}
+![Fig. 104. Inequality (9)](../images/chapter5/fig-5-104.png){#fig-5-1}
 
 Where does a power series converge? Now if we choose $x = x_0$ in (@eq-sec51-1), the series reduces to the single term $a_0$ because the other terms are zero. Hence the series converges at $x_0$. In some cases this may be the only value of $x$ for which (@eq-sec51-1) converges. If there are other values of $x$ for which the series converges, these values form an interval, the **convergence interval**. This interval may be finite, as in Fig. 105, with midpoint $x_0$. Then the series (@eq-sec51-1) converges for all $x$ in the interior of the interval, that is, for all $x$ for which
 $$ |x - x_0| < R $$ {#eq-sec51-10}
 and diverges for $|x - x_0| > R$. The interval may also be infinite, that is, the series may converge for all $x$.
 
-![Fig. 105. Convergence interval (10) of a power series with center $x_0$](../images/fig-5-2.png){#fig-5-2}
+![Fig. 105. Convergence interval (10) of a power series with center $x_0$](../images/chapter5/fig-5-105.png){#fig-5-2}
 
 The quantity $R$ in Fig. 105 is called the **radius of convergence** (because for a complex power series it is the radius of disk of convergence). If the series converges for all $x$, we set $R = \infty$ (and $1/R = 0$).
 The radius of convergence can be determined from the coefficients of the series by means of each of the formulas
@@ -208,7 +208,7 @@ Solve the initial value problem by a power series. Graph the partial sums of the
 ### 20. CAS Experiment. Information from Graphs of Partial Sums
 In numerics we use partial sums of power series. To get a feel for the accuracy for various $x$, experiment with $\sin x$. Graph partial sums of the Maclaurin series of an increasing number of terms, describing qualitatively the “breakaway points” of these graphs from the graph of $\sin x$. Consider other Maclaurin series of your choice.
 
-![Fig. 106. CAS Experiment 20. $\sin x$ and partial sums $s_3, s_5, s_7$](../images/fig-5-3.png){#fig-5-3}
+![Fig. 106. CAS Experiment 20. $\sin x$ and partial sums $s_3, s_5, s_7$](../images/chapter5/fig-5-106.png){#fig-5-3}
 
 ## 5.2 Legendre’s Equation. Legendre Polynomials $P_n(x)$ {#sec-legendres-equation}
 
@@ -290,7 +290,7 @@ P_4(x) &= \frac{1}{8}(35x^4 - 30x^2 + 3), & P_5(x) &= \frac{1}{8}(63x^5 - 70x^3 
 $$ {#eq-sec52-11prime}
 and so on. You may now program (@eq-sec52-11) on your CAS and calculate $P_n(x)$ as needed.
 
-![Fig. 107. Legendre polynomials](../images/fig-5-4.png){#fig-5-4}
+![Fig. 107. Legendre polynomials](../images/chapter5/fig-5-107.png){#fig-5-4}
 
 The Legendre polynomials $P_n(x)$ are **orthogonal** on the interval $-1 \le x \le 1$, a basic property to be defined and used in making up “Fourier–Legendre series” in the chapter on Fourier series (see Secs. 11.5–11.6).
 
@@ -328,7 +328,7 @@ is a generating function of the Legendre polynomials.
 $$ \frac{1}{r} = \frac{1}{\sqrt{r_1^2 + r_2^2 - 2r_1 r_2 \cos \theta}} = \frac{1}{r_2} \sum_{m=0}^{\infty} P_m(\cos \theta) \left( \frac{r_1}{r_2} \right)^m $$
 This formula has applications in potential theory. ($Q/r$ is the electrostatic potential at $A_2$ due to a charge $Q$ located at $A_1$. And the series expresses $1/r$ in terms of the distances of $A_1$ and $A_2$ from any origin $O$ and the angle $\theta$ between the segments $OA_1$ and $OA_2$.)
 
-![Fig. 108. Team Project 10](../images/fig-5-5.png){#fig-5-5}
+![Fig. 108. Team Project 10](../images/chapter5/fig-5-108.png){#fig-5-5}
 
 (c) **Further applications of (@eq-sec52-12).** Show that $P_n(1) = 1$, $P_n(-1) = (-1)^n$, $P_{2n+1}(0) = 0$, and $P_{2n}(0) = (-1)^n \cdot 1 \cdot 3 \cdots (2n-1) / [2 \cdot 4 \cdots (2n)]$.
 
@@ -460,7 +460,7 @@ Hence (9), Sec. 2.1, becomes
 $$ u' = U = y_1^{-2} e^{-\int p \, dx} = \frac{(x-1)^2}{(x-1)^2 x} = \frac{1}{x}, \quad u = \ln x, \quad y_2 = u y_1 = \frac{\ln x}{1 - x} $$
 $y_1$ and $y_2$ are shown in Fig. 109. These functions are linearly independent and thus form a basis on the interval $0 < x < 1$ (as well as on $1 < x < \infty$).
 
-![Fig. 109. Solutions in Example 2](../images/fig-5-6.png){#fig-5-6}
+![Fig. 109. Solutions in Example 2](../images/chapter5/fig-5-109.png){#fig-5-6}
 
 ### EXAMPLE 3 Case 3, Second Solution with Logarithmic Term
 Solve the ODE
@@ -621,7 +621,7 @@ which looks similar to a sine (Fig. 110). But the zeros of these functions are n
 $$ J_n(x) \sim \sqrt{\frac{2}{\pi x}} \cos \left( x - \frac{n\pi}{2} - \frac{\pi}{4} \right) $$ {#eq-sec54-14}
 where $\sim$ is read “asymptotically equal” and means that for fixed $n$ the quotient of the two sides approaches 1 as $x \to \infty$.
 
-![Fig. 110. Bessel functions of the first kind $J_0$ and $J_1$](../images/fig-5-7.png){#fig-5-7}
+![Fig. 110. Bessel functions of the first kind $J_0$ and $J_1$](../images/chapter5/fig-5-110.png){#fig-5-7}
 
 ### Bessel Functions $J_\nu(x)$ for any $\nu \ge 0$. Gamma Function
 We now proceed from integer $\nu = n$ to any $\nu \ge 0$. We had $a_0 = 1/(2^n n!)$ in (@eq-sec54-9). So we have to extend the factorial function $n!$ to any $\nu \ge 0$. For this we choose
@@ -714,7 +714,7 @@ $$ AB = (2m+1)2m(2m-1)\cdots 3 \cdot 2 \cdot 1 \sqrt{\pi} = (2m+1)!\sqrt{\pi} $$
 Hence
 $$ J_{1/2}(x) = \sqrt{\frac{2}{\pi x}} \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m+1}}{(2m+1)!} = \sqrt{\frac{2}{\pi x}} \sin x $$
 
-![Fig. 111. Bessel functions $J_{1/2}$ and $J_{-1/2}$](../images/fig-5-8.png){#fig-5-8}
+![Fig. 111. Bessel functions $J_{1/2}$ and $J_{-1/2}$](../images/chapter5/fig-5-111.png){#fig-5-8}
 
 This proves (@eq-sec54-22)(a). Differentiation and the use of (@eq-sec54-21ab)(a) with $\nu = \frac{1}{2}$ now gives
 $$ [\sqrt{x} J_{1/2}(x)]' = \sqrt{\frac{2}{\pi}} \cos x = x^{1/2} J_{-1/2}(x) $$
@@ -879,7 +879,7 @@ $$ H_\nu^{(1)}(x) = J_\nu(x) + i Y_\nu(x) \qquad \text{and} \qquad H_\nu^{(2)}(x
 are frequently used. These linearly independent functions are called **Bessel functions of the third kind of order $\nu$** or **first and second Hankel functions**[^8] of order $\nu$.
 This finishes our discussion on Bessel functions, except for their “orthogonality,” which we explain in Sec. 11.6. Applications to vibrations follow in Sec. 12.10.
 
-![Fig. 112. Bessel functions of the second kind $Y_0$ and $Y_1$](../images/fig-5-9.png){#fig-5-9}
+![Fig. 112. Bessel functions of the second kind $Y_0$ and $Y_1$](../images/chapter5/fig-5-112.png){#fig-5-9}
 
 ## PROBLEM SET 5.5
 
