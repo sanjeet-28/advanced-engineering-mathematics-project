@@ -30,7 +30,7 @@ book:
     - chapters/ch25.qmd
     
 
-
+   
 format:
   html:
     theme: cosmo
