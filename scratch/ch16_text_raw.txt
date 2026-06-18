@@ -1,0 +1,2664 @@
+=== PAGE 1 ===
+
+708
+1PIERRE ALPHONSE LAURENT (1813–1854), French military engineer and mathematician, published the
+theorem in 1843.
+CHAPTER 16
+Laurent Series. 
+Residue Integration
+The main purpose of this chapter is to learn about another powerful method for evaluating
+complex integrals and certain real integrals. It is called residue integration. Recall that
+the first method of evaluating complex integrals consisted of directly applying Cauchy’s
+integral formula of Sec. 14.3. Then we learned about Taylor series (Chap. 15) and will
+now generalize Taylor series. The beauty of residue integration, the second method of
+integration, is that it brings together a lot of the previous material.
+Laurent series generalize Taylor series. Indeed, whereas a Taylor series has positive
+integer powers (and a constant term) and converges in a disk, a Laurent series (Sec. 16.1)
+is a series of positive and negative integer powers of and converges in an annulus
+(a circular ring) with center Hence, by a Laurent series, we can represent a given
+function that is analytic in an annulus and may have singularities outside the ring as
+well as in the “hole” of the annulus.
+We know that for a given function the Taylor series with a given center is unique.
+We shall see that, in contrast, a function can have several Laurent series with the
+same center and valid in several concentric annuli. The most important of these series
+is the one that converges for that is, everywhere near the center 
+except at itself, where is a singular point of The series (or finite sum) of the
+negative powers of this Laurent series is called the principal part of the singularity of
+at and is used to classify this singularity (Sec. 16.2). The coefficient of the power
+of this series is called the residue of at Residues are used in an elegant
+and powerful integration method, called residue integration, for complex contour integrals
+(Sec. 16.3) as well as for certain complicated real integrals (Sec. 16.4).
+Prerequisite: Chaps. 13, 14, Sec. 15.2.
+Sections that may be omitted in a shorter course: 16.2, 16.4.
+References and Answers to Problems: App. 1 Part D, App. 2.
+16.1 Laurent Series
+Laurent series generalize Taylor series. If, in an application, we want to develop a function
+in powers of when is singular at (as defined in Sec. 15.4), we cannot
+use a Taylor series. Instead we can use a new kind of series, called Laurent series, 1
+z0f (z)z /H11002z0f (z)
+z0.f (z)1>(z /H11002z0)
+z0,f (z)
+f (z).z0z0
+z00 /H11021ƒ z /H11002z0 ƒ /H11021R,
+z0
+f (z)
+z0
+f (z)
+z0.
+z /H11002z0
+c16.qxd  11/1/10  6:57 PM  Page 708
+
+=== PAGE 2 ===
+
+consisting of positive integer powers of (and a constant) as well as negative integer
+powers of this is the new feature.
+Laurent series are also used for classifying singularities (Sec. 16.2) and in a powerful
+integration method (“residue integration,” Sec. 16.3).
+A Laurent series of converges in an annulus (in the “hole” of which may have
+singularities), as follows.
+THEOREM 1 Laurent’s Theorem
+Let be analytic in a domain containing two concentric circles and with
+center and the annulus between them (blue in Fig. 370) . Then can be
+represented by the Laurent series
+(1)
+consisting of nonnegative and negative powers. The coefficients of this Laurent series
+are given by the integrals
+(2)
+taken counterclockwise around any simple closed path C that lies in the annulus
+and encircles the inner circle, as in Fig. 370. [The variable of integration is denoted
+by since z is used in (1).]
+This series converges and represents in the enlarged open annulus obtained
+from the given annulus by continuously increasing the outer circle and decreasing
+until each of the two circles reaches a point where is singular.
+In the important special case that is the only singular point of inside 
+this circle can be shrunk to the point giving convergence in a disk except at the
+center. In this case the series (or finite sum) of the negative powers of (1) is called
+the principal part of at [or of that Laurent series (1)].z
+0f (z)
+z0,
+C2,f (z)z0
+f (z)C2
+C1
+f (z)
+z*
+an /H110051
+2pi
+  /H20911
+C
+  
+f (z*)
+(z* /H11002z0)n/H110011 dz*, bn /H110051
+2pi
+  /H20911 
+C
+ (z* /H11002z0)n/H115461 f (z*) dz*,
+ Á /H11001
+b1
+z /H11002z0
+/H11001
+b2
+(z /H11002z0)2 /H11001Á
+ /H11005a0 /H11001a1(z /H11002z0) /H11001a2(z /H11002z0)2 /H11001Á
+ f (z) /H11005a
+/H11557
+n/H110050
+an(z /H11002z0)n /H11001a
+/H11557
+n/H110051
+ 
+bn
+(z /H11002z0)n
+f (z)z0
+C2C1f (z)
+f (z)f (z)
+z /H11002z0;
+z /H11002z0
+SEC. 16.1 Laurent Series 709
+z0
+C2
+C1
+C
+Fig. 370. Laurent’s theorem
+c16.qxd  11/1/10  6:57 PM  Page 709
+
+=== PAGE 3 ===
+
+COMMENT. Obviously, instead of (1), (2) we may write (denoting by 
+where all the coefficients are now given by a single integral formula, namely,
+Let us now prove Laurent’s theorem.
+PROOF (a) The nonnegative powers are those of a Taylor series.
+To see this, we use Cauchy’s integral formula (3) in Sec. 14.3 with (instead of z) as
+the variable of integration and z instead of Let and denote the functions
+represented by the two terms in (3), Sec. 14.3. Then
+(3)
+Here z is any point in the given annulus and we integrate counterclockwise over both 
+and so that the minus sign appears since in (3) of Sec. 14.3 the integration over 
+is taken clockwise. We transform each of these two integrals as in Sec. 15.4. The first
+integral is precisely as in Sec. 15.4. Hence we get exactly the same result, namely, the
+Taylor series of 
+(4)
+with coefficients [see (2), Sec. 15.4, counterclockwise integration]
+(5)
+Here we can replace by C (see Fig. 370), by the principle of deformation of path, since
+the point where the integrand in (5) is not analytic, is not a point of the annulus. This
+proves the formula for the in (2).
+(b) The negative powers in (1) and the formula for in (2) are obtained if we consider
+It consists of the second integral times in (3). Since z lies in the annulus,
+it lies in the exterior of the path Hence the situation differs from that for the first
+integral. The essential point is that instead of [see in Sec. 15.4]
+(6) (a) we now have (b)
+Consequently, we must develop the expression in the integrand of the second
+integral in (3) in powers of (instead of the reciprocal of this) to get a
+convergent series. We find
+(z* /H11002z
+0)>(z /H11002z0)
+1>(z* /H11002z)
+`
+z* /H11002z0
+z /H11002z0
+` /H110211.`
+z /H11002z0
+z* /H11002z0
+` /H110211
+(7*)
+C2.
+/H110021>(2pi)h(z).
+bn
+an
+z0,
+C1
+an /H110051
+2pi
+ /H20911
+C1
+ 
+f (z*)
+(z* /H11002z0)n/H110011 dz*.
+g(z) /H110051
+2pi /H20911
+C1
+ 
+f (z*)
+z* /H11002z dz* /H11005a
+/H11557
+n/H110050
+ an(z /H11002z0)n
+g(z),
+C2C2,
+C1
+f (z) /H11005g(z) /H11001h(z) /H110051
+2pi /H20911
+C1
+ 
+f (z*)
+z* /H11002z dz* /H110021
+2pi /H20911
+C2
+ 
+f (z*)
+z* /H11002z dz*.
+h(z)g(z)z0.
+z*
+(n /H110050, /H110061, /H110062,Á ).an /H110051
+2pi
+  /H20911
+C 
+ 
+f (z*)
+(z* /H11002z0)n/H110011 dz*(2r)
+ f (z) /H11005a
+/H11557
+n/H11005/H11546/H11557
+ an(z /H11002z0)n(1r)
+a/H11546n)bn
+710 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 710
+
+=== PAGE 4 ===
+
+Compare this for a moment with (7) in Sec. 15.4, to really understand the difference. Then
+go on and apply formula (8), Sec. 15.4, for a finite geometric sum, obtaining
+Multiplication by and integration over on both sides now yield
+with the last term on the right given by
+(7)
+As before, we can integrate over C instead of in the integrals on the right. We see that
+on the right, the power is multiplied by as given in (2). This establishes
+Laurent’s theorem, provided
+(8)
+(c) Convergence proof of(8). Very often (1) will have only finitely many negative powers.
+Then there is nothing to be proved. Otherwise, we begin by noting that in (7)
+is bounded in absolute value, say,
+for all on 
+because is analytic in the annulus and on and lies on and z outside, so
+that From this and the ML-inequality (Sec. 14.1) applied to (7) we get the
+inequality (L /H110052
+pr2 /H11005length of C2, r2 /H11005ƒ z* /H11002z0 ƒ /H11005radius of C2 /H11005const)
+z /H11002z* /HS110050.
+C2z*C2,f (z*)
+C2z*`
+f (z*)
+z /H11002z* ` /H11021M/H33522
+f (z*)>(z /H11002z*)
+lim
+n:/H11009
+ Rn*(z) /H110050.
+bn1>(z /H11002z0)n
+C2
+R*n(z) /H110051
+2pi(z /H11002z0)n/H110011 /H20911
+C2
+ (z* /H11002z0)n/H110011
+z /H11002z*
+ f (z*) dz*.
+/H110011
+(z /H11002z0)n/H110011 /H20911
+C2
+ (z* /H11002z0)nf (z*) dz* f /H11001Rn*(z)
+/H110011
+(z /H11002z0)n /H20911
+C2
+ (z* /H11002z0)n/H115461f (z*) dz*
+ /H110051
+2pi e 1
+z /H11002z0
+ /H20911
+C2
+ f (z*) dz* /H110011
+(z /H11002z0)2 /H20911
+C2
+ (z* /H11002z0) f (z*) dz* /H11001Á
+ h(z) /H11005/H11002 1
+2pi /H20911
+C2
+ 
+f (z*)
+z* /H11002z dz*
+C2/H11002f (z*)>2pi
+/H11002
+1
+z /H11002z*  a
+z* /H11002z0
+z /H11002z0
+ b
+n/H110011
+.
+1
+z* /H11002z /H11005/H11002 
+1
+z /H11002z0
+ e 1 /H11001
+z* /H11002z0
+z /H11002z0
+/H11001a
+z* /H11002z0
+z /H11002z0
+ b
+2
+/H11001Á /H11001a
+z* /H11002z0
+z /H11002z0
+ b
+n
+f
+1
+z* /H11002z /H110051
+z* /H11002z0 /H11002(z /H11002z0) /H11005/H110021
+(z /H11002z0) a1 /H11002
+z* /H11002z0
+z /H11002z0
+ b
+  .
+SEC. 16.1 Laurent Series 711
+c16.qxd  11/1/10  6:57 PM  Page 711
+
+=== PAGE 5 ===
+
+From (6b) we see that the expression on the right approaches zero as n approaches infinity.
+This proves (8). The representation (1) with coefficients (2) is now established in the given
+annulus.
+(d) Convergence of (1) in the enlarged annulus. The first series in (1) is a Taylor
+series [representing ]; hence it converges in the disk D with center whose radius
+equals the distance of the singularity (or singularities) closest to Also, must be
+singular at all points outside where is singular.
+The second series in (1), representing is a power series in Let the
+given annulus be where and are the radii of and respectively
+(Fig. 370). This corresponds to Hence this power series in Z must
+converge at least in the disk This corresponds to the exterior of
+so that is analytic for all z outside . Also, must be singular inside 
+where is singular, and the series of the negative powers of (1) converges for all z
+in the exterior E of the circle with center and radius equal to the maximum distance
+from to the singularities of inside The domain common to D and E is the
+enlarged open annulus characterized near the end of Laurent’s theorem, whose proof
+is now complete.
+Uniqueness. The Laurent series of a given analytic function in its annulus of
+convergence is unique (see Team Project 18). However, may have different Laurent
+series in two annuli with the same center ; see the examples below. The uniqueness is
+essential. As for a Taylor series, to obtain the coefficients of Laurent series, we do not
+generally use the integral formulas (2); instead, we use various other methods, some of
+which we shall illustrate in our examples. If a Laurent series has been found by any such
+process, the uniqueness guarantees that it must be the Laurent series of the given function
+in the given annulus.
+EXAMPLE 1 Use of Maclaurin Series
+Find the Laurent series of with center 0.
+Solution. By (14), Sec. 15.4, we obtain
+Here the “annulus” of convergence is the whole complex plane without the origin and the principal part of the 
+series at 0 is 
+EXAMPLE 2 Substitution
+Find the Laurent series of with center 0.
+Solution. From (12) in Sec. 15.4 with z replaced by we obtain a Laurent series whose principal part is
+an infinite series,
+/H17039( ƒ z ƒ /H110220).z2e1>z /H11005z2  a1 /H110011
+1!z
+/H110011
+2!z2 /H11001Á b /H11005z2 /H11001z /H110011
+2
+/H110011
+3!z
+/H110011
+4!z2 /H11001Á
+1>z
+z2e1>z
+/H17039z/H115464/H110021
+6 z/H115462.
+( ƒ z ƒ /H110220).z/H115465 sin z /H11005a
+/H11557
+n/H110050
+ (/H110021)n
+(2n /H110011)!
+ z2n/H115464/H110051
+z4 /H110021
+6z2 /H110011
+120
+/H110021
+5040
+ z2 /H11001/H11002Á
+z/H115465 sin z
+f (z)
+f (z)
+/H17039
+C2.f (z)z0
+z0
+f (z)
+C2h(z)C2h(z)C2,
+ƒ z /H11002z0 ƒ /H11022r2ƒ Z ƒ /H110211>r2.
+1>r2 /H11022ƒ Z ƒ /H110221>r1.
+C2,C1r2r1r2 /H11021ƒ z /H11002z0 ƒ /H11021r1,
+Z /H110051>(z /H11002z0).h(z),
+f (z)C1
+ g(z)z0.
+z0g(z)
+ƒ R*
+n(z) ƒ /H110171
+2p ƒ z /H11002z0 ƒ n/H110011 r 2
+n/H110011 M/H33522L /H11005M/H33522L
+2p
+ a r2
+ƒ z /H11002z0 ƒ
+ b
+n/H110011
+.
+712 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 712
+
+=== PAGE 6 ===
+
+EXAMPLE 3 Development of 
+Develop (a) in nonnegative powers of z, (b) in negative powers of z.
+Solution.
+(a)
+(b)
+EXAMPLE 4 Laurent Expansions in Different Concentric Annuli
+Find all Laurent series of with center 0.
+Solution. Multiplying by we get from Example 3
+(I)
+(II)
+EXAMPLE 5 Use of Partial Fractions
+Find all Taylor and Laurent series of with center 0.
+Solution. In terms of partial fractions,
+(a) and (b) in Example 3 take care of the first fraction. For the second fraction,
+(c) (
+(d) (
+(I) From (a) and (c), valid for (see Fig. 371),
+f (z) /H11005a
+/H11557
+n/H110050
+ a1 /H110011
+2n/H110011 b  zn /H110053
+2
+/H110015
+4
+ z /H110019
+8
+ z2 /H11001Á .
+ƒ z ƒ /H110211
+ƒ z ƒ /H110222)./H11002  
+1
+z /H110022
+/H11005/H11002  1
+z a1 /H110022
+z
+ b
+/H11005/H11002a
+/H11557
+n/H110050
+ 2n
+zn/H110011
+ƒ z ƒ /H110212),/H11002  
+1
+z /H110022
+/H110051
+2 a1 /H110021
+2
+ zb
+/H11005a
+/H11557
+n/H110050
+  1
+2n/H110011 zn
+f (z) /H11005/H11002  
+1
+z /H110021
+/H110021
+z /H110022
+ .
+f (z) /H11005
+/H110022z/H110013
+z2 /H110023z /H110012
+/H17039( ƒ z ƒ /H110221).1
+z3 /H11002z4
+/H11005/H11002a
+/H11557
+n/H110050
+  1
+zn/H110014
+/H11005/H11002 
+1
+z4
+/H110021
+z5
+/H11002Á
+(0 /H11021ƒ z ƒ /H110211),1
+z3 /H11002z4 /H11005a
+/H11557
+n/H110050
+ zn/H115463/H110051
+z3 /H110011
+z2 /H110011
+z
+/H110011 /H11001z /H11001Á
+1>z3,
+1>(z3 /H11002z4)
+/H17039(valid if ƒ z ƒ /H110221).1
+1 /H11002z
+/H11005/H110021
+z(1 /H11002z/H115461)
+/H11005/H11002a
+/H11557
+n/H110050
+  1
+zn/H110011/H11005/H11002 
+1
+z
+/H110021
+z2 /H11002Á
+(valid if ƒ z ƒ /H110211).1
+1 /H11002z
+/H11005a
+/H11557
+n/H110050
+ zn
+1>(1 /H11002z)
+1>(1 /H11546z)
+SEC. 16.1 Laurent Series 713
+y
+x
+III
+II
+I
+12
+Fig. 371. Regions of convergence in Example 5
+c16.qxd  11/1/10  6:57 PM  Page 713
+
+=== PAGE 7 ===
+
+(II) From (c) and (b), valid for 
+(III) From (d) and (b), valid for 
+If in Laurent’s theorem is analytic inside the coefficients in (2) are zero by
+Cauchy’s integral theorem, so that the Laurent series reduces to a Taylor series. Examples
+3(a) and 5(I) illustrate this.
+b
+nC2,f (z)
+/H17039f (z) /H11005/H11002a
+/H11557
+n/H110050
+ (2n /H110011)  1
+zn/H110011/H11005/H11002 2
+z /H110023
+z2 /H110025
+z3 /H110029
+z4 /H11002Á .
+ƒ z ƒ /H110222,
+f (z) /H11005a
+/H11557
+n/H110050
+ 1
+2n/H110011  zn /H11002a
+/H11557
+n/H110050
+  1
+zn/H110011/H110051
+2
+/H110011
+4
+ z /H110011
+8
+ z2 /H11001Á /H110021
+z
+/H110021
+z2 /H11002Á .
+1 /H11021ƒ z ƒ /H110212,
+714 CHAP. 16 Laurent Series. Residue Integration
+1–8 LAURENT SERIES NEAR A SINGULARITY
+AT 0
+Expand the function in a Laurent series that converges for
+and determine the precise region of conver-
+gence. Show the details of your work.
+1. 2.
+3. 4.
+5. 6.
+7. 8.
+9–16
+LAURENT SERIES NEAR A SINGULARITY
+AT z0
+Find the Laurent series that converges for 
+and determine the precise region of convergence. Show details.
+9. 10.
+11. 12.
+13. 14.
+15.
+16. sin z
+(z /H110021
+4 p)3
+ , z0 /H110051
+4 p
+cos z
+(z /H11002p)2
+ , z0 /H11005p
+eaz
+z /H11002b
+ , z0 /H11005b1
+z3(z /H11002i)2
+ , z0 /H11005i
+1
+z2(z /H11002i)
+ , z0 /H11005iz2
+(z /H11002pi)4
+ , z0 /H11005pi
+z2 /H110023i
+(z /H110023)2
+ , z0 /H110053ez
+(z /H110021)2
+ , z0 /H110051
+ƒ z /H11002z0 ƒ /H11021R0 /H11021
+ez
+z2 /H11002z3z3
+ cosh 1
+z
+sinh 2z
+z2
+1
+z2 /H11002z3
+sin pz
+z2
+exp z2
+z3
+exp (/H110021>z2)
+z2
+cos z
+z4
+0 /H11021ƒ z ƒ /H11021R
+PROBLEM SET 16.1
+17. CAS PROJECT. Partial Fractions. Write a program
+for obtaining Laurent series by the use of partial
+fractions. Using the program, verify the calculations in
+Example 5 of the text. Apply the program to two other
+functions of your choice.
+18. TEAM PROJECT. Laurent Series. (a) Uniqueness.
+Prove that the Laurent expansion of a given analytic
+function in a given annulus is unique.
+(b) Accumulation of singularities. Does tan 
+have a Laurent series that converges in a region
+? (Give a reason.)
+(c) Integrals. Expand the following functions in a
+Laurent series that converges for 
+19–25
+TAYLOR AND LAURENT SERIES
+Find all Taylor and Laurent series with center Determine
+the precise regions of convergence. Show details.
+19. 20.
+21.
+22. 23.
+24.
+25. z
+3 /H110022iz2
+(z /H11002i)2
+ , z0 /H11005i
+sinh z
+(z /H110021)4
+ , z0 /H110051
+z8
+1 /H11002z4
+ , z0 /H1100501
+z2
+ , z0 /H11005i
+sin z
+z /H110011
+2 p
+ , z0 /H11005/H110021
+2 p
+1
+z
+ , z0 /H1100511
+1 /H11002z2
+ , z0 /H110050
+z0.
+1
+z2 /H20910
+z
+0
+ et /H110021
+t  dt,    1
+z3 /H20910
+z
+0
+ sin t
+t  dt.
+ƒ z ƒ /H110220:
+0 /H11021ƒ z ƒ /H11021R
+(1>z)
+c16.qxd  11/1/10  6:57 PM  Page 714
+
+=== PAGE 8 ===
+
+SEC. 16.2 Singularities and Zeros. Infinity 715
+16.2 Singularities and Zeros. Infinity
+Roughly, a singular point of an analytic function is a at which ceases to be
+analytic, and a zero is a z at which Precise definitions follow below. In this
+section we show that Laurent series can be used for classifying singularities and Taylor
+series for discussing zeros.
+Singularities were defined in Sec. 15.4, as we shall now recall and extend. We also
+remember that, by definition, a function is a single-valued relation, as was emphasized
+in Sec. 13.3.
+We say that a function is singularor has a singularityat a point if is not
+analytic (perhaps not even defined) at but every neighborhood of contains
+points at which is analytic. We also say that is a singular point of .
+We call an isolated singularity of if has a neighborhood without
+further singularities of . Example: has isolated singularities at etc.;
+has a nonisolated singularity at 0. (Explain!)
+Isolated singularities of at can be classified by the Laurent series
+(1) (Sec. 16.1)
+valid in the immediate neighborhood of the singular point except at itself, that
+is, in a region of the form
+The sum of the first series is analytic at as we know from the last section. The
+second series, containing the negative powers, is called the principal part of (1), as we
+remember from the last section. If it has only finitely many terms, it is of the form
+(2)
+Then the singularity of at is called a pole, and m is called its order. Poles of
+the first order are also known as simple poles.
+If the principal part of (1) has infinitely many terms, we say that has at an
+isolated essential singularity.
+We leave aside nonisolated singularities.
+EXAMPLE 1 Poles. Essential Singularities
+The function
+has a simple pole at and a pole of fifth order at Examples of functions having an isolated essential
+singularity at are
+e1>z /H11005a
+/H11557
+n/H110050
+ 1
+n!zn /H110051 /H110011
+z /H110011
+2!z2 /H11001Á
+z /H110050
+z /H110052.z /H110050
+f (z) /H110051
+z(z /H110022)5
+/H110013
+(z /H110022)2
+z /H11005z0f (z)
+z /H11005z0f (z)
+(bm /HS110050).
+b1
+z /H11002z0
+/H11001Á /H11001
+bm
+(z /H11002z0)m
+z /H11005z0,
+0 /H11021ƒ z /H11002z0 ƒ /H11021R.
+z0z /H11005z0,
+f (z) /H11005a
+/H11557
+n/H110050
+ an(z /H11002z0)n /H11001a
+/H11557
+n/H110051
+ 
+bn
+(z /H11002z0)n
+z /H11005z0f (z)
+tan (1>z)
+/H11006p>2, /H110063p>2,tan zf (z)
+z /H11005z0f (z)z /H11005z0
+f (z)z /H11005z0f (z)
+z /H11005z0z /H11005z0,
+f (z)z /H11005z0f (z)
+f (z) /H110050.
+f (z)z0f (z)
+c16.qxd  11/1/10  6:57 PM  Page 715
+
+=== PAGE 9 ===
+
+716 CHAP. 16 Laurent Series. Residue Integration
+and
+Section 16.1 provides further examples. In that section, Example 1 shows that has a fourth-order
+pole at 0. Furthermore, Example 4 shows that has a third-order pole at 0 and a Laurent series with
+infinitely many negative powers. This is no contradiction, since this series is valid for it merely tells
+us that in classifying singularities it is quite important to consider the Laurent series valid in the immediate
+neighborhood of a singular point. In Example 4 this is the series (I), which has three negative powers.
+The classification of singularities into poles and essential singularities is not merely a formal
+matter, because the behavior of an analytic function in a neighborhood of an essential
+singularity is entirely different from that in the neighborhood of a pole.
+EXAMPLE 2 Behavior Near a Pole
+has a pole at and as in any manner. This illustrates the following 
+theorem.
+THEOREM 1 Poles
+If is analytic and has a pole at then as in any manner.
+The proof is left as an exercise (see Prob. 24).
+EXAMPLE 3 Behavior Near an Essential Singularity
+The function has an essential singularity at It has no limit for approach along the imaginary
+axis; it becomes infinite if through positive real values, but it approaches zero if through negative real
+values. It takes on any given value in an arbitrarily small -neighborhood of To see the
+latter, we set and then obtain the following complex equation for r and which we must solve:
+Equating the absolute values and the arguments, we have that is
+and
+respectively. From these two equations and we obtain the formulas
+and
+Hence r can be made arbitrarily small by adding multiples of to leaving c unaltered. This illustrates the 
+very famous Picard’s theorem (with as the exceptional value).
+THEOREM 2 Picard’s Theorem
+If is analytic and has an isolated essential singularity at a point it takes on
+every value, with at most one exceptional value, in an arbitrarily small -neighborhood
+of z
+0.
+P
+z0,f (z)
+/H17039z /H110050
+a, 2p
+tan u /H11005/H11002 a
+ln c0
+ .r 2 /H110051
+(ln c0)2 /H11001a2
+cos2 u /H11001sin2 u /H11005r 2(ln c0)2 /H11001a2r 2 /H110051
+/H11002sin u/H11005arcos u /H11005r ln c0,
+e(cos u)>r /H11005c0,
+e1>z /H11005e(cos u/H11546i sin u)>r /H11005c0eia.
+u,z /H11005reiu,
+z /H110050.Pc /H11005c0eia /HS110050
+z : 0z : 0
+z /H110050.f (z) /H11005e1>z
+z : z0ƒ f (z) ƒ : /H11009z /H11005z0,f (z)
+/H17039
+z : 0ƒ f (z) ƒ : /H11009z /H110050,f (z) /H110051>z2
+/H17039
+ƒ z ƒ /H110221;
+1>(z3 /H11002z4)
+z/H115465 sin z
+sin  1
+z
+/H11005a
+/H11557
+n/H110050
+  (/H110021)n
+(2n /H110011)!z2n/H110011 /H110051
+z /H110021
+3!z3 /H110011
+5!z5  /H11002/H11001Á .
+For the rather complicated proof, see Ref. [D4], vol. 2, p. 258. For historical information
+on Picard, see footnote 9 in Problem Set 1.7.
+c16.qxd  11/1/10  6:57 PM  Page 716
+
+=== PAGE 10 ===
+
+Removable Singularities. We say that a function has a removable singularity at
+if is not analytic at but can be made analytic there by assigning a
+suitable value Such singularities are of no interest since they can be removed as
+just indicated. Example: becomes analytic at if we define 
+Zeros of Analytic Functions
+A zero of an analytic function in a domain D is a in D such that 
+A zero has ordern if not only fbut also the derivatives are all 0 at 
+but A first-order zero is also called a simple zero. For a second-order zero,
+but And so on.
+EXAMPLE 4 Zeros
+The function has simple zeros at The function has second-order zeros at and The
+function has a third-order zero at The function has no zeros (see Sec. 13.5). The function 
+has simple zeros at and has second-order zeros at these points. The function has 
+second-order zeros at and the function has fourth-order zeros at these points.
+Taylor Series at a Zero. At an nth-order zero of the derivatives 
+are zero, by definition. Hence the first few coefficients of the Taylor
+series (1), Sec. 15.4, are zero, too, whereas so that this series takes the form
+(3)
+This is characteristic of such a zero, because, if has such a Taylor series, it has an
+nth-order zero at as follows by differentiation.
+Whereas nonisolated singularities may occur, for zeros we have
+THEOREM 3 Zeros
+The zeros of an analytic function are isolated; that is, each of them has
+a neighborhood that contains no further zeros of 
+PROOF The factor in (3) is zero only at The power series in the brackets 
+represents an analytic function (by Theorem 5 in Sec. 15.3), call it Now
+since an analytic function is continuous, and because of this continuity, 
+also in some neighborhood of Hence the same holds of 
+This theorem is illustrated by the functions in Example 4.
+Poles are often caused by zeros in the denominator. ( Example: tan z has poles where
+cos z is zero.) This is a major reason for the importance of zeros. The key to the connection
+is the following theorem, whose proof follows from (3) (see Team Project 12).
+THEOREM 4 Poles and Zeros
+Let be analytic at and have a zero of nth order at Then 
+has a pole of nth order at and so does provided is analytic
+at and h(z
+0) /HS110050.z /H11005z0
+h(z)h(z)>f (z),z /H11005z0;
+1>f (z)z /H11005z0.z /H11005z0f (z)
+/H17039f (z).z /H11005z0.g(z) /HS110050
+g(z0) /H11005an /HS110050,
+g(z).
+[ Á ]z /H11005z0.(z /H11002z0)n
+f (z).
+f (z) ([ 0)
+z /H11005z0,
+f (z)
+(an /HS110050). /H11005(z /H11002z0)n [an /H11001an/H110011(z /H11002z0) /H11001an/H110012(z /H11002z0)2 /H11001Á ]
+ f (z) /H11005an(z /H11002z0)n /H11001an/H110011(z /H11002z0)n/H110011/H11001Á
+an /HS110050,
+a0, Á , an/H115461f (n/H115461)(z0)
+f r(z0), Á ,f (z),z /H11005z0
+/H17039(1 /H11002cos z)20, /H110062p, /H110064p, Á ,
+1 /H11002cos zsin2 z0, /H11006p, /H110062p, Á ,
+sin zezz /H11005a.(z /H11002a)3
+/H11006i./H110061(1 /H11002z4)2/H11006i.1 /H11001z2
+f s(z0) /HS110050.f (z0) /H11005f r(z0) /H110050
+f (n)(z0) /HS110050.
+z /H11005z0f r, f s, Á , f (n/H115461)
+f (z0) /H110050.z /H11005z0f (z)
+f (0) /H110051.z /H110050f (z) /H11005(sin z)>z
+f (z0).
+z /H11005z0,f (z)z /H11005z0
+f (z)
+SEC. 16.2 Singularities and Zeros. Infinity 717
+c16.qxd  11/1/10  6:57 PM  Page 717
+
+=== PAGE 11 ===
+
+Riemann Sphere. Point at Infinity
+When we want to study complex functions for large the complex plane will generally
+become rather inconvenient. Then it may be better to use a representation of complex numbers
+on the so-called Riemann sphere. This is a sphere S of diameter 1 touching the complex 
+z-plane at (Fig. 372), and we let the image of a point P (a number z in the plane) be
+the intersection of the segment PN with S, where N is the “North Pole” diametrically
+opposite to the origin in the plane. Then to each z there corresponds a point on S.
+Conversely, each point on S represents a complex number z, except for N, which does
+not correspond to any point in the complex plane. This suggests that we introduce an
+additional point, called the point at infinity and denoted (“infinity”) and let its image
+be N. The complex plane together with is called the extended complex plane. The
+complex plane is often called the finite complex plane, for distinction, or simply the
+complex plane as before. The sphere S is called the Riemann sphere. The mapping of
+the extended complex plane onto the sphere is known as a stereographic projection.
+(What is the image of the Northern Hemisphere? Of the Western Hemisphere? Of a straight
+line through the origin?)
+Analytic or Singular at Infinity
+If we want to investigate a function for large we may now set and investigate
+in a neighborhood of We define to be analyticor singular
+at infinity if is analytic or singular, respectively, at We also define
+(4)
+if this limit exists.
+Furthermore, we say that has an nth-order zero at infinity if has such a zero
+at Similarly for poles and essential singularities.
+EXAMPLE 5 Functions Analytic or Singular at Infinity. Entire and Meromorphic Functions
+The function is analytic at since is analytic at and has a second-
+order zero at The function is singular at and has a third-order pole there since the function
+has such a pole at The function has an essential singularity at since 
+has such a singularity at Similarly, and have an essential singularity at 
+Recall that an entire function is one that is analytic everywhere in the (finite) complex plane. Liouville’s
+theorem (Sec. 14.4) tells us that the only bounded entire functions are the constants, hence any nonconstant
+entire function must be unbounded. Hence it has a singularity at a pole if it is a polynomial or an essential
+singularity if it is not. The functions just considered are typical in this respect.
+/H11009,
+/H11009.sin zcos zw /H110050.
+e1>w/H11009ezw /H110050.g(w) /H11005f (1>w) /H110051>w3
+/H11009f (z) /H11005z3/H11009.
+f (z)w /H110050,g(w) /H11005f (1>w) /H11005w2/H11009f (z) /H110051>z2
+w /H110050.
+f (1>w)f (z)
+g(0) /H11005lim
+w:0
+ g(w)
+w /H110050.g(w)
+f (z)w /H110050.f (z) /H11005f (1>w) /H11013g(w)
+z /H110051>wƒ z ƒ ,f (z)
+/H11009
+/H11009
+P*
+z /H110050
+ƒ z ƒ ,
+718 CHAP. 16 Laurent Series. Residue Integration
+y
+P
+x
+N
+P*
+Fig. 372. Riemann sphere
+c16.qxd  11/1/10  6:57 PM  Page 718
+
+=== PAGE 12 ===
+
+An analytic function whose only singularities in the finite plane are poles is called a meromorphic function.
+Examples are rational functions with nonconstant denominator, , and 
+In this section we used Laurent series for investigating singularities. In the next section
+we shall use these series for an elegant integration method.
+/H17039csc z.tan z, cot z, sec z
+SEC. 16.3 Residue Integration Method 719
+1–10 ZEROS
+Determine the location and order of the zeros.
+1. 2.
+3. 4.
+5. 6.
+7.
+8.
+9.
+10.
+11. Zeros. If is analytic and has a zero of order n at
+show that has a zero of order 2 n at 
+12. TEAM PROJECT. Zeros. (a) Derivative. Show that
+if has a zero of order at then 
+has a zero of order at 
+(b) Poles and zeros. Prove Theorem 4.
+(c) Isolated k-points. Show that the points at which
+a nonconstant analytic function has a given value
+k are isolated.
+(d) Identical functions. If and are analytic
+in a domain D and equal at a sequence of points in
+D that converges in D, show that in D.f
+1(z) /H11013f2(z)
+zn
+f2(z)f1(z)
+f (z)
+z0.n /H110021
+f r(z)z /H11005z0,n /H110221f (z)
+z0.f 2(z)z /H11005z0,
+f (z)
+(z2 /H110028)3(exp (z2) /H110021)
+sin 2z cos 2z
+(sin z /H110021)3
+z4 /H11001(1 /H110028i) z2 /H110028i
+cosh4 zz/H115462 sin 2 pz
+tan2 2z(z /H1100181i)4
+(z4 /H1100281)3sin4 1
+2 z
+13–22 SINGULARITIES
+Determine the location of the singularities, including those
+at infinity. For poles also state the order. Give reasons.
+13.
+14.
+15. 16.
+17. 18.
+19. 20.
+21. 22.
+23. Essential singularity. Discuss in a similar way as
+is discussed in Example 3 of the text.
+24. Poles. Verify Theorem 1 for Prove
+Theorem 1.
+25. Riemann sphere. Assuming that we let the image of
+the x-axis be the meridians and describe and
+sketch (or graph) the images of the following regions
+on the Riemann sphere: (a) (b) the lower
+half-plane, (c)
+1
+2 /H11017ƒ z ƒ /H110172.
+ƒ z ƒ /H11022100,
+180°,0°
+f (z) /H11005z/H115463/H11002z/H115461.
+e1>z
+e1>z2
+(z /H11002p)/H115461 sin ze1>(z/H115461)>(ez /H110021)
+1>(cos z /H11002sin z)1>(ez /H11002e2z)
+z3 exp a 1
+z /H110021
+ bcot4 z
+tan pzz  exp (1>(z /H110021 /H11002i)2)
+ez/H11546i/H110012
+z /H11002i /H110028
+(z /H11002i)3
+1
+(z /H110012i)2 /H11002z
+z /H11002i /H11001z /H110011
+(z /H11002i)2
+PROBLEM SET 16.2
+16.3 Residue Integration Method
+We now cover a second method of evaluating complex integrals. Recall that we solved
+complex integrals directly by Cauchy’s integral formula in Sec. 14.3. In Chapter 15 we
+learned about power series and especially Taylor series. We generalized Taylor series to
+Laurent series (Sec. 16.1) and investigated singularities and zeroes of various functions
+(Sec. 16.2). Our hard work has paid off and we see how much of the theoretical groundwork
+comes together in evaluating complex integrals by the residue method.
+The purpose of Cauchy’s residue integration method is the evaluation of integrals
+taken around a simple closed path C. The idea is as follows.
+If is analytic everywhere on C and inside C, such an integral is zero by Cauchy’s
+integral theorem (Sec. 14.2), and we are done.
+f
+ (z)
+/H20911
+C
+  f (z) dz
+c16.qxd  11/1/10  6:57 PM  Page 719
+
+=== PAGE 13 ===
+
+720 CHAP. 16 Laurent Series. Residue Integration
+The situation changes if has a singularity at a point inside C but is otherwise
+analytic on C and inside C as before. Then has a Laurent series
+that converges for all points near (except at itself), in some domain of the
+form (sometimes called a deleted neighborhood, an old-fashioned term
+that we shall not use). Now comes the key idea. The coefficient of the first negative
+power of this Laurent series is given by the integral formula (2) in Sec. 16.1
+with namely,
+Now, since we can obtain Laurent series by various methods, without using the integral
+formulas for the coefficients (see the examples in Sec. 16.1), we can find by one of
+those methods and then use the formula for for evaluating the integral, that is,
+(1)
+Here we integrate counterclockwise around a simple closed path C that contains 
+in its interior (but no other singular points of on or inside C!).
+The coefficient is called the residue of at and we denote it by
+(2)
+EXAMPLE 1 Evaluation of an Integral by Means of a Residue
+Integrate the function counterclockwise around the unit circle C.
+Solution. From (14) in Sec. 15.4 we obtain the Laurent series
+which converges for (that is, for all This series shows that has a pole of third order at 
+and the residue . From (1) we thus obtain the answer
+EXAMPLE 2 CAUTION! Use the Right Laurent Series!
+Integrate clockwise around the circle C: .
+Solution. shows that is singular at and Now lies outside C.
+Hence it is of no interest here. So we need the residue of at 0. We find it from the Laurent series that
+converges for This is series (I) in Example 4, Sec. 16.1,
+(0 /H11021ƒ z ƒ /H110211).1
+z3 /H11002z4 /H110051
+z3 /H110011
+z2 /H110011
+z
+/H110011 /H11001z /H11001Á
+0 /H11021ƒ z ƒ /H110211.
+f (z)
+z /H110051z /H110051.z /H110050f (z)z3 /H11002z4 /H11005z3(1 /H11002z)
+ƒ z ƒ /H110051
+2 f (z) /H110051>(z3 /H11002z4)
+/H17039/H20911
+C
+  sin z
+z4  dz /H110052pib1 /H11005/H11002  
+pi
+3
+ .
+b1 /H11005/H110021
+3 !
+z /H110050f (z)z /HS110050).ƒ z ƒ /H110220
+f (z) /H11005sin z
+z4 /H110051
+z3 /H110021
+3!z
+/H110011
+5!
+/H11002z3
+7!
+/H11001/H11002Á
+f (z) /H11005z/H115464 sin z
+b1 /H11005Res
+z/H11005z0
+  f (z).
+z /H11005z0f (z)b1
+f (z)
+z /H11005z0
+/H20911
+C
+  f (z) dz /H110052pib1.
+b1
+b1
+b1 /H110051
+2pi
+  /H20911
+C
+  f (z) dz.
+n /H110051,
+1>(z /H11002z0)
+b1
+0 /H11021ƒ z /H11002z0 ƒ /H11021R
+z /H11005z0z /H11005z0
+f (z) /H11005a
+/H11557
+n/H110050
+ an(z /H11002z0)n /H11001
+b1
+z /H11002z0
+/H11001
+b2
+(z /H11002z0)2 /H11001Á
+f (z)
+z /H11005z0f (z)
+c16.qxd  11/1/10  6:57 PM  Page 720
+
+=== PAGE 14 ===
+
+We see from it that this residue is 1. Clockwise integration thus yields
+CAUTION! Had we used the wrong series (II) in Example 4, Sec. 16.1,
+we would have obtained the wrong answer, 0, because this series has no power 
+Formulas for Residues
+To calculate a residue at a pole, we need not produce a whole Laurent series, but, more
+economically, we can derive formulas for residues once and for all.
+Simple Poles at . A first formula for the residue at a simple pole is
+(3)
+A second formula for the residue at a simple pole is
+(4)
+In (4) we assume that with and has a simple zero at 
+so that has a simple pole at by Theorem 4 in Sec. 16.2.
+PROOF We prove (3). For a simple pole at the Laurent series (1), Sec. 16.1, is
+Here (Why?) Multiplying both sides by and then letting we obtain
+the formula (3):
+where the last equality follows from continuity (Theorem 1, Sec. 15.3).
+We prove (4). The Taylor series of at a simple zero is
+Substituting this into and then f into (3) gives
+cancels. By continuity, the limit of the denominator is and (4) follows. /H17039qr(z0)z /H11002z0
+Res
+z/H11005z0
+  f (z) /H11005lim
+z:z0
+ (z /H11002z0)  
+p(z)
+q(z) /H11005lim
+z:z0
+  
+(z /H11002z0)p(z)
+(z /H11002z0)[qr(z0) /H11001(z /H11002z0)qs(z0)>2 /H11001Á ] .
+f /H11005p>q
+q(z) /H11005(z /H11002z0)qr(z0) /H11001
+(z /H11002z0)2
+2!  qs(z0) /H11001Á .
+z0q(z)
+lim
+z:z0 
+(z /H11002z0) f (z) /H11005b1 /H11001lim
+z:z0
+ (z /H11002z0)[a0 /H11001a1(z /H11002z0) /H11001Á ] /H11005b1
+z : z0,z /H11002z0b1 /HS110050.
+f (z) /H11005
+b1
+z /H11002z0
+/H11001a0 /H11001a1(z /H11002z0) /H11001a2(z /H11002z0)2 /H11001Á  (0 /H11021ƒ z /H11002z0 ƒ /H11021R).
+z /H11005z0
+z0f (z)
+z0,q(z)p(z0) /HS110050f (z) /H11005p(z)>q(z)
+(Proof below).Res
+z/H11005z0
+  f (z) /H11005Res
+z/H11005z0
+  
+p(z)
+q(z) /H11005
+p(z0)
+qr(z0) .
+(Proof below).Res
+z/H11005z0
+  f (z) /H11005b1 /H11005lim
+z:z0
+ (z /H11002z0) f (z).
+z0
+/H170391>z.
+( ƒ z ƒ /H110221),1
+z3 /H11002z4
+/H11005/H11002  1
+z4
+/H110021
+z5
+/H110021
+z6
+/H11002Á
+/H20911
+C
+   
+dz
+z3 /H11002z4
+/H11005/H110022pi Res
+z/H110050  
+f (z) /H11005/H110022pi.
+SEC. 16.3 Residue Integration Method 721
+c16.qxd  11/1/10  6:57 PM  Page 721
+
+=== PAGE 15 ===
+
+EXAMPLE 3 Residue at a Simple Pole
+has a simple pole at i because , and (3) gives the residue
+By (4) with and we confirm the result,
+Poles of Any Order at . The residue of at an mth-order pole at is
+(5)
+In particular, for a second-order pole 
+PROOF We prove (5). The Laurent series of converging near (except at itself) is (Sec. 16.2)
+where The residue wanted is Multiplying both sides by gives
+We see that is now the coefficient of the power of the power series of
+Hence Taylor’s theorem (Sec. 15.4) gives (5):
+EXAMPLE 4 Residue at a Pole of Higher Order
+has a pole of second order at because the denominator equals
+(verify!). From we obtain the residue
+/H17039Res
+z/H110051  
+f (z) /H11005lim
+z:1
+ d
+dz
+ [(z /H110021)2 f (z)] /H11005lim
+z:1
+  d
+dz
+  a 50z
+z /H110014
+ b /H11005200
+52 /H110058.
+(5*)(z /H110014)(z /H110021)2
+z /H110051f (z) /H1100550z>(z3 /H110012z2 /H110027z /H110014)
+/H17039 /H110051
+(m /H110021)!  dm/H115461
+dzm/H115461  [(z /H11002z0)mf (z)].
+ b1 /H110051
+(m /H110021)! g(m/H115461)(z0)
+g(z) /H11005(z /H11002z0)mf (z).
+(z /H11002z0)m/H115461b1
+(z /H11002z0)mf (z) /H11005bm /H11001bm/H115461(z /H11002z0) /H11001Á /H11001b1(z /H11002z0)m/H115461/H11001a0(z /H11002z0)m /H11001Á .
+(z /H11002z0)mb1.bm /HS110050.
+f (z) /H11005
+bm
+(z /H11002z0)m /H11001
+bm/H115461
+(z /H11002z0)m/H115461/H11001Á /H11001
+b1
+z /H11002z0
+/H11001a0 /H11001a1(z /H11002z0) /H11001Á
+z0z0f (z)
+Res
+z/H11005z0   
+f (z) /H11005lim
+z:z0
+ {[(z /H11002z0)2f (z)]r}.(5*)
+(m /H110052),
+Res
+z/H11005z0
+   f (z) /H110051
+(m /H110021)!
+  lim
+z:z0
+ e dm/H115461
+dzm/H115461  c (z /H11002z0)mf (z) d f .
+z0f (z)z0
+/H17039Res
+z/H11005i
+  
+9z /H11001i
+z(z2 /H110011)
+/H11005c
+9z /H11001i
+3z2 /H110011
+ d
+z/H11005i
+/H11005
+10i
+/H110022
+/H11005/H110025i.
+qr(z) /H110053z2 /H110011p(i) /H110059i /H11001i
+Res
+z/H11005i
+  
+9z /H11001i
+z(z2 /H110011)
+/H11005lim
+z:i
+ (z /H11002i)  
+9z /H11001i
+z(z /H11001i)(z /H11002i)
+/H11005c
+9z /H11001i
+z(z /H11001i)
+ d
+z/H11005i
+/H11005
+10i
+/H110022
+/H11005/H110025i.
+z2 /H110011 /H11005(z /H11001i)(z /H11002i)f (z) /H11005(9z /H11001i)>(z3 /H11001z)
+722 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 722
+
+=== PAGE 16 ===
+
+z1
+z2
+z3
+C
+Fig. 373. Residue theorem
+Several Singularities Inside the Contour. 
+Residue Theorem
+Residue integration can be extended from the case of a single singularity to the case of
+several singularities within the contour C. This is the purpose of the residue theorem. The
+extension is surprisingly simple.
+THEOREM 1 Residue Theorem
+Let be analytic inside a simple closed path C and on C, except for finitely many
+singular points inside C. Then the integral of taken counterclockwise
+around C equals times the sum of the residues of at 
+(6)
+/H20911
+C
+ f (z) dz /H110052pi a
+k
+j/H110051
+ Res
+z/H11005zj  
+f (z).
+z1, Á , zk :f (z)2pi
+f (z)z1, z2, Á , zk
+f (z)
+SEC. 16.3 Residue Integration Method 723
+PROOF We enclose each of the singular points in a circle with radius small enough that
+those k circles and C are all separated (Fig. 373 where Then is analytic in the
+multiply connected domain D bounded by C and and on the entire boundary
+of D. From Cauchy’s integral theorem we thus have
+(7)
+the integral along C being taken counterclockwise and the other integrals clockwise (as in
+Figs. 354 and 355, Sec. 14.2). We take the integrals over to the right and
+compensate the resulting minus sign by reversing the sense of integration. Thus,
+(8)
+where all the integrals are now taken counterclockwise. By (1) and (2),
+so that (8) gives (6) and the residue theorem is proved. /H17039
+j /H110051, Á , k,
+/H20911
+Cj
+ 
+ f (z) dz /H110052pi Res
+z/H11005zj
+  f (z),
+/H20911
+C
+  f (z) dz /H11005/H20911
+C1
+ f (z) dz /H11001/H20911
+C2
+ f (z) dz /H11001Á /H11001/H20911
+Ck
+  f (z) dz
+C1, Á , Ck
+/H20911
+C
+ f (z) dz /H11001/H20911
+C1
+ f (z) dz /H11001/H20911
+C2
+ f (z) dz /H11001Á /H11001/H20911
+Ck
+  f (z) dz /H110050,
+C1, Á , Ck
+f (z)k /H110053).
+Cjzj
+c16.qxd  11/1/10  6:57 PM  Page 723
+
+=== PAGE 17 ===
+
+This important theorem has various applications in connection with complex and real integrals.
+Let us first consider some complex integrals. (Real integrals follow in the next section.)
+EXAMPLE 5 Integration by the Residue Theorem. Several Contours
+Evaluate the following integral counterclockwise around any simple closed path such that (a) 0 and 1 are inside
+C, (b) 0 is inside, 1 outside, (c) 1 is inside, 0 outside, (d) 0 and 1 are outside.
+Solution. The integrand has simple poles at 0 and 1, with residues [by (3)]
+[Confirm this by (4).] Answer: (a) (b) (c) (d) 0.
+EXAMPLE 6 Another Application of the Residue Theorem
+Integrate counterclockwise around the circle C: .
+Solution. is not analytic at but all these points lie outside the contour C. Because
+of the denominator the given function has simple poles at We thus obtain from
+(4) and the residue theorem
+EXAMPLE 7 Poles and Essential Singularities
+Evaluate the following integral, where C is the ellipse (counterclockwise, sketch it).
+Solution. Since at and the first term of the integrand has simple poles at inside
+C, with residues [by (4); note that 
+and simple poles at which lie outside C, so that they are of no interest here. The second term of the integrand
+has an essential singularity at 0, with residue as obtained from
+Answer: by the residue theorem. /H170392pi(/H11002 
+1
+16 /H110021
+16 /H110011
+2 p2) /H11005p(p2 /H110021
+4 )i /H1100530.221i
+( ƒ z ƒ /H110220).zep>z /H11005z a1 /H11001p
+z /H11001p2
+2!z2 /H11001p3
+3!z3 /H11001Á b /H11005z /H11001p /H11001p2
+2
+ # 1
+z /H11001Á
+p2>2
+/H110062,
+Res
+z/H11005/H115462i
+ 
+zepz
+z4 /H1100216
+/H11005c
+zepz
+4z3  d
+z/H11005/H115462i
+/H11005/H11002 1
+16
+Res
+z/H110052i
+  
+zepz
+z4 /H1100216
+/H11005c
+zepz
+4z3  d
+z/H110052i
+/H11005/H11002 1
+16
+  ,
+e2pi /H110051]
+/H110062i/H110062,/H110062iz4 /H1100216 /H110050
+/H20911
+C
+   a
+zepz
+z4 /H1100216
+/H11001zep>zb dz.
+9x2 /H11001y2 /H110059
+/H17039 /H110052pi tan 1 /H110059.7855i.
+ /H110052pi a
+tan z
+2z
+ `
+z/H110051
+/H11001
+tan z
+2z
+`
+z/H11005/H115461
+b
+ /H20911
+C
+   
+tan z
+z2 /H110021  dz /H110052pi aRes
+z/H110051
+  
+tan z
+z2 /H110021 /H11001Res
+z/H11005/H115461
+  
+tan z
+z2 /H110021
+ b
+/H110061.z2 /H110021 /H11005(z /H110021)(z /H110011)
+/H11006p>2, /H110063p>2, Á ,tan z
+ƒ z ƒ /H110053
+2 (tan z)>(z2 /H110021)
+/H170392pi,/H110028pi,2pi(/H110024/H110011) /H11005/H110026pi,
+Res
+z/H110050  
+4 /H110023z
+z(z /H110021) /H11005c
+4 /H110023z
+z /H110021
+ d
+z/H110050
+/H11005/H110024,  Res
+z/H110051
+  
+4 /H110023z
+z(z /H110021) /H11005c
+4 /H110023z
+z
+ d
+z/H110051
+/H110051.
+/H20911
+C
+   
+4 /H110023z
+z2 /H11002z
+  dz
+724 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 724
+
+=== PAGE 18 ===
+
+16.4 Residue Integration of Real Integrals
+Surprisingly, residue integration can also be used to evaluate certain classes of complicated
+real integrals. This shows an advantage of complex analysis over real analysis or calculus.
+Integrals of Rational Functions of cos /H9258and sin /H9258
+We first consider integrals of the type
+(1) J /H11005/H20910
+2p
+0
+F(cos u, sin u) du
+SEC. 16.4 Residue Integration of Real Integrals 725
+1. Verify the calculations in Example 3 and find the other
+residues.
+2. Verify the calculations in Example 4 and find the other
+residue.
+3–12
+RESIDUES
+Find all the singularities in the finite plane and the
+corresponding residues. Show the details.
+3. 4.
+5. 6.
+7. 8.
+9. 10.
+11. 12.
+13. CAS PROJECT. Residue at a Pole. Write a program
+for calculating the residue at a pole of any order in the
+finite plane. Use it for solving Probs. 5–10.
+14–25
+RESIDUE INTEGRATION
+Evaluate (counterclockwise). Show the details.
+14.
+15. /H20911
+C
+  tan 2pz dz, C: ƒ z /H110020.2 ƒ /H110050.2
+/H20911
+C
+  z /H1100223
+z2 /H110024z /H110025
+ dz, C: ƒ z /H110022 /H11002i ƒ /H110053.2
+e1>(1/H11546z)ez
+(z /H11002pi)3
+z4
+z2 /H11002iz /H110012
+1
+1 /H11002ez
+p
+(z2 /H110021)2cot pz
+tan z8
+1 /H11001z2
+cos z
+z4
+sin 2z
+z6
+16. the unit circle
+17.
+18.
+19.
+20.
+21.
+22. the unit circle
+23. the unit circle
+24.
+25.
+/H20911
+C
+  z  cosh pz
+z4 /H1100113z2 /H1100136
+ dz, ƒ z ƒ /H11005p
+/H20911
+C
+  
+exp (/H11002z2)
+sin 4z  dz, C: ƒ z ƒ /H110051.5
+/H20911
+C
+  30z2 /H1100223z /H110015
+(2z /H110021)2(3z /H110021)
+ dz, C
+/H20911
+C
+  z2 sin z
+4z2 /H110021
+ dz, C
+/H20911
+C
+  cos pz
+z5
+ dz, C: ƒ z ƒ /H110051
+2 
+/H20911
+C
+  dz
+(z2 /H110011)3 , C: ƒ z /H11002i ƒ /H110053
+/H20911
+C
+  sinh z
+2z /H11002i dz, C: ƒ z /H110022i ƒ /H110052
+/H20911
+C
+  z /H110011
+z4 /H110022z3 dz, C: ƒ z /H110021 ƒ /H110052
+/H20911
+C
+  ez
+cos z dz, C: ƒ z /H11002pi>2 ƒ /H110054.5
+/H20911
+C
+ e1>z dz, C:
+PROBLEM SET 16.3
+c16.qxd  11/1/10  6:57 PM  Page 725
+
+=== PAGE 19 ===
+
+where is a real rational function of and [for example, 
+and is finite (does not become infinite) on the interval of integration. Setting
+we obtain
+(2)
+Since F is rational in and Eq. (2) shows that F is now a rational function of
+z, say, Since we have and the given integral takes the form
+(3)
+and, as ranges from 0 to in (1), the variable ranges counterclockwise once
+around the unit circle (Review Sec. 13.5 if necessary.)
+EXAMPLE 1 An Integral of the Type (1)
+Show by the present method that 
+Solution. We use and Then the integral becomes
+We see that the integrand has a simple pole at outside the unit circle C, so that it is of no interest
+here, and another simple pole at (where inside C with residue [by (3), Sec. 16.3]
+Answer: (Here is the factor in front of the last integral.)
+As another large class, let us consider real integrals of the form
+(4)
+Such an integral, whose interval of integration is not finite is called an improper integral,
+and it has the meaning
+/H20910
+/H11557
+/H11546/H11557
+ f (x) dx /H11005lim
+a:/H11546/H11009
+ /H20910
+0
+a
+ f (x) dx /H11001lim
+b:/H11009
+ /H20910
+b
+0
+ f (x) dx.(5r)
+/H20910
+/H11557
+/H11546/H11557
+ f (x) dx.
+/H17039/H110022>i2pi(/H110022>i)(/H110021
+2 ) /H110052p.
+ /H11005/H11002 
+1
+2
+ .
+ Res
+z/H11005z2
+ 1
+(z /H1100212 /H110021)(z /H1100212 /H110011)
+ /H11005c
+1
+z /H1100212 /H110021
+ d
+z/H1100512/H115461
+z /H1100212 /H110011 /H110050)z2 /H1100512 /H110021
+z1 /H1100512 /H110011
+ /H11005/H11002 2
+i
+ /H20911
+C 
+ dz
+(z /H1100212 /H110021)(z /H1100212 /H110011)
+ .
+ /H20911
+C
+ 
+dz>iz
+12 /H110021
+2
+  az /H110011
+z
+ b
+/H11005/H20911
+C
+  
+dz
+/H11002 
+i
+2
+ (z2 /H110022 12z /H110011)
+du /H11005dz>iz.cos u /H110051
+2 (z /H110011>z)
+/H20910
+2p
+0
+du
+12 /H11002cos u
+/H110052p.
+ƒ z ƒ /H110051.
+z /H11005eiu2pu
+J /H11005/H20911
+C
+  f (z) dz
+iz
+du /H11005dz>izdz>du /H11005ieiu,f (z).
+sin u,cos u
+ sin u /H110051
+2i (eiu /H11002e/H11546iu) /H110051
+2i az /H110021
+z b .
+ cos u /H110051
+2 (eiu /H11001e/H11546iu) /H110051
+2 az /H110011
+z
+ b
+eiu /H11005z,
+(5 /H110024 cos u)]
+(sin2 u)>sin ucos uF(cos u, sin u)
+726 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 726
+
+=== PAGE 20 ===
+
+If both limits exist, we may couple the two independent passages to and , and write
+(5)
+The limit in (5) is called the Cauchy principal value of the integral. It is written
+pr. v. 
+It may exist even if the limits in do not. Example:
+We assume that the function in (4) is a real rational function whose denominator
+is different from zero for all real x and is of degree at least two units higher than the
+degree of the numerator. Then the limits in exist, and we may start from (5). We
+consider the corresponding contour integral
+around a path C in Fig. 374. Since is rational, has finitely many poles in the
+upper half-plane, and if we choose R large enough, then C encloses all these poles. By
+the residue theorem we then obtain
+where the sum consists of all the residues of at the points in the upper half-plane at
+which has a pole. From this we have
+(6)
+We prove that, if the value of the integral over the semicircle S approaches
+zero. If we set then S is represented by and as z ranges along S, the
+variable ranges from 0 to Since, by assumption, the degree of the denominator of
+is at least two units higher than the degree of the numerator, we have
+( ƒ z ƒ /H11005R /H11022R0)ƒ f (z) ƒ /H11021k
+ƒ z ƒ 2
+f (z)
+p.u
+R /H11005const,z /H11005Reiu,
+R : /H11009,
+/H20910
+R
+/H11546R
+ f (x) dx /H110052pi a  Res f (z) /H11002/H20910
+S
+ f (z) dz.
+f (z)
+f (z)
+/H20911
+C  
+f (z) dz /H11005/H20910
+S
+ f (z) dz /H11001/H20910
+R
+/H11546R
+ f (x) dx /H110052pi a  Res f (z)
+f (z)f (x)
+/H20911
+C
+ 
+ 
+f (z) dz(5*)
+(5r)
+f (x)
+lim
+R:/H11557 /H20910
+R
+/H11546R
+x dx /H11005lim
+R:/H11557  
+aR2
+2 /H11002R2
+2
+ b /H110050,   but   lim
+b:/H11557/H20910
+b
+0
+x dx /H11005/H11009.
+(5r)
+/H20910
+/H11557
+/H11546/H11557
+ f (x) dx.
+/H20910
+/H11557
+/H11546/H11557
+ f (x) dx /H11005lim
+R:/H11557/H20910
+R
+/H11546R
+  f (x) dx.
+/H11009/H11002/H11009
+SEC. 16.4 Residue Integration of Real Integrals 727
+Fig. 374. Path C of the contour integral in (5*)
+y
+x–R R
+S
+c16.qxd  11/1/10  6:57 PM  Page 727
+
+=== PAGE 21 ===
+
+for sufficiently large constants k and By the ML-inequality in Sec. 14.1,
+Hence, as R approaches infinity, the value of the integral over S approaches zero, and (5)
+and (6) yield the result
+(7)
+where we sum over all the residues of at the poles of in the upper half-plane.
+EXAMPLE 2 An Improper Integral from 0 to 
+Using (7), show that
+/H20910
+/H11557
+0
+dx
+1 /H11001x4 /H11005p
+2 12
+ .
+/H11557
+f (z)f (z)
+/H20910
+/H11557
+/H11546/H11557
+ f (x) dx /H110052pi a Res f (z)
+(R /H11022R0).` /H20910
+S
+ f (z) dz ` /H11021k
+R2
+  pR /H11005kp
+R
+R0.
+728 CHAP. 16 Laurent Series. Residue Integration
+z1
+z4
+z2
+z3
+y
+x
+Fig. 375. Example 2
+Solution. Indeed, has four simple poles at the points (make a sketch)
+The first two of these poles lie in the upper half-plane (Fig. 375). From (4) in the last section we find the residues
+(Here we used and By (1) in Sec. 13.6 and (7) in this section,
+/H20910
+/H11557
+/H11546/H11009
+ dx
+1 /H11001x4 /H11005/H11002 2pi
+4
+ (epi>4 /H11002e/H11546pi>4) /H11005/H11002  
+2pi
+4
+ # 2i sin p
+4
+/H11005p sin p
+4
+/H11005p
+12 .
+e/H115462pi /H110051.)epi /H11005/H110021
+Res
+z/H11005z2    
+f (z) /H11005c
+1
+(1 /H11001z4)r
+ d
+z/H11005z2
+/H11005c
+1
+4z3 d
+z/H11005z2
+/H110051
+4
+ e/H115469pi>4 /H110051
+4
+ e/H11546pi>4.
+Res
+z/H11005z1  
+ f (z) /H11005c
+1
+(1 /H11001z4)r
+ d
+z/H11005z1
+/H11005c
+1
+4z3 d
+z/H11005z1
+/H110051
+4
+ e/H115463pi>4 /H11005/H11002 1
+4
+ epi>4.
+z1 /H11005epi>4,   z2 /H11005e3pi>4,   z3 /H11005e/H115463pi>4,   z4 /H11005e/H11546pi>4.
+f (z) /H110051>(1 /H11001z4)
+c16.qxd  11/1/10  6:57 PM  Page 728
+
+=== PAGE 22 ===
+
+Since is an even function, we thus obtain, as asserted,
+Fourier Integrals
+The method of evaluating (4) by creating a closed contour (Fig. 374) and “blowing it up”
+extends to integrals
+(8) and (s real)
+as they occur in connection with the Fourier integral (Sec. 11.7).
+If is a rational function satisfying the assumption on the degree as for (4), we may
+consider the corresponding integral
+(s real and positive)
+over the contour C in Fig. 374. Instead of (7) we now get
+(9)
+where we sum the residues of at its poles in the upper half-plane. Equating the
+real and the imaginary parts on both sides of (9), we have
+(10)
+To establish (9), we must show [as for (4)] that the value of the integral over the
+semicircle S in Fig. 374 approaches 0 as Now and S lies in the upper half-
+plane Hence
+From this we obtain the inequality This
+reduces our present problem to that for (4). Continuing as before gives (9) and (10).
+EXAMPLE 3 An Application of (10)
+Show that /H20910
+/H11557
+/H11546/H11557
+ cos sx
+k2 /H11001x2
+ dx /H11005p
+k
+ e/H11546ks,   /H20910
+/H11557
+/H11546/H11557
+ sin sx
+k2 /H11001x2
+ dx /H110050   (s /H110220, k /H110220).
+/H17039
+ƒ f (z)eisz ƒ /H11005ƒ f (z) ƒƒ eisz ƒ /H11017ƒ f (z) ƒ  (s /H110220, y /H110840).
+(s /H110220, y /H110840).ƒ eisz ƒ /H11005ƒ eis(x/H11001iy) ƒ /H11005ƒ eisx ƒƒ e/H11546syƒ /H110051 # e/H11546sy/H110171
+y /H110840.
+s /H110220R : /H11009.
+(s /H110220)
+/H20910
+/H11557
+/H11546/H11557
+ f (x) sin sx dx /H110052p a Re Res [ f (z)eisz ].
+/H20910
+/H11557
+/H11546/H11557
+ f (x) cos sx dx /H11005/H110022p a Im Res [ f (z)eisz],
+f (z)eisz
+(s /H110220)/H20910
+/H11557
+/H11546/H11557
+  f (x)eisx dx /H110052pi a Res [ f (z)eisz]
+/H20911 
+C  
+f (z)eisz dz
+f (x)
+/H20910
+/H11557
+/H11546/H11009
+ f (x) sin sx dx/H20910
+/H11557
+/H11546/H11009
+  f (x) cos sx dx
+/H17039/H20910
+/H11557
+0
+ dx
+1 /H11001x4 /H110051
+2
+  /H20910
+/H11557
+/H11546/H11557
+  
+dx
+1 /H11001x4 /H11005p
+2 12
+ .
+1>(1 /H11001x4)
+SEC. 16.4 Residue Integration of Real Integrals 729
+c16.qxd  11/1/10  6:57 PM  Page 729
+
+=== PAGE 23 ===
+
+Solution. In fact, has only one pole in the upper half-plane, namely, a simple pole at 
+and from (4) in Sec. 16.3 we obtain
+Thus
+Since this yields the above results [see also (15) in Sec. 11.7.]
+Another Kind of Improper Integral
+We consider an improper integral
+(11)
+whose integrand becomes infinite at a point a in the interval of integration,
+By definition, this integral (11) means
+(12)
+where both and approach zero independently and through positive values. It may
+happen that neither of these two limits exists if and go to 0 independently, but the
+limit
+(13)
+exists. This is called the Cauchy principal value of the integral. It is written
+pr. v. 
+For example,
+pr. v. 
+the principal value exists, although the integral itself has no meaning.
+In the case of simple poles on the real axis we shall obtain a formula for the principal
+value of an integral from to This formula will result from the following theorem./H11009./H11002/H11009
+/H20910
+1
+/H115461
+ dx
+x3 /H11005lim
+P:0 c /H20910
+/H11546P
+/H115461
+ dx
+x3 /H11001/H20910
+1
+P
+dx
+x3
+ d /H110050;
+/H20910
+B
+A
+f (x) dx.
+lim
+P:0  c /H20910
+a/H11546P
+A
+f (x) dx /H11001/H20910
+B
+a/H11001P
+f (x) dx d
+hP
+hP
+/H20910
+B
+A
+f (x) dx /H11005lim
+P:0
+ /H20910
+a/H11546P
+A
+f (x) dx /H11001lim
+h:0
+ /H20910
+B
+a/H11001h
+f (x) dx
+lim
+x:a 
+ƒ f (x) ƒ /H11005/H11009.
+/H20910
+B
+A
+f (x) dx
+/H17039eisx /H11005cos sx /H11001i sin sx,
+/H20910
+/H11557
+/H11546/H11557
+ eisx
+k2 /H11001x2  dx /H110052pi e/H11546ks
+2ik
+/H11005p
+k
+ e/H11546ks.
+Res
+z/H11005ik
+  
+eisz
+k2 /H11001z2 /H11005c
+eisz
+2z
+ d
+z/H11005ik
+/H11005e/H11546ks
+2ik
+ .
+z /H11005ik,eisz>(k2 /H11001z2)
+730 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 730
+
+=== PAGE 24 ===
+
+Fig. 377. Application of Theorem 1
+a + ra – ra
+C2
+R
+S
+–R
+THEOREM 1 Simple Poles on the Real Axis
+If has a simple pole at on the real axis, then (Fig. 376)
+lim
+r:0
+ /H20910
+C2
+f (z) dz /H11005pi Res
+z/H11005a  f (z).
+z /H11005af (z)
+SEC. 16.4 Residue Integration of Real Integrals 731
+a + ra – ra
+C2
+x
+Fig. 376. Theorem 1
+PROOF By the definition of a simple pole (Sec. 16.2) the integrand has for 
+the Laurent series
+Here is analytic on the semicircle of integration (Fig. 376)
+and for all z between and the x-axis, and thus bounded on say, By
+integration,
+The second integral on the right cannot exceed in absolute value, by the
+ML-inequality (Sec. 14.1), and as 
+Figure 377 shows the idea of applying Theorem 1 to obtain the principal value of the
+integral of a rational function from to . For sufficiently large R the integral over
+the entire contour in Fig. 377 has the value J given by times the sum of the residues
+of at the singularities in the upper half-plane. We assume that satisfies the degree
+condition imposed in connection with (4). Then the value of the integral over the large
+f
+ (x)f (z)
+2pi
+/H11009/H11002/H11009f (x)
+/H17039r : 0.ML /H11005Mpr : 0
+Mpr
+/H20910
+C2
+ f (z) dz /H11005/H20910
+p
+0
+b1
+reiu ireiu du /H11001/H20910
+C2
+ g(z) dz /H11005b1pi /H11001/H20910
+C2
+ g(z) dz.
+ƒ g(z) ƒ /H11017M.C2,C2
+C2:  z /H11005a /H11001reiu,   0 /H11017u /H11017p
+g(z)
+f (z) /H11005
+b1
+z /H11002a /H11001g(z),   b1 /H11005Res
+z/H11005a  
+f (z).
+0 /H11021ƒ z /H11002a ƒ /H11021Rf (z)
+c16.qxd  11/1/10  6:57 PM  Page 731
+
+=== PAGE 25 ===
+
+semicircle S approaches 0 as For the integral over (clockwise!)
+approaches the value
+by Theorem 1. Together this shows that the principal value P of the integral from to
+plus K equals J; hence If has several simple
+poles on the real axis, then K will be times the sum of the corresponding residues.
+Hence the desired formula is
+(14)
+where the first sum extends over all poles in the upper half-plane and the second over all
+poles on the real axis, the latter being simple by assumption.
+EXAMPLE 4 Poles on the Real Axis
+Find the principal value
+pr. v.
+Solution. Since
+the integrand considered for complex z, has simple poles at
+and at in the lower half-plane, which is of no interest here. From (14) we get the answer
+pr. v. 
+More integrals of the kind considered in this section are included in the problem set. Try
+also your CAS, which may sometimes give you false results on complex integrals.
+/H17039
+/H20910
+/H11557
+/H11546/H11557
+ dx
+(x2 /H110023x /H110012)(x2 /H110011) /H110052pi a3 /H11002i
+20
+ b /H11001pi  a/H11002 
+1
+2
+/H110011
+5
+ b /H11005p
+10
+ .
+z /H11005/H11002i
+ /H110051
+6 /H110012i
+/H110053 /H11002i
+20
+ ,
+ z /H11005i,   Res 
+z/H11005i
+ f (z) /H11005c
+1
+(z2 /H110023z /H110012)(z /H11001i)
+ d
+z/H11005i
+ /H110051
+5
+ ,
+ z /H110052,   Res 
+z/H110052
+ f(z) /H11005c
+1
+(z /H110021)(z2 /H110011)
+ d
+z/H110052
+ /H11005/H11002 1
+2
+ ,
+ z /H110051,   Res 
+z/H110051  
+f (z) /H11005c
+1
+(z /H110022)(z2 /H110011)
+ d
+z/H110051
+f (x),
+x2 /H110023x /H110012 /H11005(x /H110021)(x /H110022),
+/H20910
+/H11557
+/H11546/H11557
+ dx
+(x2 /H110023x /H110012)(x2 /H110011)
+ .
+pr. v. /H20910
+/H11557
+/H11546/H11557
+ f (x) dx /H110052pi a Res f (z) /H11001pi a Res f (z)
+/H11002pi
+f (z)P /H11005J /H11002K /H11005J /H11001pi Resz/H11005a  f (z)./H11009
+/H11002/H11009
+K /H11005/H11002pi Res
+z/H11005a  
+f (z)
+C2r : 0R : /H11009.
+732 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 732
+
+=== PAGE 26 ===
+
+Chaper 16 Review Questions and Problems 733
+1–9 INTEGRALS INVOLVING COSINE AND SINE
+Evaluate the following integrals and show the details of
+your work.
+1. 2.
+3. 4.
+5. 6.
+7. 8.
+9.
+10–22
+IMPROPER INTEGRALS: 
+INFINITE INTERVAL OF INTEGRATION
+Evaluate the following integrals and show details of your
+work.
+10. 11.
+12. 13.
+14. 15.
+16. 17.
+18. 19.
+20.
+/H20910
+/H11557
+/H11546/H11557
+ x
+8 /H11002x3 dx
+/H20910
+/H11557
+/H11546/H11557
+ dx
+x4 /H110021/H20910
+/H11557
+/H11546/H11557
+ cos 4x
+x4 /H110015x2 /H110014
+ dx
+/H20910
+/H11557
+/H11546/H11557
+ sin 3x
+x4 /H110011
+ dx/H20910
+/H11557
+/H11546/H11557
+ cos 2x
+(x2 /H110011)2 dx
+/H20910
+/H11557
+/H11546/H11557
+ x2
+x6 /H110011
+ dx/H20910
+/H11557
+/H11546/H11557
+ x2 /H110011
+x4 /H110011
+ dx
+/H20910
+/H11557
+/H11546/H11557
+ x
+(x2 /H110011)(x2 /H110014)
+ dx/H20910
+/H11557
+/H11546/H11557
+ dx
+(x2 /H110022x /H110015)2
+/H20910
+/H11557
+/H11546/H11557
+ dx
+(1 /H11001x2)2/H20910
+/H11557
+/H11546/H11557
+ dx
+(1 /H11001x2)3
+/H20910
+2p
+0
+cos u
+13 /H1100212 cos 2u
+  du
+/H20910
+2p
+0
+1
+8 /H110022 sin u
+  du/H20910
+2p
+0
+a
+a /H11002sin u
+  du
+/H20910
+2p
+0
+sin2 u
+5 /H110024 cos u
+  du/H20910
+2p
+0
+ cos2 u
+5 /H110024 cos u
+  du
+/H20910
+2p
+0
+  1 /H110014 cos u
+17 /H110028 cos u
+  du/H20910
+2p
+0
+ 1 /H11001sin u
+3 /H11001cos u du
+/H20910
+p
+0
+ du
+p /H110013 cos u/H20910
+p
+0
+ 2 du
+k /H11002cos u
+21.
+22.
+23–26
+IMPROPER INTEGRALS: 
+POLES ON THE REAL AXIS
+Find the Cauchy principal value (showing details):
+23. 24.
+25. 26.
+27. CAS EXPERIMENT. Simple Poles on the Real
+Axis. Experiment with integrals 
+real and
+all different, Conjecture that the principal value
+of these integrals is 0. Try to prove this for a special
+k, say, For general k.
+28. TEAM PROJECT. Comments on Real Integrals. 
+(a) Formula (10) follows from (9). Give the details.
+(b) Use of auxiliary results. Integrating around
+the boundary C of the rectangle with vertices 
+letting and using
+show that
+(This integral is needed in heat conduction in Sec.
+12.7.)
+(c) Inspection. Solve Probs. 13 and 17 without
+calculation.
+/H20910
+/H11557
+0
+e/H11546x2
+cos 2bx dx /H110051p
+2
+ e/H11546b2
+.
+/H20910
+/H11557
+0
+e/H11546x2
+dx /H110051p
+2  ,
+a : /H11009,a /H11001ib, /H11002a/H11001ib,
+/H11002a, a,
+e/H11546z2
+k /H110053.
+k /H110221.
+f (x) /H11005[(x /H11002a1)(x /H11002a2) Á (x /H11002ak)]/H115461, aj
+/H20848/H11557
+/H11546/H11557   f (x)  dx,
+/H20910
+/H11557
+/H11546/H11557
+ x2
+x4 /H110021
+  dx/H20910
+/H11557
+/H11546/H11557
+ x /H110015
+x3 /H11002x
+  dx
+/H20910
+/H11557
+/H11546/H11557
+ dx
+x4 /H110013x2 /H110024/H20910
+/H11557
+/H11546/H11557
+ dx
+x4 /H110021
+/H20910
+/H11557
+/H11546/H11557
+ dx
+x2 /H11002ix
+/H20910
+/H11557
+/H11546/H11557
+sin x
+(x /H110021)(x2 /H110014)
+ dx
+PROBLEM SET 16.4
+1. What is a Laurent series? Its principal part? Its use?
+Give simple examples.
+2. What kind of singularities did we discuss? Give defi-
+nitions and examples.
+3. What is the residue? Its role in integration? Explain
+methods to obtain it.
+4. Can the residue at a singularity be zero? At a simple
+pole? Give reason.
+5. State the residue theorem and the idea of its proof from
+memory.
+6. How did we evaluate real integrals by residue integration?
+How did we obtain the closed paths needed?
+CHAPTER 16 REVIEW QUESTIONS AND PROBLEMS
+c16.qxd  11/1/10  6:57 PM  Page 733
+
+=== PAGE 27 ===
+
+734 CHAP. 16 Laurent Series. Residue Integration
+7. What are improper integrals? Their principal value?
+Why did they occur in this chapter?
+8. What do you know about zeros of analytic functions?
+Give examples.
+9. What is the extended complex plane? The Riemann
+sphere R? Sketch on R.
+10. What is an entire function? Can it be analytic at
+infinity? Explain the definitions.
+11–18
+COMPLEX INTEGRALS
+Integrate counterclockwise around C. Show the details.
+11.
+12.
+13.
+14.
+15. 25z
+2
+(z /H110025)2
+ , C: ƒ z /H110025 ƒ /H110051
+5z3
+z2 /H110014
+ , C: ƒ z /H11002i ƒ /H11005pi>2
+5z3
+z2 /H110014
+ , C: ƒ z ƒ /H110053
+e2>z, C: ƒ z /H110021 /H11002i ƒ /H110052
+sin 3z
+z2
+ , C: ƒ z ƒ /H11005p
+z /H110051 /H11001i
+16.
+17.
+18.
+19–25 REAL INTEGRALS
+Evaluate by the methods of this chapter. Show details.
+19. 20.
+21.
+22. 23.
+24. 25.
+/H20910
+/H11557
+/H11546/H11557
+ cos x
+x2 /H110011
+ dx/H20910
+/H11557
+/H11546/H11557
+ dx
+x2 /H110024ix
+/H20910
+/H11557
+/H11546/H11557
+ x
+(1 /H11001x2)2 dx/H20910
+/H11557
+/H11546/H11557
+ dx
+1 /H110014x4
+/H20910
+2p
+0
+ sin u
+34 /H1100216 sin u du
+/H20910
+2p
+0
+ sin u
+3 /H11001cos u du/H20910
+2p
+0
+ du
+13 /H110025 sin u
+cot 4z, C: ƒ z ƒ /H110053
+4 
+cos z
+zn  , n /H110050, 1, 2, Á , C: ƒ z ƒ /H110051
+15z /H110019
+z3 /H110029z
+ , C: ƒ z ƒ /H110054
+A Laurent series is a series of the form
+(1) (Sec. 16.1)
+or, more briefly written [but this means the same as (1)!]
+where This series converges in an open annulus (ring) A with
+center In A the function is analytic. At points not in A it may have
+singularities. The first series in (1) is a power series. In a given annulus, a Laurent
+series of is unique, but may have different Laurent series in different annuli
+with the same center.
+Of particular importance is the Laurent series (1) that converges in a neighborhood
+of except at itself, say, for suitable). The series0 /H11021ƒ z /H11002z
+0 ƒ /H11021R (R /H110220,z0z0
+f (z)f (z)
+f (z)z0.
+n /H110050, /H110061, /H110062,Á .
+f (z) /H11005a
+/H11557
+n/H11005/H11546/H11557
+ an(z /H11002z0)n,  an /H110051
+2pi
+ /H20911
+C
+  f (z*)
+(z* /H11002z0)n/H110011 dz*(1*)
+f (z) /H11005a
+/H11557
+n/H110050
+ an(z /H11002z0)n /H11001a
+/H11557
+n/H110051
+ bn
+(z /H11002z0)n
+SUMMARY OF CHAPTER 16
+Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 734
+
+=== PAGE 28 ===
+
+Summary of Chapter 16 735
+(or finite sum) of the negative powers in this Laurent series is called the principal
+part of at The coefficient of in this series is called the residue
+of at and is given by [see (1) and 
+(2) Thus
+can be used for integration as shown in (2) because it can be found from
+(3) (Sec. 16.3),
+provided has at a pole of order m; by definition this means that principal
+part has as its highest negative power. Thus for a simple pole 
+also,
+If the principal part is an infinite series, the singularity of at is called an
+essential singularity (Sec. 16.2).
+Section 16.2 also discusses the extended complex plane, that is, the complex plane
+with an improper point (“infinity”) attached.
+Residue integration may also be used to evaluate certain classes of complicated
+real integrals (Sec. 16.4). 
+/H11009
+z0f (z)
+Res
+z/H11005z0
+  
+p(z)
+q(z) /H11005
+p(z0)
+qr(z0) .Res
+z/H11005z0  
+ f (z) /H11005lim
+z:z0
+ (z /H11002z0)f (z);
+(m /H110051),1>(z /H11002z0)m
+z0f (z)
+Res
+z/H11005z0  
+ f (z) /H110051
+(m /H110021)!
+ lim
+z:z0 
+¢ dm/H115461
+dzm/H115461 [(z /H11002z0)mf (z)]≤ ,
+b1
+/H20911
+C  
+f (z*) dz* /H110052pi Res
+z/H11005z0  
+ f (z).b1 /H11005Res
+z:z0  
+f (z) /H110051
+2pi
+  /H20911
+C  
+f (z*) dz*.
+(1*)]z0f (z)
+1>(z /H11002z0)b1z0.f (z)
+c16.qxd  11/1/10  6:57 PM  Page 735
