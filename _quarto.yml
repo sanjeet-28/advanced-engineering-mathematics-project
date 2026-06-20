@@ -5,7 +5,6 @@ book:
   title: "Advanced Engineering Mathematics"
   chapters:
     - index.qmd
-    - chapters/contents.qmd
     - chapters/ch1.qmd
     - chapters/ch2.qmd
     - chapters/ch3.qmd
@@ -16,7 +15,6 @@ book:
     - chapters/ch8.qmd
     - chapters/ch9.qmd
     - chapters/ch10.qmd
-    - chapters/ch11.qmd
     - chapters/ch13.qmd
     - chapters/ch14.qmd
     - chapters/ch15.qmd

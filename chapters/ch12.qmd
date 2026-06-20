@@ -1,5 +1,5 @@
 ---
-title: "CHAPTER 12: Partial Differential Equations (PDEs)"
+title: "Partial Differential Equations (PDEs)"
 ---
 
 A PDE is an equation that contains one or more partial derivatives of an unknown function that depends on at least two variables. Usually one of these deals with time $t$ and the remaining with space (spatial variable(s)). The most important PDEs are the wave equations that can model the vibrating string (@sec-12-2, @sec-12-3, @sec-12-4, @sec-12-12) and the vibrating membrane (@sec-12-8, @sec-12-9, @sec-12-10), the heat equation for temperature in a bar or wire (@sec-12-5, @sec-12-6), and the Laplace equation for electrostatic potentials (@sec-12-6, @sec-12-10, @sec-12-11). PDEs are very important in dynamics, elasticity, heat transfer, electromagnetic theory, and quantum mechanics. They have a much wider range of applications than ODEs, which can model only the simplest physical systems. Thus PDEs are subjects of many ongoing research and development projects.

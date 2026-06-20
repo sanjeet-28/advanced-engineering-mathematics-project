@@ -1,5 +1,5 @@
 ---
-title: "CHAPTER 03: Higher Order Linear ODEs"
+title: "Higher Order Linear ODEs"
 ---
 
 The concepts and methods of solving linear ODEs of order $n=2$ extend nicely to linear ODEs of higher order $n$, that is, $n=3, 4$, etc. This shows that the theory explained in Chap. 2 for second-order linear ODEs is attractive, since it can be extended in a straightforward way to arbitrary $n$. We do so in this chapter and notice that the formulas become more involved, the variety of roots of the characteristic equation (in Sec. 3.2) becomes much larger with increasing $n$, and the Wronskian plays a more prominent role.
