@@ -1322,3 +1322,123 @@ $$
 $$
 where $k$ is a suitable constant, and $k \sum 1/m$ diverges.  $\square$
 
+## PROBLEM SET 15.5 {#sec-problem-set-15-5}
+
+1. **CAS EXPERIMENT. Graphs of Partial Sums.**
+   (a) **Fig. 368.** Produce this exciting figure (cf. @fig-15-08) using your CAS. Add further curves, say, those of $s_{256}$, $s_{1024}$, etc. on the same screen.
+   (b) **Power series.** Study the nonuniformity of convergence experimentally by graphing partial sums near the endpoints of the convergence interval for real $z = x$.
+
+### 2–9 POWER SERIES
+Where does the power series converge uniformly? Give reason.
+
+2. $\sum_{n=0}^{\infty} \left(\frac{n+2}{7n-3}\right)^n z^n$
+3. $\sum_{n=0}^{\infty} \frac{1}{3^n} (z + i)^{2n}$
+4. $\sum_{n=0}^{\infty} \frac{3^n(1 - i)^n}{n!} (z - i)^n$
+5. $\sum_{n=2}^{\infty} \binom{n}{2} (4z + 2i)^n$
+6. $\sum_{n=0}^{\infty} 2^n(\tanh n^2) z^{2n}$
+7. $\sum_{n=1}^{\infty} \frac{n!}{n^2} \left(z + \frac{1}{2}i\right)^n$
+8. $\sum_{n=1}^{\infty} \frac{3^n}{n(n+1)} (z - 1)^{2n}$
+9. $\sum_{n=1}^{\infty} \frac{(-1)^n}{2^n n^2} (z - 2i)^n$
+
+### 10–17 UNIFORM CONVERGENCE
+Prove that the series converges uniformly in the indicated region.
+
+10. $\sum_{n=0}^{\infty} \frac{z^{2n}}{(2n)!}, \quad |z| \le 10^{20}$
+11. $\sum_{n=1}^{\infty} \frac{z^n}{n^2}, \quad |z| \le 1$
+12. $\sum_{n=1}^{\infty} \frac{z^n}{n^3 \cosh n|z|}, \quad |z| \le 1$
+13. $\sum_{n=1}^{\infty} \frac{\sin^n |z|}{n^2}, \quad \text{all } z$
+14. $\sum_{n=0}^{\infty} \frac{z^n}{|z|^{2n} + 1}, \quad 2 \le |z| \le 10$
+15. $\sum_{n=0}^{\infty} \frac{(n!)^2}{(2n)!} z^n, \quad |z| \le 3$
+16. $\sum_{n=1}^{\infty} \frac{\tanh^n |z|}{n(n+1)}, \quad \text{all } z$
+17. $\sum_{n=1}^{\infty} \frac{\pi^n}{n^4} z^{2n}, \quad |z| \le 0.56$
+
+18. **TEAM PROJECT. Uniform Convergence.**  
+    (a) **Weierstrass M-test.** Give a proof.  
+    (b) **Termwise differentiation.** Derive Theorem 4 from Theorem 3.  
+    (c) **Subregions.** Prove that uniform convergence of a series in a region $G$ implies uniform convergence in any portion of $G$. Is the converse true?  
+    (d) **Example 2.** Find the precise region of convergence of the series in Example 2 with $x$ replaced by a complex variable $z$.  
+    (e) **Figure 369.** Show that $x^2 \sum_{m=1}^{\infty} (1 + x^2)^{-m} = 1$ if $x \neq 0$ and $0$ if $x = 0$. Verify by computation that the partial sums $s_1, s_2, s_3$ look as shown in Fig. 369.
+
+![Fig. 369. Sum $s$ and partial sums in Team Project 18(e)](../images/fig-15-09.png){#fig-15-09}
+
+### 19–20 HEAT EQUATION
+Show that (9) in Sec. 12.6 with coefficients (10) is a solution of the heat equation for $t > 0$, assuming that $f(x)$ is continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval. Proceed as follows.
+
+19. Show that $|B_n|$ is bounded, say $|B_n| < K$ for all $n$. Conclude that
+    $$
+    |u_n| < K e^{-\lambda_n^2 t_0} \quad \text{if} \quad t \ge t_0 > 0
+    $$
+    and, by the Weierstrass test, the series (9) converges uniformly with respect to $x$ and $t$ for $t \ge t_0$, $0 \le x \le L$. Using Theorem 2, show that $u(x, t)$ is continuous for $t \ge t_0$ and thus satisfies the boundary conditions (2) for $t \ge t_0$.
+20. Show that $|\partial u_n / \partial t| < \lambda_n^2 K e^{-\lambda_n^2 t_0}$ if $t \ge t_0$ and the series of the expressions on the right converges, by the ratio test. Conclude from this, the Weierstrass test, and Theorem 4 that the series (9) can be differentiated term by term with respect to $t$ and the resulting series has the sum $\partial u / \partial t$. Show that (9) can be differentiated twice with respect to $x$ and the resulting series has the sum $\partial^2 u / \partial x^2$. Conclude from this and the result to Prob. 19 that (9) is a solution of the heat equation for all $t \ge t_0$. (The proof that (9) satisfies the given initial condition can be found in Ref. [C10] listed in App. 1.)
+
+## CHAPTER 15 REVIEW QUESTIONS AND PROBLEMS {#sec-chapter-15-review}
+
+1. What is convergence test for series? State two tests from memory. Give examples.
+2. What is a power series? Why are these series very important in complex analysis?
+3. What is absolute convergence? Conditional convergence? Uniform convergence?
+4. What do you know about convergence of power series?
+5. What is a Taylor series? Give some basic examples.
+6. What do you know about adding and multiplying power series?
+7. Does every function have a Taylor series development? Explain.
+8. Can properties of functions be discovered from Maclaurin series? Give examples.
+9. What do you know about termwise integration of series?
+10. How did we obtain Taylor’s formula from Cauchy’s formula?
+
+### 11–15 RADIUS OF CONVERGENCE
+Find the radius of convergence.
+
+11. $\sum_{n=2}^{\infty} \frac{n + 1}{n^2 + 1} (z + 1)^n$
+12. $\sum_{n=2}^{\infty} \frac{4^n}{n - 1} (z - \pi i)^n$
+13. $\sum_{n=2}^{\infty} \frac{n(n - 1)}{3^n} (z - i)^n$
+14. $\sum_{n=1}^{\infty} \frac{n^5}{n!} (z - 3i)^{2n}$
+15. $\sum_{n=1}^{\infty} \frac{(-2)^{n+1}}{2n} z^n$
+
+### 16–20 RADIUS OF CONVERGENCE
+Find the radius of convergence. Try to identify the sum of the series as a familiar function.
+
+16. $\sum_{n=1}^{\infty} \frac{z^n}{n}$
+17. $\sum_{n=0}^{\infty} \frac{z^n}{n!}$
+18. $\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n + 1)!} (\pi z)^{2n+1}$
+19. $\sum_{n=0}^{\infty} \frac{z^n}{(2n)!}$
+20. $\sum_{n=0}^{\infty} \frac{z^n}{(3 + 4i)^n}$
+
+### 21–25 MACLAURIN SERIES
+Find the Maclaurin series and its radius of convergence. Show details.
+
+21. $(\sinh z^2)/z^2$
+22. $1/(1 - z)^3$
+23. $\cos^2 z$
+24. $1/(\pi z + 1)$
+25. $-(\exp(-z^2) - 1)/z^2$
+
+### 26–30 TAYLOR SERIES
+Find the Taylor series with the given point as center and its radius of convergence.
+
+26. $z^4, \quad \text{center } i$
+27. $\cos z, \quad \text{center } \frac{1}{2}\pi$
+28. $1/z, \quad \text{center } 2i$
+29. $\text{Ln } z, \quad \text{center } 3$
+30. $e^z, \quad \text{center } \pi i$
+
+## SUMMARY OF CHAPTER 15 {#sec-ch15-summary}
+
+### Power Series, Taylor Series
+
+Sequences, series, and convergence tests are discussed in Sec. 15.1. A power series is of the form (Sec. 15.2)
+
+$$
+\sum_{n=0}^{\infty} a_n(z - z_0)^n = a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \cdots;
+$$ {#eq-summary-15-1}
+
+$z_0$ is its center. The series (@eq-summary-15-1) converges for $|z - z_0| < R$ and diverges for $|z - z_0| > R$, where $R$ is the **radius of convergence**. Some power series converge for all $z$ (then we write $R = \infty$). In exceptional cases a power series may converge only at the center; such a series is practically useless. Also, $R = \lim |a_n / a_{n+1}|$ if this limit exists.
+
+The series (@eq-summary-15-1) converges absolutely (Sec. 15.2) and uniformly (Sec. 15.5) in every closed disk $|z - z_0| \le r < R$ ($R > 0$). It represents an **analytic function** $f(z)$ for $|z - z_0| < R$. The derivatives $f'(z), f''(z), \dots$ are obtained by termwise differentiation of (@eq-summary-15-1), and these series have the same radius of convergence $R$ as (@eq-summary-15-1) (see Sec. 15.3).
+
+Conversely, every analytic function $f(z)$ can be represented by power series. These **Taylor series** of $f(z)$ are of the form (Sec. 15.4)
+
+$$
+f(z) = \sum_{n=0}^{\infty} \frac{1}{n!} f^{(n)}(z_0)(z - z_0)^n \qquad (|z - z_0| < R),
+$$ {#eq-summary-15-2}
+
+as in calculus. They converge for all $z$ in the open disk with center $z_0$ and radius generally equal to the distance from $z_0$ to the nearest **singularity** of $f(z)$ (point at which $f(z)$ ceases to be analytic as defined in Sec. 15.4). If $f(z)$ is **entire** (analytic for all $z$; see Sec. 13.5), then (@eq-summary-15-2) converges for all $z$. The functions $e^z, \cos z, \sin z$, etc. have **Maclaurin series**, that is, Taylor series with center 0, similar to those in calculus (Sec. 15.4).
+
