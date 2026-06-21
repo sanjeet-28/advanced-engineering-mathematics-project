@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -172,13 +172,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CHAPTER 05: Series Solutions of ODEs. Special Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Series Solutions of ODEs. Special Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CHAPTER 06: Laplace Transforms</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Laplace Transforms</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -232,19 +232,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">CHAPTER 17: Conformal Mapping</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conformal Mapping</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">CHAPTER 18: Complex Analysis and Potential Theory</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Complex Analysis and Potential Theory</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch19.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">CHAPTER 19: Numerics in General</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Numerics in General</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1245,9 +1245,9 @@ F(z) = \int_{z_0}^z f(z^*) \, dz^*
 <p>The complex line integral of a function <span class="math inline">\(f(z)\)</span> taken over a path <span class="math inline">\(C\)</span> is denoted by <span id="eq-sum-1"><span class="math display">\[
 \int_C f(z) \, dz \quad \text{or, if $C$ is closed, also by} \quad \oint_C f(z) \, dz
 \tag{13.29}\]</span></span> (Sec. 14.1).</p>
-<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then we can evaluate <a href="ch18.html#eq-sum-1" class="quarto-xref">Equation&nbsp;<span>14.33</span></a> as in calculus by indefinite integration and substitution of limits, that is, <span id="eq-sum-2"><span class="math display">\[
+<p>If <span class="math inline">\(f(z)\)</span> is analytic in a simply connected domain <span class="math inline">\(D\)</span>, then we can evaluate <a href="ch18.html#eq-sum-1" class="quarto-xref">Equation&nbsp;<span>18.33</span></a> as in calculus by indefinite integration and substitution of limits, that is, <span id="eq-sum-2"><span class="math display">\[
 \int_C f(z) \, dz = F(z_1) - F(z_0) \quad [F'(z) = f(z)]
-\tag{13.30}\]</span></span> for every path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> from a point <span class="math inline">\(z_0\)</span> to a point <span class="math inline">\(z_1\)</span> (see Sec. 14.1). These assumptions imply independence of path, that is, <a href="ch18.html#eq-sum-2" class="quarto-xref">Equation&nbsp;<span>14.34</span></a> depends only on <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> (and on <span class="math inline">\(f(z)\)</span>, of course) but not on the choice of <span class="math inline">\(C\)</span> (Sec. 14.2). The existence of an <span class="math inline">\(F(z)\)</span> such that <span class="math inline">\(F'(z) = f(z)\)</span> is proved in Sec. 14.2 by Cauchy’s integral theorem (see below).</p>
+\tag{13.30}\]</span></span> for every path <span class="math inline">\(C\)</span> in <span class="math inline">\(D\)</span> from a point <span class="math inline">\(z_0\)</span> to a point <span class="math inline">\(z_1\)</span> (see Sec. 14.1). These assumptions imply independence of path, that is, <a href="ch18.html#eq-sum-2" class="quarto-xref">Equation&nbsp;<span>18.34</span></a> depends only on <span class="math inline">\(z_0\)</span> and <span class="math inline">\(z_1\)</span> (and on <span class="math inline">\(f(z)\)</span>, of course) but not on the choice of <span class="math inline">\(C\)</span> (Sec. 14.2). The existence of an <span class="math inline">\(F(z)\)</span> such that <span class="math inline">\(F'(z) = f(z)\)</span> is proved in Sec. 14.2 by Cauchy’s integral theorem (see below).</p>
 <p>A general method of integration, not restricted to analytic functions, uses the equation <span class="math inline">\(z = z(t)\)</span> of <span class="math inline">\(C\)</span>, where <span class="math inline">\(a \le t \le b\)</span>, <span id="eq-sum-3"><span class="math display">\[
 \int_C f(z) \, dz = \int_a^b f(z(t)) \dot{z}(t) \, dt \quad \left( \dot{z} = \frac{dz}{dt} \right).
 \tag{13.31}\]</span></span></p>

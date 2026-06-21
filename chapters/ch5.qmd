@@ -1,6 +1,7 @@
 ---
-title: "CHAPTER 05: Series Solutions of ODEs. Special Functions"
+title: "Series Solutions of ODEs. Special Functions"
 ---
+
 
 In the previous chapters, we have seen that linear ODEs with constant coefficients can be solved by algebraic methods, and that their solutions are elementary functions known from calculus. For ODEs with variable coefficients the situation is more complicated, and their solutions may be nonelementary functions. Legendre’s, Bessel’s, and the hypergeometric equations are important ODEs of this kind. Since these ODEs and their solutions, the Legendre polynomials, Bessel functions, and hypergeometric functions, play an important role in engineering modeling, we shall consider the two standard methods for solving such ODEs.
 
@@ -10,13 +11,13 @@ The second method is called the Frobenius method and generalizes the first; it g
 
 All those more advanced solutions and various other functions not appearing in calculus are known as higher functions or special functions, which has become a technical term. Each of these functions is important enough to give it a name and investigate its properties and relations to other functions in great detail (take a look into Refs. [GenRef1], [GenRef10], or [All] in App. 1). Your CAS knows practically all functions you will ever need in industry or research labs, but it is up to you to find your way through this vast terrain of formulas. The present chapter may give you some help in this task.
 
-**COMMENT.** You can study this chapter directly after Chap. 2 because it needs no material from Chaps. 3 or 4.
+**COMMENT.** You can study this chapter directly after <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2 because it needs no material from <!-- TODO: replace Chaps. 3 or 4 with actual chapter label -->Chaps. 3 or 4.
 
-**Prerequisite:** Chap. 2.
-**Section that may be omitted in a shorter course:** 5.5.
+**Prerequisite:** <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2.
+**Section that may be omitted in a shorter course:** @sec-bessel-functions-y-nu.
 **References and Answers to Problems:** App. 1 Part A, and App. 2.
 
-## 5.1 Power Series Method {#sec-power-series-method}
+## Power Series Method {#sec-power-series-method}
 
 The power series method is the standard method for solving linear ODEs with variable coefficients. It gives solutions in the form of power series. These series can be used for computing values, graphing curves, proving formulas, and exploring properties of solutions, as we shall see. In this section we begin by explaining the idea of the power series method.
 
@@ -112,17 +113,17 @@ If that sequence diverges at $x = x_1$, the series (@eq-sec51-1) is called **div
 In the case of convergence, for any positive $\epsilon$ there is an $N$ (depending on $\epsilon$) such that, by (@eq-sec51-8)
 $$ |R_n(x_1)| = |s(x_1) - s_n(x_1)| < \epsilon \quad \text{for all } n > N $$ {#eq-sec51-9}
 
-Geometrically, this means that all $s_n(x_1)$ with $n > N$ lie between $s(x_1) - \epsilon$ and $s(x_1) + \epsilon$ (Fig. 104). Practically, this means that in the case of convergence we can approximate the sum $s(x_1)$ of (@eq-sec51-1) at $x_1$ by $s_n(x_1)$ as accurately as we please, by taking $n$ large enough.
+Geometrically, this means that all $s_n(x_1)$ with $n > N$ lie between $s(x_1) - \epsilon$ and $s(x_1) + \epsilon$ (@fig-5-1). Practically, this means that in the case of convergence we can approximate the sum $s(x_1)$ of (@eq-sec51-1) at $x_1$ by $s_n(x_1)$ as accurately as we please, by taking $n$ large enough.
 
-![Fig. 104. Inequality (9)](../images/chapter5/fig-5-104.png){#fig-5-1}
+![@fig-5-1. Inequality (9)](../images/chapter5/fig-5-104.png){#fig-5-1}
 
-Where does a power series converge? Now if we choose $x = x_0$ in (@eq-sec51-1), the series reduces to the single term $a_0$ because the other terms are zero. Hence the series converges at $x_0$. In some cases this may be the only value of $x$ for which (@eq-sec51-1) converges. If there are other values of $x$ for which the series converges, these values form an interval, the **convergence interval**. This interval may be finite, as in Fig. 105, with midpoint $x_0$. Then the series (@eq-sec51-1) converges for all $x$ in the interior of the interval, that is, for all $x$ for which
+Where does a power series converge? Now if we choose $x = x_0$ in (@eq-sec51-1), the series reduces to the single term $a_0$ because the other terms are zero. Hence the series converges at $x_0$. In some cases this may be the only value of $x$ for which (@eq-sec51-1) converges. If there are other values of $x$ for which the series converges, these values form an interval, the **convergence interval**. This interval may be finite, as in @fig-5-2, with midpoint $x_0$. Then the series (@eq-sec51-1) converges for all $x$ in the interior of the interval, that is, for all $x$ for which
 $$ |x - x_0| < R $$ {#eq-sec51-10}
 and diverges for $|x - x_0| > R$. The interval may also be infinite, that is, the series may converge for all $x$.
 
-![Fig. 105. Convergence interval (10) of a power series with center $x_0$](../images/chapter5/fig-5-105.png){#fig-5-2}
+![@fig-5-2. Convergence interval (10) of a power series with center $x_0$](../images/chapter5/fig-5-105.png){#fig-5-2}
 
-The quantity $R$ in Fig. 105 is called the **radius of convergence** (because for a complex power series it is the radius of disk of convergence). If the series converges for all $x$, we set $R = \infty$ (and $1/R = 0$).
+The quantity $R$ in @fig-5-2 is called the **radius of convergence** (because for a complex power series it is the radius of disk of convergence). If the series converges for all $x$, we set $R = \infty$ (and $1/R = 0$).
 The radius of convergence can be determined from the coefficients of the series by means of each of the formulas
 $$ \text{(a) } R = 1 \Big/ \lim_{m \to \infty} \sqrt[m]{|a_m|} \qquad \text{(b) } R = 1 \Big/ \lim_{m \to \infty} \left| \frac{a_{m+1}}{a_m} \right| $$ {#eq-sec51-11}
 provided these limits exist and are not zero. [If these limits are infinite, then (@eq-sec51-1) converges only at the center $x_0$.]
@@ -146,7 +147,7 @@ The proof of this theorem requires advanced complex analysis and can be found in
 We mention that the radius of convergence $R$ in Theorem 1 is at least equal to the distance from the point $x = x_0$ to the point (or points) closest to $x_0$ at which one of the functions $p, q, r$, as functions of a complex variable, is not analytic. (Note that that point may not lie on the $x$-axis but somewhere in the complex plane.)
 
 ### Further Theory: Operations on Power Series
-In the power series method we differentiate, add, and multiply power series, and we obtain coefficient recursions (as, for instance, in Example 3) by equating the sum of the coefficients of each occurring power of $x$ to zero. These four operations are permissible in the sense explained in what follows. Proofs can be found in Sec. 15.3.
+In the power series method we differentiate, add, and multiply power series, and we obtain coefficient recursions (as, for instance, in Example 3) by equating the sum of the coefficients of each occurring power of $x$ to zero. These four operations are permissible in the sense explained in what follows. Proofs can be found in <!-- TODO: replace Sec. 15.3 with actual cross-reference label -->Sec. 15.3.
 
 1. **Termwise Differentiation.** A power series may be differentiated term by term. More precisely: if
 $$ y(x) = \sum_{m=0}^{\infty} a_m (x - x_0)^m $$
@@ -166,7 +167,7 @@ converges and represents $f(x)g(x)$ for each $x$ in the interior of the converge
 
 4. **Vanishing of All Coefficients (“Identity Theorem for Power Series.”)** If a power series has a positive radius of convergence and a sum that is identically zero throughout its interval of convergence, then each coefficient of the series must be zero.
 
-## PROBLEM SET 5.1
+## PROBLEM SET {#sec-ps-5-1}
 
 ### 1. WRITING AND LITERATURE PROJECT. Power Series in Calculus
 (a) Write a review (2–3 pages) on power series in calculus. Use your own formulations and examples—do not just copy from textbooks. No proofs.
@@ -208,17 +209,17 @@ Solve the initial value problem by a power series. Graph the partial sums of the
 ### 20. CAS Experiment. Information from Graphs of Partial Sums
 In numerics we use partial sums of power series. To get a feel for the accuracy for various $x$, experiment with $\sin x$. Graph partial sums of the Maclaurin series of an increasing number of terms, describing qualitatively the “breakaway points” of these graphs from the graph of $\sin x$. Consider other Maclaurin series of your choice.
 
-![Fig. 106. CAS Experiment 20. $\sin x$ and partial sums $s_3, s_5, s_7$](../images/chapter5/fig-5-106.png){#fig-5-3}
+![@fig-5-3. CAS Experiment 20. $\sin x$ and partial sums $s_3, s_5, s_7$](../images/chapter5/fig-5-106.png){#fig-5-3}
 
-## 5.2 Legendre’s Equation. Legendre Polynomials $P_n(x)$ {#sec-legendres-equation}
+## Legendre’s Equation. Legendre Polynomials $P_n(x)$ {#sec-legendres-equation}
 
 Legendre’s differential equation[^1]
 $$ (1 - x^2)y'' - 2xy' + n(n+1)y = 0 \quad (n \text{ constant}) $$ {#eq-sec52-1}
-is one of the most important ODEs in physics. It arises in numerous problems, particularly in boundary value problems for spheres (take a quick look at Example 1 in Sec. 12.10).
+is one of the most important ODEs in physics. It arises in numerous problems, particularly in boundary value problems for spheres (take a quick look at Example 1 in <!-- TODO: replace Sec. 12.10 with actual cross-reference label -->Sec. 12.10).
 
-The equation involves a parameter $n$, whose value depends on the physical or engineering problem. So (@eq-sec52-1) is actually a whole family of ODEs. For $n = 1$ we solved it in Example 3 of Sec. 5.1 (look back at it). Any solution of (@eq-sec52-1) is called a **Legendre function**. The study of these and other “higher” functions not occurring in calculus is called the **theory of special functions**. Further special functions will occur in the next sections.
+The equation involves a parameter $n$, whose value depends on the physical or engineering problem. So (@eq-sec52-1) is actually a whole family of ODEs. For $n = 1$ we solved it in Example 3 of @sec-power-series-method (look back at it). Any solution of (@eq-sec52-1) is called a **Legendre function**. The study of these and other “higher” functions not occurring in calculus is called the **theory of special functions**. Further special functions will occur in the next sections.
 
-Dividing (@eq-sec52-1) by $1 - x^2$, we obtain the standard form needed in Theorem 1 of Sec. 5.1 and we see that the coefficients $-2x/(1-x^2)$ and $n(n+1)/(1-x^2)$ of the new equation are analytic at $x = 0$, so that we may apply the power series method. Substituting
+Dividing (@eq-sec52-1) by $1 - x^2$, we obtain the standard form needed in Theorem 1 of @sec-power-series-method and we see that the coefficients $-2x/(1-x^2)$ and $n(n+1)/(1-x^2)$ of the new equation are analytic at $x = 0$, so that we may apply the power series method. Substituting
 $$ y = \sum_{m=0}^{\infty} a_m x^m $$ {#eq-sec52-2}
 and its derivatives into (@eq-sec52-1), and denoting the constant $n(n+1)$ simply by $k$, we obtain
 $$ (1 - x^2) \sum_{m=2}^{\infty} m(m-1)a_m x^{m-2} - 2x \sum_{m=1}^{\infty} m a_m x^{m-1} + k \sum_{m=0}^{\infty} a_m x^m = 0 $$
@@ -226,7 +227,7 @@ $$ (1 - x^2) \sum_{m=2}^{\infty} m(m-1)a_m x^{m-2} - 2x \sum_{m=1}^{\infty} m a_
 By writing the first expression as two separate series we have the equation
 $$ \sum_{m=2}^{\infty} m(m-1)a_m x^{m-2} - \sum_{m=2}^{\infty} m(m-1)a_m x^m - \sum_{m=1}^{\infty} 2m a_m x^m + \sum_{m=0}^{\infty} k a_m x^m = 0 $$
 
-It may help you to write out the first few terms of each series explicitly, as in Example 3 of Sec. 5.1; or you may continue as follows. To obtain the same general power $x^s$ in all four series, set $m - 2 = s$ (thus $m = s + 2$) in the first series and simply write $s$ instead of $m$ in the other three series. This gives
+It may help you to write out the first few terms of each series explicitly, as in Example 3 of @sec-power-series-method; or you may continue as follows. To obtain the same general power $x^s$ in all four series, set $m - 2 = s$ (thus $m = s + 2$) in the first series and simply write $s$ instead of $m$ in the other three series. This gives
 $$ \sum_{s=0}^{\infty} (s+2)(s+1)a_{s+2} x^s - \sum_{s=2}^{\infty} s(s-1)a_s x^s - \sum_{s=1}^{\infty} 2s a_s x^s + \sum_{s=0}^{\infty} k a_s x^s = 0 $$
 
 (Note that in the first series the summation begins with $s = 0$.) Since this equation with the right side 0 must be an identity in $x$ if (@eq-sec52-2) is to be a solution of (@eq-sec52-1), the sum of the coefficients of each power of $x$ on the left must be zero. Now $x^0$ occurs in the first and fourth series only, and gives [remember that $k = n(n+1)$]
@@ -264,7 +265,7 @@ $$ a_n = \frac{(2n)!}{2^n (n!)^2} = \frac{1 \cdot 3 \cdot 5 \cdots (2n-1)}{n!} \
 (and $a_n = 1$ if $n = 0$). Then we calculate the other coefficients from (@eq-sec52-4), solved for $a_s$ in terms of $a_{s+2}$, that is,
 $$ a_s = -\frac{(s+2)(s+1)}{(n-s)(n+s+1)} a_{s+2} \quad (s \le n - 2) $$ {#eq-sec52-9}
 
-The choice (@eq-sec52-8) makes $P_n(1) = 1$ for every $n$ (see Fig. 107); this motivates (@eq-sec52-8). From (@eq-sec52-9) with $s = n - 2$ and (@eq-sec52-8) we obtain
+The choice (@eq-sec52-8) makes $P_n(1) = 1$ for every $n$ (see @fig-5-4); this motivates (@eq-sec52-8). From (@eq-sec52-9) with $s = n - 2$ and (@eq-sec52-8) we obtain
 $$ a_{n-2} = -\frac{n(n-1)}{2(2n-1)} a_n = -\frac{n(n-1)}{2(2n-1)} \cdot \frac{(2n)!}{2^n (n!)^2} $$
 
 Using $(2n)! = 2n(2n-1)(2n-2)!$ in the numerator and $n! = n(n-1)!$ and $n! = n(n-1)(n-2)!$ in the denominator, we obtain
@@ -280,7 +281,7 @@ $$ a_{n-2m} = (-1)^m \frac{(2n-2m)!}{2^n m! (n-m)! (n-2m)!} $$ {#eq-sec52-10}
 The resulting solution of Legendre’s differential equation (@eq-sec52-1) is called the **Legendre polynomial** of degree $n$ and is denoted by $P_n(x)$.
 From (@eq-sec52-10) we obtain
 $$ P_n(x) = \sum_{m=0}^{M} (-1)^m \frac{(2n-2m)!}{2^n m! (n-m)! (n-2m)!} x^{n-2m} = \frac{(2n)!}{2^n (n!)^2} x^n - \frac{(2n-2)!}{2^{n-1} 1! (n-1)! (n-2)!} x^{n-2} + - \cdots $$ {#eq-sec52-11}
-where $M = n/2$ or $(n-1)/2$, whichever is an integer. The first few of these functions are (Fig. 107)
+where $M = n/2$ or $(n-1)/2$, whichever is an integer. The first few of these functions are (@fig-5-4)
 $$
 \begin{aligned}
 P_0(x) &= 1, & P_1(x) &= x \\
@@ -290,11 +291,11 @@ P_4(x) &= \frac{1}{8}(35x^4 - 30x^2 + 3), & P_5(x) &= \frac{1}{8}(63x^5 - 70x^3 
 $$ {#eq-sec52-11prime}
 and so on. You may now program (@eq-sec52-11) on your CAS and calculate $P_n(x)$ as needed.
 
-![Fig. 107. Legendre polynomials](../images/chapter5/fig-5-107.png){#fig-5-4}
+![@fig-5-4. Legendre polynomials](../images/chapter5/fig-5-107.png){#fig-5-4}
 
-The Legendre polynomials $P_n(x)$ are **orthogonal** on the interval $-1 \le x \le 1$, a basic property to be defined and used in making up “Fourier–Legendre series” in the chapter on Fourier series (see Secs. 11.5–11.6).
+The Legendre polynomials $P_n(x)$ are **orthogonal** on the interval $-1 \le x \le 1$, a basic property to be defined and used in making up “Fourier–Legendre series” in the chapter on Fourier series (see <!-- TODO: replace Secs. 11.5–11.6 with actual cross-reference label -->Secs. 11.5–11.6).
 
-## PROBLEM SET 5.2
+## PROBLEM SET {#sec-ps-5-2}
 
 ### 1–5 LEGENDRE POLYNOMIALS AND FUNCTIONS
 
@@ -324,11 +325,11 @@ $$ G(u, x) = \frac{1}{\sqrt{1 - 2xu + u^2}} = \sum_{n=0}^{\infty} P_n(x) u^n $$ 
 is a generating function of the Legendre polynomials.
 *Hint:* Start from the binomial expansion of $1/\sqrt{1-v}$, then set $v = 2xu - u^2$, multiply the powers of $2xu - u^2$ out, collect all the terms involving $u^n$, and verify that the sum of these terms is $P_n(x) u^n$.
 
-(b) **Potential theory.** Let $A_1$ and $A_2$ be two points in space (Fig. 108, $r_2 > 0$). Using (@eq-sec52-12), show that
+(b) **Potential theory.** Let $A_1$ and $A_2$ be two points in space (@fig-5-5, $r_2 > 0$). Using (@eq-sec52-12), show that
 $$ \frac{1}{r} = \frac{1}{\sqrt{r_1^2 + r_2^2 - 2r_1 r_2 \cos \theta}} = \frac{1}{r_2} \sum_{m=0}^{\infty} P_m(\cos \theta) \left( \frac{r_1}{r_2} \right)^m $$
 This formula has applications in potential theory. ($Q/r$ is the electrostatic potential at $A_2$ due to a charge $Q$ located at $A_1$. And the series expresses $1/r$ in terms of the distances of $A_1$ and $A_2$ from any origin $O$ and the angle $\theta$ between the segments $OA_1$ and $OA_2$.)
 
-![Fig. 108. Team Project 10](../images/chapter5/fig-5-108.png){#fig-5-5}
+![@fig-5-5. Team Project 10](../images/chapter5/fig-5-108.png){#fig-5-5}
 
 (c) **Further applications of (@eq-sec52-12).** Show that $P_n(1) = 1$, $P_n(-1) = (-1)^n$, $P_{2n+1}(0) = 0$, and $P_{2n}(0) = (-1)^n \cdot 1 \cdot 3 \cdots (2n-1) / [2 \cdot 4 \cdots (2n)]$.
 
@@ -352,9 +353,9 @@ where $q(x) = n(n+1) - k^2/(1 - x^2)$. Find $P_1^1(x), P_2^1(x), P_2^2(x)$, and 
 [^2]: OLINDE RODRIGUES (1794–1851), French mathematician and economist.
 [^3]: OSSIAN BONNET (1819–1892), French mathematician, whose main work was in differential geometry.
 
-## 5.3 Extended Power Series Method: Frobenius Method {#sec-frobenius-method}
+## Extended Power Series Method: Frobenius Method {#sec-frobenius-method}
 
-Several second-order ODEs of considerable practical importance—the famous Bessel equation among them—have coefficients that are not analytic (definition in Sec. 5.1), but are “not too bad,” so that these ODEs can still be solved by series (power series times a logarithm or times a fractional power of $x$, etc.). Indeed, the following theorem permits an extension of the power series method. The new method is called the **Frobenius method**.[^4] Both methods, that is, the power series method and the Frobenius method, have gained in significance due to the use of software in actual calculations.
+Several second-order ODEs of considerable practical importance—the famous Bessel equation among them—have coefficients that are not analytic (definition in @sec-power-series-method), but are “not too bad,” so that these ODEs can still be solved by series (power series times a logarithm or times a fractional power of $x$, etc.). Indeed, the following theorem permits an extension of the power series method. The new method is called the **Frobenius method**.[^4] Both methods, that is, the power series method and the Frobenius method, have gained in significance due to the use of software in actual calculations.
 
 ### THEOREM 1 Frobenius Method
 Let $b(x)$ and $c(x)$ be any functions that are analytic at $x = 0$. Then the ODE
@@ -369,8 +370,8 @@ For example, Bessel’s equation (to be discussed in the next section)
 $$ y'' + \frac{1}{x}y' + \left( \frac{x^2 - \nu^2}{x^2} \right) y = 0 \quad (\nu \text{ a parameter}) $$
 is of the form (@eq-sec53-1) with $b(x) = 1$ and $c(x) = x^2 - \nu^2$ analytic at $x = 0$, so that the theorem applies. This ODE could not be handled in full generality by the power series method.
 
-Similarly, the so-called hypergeometric differential equation (see Problem Set 5.3) also requires the Frobenius method.
-The point is that in (@eq-sec53-2) we have a power series times a single power of $x$ whose exponent $r$ is not restricted to be a nonnegative integer. (The latter restriction would make the whole expression a power series, by definition; see Sec. 5.1.)
+Similarly, the so-called hypergeometric differential equation (see @sec-ps-5-3) also requires the Frobenius method.
+The point is that in (@eq-sec53-2) we have a power series times a single power of $x$ whose exponent $r$ is not restricted to be a nonnegative integer. (The latter restriction would make the whole expression a power series, by definition; see @sec-power-series-method.)
 The proof of the theorem requires advanced methods of complex analysis and can be found in Ref. [A11] listed in App. 1.
 
 ### Regular and Singular Points
@@ -404,7 +405,7 @@ The Frobenius method yields a basis of solutions. One of the two solutions will 
 - **Case 2.** A double root.
 - **Case 3.** Roots differing by an integer $1, 2, 3, \dots$.
 
-Cases 1 and 2 are not unexpected because of the Euler–Cauchy equation (Sec. 2.5), the simplest ODE of the form (@eq-sec53-1). Case 1 includes complex conjugate roots $r_1$ and $r_2 = \bar{r}_1$ because $r_1 - r_2 = r_1 - \bar{r}_1 = 2i \operatorname{Im} r_1$ is imaginary, so it cannot be a real integer. The form of a basis will be given in Theorem 2 (which is proved in App. 4), without a general theory of convergence, but convergence of the occurring series can be tested in each individual case as usual. Note that in Case 2 we *must* have a logarithm, whereas in Case 3 we *may* or *may not*.
+Cases 1 and 2 are not unexpected because of the Euler–Cauchy equation (<!-- TODO: replace Sec. 2.5 with actual cross-reference label -->Sec. 2.5), the simplest ODE of the form (@eq-sec53-1). Case 1 includes complex conjugate roots $r_1$ and $r_2 = \bar{r}_1$ because $r_1 - r_2 = r_1 - \bar{r}_1 = 2i \operatorname{Im} r_1$ is imaginary, so it cannot be a real integer. The form of a basis will be given in Theorem 2 (which is proved in App. 4), without a general theory of convergence, but convergence of the occurring series can be tested in each individual case as usual. Note that in Case 2 we *must* have a logarithm, whereas in Case 3 we *may* or *may not*.
 
 ### THEOREM 2 Frobenius Method. Basis of Solutions. Three Cases
 Suppose that the ODE (@eq-sec53-1) satisfies the assumptions in Theorem 1. Let $r_1$ and $r_2$ be the roots of the indicial equation (@eq-sec53-4). Then we have the following three cases.
@@ -427,10 +428,10 @@ $$ y_2(x) = k y_1(x) \ln x + x^{r_2} (A_0 + A_1 x + A_2 x^2 + \cdots) $$ {#eq-se
 where the roots are so denoted that $r_1 - r_2 > 0$ and $k$ may turn out to be zero.
 
 ### Typical Applications
-Technically, the Frobenius method is similar to the power series method, once the roots of the indicial equation have been determined. However, (@eq-sec53-5)–(@eq-sec53-10) merely indicate the general form of a basis, and a second solution can often be obtained more rapidly by reduction of order (Sec. 2.1).
+Technically, the Frobenius method is similar to the power series method, once the roots of the indicial equation have been determined. However, (@eq-sec53-5)–(@eq-sec53-10) merely indicate the general form of a basis, and a second solution can often be obtained more rapidly by reduction of order (<!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1).
 
 ### EXAMPLE 1 Euler–Cauchy Equation, Illustrating Cases 1 and 2 and Case 3 without a Logarithm
-For the Euler–Cauchy equation (Sec. 2.5)
+For the Euler–Cauchy equation (<!-- TODO: replace Sec. 2.5 with actual cross-reference label -->Sec. 2.5)
 $$ x^2 y'' + b_0 x y' + c_0 y = 0 \quad (b_0, c_0 \text{ constant}) $$
 substitution of $y = x^r$ gives the auxiliary equation
 $$ r(r - 1) + b_0 r + c_0 = 0 $$
@@ -441,7 +442,7 @@ Solve the ODE
 $$ x(x - 1)y'' + (3x - 1)y' + y = 0 $$ {#eq-sec53-11}
 (This is a special hypergeometric equation, as we shall see in the problem set.)
 
-**Solution.** Writing (@eq-sec53-11) in the standard form (1), we see that it satisfies the assumptions in Theorem 1. [What are $b(x)$ and $c(x)$ in (@eq-sec53-11)?] By inserting (@eq-sec53-2) and its derivatives (@eq-sec53-2star) into (@eq-sec53-11) we obtain
+**Solution.** Writing (@eq-sec53-11) in the standard form (@eq-sec53-1), we see that it satisfies the assumptions in Theorem 1. [What are $b(x)$ and $c(x)$ in (@eq-sec53-11)?] By inserting (@eq-sec53-2) and its derivatives (@eq-sec53-2star) into (@eq-sec53-11) we obtain
 $$ \sum_{m=0}^{\infty} (m+r)(m+r-1)a_m x^{m+r} - \sum_{m=0}^{\infty} (m+r)(m+r-1)a_m x^{m+r-1} + 3 \sum_{m=0}^{\infty} (m+r)a_m x^{m+r} - \sum_{m=0}^{\infty} (m+r)a_m x^{m+r-1} + \sum_{m=0}^{\infty} a_m x^{m+r} = 0 $$ {#eq-sec53-12}
 
 The smallest power is $x^{r-1}$, occurring in the second and the fourth series; by equating the sum of its coefficients to zero we have
@@ -453,14 +454,14 @@ $$ s(s-1)a_s - (s+1)s a_{s+1} + 3s a_s - (s+1)a_{s+1} + a_s = 0 $$
 thus $a_{s+1} = a_s$. Hence $a_0 = a_1 = a_2 = \dots$, and by choosing $a_0 = 1$ we obtain the solution
 $$ y_1(x) = \sum_{m=0}^{\infty} x^m = \frac{1}{1 - x} \quad (|x| < 1) $$
 
-**Second Solution.** We get a second independent solution $y_2$ by the method of reduction of order (Sec. 2.1), substituting $y_2 = u y_1$ and its derivatives into the equation. This leads to (9), Sec. 2.1, which we shall use in this example, instead of starting reduction of order from scratch (as we shall do in the next example). In (9) of Sec. 2.1 we have $p = (3x-1)/(x^2-x)$, the coefficient of $y'$ in (@eq-sec53-11) in standard form. By partial fractions,
+**Second Solution.** We get a second independent solution $y_2$ by the method of reduction of order (<!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1), substituting $y_2 = u y_1$ and its derivatives into the equation. This leads to <!-- TODO: verify equation reference -->(9), <!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1, which we shall use in this example, instead of starting reduction of order from scratch (as we shall do in the next example). In <!-- TODO: verify equation reference -->(9) of <!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1 we have $p = (3x-1)/(x^2-x)$, the coefficient of $y'$ in (@eq-sec53-11) in standard form. By partial fractions,
 $$ -\int p \, dx = -\int \frac{3x-1}{x(x-1)} \, dx = -\int \left( \frac{2}{x-1} + \frac{1}{x} \right) \, dx = -2 \ln(x-1) - \ln x $$
 
-Hence (9), Sec. 2.1, becomes
+Hence <!-- TODO: verify equation reference -->(9), <!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1, becomes
 $$ u' = U = y_1^{-2} e^{-\int p \, dx} = \frac{(x-1)^2}{(x-1)^2 x} = \frac{1}{x}, \quad u = \ln x, \quad y_2 = u y_1 = \frac{\ln x}{1 - x} $$
-$y_1$ and $y_2$ are shown in Fig. 109. These functions are linearly independent and thus form a basis on the interval $0 < x < 1$ (as well as on $1 < x < \infty$).
+$y_1$ and $y_2$ are shown in @fig-5-6. These functions are linearly independent and thus form a basis on the interval $0 < x < 1$ (as well as on $1 < x < \infty$).
 
-![Fig. 109. Solutions in Example 2](../images/chapter5/fig-5-109.png){#fig-5-6}
+![@fig-5-6. Solutions in Example 2](../images/chapter5/fig-5-109.png){#fig-5-6}
 
 ### EXAMPLE 3 Case 3, Second Solution with Logarithmic Term
 Solve the ODE
@@ -485,7 +486,7 @@ This gives the recurrence relation
 $$ a_{s+1} = \frac{s^2}{(s+2)(s+1)} a_s \quad (s = 0, 1, \dots) $$
 Hence $a_1 = 0, a_2 = 0, \dots$ successively. Taking $a_0 = 1$, we get as a first solution $y_1 = x^r a_0 = x$.
 
-**Second Solution.** Applying reduction of order (Sec. 2.1), we substitute $y_2 = y_1 u = x u, y_2' = x u' + u$ and $y_2'' = x u'' + 2u'$ into the ODE, obtaining
+**Second Solution.** Applying reduction of order (<!-- TODO: replace Sec. 2.1 with actual cross-reference label -->Sec. 2.1), we substitute $y_2 = y_1 u = x u, y_2' = x u' + u$ and $y_2'' = x u'' + 2u'$ into the ODE, obtaining
 $$ (x^2 - x)(x u'' + 2u') - x(x u' + u) + x u = 0 $$
 $xu$ drops out. Division by $x$ and simplification give
 $$ (x^2 - x) u'' + (x - 2) u' = 0 $$
@@ -499,7 +500,7 @@ $y_1$ and $y_2$ are linearly independent, and $y_2$ has a logarithmic term. Henc
 
 The Frobenius method solves the **hypergeometric equation**, whose solutions include many known functions as special cases (see the problem set). In the next section we use the method for solving Bessel’s equation.
 
-## PROBLEM SET 5.3
+## PROBLEM SET {#sec-ps-5-3}
 
 ### 1. WRITING PROJECT. Power Series Method and Frobenius Method
 Write a report of 2–3 pages explaining the difference between the two methods. No proofs. Give simple examples of your own.
@@ -558,11 +559,11 @@ Find a general solution in terms of hypergeometric functions.
 [^4]: GEORG FROBENIUS (1849–1917), German mathematician, professor at ETH Zurich and University of Berlin, student of Karl Weierstrass (see footnote, Sect. 15.5). He is also known for his work on matrices and in group theory. In this theorem we may replace $x$ by $x - x_0$ with any number $x_0$. The condition $a_0 \neq 0$ is no restriction; it simply means that we factor out the highest possible power of $x$. The singular point of (@eq-sec53-1) at $x = 0$ is often called a **regular singular point**, a term confusing to the student, which we shall not use.
 [^5]: CARL FRIEDRICH GAUSS (1777–1855), great German mathematician. He already made the first of his great discoveries as a student at Helmstedt and Göttingen. In 1807 he became a professor and director of the Observatory at Göttingen. His work was of basic importance in algebra, number theory, differential equations, differential geometry, non-Euclidean geometry, complex analysis, numeric analysis, astronomy, geodesy, electromagnetism, and theoretical mechanics. He also paved the way for a general and systematic use of complex numbers.
 
-## 5.4 Bessel’s Equation. Bessel Functions $J_\nu(x)$ {#sec-bessels-equation}
+## Bessel’s Equation. Bessel Functions $J_\nu(x)$ {#sec-bessels-equation}
 
 One of the most important ODEs in applied mathematics is Bessel’s equation,[^6]
 $$ x^2 y'' + xy' + (x^2 - \nu^2)y = 0 $$ {#eq-sec54-1}
-where the parameter $\nu$ (nu) is a given real number which is positive or zero. Bessel’s equation often appears if a problem shows cylindrical symmetry, for example, as the membranes in Sec. 12.9. The equation satisfies the assumptions of Theorem 1. To see this, divide (@eq-sec54-1) by $x^2$ to get the standard form $y'' + y'/x + (1 - \nu^2/x^2)y = 0$. Hence, according to the Frobenius theory, it has a solution of the form
+where the parameter $\nu$ (nu) is a given real number which is positive or zero. Bessel’s equation often appears if a problem shows cylindrical symmetry, for example, as the membranes in <!-- TODO: replace Sec. 12.9 with actual cross-reference label -->Sec. 12.9. The equation satisfies the assumptions of Theorem 1. To see this, divide (@eq-sec54-1) by $x^2$ to get the standard form $y'' + y'/x + (1 - \nu^2/x^2)y = 0$. Hence, according to the Frobenius theory, it has a solution of the form
 $$ y(x) = \sum_{m=0}^{\infty} a_m x^{m+r} \quad (a_0 \neq 0) $$ {#eq-sec54-2}
 
 Substituting (@eq-sec54-2) and its first and second derivatives into Bessel’s equation, we obtain
@@ -615,13 +616,13 @@ $J_n(x)$ is called the **Bessel function of the first kind** of order $n$. The s
 ### EXAMPLE 1 Bessel Functions $J_0(x)$ and $J_1(x)$
 For $n = 0$ we obtain from (@eq-sec54-11) the Bessel function of order 0:
 $$ J_0(x) = \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m}(m!)^2} = 1 - \frac{x^2}{2^2(1!)^2} + \frac{x^4}{2^4(2!)^2} - \frac{x^6}{2^6(3!)^2} + - \cdots $$ {#eq-sec54-12}
-which looks similar to a cosine (Fig. 110). For $n = 1$ we obtain the Bessel function of order 1:
+which looks similar to a cosine (@fig-5-7). For $n = 1$ we obtain the Bessel function of order 1:
 $$ J_1(x) = \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m+1}}{2^{2m+1}m! (m+1)!} = \frac{x}{2} - \frac{x^3}{2^3 1! 2!} + \frac{x^5}{2^5 2! 3!} - \frac{x^7}{2^7 3! 4!} + - \cdots $$ {#eq-sec54-13}
-which looks similar to a sine (Fig. 110). But the zeros of these functions are not completely regularly spaced (see also Table A1 in App. 5) and the height of the “waves” decreases with increasing $x$. Heuristically, $n^2/x^2$ in (@eq-sec54-1) in standard form [(@eq-sec54-1) divided by $x^2$] is zero (if $n = 0$) or small in absolute value for large $x$, and so is $y'/x$, so that then Bessel’s equation comes close to $y'' + y = 0$, the equation of $\cos x$ and $\sin x$; also $y'/x$ acts as a “damping term,” in part responsible for the decrease in height. One can show that for large $x$,
+which looks similar to a sine (@fig-5-7). But the zeros of these functions are not completely regularly spaced (see also <!-- TODO: replace Table A1 with actual table label -->Table A1 in App. 5) and the height of the “waves” decreases with increasing $x$. Heuristically, $n^2/x^2$ in (@eq-sec54-1) in standard form [(@eq-sec54-1) divided by $x^2$] is zero (if $n = 0$) or small in absolute value for large $x$, and so is $y'/x$, so that then Bessel’s equation comes close to $y'' + y = 0$, the equation of $\cos x$ and $\sin x$; also $y'/x$ acts as a “damping term,” in part responsible for the decrease in height. One can show that for large $x$,
 $$ J_n(x) \sim \sqrt{\frac{2}{\pi x}} \cos \left( x - \frac{n\pi}{2} - \frac{\pi}{4} \right) $$ {#eq-sec54-14}
 where $\sim$ is read “asymptotically equal” and means that for fixed $n$ the quotient of the two sides approaches 1 as $x \to \infty$.
 
-![Fig. 110. Bessel functions of the first kind $J_0$ and $J_1$](../images/chapter5/fig-5-110.png){#fig-5-7}
+![@fig-5-7. Bessel functions of the first kind $J_0$ and $J_1$](../images/chapter5/fig-5-110.png){#fig-5-7}
 
 ### Bessel Functions $J_\nu(x)$ for any $\nu \ge 0$. Gamma Function
 We now proceed from integer $\nu = n$ to any $\nu \ge 0$. We had $a_0 = 1/(2^n n!)$ in (@eq-sec54-9). So we have to extend the factorial function $n!$ to any $\nu \ge 0$. For this we choose
@@ -697,7 +698,7 @@ This is what you get, for instance, with Maple if you type `int(...)`. And if yo
 We discover this remarkable fact as another property obtained from the series (@eq-sec54-20) and confirm it in the problem set by using Bessel’s ODE.
 
 ### EXAMPLE 3 Elementary Bessel Functions $J_\nu$ with $\nu = \pm\frac{1}{2}, \pm\frac{3}{2}, \pm\frac{5}{2}, \dots$. The Value $\Gamma(\frac{1}{2})$
-We first prove (Fig. 111)
+We first prove (@fig-5-8)
 $$ \text{(a) } J_{1/2}(x) = \sqrt{\frac{2}{\pi x}} \sin x \qquad \text{(b) } J_{-1/2}(x) = \sqrt{\frac{2}{\pi x}} \cos x $$ {#eq-sec54-22}
 
 The series (@eq-sec54-20) with $\nu = \frac{1}{2}$ is
@@ -714,7 +715,7 @@ $$ AB = (2m+1)2m(2m-1)\cdots 3 \cdot 2 \cdot 1 \sqrt{\pi} = (2m+1)!\sqrt{\pi} $$
 Hence
 $$ J_{1/2}(x) = \sqrt{\frac{2}{\pi x}} \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m+1}}{(2m+1)!} = \sqrt{\frac{2}{\pi x}} \sin x $$
 
-![Fig. 111. Bessel functions $J_{1/2}$ and $J_{-1/2}$](../images/chapter5/fig-5-111.png){#fig-5-8}
+![@fig-5-8. Bessel functions $J_{1/2}$ and $J_{-1/2}$](../images/chapter5/fig-5-111.png){#fig-5-8}
 
 This proves (@eq-sec54-22)(a). Differentiation and the use of (@eq-sec54-21ab)(a) with $\nu = \frac{1}{2}$ now gives
 $$ [\sqrt{x} J_{1/2}(x)]' = \sqrt{\frac{2}{\pi}} \cos x = x^{1/2} J_{-1/2}(x) $$
@@ -741,14 +742,14 @@ This cannot be the general solution for an integer $\nu = n$ because, in that ca
 $$ J_{-n}(x) = (-1)^n J_n(x) \quad (n = 1, 2, \dots) $$ {#eq-sec54-25}
 
 **PROOF**
-To prove (@eq-sec54-25), we use (@eq-sec54-24) and let $\nu$ approach a positive integer $n$. Then the gamma function in the coefficients of the first $n$ terms becomes infinite (see Fig. 553 in App. A3.1), the coefficients become zero, and the summation starts with $m = n$. Since in this case $\Gamma(m - n + 1) = (m - n)!$ by (@eq-sec54-18), we obtain
+To prove (@eq-sec54-25), we use (@eq-sec54-24) and let $\nu$ approach a positive integer $n$. Then the gamma function in the coefficients of the first $n$ terms becomes infinite (see <!-- TODO: replace Fig. 553 with actual figure label -->Fig. 553 in App. A3.1), the coefficients become zero, and the summation starts with $m = n$. Since in this case $\Gamma(m - n + 1) = (m - n)!$ by (@eq-sec54-18), we obtain
 $$ J_{-n}(x) = \sum_{m=n}^{\infty} \frac{(-1)^m x^{2m-n}}{2^{2m-n} m! (m-n)!} = \sum_{s=0}^{\infty} \frac{(-1)^{n+s} x^{2s+n}}{2^{2s+n} (n+s)! s!} \quad (m = n+s) $$ {#eq-sec54-26}
 
 The last series represents $(-1)^n J_n(x)$, as you can see from (@eq-sec54-11) with $m$ replaced by $s$. This completes the proof.
 
 The difficulty caused by (@eq-sec54-25) will be overcome in the next section by introducing further Bessel functions, called of the second kind and denoted by $Y_\nu$.
 
-## PROBLEM SET 5.4
+## PROBLEM SET {#sec-ps-5-4}
 
 ### 1. Convergence
 Show that the series (@eq-sec54-11) converges for all $x$. Why is the convergence very rapid?
@@ -777,7 +778,7 @@ for $k = 0, 1, 2, \dots, 10$ (or as far as you get useful graphs). For what $k$ 
 (d) How does the error of (@eq-sec54-14) behave as a function of $x$ for fixed $n$? [Error = exact value minus approximation (@eq-sec54-14).]
 (e) Show from the graphs that $J_0(x)$ has extrema where $J_1(x) = 0$. Which formula proves this? Find further relations between zeros and extrema.
 
-### 13–15 ZEROS of Bessel functions play a key role in modeling (e.g. of vibrations; see Sec. 12.9)
+### 13–15 ZEROS of Bessel functions play a key role in modeling (e.g. of vibrations; see <!-- TODO: replace Sec. 12.9 with actual cross-reference label -->Sec. 12.9)
 13. **Interlacing of zeros.** Using (@eq-sec54-21ab) and Rolle’s theorem, show that between any two consecutive positive zeros of $J_n(x)$ there is precisely one zero of $J_{n+1}(x)$.
 14. **Zeros.** Compute the first four positive zeros of $J_0(x)$ and $J_1(x)$ from (@eq-sec54-14). Determine the error and comment.
 15. **Interlacing of zeros.** Using (@eq-sec54-21ab) and Rolle’s theorem, show that between any two consecutive zeros of $J_0(x)$ there is precisely one zero of $J_1(x)$.
@@ -792,7 +793,7 @@ $$ x^2 u'' + \left( x^2 + \frac{1}{4} - \nu^2 \right) u = 0 $$ {#eq-sec54-27}
 
 18. **Elementary Bessel functions.** Derive (@eq-sec54-22) in Example 3 from (@eq-sec54-27).
 
-### 19–25 APPLICATION OF (21): DERIVATIVES, INTEGRALS
+### 19–25 APPLICATION OF (@eq-sec54-21ab) AND (@eq-sec54-21cd): DERIVATIVES, INTEGRALS
 Use the powerful formulas (@eq-sec54-21ab) and (@eq-sec54-21cd) to do Probs. 19–25. Show the details of your work.
 19. **Derivatives.** Show that $J_0'(x) = -J_1(x)$, $J_1'(x) = J_0(x) - J_1(x)/x$, $J_2'(x) = \frac{1}{2}[J_1(x) - J_3(x)]$.
 20. **Bessel’s equation.** Derive (@eq-sec54-1) from (@eq-sec54-21ab) and (@eq-sec54-21cd).
@@ -806,13 +807,13 @@ $$ \int x^{-\nu} J_{\nu+1}(x) \, dx = -x^{-\nu} J_\nu(x) + c, \qquad \int J_{\nu
 
 [^6]: FRIEDRICH WILHELM BESSEL (1784–1846), German astronomer and mathematician, studied astronomy on his own in his spare time as an apprentice of a trade company and finally became director of the new Königsberg Observatory. Formulas on Bessel functions are contained in Ref. [GenRef10] and the standard treatise [A13].
 
-## 5.5 Bessel Functions $Y_\nu(x)$. General Solution {#sec-bessel-functions-y-nu}
+## Bessel Functions $Y_\nu(x)$. General Solution {#sec-bessel-functions-y-nu}
 
-To obtain a general solution of Bessel’s equation (@eq-sec54-1), Sec. 5.4, for any $\nu$, we now introduce **Bessel functions of the second kind** $Y_\nu(x)$, beginning with the case $\nu = n = 0$.
+To obtain a general solution of Bessel’s equation (@eq-sec54-1), @sec-bessels-equation, for any $\nu$, we now introduce **Bessel functions of the second kind** $Y_\nu(x)$, beginning with the case $\nu = n = 0$.
 When $n = 0$, Bessel’s equation can be written (divide by $x$)
 $$ x y'' + y' + xy = 0 $$ {#eq-sec55-1}
 
-Then the indicial equation (@eq-sec54-4) in Sec. 5.4 has a double root $r = 0$. This is Case 2 in Sec. 5.3. In this case we first have only one solution, $J_0(x)$. From (8) in Sec. 5.3 we see that the desired second solution must be of the form
+Then the indicial equation (@eq-sec54-4) in @sec-bessels-equation has a double root $r = 0$. This is Case 2 in @sec-frobenius-method. In this case we first have only one solution, $J_0(x)$. From @eq-sec53-8 in @sec-frobenius-method we see that the desired second solution must be of the form
 $$ y_2(x) = J_0(x) \ln x + \sum_{m=1}^{\infty} A_m x^m $$ {#eq-sec55-2}
 
 We substitute $y_2$ and its derivatives
@@ -820,7 +821,7 @@ $$ \begin{aligned} y_2' &= J_0' \ln x + \frac{J_0}{x} + \sum_{m=1}^{\infty} m A_
 into (@eq-sec55-1). Then the sum of the three logarithmic terms $x J_0'' \ln x$, $J_0' \ln x$, and $x J_0 \ln x$ is zero because $J_0$ is a solution of (@eq-sec55-1). The terms $-J_0/x$ and $J_0/x$ (from $x y_2''$ and $y_2'$) cancel. Hence we are left with
 $$ 2 J_0' + \sum_{m=1}^{\infty} m(m - 1) A_m x^{m-1} + \sum_{m=1}^{\infty} m A_m x^{m-1} + \sum_{m=1}^{\infty} A_m x^{m+1} = 0 $$
 
-Addition of the first and second series gives $\sum_{m=1}^{\infty} m^2 A_m x^{m-1}$. The power series of $J_0'(x)$ is obtained from (@eq-sec54-12) in Sec. 5.4 and the use of $m!/m = (m - 1)!$ in the form
+Addition of the first and second series gives $\sum_{m=1}^{\infty} m^2 A_m x^{m-1}$. The power series of $J_0'(x)$ is obtained from (@eq-sec54-12) in @sec-bessels-equation and the use of $m!/m = (m - 1)!$ in the form
 $$ J_0'(x) = \sum_{m=1}^{\infty} \frac{(-1)^m 2m x^{2m-1}}{2^{2m}(m!)^2} = \sum_{m=1}^{\infty} \frac{(-1)^m x^{2m-1}}{2^{2m-1} m! (m - 1)!} $$
 
 Together with $\sum_{m=1}^{\infty} m^2 A_m x^{m-1}$ and $\sum_{m=1}^{\infty} A_m x^{m+1}$ this gives
@@ -848,19 +849,19 @@ $$ y_2(x) = J_0(x) \ln x + \sum_{m=1}^{\infty} \frac{(-1)^{m-1} h_m}{2^{2m}(m!)^
 
 Since $J_0$ and $y_2$ are linearly independent functions, they form a basis of (@eq-sec55-1) for $x > 0$. Of course, another basis is obtained if we replace $y_2$ by an independent particular solution of the form $a(y_2 + b J_0)$, where $a \ (\neq 0)$ and $b$ are constants. It is customary to choose $a = 2/\pi$ and $b = \gamma - \ln 2$, where the number $\gamma = 0.57721566490\dots$ is the so-called **Euler constant**, which is defined as the limit of
 $$ 1 + \frac{1}{2} + \cdots + \frac{1}{s} - \ln s $$
-as $s$ approaches infinity. The standard particular solution thus obtained is called the **Bessel function of the second kind of order zero** (Fig. 112) or **Neumann’s function of order zero** and is denoted by $Y_0(x)$. Thus [see (@eq-sec55-4)]
+as $s$ approaches infinity. The standard particular solution thus obtained is called the **Bessel function of the second kind of order zero** (@fig-5-9) or **Neumann’s function of order zero** and is denoted by $Y_0(x)$. Thus [see (@eq-sec55-4)]
 $$ Y_0(x) = \frac{2}{\pi} \left[ J_0(x) \left( \ln \frac{x}{2} + \gamma \right) + \sum_{m=1}^{\infty} \frac{(-1)^{m-1} h_m}{2^{2m}(m!)^2} x^{2m} \right] $$ {#eq-sec55-6}
-For small $x > 0$ the function $Y_0(x)$ behaves about like $\ln x$ (see Fig. 112, why?), and $Y_0(x) \to -\infty$ as $x \to 0$.
+For small $x > 0$ the function $Y_0(x)$ behaves about like $\ln x$ (see @fig-5-9, why?), and $Y_0(x) \to -\infty$ as $x \to 0$.
 
 ### Bessel Functions of the Second Kind $Y_n(x)$
-For $\nu = n = 1, 2, \dots$ a second solution can be obtained by manipulations similar to those for $n = 0$, starting from (10), Sec. 5.4. It turns out that in these cases the solution also contains a logarithmic term.
+For $\nu = n = 1, 2, \dots$ a second solution can be obtained by manipulations similar to those for $n = 0$, starting from @eq-sec54-10 in @sec-bessels-equation. It turns out that in these cases the solution also contains a logarithmic term.
 The situation is not yet completely satisfactory, because the second solution is defined differently, depending on whether the order $\nu$ is an integer or not. To provide uniformity of formalism, it is desirable to adopt a form of the second solution that is valid for all values of the order. For this reason we introduce a standard second solution $Y_\nu(x)$ defined for all $\nu$ by the formula
 $$ \text{(a) } Y_\nu(x) = \frac{1}{\sin \nu\pi} [J_\nu(x) \cos \nu\pi - J_{-\nu}(x)] \qquad \text{(b) } Y_n(x) = \lim_{\nu \to n} Y_\nu(x) $$ {#eq-sec55-7}
 
-This function is called the **Bessel function of the second kind of order $\nu$** or **Neumann’s function**[^7] of order $\nu$. Figure 112 shows $Y_0(x)$ and $Y_1(x)$.
+This function is called the **Bessel function of the second kind of order $\nu$** or **Neumann’s function**[^7] of order $\nu$. @fig-5-9 shows $Y_0(x)$ and $Y_1(x)$.
 Let us show that $J_\nu$ and $Y_\nu$ are indeed linearly independent for all $\nu$ (and $x > 0$). For noninteger order $\nu$, the function $Y_\nu(x)$ is evidently a solution of Bessel’s equation because $J_\nu(x)$ and $J_{-\nu}(x)$ are solutions of that equation. Since for those $\nu$ the solutions $J_\nu$ and $J_{-\nu}$ are linearly independent and $Y_\nu$ involves $J_{-\nu}$, the functions $J_\nu$ and $Y_\nu$ are linearly independent.
 
-Furthermore, it can be shown that the limit in (@eq-sec55-7)(b) exists and $Y_n$ is a solution of Bessel’s equation for integer order; see Ref. [A13] in App. 1. We shall see that the series development of $Y_n(x)$ contains a logarithmic term. Hence $J_n(x)$ and $Y_n(x)$ are linearly independent solutions of Bessel’s equation. The series development of $Y_n(x)$ can be obtained if we insert the series (@eq-sec54-20) in Sec. 5.4 and (@eq-sec55-2) in this section for $J_\nu(x)$ and $J_{-\nu}(x)$ into (@eq-sec55-7)(a) and then let $\nu$ approach $n$; for details see Ref. [A13]. The result is
+Furthermore, it can be shown that the limit in (@eq-sec55-7)(b) exists and $Y_n$ is a solution of Bessel’s equation for integer order; see Ref. [A13] in App. 1. We shall see that the series development of $Y_n(x)$ contains a logarithmic term. Hence $J_n(x)$ and $Y_n(x)$ are linearly independent solutions of Bessel’s equation. The series development of $Y_n(x)$ can be obtained if we insert the series (@eq-sec54-20) in @sec-bessels-equation and (@eq-sec55-2) in this section for $J_\nu(x)$ and $J_{-\nu}(x)$ into (@eq-sec55-7)(a) and then let $\nu$ approach $n$; for details see Ref. [A13]. The result is
 $$ Y_n(x) = \frac{2}{\pi} J_n(x) \left( \ln \frac{x}{2} + \gamma \right) + \frac{x^n}{\pi} \sum_{m=0}^{\infty} \frac{(-1)^{m-1}(h_m + h_{m+n})}{2^{2m+n} m! (m+n)!} x^{2m} - \frac{x^{-n}}{\pi} \sum_{m=0}^{n-1} \frac{(n-m-1)!}{2^{2m-n} m!} x^{2m} $$ {#eq-sec55-8}
 where $x > 0, n = 0, 1, \dots$, and [as in (@eq-sec55-4)] $h_0 = 0, h_1 = 1$,
 $$ h_m = 1 + \frac{1}{2} + \dots + \frac{1}{m}, \qquad h_{m+n} = 1 + \frac{1}{2} + \dots + \frac{1}{m+n} $$
@@ -877,11 +878,11 @@ $$ y(x) = C_1 J_\nu(x) + C_2 Y_\nu(x) $$ {#eq-sec55-9}
 We finally mention that there is a practical need for solutions of Bessel’s equation that are complex for real values of $x$. For this purpose the solutions
 $$ H_\nu^{(1)}(x) = J_\nu(x) + i Y_\nu(x) \qquad \text{and} \qquad H_\nu^{(2)}(x) = J_\nu(x) - i Y_\nu(x) $$ {#eq-sec55-10}
 are frequently used. These linearly independent functions are called **Bessel functions of the third kind of order $\nu$** or **first and second Hankel functions**[^8] of order $\nu$.
-This finishes our discussion on Bessel functions, except for their “orthogonality,” which we explain in Sec. 11.6. Applications to vibrations follow in Sec. 12.10.
+This finishes our discussion on Bessel functions, except for their “orthogonality,” which we explain in <!-- TODO: replace Sec. 11.6 with actual cross-reference label -->Sec. 11.6. Applications to vibrations follow in <!-- TODO: replace Sec. 12.10 with actual cross-reference label -->Sec. 12.10.
 
-![Fig. 112. Bessel functions of the second kind $Y_0$ and $Y_1$](../images/chapter5/fig-5-112.png){#fig-5-9}
+![@fig-5-9. Bessel functions of the second kind $Y_0$ and $Y_1$](../images/chapter5/fig-5-112.png){#fig-5-9}
 
-## PROBLEM SET 5.5
+## PROBLEM SET {#sec-ps-5-5}
 
 ### 1–9 FURTHER ODEs REDUCIBLE TO BESSEL’S ODE
 Find a general solution in terms of $J_\nu$ and $Y_\nu$. Indicate whether you could also use $J_{-\nu}$ instead of $Y_\nu$. Use the indicated substitution. Show the details of your work.
@@ -898,7 +899,7 @@ Find a general solution in terms of $J_\nu$ and $Y_\nu$. Indicate whether you co
 ### 10. CAS EXPERIMENT. Bessel Functions for Large $x$
 It can be shown that for large $x$,
 $$ Y_n(x) \sim \sqrt{\frac{2}{\pi x}} \sin \left( x - \frac{1}{2} n \pi - \frac{1}{4} \pi \right) $$ {#eq-sec55-11}
-with $\sim$ defined as in (14) of Sec. 5.4.
+with $\sim$ defined as in @eq-sec54-14 of @sec-bessels-equation.
 (a) Graph $Y_n(x)$ for $n = 0, \dots, 5$ on common axes. Are there relations between zeros of one function and extrema of another? For what functions?
 (b) Find out from graphs from which $x = x_n$ on the curves of (@eq-sec55-8) and (@eq-sec55-11) (both obtained from your CAS) practically coincide. How does $x_n$ change with $n$?
 (c) Calculate the first ten zeros $x_m, m = 1, \dots, 10$, of $Y_0(x)$ from your CAS and from (@eq-sec55-11). How does the error behave as $m$ increases?
@@ -916,10 +917,10 @@ $$ I_\nu(x) = \sum_{m=0}^{\infty} \frac{x^{2m+\nu}}{2^{2m+\nu} m! \Gamma(\nu+m+1
 15. **Modified Bessel functions of the third kind** (sometimes called of the second kind) are defined by the formula (@eq-sec55-14) below. Show that they satisfy the ODE (@eq-sec55-12).
 $$ K_\nu(x) = \frac{\pi}{2 \sin \nu\pi} [I_{-\nu}(x) - I_\nu(x)] $$ {#eq-sec55-14}
 
-[^7]: CARL NEUMANN (1832–1925), German mathematician and physicist. His work on potential theory using integer equation methods inspired VITO VOLTERRA (1800–1940) of Rome, ERIK IVAR FREDHOLM (1866–1927) of Stockholm, and DAVID HILBERT (1662–1943) of Göttingen (see the footnote in Sec. 7.9) to develop the field of integral equations. For details see Birkhoff, G. and E. Kreyszig, The Establishment of Functional Analysis, *Historia Mathematica* 11 (1984), pp. 258–321.
+[^7]: CARL NEUMANN (1832–1925), German mathematician and physicist. His work on potential theory using integer equation methods inspired VITO VOLTERRA (1800–1940) of Rome, ERIK IVAR FREDHOLM (1866–1927) of Stockholm, and DAVID HILBERT (1662–1943) of Göttingen (see the footnote in <!-- TODO: replace Sec. 7.9 with actual cross-reference label -->Sec. 7.9) to develop the field of integral equations. For details see Birkhoff, G. and E. Kreyszig, The Establishment of Functional Analysis, *Historia Mathematica* 11 (1984), pp. 258–321.
 [^8]: HERMANN HANKEL (1839–1873), German mathematician.
 
-## CHAPTER 5 REVIEW QUESTIONS AND PROBLEMS
+## REVIEW QUESTIONS AND PROBLEMS {#sec-review-questions-problems}
 
 1. Why are we looking for power series solutions of ODEs?
 2. What is the difference between the two methods in this chapter? Why do we need two methods?
@@ -945,22 +946,22 @@ Find a basis of solutions. Try to identify the series as expansions of known fun
 19. $y'' + \frac{1}{4x} y = 0$
 20. $xy'' + y' - xy = 0$
 
-## SUMMARY OF CHAPTER 5: Series Solution of ODEs. Special Functions
+## SUMMARY: Series Solution of ODEs. Special Functions {#sec-summary}
 
 The **power series method** gives solutions of linear ODEs
 $$ y'' + p(x)y' + q(x)y = 0 $$
 with **variable coefficients** $p$ and $q$ in the form of a power series (with any center $x_0$, e.g., $x_0 = 0$)
 $$ y(x) = \sum_{m=0}^{\infty} a_m (x - x_0)^m = a_0 + a_1(x - x_0) + a_2(x - x_0)^2 + \cdots $$
 
-Such a solution is obtained by substituting (2) and its derivatives into (1). This gives a **recurrence formula** for the coefficients. You may program this formula (or even obtain and graph the whole solution) on your CAS.
-If $p$ and $q$ are **analytic** at $x_0$ (that is, representable by a power series in powers of $x - x_0$ with positive radius of convergence; Sec. 5.1), then (1) has solutions of this form (2). The same holds if $\tilde{h}, \tilde{p}, \tilde{q}$ in
+Such a solution is obtained by substituting <!-- TODO: verify equation reference -->(2) and its derivatives into <!-- TODO: verify equation reference -->(1). This gives a **recurrence formula** for the coefficients. You may program this formula (or even obtain and graph the whole solution) on your CAS.
+If $p$ and $q$ are **analytic** at $x_0$ (that is, representable by a power series in powers of $x - x_0$ with positive radius of convergence; @sec-power-series-method), then <!-- TODO: verify equation reference -->(1) has solutions of this form <!-- TODO: verify equation reference -->(2). The same holds if $\tilde{h}, \tilde{p}, \tilde{q}$ in
 $$ \tilde{h}(x)y'' + \tilde{p}(x)y' + \tilde{q}(x)y = 0 $$
-are analytic at $x_0$ and $\tilde{h}(x_0) \neq 0$, so that we can divide by $\tilde{h}$ and obtain the standard form (1). *Legendre’s equation* is solved by the power series method in Sec. 5.2.
+are analytic at $x_0$ and $\tilde{h}(x_0) \neq 0$, so that we can divide by $\tilde{h}$ and obtain the standard form (@eq-sec53-1). *Legendre’s equation* is solved by the power series method in @sec-legendres-equation.
 
-The **Frobenius method** (Sec. 5.3) extends the power series method to ODEs
+The **Frobenius method** (@sec-frobenius-method) extends the power series method to ODEs
 $$ y'' + \frac{a(x)}{x - x_0} y' + \frac{b(x)}{(x - x_0)^2} y = 0 $$
-whose coefficients are **singular** (i.e., not analytic) at $x_0$, but are “not too bad,” namely, such that $a$ and $b$ are analytic at $x_0$. Then (3) has at least one solution of the form
+whose coefficients are **singular** (i.e., not analytic) at $x_0$, but are “not too bad,” namely, such that $a$ and $b$ are analytic at $x_0$. Then <!-- TODO: verify equation reference -->(3) has at least one solution of the form
 $$ y(x) = (x - x_0)^r \sum_{m=0}^{\infty} a_m (x - x_0)^m = a_0(x - x_0)^r + a_1(x - x_0)^{r+1} + \cdots $$
-where $r$ can be any real (or even complex) number and is determined by substituting (4) into (3) from the **indicial equation** (Sec. 5.3), along with the coefficients of (4). A second linearly independent solution of (3) may be of a similar form (with different $r$ and $a_m$’s) or may involve a logarithmic term. *Bessel’s equation* is solved by the Frobenius method in Secs. 5.4 and 5.5.
+where $r$ can be any real (or even complex) number and is determined by substituting <!-- TODO: verify equation reference -->(4) into <!-- TODO: verify equation reference -->(3) from the **indicial equation** (@sec-frobenius-method), along with the coefficients of <!-- TODO: verify equation reference -->(4). A second linearly independent solution of <!-- TODO: verify equation reference -->(3) may be of a similar form (with different $r$ and $a_m$’s) or may involve a logarithmic term. *Bessel’s equation* is solved by the Frobenius method in @sec-bessels-equation and @sec-bessel-functions-y-nu.
 
-**“Special functions”** is a common name for higher functions, as opposed to the usual functions of calculus. Most of them arise either as nonelementary integrals [see (24)–(44) in App. 3.1] or as solutions of (1) or (3). They get a name and notation and are included in the usual CASs if they are important in application or in theory. Of this kind, and particularly useful to the engineer and physicist, are **Legendre’s equation and polynomials** $P_0, P_1, \dots$ (Sec. 5.2), **Gauss’s hypergeometric equation and functions** $F(a, b, c; x)$ (Sec. 5.3), and **Bessel’s equation and functions** $J_\nu$ and $Y_\nu$ (Secs. 5.4, 5.5).
+**“Special functions”** is a common name for higher functions, as opposed to the usual functions of calculus. Most of them arise either as nonelementary integrals [see <!-- TODO: verify equation reference -->(24)–(44) in App. 3.1] or as solutions of <!-- TODO: verify equation reference -->(1) or <!-- TODO: verify equation reference -->(3). They get a name and notation and are included in the usual CASs if they are important in application or in theory. Of this kind, and particularly useful to the engineer and physicist, are **Legendre’s equation and polynomials** $P_0, P_1, \dots$ (@sec-legendres-equation), **Gauss’s hypergeometric equation and functions** $F(a, b, c; x)$ (@sec-frobenius-method), and **Bessel’s equation and functions** $J_\nu$ and $Y_\nu$ (@sec-bessels-equation and @sec-bessel-functions-y-nu).
