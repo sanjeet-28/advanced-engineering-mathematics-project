@@ -380,7 +380,7 @@ $$ {#eq-8-2-1}
 
 Find the principal directions, that is, the directions of the position vector $\mathbf{x}$ of $P$ for which the direction of the position vector $\mathbf{y}$ of $Q$ is the same or exactly opposite. What shape does the boundary circle take under this deformation?
 
-![Fig. 160. Undeformed and deformed membrane in Example 1](../images/fig-8-160.png){#fig-8-160}
+![Fig. 160. Undeformed and deformed membrane in Example 1](../images/chapter8/fig-8-160.png){#fig-8-160}
 
 **Solution.** We are looking for vectors $\mathbf{x}$ such that $\mathbf{y} = \lambda\mathbf{x}$. Since $\mathbf{y} = \mathbf{Ax}$, this gives $\mathbf{Ax} = \lambda\mathbf{x}$, the equation of an eigenvalue problem. In components, $\mathbf{Ax} = \lambda\mathbf{x}$ is
 
@@ -527,7 +527,7 @@ $$
 \mathbf{y}'' = \begin{bmatrix} y_1'' \\ y_2'' \end{bmatrix} = \mathbf{A}\mathbf{y} = \begin{bmatrix} -5 & 2 \\ 2 & -2 \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}.
 $$ {#eq-8-2-7}
 
-![Fig. 161. Masses on springs in Example 4](../images/fig-8-161.png){#fig-8-161}
+![Fig. 161. Masses on springs in Example 4](../images/chapter8/fig-8-161.png){#fig-8-161}
 
 We try a vector solution of the form
 
@@ -1220,7 +1220,7 @@ What kind of conic section (or pair of straight lines) is given by the quadratic
 
 *Hint.* Use Theorem 5.
 
-![Fig. 162. Quadratic forms in two variables (Problem 24)](../images/fig-8-162.png){#fig-8-162}
+![Fig. 162. Quadratic forms in two variables (Problem 24)](../images/chapter8/fig-8-162.png){#fig-8-162}
 
 **25. Definiteness.** A necessary and sufficient condition for positive definiteness of a quadratic form $Q(\mathbf{x}) = \mathbf{x}^T\mathbf{Ax}$ with symmetric matrix $\mathbf{A}$ is that all the principal minors are positive (see Ref. [B3], vol. 1, p. 306), that is,
 
@@ -1295,7 +1295,7 @@ If a Hermitian matrix is real, then $\mathbf{A}^* = \mathbf{A}^T = \mathbf{A}$. 
 
 It is quite remarkable that the matrices under consideration have spectra (sets of eigenvalues; see Sec. 8.1) that can be characterized in a general way as follows (see @fig-8-163).
 
-![Fig. 163. Location of the eigenvalues of Hermitian, skew-Hermitian, and unitary matrices in the complex $\lambda$-plane](../images/fig-8-163.png){#fig-8-163}
+![Fig. 163. Location of the eigenvalues of Hermitian, skew-Hermitian, and unitary matrices in the complex $\lambda$-plane](../images/chapter8/fig-8-163.png){#fig-8-163}
 
 **THEOREM 1: Eigenvalues**
 

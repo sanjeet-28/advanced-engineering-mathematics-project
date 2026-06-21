@@ -1,8 +1,8 @@
 ---
-title: "CHAPTER 01: First-Order ODEs"
+title: "First-Order ODEs"
 ---
 
-Chapter 1 begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem. The simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives. These unknown functions will usually be denoted by $y(x)$ or $y(t)$ when the independent variable denotes time $t$. The chapter ends with a study of the existence and uniqueness of solutions of ODEs in Sec. 1.7.
+This Chapter begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem. The simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives. These unknown functions will usually be denoted by $y(x)$ or $y(t)$ when the independent variable denotes time $t$. The chapter ends with a study of the existence and uniqueness of solutions of ODEs in Sec. 1.7.
 
 Understanding the basics of ODEs requires solving problems by hand (paper and pencil, or typing on your computer, but first without the aid of a CAS). In doing so, you will gain an important conceptual understanding and feel for the basic terms, such as ODEs, direction field, and initial value problem. If you wish, you can use your Computer Algebra System (CAS) for checking solutions.
 
@@ -12,7 +12,7 @@ Understanding the basics of ODEs requires solving problems by hand (paper and pe
 **Sections that may be omitted in a shorter course:** 1.6, 1.7.
 **References and Answers to Problems:** App. 1 Part A, and App. 2.
 
-## 1.1 Basic Concepts. Modeling
+## Basic Concepts. Modeling
 
 ![Fig. 1. Modeling, solving, interpreting](../images/chapter1/fig-1-1.png){#fig-1-1}
 

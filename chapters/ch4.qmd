@@ -1,5 +1,5 @@
 ---
-title: "CHAPTER 04: Systems of ODEs. Phase Plane. Qualitative Methods"
+title: "Systems of ODEs. Phase Plane. Qualitative Methods"
 ---
 
 Tying in with Chap. 3, we present another method of solving higher order ODEs in Sec. 4.1. This converts any $n$th-order ODE into a system of $n$ first-order ODEs. We also show some applications. Moreover, in the same section we solve systems of first-order ODEs that occur directly in applications, that is, not derived from an $n$th-order ODE but dictated by the application such as two tanks in mixing problems and two circuits in electrical networks. (The elementary aspects of vectors and matrices needed in this chapter are reviewed in Sec. 4.0 and are probably familiar to most students.)

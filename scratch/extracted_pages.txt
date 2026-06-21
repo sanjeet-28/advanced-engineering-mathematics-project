@@ -1,0 +1,696 @@
+--- INDEX 728 ---
+Let L be the length of C. Since the given series converges uniformly, for every given
+we can find a number N such that for all and all z in G. By
+applying the ML-inequality (Sec. 14.1) we thus obtain
+for all 
+Since this means that
+for all 
+Hence, the series (4) converges and has the sum indicated in the theorem.
+Theorems 2 and 3 characterize the two most important properties of uniformly convergent
+series. Also, since differentiation and integration are inverse processes, Theorem 3 implies
+THEOREM 4 Termwise Differentiation
+Let the series be convergent in a region G and let 
+be its sum. Suppose that the series converges uniformly
+in G and its terms are continuous in G. Then
+for all z in G.
+Test for Uniform Convergence
+Uniform convergence is usually proved by the following comparison test.
+THEOREM 5 Weierstrass5 M-Test for Uniform Convergence
+Consider a series of the form (1) in a region G of the z-plane. Suppose that one can
+find a convergent series of constant terms,
+(5)
+such that for all z in G and every Then (1) is uniformly
+convergent in G.
+The simple proof is left to the student (Team Project 18).
+m /H110050, 1, Á .ƒ
+ fm(z) ƒ /H11017Mm
+M0 /H11001M1 /H11001M2 /H11001Á ,
+Fr(z) /H11005f0r(z) /H11001f1r(z) /H11001f2r(z) /H11001Á
+f0r(z) /H11001f1r(z) /H11001f2r(z) /H11001Á
+F (z)f0(z) /H11001f1(z) /H11001f2(z) /H11001Á
+/H17039
+n /H11022N.` /H20910
+C
+ F (z) dz /H11002/H20910
+C
+ sn(z) dz ` /H11021P
+Rn /H11005F /H11002sn,
+n /H11022N.` /H20910
+C
+ Rn(z) dz ` /H11021P
+L L /H11005P
+n /H11022Nƒ Rn(z) ƒ /H11021P>LP /H110220
+SEC. 15.5 Uniform Convergence. Optional 703
+5KARL WEIERSTRASS (1815–1897), great German mathematician, who developed complex analysis based
+on the concept of power series and residue integration. (See footnote in Section 13.4.) He put analysis on a
+sound theoretical footing. His mathematical rigor is so legendary that one speaks Weierstrassian rigor. (See
+paper by Birkhoff and Kreyszig, 1984 in footnote in Sec. 5.5; Kreyszig, E., On the Calculus, of Variations and
+Its Major Influences on the Mathematics of the First Half of Our Century. Part II, American Mathematical
+Monthly (1994), 101, No. 9, pp. 902–908). Weierstrass also made contributions to the calculus of variations,
+approximation theory, and differential geometry. He obtained the concept of uniform convergence in 1841
+(published 1894, sic!); the first publication on the concept was by G. G. STOKES (see Sec 10.9) in 1847. 
+c15.qxd  11/1/10  6:41 PM  Page 703
+
+--- INDEX 729 ---
+EXAMPLE 4 Weierstrass M-Test
+Does the following series converge uniformly in the disk ?
+Solution. Uniform convergence follows by the Weierstrass M -test and the convergence of (see
+Sec. 15.1, in the proof of Theorem 8) because
+No Relation Between Absolute 
+and Uniform Convergence
+We finally show the surprising fact that there are series that converge absolutely but not
+uniformly, and others that converge uniformly but not absolutely, so that there is no relation
+between the two concepts.
+EXAMPLE 5 No Relation Between Absolute and Uniform Convergence
+The series in Example 2 converges absolutely but not uniformly, as we have shown. On the other hand, the series
+(x real)
+converges uniformly on the whole real line but not absolutely.
+Proof. By the familiar Leibniz test of calculus (see App. A3.3) the remainder does not exceed its first
+term in absolute value, since we have a series of alternating terms whose absolute values form a monotone
+decreasing sequence with limit zero. Hence given for all x we have
+if 
+This proves uniform convergence, since does not depend on x.
+The convergence is not absolute because for any fixed x we have
+where k is a suitable constant, and diverges. /H17039kS1>m
+ /H11022k
+m
+ `
+(/H110021)m/H115461
+x2 /H11001m
+ ` /H110051
+x2 /H11001m
+N (P)
+n /H11022N(P) /H110841
+P .ƒ Rn(x) ƒ /H110171
+x2 /H11001n /H110011 /H110211
+n /H11021P
+P /H110220,
+Rn
+a
+/H11557
+m/H110051
+ (/H110021)m/H115461
+x2 /H11001m
+/H110051
+x2 /H110011
+/H110021
+x2 /H110012
+/H110011
+x2 /H110013
+/H11002/H11001Á
+/H17039 /H110172
+m2
+ .
+ `
+zm /H110011
+m2 /H11001cosh m ƒ z ƒ
+ ` /H11017
+ƒ z ƒ m /H110011
+m2
+ 
+S1>m2
+a
+/H11557
+m/H110051
+ 
+zm /H110011
+m2 /H11001cosh m ƒ z ƒ
+ .
+ƒ z ƒ /H110171
+704 CHAP. 15 Power Series, Taylor Series
+1. CAS EXPERIMENT. Graphs of Partial Sums. (a)
+Fig. 368. Produce this exciting figure using your CAS.
+Add further curves, say, those of etc. on the
+same screen.
+s256, s1024,
+(b) Power series. Study the nonuniformity of con-
+vergence experimentally by graphing partial sums near
+the endpoints of the convergence interval for real
+z /H11005x.
+PROBLEM SET 15.5
+c15.qxd  11/1/10  6:41 PM  Page 704
+
+--- INDEX 730 ---
+2–9 POWER SERIES
+Where does the power series converge uniformly? Give
+reason.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10–17
+UNIFORM CONVERGENCE
+Prove that the series converges uniformly in the indicated
+region.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+18. TEAM PROJECT. Uniform Convergence.
+(a) Weierstrass M-test. Give a proof.
+a
+/H11557
+n/H110051
+ pn
+n4
+ z2n, ƒ z ƒ /H110170.56
+a
+/H11557
+n/H110051
+ 
+tanhn ƒ z ƒ
+n(n /H110011)
+ , all z
+a
+/H11557
+n/H110050
+ 
+(n!)2
+(2n!)
+ zn, ƒ z ƒ /H110173
+a
+/H11557
+n/H110050
+ zn
+ƒ z ƒ 2n /H110011
+ , 2 /H11017ƒ z ƒ /H1101710
+a
+/H11557
+n/H110051
+ 
+sinn ƒ z ƒ
+n2
+ , all z
+a
+/H11557
+n/H110051
+ zn
+n3
+  cosh  n ƒ z ƒ
+ , ƒ z ƒ /H110171
+a
+/H11557
+n/H110051
+ zn
+n2
+ , ƒ z ƒ /H110171
+a
+/H11557
+n/H110050
+ z2n
+2n!
+ , ƒ z ƒ /H110171020
+a
+/H11557
+n/H110051
+ 
+(/H110021)n
+2nn2  (z /H110022i)n
+a
+/H11557
+n/H110051
+ 3n
+n(n /H110011) (z /H110021)2n
+a
+/H11557
+n/H110051
+ n!
+n2 az /H110011
+2 ib
+a
+/H11557
+n/H110050
+ 2n(tanh n2) z2n
+a
+/H11557
+n/H110052
+ a
+n
+2
+ b (4z /H110012i)n
+a
+/H11557
+n/H110050
+ 3n(1 /H11002i)n
+n!  (z /H11002i)n
+a
+/H11557
+n/H110050
+ 1
+3n (z /H11001i)2n
+a
+/H11557
+n/H110050
+ a n /H110012
+7n /H110023 b
+n
+zn
+SEC. 15.5 Uniform Convergence. Optional 705
+(b) Termwise differentiation. Derive Theorem 4
+from Theorem 3.
+(c) Subregions. Prove that uniform convergence of a
+series in a region G implies uniform convergence in
+any portion of G. Is the converse true?
+(d) Example 2. Find the precise region of convergence
+of the series in Example 2 with x replaced by a complex
+variable z.
+(e) Figure 369. Show that 
+if and 0 if . Verify by computation that the
+partial sums look as shown in Fig. 369.s1, s2, s3
+x /H110050x /HS110050
+x2 Sm/H110051
+/H11009 (1 /H11001x2)/H11546m/H110051
+y
+x–1 0 1
+1 s
+s3
+s2 s1
+Fig. 369. Sum s and partial 
+sums in Team Project 18(e)
+19–20 HEAT EQUATION
+Show that (9) in Sec. 12.6 with coefficients (10) is a solution
+of the heat equation for assuming that is
+continuous on the interval and has one-sided
+derivatives at all interior points of that interval. Proceed as
+follows.
+19. Show that is bounded, say for all n.
+Conclude that
+if
+and, by the Weierstrass test, the series (9) converges
+uniformly with respect to xand t for 
+Using Theorem 2, show that is continuous for
+and thus satisfies the boundary conditions (2)
+for 
+20. Show that if and the
+series of the expressions on the right converges, by
+the ratio test. Conclude from this, the Weierstrass
+test, and Theorem 4 that the series (9) can be
+differentiated term by term with respect to t and the
+resulting series has the sum . Show that (9) can
+be differentiated twice with respect to x and the
+resulting series has the sum Conclude from
+this and the result to Prob. 19 that (9) is a solution
+of the heat equation for all (The proof that (9)
+satisfies the given initial condition can be found in
+Ref. [C10] listed in App. 1.)
+t /H11084t
+0.
+02u>0x2.
+0u>0t
+t /H11084t0ƒ0 un>0t ƒ /H11021ln
+2Ke/H11546ln
+2t0
+t /H11084t0.
+t /H11084t0
+u (x, t)
+t /H11084t0, 0 /H11017x /H11017L.
+t /H11084t0 /H110220ƒ un ƒ /H11021Ke/H11546ln
+2t0
+ƒ Bn ƒ /H11021Kƒ Bn ƒ
+0 /H11017x /H11017L
+f (x)t /H110220,
+c15.qxd  11/1/10  6:41 PM  Page 705
+
+--- INDEX 731 ---
+706 CHAP. 15 Power Series, Taylor Series
+Sequences, series, and convergence tests are discussed in Sec. 15.1. A power series
+is of the form (Sec. 15.2)
+(1)
+is its center. The series (1) converges for and diverges for
+where R is the radius of convergence. Some power series convergeƒ z /H11002z0 ƒ /H11022R,
+ƒ z /H11002z0 ƒ /H11021Rz0
+a
+/H11557
+n/H110050
+ an(z /H11002z0)n /H11005a0 /H11001a1(z /H11002z0) /H11001a2(z /H11002z0)2 /H11001Á ;
+SUMMARY OF CHAPTER 15
+Power Series, Taylor Series
+1. What is convergence test for series? State two tests from
+memory. Give examples.
+2. What is a power series? Why are these series very
+important in complex analysis?
+3. What is absolute convergence? Conditional convergence?
+Uniform convergence?
+4. What do you know about convergence of power series?
+5. What is a Taylor series? Give some basic examples.
+6. What do you know about adding and multiplying power
+series?
+7. Does every function have a Taylor series development?
+Explain.
+8. Can properties of functions be discovered from
+Maclaurin series? Give examples.
+9. What do you know about termwise integration of
+series?
+10. How did we obtain Taylor’s formula from Cauchy’s
+formula?
+11–15
+RADIUS OF CONVERGENCE 
+Find the radius of convergence.
+11.
+12.
+13.
+14. a
+/H11557
+n/H110051
+ n5
+n! (z /H110023i)2n
+a
+/H11557
+n/H110052
+ 
+n(n /H110021)
+3n  (z /H11002i)n
+a
+/H11557
+n/H110052
+ 4n
+n /H110021 (z /H11002pi)n
+a
+/H11557
+n/H110052
+ n /H110011
+n2 /H110011
+ (z /H110011)n
+15.
+16–20 RADIUS OF CONVERGENCE
+Find the radius of convergence. Try to identify the sum of
+the series as a familiar function.
+16. 17.
+18.
+19. 20.
+21–25
+MACLAURIN SERIES
+Find the Maclaurin series and its radius of convergence.
+Show details.
+21. 22.
+23. 24.
+25.
+26–30
+TAYLOR SERIES
+Find the Taylor series with the given point as center and its
+radius of convergence.
+26.
+27.
+28.
+29.
+30. e
+z, pi
+Ln z, 3
+1>z, 2i
+cos z, 1
+2 p
+z4, i
+/H11002(exp>(/H11002z2) /H110021)>z2
+1>(pz /H110011)cos2 z
+1>(1 /H11002z)3(sinh z2)>z2
+a
+/H11557
+n/H110050
+ zn
+(3 /H110014i)na
+/H11557
+n/H110050
+ zn
+(2n)!
+a
+/H11557
+n/H110050
+ 
+(/H110021)n
+(2n /H110011)! (pz)2n/H110011
+a
+/H11557
+n/H110050
+ zn
+n! zn
+a
+/H11557
+n/H110051
+ zn
+n
+a
+/H11557
+n/H110051
+ 
+(/H110022)n/H110011
+2n  zn
+CHAPTER 15 REVIEW QUESTIONS AND PROBLEMS
+c15.qxd  11/1/10  6:41 PM  Page 706
+
+--- INDEX 732 ---
+Summary of Chapter 15 707
+for all z (then we write In exceptional cases a power series may converge
+only at the center; such a series is practically useless. Also, 
+if this limit exists. The series (1) converges absolutely (Sec. 15.2) and uniformly
+(Sec. 15.5) in every closed disk It represents an analytic
+function for The derivatives are obtained by
+termwise differentiation of (1), and these series have the same radius of convergence
+R as (1). See Sec. 15.3.
+Conversely, every analytic function can be represented by power series. These
+Taylor series of are of the form (Sec. 15.4)
+(2)
+as in calculus. They converge for all z in the open disk with center and radius
+generally equal to the distance from to the nearest singularity of (point at
+which ceases to be analytic as defined in Sec. 15.4). If is entire (analytic
+for all z; see Sec. 13.5), then (2) converges for all z. The functions 
+etc. have Maclaurin series, that is, Taylor series with center 0, similar to those in
+calculus (Sec. 15.4).
+e
+z, cos z, sin z,
+f (z)f (z)
+f (z)z0
+z0
+( ƒ z /H11002z0) ƒ /H11021R),f (z) /H11005a
+/H11557
+n/H110050
+ 1
+n!  f (n)(z0)(z /H11002z0)n
+f (z)
+f (z)
+f r(z), f s(z), Áƒ z /H11002z0 ƒ /H11021R.f (z)
+ƒ z /H11002z0 ƒ /H11017r /H11021R (R /H110220).
+R /H11005lim ƒ an>an/H110011ƒ
+R /H11005/H11009).
+c15.qxd  11/1/10  6:41 PM  Page 707
+
+--- INDEX 733 ---
+708
+1PIERRE ALPHONSE LAURENT (1813–1854), French military engineer and mathematician, published the
+theorem in 1843.
+CHAPTER 16
+Laurent Series. 
+Residue Integration
+The main purpose of this chapter is to learn about another powerful method for evaluating
+complex integrals and certain real integrals. It is called residue integration. Recall that
+the first method of evaluating complex integrals consisted of directly applying Cauchy’s
+integral formula of Sec. 14.3. Then we learned about Taylor series (Chap. 15) and will
+now generalize Taylor series. The beauty of residue integration, the second method of
+integration, is that it brings together a lot of the previous material.
+Laurent series generalize Taylor series. Indeed, whereas a Taylor series has positive
+integer powers (and a constant term) and converges in a disk, a Laurent series (Sec. 16.1)
+is a series of positive and negative integer powers of and converges in an annulus
+(a circular ring) with center Hence, by a Laurent series, we can represent a given
+function that is analytic in an annulus and may have singularities outside the ring as
+well as in the “hole” of the annulus.
+We know that for a given function the Taylor series with a given center is unique.
+We shall see that, in contrast, a function can have several Laurent series with the
+same center and valid in several concentric annuli. The most important of these series
+is the one that converges for that is, everywhere near the center 
+except at itself, where is a singular point of The series (or finite sum) of the
+negative powers of this Laurent series is called the principal part of the singularity of
+at and is used to classify this singularity (Sec. 16.2). The coefficient of the power
+of this series is called the residue of at Residues are used in an elegant
+and powerful integration method, called residue integration, for complex contour integrals
+(Sec. 16.3) as well as for certain complicated real integrals (Sec. 16.4).
+Prerequisite: Chaps. 13, 14, Sec. 15.2.
+Sections that may be omitted in a shorter course: 16.2, 16.4.
+References and Answers to Problems: App. 1 Part D, App. 2.
+16.1 Laurent Series
+Laurent series generalize Taylor series. If, in an application, we want to develop a function
+in powers of when is singular at (as defined in Sec. 15.4), we cannot
+use a Taylor series. Instead we can use a new kind of series, called Laurent series, 1
+z0f (z)z /H11002z0f (z)
+z0.f (z)1>(z /H11002z0)
+z0,f (z)
+f (z).z0z0
+z00 /H11021ƒ z /H11002z0 ƒ /H11021R,
+z0
+f (z)
+z0
+f (z)
+z0.
+z /H11002z0
+c16.qxd  11/1/10  6:57 PM  Page 708
+
+--- INDEX 734 ---
+consisting of positive integer powers of (and a constant) as well as negative integer
+powers of this is the new feature.
+Laurent series are also used for classifying singularities (Sec. 16.2) and in a powerful
+integration method (“residue integration,” Sec. 16.3).
+A Laurent series of converges in an annulus (in the “hole” of which may have
+singularities), as follows.
+THEOREM 1 Laurent’s Theorem
+Let be analytic in a domain containing two concentric circles and with
+center and the annulus between them (blue in Fig. 370) . Then can be
+represented by the Laurent series
+(1)
+consisting of nonnegative and negative powers. The coefficients of this Laurent series
+are given by the integrals
+(2)
+taken counterclockwise around any simple closed path C that lies in the annulus
+and encircles the inner circle, as in Fig. 370. [The variable of integration is denoted
+by since z is used in (1).]
+This series converges and represents in the enlarged open annulus obtained
+from the given annulus by continuously increasing the outer circle and decreasing
+until each of the two circles reaches a point where is singular.
+In the important special case that is the only singular point of inside 
+this circle can be shrunk to the point giving convergence in a disk except at the
+center. In this case the series (or finite sum) of the negative powers of (1) is called
+the principal part of at [or of that Laurent series (1)].z
+0f (z)
+z0,
+C2,f (z)z0
+f (z)C2
+C1
+f (z)
+z*
+an /H110051
+2pi
+  /H20911
+C
+  
+f (z*)
+(z* /H11002z0)n/H110011 dz*, bn /H110051
+2pi
+  /H20911 
+C
+ (z* /H11002z0)n/H115461 f (z*) dz*,
+ Á /H11001
+b1
+z /H11002z0
+/H11001
+b2
+(z /H11002z0)2 /H11001Á
+ /H11005a0 /H11001a1(z /H11002z0) /H11001a2(z /H11002z0)2 /H11001Á
+ f (z) /H11005a
+/H11557
+n/H110050
+an(z /H11002z0)n /H11001a
+/H11557
+n/H110051
+ 
+bn
+(z /H11002z0)n
+f (z)z0
+C2C1f (z)
+f (z)f (z)
+z /H11002z0;
+z /H11002z0
+SEC. 16.1 Laurent Series 709
+z0
+C2
+C1
+C
+Fig. 370. Laurent’s theorem
+c16.qxd  11/1/10  6:57 PM  Page 709
+
+--- INDEX 735 ---
+COMMENT. Obviously, instead of (1), (2) we may write (denoting by 
+where all the coefficients are now given by a single integral formula, namely,
+Let us now prove Laurent’s theorem.
+PROOF (a) The nonnegative powers are those of a Taylor series.
+To see this, we use Cauchy’s integral formula (3) in Sec. 14.3 with (instead of z) as
+the variable of integration and z instead of Let and denote the functions
+represented by the two terms in (3), Sec. 14.3. Then
+(3)
+Here z is any point in the given annulus and we integrate counterclockwise over both 
+and so that the minus sign appears since in (3) of Sec. 14.3 the integration over 
+is taken clockwise. We transform each of these two integrals as in Sec. 15.4. The first
+integral is precisely as in Sec. 15.4. Hence we get exactly the same result, namely, the
+Taylor series of 
+(4)
+with coefficients [see (2), Sec. 15.4, counterclockwise integration]
+(5)
+Here we can replace by C (see Fig. 370), by the principle of deformation of path, since
+the point where the integrand in (5) is not analytic, is not a point of the annulus. This
+proves the formula for the in (2).
+(b) The negative powers in (1) and the formula for in (2) are obtained if we consider
+It consists of the second integral times in (3). Since z lies in the annulus,
+it lies in the exterior of the path Hence the situation differs from that for the first
+integral. The essential point is that instead of [see in Sec. 15.4]
+(6) (a) we now have (b)
+Consequently, we must develop the expression in the integrand of the second
+integral in (3) in powers of (instead of the reciprocal of this) to get a
+convergent series. We find
+(z* /H11002z
+0)>(z /H11002z0)
+1>(z* /H11002z)
+`
+z* /H11002z0
+z /H11002z0
+` /H110211.`
+z /H11002z0
+z* /H11002z0
+` /H110211
+(7*)
+C2.
+/H110021>(2pi)h(z).
+bn
+an
+z0,
+C1
+an /H110051
+2pi
+ /H20911
+C1
+ 
+f (z*)
+(z* /H11002z0)n/H110011 dz*.
+g(z) /H110051
+2pi /H20911
+C1
+ 
+f (z*)
+z* /H11002z dz* /H11005a
+/H11557
+n/H110050
+ an(z /H11002z0)n
+g(z),
+C2C2,
+C1
+f (z) /H11005g(z) /H11001h(z) /H110051
+2pi /H20911
+C1
+ 
+f (z*)
+z* /H11002z dz* /H110021
+2pi /H20911
+C2
+ 
+f (z*)
+z* /H11002z dz*.
+h(z)g(z)z0.
+z*
+(n /H110050, /H110061, /H110062,Á ).an /H110051
+2pi
+  /H20911
+C 
+ 
+f (z*)
+(z* /H11002z0)n/H110011 dz*(2r)
+ f (z) /H11005a
+/H11557
+n/H11005/H11546/H11557
+ an(z /H11002z0)n(1r)
+a/H11546n)bn
+710 CHAP. 16 Laurent Series. Residue Integration
+c16.qxd  11/1/10  6:57 PM  Page 710
+

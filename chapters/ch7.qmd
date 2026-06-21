@@ -261,7 +261,7 @@ $$
 
 **A** is called the **nodal incidence matrix** of the network. Show that for the network in Fig. 155 the matrix **A** has the given form.
 
-![Fig. 155. Network and nodal incidence matrix in Team Project 20(a)](../images/fig-7-155.png){#fig-7-155}
+![Fig. 155. Network and nodal incidence matrix in Team Project 20(a)](../images/chapter7/fig-7-155.png){#fig-7-155}
 
 $$
 \mathbf{A} = \begin{bmatrix}
@@ -273,7 +273,7 @@ $$
 
 (b) Find the nodal incidence matrices of the networks in Fig. 156.
 
-![Fig. 156. Electrical networks in Team Project 20(b)](../images/fig-7-156.png){#fig-7-156}
+![Fig. 156. Electrical networks in Team Project 20(b)](../images/chapter7/fig-7-156.png){#fig-7-156}
 
 (c) Sketch the three networks corresponding to the nodal incidence matrices given in the textbook.
 
@@ -285,7 +285,7 @@ $$
 
 and a mesh is a loop with no branch in its interior (or in its exterior). Show that for the network in Fig. 157, the matrix **M** has the given form.
 
-![Fig. 157. Network and matrix M in Team Project 20(d)](../images/fig-7-157.png){#fig-7-157}
+![Fig. 157. Network and matrix M in Team Project 20(d)](../images/chapter7/fig-7-157.png){#fig-7-157}
 
 ---
 
@@ -736,7 +736,7 @@ If we interpret $x_1, x_2$ as coordinates in the $x_1 x_2$-plane, then each of t
 (b) Infinitely many solutions if the lines coincide
 (c) No solution if the lines are parallel
 
-![Fig. 158. Three possible cases for two equations in two unknowns, interpreted as lines in the plane (and planes in space for three unknowns)](../images/fig-7-158.png){#fig-7-158}
+![Fig. 158. Three possible cases for two equations in two unknowns, interpreted as lines in the plane (and planes in space for three unknowns)](../images/chapter7/fig-7-158.png){#fig-7-158}
 
 For instance:
 
@@ -795,7 +795,7 @@ $$
 
 Node P gives the first equation, node Q the second, the right loop the third, and the left loop the fourth.
 
-![Fig. 159. Network in Example 2 and equations relating the currents](../images/fig-7-159.png){#fig-7-159}
+![Fig. 159. Network in Example 2 and equations relating the currents](../images/chapter7/fig-7-159.png){#fig-7-159}
 
 **Solution by Gauss Elimination.** We write the augmented matrix of the system first and then the system itself:
 
