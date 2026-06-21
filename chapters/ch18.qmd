@@ -1,33 +1,35 @@
 ---
-title: "CHAPTER 18: Complex Analysis and Potential Theory"
+title: "Complex Analysis and Potential Theory"
 ---
 
-In Chapter 17 we developed the geometric approach of conformal mapping. This meant that, for a complex analytic function $w = f(z)$ defined in a domain $D$ of the $z$-plane, we associated with each point in $D$ a corresponding point in the $w$-plane. This gave us a conformal mapping (angle-preserving), except at critical points where $f'(z) = 0$.
+# Complex Analysis and Potential Theory {#ch-complex-analysis-potential-theory}
+
+In @ch-conformal-mapping we developed the geometric approach of conformal mapping. This meant that, for a complex analytic function $w = f(z)$ defined in a domain $D$ of the $z$-plane, we associated with each point in $D$ a corresponding point in the $w$-plane. This gave us a conformal mapping (angle-preserving), except at critical points where $f'(z) = 0$.
 
 Now, in this chapter, we shall apply conformal mappings to potential problems. This will lead to boundary value problems and many engineering applications in electrostatics, heat flow, and fluid flow. More details are as follows.
 
-Recall that Laplace's equation is one of the most important PDEs in engineering mathematics because it occurs in gravitation (Secs. 9.7, 12.11), electrostatics (Sec. 9.7), steady-state heat conduction (Sec. 12.5), incompressible fluid flow, and other areas. The theory of this equation is called potential theory (although "potential" is also used in a more general sense in connection with gradients (see Sec. 9.7)). Because we want to treat this equation with complex analytic methods, we restrict our discussion to the "two-dimensional case." Then the potential $\Phi$ depends only on two Cartesian coordinates $x$ and $y$, and Laplace's equation becomes
+Recall that Laplace's equation is one of the most important PDEs in engineering mathematics because it occurs in gravitation (<!-- TODO: replace Secs. 9.7, 12.11 with actual cross-reference labels -->), electrostatics (<!-- TODO: replace Sec. 9.7 with actual cross-reference label -->), steady-state heat conduction (<!-- TODO: replace Sec. 12.5 with actual cross-reference label -->), incompressible fluid flow, and other areas. The theory of this equation is called potential theory (although "potential" is also used in a more general sense in connection with gradients (see <!-- TODO: replace Sec. 9.7 with actual cross-reference label -->)). Because we want to treat this equation with complex analytic methods, we restrict our discussion to the "two-dimensional case." Then the potential $\Phi$ depends only on two Cartesian coordinates $x$ and $y$, and Laplace's equation becomes
 
 $$\nabla^2 \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = 0$$
 
-An important idea then is that its solutions are closely related to complex analytic functions as shown in Sec. 13.4. (Remark: We use the notation $\Phi$ and $\Psi$ to free $u$ and $v$, which will be needed in conformal mapping: $w = u + iv$.) This important relation is the main reason for using complex analysis in problems of physics and engineering.
+An important idea then is that its solutions are closely related to complex analytic functions as shown in <!-- TODO: replace Sec. 13.4 with actual cross-reference label -->. (Remark: We use the notation $\Phi$ and $\Psi$ to free $u$ and $v$, which will be needed in conformal mapping: $w = u + iv$.) This important relation is the main reason for using complex analysis in problems of physics and engineering.
 
-We shall examine this connection between Laplace's equation and complex analytic functions and illustrate it by modeling applications from electrostatics (Secs. 18.1, 18.2), heat conduction (Sec. 18.3), and hydrodynamics (Sec. 18.4). This in turn will lead to boundary value problems in two-dimensional potential theory. As a result, some of the functions of Chap. 17 will be used to transform complicated regions into simpler ones.
+We shall examine this connection between Laplace's equation and complex analytic functions and illustrate it by modeling applications from electrostatics (@sec-electrostatic-fields, @sec-conformal-modeling), heat conduction (@sec-heat-problems), and hydrodynamics (@sec-fluid-flow). This in turn will lead to boundary value problems in two-dimensional potential theory. As a result, some of the functions of @ch-conformal-mapping will be used to transform complicated regions into simpler ones.
 
-Section 18.5 will derive the important Poisson formula for potentials in a circular disk.
+@sec-poisson-formula will derive the important Poisson formula for potentials in a circular disk.
 
-Section 18.6 will deal with harmonic functions, which, as you recall, are solutions of Laplace's equation and have continuous second partial derivatives. In that section we will show how results on analytic functions can be used to characterize properties of harmonic functions.
+@sec-harmonic-properties will deal with harmonic functions, which, as you recall, are solutions of Laplace's equation and have continuous second partial derivatives. In that section we will show how results on analytic functions can be used to characterize properties of harmonic functions.
 
-**Prerequisite:** Chaps. 13, 14, 17.  
+**Prerequisite:** <!-- TODO: replace Chaps. 13, 14 with actual chapter labels -->, @ch-conformal-mapping.  
 **References and Answers to Problems:** App. 1 Part D, App. 2.
 
-## 18.1 Electrostatic Fields {#sec-electrostatic-fields}
+## Electrostatic Fields {#sec-electrostatic-fields}
 
-The electrical force of attraction or repulsion between charged particles is governed by Coulomb's law (see Sec. 9.7). This force is the gradient of a function $\Phi$ called the **electrostatic potential**. At any points free of charges, $\Phi$ is a solution of Laplace's equation
+The electrical force of attraction or repulsion between charged particles is governed by Coulomb's law (see <!-- TODO: replace Sec. 9.7 with actual cross-reference label -->). This force is the gradient of a function $\Phi$ called the **electrostatic potential**. At any points free of charges, $\Phi$ is a solution of Laplace's equation
 
 $$\nabla^2 \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = 0$$
 
-The surfaces $\Phi = \text{const}$ are called **equipotential surfaces**. At each point $P$ at which the gradient of $\Phi$ is not the zero vector, it is perpendicular to the surface through $P$; that is, the electrical force has the direction perpendicular to the equipotential surface. (See also Secs. 9.7 and 12.11.)
+The surfaces $\Phi = \text{const}$ are called **equipotential surfaces**. At each point $P$ at which the gradient of $\Phi$ is not the zero vector, it is perpendicular to the surface through $P$; that is, the electrical force has the direction perpendicular to the equipotential surface. (See also <!-- TODO: replace Secs. 9.7 and 12.11 with actual cross-reference labels -->.)
 
 The problems we shall discuss in this entire chapter are two-dimensional (for the reason just given in the chapter opening), that is, they model physical systems that lie in three-dimensional space (of course!), but are such that the potential is independent of one of the space coordinates, so that $\Phi$ depends only on two coordinates, which we call $x$ and $y$. Then Laplace's equation becomes
 
@@ -65,7 +67,7 @@ Find the potential $\Phi$ between the conducting plates in Fig. 398, which are k
 
 ![Fig. 398. Potential in Example 3](../images/fig-18-03.png){#fig-18-03}
 
-**Solution.** $\Phi$ is constant on rays $\theta = \text{const}$. It is harmonic since it is the imaginary part of an analytic function, $\text{Ln } z = \ln r + i\theta$ (Sec. 13.7). Hence the solution is
+**Solution.** $\Phi$ is constant on rays $\theta = \text{const}$. It is harmonic since it is the imaginary part of an analytic function, $\text{Ln } z = \ln r + i\theta$ (<!-- TODO: replace Sec. 13.7 with actual cross-reference label -->). Hence the solution is
 
 $$\Phi(x, y) = a + b \text{Arg } z$$
 
@@ -79,7 +81,7 @@ $$\Phi(x, y) = \frac{1}{2}(U_2 + U_1) + \frac{1}{\alpha}(U_2 - U_1)\theta$$
 
 ### Complex Potential
 
-Let $\Phi(x, y)$ be harmonic in some domain $D$ and $\Psi(x, y)$ a harmonic conjugate of $\Phi$ in $D$. (Note the change of notation from $u$ and $v$ of Sec. 13.4 to $\Phi$ and $\Psi$. From the next section on, we had to free $u$ and $v$ for use in conformal mapping.) Then
+Let $\Phi(x, y)$ be harmonic in some domain $D$ and $\Psi(x, y)$ a harmonic conjugate of $\Phi$ in $D$. (Note the change of notation from $u$ and $v$ of <!-- TODO: replace Sec. 13.4 with actual cross-reference label --> to $\Phi$ and $\Psi$. From the next section on, we had to free $u$ and $v$ for use in conformal mapping.) Then
 
 $$F(z) = \Phi(x, y) + i\Psi(x, y)$$ {#eq-sec181-2}
 
@@ -141,7 +143,7 @@ In addition to the interpretation as the potential of two source lines, this pot
 
 The idea of the complex potential as just explained is the key to a close relation of potential theory to complex analysis and will recur in heat flow and fluid flow.
 
-### PROBLEM SET 18.1 {#sec-ps18-1}
+### PROBLEM SET {#sec-ps18-1}
 
 #### 1–4 COAXIAL CYLINDERS
 
@@ -178,9 +180,9 @@ Find and sketch the potential between the parallel plates having potentials $U_1
 
 15. **Sector.** Find the real and complex potentials in the sector $-\pi/6 \le \theta \le \pi/6, |z| \le 1$ kept at 0 V, and the curve $x^3 - 3xy^2 = 1$ kept at 220 V.
 
-## 18.2 Use of Conformal Mapping. Modeling {#sec-conformal-modeling}
+## Use of Conformal Mapping. Modeling {#sec-conformal-modeling}
 
-We have just explored the close relation between potential theory and complex analysis. This relationship is so close because complex potentials can be modeled in complex analysis. In this section we shall explore the close relation that results from the use of conformal mapping in modeling and solving boundary value problems for the Laplace equation. The process consists of finding a solution of the equation in some domain, assuming given values on the boundary (Dirichlet problem, see also Sec. 12.6). The key idea is then to use conformal mapping to map a given domain onto one for which the solution is known or can be found more easily. This solution thus obtained is then mapped back to the given domain. The reason this approach works is due to Theorem 1, which asserts that harmonic functions remain harmonic under conformal mapping:
+We have just explored the close relation between potential theory and complex analysis. This relationship is so close because complex potentials can be modeled in complex analysis. In this section we shall explore the close relation that results from the use of conformal mapping in modeling and solving boundary value problems for the Laplace equation. The process consists of finding a solution of the equation in some domain, assuming given values on the boundary (Dirichlet problem, see also <!-- TODO: replace Sec. 12.6 with actual cross-reference label -->). The key idea is then to use conformal mapping to map a given domain onto one for which the solution is known or can be found more easily. This solution thus obtained is then mapped back to the given domain. The reason this approach works is due to Theorem 1, which asserts that harmonic functions remain harmonic under conformal mapping:
 
 ### THEOREM 1 Harmonic Functions Under Conformal Mapping
 
@@ -192,7 +194,7 @@ is harmonic in $D$.
 
 **PROOF** The composite of analytic functions is analytic, as follows from the chain rule. Hence, taking a harmonic conjugate $\Psi^*(u, v)$ of $\Phi^*$, and forming the analytic function $F^*(w) = \Phi^*(u, v) + i\Psi^*(u, v)$, we conclude that $F(z) = F^*(f(z))$ is analytic in $D$. Hence its real part $\Phi(x, y) = \text{Re } F(z) = \text{Re } F^*(f(z))$ is harmonic in $D$. This completes the proof. $\blacksquare$
 
-We mention without proof that if $D^*$ is simply connected (Sec. 14.2), then a harmonic conjugate of $\Phi^*$ exists. Another proof of Theorem 1 without the use of a harmonic conjugate is given in App. 4.
+We mention without proof that if $D^*$ is simply connected (<!-- TODO: replace Sec. 14.2 with actual cross-reference label -->), then a harmonic conjugate of $\Phi^*$ exists. Another proof of Theorem 1 without the use of a harmonic conjugate is given in App. 4.
 
 ### EXAMPLE 1 Potential Between Noncoaxial Cylinders
 
@@ -206,17 +208,17 @@ Model the electrostatic potential between the cylinders $C_1: |z| = 1$ and $C_2:
 
 $$w = \frac{z - b}{bz - 1}$$ {#eq-sec182-2}
 
-where we have chosen $b$ real without restriction. Equation (2) is of no immediate help here because centers of circles do not map onto centers of the images, in general. However, we now have two free constants $b$ and $r_0$ and shall succeed by imposing two reasonable conditions, namely, that $z_1 = 0$ and $z_2 = 4/5$ (Fig. 403) should be mapped onto $w_1 = r_0$ and $w_2 = -r_0$ (Fig. 404), respectively. This gives by (2)
+where we have chosen $b$ real without restriction. (@eq-sec182-2) is of no immediate help here because centers of circles do not map onto centers of the images, in general. However, we now have two free constants $b$ and $r_0$ and shall succeed by imposing two reasonable conditions, namely, that $z_1 = 0$ and $z_2 = 4/5$ (@fig-18-08) should be mapped onto $w_1 = r_0$ and $w_2 = -r_0$ (@fig-18-09), respectively. This gives by (@eq-sec182-2)
 
 $$r_0 = b, \quad -r_0 = \frac{4/5 - b}{4b/5 - 1}$$
 
-and with this, $b^2 - 5b/2 + 1 = 0$, a quadratic equation in $b$ with solutions $b = 2$ (no good because $|b| < 1$) and $b = 1/2$. Hence our mapping function (2) with $b = 1/2$ becomes
+and with this, $b^2 - 5b/2 + 1 = 0$, a quadratic equation in $b$ with solutions $b = 2$ (no good because $|b| < 1$) and $b = 1/2$. Hence our mapping function (@eq-sec182-2) with $b = 1/2$ becomes
 
 $$w = \frac{2z - 1}{z - 2}$$ {#eq-sec182-3}
 
 and $r_0 = 1/2$.
 
-From Example 5 in Sec. 18.1, writing $w$ for $z$, we have as the complex potential in the $w$-plane the function $F^*(w) = a \text{Ln } w + k$ and from this the real potential $\Phi^*(u, v) = a\ln |w| + k$. This is our model. We now determine $a$ and $k$ from the boundary conditions. If $|w| = 1$, then $\Phi^* = 0$; hence $a\ln 1 + k = 0$, which gives $k = 0$. If $|w| = r_0 = 1/2$, then $\Phi^* = 110$; hence $a\ln(1/2) = 110$, which gives $a = -110/\ln 2 \approx -158.7$. Substitution of (3) now gives the desired solution in the given domain in the $z$-plane
+From Example 5 in @sec-electrostatic-fields, writing $w$ for $z$, we have as the complex potential in the $w$-plane the function $F^*(w) = a \text{Ln } w + k$ and from this the real potential $\Phi^*(u, v) = a\ln |w| + k$. This is our model. We now determine $a$ and $k$ from the boundary conditions. If $|w| = 1$, then $\Phi^* = 0$; hence $a\ln 1 + k = 0$, which gives $k = 0$. If $|w| = r_0 = 1/2$, then $\Phi^* = 110$; hence $a\ln(1/2) = 110$, which gives $a = -110/\ln 2 \approx -158.7$. Substitution of (@eq-sec182-3) now gives the desired solution in the given domain in the $z$-plane
 
 $$F(z) = F^*(f(z)) = a \text{Ln}\left(\frac{2z - 1}{z - 2}\right)$$
 
@@ -228,20 +230,20 @@ Can we "see" this result? Well, $\Phi(x, y) = \text{const}$ if and only if $|w| 
 
 ### EXAMPLE 2 Potential Between Two Semicircular Plates
 
-Model the potential between two semicircular plates $P_1$ and $P_2$ in Fig. 405 having potentials $-3000\text{ V}$ and $3000\text{ V}$, respectively. Use Example 3 in Sec. 18.1 and conformal mapping.
+Model the potential between two semicircular plates $P_1$ and $P_2$ in @fig-18-10 having potentials $-3000\text{ V}$ and $3000\text{ V}$, respectively. Use Example 3 in @sec-electrostatic-fields and conformal mapping.
 
 ![Fig. 405. Example 2: z-plane](../images/fig-18-10.png){#fig-18-10}
 
 ![Fig. 406. Example 2: w-plane](../images/fig-18-11.png){#fig-18-11}
 
 **Solution.**  
-**Step 1.** We map the unit disk in Fig. 405 onto the right half of the $w$-plane (Fig. 406) by using the linear fractional transformation in Example 3, Sec. 17.3:
+**Step 1.** We map the unit disk in @fig-18-10 onto the right half of the $w$-plane (@fig-18-11) by using the linear fractional transformation in Example 3, @sec-special-lft:
 
 $$w = \frac{1 + z}{1 - z}$$
 
 The boundary $|z| = 1$ is mapped onto the boundary $u = 0$ (the $v$-axis), with $z = -1, i, 1$ going onto $w = 0, i, \infty$ respectively, and $z = -i$ onto $w = -i$. Hence the upper semicircle of $|z| = 1$ is mapped onto the upper half, and the lower semicircle onto the lower half of the $v$-axis, so that the boundary conditions in the $w$-plane are as indicated in Fig. 406.
 
-**Step 2.** We determine the potential in the right half-plane of the $w$-plane. Example 3 in Sec. 18.1 with $U_1 = -3000, U_2 = 3000$, and $\alpha = \pi$ yields
+**Step 2.** We determine the potential in the right half-plane of the $w$-plane. Example 3 in @sec-electrostatic-fields with $U_1 = -3000, U_2 = 3000$, and $\alpha = \pi$ yields
 
 $$\Phi^*(u, v) = \frac{6000}{\pi}\phi = \frac{6000}{\pi}\text{Arg } w$$
 
@@ -259,9 +261,9 @@ $$\Phi(x, y) = \frac{6000}{\pi}\text{Arg}\left(\frac{1 + z}{1 - z}\right)$$
 
 As in Example 1 we conclude that the equipotential lines are circular arcs because they correspond to $\text{Arg } w = \text{const}$. Also, they are rays from $0$ to the images of $z = -1$ and $z = 1$, respectively. Hence the equipotential lines all have $-1$ and $1$ (the points where the boundary potential jumps) as their endpoints (Fig. 405). The lines of force are circular arcs, too, and since they must be orthogonal to the equipotential lines, their centers can be obtained as intersections of tangents to the unit circle with the $x$-axis.
 
-Further examples can easily be constructed. Just take any mapping $w = f(z)$ in Chap. 17, a domain $D$ in the $z$-plane, its image $D^*$ in the $w$-plane, and a potential $\Phi^*$ in $D^*$. Then $\Phi(x, y) = \Phi^*(u(x, y), v(x, y))$ gives a potential in $D$.
+Further examples can easily be constructed. Just take any mapping $w = f(z)$ in @ch-conformal-mapping, a domain $D$ in the $z$-plane, its image $D^*$ in the $w$-plane, and a potential $\Phi^*$ in $D^*$. Then $\Phi(x, y) = \Phi^*(u(x, y), v(x, y))$ gives a potential in $D$.
 
-### PROBLEM SET 18.2 {#sec-ps18-2}
+### PROBLEM SET {#sec-ps18-2}
 
 1. **Derivation of (3) from (2).** Verify the quadratic equation for $b$ and its solutions in Example 1.
 2. **Second proof.** Give the details of the steps in App. 4 for the proof of Theorem 1 without using harmonic conjugates.
@@ -287,13 +289,13 @@ Further examples can easily be constructed. Just take any mapping $w = f(z)$ in 
 
 We formulated the examples in this section as models on the electrostatic potential. It is quite important to realize that this is accidental. We could equally well have phrased everything in terms of (time-independent) heat flow; then instead of voltages we would have had temperatures, the equipotential lines would have become isotherms (lines of constant temperature), and the lines of the electrical force would have become lines along which heat flows from higher to lower temperatures (more on this in the next section). Or we could have talked about fluid flow; then the electrostatic lines of force would have become streamlines (more on this in Sec. 18.4). What we again see here is the unifying power of mathematics: different phenomena and systems from different areas in physics having the same types of model can be treated by the same mathematical methods. What differs from area to area is just the kinds of problems that are of practical interest.
 
-## 18.3 Heat Problems {#sec-heat-problems}
+## Heat Problems {#sec-heat-problems}
 
 Heat conduction in a body of homogeneous material is modeled by the heat equation
 
 $$\frac{\partial T}{\partial t} = c^2 \nabla^2 T$$
 
-where the function $T$ is temperature, $t$ is time, and $c^2$ is a positive constant (specific to the material of the body; see Sec. 12.6).
+where the function $T$ is temperature, $t$ is time, and $c^2$ is a positive constant (specific to the material of the body; see <!-- TODO: replace Sec. 12.6 with actual cross-reference label -->).
 
 Now if a heat flow problem is steady, that is, independent of time, we have $\partial T/\partial t = 0$. If it is also two-dimensional, then the heat equation reduces to Laplace's equation
 
@@ -307,7 +309,7 @@ $$F(z) = T(x, y) + i\Psi(x, y)$$
 
 We call $T$ the heat potential. The curves $T(x, y) = \text{const}$ are called **isotherms**, which means lines of constant temperature. The curves $\Psi(x, y) = \text{const}$ are called **heat flow lines** because heat flows along them from higher temperatures to lower temperatures.
 
-It follows that all the examples considered so far (Secs. 18.1, 18.2) can now be reinterpreted as problems on heat flow. The electrostatic equipotential lines now become isotherms and the lines of electrical force become lines of heat flow, as in the following two problems.
+It follows that all the examples considered so far (@sec-electrostatic-fields, @sec-conformal-modeling) can now be reinterpreted as problems on heat flow. The electrostatic equipotential lines now become isotherms and the lines of electrical force become lines of heat flow, as in the following two problems.
 
 ### EXAMPLE 1 Temperature Between Parallel Plates
 
@@ -315,7 +317,7 @@ Find the temperature between two parallel plates $x = 0$ and $x = d$ (Fig. 408) 
 
 ![Fig. 408. Example 1](../images/fig-18-13.png){#fig-18-13}
 
-**Solution.** As in Example 1 of Sec. 18.1 we conclude that $T(x, y) = ax + b$. From the boundary conditions, $T(0, y) = b = 0$ and $T(d, y) = ad = 100$. The answer is
+**Solution.** As in Example 1 of @sec-electrostatic-fields we conclude that $T(x, y) = ax + b$. From the boundary conditions, $T(0, y) = b = 0$ and $T(d, y) = ad = 100$. The answer is
 
 $$T(x, y) = \frac{100}{d} x$$
 
@@ -327,7 +329,7 @@ Find the temperature field around a long thin wire of radius $r_1 = 1\text{ mm}$
 
 ![Fig. 409. Example 2](../images/fig-18-14.png){#fig-18-14}
 
-**Solution.** $T$ depends only on $r$, for reasons of symmetry. Hence, as in Sec. 18.1 (Example 2), $T(x, y) = a\ln r + b$. The boundary conditions are
+**Solution.** $T$ depends only on $r$, for reasons of symmetry. Hence, as in @sec-electrostatic-fields (Example 2), $T(x, y) = a\ln r + b$. The boundary conditions are
 
 $$T_1 = a\ln 1 + b = 500, \quad T_2 = a\ln 100 + b = 60$$
 
@@ -349,9 +351,9 @@ Find the temperature distribution in the region in Fig. 410 (cross section of a 
 
 $$\frac{\partial T}{\partial n} = 0$$ {#eq-sec183-2}
 
-along an insulated portion of the boundary. Here $\partial T/\partial n$ is the normal derivative of $T$, that is, the directional derivative (Sec. 9.7) in the direction normal (perpendicular) to the insulated boundary. Such a problem in which $T$ is prescribed on one portion of the boundary and $\partial T/\partial n = 0$ on the other portion is called a **mixed boundary value problem**.
+along an insulated portion of the boundary. Here $\partial T/\partial n$ is the normal derivative of $T$, that is, the directional derivative (<!-- TODO: replace Sec. 9.7 with actual cross-reference label -->) in the direction normal (perpendicular) to the insulated boundary. Such a problem in which $T$ is prescribed on one portion of the boundary and $\partial T/\partial n = 0$ on the other portion is called a **mixed boundary value problem**.
 
-In our case, the normal direction to the insulated circular boundary curve is the radial direction toward the origin. Hence (2) becomes $\partial T/\partial r = 0$, meaning that along this curve the solution must not depend on $r$. Now $T(x, y) = a + b \text{Arg } z = a + b\theta$ satisfies (1), as well as this condition, and is constant ($50^\circ\text{C}$ and $20^\circ\text{C}$) on the straight portions of the boundary. Hence the solution is of the form $T(x, y) = a + b\theta$. The boundary conditions yield $T(0) = a = 50$ and $T(\pi/2) = a + b\pi/2 = 20$. This gives $b = -60/\pi$. The temperature distribution is
+In our case, the normal direction to the insulated circular boundary curve is the radial direction toward the origin. Hence (@eq-sec183-2) becomes $\partial T/\partial r = 0$, meaning that along this curve the solution must not depend on $r$. Now $T(x, y) = a + b \text{Arg } z = a + b\theta$ satisfies (@eq-sec183-1), as well as this condition, and is constant ($50^\circ\text{C}$ and $20^\circ\text{C}$) on the straight portions of the boundary. Hence the solution is of the form $T(x, y) = a + b\theta$. The boundary conditions yield $T(0) = a = 50$ and $T(\pi/2) = a + b\pi/2 = 20$. This gives $b = -60/\pi$. The temperature distribution is
 
 $$T(x, y) = 50 - \frac{60}{\pi}\theta = 50 - \frac{60}{\pi}\text{arctan}\left(\frac{y}{x}\right)$$
 
@@ -365,11 +367,11 @@ Find the temperature field in the upper half-plane when the $x$-axis is kept at 
 
 ![Fig. 412. Example 4: w-plane](../images/fig-18-17.png){#fig-18-17}
 
-**Solution.** We map the half-plane in Fig. 411 onto the vertical strip in Fig. 412, find the temperature $T^*(u, v)$ there, and map it back to get the temperature $T(x, y)$ in the half-plane. The idea of using that strip is suggested by Fig. 391 in Sec. 17.4 with the roles of $z$ and $w$ interchanged. The figure shows that $z = \sin w$ maps our present strip onto our half-plane in Fig. 411. Hence the inverse function
+**Solution.** We map the half-plane in @fig-18-16 onto the vertical strip in @fig-18-17, find the temperature $T^*(u, v)$ there, and map it back to get the temperature $T(x, y)$ in the half-plane. The idea of using that strip is suggested by a figure in @sec-conformal-other-fns with the roles of $z$ and $w$ interchanged. The figure shows that $z = \sin w$ maps our present strip onto our half-plane in @fig-18-16. Hence the inverse function
 
 $$w = f(z) = \text{arcsin } z$$
 
-maps that half-plane onto the strip in the $w$-plane. This is the mapping function that we need according to Theorem 1 in Sec. 18.2.
+maps that half-plane onto the strip in the $w$-plane. This is the mapping function that we need according to Theorem 1 in @sec-conformal-modeling.
 
 The insulated segment $-1 < x < 1$ on the $x$-axis maps onto the segment $-\pi/2 < u < \pi/2$ on the $u$-axis. The rest of the $x$-axis maps onto the two vertical boundary portions $u = -\pi/2, v \ge 0$ and $u = \pi/2, v \ge 0$ of the strip. This gives the transformed boundary conditions in Fig. 412 for $T^*(u, v)$, where $\partial T^*/\partial v = 0$ on the insulated horizontal boundary, because $v$ is a coordinate normal to that segment.
 
@@ -383,7 +385,7 @@ $$F(z) = F^*(f(z)) = 10 + \frac{20}{\pi}\text{arcsin } z$$
 
 and $T(x, y) = \text{Re } F(z)$ is the solution. The isotherms $T = \text{const}$ are $u = \text{const}$ in the strip and the hyperbolas in the $z$-plane, perpendicular to which heat flows along the dashed ellipses from the $x > 1$ portion to the cooler $x < -1$ portion of the boundary, a physically very reasonable result.
 
-### PROBLEM SET 18.3 {#sec-ps18-3}
+### PROBLEM SET {#sec-ps18-3}
 
 1. **Parallel plates.** Find the temperature $T(x, y)$ between the plates $y = 0$ and $y = d$ kept at $100^\circ\text{C}$ and $20^\circ\text{C}$, respectively. (i) Proceed directly. (ii) Use Example 1 and a suitable mapping.
 2. **Infinite plate.** Find the temperature and the complex potential in an infinite plate with edges $y = x - 4$ and $y = x + 4$ kept at $0^\circ\text{C}$ and $40^\circ\text{C}$, respectively (Fig. 413). In what case will this be an approximate model?
@@ -417,7 +419,7 @@ Find the temperature distribution and the complex potential in the given thin me
 19. Formulate Prob. 11 in terms of electrostatics.
 20. Interpret Prob. 17 in Sec. 18.2 as a heat problem, with boundary temperatures, say, $200^\circ\text{C}$ on the upper part and $10^\circ\text{C}$ on the lower part.
 
-## 18.4 Fluid Flow {#sec-fluid-flow}
+## Fluid Flow {#sec-fluid-flow}
 
 Laplace's equation also plays a basic role in hydrodynamics, in steady nonviscous fluid flow under physical conditions discussed later in this section. For methods of complex analysis to be applicable, our problems will be two-dimensional, so that the velocity vector $V$ by which the motion of the fluid can be given depends only on two space variables $x$ and $y$, and the motion is the same in all planes parallel to the $xy$-plane.
 
@@ -441,7 +443,7 @@ where the bar denotes the complex conjugate. $\Psi$ is called the **stream funct
 
 $$V_1 = \frac{\partial \Phi}{\partial x}, \quad V_2 = \frac{\partial \Phi}{\partial y}$$ {#eq-sec184-4}
 
-Indeed, for $F = \Phi + i\Psi$ Eq. (4) in Sec. 13.4 is $F'(z) = \Phi_x + i\Psi_x = \Phi_x - i\Phi_y$ by the second Cauchy–Riemann equation. Together we obtain (3):
+Indeed, for $F = \Phi + i\Psi$ <!-- TODO: replace Eq. (4) in Sec. 13.4 with actual cross-reference label --> is $F'(z) = \Phi_x + i\Psi_x = \Phi_x - i\Phi_y$ by the second Cauchy–Riemann equation. Together we obtain (@eq-sec184-3):
 
 $$\overline{F'(z)} = \Phi_x + i\Phi_y = V_1 + iV_2 = V$$
 
@@ -451,7 +453,7 @@ $$\nabla^2 \Phi = 0, \quad \nabla^2 \Psi = 0$$ {#eq-sec184-5}
 
 Whereas in electrostatics the boundaries (conducting plates) are equipotential lines, in fluid flow the boundaries across which fluid cannot flow must be streamlines. Hence in fluid flow the stream function $\Psi$ is of particular importance.
 
-Before discussing the conditions for the validity of the statements involving (2)–(5), let us consider two flows of practical interest, so that we first see what is going on from a practical point of view. Further flows are included in the problem set.
+Before discussing the conditions for the validity of the statements involving (@eq-sec184-2)–(@eq-sec184-5), let us consider two flows of practical interest, so that we first see what is going on from a practical point of view. Further flows are included in the problem set.
 
 ### EXAMPLE 1 Flow Around a Corner
 
@@ -460,7 +462,7 @@ The complex potential $F(z) = z^2$ models a flow with
 - Equipotential lines (Hyperbolas): $\Phi = x^2 - y^2 = \text{const}$
 - Streamlines (Hyperbolas): $\Psi = 2xy = \text{const}$.
 
-From (3) we obtain the velocity vector $V = \overline{F'(z)} = 2\overline{z} = 2(x - iy)$, that is,
+From (@eq-sec184-3) we obtain the velocity vector $V = \overline{F'(z)} = 2\overline{z} = 2(x - iy)$, that is,
 
 $$V_1 = 2x, \quad V_2 = -2y$$
 
@@ -488,7 +490,7 @@ $$\Psi(x, y) = \left(r - \frac{1}{r}\right)\sin\theta = \text{const}$$
 
 In particular, $\Psi(x, y) = 0$ gives $r - 1/r = 0$ or $\sin\theta = 0$. Hence this streamline consists of the unit circle $r = 1$ and the $x$-axis ($\theta = 0$ and $\theta = \pi$). For large $|z|$ the term $1/z$ in $F(z)$ is small in absolute value, so that for these $z$ the flow is nearly uniform and parallel to the $x$-axis. Hence we can interpret this as a flow around a long circular cylinder of unit radius that is perpendicular to the $z$-plane and intersects it in the unit circle $|z| = 1$ and whose axis corresponds to $z = 0$.
 
-The flow has two stagnation points (that is, points at which the velocity $V$ is zero), at $z = \pm 1$. This follows from (3) and
+The flow has two stagnation points (that is, points at which the velocity $V$ is zero), at $z = \pm 1$. This follows from (@eq-sec184-3) and
 
 $$F'(z) = 1 - \frac{1}{z^2} = \frac{z^2 - 1}{z^2}$$
 
@@ -510,17 +512,17 @@ If the domain of flow is simply connected and the flow is irrotational and incom
 
 $$\int_C V_t \, ds$$ {#eq-sec184-6}
 
-taken along $C$ in the sense of increasing $s$ is called the **circulation** of the fluid along $C$. Dividing the circulation by the length of $C$, we obtain the mean velocity of the flow along the curve $C$. (See footnote 1.)
+taken along $C$ in the sense of increasing $s$ is called the **circulation** of the fluid along $C$. Dividing the circulation by the length of $C$, we obtain the mean velocity of the flow along the curve $C$.
 
-Now $V_t = |V| \cos \alpha$ (Fig. 417). Hence $V_t \, ds$ is the dot product of $V$ and the tangent vector of $C$; thus in (6),
+Now $V_t = |V| \cos \alpha$ (@fig-18-22). Hence $V_t \, ds$ is the dot product of $V$ and the tangent vector of $C$; thus in (@eq-sec184-6),
 
 $$V_t \, ds = \left(V_1 \frac{dx}{ds} + V_2 \frac{dy}{ds}\right) ds = V_1 \, dx + V_2 \, dy$$
 
-The circulation (6) along $C$ now becomes
+The circulation (@eq-sec184-6) along $C$ now becomes
 
 $$\int_C V_t \, ds = \int_C (V_1 \, dx + V_2 \, dy)$$ {#eq-sec184-7}
 
-As the next idea, let $C$ be a closed curve and let $C$ be the boundary of a simply connected domain $D$. Suppose further that $V$ has continuous partial derivatives in a domain containing $D$ and $C$. Then we can use Green's theorem (Sec. 10.4) to represent the circulation around $C$ by a double integral:
+As the next idea, let $C$ be a closed curve and let $C$ be the boundary of a simply connected domain $D$. Suppose further that $V$ has continuous partial derivatives in a domain containing $D$ and $C$. Then we can use Green's theorem (<!-- TODO: replace Sec. 10.4 with actual cross-reference label -->) to represent the circulation around $C$ by a double integral:
 
 $$\oint_C (V_1 \, dx + V_2 \, dy) = \iint_D \left(\frac{\partial V_2}{\partial x} - \frac{\partial V_1}{\partial y}\right) dx \, dy$$ {#eq-sec184-8}
 
@@ -532,7 +534,7 @@ We assume the flow to be irrotational, that is, $\omega(x, y) = 0$ throughout th
 
 $$\frac{\partial V_2}{\partial x} - \frac{\partial V_1}{\partial y} = 0$$ {#eq-sec184-10}
 
-To understand the physical meaning of vorticity and rotation, take for $C$ in (8) a circle. Let $r$ be the radius of $C$. Then the circulation divided by the length of $C$ is the mean velocity of the fluid along $C$. Hence by dividing this by $r$ we obtain the mean angular velocity $\omega_0$ of the fluid about the center of the circle:
+To understand the physical meaning of vorticity and rotation, take for $C$ in (@eq-sec184-8) a circle. Let $r$ be the radius of $C$. Then the circulation divided by the length of $C$ is the mean velocity of the fluid along $C$. Hence by dividing this by $r$ we obtain the mean angular velocity $\omega_0$ of the fluid about the center of the circle:
 
 $$\omega_0 = \frac{1}{2\pi r^2} \iint_D \left(\frac{\partial V_2}{\partial x} - \frac{\partial V_1}{\partial y}\right) dx \, dy = \frac{1}{\pi r^2} \iint_D \omega(x, y) \, dx \, dy$$
 
@@ -547,21 +549,21 @@ If we now let $r \to 0$, the limit of $\omega_0$ is the value of $\omega$ at the
 
 $$\frac{\partial V_1}{\partial x} + \frac{\partial V_2}{\partial y} = 0$$ {#eq-sec184-11}
 
-in every region that is free of sources or sinks, that is, points at which fluid is produced or disappears, respectively. The expression in (11) is called the **divergence** of $V$ and is denoted by $\text{div } V$. (See also (7) in Sec. 9.8.)
+in every region that is free of sources or sinks, that is, points at which fluid is produced or disappears, respectively. The expression in (@eq-sec184-11) is called the **divergence** of $V$ and is denoted by $\text{div } V$. (See also <!-- TODO: replace (7) in Sec. 9.8 with actual cross-reference label -->.)
 
-**(c) Complex Velocity Potential.** If the domain $D$ of the flow is simply connected (Sec. 14.2) and the flow is irrotational, then (10) implies that the line integral (7) is independent of path in $D$ (by Theorem 3 in Sec. 10.2). Hence if we integrate from a fixed point $(a, b)$ in $D$ to a variable point $(x, y)$ in $D$, the integral becomes a function of the point $(x, y)$, say, $\Phi(x, y)$:
+**(c) Complex Velocity Potential.** If the domain $D$ of the flow is simply connected (<!-- TODO: replace Sec. 14.2 with actual cross-reference label -->) and the flow is irrotational, then (@eq-sec184-10) implies that the line integral (@eq-sec184-7) is independent of path in $D$ (by <!-- TODO: replace Theorem 3 in Sec. 10.2 with actual cross-reference label -->). Hence if we integrate from a fixed point $(a, b)$ in $D$ to a variable point $(x, y)$ in $D$, the integral becomes a function of the point $(x, y)$, say, $\Phi(x, y)$:
 
 $$\Phi(x, y) = \int_{(a, b)}^{(x, y)} (V_1 \, dx + V_2 \, dy)$$ {#eq-sec184-12}
 
-We claim that the flow has a velocity potential which is given by (12). To prove this, all we have to do is to show that (4) holds. Now since the integral (7) is independent of path, $V_1 \, dx + V_2 \, dy$ is exact, namely, the differential of $\Phi$, that is,
+We claim that the flow has a velocity potential which is given by (@eq-sec184-12). To prove this, all we have to do is to show that (@eq-sec184-4) holds. Now since the integral (@eq-sec184-7) is independent of path, $V_1 \, dx + V_2 \, dy$ is exact, namely, the differential of $\Phi$, that is,
 
 $$V_1 \, dx + V_2 \, dy = \frac{\partial \Phi}{\partial x} \, dx + \frac{\partial \Phi}{\partial y} \, dy$$
 
-From this we see that $V_1 = \partial\Phi/\partial x$ and $V_2 = \partial\Phi/\partial y$, which gives (4). That $\Phi$ is harmonic follows at once by substituting (4) into (11), which gives the first Laplace equation in (5).
+From this we see that $V_1 = \partial\Phi/\partial x$ and $V_2 = \partial\Phi/\partial y$, which gives (@eq-sec184-4). That $\Phi$ is harmonic follows at once by substituting (@eq-sec184-4) into (@eq-sec184-11), which gives the first Laplace equation in (@eq-sec184-5).
 
 We finally take a harmonic conjugate $\Psi(x, y)$ of $\Phi(x, y)$. Then the other equation in (5) holds. Also, since the second partial derivatives of $\Phi$ and $\Psi$ are continuous, we see that the complex function $F(z) = \Phi(x, y) + i\Psi(x, y)$ is analytic in $D$. Since the curves $\Psi(x, y) = \text{const}$ are perpendicular to the equipotential curves $\Phi(x, y) = \text{const}$ (except where $F'(z) = 0$), we conclude that the curves $\Psi = \text{const}$ are the streamlines. Hence $\Psi$ is the stream function and $F(z)$ is the complex potential of the flow. This completes the proof of Theorem 1. $\blacksquare$
 
-### PROBLEM SET 18.4 {#sec-ps18-4}
+### PROBLEM SET {#sec-ps18-4}
 
 1. **Differentiability.** Under what condition on the velocity vector $V$ in (1) will $F(z)$ in (2) be analytic?
 2. **Corner flow.** Along what curves will the speed in Example 1 be constant? Is this obvious from Fig. 415?
@@ -603,7 +605,7 @@ We finally take a harmonic conjugate $\Psi(x, y)$ of $\Phi(x, y)$. Then the othe
 
     ![Fig. 422. Flow around a cylinder with circulation](../images/fig-18-27.png){#fig-18-27}
 
-## 18.5 Poisson's Integral Formula for Potentials {#sec-poisson-formula}
+## Poisson's Integral Formula for Potentials {#sec-poisson-formula}
 
 So far in this chapter we have seen powerful methods based on conformal mappings and complex potentials. They were used for modeling and solving two-dimensional potential problems and demonstrated the importance of complex analysis.
 
@@ -611,11 +613,11 @@ Now we introduce a further method that results from complex integration. It will
 
 ### Derivation of Poisson's Integral Formula
 
-Poisson's formula will follow from Cauchy's integral formula (Sec. 14.3)
+Poisson's formula will follow from Cauchy's integral formula (<!-- TODO: replace Sec. 14.3 with actual cross-reference label -->)
 
 $$F(z) = \frac{1}{2\pi i} \oint_C \frac{F(z^*)}{z^* - z} dz^*$$ {#eq-sec185-1}
 
-Here $C$ is the circle $z^* = Re^{i\alpha}$ (counterclockwise), and we assume that $F(z)$ is analytic in a domain containing $C$ and its full interior. Since $dz^* = iRe^{i\alpha} d\alpha = iz^* d\alpha$, we obtain from (1)
+Here $C$ is the circle $z^* = Re^{i\alpha}$ (counterclockwise), and we assume that $F(z)$ is analytic in a domain containing $C$ and its full interior. Since $dz^* = iRe^{i\alpha} d\alpha = iz^* d\alpha$, we obtain from (@eq-sec185-1)
 
 $$F(z) = \frac{1}{2\pi} \int_0^{2\pi} F(z^*) \frac{z^*}{z^* - z} d\alpha$$ {#eq-sec185-2}
 
@@ -627,7 +629,7 @@ and by straightforward simplification using $R^2 = z^* \overline{z^*}$,
 
 $$0 = \frac{1}{2\pi} \int_0^{2\pi} F(z^*) \frac{\overline{z}}{\overline{z} - \overline{z^*}} d\alpha$$
 
-We subtract this from (2) and use the following formula that you can verify by direct calculation ($z^*\overline{z^*}$ cancels):
+We subtract this from (@eq-sec185-2) and use the following formula that you can verify by direct calculation ($z^*\overline{z^*}$ cancels):
 
 $$\frac{z^*}{z^* - z} - \frac{\overline{z}}{\overline{z} - \overline{z^*}} = \frac{z^*\overline{z^*} - z\overline{z}}{(z^* - z)(\overline{z^*} - \overline{z})}$$ {#eq-sec185-3}
 
@@ -639,17 +641,17 @@ From the polar representations $z^* = Re^{i\alpha}$ and $z = re^{i\theta}$ we se
 
 $$\frac{R^2 - r^2}{(Re^{i\alpha} - re^{i\theta})(Re^{-i\alpha} - re^{-i\theta})} = \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - \alpha) + r^2}$$
 
-We now write $F(z) = \Phi(r, \theta) + i\Psi(r, \theta)$ and take the real part on both sides of (4). Then we obtain **Poisson's integral formula**:
+We now write $F(z) = \Phi(r, \theta) + i\Psi(r, \theta)$ and take the real part on both sides of (@eq-sec185-4). Then we obtain **Poisson's integral formula**:
 
 $$\Phi(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} \Phi(R, \alpha) \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - \alpha) + r^2} d\alpha$$ {#eq-sec185-5}
 
 This formula represents the harmonic function $\Phi$ in the disk $|z| < R$ in terms of its values on the boundary (the circle) $|z| = R$.
 
-Formula (5) is still valid if the boundary function $\Phi(R, \alpha)$ is merely piecewise continuous (as is practically often the case; see Figs. 405 and 406 in Sec. 18.2 for an example). Then (5) gives a function harmonic in the open disk, and on the circle equal to the given boundary function, except at points where the latter is discontinuous. A proof can be found in Ref. [D1] in App. 1.
+(@eq-sec185-5) is still valid if the boundary function $\Phi(R, \alpha)$ is merely piecewise continuous (as is practically often the case; see @fig-18-10 and @fig-18-11 in @sec-conformal-modeling for an example). Then (@eq-sec185-5) gives a function harmonic in the open disk, and on the circle equal to the given boundary function, except at points where the latter is discontinuous. A proof can be found in Ref. [D1] in App. 1.
 
 ### Series for Potentials in Disks
 
-From (5) we may obtain an important series development of $\Phi$ in terms of simple harmonic functions. We remember that the quotient in the integrand of (5) was derived from (3). We claim that the right side of (3) is the real part of
+From (@eq-sec185-5) we may obtain an important series development of $\Phi$ in terms of simple harmonic functions. We remember that the quotient in the integrand of (@eq-sec185-5) was derived from (@eq-sec185-3). We claim that the right side of (@eq-sec185-3) is the real part of
 
 $$\frac{z^* + z}{z^* - z}$$
 
@@ -663,19 +665,19 @@ Since $z^* = Re^{i\alpha}$ and $z = re^{i\theta}$, we have
 
 $$\left(\frac{z}{z^*}\right)^n = \left(\frac{r}{R}\right)^n e^{in(\theta - \alpha)}$$
 
-On the right, $e^{in(\theta - \alpha)} = \cos n(\theta - \alpha) + i\sin n(\theta - \alpha)$. Hence from (6) we obtain
+On the right, $e^{in(\theta - \alpha)} = \cos n(\theta - \alpha) + i\sin n(\theta - \alpha)$. Hence from (@eq-sec185-6) we obtain
 
 $$\text{Re}\left( \frac{z^* + z}{z^* - z} \right) = 1 + 2 \sum_{n=1}^\infty \left(\frac{r}{R}\right)^n \cos n(\theta - \alpha)$$ {#eq-sec185-6star}
 
-This expression is equal to the quotient in (5), as we have mentioned before, and by inserting it into (5) and integrating term by term with respect to $\alpha$ from 0 to $2\pi$, we obtain
+This expression is equal to the quotient in (@eq-sec185-5), as we have mentioned before, and by inserting it into (@eq-sec185-5) and integrating term by term with respect to $\alpha$ from 0 to $2\pi$, we obtain
 
 $$\Phi(r, \theta) = a_0 + \sum_{n=1}^\infty \left(\frac{r}{R}\right)^n (a_n \cos n\theta + b_n \sin n\theta)$$ {#eq-sec185-7}
 
-where the coefficients are [the 2 in (6*) cancels the $1/(2\pi)$ in (5)]:
+where the coefficients are [the 2 in (@eq-sec185-6star) cancels the $1/(2\pi)$ in (@eq-sec185-5)]:
 
 $$a_0 = \frac{1}{2\pi}\int_0^{2\pi} \Phi(R, \alpha) \, d\alpha, \quad a_n = \frac{1}{\pi}\int_0^{2\pi} \Phi(R, \alpha)\cos n\alpha \, d\alpha, \quad b_n = \frac{1}{\pi}\int_0^{2\pi} \Phi(R, \alpha)\sin n\alpha \, d\alpha$$ {#eq-sec185-8}
 
-the Fourier coefficients of $\Phi(R, \alpha)$. Now, for $r = R$, the series (7) becomes the Fourier series of $\Phi(R, \alpha)$. Hence the representation (7) will be valid whenever the $\Phi(R, \alpha)$ given on the boundary can be represented by a Fourier series.
+the Fourier coefficients of $\Phi(R, \alpha)$. Now, for $r = R$, the series (@eq-sec185-7) becomes the Fourier series of $\Phi(R, \alpha)$. Hence the representation (@eq-sec185-7) will be valid whenever the $\Phi(R, \alpha)$ given on the boundary can be represented by a Fourier series.
 
 ### EXAMPLE 1 Dirichlet Problem for the Unit Disk
 
@@ -687,7 +689,7 @@ $$\Phi(1, \alpha) = \begin{cases} -\alpha/\pi & \text{if } -\pi < \alpha < 0 \\ 
 
 ![Fig. 424. Potential in Example 1](../images/fig-18-29.png){#fig-18-29}
 
-**Solution.** Since $\Phi(1, \alpha)$ is even, $b_n = 0$, and from (8) we obtain $a_0 = 1/2$ and
+**Solution.** Since $\Phi(1, \alpha)$ is even, $b_n = 0$, and from (@eq-sec185-8) we obtain $a_0 = 1/2$ and
 
 $$a_n = \frac{1}{\pi} \left[ \int_{-\pi}^0 \left(-\frac{\alpha}{\pi}\right) \cos n\alpha \, d\alpha + \int_0^\pi \frac{\alpha}{\pi} \cos n\alpha \, d\alpha \right] = \frac{2}{n^2\pi^2}(\cos n\pi - 1)$$
 
@@ -697,11 +699,11 @@ $$\Phi(r, \theta) = \frac{1}{2} - \frac{4}{\pi^2}\left( r\cos\theta + \frac{r^3}
 
 Figure 424 shows the unit disk and some of the equipotential lines ($\Phi = \text{const}$).
 
-### PROBLEM SET 18.5 {#sec-ps18-5}
+### PROBLEM SET {#sec-ps18-5}
 
-1. Give the details of the derivation of the series (7) from the Poisson formula (5).
-2. Verify formula (3).
-3. Show that each term of (7) is a harmonic function in the disk $r < R$.
+1. Give the details of the derivation of the series (@eq-sec185-7) from the Poisson formula (@eq-sec185-5).
+2. Verify formula (@eq-sec185-3).
+3. Show that each term of (@eq-sec185-7) is a harmonic function in the disk $r < R$.
 4. Why does the series in Example 1 reduce to a cosine series?
 
 #### 5–18 HARMONIC FUNCTIONS IN A DISK
@@ -732,19 +734,19 @@ Using (7), find the potential in the unit disk $r < 1$ having the given boundary
     (c) **Harmonic conjugate.** Find a series for a harmonic conjugate of $\Phi$ from (7). Hint. Use the Cauchy–Riemann equations.
     (d) **Power series.** Find a series for $F(z) = \Phi + i\Psi$ from (7).
 
-## 18.6 General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem {#sec-harmonic-properties}
+## General Properties of Harmonic Functions. Uniqueness Theorem for the Dirichlet Problem {#sec-harmonic-properties}
 
-Recall from Sec. 10.8 that harmonic functions are solutions to Laplace's equation and their second-order partial derivatives are continuous. In this section we explore how general properties of harmonic functions often can be obtained from properties of analytic functions. This can frequently be done in a simple fashion. Specifically, important mean value properties of harmonic functions follow readily from those of analytic functions. The details are as follows.
+Recall from <!-- TODO: replace Sec. 10.8 with actual cross-reference label --> that harmonic functions are solutions to Laplace's equation and their second-order partial derivatives are continuous. In this section we explore how general properties of harmonic functions often can be obtained from properties of analytic functions. This can frequently be done in a simple fashion. Specifically, important mean value properties of harmonic functions follow readily from those of analytic functions. The details are as follows.
 
 ### THEOREM 1 Mean Value Property of Analytic Functions
 
 Let $F(z)$ be analytic in a simply connected domain $D$. Then the value of $F(z)$ at a point $z_0$ in $D$ is equal to the mean value of $F(z)$ on any circle in $D$ with center at $z_0$.
 
-**PROOF** In Cauchy's integral formula (Sec. 14.3)
+**PROOF** In Cauchy's integral formula (<!-- TODO: replace Sec. 14.3 with actual cross-reference label -->)
 
 $$F(z_0) = \frac{1}{2\pi i} \oint_C \frac{F(z)}{z - z_0} dz$$ {#eq-sec186-1}
 
-we choose for $C$ the circle $z = z_0 + re^{i\alpha}$ in $D$. Then $z - z_0 = re^{i\alpha}$ and $dz = ire^{i\alpha} d\alpha$, and (1) becomes
+we choose for $C$ the circle $z = z_0 + re^{i\alpha}$ in $D$. Then $z - z_0 = re^{i\alpha}$ and $dz = ire^{i\alpha} d\alpha$, and (@eq-sec186-1) becomes
 
 $$F(z_0) = \frac{1}{2\pi} \int_0^{2\pi} F(z_0 + re^{i\alpha}) d\alpha$$ {#eq-sec186-2}
 
@@ -774,11 +776,11 @@ Let $F(z)$ be analytic and nonconstant in a domain containing a bounded region $
 
 ![Fig. 425. Proof of Theorem 3](../images/fig-18-30.png){#fig-18-30}
 
-**PROOF** We assume that $|F(z)|$ has a maximum at an interior point $z_0$ of $R$ and show that this leads to a contradiction. Let $|F(z_0)| = M$ be this maximum. Since $F(z)$ is not constant, $|F(z)|$ is not constant, as follows from Example 3 in Sec. 13.4. Consequently, we can find a circle $C$ of radius $r$ with center at $z_0$ such that the interior of $C$ is in $R$ and $|F(z)|$ is smaller than $M$ at some point $P$ of $C$. Since $|F(z)|$ is continuous, it will be smaller than $M$ on an arc $C_1$ of $C$ that contains $P$ (see Fig. 425), say,
+**PROOF** We assume that $|F(z)|$ has a maximum at an interior point $z_0$ of $R$ and show that this leads to a contradiction. Let $|F(z_0)| = M$ be this maximum. Since $F(z)$ is not constant, $|F(z)|$ is not constant, as follows from <!-- TODO: replace Example 3 in Sec. 13.4 with actual cross-reference label -->. Consequently, we can find a circle $C$ of radius $r$ with center at $z_0$ such that the interior of $C$ is in $R$ and $|F(z)|$ is smaller than $M$ at some point $P$ of $C$. Since $|F(z)|$ is continuous, it will be smaller than $M$ on an arc $C_1$ of $C$ that contains $P$ (see @fig-18-30), say,
 
 $$|F(z)| \le M - k \quad (k > 0)$$
 
-for all $z$ on $C_1$. Let $C_1$ have the length $L_1$. Then the complementary arc $C_2$ of $C$ has the length $2\pi r - L_1$. We now apply the $ML$-inequality (Sec. 14.1) to (1) and note that $|z - z_0| = r$. We then obtain (using straightforward calculation in the second line of the formula)
+for all $z$ on $C_1$. Let $C_1$ have the length $L_1$. Then the complementary arc $C_2$ of $C$ has the length $2\pi r - L_1$. We now apply the $ML$-inequality (<!-- TODO: replace Sec. 14.1 with actual cross-reference label -->) to (@eq-sec186-1) and note that $|z - z_0| = r$. We then obtain (using straightforward calculation in the second line of the formula)
 
 $$\begin{aligned}
 M = |F(z_0)| &\le \frac{1}{2\pi} \left| \int_{C_1} \frac{F(z)}{z - z_0} dz \right| + \frac{1}{2\pi} \left| \int_{C_2} \frac{F(z)}{z - z_0} dz \right| \\
@@ -820,7 +822,7 @@ where $(x_0, y_0)$ is on the boundary and $(x, y)$ is in $R$. Under these assump
 
 If for a given region and given boundary values the Dirichlet problem for the Laplace equation in two variables has a solution, the solution is unique.
 
-### PROBLEM SET 18.6 {#sec-ps18-6}
+### PROBLEM SET {#sec-ps18-6}
 
 #### 1–4 APPLICATION OF THEOREM 1
 
@@ -861,7 +863,7 @@ Find the location and size of the maximum of $|F(z)|$ in the unit disk $|z| \le 
 19. **Harmonic conjugate.** Do $\Phi(x, y)$ and a harmonic conjugate $\Psi(x, y)$ in a region $R$ have their maximum at the same point of $R$?
 20. **Conformal mapping.** Find the location of the maximum of $|F(z)|$ in $R: |z| \le 1, y \ge 0$, where $F(z) = z^2$. Find the region $R^*$ in the $w$-plane that is mapped onto $R$ by $w = f(z) = z^2$. Find the potential $\Phi$ in $R$ resulting from $\Phi^* = e^u \cos v$ and the location of the maximum. Is the image of $(x_1, y_1)$ equal to $(u_1, v_1)$? If so, is this just by chance?
 
-## CHAPTER 18 REVIEW QUESTIONS AND PROBLEMS {#sec-ch18-review}
+## Review Questions and Problems {#sec-ch18-review}
 
 1. Why can potential problems be modeled and solved by methods of complex analysis? For what dimensions?
 2. What parts of complex analysis are mainly of interest to the engineer and physicist?
@@ -889,26 +891,26 @@ Find the location and size of the maximum of $|F(z)|$ in the unit disk $|z| \le 
 24. State the theorem on the behavior of harmonic functions under conformal mapping. Verify it for $\Phi^*(u, v) = e^u \sin v$ and $w = f(z) = z^2$.
 25. Find $V$ in Prob. 22 and verify that it gives vectors tangent to the streamlines.
 
-## SUMMARY OF CHAPTER 18 {#sec-ch18-summary}
+## Summary of Complex Analysis and Potential Theory {#sec-ch18-summary}
 
 Potential theory is the theory of solutions of Laplace's equation
 
 $$\nabla^2 \Phi = \frac{\partial^2 \Phi}{\partial x^2} + \frac{\partial^2 \Phi}{\partial y^2} = 0$$ {#eq-sum-1}
 
-Solutions whose second partial derivatives are continuous are called harmonic functions. Equation (1) is the most important PDE in physics, where it is of interest in two and three dimensions. It appears in electrostatics (Sec. 18.1), steady-state heat problems (Sec. 18.3), fluid flow (Sec. 18.4), gravity, etc.
+Solutions whose second partial derivatives are continuous are called harmonic functions. (@eq-sum-1) is the most important PDE in physics, where it is of interest in two and three dimensions. It appears in electrostatics (@sec-electrostatic-fields), steady-state heat problems (@sec-heat-problems), fluid flow (@sec-fluid-flow), gravity, etc.
 
-Whereas the three-dimensional case requires other methods (see Chap. 12), two-dimensional potential theory can be handled by complex analysis, since the real and imaginary parts of an analytic function are harmonic (Sec. 13.4). They remain harmonic under conformal mapping (Sec. 18.2), so that conformal mapping becomes a powerful tool in solving boundary value problems for (1), as is illustrated in this chapter.
+Whereas the three-dimensional case requires other methods (see <!-- TODO: replace Chap. 12 with actual chapter label -->), two-dimensional potential theory can be handled by complex analysis, since the real and imaginary parts of an analytic function are harmonic (<!-- TODO: replace Sec. 13.4 with actual cross-reference label -->). They remain harmonic under conformal mapping (@sec-conformal-modeling), so that conformal mapping becomes a powerful tool in solving boundary value problems for (@eq-sum-1), as is illustrated in @ch-complex-analysis-potential-theory.
 
 With a real potential $\Phi$ in (1) we can associate a complex potential
 
 $$F(z) = \Phi + i\Psi$$ {#eq-sum-2}
 
-(Sec. 18.1). Then both families of curves $\Phi = \text{const}$ and $\Psi = \text{const}$ have a physical meaning. In electrostatics, they are equipotential lines and lines of electrical force (Sec. 18.1). In heat problems, they are isotherms (curves of constant temperature) and lines of heat flow (Sec. 18.3). In fluid flow, they are equipotential lines of the velocity potential and streamlines (Sec. 18.4).
+(@sec-electrostatic-fields). Then both families of curves $\Phi = \text{const}$ and $\Psi = \text{const}$ have a physical meaning. In electrostatics, they are equipotential lines and lines of electrical force (@sec-electrostatic-fields). In heat problems, they are isotherms (curves of constant temperature) and lines of heat flow (@sec-heat-problems). In fluid flow, they are equipotential lines of the velocity potential and streamlines (@sec-fluid-flow).
 
-For the disk, the solution of the Dirichlet problem is given by the Poisson formula (Sec. 18.5) or by a series that on the boundary circle becomes the Fourier series of the given boundary values (Sec. 18.5):
+For the disk, the solution of the Dirichlet problem is given by the Poisson formula (@sec-poisson-formula) or by a series that on the boundary circle becomes the Fourier series of the given boundary values (@sec-poisson-formula):
 
 $$\Phi(r,\theta) = \frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-r^2)\,\Phi(R,\alpha)}{R^2-2Rr\cos(\theta-\alpha)+r^2}\,d\alpha \quad (\text{disk})$$
 
 $$\Phi(x,y) = \frac{y}{\pi}\int_{-\infty}^{\infty}\frac{f(t)\,dt}{(x-t)^2+y^2} \quad (\text{upper half-plane})$$
 
-Harmonic functions, like analytic functions, have a number of general properties; particularly important are the mean value property and the maximum modulus property (Sec. 18.6), which implies the uniqueness of the solution of the Dirichlet problem (Theorem 5 in Sec. 18.6).
+Harmonic functions, like analytic functions, have a number of general properties; particularly important are the mean value property and the maximum modulus property (@sec-harmonic-properties), which implies the uniqueness of the solution of the Dirichlet problem (Theorem 5 in @sec-harmonic-properties).
