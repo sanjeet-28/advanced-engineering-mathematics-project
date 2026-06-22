@@ -1,24 +1,24 @@
 ---
-title: "CHAPTER 10: Vector Integral Calculus. Integral Theorems"
+title: "Vector Integral Calculus. Integral Theorems"
 ---
 
-Vector integral calculus can be seen as a generalization of regular integral calculus. You may wish to review integration. (To refresh your memory, there is an optional review section on double integrals; see @sec-10-3.)
+Vector integral calculus can be seen as a generalization of regular integral calculus. You may wish to review integration. (To refresh your memory, there is an optional review section on double integrals; see @sec-calculus-review-double-integrals.)
 
-Indeed, vector integral calculus extends integrals as known from regular calculus to integrals over curves, called line integrals (@sec-10-1, @sec-10-2), surfaces, called surface integrals (@sec-10-6), and solids, called triple integrals (@sec-10-7). The beauty of vector integral calculus is that we can transform these different integrals into one another. You do this to simplify evaluations, that is, one type of integral might be easier to solve than another, such as in potential theory (@sec-10-8). More specifically, Green's theorem in the plane allows you to transform line integrals into double integrals, or conversely, double integrals into line integrals, as shown in @sec-10-4. Gauss's divergence theorem (@sec-10-7) converts surface integrals into triple integrals, and vice-versa, and Stokes's theorem deals with converting line integrals into surface integrals, and vice-versa.
+Indeed, vector integral calculus extends integrals as known from regular calculus to integrals over curves, called line integrals (@sec-line-integrals, @sec-path-independence-line-integrals), surfaces, called surface integrals (@sec-surface-integrals), and solids, called triple integrals (@sec-triple-integrals-divergence-theorem-gauss). The beauty of vector integral calculus is that we can transform these different integrals into one another. You do this to simplify evaluations, that is, one type of integral might be easier to solve than another, such as in potential theory (@sec-further-applications-divergence-theorem). More specifically, Green's theorem in the plane allows you to transform line integrals into double integrals, or conversely, double integrals into line integrals, as shown in @sec-greens-theorem-plane. Gauss's divergence theorem (@sec-triple-integrals-divergence-theorem-gauss) converts surface integrals into triple integrals, and vice-versa, and Stokes's theorem deals with converting line integrals into surface integrals, and vice-versa.
 
-This chapter is a companion to Chapter 9 on vector differential calculus. From Chapter 9, you will need to know inner product, curl, and divergence and how to parameterize curves.
+This chapter is a companion to <!-- TODO: replace Chapter 9 with actual chapter label -->Chapter 9 on vector differential calculus. From <!-- TODO: replace Chapter 9 with actual chapter label -->Chapter 9, you will need to know inner product, curl, and divergence and how to parameterize curves.
 
 The root of the transformation of the integrals was largely physical intuition. Since the corresponding formulas involve the divergence and the curl, the study of this material will lead to a deeper physical understanding of these two operations.
 
 Vector integral calculus is very important to the engineer and physicist and has many applications in solid mechanics, in fluid flow, in heat problems, and others.
 
-**Prerequisite:** Elementary integral calculus, Secs. 9.7–9.9.  
-**Sections that may be omitted in a shorter course:** 10.3, 10.5, 10.8.  
-**References and Answers to Problems:** App. 1 Part B, App. 2.
+**Prerequisite:** Elementary integral calculus, @sec-gradient-scalar-field-directional-derivative to @sec-curl-vector-field.  
+**Sections that may be omitted in a shorter course:** @sec-calculus-review-double-integrals, @sec-surfaces-surface-integrals, @sec-further-applications-divergence-theorem.  
+**References and Answers to Problems:** <!-- TODO: replace App. 1 with actual link -->App. 1 Part B, <!-- TODO: replace App. 2 with actual link -->App. 2.
 
 ***
 
-## 10.1 Line Integrals {#sec-10-1}
+## Line Integrals {#sec-line-integrals}
 
 The concept of a line integral is a simple and natural generalization of a definite integral
 $$
@@ -27,7 +27,7 @@ $$ {#eq-10-1-1}
 
 Recall that, in (@eq-10-1-1), we integrate the function $f(x)$, also known as the integrand, from $x = a$ along the $x$-axis to $x = b$. Now, in a line integral, we shall integrate a given function, also called the integrand, along a curve $C$ in space or in the plane. (Hence curve integral would be a better name but line integral is standard).
 
-This requires that we represent the curve $C$ by a parametric representation (as in Sec. 9.5)
+This requires that we represent the curve $C$ by a parametric representation (as in @sec-curves-arc-length-curvature-torsion)
 $$
 \mathbf{r}(t) = [x(t), \, y(t), \, z(t)] = x(t)\mathbf{i} + y(t)\mathbf{j} + z(t)\mathbf{k} \quad (a \le t \le b).
 $$ {#eq-10-1-2}
@@ -36,7 +36,7 @@ The curve $C$ is called the **path of integration**. Look at @fig-10-219. The pa
 
 $C$ is called a **smooth curve** if it has at each point a unique tangent whose direction varies continuously as we move along $C$. We note that $\mathbf{r}(t)$ in (@eq-10-1-2) is differentiable. Its derivative $\mathbf{r}'(t) = d\mathbf{r}/dt$ is continuous and different from the zero vector at every point of $C$.
 
-![Fig. 219. Oriented curve](/images/cover.png){#fig-10-219 width=50%}
+![Fig. 219. Oriented curve](../images/chapter10/fig-10-219.png){#fig-10-219 width=50%}
 
 ### General Assumption
 In this book, every path of integration of a line integral is assumed to be piecewise smooth, that is, it consists of finitely many smooth curves.
@@ -48,7 +48,7 @@ A line integral of a vector function $\mathbf{F}(\mathbf{r})$ over a curve $C: \
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_{a}^{b} \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \, dt \quad \left(d\mathbf{r} = \frac{d\mathbf{r}}{dt} \, dt\right)
 $$ {#eq-10-1-3}
-where $\mathbf{r}(t)$ is the parametric representation of $C$ as given in (@eq-10-1-2). (The dot product was defined in Sec. 9.2.) Writing (@eq-10-1-3) in terms of components, with $d\mathbf{r} = [dx, dy, dz]$ as in Sec. 9.5 and $\mathbf{r}' = d\mathbf{r}/dt$, we get
+where $\mathbf{r}(t)$ is the parametric representation of $C$ as given in (@eq-10-1-2). (The dot product was defined in @sec-inner-product-dot-product-orthogonality.) Writing (@eq-10-1-3) in terms of components, with $d\mathbf{r} = [dx, dy, dz]$ as in @sec-curves-arc-length-curvature-torsion and $\mathbf{r}' = d\mathbf{r}/dt$, we get
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_C (F_1 \, dx + F_2 \, dy + F_3 \, dz)
 $$ {#eq-10-1-3a}
@@ -58,7 +58,7 @@ $$
 
 If the path of integration $C$ in (@eq-10-1-3) is a closed curve, then instead of $\int_C$ we also write $\oint_C$.
 
-Note that the integrand in (@eq-10-1-3) is a scalar, not a vector, because we take the dot product. Indeed, $\mathbf{F} \cdot (\mathbf{r}' / |\mathbf{r}'|)$ is the tangential component of $\mathbf{F}$. (For "component" see (11) in Sec. 9.2.)
+Note that the integrand in (@eq-10-1-3) is a scalar, not a vector, because we take the dot product. Indeed, $\mathbf{F} \cdot (\mathbf{r}' / |\mathbf{r}'|)$ is the tangential component of $\mathbf{F}$. (For "component" see (11) in @sec-inner-product-dot-product-orthogonality.)
 
 We see that the integral in (@eq-10-1-3) on the right is a definite integral of a function of $t$ taken over the interval $a \le t \le b$ on the $t$-axis in the positive direction: The direction of increasing $t$. This definite integral exists for continuous $\mathbf{F}$ and piecewise smooth $C$, because this makes $\mathbf{F} \cdot \mathbf{r}'$ piecewise continuous.
 
@@ -71,7 +71,7 @@ Find the value of the line integral (@eq-10-1-3) when $\mathbf{F}(\mathbf{r}) = 
 $$
 \mathbf{F}(\mathbf{r}(t)) = [-y(t), -x(t)y(t)] = [-\sin t, -\cos t \sin t] = -\sin t \mathbf{i} - \cos t \sin t \mathbf{j}.
 $$
-By differentiation, $\mathbf{r}'(t) = [-\sin t, \cos t] = -\sin t \mathbf{i} + \cos t \mathbf{j}$, so that by (@eq-10-1-3) [use (10) in App. 3.1; set $\cos t = u$ in the second term]
+By differentiation, $\mathbf{r}'(t) = [-\sin t, \cos t] = -\sin t \mathbf{i} + \cos t \mathbf{j}$, so that by (@eq-10-1-3) [use (10) in <!-- TODO: replace App. 3.1 with actual link -->App. 3.1; set $\cos t = u$ in the second term]
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_{0}^{\pi/2} [-\sin t, -\cos t \sin t] \cdot [-\sin t, \cos t] \, dt = \int_{0}^{\pi/2} (\sin^2 t - \cos^2 t \sin t) \, dt
 $$
@@ -79,7 +79,7 @@ $$
 = \int_{0}^{\pi/2} \frac{1}{2}(1 - \cos 2t) \, dt - \int_{1}^{0} u^2 (-du) = \frac{\pi}{4} - 0 - \frac{1}{3} \approx 0.4521. \quad \square
 $$
 
-![Fig. 220. Example 1](/images/cover.png){#fig-10-220 width=30%}
+![Fig. 220. Example 1](../images/chapter10/fig-10-220.png){#fig-10-220 width=30%}
 
 ### EXAMPLE 2 Line Integral in Space
 The evaluation of line integrals in space is practically the same as it is in the plane. To see this, find the value of (@eq-10-1-3) when $\mathbf{F}(\mathbf{r}) = [z, x, y] = z\mathbf{i} + x\mathbf{j} + y\mathbf{k}$ and $C$ is the helix (@fig-10-221)
@@ -96,7 +96,7 @@ $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_{0}^{2\pi} (-3t\sin t + \cos^2 t + 3\sin t) \, dt = 6\pi + \pi + 0 = 7\pi \approx 21.99. \quad \square
 $$
 
-![Fig. 221. Example 2](/images/cover.png){#fig-10-221 width=30%}
+![Fig. 221. Example 2](../images/chapter10/fig-10-221.png){#fig-10-221 width=30%}
 
 Simple general properties of the line integral (@eq-10-1-3) follow directly from corresponding properties of the definite integral in calculus, namely,
 $$
@@ -112,7 +112,7 @@ where in (@eq-10-1-5c) the path $C$ is subdivided into two arcs $C_1$ and $C_2$ 
 
 If the sense of integration along $C$ is reversed, the value of the integral is multiplied by $-1$. However, we note the following independence if the sense is preserved.
 
-![Fig. 222. Formula (5c)](/images/cover.png){#fig-10-222 width=30%}
+![Fig. 222. Formula (5c)](../images/chapter10/fig-10-222.png){#fig-10-222 width=30%}
 
 ### THEOREM 1 Direction-Preserving Parametric Transformations
 Any representations of $C$ that give the same positive direction on $C$ also yield the same value of the line integral (@eq-10-1-3).
@@ -126,7 +126,7 @@ $$
 $$
 
 ### Motivation of the Line Integral (@eq-10-1-3): Work Done by a Force
-The work $W$ done by a constant force $\mathbf{F}$ in the displacement along a straight segment $\mathbf{d}$ is $W = \mathbf{F} \cdot \mathbf{d}$; see Example 2 in Sec. 9.2. This suggests that we define the work $W$ done by a variable force $\mathbf{F}$ in the displacement along a curve $C: \mathbf{r}(t)$ as the limit of sums of works done in displacements along small chords of $C$. We show that this definition amounts to defining $W$ by the line integral (@eq-10-1-3).
+The work $W$ done by a constant force $\mathbf{F}$ in the displacement along a straight segment $\mathbf{d}$ is $W = \mathbf{F} \cdot \mathbf{d}$; see Example 2 in @sec-inner-product-dot-product-orthogonality. This suggests that we define the work $W$ done by a variable force $\mathbf{F}$ in the displacement along a curve $C: \mathbf{r}(t)$ as the limit of sums of works done in displacements along small chords of $C$. We show that this definition amounts to defining $W$ by the line integral (@eq-10-1-3).
 
 For this we choose points $t_0 (= a) < t_1 < \dots < t_n (= b)$. Then the work $\Delta W_m$ done by $\mathbf{F}(\mathbf{r}(t_m))$ in the straight displacement from $\mathbf{r}(t_{m-1})$ to $\mathbf{r}(t_m)$ is
 $$
@@ -147,7 +147,7 @@ Now by Newton's second law, that is, force = mass $\times$ acceleration, we get
 $$
 \mathbf{F} = m\mathbf{r}''(t) = m\mathbf{v}'(t),
 $$
-where $m$ is the mass of the body displaced. Substitution into (@eq-10-1-6) gives [see (11), Sec. 9.4]
+where $m$ is the mass of the body displaced. Substitution into (@eq-10-1-6) gives [see (11), @sec-vector-scalar-functions-fields-derivatives]
 $$
 W = \int_{a}^{b} m\mathbf{v}' \cdot \mathbf{v} \, dt = \int_{a}^{b} \frac{m}{2} \frac{d}{dt} (\mathbf{v} \cdot \mathbf{v}) \, dt = \left. \frac{m}{2} |\mathbf{v}|^2 \right|_{t=a}^{t=b}.
 $$
@@ -180,14 +180,14 @@ $$
 $$
 
 ### Path Dependence
-Path dependence of line integrals is practically and theoretically so important that we formulate it as a theorem. And a whole section (@sec-10-2) will be devoted to conditions under which path dependence does not occur.
+Path dependence of line integrals is practically and theoretically so important that we formulate it as a theorem. And a whole section (@sec-path-independence-line-integrals) will be devoted to conditions under which path dependence does not occur.
 
 ### THEOREM 2 Path Dependence
 The line integral (@eq-10-1-3) generally depends not only on $\mathbf{F}$ and on the endpoints $A$ and $B$ of the path, but also on the path itself along which the integral is taken.
 
 **Proof.** Almost any example will show this. Take, for instance, the straight segment $C_1: \mathbf{r}_1(t) = [t, t, 0]$ and the parabola $C_2: \mathbf{r}_2(t) = [t, t^2, 0]$ with $0 \le t \le 1$ (@fig-10-223) and integrate $\mathbf{F} = [0, xy, 0]$. Then $\mathbf{F}(\mathbf{r}_1(t)) \cdot \mathbf{r}_1'(t) = t^2$, $\mathbf{F}(\mathbf{r}_2(t)) \cdot \mathbf{r}_2'(t) = 2t^4$, so that integration gives $1/3$ and $2/5$, respectively. $\blacksquare$
 
-![Fig. 223. Proof of Theorem 2](/images/cover.png){#fig-10-223 width=30%}
+![Fig. 223. Proof of Theorem 2](../images/chapter10/fig-10-223.png){#fig-10-223 width=30%}
 
 ***
 
@@ -249,22 +249,22 @@ Evaluate them with $\mathbf{F}$ or $f$ and $C$ as follows.
 
 ***
 
-## 10.2 Path Independence of Line Integrals {#sec-10-2}
+## Path Independence of Line Integrals {#sec-path-independence-line-integrals}
 
 We want to find out under what conditions, in some domain, a line integral takes on the same value no matter what path of integration is taken (in that domain). As before we consider line integrals
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_C (F_1 \, dx + F_2 \, dy + F_3 \, dz) \quad (d\mathbf{r} = [dx, \, dy, \, dz]).
 $$ {#eq-10-2-1}
 
-The line integral (@eq-10-2-1) is said to be **path independent** in a domain $D$ in space if for every pair of endpoints $A, B$ in domain $D$, (@eq-10-2-1) has the same value for all paths in $D$ that begin at $A$ and end at $B$. This is illustrated in @fig-10-224. (See Sec. 9.6 for "domain.")
+The line integral (@eq-10-2-1) is said to be **path independent** in a domain $D$ in space if for every pair of endpoints $A, B$ in domain $D$, (@eq-10-2-1) has the same value for all paths in $D$ that begin at $A$ and end at $B$. This is illustrated in @fig-10-224. (See @sec-calculus-review-functions-several-variables for "domain.")
 
-![Fig. 224. Path independence](/images/cover.png){#fig-10-224 width=30%}
+![Fig. 224. Path independence](../images/chapter10/fig-10-224.png){#fig-10-224 width=30%}
 
 Path independence is important. For instance, in mechanics it may mean that we have to do the same amount of work regardless of the path to the mountaintop, be it short and steep or long and gentle. Or it may mean that in releasing an elastic spring we get back the work done in expanding it. Not all forces are of this type—think of swimming in a big round pool in which the water is rotating as in a whirlpool.
 
 We shall follow up with three ideas about path independence. We shall see that path independence of (@eq-10-2-1) in a domain $D$ holds if and only if:
 
-*   **Theorem 1:** $\mathbf{F} = \operatorname{grad} f$, where $\operatorname{grad} f$ is the gradient of $f$ as explained in Sec. 9.7.
+*   **Theorem 1:** $\mathbf{F} = \operatorname{grad} f$, where $\operatorname{grad} f$ is the gradient of $f$ as explained in @sec-gradient-scalar-field-directional-derivative.
 *   **Theorem 2:** Integration around closed curves $C$ in $D$ always gives 0.
 *   **Theorem 3:** $\operatorname{curl} \mathbf{F} = \mathbf{0}$, provided $D$ is simply connected, as defined below.
 
@@ -279,7 +279,7 @@ $$
 $$ {#eq-10-2-2}
 
 **Proof.**  
-**(a)** We assume that (@eq-10-2-2) holds for some function $f$ in $D$ and show that this implies path independence. Let $C$ be any path in $D$ from any point $A$ to any point $B$ in $D$, given by $\mathbf{r}(t) = [x(t), y(t), z(t)]$, where $a \le t \le b$. Then from (@eq-10-2-2), the chain rule in Sec. 9.6, and (@eq-10-1-3a) in the last section we obtain
+**(a)** We assume that (@eq-10-2-2) holds for some function $f$ in $D$ and show that this implies path independence. Let $C$ be any path in $D$ from any point $A$ to any point $B$ in $D$, given by $\mathbf{r}(t) = [x(t), y(t), z(t)]$, where $a \le t \le b$. Then from (@eq-10-2-2), the chain rule in @sec-calculus-review-functions-several-variables, and (@eq-10-1-3a) in the last section we obtain
 $$
 \int_C (F_1 \, dx + F_2 \, dy + F_3 \, dz) = \int_C \left( \frac{\partial f}{\partial x} \, dx + \frac{\partial f}{\partial y} \, dy + \frac{\partial f}{\partial z} \, dz \right)
 $$
@@ -289,7 +289,7 @@ $$
 $$
 = \int_{a}^{b} \frac{df}{dt} \, dt = \left. f(x(t), y(t), z(t)) \right|_{t=a}^{t=b} = f(B) - f(A). \quad \square
 $$
-**(b)** The more complicated proof of the converse, that path independence implies (@eq-10-2-2) for some $f$, is given in App. 4. $\blacksquare$
+**(b)** The more complicated proof of the converse, that path independence implies (@eq-10-2-2) for some $f$, is given in <!-- TODO: replace App. 4 with actual link -->App. 4. $\blacksquare$
 
 The last formula in part (a) of the proof,
 $$
@@ -302,7 +302,7 @@ $$
 
 Formula (@eq-10-2-3) should be applied whenever a line integral is independent of path.
 
-Potential theory relates to our present discussion if we remember from Sec. 9.7 that when $\mathbf{F} = \operatorname{grad} f$, then $f$ is called a **potential** of $\mathbf{F}$. Thus the integral (@eq-10-2-1) is independent of path in $D$ if and only if $\mathbf{F}$ is the gradient of a potential in $D$.
+Potential theory relates to our present discussion if we remember from @sec-gradient-scalar-field-directional-derivative that when $\mathbf{F} = \operatorname{grad} f$, then $f$ is called a **potential** of $\mathbf{F}$. Thus the integral (@eq-10-2-1) is independent of path in $D$ if and only if $\mathbf{F}$ is the gradient of a potential in $D$.
 
 ### EXAMPLE 1 Path Independence
 Show that the integral $\int_C \mathbf{F} \cdot d\mathbf{r} = \int_C (2x \, dx + 2y \, dy + 4z \, dz)$ is path independent in any domain in space and find its value in the integration from $A: (0, 0, 0)$ to $B: (2, 2, 2)$.
@@ -344,7 +344,7 @@ The integral (@eq-10-2-1) is path independent in a domain $D$ if and only if its
 
 Conversely, assume that the integral around any closed path $C$ in $D$ is zero. Given any points $A$ and $B$ and any two curves $C_1$ and $C_2$ from $A$ to $B$ in $D$, we see that $C_1$ with the orientation reversed and $C_2$ together form a closed path $C$. By assumption, the integral over $C$ is zero. Hence the integrals over $C_1$ and $C_2$, both taken from $A$ to $B$, must be equal. This proves the theorem. $\blacksquare$
 
-![Fig. 225. Proof of Theorem 2](/images/cover.png){#fig-10-225 width=30%}
+![Fig. 225. Proof of Theorem 2](../images/chapter10/fig-10-225.png){#fig-10-225 width=30%}
 
 ### Work. Conservative and Nonconservative (Dissipative) Physical Systems
 Recall from the last section that in mechanics, the integral (@eq-10-2-1) gives the work done by a force $\mathbf{F}$ in the displacement of a body along the curve $C$. Then Theorem 2 states that work is path independent in $D$ if and only if its value is zero for displacement around every closed path in $D$. Furthermore, Theorem 1 tells us that this happens if and only if $\mathbf{F}$ is the gradient of a potential in $D$. In this case, $\mathbf{F}$ and the vector field defined by $\mathbf{F}$ are called **conservative** in $D$ because in this case mechanical energy is conserved; that is, no work is done in the displacement from a point $A$ and back to $A$. Similarly for the displacement of an electrical charge (an electron, for instance) in a conservative electrostatic field.
@@ -381,7 +381,7 @@ This theorem is of practical importance because it leads to a useful exactness c
 
 A domain $D$ is called **simply connected** if every closed curve in $D$ can be continuously shrunk to any point in $D$ without leaving $D$.
 
-For example, the interior of a sphere or a cube, the interior of a sphere with finitely many points removed, and the domain between two concentric spheres are simply connected. On the other hand, the interior of a torus, which is a doughnut as shown in Fig. 249 in Sec. 10.6, is not simply connected. Neither is the interior of a cube with one space diagonal removed.
+For example, the interior of a sphere or a cube, the interior of a sphere with finitely many points removed, and the domain between two concentric spheres are simply connected. On the other hand, the interior of a torus, which is a doughnut as shown in Fig. 249 in @sec-surface-integrals, is not simply connected. Neither is the interior of a cube with one space diagonal removed.
 
 The criterion for exactness (and path independence by Theorem 3*) is now as follows.
 
@@ -396,7 +396,7 @@ be continuous and have continuous first partial derivatives in a domain $D$ in s
 $$
 \operatorname{curl} \mathbf{F} = \mathbf{0};
 $$ {#eq-10-2-6}
-in components (see Sec. 9.9)
+in components (see @sec-curl-vector-field)
 $$
 \frac{\partial F_3}{\partial y} = \frac{\partial F_2}{\partial z}, \quad \frac{\partial F_1}{\partial z} = \frac{\partial F_3}{\partial x}, \quad \frac{\partial F_2}{\partial x} = \frac{\partial F_1}{\partial y}.
 $$ {#eq-10-2-6a}
@@ -404,8 +404,8 @@ $$ {#eq-10-2-6a}
 **(b)** If (@eq-10-2-6) holds in $D$ and $D$ is simply connected, then (@eq-10-2-4) is exact in $D$—and thus (@eq-10-2-1) is path independent by Theorem 3*.
 
 **Proof.**  
-**(a)** If (@eq-10-2-4) is exact in $D$, then $\mathbf{F} = \operatorname{grad} f$ in $D$ by Theorem 3*, and, furthermore, $\operatorname{curl} \mathbf{F} = \operatorname{curl} (\operatorname{grad} f) = \mathbf{0}$ by (2) in Sec. 9.9, so that (@eq-10-2-6) holds.  
-**(b)** The proof needs "Stokes's theorem" and will be given in Sec. 10.9. $\blacksquare$
+**(a)** If (@eq-10-2-4) is exact in $D$, then $\mathbf{F} = \operatorname{grad} f$ in $D$ by Theorem 3*, and, furthermore, $\operatorname{curl} \mathbf{F} = \operatorname{curl} (\operatorname{grad} f) = \mathbf{0}$ by (2) in @sec-curl-vector-field, so that (@eq-10-2-6) holds.  
+**(b)** The proof needs "Stokes's theorem" and will be given in @sec-stokes-theorem. $\blacksquare$
 
 ### Line Integral in the Plane
 For $\int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_C (F_1 \, dx + F_2 \, dy)$ the curl has only one component (the $z$-component), so that (@eq-10-2-6a) reduces to the single relation
@@ -478,7 +478,7 @@ Since $D$ is not simply connected, we cannot apply Theorem 3 and cannot conclude
 
 Although $\mathbf{F} = \operatorname{grad} f$, where $f = \arctan(y/x)$ (verify!), we cannot apply Theorem 1 either because the polar angle $f = \theta = \arctan(y/x)$ is not single-valued, as it is required for a function in calculus. $\square$
 
-![Fig. 226. Example 4](/images/cover.png){#fig-10-226 width=30%}
+![Fig. 226. Example 4](../images/chapter10/fig-10-226.png){#fig-10-226 width=30%}
 
 ***
 
@@ -510,7 +510,7 @@ Show that the form under the integral sign is exact in the plane (Probs. 3–4) 
 **(b)** Integrate from $(0, 0)$ along the straight-line segment to $(1, b)$, $0 \le b \le 1$, and then vertically up to $(1, 1)$; see the figure. For which $b$ is $I$ maximum? What is its maximum value?  
 **(c)** Integrate $I$ from $(0, 0)$ along the straight-line segment to $(c, 1)$, $0 \le c \le 1$, and then horizontally to $(1, 1)$. For $c = 1$, do you get the same value as for $b = 1$ in (b)? For which $c$ is $I$ maximum? What is its maximum value?
 
-![Project 10. Path Dependence](/images/cover.png){#fig-10-proj10 width=30%}
+![Project 10. Path Dependence](../images/cover.png){#fig-10-proj10 width=30%}
 
 **11. On Example 4.** Show that in Example 4 of the text, $\mathbf{F} = \operatorname{grad}(\arctan(y/x))$. Give examples of domains in which the integral is path independent.
 
@@ -537,24 +537,24 @@ Check, and if independent, integrate from $(0, 0, 0)$ to $(a, b, c)$.
 
 ***
 
-## 10.3 Calculus Review: Double Integrals. Optional {#sec-10-3}
+## Calculus Review: Double Integrals (Optional) {#sec-calculus-review-double-integrals}
 
-This section is optional. Students familiar with double integrals from calculus should skip this review and go on to @sec-10-4. This section is included in the book to make it reasonably self-contained.
+This section is optional. Students familiar with double integrals from calculus should skip this review and go on to @sec-greens-theorem-plane. This section is included in the book to make it reasonably self-contained.
 
-In a definite integral (@eq-10-1-1), Sec. 10.1, we integrate a function $f(x)$ over an interval (a segment) of the $x$-axis. In a double integral we integrate a function $f(x, y)$, called the integrand, over a closed bounded region[^2] $R$ in the $xy$-plane, whose boundary curve has a unique tangent at almost every point, but may perhaps have finitely many cusps (such as the vertices of a triangle or rectangle).
+In a definite integral (@eq-10-1-1), @sec-line-integrals, we integrate a function $f(x)$ over an interval (a segment) of the $x$-axis. In a double integral we integrate a function $f(x, y)$, called the integrand, over a closed bounded region[^2] $R$ in the $xy$-plane, whose boundary curve has a unique tangent at almost every point, but may perhaps have finitely many cusps (such as the vertices of a triangle or rectangle).
 
 The definition of the double integral is quite similar to that of the definite integral. We subdivide the region $R$ by drawing parallels to the $x$- and $y$-axes (@fig-10-227). We number the rectangles that are entirely within $R$ from 1 to $n$. In each such rectangle we choose a point, say, $(x_k, y_k)$ in the $k$-th rectangle, whose area we denote by $\Delta A_k$. Then we form the sum
 $$
 J_n = \sum_{k=1}^n f(x_k, y_k) \Delta A_k.
 $$
 
-![Fig. 227. Subdivision of a region $R$](/images/cover.png){#fig-10-227 width=30%}
+![Fig. 227. Subdivision of a region $R$](../images/chapter10/fig-10-227.png){#fig-10-227 width=30%}
 
-[^2]: A region $R$ is a domain (Sec. 9.6) plus, perhaps, some or all of its boundary points. $R$ is **closed** if its boundary (all its boundary points) are regarded as belonging to $R$; and $R$ is **bounded** if it can be enclosed in a circle of sufficiently large radius. A boundary point $P$ of $R$ is a point (of $R$ or not) such that every disk with center $P$ contains points of $R$ and also points not of $R$.
+[^2]: A region $R$ is a domain (@sec-calculus-review-functions-several-variables) plus, perhaps, some or all of its boundary points. $R$ is **closed** if its boundary (all its boundary points) are regarded as belonging to $R$; and $R$ is **bounded** if it can be enclosed in a circle of sufficiently large radius. A boundary point $P$ of $R$ is a point (of $R$ or not) such that every disk with center $P$ contains points of $R$ and also points not of $R$.
 
 This we do for larger and larger positive integers $n$ in a completely independent manner, but so that the length of the maximum diagonal of the rectangles approaches zero as $n$ approaches infinity. In this fashion we obtain a sequence of real numbers $J_{n_1}, J_{n_2}, \dots$.
 
-Assuming that $f(x, y)$ is continuous in $R$ and $R$ is bounded by finitely many smooth curves (see Sec. 10.1), one can show (see Ref. [GenRef4] in App. 1) that this sequence converges and its limit is independent of the choice of subdivisions and corresponding points $(x_k, y_k)$. This limit is called the **double integral** of $f(x, y)$ over the region $R$, and is denoted by
+Assuming that $f(x, y)$ is continuous in $R$ and $R$ is bounded by finitely many smooth curves (see @sec-line-integrals), one can show (see Ref. [GenRef4] in <!-- TODO: replace App. 1 with actual link -->App. 1) that this sequence converges and its limit is independent of the choice of subdivisions and corresponding points $(x_k, y_k)$. This limit is called the **double integral** of $f(x, y)$ over the region $R$, and is denoted by
 $$
 \iint_R f(x, y) \, dx \, dy \quad \text{or} \quad \iint_R f(x, y) \, dA.
 $$
@@ -570,13 +570,13 @@ $$
 \iint_R f \, dx \, dy = \iint_{R_1} f \, dx \, dy + \iint_{R_2} f \, dx \, dy \quad (\text{see } @fig-10-228).
 $$ {#eq-10-3-1b}
 
-Furthermore, if $R$ is simply connected (see Sec. 10.2), then there exists at least one point $(x_0, y_0)$ in $R$ such that we have
+Furthermore, if $R$ is simply connected (see @sec-path-independence-line-integrals), then there exists at least one point $(x_0, y_0)$ in $R$ such that we have
 $$
 \iint_R f(x, y) \, dx \, dy = f(x_0, y_0) A,
 $$ {#eq-10-3-2}
 where $A$ is the area of $R$. This is called the **mean value theorem for double integrals**.
 
-![Fig. 228. Formula (1)](/images/cover.png){#fig-10-228 width=30%}
+![Fig. 228. Formula (1)](../images/chapter10/fig-10-228.png){#fig-10-228 width=30%}
 
 ### Evaluation of Double Integrals by Two Successive Integrations
 Double integrals over a region $R$ may be evaluated by two successive integrations. We may integrate first over $y$ and then over $x$. Then the formula is
@@ -591,9 +591,9 @@ $$
 \iint_R f(x, y) \, dx \, dy = \int_c^d \left[ \int_{p(y)}^{q(y)} f(x, y) \, dx \right] dy \quad (\text{see } @fig-10-230).
 $$ {#eq-10-3-4}
 
-![Fig. 229. Evaluation of a double integral](/images/cover.png){#fig-10-229 width=30%}
+![Fig. 229. Evaluation of a double integral](../images/chapter10/fig-10-229.png){#fig-10-229 width=30%}
 
-![Fig. 230. Evaluation of a double integral](/images/cover.png){#fig-10-230 width=30%}
+![Fig. 230. Evaluation of a double integral](../images/chapter10/fig-10-230.png){#fig-10-230 width=30%}
 
 The boundary curve of $R$ is now represented by $x = p(y)$ and $x = q(y)$. Treating $y$ as a constant, we first integrate $f(x, y)$ over $x$ from $p(y)$ to $q(y)$ (see @fig-10-230) and then the resulting function of $y$ from $y = c$ to $y = d$.
 
@@ -611,7 +611,7 @@ V = \iint_R f(x, y) \, dx \, dy
 $$
 because the term $f(x_k, y_k) \Delta A_k$ in $J_n$ at the beginning of this section represents the volume of a rectangular box with base of area $\Delta A_k$ and altitude $f(x_k, y_k)$.
 
-![Fig. 231. Double integral as volume](/images/cover.png){#fig-10-231 width=30%}
+![Fig. 231. Double integral as volume](../images/chapter10/fig-10-231.png){#fig-10-231 width=30%}
 
 As another application, let $f(x, y)$ be the density (= mass per unit area) of a distribution of mass in the $xy$-plane. Then the total mass $M$ in $R$ is
 $$
@@ -668,7 +668,7 @@ $$
 \iint_R (x^2 + y^2) \, dx \, dy = \int_{0}^{2} \int_{0}^{2} \frac{1}{2}(u^2 + v^2) \left| -\frac{1}{2} \right| \, du \, dv = \frac{8}{3}. \quad \square
 $$
 
-![Fig. 232. Region $R$ in Example 1](/images/cover.png){#fig-10-232 width=30%}
+![Fig. 232. Region $R$ in Example 1](../images/chapter10/fig-10-232.png){#fig-10-232 width=30%}
 
 Of particular practical interest are polar coordinates $r$ and $\theta$, which can be introduced by setting $x = r \cos \theta, y = r \sin \theta$. Then
 $$
@@ -708,7 +708,7 @@ I_y = \frac{\pi}{16} \quad \text{for reasons of symmetry,} \quad I_0 = I_x + I_y
 $$
 Why are $\bar{x}$ and $\bar{y}$ less than 1? $\square$
 
-![Fig. 233. Example 2](/images/cover.png){#fig-10-233 width=30%}
+![Fig. 233. Example 2](../images/chapter10/fig-10-233.png){#fig-10-233 width=30%}
 
 This is the end of our review on double integrals. These integrals will be needed in this chapter, beginning in the next section.
 
@@ -749,23 +749,23 @@ Find the center of gravity $(\bar{x}, \bar{y})$ of a mass of density $f(x, y) = 
 
 **12.** Region $R$ bounded by $y = h(1 - x/b)$, $x = 0, y = 0$.
 
-![Fig. for Problem 12](/images/cover.png){#fig-10-p12 width=20%}
+![Fig. for Problem 12](../images/cover.png){#fig-10-p12 width=20%}
 
 **13.** Region $R$ as shown.
 
-![Fig. for Problem 13](/images/cover.png){#fig-10-p13 width=20%}
+![Fig. for Problem 13](../images/cover.png){#fig-10-p13 width=20%}
 
 **14.** Region $R$ as shown.
 
-![Fig. for Problem 14](/images/cover.png){#fig-10-p14 width=20%}
+![Fig. for Problem 14](../images/cover.png){#fig-10-p14 width=20%}
 
 **15.** Region $R$ as shown.
 
-![Fig. for Problem 15](/images/cover.png){#fig-10-p15 width=20%}
+![Fig. for Problem 15](../images/cover.png){#fig-10-p15 width=20%}
 
 **16.** Region $R$ as shown.
 
-![Fig. for Problem 16](/images/cover.png){#fig-10-p16 width=20%}
+![Fig. for Problem 16](../images/cover.png){#fig-10-p16 width=20%}
 
 **17–20 MOMENTS OF INERTIA**  
 Find $I_x, I_y, I_0$ of a mass of density $f(x, y) = 1$ in the region $R$ in the figures, which the engineer is likely to need, along with other profiles listed in engineering handbooks.
@@ -776,39 +776,39 @@ Find $I_x, I_y, I_0$ of a mass of density $f(x, y) = 1$ in the region $R$ in the
 
 **19.** $R$ as shown.
 
-![Fig. for Problem 19](/images/cover.png){#fig-10-p19 width=25%}
+![Fig. for Problem 19](../images/cover.png){#fig-10-p19 width=25%}
 
 **20.** $R$ as shown.
 
-![Fig. for Problem 20](/images/cover.png){#fig-10-p20 width=25%}
+![Fig. for Problem 20](../images/cover.png){#fig-10-p20 width=25%}
 
 ***
 
-## 10.4 Green's Theorem in the Plane {#sec-10-4}
+## Green's Theorem in the Plane {#sec-greens-theorem-plane}
 
 Double integrals over a plane region may be transformed into line integrals over the boundary of the region and conversely. This is of practical interest because it may simplify the evaluation of an integral. It also helps in theoretical work when we want to switch from one kind of integral to the other. The transformation can be done by the following theorem.
 
 ### THEOREM 1 Green's Theorem in the Plane[^4]
 **(Transformation between Double Integrals and Line Integrals)**  
-Let $R$ be a closed bounded region (see Sec. 10.3) in the $xy$-plane whose boundary $C$ consists of finitely many smooth curves (see Sec. 10.1). Let $F_1(x, y)$ and $F_2(x, y)$ be functions that are continuous and have continuous partial derivatives $\partial F_1 / \partial y$ and $\partial F_2 / \partial x$ everywhere in some domain containing $R$.[^5] Then
+Let $R$ be a closed bounded region (see @sec-calculus-review-double-integrals) in the $xy$-plane whose boundary $C$ consists of finitely many smooth curves (see @sec-line-integrals). Let $F_1(x, y)$ and $F_2(x, y)$ be functions that are continuous and have continuous partial derivatives $\partial F_1 / \partial y$ and $\partial F_2 / \partial x$ everywhere in some domain containing $R$.[^5] Then
 $$
 \iint_R \left( \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} \right) \, dx \, dy = \oint_C (F_1 \, dx + F_2 \, dy).
 $$ {#eq-10-4-1}
 
 Here we integrate along the entire boundary $C$ of $R$ in such a sense that $R$ is on the left as we advance in the direction of integration (see @fig-10-234).
 
-![Fig. 234. Region $R$ whose boundary $C$ consists of two parts: $C_1$ is traversed counterclockwise, while $C_2$ is traversed clockwise in such a way that $R$ is on the left for both curves](/images/cover.png){#fig-10-234 width=40%}
+![Fig. 234. Region $R$ whose boundary $C$ consists of two parts: $C_1$ is traversed counterclockwise, while $C_2$ is traversed clockwise in such a way that $R$ is on the left for both curves](../images/chapter10/fig-10-234.png){#fig-10-234 width=40%}
 
 [^4]: GEORGE GREEN (1793–1841), English mathematician who was self-educated, started out as a baker, and at his death was fellow of Caius College, Cambridge. His work concerned potential theory in connection with electricity and magnetism, vibrations, waves, and elasticity theory. It remained almost unknown, even in England, until after his death.
 
 [^5]: A "domain containing $R$" in the theorem guarantees that the assumptions about $F_1$ and $F_2$ at boundary points of $R$ are the same as at other points of $R$.
 
-Setting $\mathbf{F} = [F_1, F_2] = F_1\mathbf{i} + F_2\mathbf{j}$ and using (1) in Sec. 9.9, we obtain (@eq-10-4-1) in vectorial form,
+Setting $\mathbf{F} = [F_1, F_2] = F_1\mathbf{i} + F_2\mathbf{j}$ and using (1) in @sec-curl-vector-field, we obtain (@eq-10-4-1) in vectorial form,
 $$
 \iint_R (\operatorname{curl} \mathbf{F}) \cdot \mathbf{k} \, dx \, dy = \oint_C \mathbf{F} \cdot d\mathbf{r}.
 $$ {#eq-10-4-1a}
 
-The proof follows after the first example. For $\oint$ see Sec. 10.1.
+The proof follows after the first example. For $\oint$ see @sec-line-integrals.
 
 ### EXAMPLE 1 Verification of Green's Theorem in the Plane
 Green's theorem in the plane will be quite important in our further work. Before proving it, let us get used to it by verifying it for $F_1 = y^2 - 7y$, $F_2 = 2xy + 2x$ and $C$ the circle $x^2 + y^2 = 1$.
@@ -840,9 +840,9 @@ $$
 c \le y \le d, \quad p(y) \le x \le q(y) \quad (\text{see } @fig-10-236).
 $$
 
-![Fig. 235. Example of a special region](/images/cover.png){#fig-10-235 width=30%}
+![Fig. 235. Example of a special region](../images/chapter10/fig-10-235.png){#fig-10-235 width=30%}
 
-![Fig. 236. Example of a special region](/images/cover.png){#fig-10-236 width=30%}
+![Fig. 236. Example of a special region](../images/chapter10/fig-10-236.png){#fig-10-236 width=30%}
 
 Using (@eq-10-3-3) in the last section, we obtain for the second term on the left side of (@eq-10-4-1) taken without the minus sign:
 $$
@@ -868,9 +868,9 @@ This proves (@eq-10-4-1) in Green's theorem if $F_2 = 0$.
 
 The result remains valid if $C$ has portions parallel to the $y$-axis (such as $C_1$ and $C_2$ in @fig-10-237). Indeed, the integrals over these portions are zero because in (@eq-10-4-3) on the right we integrate with respect to $x$. Hence we may add these integrals to the integrals over $C^*$ and $C^{**}$ to obtain the integral over the whole boundary $C$ in (@eq-10-4-3).
 
-![Fig. 237. Proof of Green's theorem](/images/cover.png){#fig-10-237 width=30%}
+![Fig. 237. Proof of Green's theorem](../images/chapter10/fig-10-237.png){#fig-10-237 width=30%}
 
-![Fig. 238. Proof of Green's theorem](/images/cover.png){#fig-10-238 width=30%}
+![Fig. 238. Proof of Green's theorem](../images/chapter10/fig-10-238.png){#fig-10-238 width=30%}
 
 We now treat the first term in (@eq-10-4-1) on the left in the same way. Instead of (@eq-10-3-3) in the last section we use (@eq-10-3-4), and the second representation of the special region (see @fig-10-236). Then (again changing a direction of integration)
 $$
@@ -884,7 +884,7 @@ Together with (@eq-10-4-3) this gives (@eq-10-4-1) and proves Green's theorem fo
 
 We now prove the theorem for a region $R$ that itself is not a special region but can be subdivided into finitely many special regions as shown in @fig-10-238. In this case we apply the theorem to each subregion and then add the results; the left-hand members add up to the integral over $R$ while the right-hand members add up to the line integral over $C$ plus integrals over the curves introduced for subdividing $R$. The simple key observation now is that each of the latter integrals occurs twice, taken once in each direction. Hence they cancel each other, leaving us with the line integral over $C$.
 
-The proof thus far covers all regions that are of interest in practical problems. To prove the theorem for a most general region $R$ satisfying the conditions in the theorem, we must approximate $R$ by a region of the type just considered and then use a limiting process. For details of this see Ref. [GenRef4] in App. 1. $\blacksquare$
+The proof thus far covers all regions that are of interest in practical problems. To prove the theorem for a most general region $R$ satisfying the conditions in the theorem, we must approximate $R$ by a region of the type just considered and then use a limiting process. For details of this see Ref. [GenRef4] in <!-- TODO: replace App. 1 with actual link -->App. 1. $\blacksquare$
 
 ### Some Applications of Green's Theorem
 
@@ -919,16 +919,16 @@ $$
 A = \frac{1}{2} \int_{0}^{2\pi} a^2 (1 - \cos \theta)^2 \, d\theta = \frac{3\pi}{2} a^2. \quad \square
 $$
 
-![Fig. 239. Cardioid](/images/cover.png){#fig-10-239 width=30%}
+![Fig. 239. Cardioid](../images/chapter10/fig-10-239.png){#fig-10-239 width=30%}
 
 ### EXAMPLE 4 Transformation of a Double Integral of the Laplacian of a Function into a Line Integral of Its Normal Derivative
-The Laplacian plays an important role in physics and engineering. A first impression of this was obtained in Sec. 9.7, and we shall discuss this further in Chap. 12. At present, let us use Green's theorem for deriving a basic integral formula involving the Laplacian.
+The Laplacian plays an important role in physics and engineering. A first impression of this was obtained in @sec-gradient-scalar-field-directional-derivative, and we shall discuss this further in <!-- TODO: replace Chap. 12 with actual chapter label -->Chap. 12. At present, let us use Green's theorem for deriving a basic integral formula involving the Laplacian.
 
 We take a function $w(x, y)$ that is continuous and has continuous first and second partial derivatives in a domain of the $xy$-plane containing a region $R$ of the type indicated in Green's theorem. We set $F_1 = -\partial w / \partial y$ and $F_2 = \partial w / \partial x$. Then $\partial F_1 / \partial y$ and $\partial F_2 / \partial x$ are continuous in $R$, and in (@eq-10-4-1) on the left we obtain
 $$
 \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} = \frac{\partial^2 w}{\partial x^2} + \frac{\partial^2 w}{\partial y^2} = \nabla^2 w,
 $$ {#eq-10-4-6}
-the Laplacian of $w$ (see Sec. 9.7). Furthermore, using those expressions for $F_1$ and $F_2$, we get in (@eq-10-4-1) on the right
+the Laplacian of $w$ (see @sec-gradient-scalar-field-directional-derivative). Furthermore, using those expressions for $F_1$ and $F_2$, we get in (@eq-10-4-1) on the right
 $$
 \oint_C (F_1 \, dx + F_2 \, dy) = \oint_C \left( F_1 \frac{dx}{ds} + F_2 \frac{dy}{ds} \right) ds = \oint_C \left( -\frac{\partial w}{\partial y} \frac{dx}{ds} + \frac{\partial w}{\partial x} \frac{dy}{ds} \right) ds
 $$ {#eq-10-4-7}
@@ -937,7 +937,7 @@ $$
 (\operatorname{grad} w) \cdot \mathbf{n} = \left[ \frac{\partial w}{\partial x}, \, \frac{\partial w}{\partial y} \right] \cdot \left[ \frac{dy}{ds}, \, -\frac{dx}{ds} \right] = \frac{\partial w}{\partial x} \frac{dy}{ds} - \frac{\partial w}{\partial y} \frac{dx}{ds}.
 $$ {#eq-10-4-8}
 
-The vector $\mathbf{n}$ is a unit normal vector to $C$, because the vector $\mathbf{r}'(s) = d\mathbf{r}/ds = [dx/ds, dy/ds]$ is the unit tangent vector of $C$, and $\mathbf{r}' \cdot \mathbf{n} = 0$, so that $\mathbf{n}$ is perpendicular to $\mathbf{r}'$. Also, $\mathbf{n}$ is directed to the exterior of $C$ because in @fig-10-240 the positive $x$-component $dx/ds$ of $\mathbf{r}'$ is the negative $y$-component of $\mathbf{n}$, and similarly at other points. From this and (4) in Sec. 9.7 we see that the left side of (@eq-10-4-8) is the derivative of $w$ in the direction of the outward normal of $C$. This derivative is called the **normal derivative** of $w$ and is denoted by $\partial w / \partial n$; that is, $\partial w / \partial n = (\operatorname{grad} w) \cdot \mathbf{n}$.
+The vector $\mathbf{n}$ is a unit normal vector to $C$, because the vector $\mathbf{r}'(s) = d\mathbf{r}/ds = [dx/ds, dy/ds]$ is the unit tangent vector of $C$, and $\mathbf{r}' \cdot \mathbf{n} = 0$, so that $\mathbf{n}$ is perpendicular to $\mathbf{r}'$. Also, $\mathbf{n}$ is directed to the exterior of $C$ because in @fig-10-240 the positive $x$-component $dx/ds$ of $\mathbf{r}'$ is the negative $y$-component of $\mathbf{n}$, and similarly at other points. From this and (4) in @sec-gradient-scalar-field-directional-derivative we see that the left side of (@eq-10-4-8) is the derivative of $w$ in the direction of the outward normal of $C$. This derivative is called the **normal derivative** of $w$ and is denoted by $\partial w / \partial n$; that is, $\partial w / \partial n = (\operatorname{grad} w) \cdot \mathbf{n}$.
 
 Because of (@eq-10-4-6), (@eq-10-4-7), and (@eq-10-4-8), Green's theorem gives the desired formula relating the Laplacian to the normal derivative,
 $$
@@ -946,9 +946,9 @@ $$ {#eq-10-4-9}
 
 For instance, $w = x^2 - y^2$ satisfies Laplace's equation $\nabla^2 w = 0$. Hence its normal derivative integrated over a closed curve must give 0. Can you verify this directly by integration, say, for the square $0 \le x \le 1, 0 \le y \le 1$? $\square$
 
-![Fig. 240. Example 4](/images/cover.png){#fig-10-240 width=30%}
+![Fig. 240. Example 4](../images/chapter10/fig-10-240.png){#fig-10-240 width=30%}
 
-Green's theorem in the plane can be used in both directions, and thus may aid in the evaluation of a given integral by transforming the given integral into another integral that is easier to solve. This is illustrated further in the problem set. Moreover, and perhaps more fundamentally, Green's theorem will be the essential tool in the proof of a very important integral theorem, namely, Stokes's theorem in Sec. 10.9.
+Green's theorem in the plane can be used in both directions, and thus may aid in the evaluation of a given integral by transforming the given integral into another integral that is easier to solve. This is illustrated further in the problem set. Moreover, and perhaps more fundamentally, Green's theorem will be the essential tool in the proof of a very important integral theorem, namely, Stokes's theorem in @sec-stokes-theorem.
 
 ***
 
@@ -1014,9 +1014,9 @@ $$ {#eq-10-4-12}
 
 ***
 
-## 10.5 Surfaces for Surface Integrals {#sec-10-5}
+## Surfaces for Surface Integrals {#sec-surfaces-surface-integrals}
 
-Whereas, with line integrals, we integrate over curves in space (Secs. 10.1, 10.2), with surface integrals we integrate over surfaces in space. Each curve in space is represented by a parametric equation (Secs. 9.5, 10.1). This suggests that we should also find parametric representations for the surfaces in space. This is indeed one of the goals of this section. The surfaces considered are cylinders, spheres, cones, and others. The second goal is to learn about surface normals. Both goals prepare us for @sec-10-6 on surface integrals. Note that for simplicity, we shall say "surface" also for a portion of a surface.
+Whereas, with line integrals, we integrate over curves in space (@sec-line-integrals, @sec-path-independence-line-integrals), with surface integrals we integrate over surfaces in space. Each curve in space is represented by a parametric equation (@sec-curves-arc-length-curvature-torsion, @sec-line-integrals). This suggests that we should also find parametric representations for the surfaces in space. This is indeed one of the goals of this section. The surfaces considered are cylinders, spheres, cones, and others. The second goal is to learn about surface normals. Both goals prepare us for @sec-surface-integrals on surface integrals. Note that for simplicity, we shall say "surface" also for a portion of a surface.
 
 ### Representation of Surfaces
 Representations of a surface $S$ in $xyz$-space are
@@ -1034,7 +1034,7 @@ $$
 $$ {#eq-10-5-2}
 where $(u, v)$ varies in some region $R$ of the $uv$-plane. This mapping (@eq-10-5-2) maps every point $(u, v)$ in $R$ onto the point of $S$ with position vector $\mathbf{r}(u, v)$. See @fig-10-241(b).
 
-![Fig. 241. Parametric representations of a curve (A) and a surface (B)](/images/cover.png){#fig-10-241 width=60%}
+![Fig. 241. Parametric representations of a curve (A) and a surface (B)](../images/chapter10/fig-10-241.png){#fig-10-241 width=60%}
 
 ### EXAMPLE 1 Parametric Representation of a Cylinder
 The circular cylinder $x^2 + y^2 = a^2$, $-1 \le z \le 1$, has radius $a$, height 2, and the $z$-axis as axis. A parametric representation is
@@ -1043,9 +1043,9 @@ $$
 $$
 The components of $\mathbf{r}$ are $x = a \cos u$, $y = a \sin u$, $z = v$. The parameters $u, v$ vary in the rectangle $R: 0 \le u \le 2\pi$, $-1 \le v \le 1$ in the $uv$-plane. The curves $u = \text{const}$ are vertical straight lines. The curves $v = \text{const}$ are parallel circles. The point $P$ in @fig-10-242 corresponds to $u = \pi/3 = 60^\circ$, $v = 0.7$. $\square$
 
-![Fig. 242. Parametric representation of a cylinder](/images/cover.png){#fig-10-242 width=25%}
+![Fig. 242. Parametric representation of a cylinder](../images/chapter10/fig-10-242.png){#fig-10-242 width=25%}
 
-![Fig. 243. Parametric representation of a sphere](/images/cover.png){#fig-10-243 width=25%}
+![Fig. 243. Parametric representation of a sphere](../images/chapter10/fig-10-243.png){#fig-10-243 width=25%}
 
 ### EXAMPLE 2 Parametric Representation of a Sphere
 A sphere $x^2 + y^2 + z^2 = a^2$ can be represented in the form
@@ -1072,13 +1072,13 @@ $$
 in components $x = u \cos v$, $y = u \sin v$, $z = u$. The parameters vary in the rectangle $R: 0 \le u \le H$, $0 \le v \le 2\pi$. Check that $x^2 + y^2 = z^2$, as it should be. What are the curves $u = \text{const}$ and $v = \text{const}$? $\square$
 
 ### Tangent Plane and Surface Normal
-Recall from Sec. 9.7 that the tangent vectors of all the curves on a surface $S$ through a point $P$ of $S$ form a plane, called the **tangent plane** of $S$ at $P$ (@fig-10-244). Exceptions are points where $S$ has an edge or a cusp (like a cone), so that $S$ cannot have a tangent plane at such a point. Furthermore, a vector perpendicular to the tangent plane is called a **normal vector** of $S$ at $P$.
+Recall from @sec-gradient-scalar-field-directional-derivative that the tangent vectors of all the curves on a surface $S$ through a point $P$ of $S$ form a plane, called the **tangent plane** of $S$ at $P$ (@fig-10-244). Exceptions are points where $S$ has an edge or a cusp (like a cone), so that $S$ cannot have a tangent plane at such a point. Furthermore, a vector perpendicular to the tangent plane is called a **normal vector** of $S$ at $P$.
 
 Now since $S$ can be given by $\mathbf{r} = \mathbf{r}(u, v)$ in (@eq-10-5-2), the new idea is that we get a curve $C$ on $S$ by taking a pair of differentiable functions
 $$
 u = u(t), \quad v = v(t)
 $$
-whose derivatives $u' = du/dt$ and $v' = dv/dt$ are continuous. Then $C$ has the position vector $\mathbf{r}(t) = \mathbf{r}(u(t), v(t))$. By differentiation and the use of the chain rule (Sec. 9.6) we obtain a tangent vector of $C$ on $S$:
+whose derivatives $u' = du/dt$ and $v' = dv/dt$ are continuous. Then $C$ has the position vector $\mathbf{r}(t) = \mathbf{r}(u(t), v(t))$. By differentiation and the use of the chain rule (@sec-calculus-review-functions-several-variables) we obtain a tangent vector of $C$ on $S$:
 $$
 \mathbf{r}'(t) = \frac{d\mathbf{r}}{dt} = \frac{\partial\mathbf{r}}{\partial u} u' + \frac{\partial\mathbf{r}}{\partial v} v'.
 $$
@@ -1093,9 +1093,9 @@ $$
 \mathbf{n} = \frac{1}{|\mathbf{N}|} \mathbf{N} = \frac{1}{|\mathbf{r}_u \times \mathbf{r}_v|} (\mathbf{r}_u \times \mathbf{r}_v).
 $$ {#eq-10-5-5}
 
-![Fig. 244. Tangent plane and normal vector](/images/cover.png){#fig-10-244 width=30%}
+![Fig. 244. Tangent plane and normal vector](../images/chapter10/fig-10-244.png){#fig-10-244 width=30%}
 
-Also, if $S$ is represented by $g(x, y, z) = 0$, then, by Theorem 2 in Sec. 9.7,
+Also, if $S$ is represented by $g(x, y, z) = 0$, then, by Theorem 2 in @sec-gradient-scalar-field-directional-derivative,
 $$
 \mathbf{n} = \frac{1}{|\operatorname{grad} g|} \operatorname{grad} g.
 $$ {#eq-10-5-5a}
@@ -1179,13 +1179,13 @@ Interpret geometrically. Give two examples for (a), two for (b), and two for (c)
 
 ***
 
-## 10.6 Surface Integrals {#sec-10-6}
+## Surface Integrals {#sec-surface-integrals}
 
 To define a surface integral, we take a surface $S$, given by a parametric representation as just discussed,
 $$
 \mathbf{r}(u, v) = [x(u, v), \, y(u, v), \, z(u, v)] = x(u, v)\mathbf{i} + y(u, v)\mathbf{j} + z(u, v)\mathbf{k}
 $$ {#eq-10-6-1}
-where $(u, v)$ varies over a region $R$ in the $uv$-plane. We assume $S$ to be piecewise smooth (Sec. 10.5), so that $S$ has a normal vector
+where $(u, v)$ varies over a region $R$ in the $uv$-plane. We assume $S$ to be piecewise smooth (@sec-surfaces-surface-integrals), so that $S$ has a normal vector
 $$
 \mathbf{N} = \mathbf{r}_u \times \mathbf{r}_v \quad \text{and unit normal vector} \quad \mathbf{n} = \frac{1}{|\mathbf{N}|} \mathbf{N}
 $$ {#eq-10-6-2}
@@ -1200,9 +1200,9 @@ $$
 $$ {#eq-10-6-3a}
 And we see that $dA = |\mathbf{N}| \, du \, dv$ is the element of area of $S$.
 
-Also $\mathbf{F} \cdot \mathbf{n}$ is the normal component of $\mathbf{F}$. This integral arises naturally in flow problems, where it gives the flux across $S$ when $\mathbf{F} = \rho \mathbf{v}$. Recall, from Sec. 9.8, that the flux across $S$ is the mass of fluid crossing $S$ per unit time. Furthermore, $\rho$ is the density of the fluid and $\mathbf{v}$ the velocity vector of the flow, as illustrated by Example 1 below. We may thus call the surface integral (@eq-10-6-3) the **flux integral**.
+Also $\mathbf{F} \cdot \mathbf{n}$ is the normal component of $\mathbf{F}$. This integral arises naturally in flow problems, where it gives the flux across $S$ when $\mathbf{F} = \rho \mathbf{v}$. Recall, from @sec-divergence-vector-field, that the flux across $S$ is the mass of fluid crossing $S$ per unit time. Furthermore, $\rho$ is the density of the fluid and $\mathbf{v}$ the velocity vector of the flow, as illustrated by Example 1 below. We may thus call the surface integral (@eq-10-6-3) the **flux integral**.
 
-We can write (@eq-10-6-3) in components, using $\mathbf{F} = [F_1, F_2, F_3]$, $\mathbf{N} = [N_1, N_2, N_3]$, and $\mathbf{n} = [\cos \alpha, \cos \beta, \cos \gamma]$. Here, $\alpha, \beta, \gamma$ are the angles between $\mathbf{n}$ and the coordinate axes; indeed, for the angle between $\mathbf{n}$ and $\mathbf{i}$, formula (4) in Sec. 9.2 gives $\cos \alpha = \mathbf{n} \cdot \mathbf{i} / (|\mathbf{n}||\mathbf{i}|) = \mathbf{n} \cdot \mathbf{i}$, and so on. We thus obtain from (@eq-10-6-3):
+We can write (@eq-10-6-3) in components, using $\mathbf{F} = [F_1, F_2, F_3]$, $\mathbf{N} = [N_1, N_2, N_3]$, and $\mathbf{n} = [\cos \alpha, \cos \beta, \cos \gamma]$. Here, $\alpha, \beta, \gamma$ are the angles between $\mathbf{n}$ and the coordinate axes; indeed, for the angle between $\mathbf{n}$ and $\mathbf{i}$, formula (4) in @sec-inner-product-dot-product-orthogonality gives $\cos \alpha = \mathbf{n} \cdot \mathbf{i} / (|\mathbf{n}||\mathbf{i}|) = \mathbf{n} \cdot \mathbf{i}$, and so on. We thus obtain from (@eq-10-6-3):
 $$
 \iint_S \mathbf{F} \cdot \mathbf{n} \, dA = \iint_S (F_1 \cos \alpha + F_2 \cos \beta + F_3 \cos \gamma) \, dA
 $$
@@ -1232,7 +1232,7 @@ Other forms of surface integrals will be discussed later in this section.
 ### EXAMPLE 1 Flux Through a Surface
 Compute the flux of water through the parabolic cylinder $S: y = x^2$, $0 \le x \le 2$, $0 \le z \le 3$ (@fig-10-245) if the velocity vector is $\mathbf{v} = \mathbf{F} = [3z^2, 6, 6xz]$, speed being measured in meters/sec. (Generally, $\mathbf{F} = \rho \mathbf{v}$, but water has the density $\rho = 1\text{ g/cm}^3 = 1\text{ ton/m}^3$.)
 
-![Fig. 245. Surface $S$ in Example 1](/images/cover.png){#fig-10-245 width=30%}
+![Fig. 245. Surface $S$ in Example 1](../images/chapter10/fig-10-245.png){#fig-10-245 width=30%}
 
 **Solution.** Writing $x = u$ and $z = v$, we have $y = x^2 = u^2$. Hence a representation of $S$ is
 $$
@@ -1268,7 +1268,7 @@ $$
 0 \le x \le 1 - y, \quad 0 \le y \le 1.
 $$
 
-![Fig. 246. Portion of a plane in Example 2](/images/cover.png){#fig-10-246 width=30%}
+![Fig. 246. Portion of a plane in Example 2](../images/chapter10/fig-10-246.png){#fig-10-246 width=30%}
 
 By inspection or by differentiation,
 $$
@@ -1303,9 +1303,9 @@ $$
 $$
 
 ### Orientation of Smooth Surfaces
-A smooth surface $S$ (see Sec. 10.5) is called **orientable** if the positive normal direction, when given at an arbitrary point $P_0$ of $S$, can be continued in a unique and continuous way to the entire surface. In many practical applications, the surfaces are smooth and thus orientable.
+A smooth surface $S$ (see @sec-surfaces-surface-integrals) is called **orientable** if the positive normal direction, when given at an arbitrary point $P_0$ of $S$, can be continued in a unique and continuous way to the entire surface. In many practical applications, the surfaces are smooth and thus orientable.
 
-![Fig. 247. Orientation of a surface: (a) Smooth surface, (b) Piecewise smooth surface](/images/cover.png){#fig-10-247 width=50%}
+![Fig. 247. Orientation of a surface: (a) Smooth surface, (b) Piecewise smooth surface](../images/chapter10/fig-10-247.png){#fig-10-247 width=50%}
 
 ### Orientation of Piecewise Smooth Surfaces
 Here the following idea will do it. For a smooth orientable surface $S$ with boundary curve $C$ we may associate with each of the two possible orientations of $S$ an orientation of $C$, as shown in @fig-10-247(a). Then a piecewise smooth surface is called orientable if we can orient each smooth piece of $S$ so that along each curve $C^*$ which is a common boundary of two pieces $S_1$ and $S_2$ the positive direction of $C^*$ relative to $S_1$ is opposite to the direction of $C^*$ relative to $S_2$. See @fig-10-247(b) for two adjacent pieces; note the arrows along $C^*$.
@@ -1313,7 +1313,7 @@ Here the following idea will do it. For a smooth orientable surface $S$ with bou
 ### Theory: Nonorientable Surfaces
 A sufficiently small piece of a smooth surface is always orientable. This may not hold for entire surfaces. A well-known example is the Möbius strip,[^5_mobius] shown in @fig-10-248. To make a model, take the rectangular paper in @fig-10-248, make a half-twist, and join the short sides together so that $A$ goes onto $A$, and $B$ onto $B$. At $P_0$ take a normal vector pointing, say, to the left. Displace it along $C$ to the right (in the lower part of the figure) around the strip until you return to $P_0$ and see that you get a normal vector pointing to the right, opposite to the given one. See also Prob. 17.
 
-![Fig. 248. Möbius strip](/images/cover.png){#fig-10-248 width=40%}
+![Fig. 248. Möbius strip](../images/chapter10/fig-10-248.png){#fig-10-248 width=40%}
 
 [^5_mobius]: AUGUST FERDINAND MÖBIUS (1790–1868), German mathematician, student of Gauss, known for his work in surface theory, geometry, and complex analysis (see Sec. 17.2).
 
@@ -1325,7 +1325,7 @@ $$ {#eq-10-6-6}
 
 Here $dA = |\mathbf{N}| \, du \, dv = |\mathbf{r}_u \times \mathbf{r}_v| \, du \, dv$ is the element of area of the surface $S$ represented by (@eq-10-6-1) and we disregard the orientation.
 
-We shall need later (in Sec. 10.9) the **mean value theorem for surface integrals**, which states that if $R$ in (@eq-10-6-6) is simply connected (see Sec. 10.2) and $G(\mathbf{r})$ is continuous in a domain containing $R$, then there is a point $(u_0, v_0)$ in $R$ such that
+We shall need later (in @sec-stokes-theorem) the **mean value theorem for surface integrals**, which states that if $R$ in (@eq-10-6-6) is simply connected (see @sec-path-independence-line-integrals) and $G(\mathbf{r})$ is continuous in a domain containing $R$, then there is a point $(u_0, v_0)$ in $R$ such that
 $$
 \iint_S G(\mathbf{r}) \, dA = G(\mathbf{r}(u_0, v_0)) A \quad (A = \text{Area of } S).
 $$ {#eq-10-6-7}
@@ -1338,7 +1338,7 @@ $$ {#eq-10-6-8}
 Examples 4 and 5 show how to apply (@eq-10-6-8) to a sphere and a torus. The final example, Example 6, explains how to calculate moments of inertia for a surface.
 
 ### EXAMPLE 4 Area of a Sphere
-For a sphere $\mathbf{r}(u, v) = [a \cos v \cos u, a \cos v \sin u, a \sin v]$, $0 \le u \le 2\pi$, $-\pi/2 \le v \le \pi/2$ [see (3) in Sec. 10.5], we obtain by direct calculation (verify!):
+For a sphere $\mathbf{r}(u, v) = [a \cos v \cos u, a \cos v \sin u, a \sin v]$, $0 \le u \le 2\pi$, $-\pi/2 \le v \le \pi/2$ [see (3) in @sec-surfaces-surface-integrals], we obtain by direct calculation (verify!):
 $$
 \mathbf{r}_u \times \mathbf{r}_v = [a^2 \cos^2 v \cos u, \, a^2 \cos^2 v \sin u, \, a^2 \cos v \sin v].
 $$
@@ -1371,7 +1371,7 @@ $$
 A(S) = \int_{0}^{2\pi} \int_{0}^{2\pi} b(a + b \cos v) \, du \, dv = 4\pi^2 ab. \quad \square
 $$ {#eq-10-6-9}
 
-![Fig. 249. Torus in Example 5](/images/cover.png){#fig-10-249 width=30%}
+![Fig. 249. Torus in Example 5](../images/chapter10/fig-10-249.png){#fig-10-249 width=30%}
 
 ### EXAMPLE 6 Moment of Inertia of a Surface
 Find the moment of inertia $I$ of a spherical lamina $S: x^2 + y^2 + z^2 = a^2$ of constant mass density and total mass $M$ about the $z$-axis.
@@ -1397,7 +1397,7 @@ $$
 \iint_S G(\mathbf{r}) \, dA = \iint_{R^*} G(x, y, f(x, y)) \sqrt{1 + \left( \frac{\partial f}{\partial x} \right)^2 + \left( \frac{\partial f}{\partial y} \right)^2} \, dx \, dy.
 $$ {#eq-10-6-11}
 
-![Fig. 250. Formula (11)](/images/cover.png){#fig-10-250 width=30%}
+![Fig. 250. Formula (11)](../images/chapter10/fig-10-250.png){#fig-10-250 width=30%}
 
 Here $R^*$ is the projection of $S$ into the $xy$-plane (@fig-10-250) and the normal vector $\mathbf{N}$ on $S$ points up. If it points down, the integral on the right is preceded by a minus sign.
 
@@ -1457,7 +1457,7 @@ Evaluate $\iint_S G(\mathbf{r}) \, dA$ for the following data. Indicate the kind
 
 **18. Gauss "Double Ring"** (See Möbius, Works 2, 518–559). Make a paper cross (@fig-10-251) into a "double ring" by joining opposite arms along their outer edges (without twist), one ring below the plane of the cross and the other above. Show experimentally that one can choose any four boundary points $A, B, C, D$ and join $A$ and $C$ as well as $B$ and $D$ by two nonintersecting curves. What happens if you cut along the two curves? If you make a half-twist in each of the two rings and then cut?[^6]
 
-![Fig. 251. Problem 18. Gauss "Double Ring"](/images/cover.png){#fig-10-251 width=40%}
+![Fig. 251. Problem 18. Gauss "Double Ring"](../images/chapter10/fig-10-251.png){#fig-10-251 width=40%}
 
 [^6]: JACOB STEINER (1796–1863), Swiss geometer, born in a small village, learned to write only at age 14, became a pupil of Pestalozzi at 18, later studied at Heidelberg and Berlin and, finally, because of his outstanding research, was appointed professor at Berlin University.
 
@@ -1498,7 +1498,7 @@ $$
 E = \mathbf{r}_u \cdot \mathbf{r}_u, \quad F = \mathbf{r}_u \cdot \mathbf{r}_v, \quad G = \mathbf{r}_v \cdot \mathbf{r}_v
 $$ {#eq-10-6-14}
 is called the **first fundamental form** of $S$. This form is basic because it permits us to calculate lengths, angles, and areas on $S$. To show this, prove (a)–(c):  
-**(a)** For a curve $C: u = u(t), v = v(t), a \le t \le b$, on $S$, formulas (10), Sec. 9.5, and (@eq-10-6-14) give the length:
+**(a)** For a curve $C: u = u(t), v = v(t), a \le t \le b$, on $S$, formulas (10), @sec-curves-arc-length-curvature-torsion, and (@eq-10-6-14) give the length:
 $$
 l = \int_{a}^{b} \sqrt{\mathbf{r}'(t) \cdot \mathbf{r}'(t)} \, dt = \int_{a}^{b} \sqrt{E (u')^2 + 2F u' v' + G (v')^2} \, dt.
 $$ {#eq-10-6-15}
@@ -1510,26 +1510,26 @@ where $\mathbf{a} = \mathbf{r}_u g' + \mathbf{r}_v h'$ and $\mathbf{b} = \mathbf
 
 ***
 
-## 10.7 Triple Integrals. Divergence Theorem of Gauss {#sec-10-7}
+## Triple Integrals. Divergence Theorem of Gauss {#sec-triple-integrals-divergence-theorem-gauss}
 
 In this section we discuss another "big" integral theorem, the divergence theorem, which transforms surface integrals into triple integrals. So let us begin with a review of the latter.
 
-A triple integral is an integral of a function $f(x, y, z)$ taken over a closed bounded, three-dimensional region $T$ in space. (Note that "closed" and "bounded" are defined in the same way as in footnote 2 of Sec. 10.3, with "sphere" substituted for "circle"). We subdivide $T$ by planes parallel to the coordinate planes. Then we consider those boxes of the subdivision that lie entirely inside $T$, and number them from 1 to $n$. Here each box consists of a rectangular parallelepiped. In each such box we choose an arbitrary point, say, $(x_k, y_k, z_k)$ in box $k$. The volume of box $k$ we denote by $\Delta V_k$. We now form the sum
+A triple integral is an integral of a function $f(x, y, z)$ taken over a closed bounded, three-dimensional region $T$ in space. (Note that "closed" and "bounded" are defined in the same way as in footnote 2 of @sec-calculus-review-double-integrals, with "sphere" substituted for "circle"). We subdivide $T$ by planes parallel to the coordinate planes. Then we consider those boxes of the subdivision that lie entirely inside $T$, and number them from 1 to $n$. Here each box consists of a rectangular parallelepiped. In each such box we choose an arbitrary point, say, $(x_k, y_k, z_k)$ in box $k$. The volume of box $k$ we denote by $\Delta V_k$. We now form the sum
 $$
 J_n = \sum_{k=1}^n f(x_k, y_k, z_k) \Delta V_k.
 $$
 
-This we do for larger and larger positive integers $n$ arbitrarily but so that the maximum length of all the edges of those $n$ boxes approaches zero as $n$ approaches infinity. This gives a sequence of real numbers $J_{n_1}, J_{n_2}, \dots$. We assume that $f(x, y, z)$ is continuous in a domain containing $T$, and $T$ is bounded by finitely many smooth surfaces (see Sec. 10.5). Then it can be shown (see Ref. [GenRef4] in App. 1) that the sequence converges to a limit that is independent of the choice of subdivisions and corresponding points $(x_k, y_k, z_k)$. This limit is called the **triple integral** of $f(x, y, z)$ over the region $T$ and is denoted by
+This we do for larger and larger positive integers $n$ arbitrarily but so that the maximum length of all the edges of those $n$ boxes approaches zero as $n$ approaches infinity. This gives a sequence of real numbers $J_{n_1}, J_{n_2}, \dots$. We assume that $f(x, y, z)$ is continuous in a domain containing $T$, and $T$ is bounded by finitely many smooth surfaces (see @sec-surfaces-surface-integrals). Then it can be shown (see Ref. [GenRef4] in <!-- TODO: replace App. 1 with actual link -->App. 1) that the sequence converges to a limit that is independent of the choice of subdivisions and corresponding points $(x_k, y_k, z_k)$. This limit is called the **triple integral** of $f(x, y, z)$ over the region $T$ and is denoted by
 $$
 \iiint_T f(x, y, z) \, dx \, dy \, dz \quad \text{or by} \quad \iiint_T f(x, y, z) \, dV.
 $$
 
-Triple integrals can be evaluated by three successive integrations. This is similar to the evaluation of double integrals by two successive integrations, as discussed in Sec. 10.3. Example 1 below explains this.
+Triple integrals can be evaluated by three successive integrations. This is similar to the evaluation of double integrals by two successive integrations, as discussed in @sec-calculus-review-double-integrals. Example 1 below explains this.
 
 ### Divergence Theorem of Gauss[^7]
 Triple integrals can be transformed into surface integrals over the boundary surface of a region in space and conversely. Such a transformation is of practical interest because one of the two kinds of integral is often simpler than the other. It also helps in establishing fundamental equations in fluid flow, heat conduction, etc., as we shall see. The transformation is done by the divergence theorem, which involves the divergence of a vector function $\mathbf{F} = [F_1, F_2, F_3] = F_1\mathbf{i} + F_2\mathbf{j} + F_3\mathbf{k}$, namely,
 $$
-\operatorname{div} \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z} \quad (\text{Sec. 9.8}).
+\operatorname{div} \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z} \quad (\text{@sec-divergence-vector-field}).
 $$ {#eq-10-7-1}
 
 [^7]: PAPPUS OF ALEXANDRIA (about A.D. 300), Greek mathematician. The theorem is also called Guldin’s theorem. HABAKUK GULDIN (1577–1643) was born in St. Gallen, Switzerland, and later became professor in Graz and Vienna.
@@ -1549,7 +1549,7 @@ $$
 = \iint_S (F_1 \, dy \, dz + F_2 \, dz \, dx + F_3 \, dx \, dy).
 $$
 
-"Closed bounded region" is explained above, "piecewise smooth orientable" in Sec. 10.5, and "domain containing $T$" in footnote 4, Sec. 10.4, for the two-dimensional case.
+"Closed bounded region" is explained above, "piecewise smooth orientable" in @sec-surfaces-surface-integrals, and "domain containing $T$" in footnote 4, @sec-greens-theorem-plane, for the two-dimensional case.
 
 Before we prove the theorem, let us show a standard application.
 
@@ -1568,7 +1568,7 @@ $$
 = 5 \int_{0}^{b} \int_{0}^{2\pi} \frac{a^4}{4} \cos^2 \theta \, d\theta \, dz = 5 \int_{0}^{b} \frac{a^4 \pi}{4} \, dz = \frac{5\pi}{4} a^4 b. \quad \square
 $$
 
-![Fig. 252. Surface $S$ in Example 1](/images/cover.png){#fig-10-252 width=30%}
+![Fig. 252. Surface $S$ in Example 1](../images/chapter10/fig-10-252.png){#fig-10-252 width=30%}
 
 **Proof.** We prove the divergence theorem, beginning with the first equation in (@eq-10-7-2a). This equation is true if and only if the integrals of each component on both sides are equal; that is,
 $$
@@ -1587,7 +1587,7 @@ g(x, y) \le z \le h(x, y)
 $$ {#eq-10-7-6}
 where $(x, y)$ varies in the orthogonal projection $R$ of $T$ in the $xy$-plane. Clearly, $z = g(x, y)$ represents the "bottom" $S_2$ of $S$ (@fig-10-253), whereas $z = h(x, y)$ represents the "top" $S_1$ of $S$, and there may be a remaining vertical portion $S_3$ of $S$. (The portion $S_3$ may degenerate into a curve, as for a sphere.)
 
-![Fig. 253. Example of a special region](/images/cover.png){#fig-10-253 width=30%}
+![Fig. 253. Example of a special region](../images/chapter10/fig-10-253.png){#fig-10-253 width=30%}
 
 To prove (@eq-10-7-5), we use (@eq-10-7-6). Since $\mathbf{F}$ is continuously differentiable in some domain containing $T$, we have:
 $$
@@ -1615,9 +1615,9 @@ $$
 
 This proves the first equation in (@eq-10-7-2a) for special regions. It implies (@eq-10-7-2) because the left side of (@eq-10-7-2a) is just the definition of the divergence, and the right sides of (@eq-10-7-2) and of the first equation in (@eq-10-7-2a) are equal. Finally, equality of the right sides of (@eq-10-7-2) and (@eq-10-7-2a), last line, is seen from (@eq-10-6-5) in the last section. This establishes the divergence theorem for special regions.
 
-For any region $T$ that can be subdivided into finitely many special regions by means of auxiliary surfaces, the theorem follows by adding the result for each part separately. This procedure is analogous to that in the proof of Green's theorem in Sec. 10.4. The surface integrals over the auxiliary surfaces cancel in pairs, and the sum of the remaining surface integrals is the surface integral over the whole boundary surface $S$ of $T$; the triple integrals over the parts of $T$ add up to the triple integral over $T$.
+For any region $T$ that can be subdivided into finitely many special regions by means of auxiliary surfaces, the theorem follows by adding the result for each part separately. This procedure is analogous to that in the proof of Green's theorem in @sec-greens-theorem-plane. The surface integrals over the auxiliary surfaces cancel in pairs, and the sum of the remaining surface integrals is the surface integral over the whole boundary surface $S$ of $T$; the triple integrals over the parts of $T$ add up to the triple integral over $T$.
 
-The divergence theorem is now proved for any bounded region that is of interest in practical problems. The extension to a most general region $T$ of the type indicated in the theorem would require a certain limit process; this is similar to the situation in the case of Green's theorem in Sec. 10.4. $\blacksquare$
+The divergence theorem is now proved for any bounded region that is of interest in practical problems. The extension to a most general region $T$ of the type indicated in the theorem would require a certain limit process; this is similar to the situation in the case of Green's theorem in @sec-greens-theorem-plane. $\blacksquare$
 
 ### EXAMPLE 2 Verification of the Divergence Theorem
 Evaluate $\iint_S (7x\mathbf{i} - z\mathbf{k}) \cdot \mathbf{n} \, dA$ over the sphere $S: x^2 + y^2 + z^2 = 4$  
@@ -1626,7 +1626,7 @@ Evaluate $\iint_S (7x\mathbf{i} - z\mathbf{k}) \cdot \mathbf{n} \, dA$ over the 
 
 **Solution.**  
 **(a)** $\operatorname{div} \mathbf{F} = \operatorname{div} [7x, 0, -z] = 7 - 1 = 6$. Answer: $6 \times \left( \frac{4}{3} \pi 2^3 \right) = 64\pi$.  
-**(b)** We can represent $S$ by (@eq-10-5-3) (with $a=2$), and we shall use $\mathbf{n} \, dA = \mathbf{N} \, du \, dv$ (see Sec. 10.6). Accordingly,
+**(b)** We can represent $S$ by (@eq-10-5-3) (with $a=2$), and we shall use $\mathbf{n} \, dA = \mathbf{N} \, du \, dv$ (see @sec-surface-integrals). Accordingly,
 $$
 S: \mathbf{r} = [2 \cos v \cos u, \, 2 \cos v \sin u, \, 2 \sin v] \quad (0 \le u \le 2\pi, \, -\pi/2 \le v \le \pi/2).
 $$
@@ -1661,7 +1661,7 @@ To see the point of Gauss's theorem, compare the amounts of work.
 ### Coordinate Invariance of the Divergence
 The divergence (@eq-10-7-1) is defined in terms of coordinates, but we can use the divergence theorem to show that $\operatorname{div} \mathbf{F}$ has a meaning independent of coordinates.
 
-For this purpose we first note that triple integrals have properties quite similar to those of double integrals in Sec. 10.3. In particular, the **mean value theorem for triple integrals** asserts that for any continuous function $f(x, y, z)$ in a bounded and simply connected region $T$ there is a point $Q:(x_0, y_0, z_0)$ in $T$ such that
+For this purpose we first note that triple integrals have properties quite similar to those of double integrals in @sec-calculus-review-double-integrals. In particular, the **mean value theorem for triple integrals** asserts that for any continuous function $f(x, y, z)$ in a bounded and simply connected region $T$ there is a point $Q:(x_0, y_0, z_0)$ in $T$ such that
 $$
 \iiint_T f(x, y, z) \, dV = f(x_0, y_0, z_0) V(T) \quad (V(T) = \text{volume of } T).
 $$ {#eq-10-7-9}
@@ -1751,12 +1751,12 @@ $$
 
 ***
 
-## 10.8 Further Applications of the Divergence Theorem {#sec-10-8}
+## Further Applications of the Divergence Theorem {#sec-further-applications-divergence-theorem}
 
 The divergence theorem has many important applications: In fluid flow, it helps characterize sources and sinks of fluids. In heat flow, it leads to the heat equation. In potential theory, it gives properties of the solutions of Laplace's equation. In this section, we assume that the region $T$ and its boundary surface $S$ are such that the divergence theorem applies.
 
 ### Physical Interpretation of the Divergence
-From the divergence theorem we may obtain an intuitive interpretation of the divergence of a vector. For this purpose we consider the flow of an incompressible fluid (see Sec. 9.8) of constant density $\rho = 1$ which is steady, that is, does not vary with time. Such a flow is determined by the field of its velocity vector $\mathbf{v}(P)$ at any point $P$.
+From the divergence theorem we may obtain an intuitive interpretation of the divergence of a vector. For this purpose we consider the flow of an incompressible fluid (see @sec-divergence-vector-field) of constant density $\rho = 1$ which is steady, that is, does not vary with time. Such a flow is determined by the field of its velocity vector $\mathbf{v}(P)$ at any point $P$.
 
 Let $S$ be the boundary surface of a region $T$ in space, and let $\mathbf{n}$ be the outer unit normal vector of $S$. Then $\mathbf{v} \cdot \mathbf{n}$ is the normal component of $\mathbf{v}$ in the direction of $\mathbf{n}$, and $|\mathbf{v} \cdot \mathbf{n}| \, dA$ is the mass of fluid leaving $T$ (if $\mathbf{v} \cdot \mathbf{n} \ge 0$ at some $P$) or entering $T$ (if $\mathbf{v} \cdot \mathbf{n} < 0$ at $P$) per unit time through a small portion $\Delta S$ of $S$ of area $\Delta A$. Hence the total mass of fluid that flows across $S$ from $T$ to the outside per unit time is given by the surface integral:
 $$
@@ -1798,7 +1798,7 @@ This expression is obtained similarly to the corresponding surface integral in t
 $$
 \operatorname{div}(\operatorname{grad} U) = \nabla^2 U = U_{xx} + U_{yy} + U_{zz}
 $$
-(the Laplacian; see (3) in Sec. 9.8), we have by the divergence theorem and (@eq-10-8-3):
+(the Laplacian; see (3) in @sec-divergence-vector-field), we have by the divergence theorem and (@eq-10-8-3):
 $$
 \iint_S \mathbf{v} \cdot \mathbf{n} \, dA = \iiint_T \operatorname{div}(-K \operatorname{grad} U) \, dx \, dy \, dz = -K \iiint_T \nabla^2 U \, dx \, dy \, dz.
 $$ {#eq-10-8-4}
@@ -1824,29 +1824,29 @@ Since this holds for any region $T$ in the body, the integrand (if continuous) m
 $$
 \frac{\partial U}{\partial t} = c^2 \nabla^2 U, \quad c^2 = \frac{K}{s \rho}
 $$ {#eq-10-8-5}
-where $c^2$ is called the thermal diffusivity of the material. This partial differential equation is called the **heat equation**. It is the fundamental equation for heat conduction. And our derivation is another impressive demonstration of the great importance of the divergence theorem. Methods for solving heat problems will be shown in Chap. 12.
+where $c^2$ is called the thermal diffusivity of the material. This partial differential equation is called the **heat equation**. It is the fundamental equation for heat conduction. And our derivation is another impressive demonstration of the great importance of the divergence theorem. Methods for solving heat problems will be shown in <!-- TODO: replace Chap. 12 with actual chapter label -->Chap. 12.
 
 The heat equation is also called the **diffusion equation** because it also models diffusion processes of motions of molecules tending to level off differences in density or pressure in gases or liquids.
 
-If heat flow does not depend on time, it is called steady-state heat flow. Then $\partial U / \partial t = 0$, so that (@eq-10-8-5) reduces to Laplace's equation $\nabla^2 U = 0$. We met this equation in Secs. 9.7 and 9.8, and we shall now see that the divergence theorem adds basic insights into the nature of solutions of this equation. $\square$
+If heat flow does not depend on time, it is called steady-state heat flow. Then $\partial U / \partial t = 0$, so that (@eq-10-8-5) reduces to Laplace's equation $\nabla^2 U = 0$. We met this equation in @sec-gradient-scalar-field-directional-derivative and @sec-divergence-vector-field, and we shall now see that the divergence theorem adds basic insights into the nature of solutions of this equation. $\square$
 
 ### Potential Theory. Harmonic Functions
 The theory of solutions of Laplace's equation
 $$
 \nabla^2 f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} = 0
 $$ {#eq-10-8-6}
-is called **potential theory**. A solution of (@eq-10-8-6) with continuous second-order partial derivatives is called a **harmonic function**. That continuity is needed for application of the divergence theorem in potential theory, where the theorem plays a key role that we want to explore. Further details of potential theory follow in Chaps. 12 and 18.
+is called **potential theory**. A solution of (@eq-10-8-6) with continuous second-order partial derivatives is called a **harmonic function**. That continuity is needed for application of the divergence theorem in potential theory, where the theorem plays a key role that we want to explore. Further details of potential theory follow in <!-- TODO: replace Chaps. 12 and 18 with actual chapter labels -->Chaps. 12 and 18.
 
 ### EXAMPLE 2 A Basic Property of Solutions of Laplace's Equation
-The integrands in the divergence theorem are $\operatorname{div} \mathbf{F}$ and $\mathbf{F} \cdot \mathbf{n}$ (Sec. 10.7). If $\mathbf{F}$ is the gradient of a scalar function, say, $\mathbf{F} = \operatorname{grad} f$, then $\operatorname{div} \mathbf{F} = \operatorname{div}(\operatorname{grad} f) = \nabla^2 f$; see (3), Sec. 9.8. Also, $\mathbf{F} \cdot \mathbf{n} = \mathbf{n} \cdot \mathbf{F} = \mathbf{n} \cdot \operatorname{grad} f$. This is the directional derivative of $f$ in the outer normal direction of $S$, the boundary surface of the region $T$ in the theorem. This derivative is called the (outer) **normal derivative** of $f$ and is denoted by $\partial f / \partial n$. Thus the formula in the divergence theorem becomes:
+The integrands in the divergence theorem are $\operatorname{div} \mathbf{F}$ and $\mathbf{F} \cdot \mathbf{n}$ (@sec-triple-integrals-divergence-theorem-gauss). If $\mathbf{F}$ is the gradient of a scalar function, say, $\mathbf{F} = \operatorname{grad} f$, then $\operatorname{div} \mathbf{F} = \operatorname{div}(\operatorname{grad} f) = \nabla^2 f$; see (3), @sec-divergence-vector-field. Also, $\mathbf{F} \cdot \mathbf{n} = \mathbf{n} \cdot \mathbf{F} = \mathbf{n} \cdot \operatorname{grad} f$. This is the directional derivative of $f$ in the outer normal direction of $S$, the boundary surface of the region $T$ in the theorem. This derivative is called the (outer) **normal derivative** of $f$ and is denoted by $\partial f / \partial n$. Thus the formula in the divergence theorem becomes:
 $$
 \iiint_T \nabla^2 f \, dV = \iint_S \frac{\partial f}{\partial n} \, dA.
 $$ {#eq-10-8-7}
 
-This is the three-dimensional analog of (9) in Sec. 10.4. Because of the assumptions in the divergence theorem this gives the following result.
+This is the three-dimensional analog of (9) in @sec-greens-theorem-plane. Because of the assumptions in the divergence theorem this gives the following result.
 
 ### THEOREM 1 A Basic Property of Harmonic Functions
-Let $f(x, y, z)$ be a harmonic function in some domain $D$ in space. Let $S$ be any piecewise smooth closed orientable surface in $D$ whose entire region $T$ it encloses belongs to $D$. Then the integral of the normal derivative of $f$ taken over $S$ is zero. (For "piecewise smooth" see Sec. 10.5.) $\square$
+Let $f(x, y, z)$ be a harmonic function in some domain $D$ in space. Let $S$ be any piecewise smooth closed orientable surface in $D$ whose entire region $T$ it encloses belongs to $D$. Then the integral of the normal derivative of $f$ taken over $S$ is zero. (For "piecewise smooth" see @sec-surfaces-surface-integrals.) $\square$
 
 ### EXAMPLE 3 Green's Theorems
 Let $f$ and $g$ be scalar functions such that $\mathbf{F} = f \operatorname{grad} g$ satisfies the assumptions of the divergence theorem in some region $T$. Then
@@ -1915,7 +1915,7 @@ These theorems demonstrate the extreme importance of the divergence theorem in p
 
 **5. Green's second identity.** Verify (@eq-10-8-9) for $f = 6y^2$, $g = 2x^2$, $S$ the unit cube in Prob. 3.
 
-**6. Green's second identity.** Verify (@eq-10-8-9) for $f = x^2$, $g = y^4$, $S$ the unit cube in Prob. 3. Make a sketch. Hint. Use (2) in Sec. 10.7 with $\mathbf{F} = [x, y, z]$.
+**6. Green's second identity.** Verify (@eq-10-8-9) for $f = x^2$, $g = y^4$, $S$ the unit cube in Prob. 3. Make a sketch. Hint. Use (2) in @sec-triple-integrals-divergence-theorem-gauss with $\mathbf{F} = [x, y, z]$.
 
 **7–11 VOLUME**  
 Use the divergence theorem, assuming that the assumptions on $T$ and $S$ are satisfied.
@@ -1951,11 +1951,11 @@ where $d(T)$ is the maximum distance of the points of a region $T$ bounded by $S
 
 ***
 
-## 10.9 Stokes's Theorem {#sec-10-9}
+## Stokes's Theorem {#sec-stokes-theorem}
 
-Let us review some of the material covered so far. Double integrals over a region in the plane can be transformed into line integrals over the boundary curve of that region and conversely. This important result is known as Green's theorem in the plane and was explained in Sec. 10.4. We also learned that we can transform triple integrals into surface integrals and vice versa, that is, surface integrals into triple integrals. This "big" theorem is called Gauss's divergence theorem and was shown in Sec. 10.7.
+Let us review some of the material covered so far. Double integrals over a region in the plane can be transformed into line integrals over the boundary curve of that region and conversely. This important result is known as Green's theorem in the plane and was explained in @sec-greens-theorem-plane. We also learned that we can transform triple integrals into surface integrals and vice versa, that is, surface integrals into triple integrals. This "big" theorem is called Gauss's divergence theorem and was shown in @sec-triple-integrals-divergence-theorem-gauss.
 
-To complete our discussion on transforming integrals, we now introduce another "big" theorem that allows us to transform surface integrals into line integrals and conversely, line integrals into surface integrals. It is called **Stokes's Theorem**, and it generalizes Green's theorem in the plane (see Example 2 below for this immediate observation). Recall from Sec. 9.9 that
+To complete our discussion on transforming integrals, we now introduce another "big" theorem that allows us to transform surface integrals into line integrals and conversely, line integrals into surface integrals. It is called **Stokes's Theorem**, and it generalizes Green's theorem in the plane (see Example 2 below for this immediate observation). Recall from @sec-curl-vector-field that
 $$
 \operatorname{curl} \mathbf{F} = \operatorname{rot} \mathbf{F} = \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ F_1 & F_2 & F_3 \end{vmatrix}
 $$ {#eq-10-9-1}
@@ -1970,7 +1970,7 @@ $$ {#eq-10-9-2}
 
 Here $\mathbf{n}$ is a unit normal vector of $S$ and, depending on $\mathbf{n}$, the integration around $C$ is taken in the sense shown in @fig-10-254. Furthermore, $\mathbf{r}'(s) = d\mathbf{r}/ds$ is the unit tangent vector and $s$ the arc length of $C$.
 
-[^9]: Sir GEORGE GABRIEL STOKES (1819–1903), Irish mathematician and physicist who became a professor in Cambridge in 1849. He is also known for his important contribution to the theory of infinite series and to viscous flow (Navier–Stokes equations), geodesy, and optics. Piecewise smooth curves and surfaces are defined in Secs. 10.1 and 10.5.
+[^9]: Sir GEORGE GABRIEL STOKES (1819–1903), Irish mathematician and physicist who became a professor in Cambridge in 1849. He is also known for his important contribution to the theory of infinite series and to viscous flow (Navier–Stokes equations), geodesy, and optics. Piecewise smooth curves and surfaces are defined in @sec-line-integrals and 10.5.
 
 In components, formula (@eq-10-9-2) becomes:
 $$
@@ -1984,9 +1984,9 @@ Here, $\mathbf{F} = [F_1, F_2, F_3]$, $\mathbf{N} = [N_1, N_2, N_3]$, $\mathbf{n
 
 The proof follows after Example 1.
 
-![Fig. 254. Stokes's theorem](/images/cover.png){#fig-10-254 width=30%}
+![Fig. 254. Stokes's theorem](../images/chapter10/fig-10-254.png){#fig-10-254 width=30%}
 
-![Fig. 255. Surface $S$ in Example 1](/images/cover.png){#fig-10-255 width=30%}
+![Fig. 255. Surface $S$ in Example 1](../images/chapter10/fig-10-255.png){#fig-10-255 width=30%}
 
 ### EXAMPLE 1 Verification of Stokes's Theorem
 Before we prove Stokes's theorem, let us first get used to it by verifying it for $\mathbf{F} = [y, z, x]$ and $S$ the paraboloid (@fig-10-255):
@@ -2034,7 +2034,7 @@ We prove (@eq-10-9-3), using (@eq-10-9-6)(a). Setting $u = x, v = y$, we have fr
 $$
 \mathbf{r}(u, v) = \mathbf{r}(x, y) = [x, \, y, \, f(x, y)] = x\mathbf{i} + y\mathbf{j} + f(x, y)\mathbf{k}
 $$
-and in Sec. 10.6 by direct calculation:
+and in @sec-surface-integrals by direct calculation:
 $$
 \mathbf{N} = \mathbf{r}_x \times \mathbf{r}_y = [-f_x, \, -f_y, \, 1].
 $$
@@ -2044,21 +2044,21 @@ $$
 \iint_{S^*} \left( \frac{\partial F_1}{\partial z} (-f_y) - \frac{\partial F_1}{\partial y} (1) \right) \, dx \, dy.
 $$ {#eq-10-9-7}
 
-We now consider the right side of (@eq-10-9-3). We transform this line integral over $C = C^*$ into a double integral over $S^*$ by applying Green's theorem [formula (@eq-10-4-1) in Sec. 10.4 with $F_2 = 0$]. This gives:
+We now consider the right side of (@eq-10-9-3). We transform this line integral over $C = C^*$ into a double integral over $S^*$ by applying Green's theorem [formula (@eq-10-4-1) in @sec-greens-theorem-plane with $F_2 = 0$]. This gives:
 $$
 \oint_{C^*} F_1 \, dx = \iint_{S^*} \left( -\frac{\partial F_1}{\partial y} \right) \, dx \, dy.
 $$
 
-Here, $F_1 = F_1(x, y, f(x, y))$. Hence by the chain rule (see also Sec. 9.6),
+Here, $F_1 = F_1(x, y, f(x, y))$. Hence by the chain rule (see also @sec-calculus-review-functions-several-variables),
 $$
 \frac{\partial F_1(x, y, f(x, y))}{\partial y} = \frac{\partial F_1(x, y, z)}{\partial y} + \frac{\partial F_1(x, y, z)}{\partial z} \frac{\partial f}{\partial y} \quad [z = f(x, y)].
 $$
 
 We see that the negative of this derivative equals the integrand in (@eq-10-9-7). This proves (@eq-10-9-3). Relations (@eq-10-9-4) and (@eq-10-9-5) follow in the same way if we use (@eq-10-9-6)(b) and (@eq-10-9-6)(c), respectively. By addition we obtain (@eq-10-9-2a). This proves Stokes's theorem for a surface $S$ that can be represented simultaneously in the forms (@eq-10-9-6).
 
-As in the proof of the divergence theorem, our result may be immediately extended to a surface $S$ that can be decomposed into finitely many pieces, each of which is of the kind just considered. This covers most of the cases of practical interest. The proof in the case of a most general surface $S$ satisfying the assumptions of the theorem would require a limit process; this is similar to the situation in the case of Green's theorem in Sec. 10.4. $\blacksquare$
+As in the proof of the divergence theorem, our result may be immediately extended to a surface $S$ that can be decomposed into finitely many pieces, each of which is of the kind just considered. This covers most of the cases of practical interest. The proof in the case of a most general surface $S$ satisfying the assumptions of the theorem would require a limit process; this is similar to the situation in the case of Green's theorem in @sec-greens-theorem-plane. $\blacksquare$
 
-![Fig. 256. Proof of Stokes's theorem](/images/cover.png){#fig-10-256 width=30%}
+![Fig. 256. Proof of Stokes's theorem](../images/chapter10/fig-10-256.png){#fig-10-256 width=30%}
 
 ### EXAMPLE 2 Green's Theorem in the Plane as a Special Case of Stokes's Theorem
 Let $\mathbf{F} = [F_1, F_2] = F_1\mathbf{i} + F_2\mathbf{j}$ be a vector function that is continuously differentiable in a domain in the $xy$-plane containing a simply connected bounded closed region $S$ whose boundary $C$ is a piecewise smooth simple closed curve. Then, according to (@eq-10-9-1),
@@ -2069,7 +2069,7 @@ Hence the formula in Stokes's theorem now takes the form:
 $$
 \iint_S \left( \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} \right) \, dA = \oint_C (F_1 \, dx + F_2 \, dy).
 $$
-This shows that Green's theorem in the plane (Sec. 10.4) is a special case of Stokes's theorem. $\square$
+This shows that Green's theorem in the plane (@sec-greens-theorem-plane) is a special case of Stokes's theorem. $\square$
 
 ### EXAMPLE 3 Evaluation of a Line Integral by Stokes's Theorem
 Evaluate $\oint_C \mathbf{F} \cdot d\mathbf{r}$, where $C$ is the circle $x^2 + y^2 = 4, z = -3$, oriented counterclockwise as seen by a person standing at the origin, and, with respect to right-handed Cartesian coordinates,
@@ -2087,7 +2087,7 @@ $$
 $$
 
 ### Physical Meaning of the Curl in Fluid Motion. Circulation
-Let $S_{r_0}$ be a circular disk of radius $r_0$ and center $P$ bounded by the circle $C_{r_0}$ (@fig-10-257), and let $\mathbf{F}(Q) = \mathbf{F}(x, y, z)$ be a continuously differentiable vector function in a domain containing $S_{r_0}$. Then by Stokes's theorem and the mean value theorem for surface integrals (see Sec. 10.6),
+Let $S_{r_0}$ be a circular disk of radius $r_0$ and center $P$ bounded by the circle $C_{r_0}$ (@fig-10-257), and let $\mathbf{F}(Q) = \mathbf{F}(x, y, z)$ be a continuously differentiable vector function in a domain containing $S_{r_0}$. Then by Stokes's theorem and the mean value theorem for surface integrals (see @sec-surface-integrals),
 $$
 \oint_{C_{r_0}} \mathbf{F} \cdot d\mathbf{r} = \iint_{S_{r_0}} (\operatorname{curl} \mathbf{F}) \cdot \mathbf{n} \, dA = (\operatorname{curl} \mathbf{F}) \cdot \mathbf{n}(P^*) A_{r_0}
 $$
@@ -2106,25 +2106,25 @@ $$
 $$ {#eq-10-9-8}
 that is, the component of the curl in the positive normal direction can be regarded as the specific circulation (circulation per unit area) of the flow in the surface at the corresponding point. $\square$
 
-![Fig. 257. Example 4](/images/cover.png){#fig-10-257 width=25%}
+![Fig. 257. Example 4](../images/chapter10/fig-10-257.png){#fig-10-257 width=25%}
 
 ### EXAMPLE 5 Work Done in the Displacement around a Closed Curve
 Find the work done by the force $\mathbf{F} = 2xy^3 \sin z \mathbf{i} + 3x^2 y^2 \sin z \mathbf{j} + x^2 y^3 \cos z \mathbf{k}$ in the displacement around the curve of intersection of the paraboloid $z = x^2 + y^2$ and the cylinder $(x - 1)^2 + y^2 = 1$.
 
-**Solution.** This work is given by the line integral in Stokes's theorem. Now $\mathbf{F} = \operatorname{grad} f$, where $f = x^2 y^3 \sin z$ and $\operatorname{curl}(\operatorname{grad} f) = \mathbf{0}$ (see (2) in Sec. 9.9), so that $(\operatorname{curl} \mathbf{F}) \cdot \mathbf{n} = 0$ and the work is 0 by Stokes's theorem. This agrees with the fact that the present field is conservative (definition in Sec. 9.7). $\square$
+**Solution.** This work is given by the line integral in Stokes's theorem. Now $\mathbf{F} = \operatorname{grad} f$, where $f = x^2 y^3 \sin z$ and $\operatorname{curl}(\operatorname{grad} f) = \mathbf{0}$ (see (2) in @sec-curl-vector-field), so that $(\operatorname{curl} \mathbf{F}) \cdot \mathbf{n} = 0$ and the work is 0 by Stokes's theorem. This agrees with the fact that the present field is conservative (definition in @sec-gradient-scalar-field-directional-derivative). $\square$
 
 ### Stokes's Theorem Applied to Path Independence
-We emphasized in Sec. 10.2 that the value of a line integral generally depends not only on the function to be integrated and on the two endpoints $A$ and $B$ of the path of integration $C$, but also on the particular choice of a path from $A$ to $B$. In Theorem 3 of Sec. 10.2 we proved that if a line integral
+We emphasized in @sec-path-independence-line-integrals that the value of a line integral generally depends not only on the function to be integrated and on the two endpoints $A$ and $B$ of the path of integration $C$, but also on the particular choice of a path from $A$ to $B$. In Theorem 3 of @sec-path-independence-line-integrals we proved that if a line integral
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_C (F_1 \, dx + F_2 \, dy + F_3 \, dz)
 $$ {#eq-10-9-9}
-(involving continuous $F_1, F_2, F_3$ that have continuous first partial derivatives) is path independent in a domain $D$, then $\operatorname{curl} \mathbf{F} = \mathbf{0}$ in $D$. And we claimed in Sec. 10.2 that, conversely, $\operatorname{curl} \mathbf{F} = \mathbf{0}$ everywhere in $D$ implies path independence of (@eq-10-9-9) in $D$ provided $D$ is simply connected. A proof of this needs Stokes's theorem and can now be given as follows.
+(involving continuous $F_1, F_2, F_3$ that have continuous first partial derivatives) is path independent in a domain $D$, then $\operatorname{curl} \mathbf{F} = \mathbf{0}$ in $D$. And we claimed in @sec-path-independence-line-integrals that, conversely, $\operatorname{curl} \mathbf{F} = \mathbf{0}$ everywhere in $D$ implies path independence of (@eq-10-9-9) in $D$ provided $D$ is simply connected. A proof of this needs Stokes's theorem and can now be given as follows.
 
 Let $C$ be any closed path in $D$. Since $D$ is simply connected, we can find a surface $S$ in $D$ bounded by $C$. Stokes's theorem applies and gives:
 $$
 \oint_C (F_1 \, dx + F_2 \, dy + F_3 \, dz) = \oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\operatorname{curl} \mathbf{F}) \cdot \mathbf{n} \, dA
 $$
-for proper direction on $C$ and normal vector $\mathbf{n}$ on $S$. Since $\operatorname{curl} \mathbf{F} = \mathbf{0}$ in $D$, the surface integral and hence the line integral are zero. This and Theorem 2 of Sec. 10.2 imply that the integral (@eq-10-9-9) is path independent in $D$. This completes the proof. $\square$
+for proper direction on $C$ and normal vector $\mathbf{n}$ on $S$. Since $\operatorname{curl} \mathbf{F} = \mathbf{0}$ in $D$, the surface integral and hence the line integral are zero. This and Theorem 2 of @sec-path-independence-line-integrals imply that the integral (@eq-10-9-9) is path independent in $D$. This completes the proof. $\square$
 
 ***
 
@@ -2178,7 +2178,7 @@ Calculate this line integral by Stokes's theorem for the given $\mathbf{F}$ and 
 
 ***
 
-## CHAPTER 10 REVIEW QUESTIONS AND PROBLEMS {#sec-10-review}
+## Review Questions and Problems {#sec-review-questions-problems-chapter-10}
 
 **1.** State from memory how to evaluate a line integral. A surface integral.
 
@@ -2261,28 +2261,28 @@ Evaluate the integral directly or, if possible, by the divergence theorem. Show 
 
 ***
 
-## SUMMARY OF CHAPTER 10 {#sec-10-summary}
+## Summary {#sec-summary-chapter-10}
 
 ### Vector Integral Calculus. Integral Theorems
 
-Chapter 9 extended differential calculus to vectors, that is, to vector functions $\mathbf{v}(x, y, z)$ or $\mathbf{v}(t)$. Similarly, Chapter 10 extends integral calculus to vector functions. This involves line integrals (@sec-10-1), double integrals (@sec-10-3), surface integrals (@sec-10-6), and triple integrals (@sec-10-7) and the three "big" theorems for transforming these integrals into one another, the theorems of Green (@sec-10-4), Gauss (@sec-10-7), and Stokes (@sec-10-9).
+<!-- TODO: replace Chapter 9 with actual chapter label -->Chapter 9 extended differential calculus to vectors, that is, to vector functions $\mathbf{v}(x, y, z)$ or $\mathbf{v}(t)$. Similarly, Chapter 10 extends integral calculus to vector functions. This involves line integrals (@sec-line-integrals), double integrals (@sec-calculus-review-double-integrals), surface integrals (@sec-surface-integrals), and triple integrals (@sec-triple-integrals-divergence-theorem-gauss) and the three "big" theorems for transforming these integrals into one another, the theorems of Green (@sec-greens-theorem-plane), Gauss (@sec-triple-integrals-divergence-theorem-gauss), and Stokes (@sec-stokes-theorem).
 
-The analog of the definite integral of calculus is the line integral (@sec-10-1):
+The analog of the definite integral of calculus is the line integral (@sec-line-integrals):
 $$
 \int_C \mathbf{F}(\mathbf{r}) \cdot d\mathbf{r} = \int_C (F_1 \, dx + F_2 \, dy + F_3 \, dz) = \int_{a}^{b} \mathbf{F}(\mathbf{r}(t)) \cdot \frac{d\mathbf{r}}{dt} \, dt
 $$ {#eq-10-summary-1}
-where $C: \mathbf{r}(t) = [x(t), y(t), z(t)] = x(t)\mathbf{i} + y(t)\mathbf{j} + z(t)\mathbf{k}$ ($a \le t \le b$) is a curve in space (or in the plane). Physically, (@eq-10-summary-1) may represent the work done by a (variable) force in a displacement. Other kinds of line integrals and their applications are also discussed in Sec. 10.1.
+where $C: \mathbf{r}(t) = [x(t), y(t), z(t)] = x(t)\mathbf{i} + y(t)\mathbf{j} + z(t)\mathbf{k}$ ($a \le t \le b$) is a curve in space (or in the plane). Physically, (@eq-10-summary-1) may represent the work done by a (variable) force in a displacement. Other kinds of line integrals and their applications are also discussed in @sec-line-integrals.
 
-Independence of path of a line integral in a domain $D$ means that the integral of a given function over any path $C$ with endpoints $P$ and $Q$ has the same value for all paths from $P$ to $Q$ that lie in $D$; here $P$ and $Q$ are fixed. An integral (@eq-10-summary-1) is independent of path in $D$ if and only if the differential form $F_1 \, dx + F_2 \, dy + F_3 \, dz$ with continuous $F_1, F_2, F_3$ is exact in $D$ (@sec-10-2). Also, if $\operatorname{curl} \mathbf{F} = \mathbf{0}$, where $\mathbf{F} = [F_1, F_2, F_3]$ has continuous first partial derivatives in a simply connected domain $D$, then the integral (@eq-10-summary-1) is independent of path in $D$ (@sec-10-2).
+Independence of path of a line integral in a domain $D$ means that the integral of a given function over any path $C$ with endpoints $P$ and $Q$ has the same value for all paths from $P$ to $Q$ that lie in $D$; here $P$ and $Q$ are fixed. An integral (@eq-10-summary-1) is independent of path in $D$ if and only if the differential form $F_1 \, dx + F_2 \, dy + F_3 \, dz$ with continuous $F_1, F_2, F_3$ is exact in $D$ (@sec-path-independence-line-integrals). Also, if $\operatorname{curl} \mathbf{F} = \mathbf{0}$, where $\mathbf{F} = [F_1, F_2, F_3]$ has continuous first partial derivatives in a simply connected domain $D$, then the integral (@eq-10-summary-1) is independent of path in $D$ (@sec-path-independence-line-integrals).
 
 ### Integral Theorems
-The formula of **Green's theorem in the plane** (@sec-10-4):
+The formula of **Green's theorem in the plane** (@sec-greens-theorem-plane):
 $$
 \iint_R \left( \frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y} \right) \, dx \, dy = \oint_C (F_1 \, dx + F_2 \, dy)
 $$ {#eq-10-summary-2}
-transforms double integrals over a region $R$ in the $xy$-plane into line integrals over the boundary curve $C$ of $R$ and conversely. For other forms of (@eq-10-summary-2) see Sec. 10.4.
+transforms double integrals over a region $R$ in the $xy$-plane into line integrals over the boundary curve $C$ of $R$ and conversely. For other forms of (@eq-10-summary-2) see @sec-greens-theorem-plane.
 
-Similarly, the formula of the **divergence theorem of Gauss** (@sec-10-7):
+Similarly, the formula of the **divergence theorem of Gauss** (@sec-triple-integrals-divergence-theorem-gauss):
 $$
 \iiint_T \operatorname{div} \mathbf{F} \, dV = \iint_S \mathbf{F} \cdot \mathbf{n} \, dA
 $$ {#eq-10-summary-3}
@@ -2294,7 +2294,7 @@ $$
 \iiint_T (f \nabla^2 g - g \nabla^2 f) \, dV = \iint_S \left( f \frac{\partial g}{\partial n} - g \frac{\partial f}{\partial n} \right) \, dA.
 $$ {#eq-10-summary-5}
 
-Finally, the formula of **Stokes's theorem** (@sec-10-9):
+Finally, the formula of **Stokes's theorem** (@sec-stokes-theorem):
 $$
 \iint_S (\operatorname{curl} \mathbf{F}) \cdot \mathbf{n} \, dA = \oint_C \mathbf{F} \cdot d\mathbf{r}
 $$ {#eq-10-summary-6}
