@@ -98,8 +98,7 @@ Hence the improved Euler method is a predictor–corrector method: In each step 
 
 In algorithmic form, using the notations $k_1 = hf(x_n, y_n)$ in (@eq-sec211-7a) and $k_2 = hf(x_{n+1}, y_{n+1}^*)$ in (@eq-sec211-7b), we can write this method as shown in @tbl-improved-euler-heun.
 
-**Table: Improved Euler Method (Heun’s Method)** {#tbl-improved-euler-heun}
-
+::: {#tbl-improved-euler-heun}
 ***
 ***
 ```{.algorithm}
@@ -145,6 +144,9 @@ $$
 **End EULER**  
 ***
 
+Improved Euler Method (Heun’s Method)
+:::
+
 ### EXAMPLE 1: Improved Euler Method. Comparison with Euler Method
 Apply the improved Euler method to the initial value problem (@eq-sec211-6), choosing $h = 0.2$ as in <!-- TODO: replace Sec. 1.2 with actual cross-reference label -->.
 
@@ -160,8 +162,6 @@ $$
 
 @tbl-improved-euler-errors shows that our present results are much more accurate than those for Euler’s method in <!-- TODO: replace Table 1.1 with actual table reference -->Table 1.1 but at the cost of more computations. $\blacksquare$
 
-**Table: Improved Euler Method for (@eq-sec211-6). Errors** {#tbl-improved-euler-errors}
-
 | $n$ | $x_n$ | $y_n$ | Exact Values (4D) | Error of Improved Euler | Error of Euler |
 |---|---|---|---|---|---|
 | 0 | 0.0 | 0.0000 | 0.0000 | 0.0000 | 0.000 |
@@ -170,6 +170,8 @@ $$
 | 3 | 0.6 | 0.2158 | 0.2221 | 0.0063 | 0.094 |
 | 4 | 0.8 | 0.4153 | 0.4255 | 0.0102 | 0.152 |
 | 5 | 1.0 | 0.7027 | 0.7183 | 0.0156 | 0.230 |
+
+: Improved Euler Method for (@eq-sec211-6). Errors {#tbl-improved-euler-errors}
 
 ### Error of the Improved Euler Method
 The local error is of order $h^3$ and the global error of order $h^2$, so that the method is a second-order method.
@@ -204,8 +206,7 @@ Note that, if $f$ depends only on $x$, this method reduces to Simpson’s rule o
 
 > ^1^ Named after the German mathematicians KARL RUNGE (<!-- TODO: replace Sec. 19.4 with actual cross-reference label -->) and WILHELM KUTTA (1867–1944). Runge [Math. Annalen 46 (1895), 167–178], the German mathematician KARL HEUN (1859–1929) [Zeitschr. Math. Phys. 45 (1900), 23–38], and Kutta [Zeitschr. Math. Phys. 46 (1901), 435–453] developed various similar methods. Theoretically, there are infinitely many fourth-order methods using four function values per step. The method in @tbl-classical-runge-kutta is most popular from a practical viewpoint because of its “symmetrical” form and its simple coefficients. It was given by Kutta.
 
-**Table: Classical Runge–Kutta Method of Fourth Order** {#tbl-classical-runge-kutta}
-
+::: {#tbl-classical-runge-kutta}
 ***
 **ALGORITHM RUNGE–KUTTA ($f, x_0, y_0, h, N$)**  
 This algorithm computes the solution of the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$ at equidistant points $x_1 = x_0 + h, x_2 = x_0 + 2h, \dots, x_N = x_0 + Nh$; here $f$ is such that this problem has a unique solution on the interval $[x_0, x_N]$ (see <!-- TODO: replace Sec. 1.7 with actual cross-reference label -->).  
@@ -230,6 +231,9 @@ $$ {#eq-sec211-9}
 **End RUNGE–KUTTA**  
 ***
 
+Classical Runge–Kutta Method of Fourth Order
+:::
+
 ### EXAMPLE 2: Classical Runge–Kutta Method
 Apply the Runge–Kutta method to the initial value problem in Example 1, choosing $h = 0.2$, as before, and computing five steps.
 
@@ -246,8 +250,6 @@ $$
 
 @tbl-rk-applied shows the results and their errors, which are smaller by factors $10^3$ and $10^4$ than those for the two Euler methods. See also @tbl-accuracy-comparison. We mention in passing that since the present $k_1, \dots, k_4$ are simple, operations were saved by substituting $k_1$ into $k_2$, then $k_2$ into $k_3$, etc.; the resulting formula is shown in Column 4 of @tbl-rk-applied. Keep in mind that we have four function evaluations at each step. $\blacksquare$
 
-**Table: Runge–Kutta Method Applied to (@eq-sec211-6)** {#tbl-rk-applied}
-
 | $n$ | $x_n$ | $y_n$ | $y_{n+1} - y_n = 0.2214(x_n + y_n) + 0.0214$ | Exact Values (6D) $y = e^x - x - 1$ | $10^6 \times \text{Error of } y_n$ |
 |---|---|---|---|---|---|
 | 0 | 0.0 | 0.000000 | 0.021400 | 0.000000 | 0 |
@@ -257,7 +259,7 @@ $$
 | 4 | 0.8 | 0.425521 | 0.292730 | 0.425541 | 20 |
 | 5 | 1.0 | 0.718251 | | 0.718282 | 31 |
 
-**Table: Comparison of the Accuracy of the Three Methods under Consideration in the Case of the Initial Value Problem (@eq-sec211-6), with $h = 0.2$** {#tbl-accuracy-comparison}
+: Runge–Kutta Method Applied to (@eq-sec211-6) {#tbl-rk-applied}
 
 | $x$ | $y = e^x - x - 1$ | Euler (<!-- TODO: replace Table 1.1 with actual table reference -->Table 1.1) | Improved Euler (@tbl-improved-euler-errors) | Runge–Kutta (@tbl-rk-applied) |
 |---|---|---|---|---|
@@ -266,6 +268,8 @@ $$
 | 0.6 | 0.222119 | 0.094 | 0.0063 | 0.000011 |
 | 0.8 | 0.425541 | 0.152 | 0.0102 | 0.000020 |
 | 1.0 | 0.718282 | 0.230 | 0.0156 | 0.000031 |
+
+: Comparison of the Accuracy of the Three Methods under Consideration in the Case of the Initial Value Problem (@eq-sec211-6), with $h = 0.2$ {#tbl-accuracy-comparison}
 
 ### Error and Step Size Control. RKF (Runge–Kutta–Fehlberg)
 The idea of adaptive integration (<!-- TODO: replace Sec. 19.5 with actual cross-reference label -->) has analogs for Runge–Kutta (and other) methods. In @tbl-classical-runge-kutta for RK (Runge–Kutta), if we compute in each step approximations $\tilde{y}$ and $\tilde{\tilde{y}}$ with step sizes $h$ and $2h$, respectively, the latter has error per step equal to $2^5 = 32$ times that of the former; however, since we have only half as many steps for $2h$, the actual factor is $2^5/2 = 16$, so that, say,
@@ -286,8 +290,6 @@ $$y' = (y - x - 1)^2 + 2, \quad y(0) = 1$$ {#eq-sec211-11}
 
 the step size $h = 0.1$ and $0 \le x \le 0.4$. We see that the estimate is close to the actual error. This method of error estimation is simple but may be unstable.
 
-**@tbl-rk-applied-error-estimate: Runge–Kutta Method Applied to the Initial Value Problem (@eq-sec211-11) and Error Estimate (@eq-sec211-10). Exact Solution $y = \tan x + x + 1$**
-
 | $x$ | $\tilde{y}$ (Step size $h$) | $\tilde{\tilde{y}}$ (Step size $2h$) | Error Estimate (@eq-sec211-10) | Actual Error | Exact Solution (9D) |
 |---|---|---|---|---|---|
 | 0.0 | 1.000000000 | 1.000000000 | 0.000000000 | 0.000000000 | 1.000000000 |
@@ -295,6 +297,8 @@ the step size $h = 0.1$ and $0 \le x \le 0.4$. We see that the estimate is close
 | 0.2 | 1.402709878 | 1.402707408 | 0.000000165 | 0.000000157 | 1.402710036 |
 | 0.3 | 1.609336039 | | | 0.000000210 | 1.609336250 |
 | 0.4 | 1.822792993 | 1.822788993 | 0.000000267 | 0.000000226 | 1.822793219 |
+
+: Runge–Kutta Method Applied to the Initial Value Problem (@eq-sec211-11) and Error Estimate (@eq-sec211-10). Exact Solution $y = \tan x + x + 1$ {#tbl-rk-applied-error-estimate}
 
 ### RKF (Runge–Kutta–Fehlberg Method)
 E. Fehlberg [Computing 6 (1970), 61–71] proposed and developed error control by using two RK methods of different orders to go from $(x_n, y_n)$ to $(x_{n+1}, y_{n+1})$. The difference of the computed $y$-values at $x_{n+1}$ gives an error estimate to be used for step size control. Fehlberg discovered two RK formulas that together need only six function evaluations per step. We present these formulas here because RKF has become quite popular. For instance, Maple uses it (also for systems of ODEs).
@@ -357,14 +361,14 @@ The exact 12S-value is $y(0.1) = 1.20033467209$. Hence the actual error of $y_1$
 
 @tbl-methods-order summarizes essential features of the methods in this section. It can be shown that these methods are numerically stable (definition in <!-- TODO: replace Sec. 19.1 with actual cross-reference label -->). They are one-step methods because in each step we use the data of just one preceding step, in contrast to multistep methods where in each step we use data from several preceding steps, as we shall see in the next section.
 
-**Table: Methods Considered and Their Order (= Their Global Error)** {#tbl-methods-order}
-
 | Method | Function Evaluations per Step | Global Error | Local Error |
 |---|---|---|---|
 | Euler | 1 | $O(h)$ | $O(h^2)$ |
 | Improved Euler | 2 | $O(h^2)$ | $O(h^3)$ |
 | RK (fourth order) | 4 | $O(h^4)$ | $O(h^5)$ |
 | RKF | 6 | $O(h^5)$ | $O(h^6)$ |
+
+: Methods Considered and Their Order (= Their Global Error) {#tbl-methods-order}
 
 ### Backward Euler Method. Stiff ODEs
 The backward Euler formula for numerically solving (@eq-sec211-1) is
@@ -373,7 +377,7 @@ $$y_{n+1} = y_n + hf(x_{n+1}, y_{n+1}) \quad (n = 0, 1, \dots)$$ {#eq-sec211-16}
 
 This formula is obtained by evaluating the right side at the new location $(x_{n+1}, y_{n+1})$; this is called the backward Euler scheme. For known $y_n$ it gives $y_{n+1}$ implicitly, so it defines an implicit method, in contrast to the Euler method (@eq-sec211-3), which gives $y_{n+1}$ explicitly. Hence (@eq-sec211-16) must be solved for $y_{n+1}$. How difficult this is depends on $f$ in (@eq-sec211-1). For a linear ODE this provides no problem, as Example 4 (below) illustrates. The method is particularly useful for “stiff” ODEs, as they occur quite frequently in the study of vibrations, electric circuits, chemical reactions, etc. The situation of stiffness is roughly as follows; for details, see, for example, [E5], [E25], [E26] in App. 1.
 
-Error terms of the methods considered so far involve a higher derivative. And we ask what happens if we let $h$ increase. Now if the error (the derivative) grows fast but the desired solution also grows fast, nothing will happen. However, if that solution does not grow fast, then with growing $h$ the error term can take over to an extent that the numeric result becomes completely nonsensical, as in @fig-21-01. Such an ODE for which $h$ must thus be restricted to small values, and the physical system the ODE models, are called stiff. This term is suggested by a mass–spring system with a stiff spring (spring with a large $k$; see Sec. 2.4). Example 4 illustrates that implicit methods remove the difficulty of increasing $h$ in the case of stiffness: It can be shown that in the application of an implicit method the solution remains stable under any increase of $h$, although the accuracy decreases with increasing $h$.
+Error terms of the methods considered so far involve a higher derivative. And we ask what happens if we let $h$ increase. Now if the error (the derivative) grows fast but the desired solution also grows fast, nothing will happen. However, if that solution does not grow fast, then with growing $h$ the error term can take over to an extent that the numeric result becomes completely nonsensical, as in @fig-21-451. Such an ODE for which $h$ must thus be restricted to small values, and the physical system the ODE models, are called stiff. This term is suggested by a mass–spring system with a stiff spring (spring with a large $k$; see Sec. 2.4). Example 4 illustrates that implicit methods remove the difficulty of increasing $h$ in the case of stiffness: It can be shown that in the application of an implicit method the solution remains stable under any increase of $h$, although the accuracy decreases with increasing $h$.
 
 ### EXAMPLE 4: Backward Euler Method. Stiff ODE
 The initial value problem
@@ -403,8 +407,6 @@ Stiffness will be considered further in @sec-methods-systems-higher-order in con
 
 ![Fig. 21-01: Euler method with $h = 0.1$ for the stiff ODE in Example 4 and exact solution](../images/chapter21/fig-21-451.png){#fig-21-451}
 
-**Table: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK** {#tbl-backward-euler}
-
 | $x$ | BEM $h = 0.05$ | BEM $h = 0.2$ | Euler $h = 0.05$ | Euler $h = 0.1$ | RK $h = 0.1$ | RK $h = 0.2$ | Exact |
 |---|---|---|---|---|---|---|---|
 | 0.0 | 1.00000 | 1.00000 | 1.00000 | 1.00000 | 1.00000 | 1.00000 | 1.00000 |
@@ -418,6 +420,8 @@ Stiffness will be considered further in @sec-methods-systems-higher-order in con
 | 0.8 | 0.64252 | 0.65158 | 0.63750 | 1.64000 | 0.64265 | 634.0 | 0.64000 |
 | 0.9 | 0.81250 | | 0.80750 | -0.20000 | 0.81255 | | 0.81000 |
 | 1.0 | 1.00250 | 1.01032 | 0.99750 | 2.00000 | 1.00252 | 3168.0 | 1.00000 |
+
+: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK {#tbl-backward-euler}
 
 ### PROBLEM SET {#sec-ps-21-1}
 
@@ -561,8 +565,6 @@ by (@eq-sec212-7a), (@eq-sec212-7b) on the interval $0 \le x \le 2$, choosing $h
 **Solution.**  
 The problem is the same as in Examples 1 and 2, @sec-methods-first-order-odes, so that we can compare the results. We compute starting values $y_1, y_2, y_3$ by the classical Runge–Kutta method. Then in each step we predict by (@eq-sec212-7a) and make one correction by (@eq-sec212-7b) before we execute the next step. The results are shown and compared with the exact values in @tbl-adams-moulton. We see that the corrections improve the accuracy considerably. This is typical. $\blacksquare$
 
-**Table: Adams–Moulton Method Applied to the Initial Value Problem (@eq-sec212-8); Predicted Values Computed by (@eq-sec212-7a) and Corrected Values by (@eq-sec212-7b)** {#tbl-adams-moulton}
-
 | $n$ | $x_n$ | Starting $y_n$ | Predicted $y_n^*$ | Corrected $y_n$ | Exact Values | $10^6 \times \text{Error}$ |
 |---|---|---|---|---|---|---|
 | 0 | 0.0 | 0.000000 | | | 0.000000 | 0 |
@@ -576,6 +578,8 @@ The problem is the same as in Examples 1 and 2, @sec-methods-first-order-odes, s
 | 8 | 1.6 | | 2.352653 | 2.353026 | 2.353032 | 6 |
 | 9 | 1.8 | | 3.249190 | 3.249646 | 3.249647 | 1 |
 | 10 | 2.0 | | 4.388505 | 4.389062 | 4.389056 | -6 |
+
+: Adams–Moulton Method Applied to the Initial Value Problem (@eq-sec212-8); Predicted Values Computed by (@eq-sec212-7a) and Corrected Values by (@eq-sec212-7b) {#tbl-adams-moulton}
 
 ### Comments on Comparison of Methods
 An Adams–Moulton formula is generally much more accurate than an Adams–Bashforth formula of the same order. This justifies the greater complication and expense in using the former. The method (@eq-sec212-7a), (@eq-sec212-7b) is numerically stable, whereas the exclusive use of (@eq-sec212-7a) might cause instability. Step size control is relatively simple. If $| \text{Corrector} - \text{Predictor} | > \text{TOL}$, use interpolation to generate “old” results at half the current step size and then try $h/2$ as the new step.
@@ -693,8 +697,6 @@ The initial conditions are $y(0) = y_1(0) = 3, y'(0) = y_2(0) = -2.5$. The calcu
 
 $$y = y_1 = 2e^{-0.5x} + e^{-1.5x}, \quad \text{thus} \quad y' = y_2 = -e^{-0.5x} - 1.5e^{-1.5x}$$  $\blacksquare$
 
-**Table: Euler Method for Systems in Example 1 (Mass–Spring System)** {#tbl-euler-systems}
-
 | $n$ | $x_n$ | $y_{1,n}$ | $y_1$ Exact (5D) | Error $\epsilon_1 = y_1 - y_{1,n}$ | $y_{2,n}$ | $y_2$ Exact (5D) | Error $\epsilon_2 = y_2 - y_{2,n}$ |
 |---|---|---|---|---|---|---|---|
 | 0 | 0.0 | 3.00000 | 3.00000 | 0.00000 | -2.50000 | -2.50000 | 0.00000 |
@@ -703,6 +705,8 @@ $$y = y_1 = 2e^{-0.5x} + e^{-1.5x}, \quad \text{thus} \quad y' = y_2 = -e^{-0.5x
 | 3 | 0.6 | 1.80100 | 1.88821 | 0.08721 | -1.24350 | -1.35067 | -0.10717 |
 | 4 | 0.8 | 1.55230 | 1.64183 | 0.08953 | -1.01625 | -1.12211 | -0.10586 |
 | 5 | 1.0 | 1.34905 | 1.43619 | 0.08714 | -0.84260 | -0.94123 | -0.09863 |
+
+: Euler Method for Systems in Example 1 (Mass–Spring System) {#tbl-euler-systems}
 
 ### Runge–Kutta Methods for Systems
 As for Euler methods, we obtain RK methods for an initial value problem (@eq-sec213-1) simply by writing vector formulas for vectors with $m$ components, which, for $m = 1$, reduce to the previous scalar formulas.
@@ -762,8 +766,6 @@ $$\mathbf{y}_{n+1} = \mathbf{y}_n + \frac{1}{6}(\mathbf{a} + 2\mathbf{b} + 2\mat
 
 > ^4^ Named after Sir GEORGE BIDELL AIRY (1801–1892), English mathematician, who is known for his work in elasticity and in PDEs.
 
-**Table: RK Method for Systems: Values $y_{1,n}(x_n)$ of the Airy Function $	ext{Ai}(x)$ in Example 2** {#tbl-rk-systems}
-
 | $n$ | $x_n$ | $y_{1,n}(x_n)$ | $y_1(x_n)$ Exact (8D) | $10^8 \times \text{Error of } y_1$ | $y_{2,n}(x_n)$ |
 |---|---|---|---|---|---|
 | 0 | 0.0 | 0.35502805 | 0.35502805 | 0 | -0.25881940 |
@@ -772,6 +774,8 @@ $$\mathbf{y}_{n+1} = \mathbf{y}_n + \frac{1}{6}(\mathbf{a} + 2\mathbf{b} + 2\mat
 | 3 | 0.6 | 0.20979973 | 0.20980006 | 33 | -0.21279185 |
 | 4 | 0.8 | 0.16984596 | 0.16984632 | 36 | -0.18641171 |
 | 5 | 1.0 | 0.13529207 | 0.13529242 | 35 | -0.15914687 |
+
+: RK Method for Systems: Values $y_{1,n}(x_n)$ of the Airy Function $\text{Ai}(x)$ in Example 2 {#tbl-rk-systems}
 
 ### Runge–Kutta–Nyström Methods (RKN Methods)
 RKN methods are direct extensions of RK methods (Runge–Kutta methods) to second-order ODEs $y'' = f(x, y, y')$, as given by the Finnish mathematician E. J. Nyström [Acta Soc. Sci. fenn., 1925, L, No. 13]. The best known of these uses the following formulas, where $n = 0, 1, \dots, N-1$ ($N$ the number of steps):
@@ -817,8 +821,6 @@ $$
 
 @tbl-rkn-applied shows the results. The accuracy is the same as in Example 2, but the work was much less. $\blacksquare$
 
-**Table: Runge–Kutta–Nyström Method Applied to Airy’s Equation, Computation of the Airy Function $y = 	ext{Ai}(x)$** {#tbl-rkn-applied}
-
 | $x_n$ | $y_n$ | $y'_n$ | $y(x)$ Exact (8D) | $10^8 \times \text{Error of } y_n$ |
 |---|---|---|---|---|
 | 0.0 | 0.35502805 | -0.25881940 | 0.35502805 | 0 |
@@ -827,6 +829,8 @@ $$
 | 0.6 | 0.20979974 | -0.21279172 | 0.20980006 | 32 |
 | 0.8 | 0.16984599 | -0.18641134 | 0.16984632 | 33 |
 | 1.0 | 0.13529218 | -0.15914609 | 0.13529242 | 24 |
+
+: Runge–Kutta–Nyström Method Applied to Airy’s Equation, Computation of the Airy Function $y = \text{Ai}(x)$ {#tbl-rkn-applied}
 
 Our work in Examples 2 and 3 also illustrates that usefulness of methods for ODEs in the computation of values of “higher transcendental functions.”
 
@@ -885,8 +889,6 @@ $$\mathbf{y}_{n+1} = \frac{1}{D} \begin{pmatrix} (1 + 11h)y_{1,n} + hy_{2,n} + 1
 
 @tbl-backward-euler-systems shows the results.
 
-**Table: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK** {#tbl-backward-euler-systems}
-
 | $x$ | BEM $h = 0.2$ | BEM $h = 0.4$ | Euler $h = 0.1$ | Euler $h = 0.2$ | RK $h = 0.2$ | RK $h = 0.3$ | Exact |
 |---|---|---|---|---|---|---|---|
 | 0.0 | 2.00000 | 2.00000 | 2.00000 | 2.00000 | 2.00000 | 2.00000 | 2.00000 |
@@ -900,6 +902,8 @@ $$\mathbf{y}_{n+1} = \frac{1}{D} \begin{pmatrix} (1 + 11h)y_{1,n} + hy_{2,n} + 1
 | 1.6 | 1.83272 | 1.86191 | 1.78530 | 2.76777 | 1.80205 | | 1.80190 |
 | 1.8 | 1.99386 | | 1.95009 | 0.93422 | 1.96535 | 3.03947 | 1.96530 |
 | 2.0 | 2.16152 | 2.18625 | 2.12158 | 3.10737 | 2.13536 | | 2.13534 |
+
+: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK {#tbl-backward-euler-systems}
 
 @tbl-backward-euler-systems shows the following:
 1. Stability of the backward Euler method for $h = 0.2$ and $0.4$ (and in fact for any $h$; try $h = 5.0$) with decreasing accuracy for increasing $h$.
@@ -1008,7 +1012,7 @@ We shall not need
 
 $$u_{xy}(x, y) \approx \frac{1}{4hk}[u(x + h, y + k) - u(x - h, y + k) - u(x + h, y - k) + u(x - h, y - k)]$$ {#eq-sec214-6c}
 
-@fig-21-453a shows the points $(x + h, y), (x - h, y), \dots$ in (@eq-sec214-5a) and (@eq-sec214-6a). We now substitute (@eq-sec214-6a) and (@eq-sec214-6b) into the Poisson equation (@eq-sec214-3), choosing $k = h$ to obtain a simple formula:
+@fig-21-453 shows the points $(x + h, y), (x - h, y), \dots$ in (@eq-sec214-5a) and (@eq-sec214-6a). We now substitute (@eq-sec214-6a) and (@eq-sec214-6b) into the Poisson equation (@eq-sec214-3), choosing $k = h$ to obtain a simple formula:
 
 $$u(x + h, y) + u(x, y + h) + u(x - h, y) + u(x, y - h) - 4u(x, y) = h^2f(x, y)$$ {#eq-sec214-7}
 
@@ -1016,9 +1020,9 @@ This is a difference equation corresponding to (@eq-sec214-3). Hence for the Lap
 
 $$u(x + h, y) + u(x, y + h) + u(x - h, y) + u(x, y - h) - 4u(x, y) = 0$$ {#eq-sec214-8}
 
-$h$ is called the mesh size. Equation (@eq-sec214-8) relates $u$ at $(x, y)$ to $u$ at the four neighboring points shown in @fig-21-03b. It has a remarkable interpretation: $u$ at $(x, y)$ equals the mean of the values of $u$ at the four neighboring points. This is an analog of the mean value property of harmonic functions (Sec. 18.6).
+$h$ is called the mesh size. Equation (@eq-sec214-8) relates $u$ at $(x, y)$ to $u$ at the four neighboring points shown in @fig-21-453. It has a remarkable interpretation: $u$ at $(x, y)$ equals the mean of the values of $u$ at the four neighboring points. This is an analog of the mean value property of harmonic functions (Sec. 18.6).
 
-Those neighbors are often called $E$ (East), $N$ (North), $W$ (West), $S$ (South). Then @fig-21-453b becomes @fig-21-453c and (@eq-sec214-7) is
+Those neighbors are often called $E$ (East), $N$ (North), $W$ (West), $S$ (South). Then @fig-21-453 becomes @fig-21-453 and (@eq-sec214-7) is
 
 $$u(E) + u(N) + u(W) + u(S) - 4u(x, y) = h^2f(x, y)$$ {#eq-sec214-7star}
 
@@ -1054,10 +1058,10 @@ $$u_{i+1,j} + u_{i,j+1} + u_{i-1,j} + u_{i,j-1} - 4u_{ij} = 0$$ {#eq-sec214-11}
 **Remark.** Our current discussion and the example that follows illustrate what we may call the reusability of mathematical ideas and methods. Recall that we applied the Gauss–Seidel method to a system of ODEs in <!-- TODO: replace Sec. 20.3 with actual cross-reference label --> and that we can now apply it again to elliptic PDEs. This shows that engineering mathematics has a structure and important mathematical ideas and methods will appear again and again in different situations. The student should find this attractive in that previous knowledge can be reapplied.
 
 ### EXAMPLE 1: Laplace Equation. Liebmann’s Method
-The four sides of a square plate of side 12 cm, made of homogeneous material, are kept at constant temperature $0^\circ\text{C}$ and $100^\circ\text{C}$ as shown in @fig-21-455a. Using a (very wide) grid of mesh 4 cm and applying Liebmann’s method (that is, Gauss–Seidel iteration), find the (steady-state) temperature at the mesh points.
+The four sides of a square plate of side 12 cm, made of homogeneous material, are kept at constant temperature $0^\circ\text{C}$ and $100^\circ\text{C}$ as shown in @fig-21-455. Using a (very wide) grid of mesh 4 cm and applying Liebmann’s method (that is, Gauss–Seidel iteration), find the (steady-state) temperature at the mesh points.
 
 **Solution.**  
-In the case of independence of time, the heat equation (see Sec. 10.8) $u_t = c^2(u_{xx} + u_{yy})$ reduces to the Laplace equation. Hence our problem is a Dirichlet problem for the latter. We choose the grid shown in @fig-21-05b and consider the mesh points in the order $P_{11}, P_{21}, P_{12}, P_{22}$. We use (@eq-sec214-11) and, in each equation, take to the right all the terms resulting from the given boundary values. Then we obtain the system
+In the case of independence of time, the heat equation (see Sec. 10.8) $u_t = c^2(u_{xx} + u_{yy})$ reduces to the Laplace equation. Hence our problem is a Dirichlet problem for the latter. We choose the grid shown in @fig-21-455 and consider the mesh points in the order $P_{11}, P_{21}, P_{12}, P_{22}$. We use (@eq-sec214-11) and, in each equation, take to the right all the terms resulting from the given boundary values. Then we obtain the system
 
 $$
 \begin{aligned}
@@ -1124,7 +1128,7 @@ Let us consider an example that merely serves to explain the entire method.
 Explain the procedure and formulas of the ADI method in terms of the problem in Example 1, using the same grid and starting values 100, 100, 100, 100.
 
 **Solution.**  
-While working, we keep an eye on @fig-21-455b and the given boundary values. We obtain first approximations $u_{11}^{(1)}, u_{21}^{(1)}, u_{12}^{(1)}, u_{22}^{(1)}$ from (@eq-sec214-15a) with $m = 0$. We write boundary values contained in (@eq-sec214-15a) without an upper index, for better identification and to indicate that these given values remain the same during the iteration. From (@eq-sec214-15a) with $m = 0$ we have for $j = 1$ (first row) the system:
+While working, we keep an eye on @fig-21-455 and the given boundary values. We obtain first approximations $u_{11}^{(1)}, u_{21}^{(1)}, u_{12}^{(1)}, u_{22}^{(1)}$ from (@eq-sec214-15a) with $m = 0$. We write boundary values contained in (@eq-sec214-15a) without an upper index, for better identification and to indicate that these given values remain the same during the iteration. From (@eq-sec214-15a) with $m = 0$ we have for $j = 1$ (first row) the system:
 
 $$
 \begin{aligned}
@@ -1235,10 +1239,10 @@ Solve the mixed boundary value problem for the Poisson equation
 
 $$\nabla^2 u = u_{xx} + u_{yy} = f(x, y) = 12xy$$
 
-shown in @fig-21-458a.
+shown in @fig-21-458.
 
 **Solution.**  
-We use the grid shown in @fig-21-458b, where $h = 0.5$. We recall that (7) in @sec-methods-elliptic-pdes has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
+We use the grid shown in @fig-21-458, where $h = 0.5$. We recall that (7) in @sec-methods-elliptic-pdes has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
 
 $$u_{31} = 0.375, \quad \frac{\partial u_{12}}{\partial n} = \frac{\partial u}{\partial y}\Big|_{12} = 6 \cdot 0.5 = 3$$
 
@@ -1256,7 +1260,7 @@ $$ {#eq-sec215-2a_2}
 
 The only difficulty with these equations seems to be that they involve the unknown values $u_{12}$ and $u_{22}$ of $u$ at $P_{12}$ and $P_{22}$ on the boundary, where the normal derivative $u_n = \partial u/\partial n = \partial u/\partial y$ is given, instead of $u$; but we shall overcome this difficulty as follows.
 
-We consider $P_{12}$ and $P_{22}$. The idea that will help us here is this. We imagine the region $R$ to be extended above to the first row of external mesh points (corresponding to $y = 1.5$), and we assume that the Poisson equation also holds in the extended region. Then we can write down two more equations as before (see @fig-21-458b):
+We consider $P_{12}$ and $P_{22}$. The idea that will help us here is this. We imagine the region $R$ to be extended above to the first row of external mesh points (corresponding to $y = 1.5$), and we assume that the Poisson equation also holds in the extended region. Then we can write down two more equations as before (see @fig-21-458):
 
 $$
 \begin{aligned}
@@ -1265,7 +1269,7 @@ u_{21} + u_{12} - 4u_{22} + u_{23} &= 3 - 3 = 0
 \end{aligned}
 $$ {#eq-sec215-2b}
 
-On the right, $1.5$ is $12xyh^2$ at $(0.5, 1)$ and $3$ is $12xyh^2$ at $(1, 1)$ and 0 (at $P_{02}$) and 3 (at $P_{32}$) are given boundary values. We remember that we have not yet used the boundary condition on the upper part of the boundary of $R$, and we also notice that in (@eq-sec215-2b) we have introduced two more unknowns $u_{13}, u_{23}$. But we can now use that condition and get rid of $u_{13}, u_{23}$ by applying the central difference formula for $\partial u/\partial y$. From the boundary conditions we then obtain (see @fig-21-458b):
+On the right, $1.5$ is $12xyh^2$ at $(0.5, 1)$ and $3$ is $12xyh^2$ at $(1, 1)$ and 0 (at $P_{02}$) and 3 (at $P_{32}$) are given boundary values. We remember that we have not yet used the boundary condition on the upper part of the boundary of $R$, and we also notice that in (@eq-sec215-2b) we have introduced two more unknowns $u_{13}, u_{23}$. But we can now use that condition and get rid of $u_{13}, u_{23}$ by applying the central difference formula for $\partial u/\partial y$. From the boundary conditions we then obtain (see @fig-21-458):
 
 $$3 = \frac{\partial u_{12}}{\partial y} \approx \frac{u_{13} - u_{11}}{2h} = u_{13} - u_{11}, \quad \text{hence} \quad u_{13} = u_{11} + 3$$
 
@@ -1388,7 +1392,7 @@ In practice one would use a much finer grid and solve the resulting large system
 1. Check the values for the Poisson equation at the end of Example 1 by solving (@eq-sec215-3) by Gauss elimination.
 2. Solve the mixed boundary value problem for the Poisson equation $\nabla^2 u = 2(x^2 + y^2)$ in the region and for the boundary conditions shown in @fig-21-462, using the indicated grid.
 3. **CAS EXPERIMENT. Mixed Problem.** Do Example 1 in the text with finer and finer grids of your choice and study the accuracy of the approximate values by comparing with the exact solution $u = 2xy^3$. Verify the latter.
-4. Solve the mixed boundary value problem for the Laplace equation $\nabla^2 u = 0$ in the rectangle in @fig-21-458a (using the grid in @fig-21-458b) and the boundary conditions $u_x = 0$ on the left edge, $u_x = 3$ on the right edge, $u = x^2$ on the lower edge, and $u = x^2 - 1$ on the upper edge.
+4. Solve the mixed boundary value problem for the Laplace equation $\nabla^2 u = 0$ in the rectangle in @fig-21-458 (using the grid in @fig-21-458) and the boundary conditions $u_x = 0$ on the left edge, $u_x = 3$ on the right edge, $u = x^2$ on the lower edge, and $u = x^2 - 1$ on the upper edge.
 5. Do Example 1 in the text for the Laplace equation (instead of the Poisson equation) with grid and boundary data as before.
 6. Solve $\nabla^2 u = -\pi^2 y \sin \frac{1}{3}\pi x$ for the grid in @fig-21-462 and $u_y(1, 3) = u_y(2, 3) = \frac{1}{2}\sqrt{243}, u = 0$ on the other three sides of the square.
 7. Solve Prob. 4 when $u_n = 110$ on the upper edge and $u = 110$ on the other edges.
@@ -1617,11 +1621,11 @@ Replacing the derivatives by difference quotients as before, we obtain from (@eq
 
 $$\frac{1}{k^2} (u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2} (u_{i+1, j} - 2u_{ij} + u_{i-1, j})$$ {#eq-sec217-5}
 
-where $h$ is the mesh size in $x$, and $k$ is the mesh size in $t$. This difference equation relates 5 points as shown in @fig-21-470a. It suggests a rectangular grid similar to the grids for parabolic equations in the preceding section. We choose $r^* = k^2/h^2 = 1$. Then $u_{ij}$ drops out and we have
+where $h$ is the mesh size in $x$, and $k$ is the mesh size in $t$. This difference equation relates 5 points as shown in @fig-21-470. It suggests a rectangular grid similar to the grids for parabolic equations in the preceding section. We choose $r^* = k^2/h^2 = 1$. Then $u_{ij}$ drops out and we have
 
 $$u_{i, j+1} = u_{i-1, j} + u_{i+1, j} - u_{i, j-1}$$ {#eq-sec217-6}
 
-(see @fig-21-470b).
+(see @fig-21-470).
 
 It can be shown that for $0 < r^* \le 1$ the present explicit method is stable, so that from (@eq-sec217-6) we may expect reasonable results for initial data that have no discontinuities. (For a hyperbolic PDE the latter would propagate into the solution domain—a phenomenon that would be difficult to deal with on our present grid. For unconditionally stable implicit methods see [E1] in App. 1.)
 
