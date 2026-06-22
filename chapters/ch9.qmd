@@ -386,7 +386,7 @@ Now $\mathbf{i}, \mathbf{j}, \mathbf{k}$ are unit vectors, so that $\mathbf{i} \
 Typical applications of inner products are shown in the following examples and in @sec-problem-set-9-2.
 
 ### EXAMPLE 2 Work Done by a Force Expressed as an Inner Product
-This is a major application. It concerns a body on which a constant force $\mathbf{p}$ acts. (For a variable force, see @sec-10-1.) Let the body be given a displacement $\mathbf{d}$. Then the work done by $\mathbf{p}$ in the displacement is defined as
+This is a major application. It concerns a body on which a constant force $\mathbf{p}$ acts. (For a variable force, see @sec-line-integrals) Let the body be given a displacement $\mathbf{d}$. Then the work done by $\mathbf{p}$ in the displacement is defined as
 
 $$
 W = |\mathbf{p}||\mathbf{d}| \cos \alpha = \mathbf{p} \cdot \mathbf{d},
@@ -1089,7 +1089,7 @@ Sketch figures similar to @fig-9-198. Try to interpret the field of $\mathbf{v}$
 
 ## Curves. Arc Length. Curvature. Torsion {#sec-curves-arc-length-curvature-torsion}
 
-Vector calculus has important applications to curves (@sec-curves-arc-length-curvature-torsion) and surfaces (to be covered in @sec-10-5) in physics and geometry. The application of vector calculus to geometry is a field known as **differential geometry**. Differential geometric methods are applied to problems in mechanics, computer-aided as well as traditional engineering design, geodesy, geography, space travel, and relativity theory. For details, see [GenRef8] and [GenRef9] in <!-- TODO: replace App. 1 with actual link -->App. 1.
+Vector calculus has important applications to curves (@sec-curves-arc-length-curvature-torsion) and surfaces (to be covered in @sec-surfaces-surface-integrals) in physics and geometry. The application of vector calculus to geometry is a field known as **differential geometry**. Differential geometric methods are applied to problems in mechanics, computer-aided as well as traditional engineering design, geodesy, geography, space travel, and relativity theory. For details, see [GenRef8] and [GenRef9] in <!-- TODO: replace App. 1 with actual link -->App. 1.
 
 Bodies that move in space form paths that may be represented by curves $C$. This and other applications show the need for **parametric representations** of $C$ with parameter $t$, which may denote time or something else (see @fig-9-200). A typical parametric representation is given by
 $$
@@ -1552,7 +1552,7 @@ Hence, by (@eq-9-6-1), the partial derivatives are
 $$
 \frac{\partial \tilde{w}}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial f}{\partial z}\frac{\partial g}{\partial x}, \quad \frac{\partial \tilde{w}}{\partial y} = \frac{\partial f}{\partial y} + \frac{\partial f}{\partial z}\frac{\partial g}{\partial y} \quad [z = g(x, y)].
 $$ {#eq-9-6-6}
-We shall need this formula in @sec-10-9.
+We shall need this formula in @sec-stokes-theorem.
 
 ### EXAMPLE 2 Partial Derivatives on Surface
 Let $w = f = x^3 + y^3 + z^3$ and let $z = g = x^2 + y^2$. Then (@eq-9-6-6) gives
@@ -1698,7 +1698,7 @@ $\mathbf{n}$ points downward since it has a negative $z$-component. The other un
 ![Fig. 217. Cone and unit normal vector n](../images/chapter9/fig-9-217.png){#fig-9-217 width=35%}
 
 ### Vector Fields That Are Gradients of Scalar Fields ("Potentials")
-At the beginning of this section we mentioned that some vector fields have the advantage that they can be obtained from scalar fields, which can be worked with more easily. Such a vector field is given by a vector function $\mathbf{v}(P)$, which is obtained as the gradient of a scalar function, say, $\mathbf{v}(P) = \text{grad } f(P)$. The function $f(P)$ is called a **potential function** or a **potential** of $\mathbf{v}(P)$. Such a $\mathbf{v}(P)$ and the corresponding vector field are called **conservative** because in such a vector field, energy is conserved; that is, no energy is lost (or gained) in displacing a body (or a charge in the case of an electrical field) from a point $P$ to another point in the field and back to $P$. We show this in @sec-10-2.
+At the beginning of this section we mentioned that some vector fields have the advantage that they can be obtained from scalar fields, which can be worked with more easily. Such a vector field is given by a vector function $\mathbf{v}(P)$, which is obtained as the gradient of a scalar function, say, $\mathbf{v}(P) = \text{grad } f(P)$. The function $f(P)$ is called a **potential function** or a **potential** of $\mathbf{v}(P)$. Such a $\mathbf{v}(P)$ and the corresponding vector field are called **conservative** because in such a vector field, energy is conserved; that is, no energy is lost (or gained) in displacing a body (or a charge in the case of an electrical field) from a point $P$ to another point in the field and back to $P$. We show this in @sec-path-independence-line-integrals.
 
 Conservative fields play a central role in physics and engineering. A basic application concerns the gravitational force (see Example 3 in @sec-vector-scalar-functions-fields-derivatives) and we show that it has a potential which satisfies Laplace's equation, the most important partial differential equation in physics and its applications.
 
@@ -1833,7 +1833,7 @@ The divergence $\text{div } \mathbf{v}$ is a scalar function, that is, its value
 $$
 \text{div } \mathbf{v} = \frac{\partial v_1^*}{\partial x^*} + \frac{\partial v_2^*}{\partial y^*} + \frac{\partial v_3^*}{\partial z^*}.
 $$ {#eq-9-8-2}
-We shall prove this theorem in @sec-10-7, using integrals.
+We shall prove this theorem in @sec-triple-integrals-divergence-theorem-gauss, using integrals.
 
 Presently, let us turn to the more immediate practical task of gaining a feel for the significance of the divergence. Let $f(x, y, z)$ be a twice differentiable scalar function. Then its gradient exists,
 $$
@@ -1851,7 +1851,7 @@ $$ {#eq-9-8-3}
 ### EXAMPLE 1 Gravitational Force. Laplace’s Equation
 The gravitational force $\mathbf{p}$ in Theorem 3 of the last section is the gradient of the scalar function $f(x, y, z) = c/r$, which satisfies Laplace's equation $\nabla^2 f = 0$. According to (@eq-9-8-3) this implies that $\text{div } \mathbf{p} = 0$ ($r > 0$). $\square$
 
-The following example from hydrodynamics shows the physical significance of the divergence of a vector field. We shall get back to this topic in @sec-10-8 and add further physical details.
+The following example from hydrodynamics shows the physical significance of the divergence of a vector field. We shall get back to this topic in @sec-further-applications-divergence-theorem and add further physical details.
 
 ### EXAMPLE 2 Flow of a Compressible Fluid. Physical Meaning of the Divergence
 We consider the motion of a fluid in a region $R$ having no sources or sinks in $R$, that is, no points at which fluid is produced or disappears. The concept of fluid state is meant to cover also gases and vapors. Fluids in the restricted sense, or liquids, such as water or oil, have very small compressibility, which can be neglected in many problems. In contrast, gases and vapors have high compressibility. Their density $\rho$ ($=$ mass per unit volume) depends on the coordinates $x, y, z$ in space and may also depend on time $t$. We assume that our fluid is compressible. We consider the flow through a rectangular box $B$ of small edges $\Delta x, \Delta y, \Delta z$ parallel to the coordinate axes as shown in @fig-9-218. (Here $\Delta$ is a standard notation for small quantities and, of course, has nothing to do with the notation for the Laplacian in (@eq-9-7-11) of @sec-gradient-scalar-field-directional-derivative.) The box $B$ has the volume $\Delta V = \Delta x \Delta y \Delta z$.
@@ -1905,7 +1905,7 @@ This relation is known as the condition of incompressibility. It expresses the f
 
 From this discussion you should conclude and remember that, roughly speaking, *the divergence measures outflow minus inflow.* $\square$
 
-**Comment.** The divergence theorem of Gauss, an integral theorem involving the divergence, follows in the next chapter (@sec-10-7).
+**Comment.** The divergence theorem of Gauss, an integral theorem involving the divergence, follows in the next chapter (@sec-triple-integrals-divergence-theorem-gauss).
 
 ***
 
@@ -1978,7 +1978,7 @@ $$
 \text{curl } \mathbf{v} = -3x\mathbf{i} + y\mathbf{j} + (3z - z)\mathbf{k} = -3x\mathbf{i} + y\mathbf{j} + 2z\mathbf{k}.
 $$ $\square$
 
-The curl has many applications. A typical example follows. More about the nature and significance of the curl will be considered in @sec-10-9.
+The curl has many applications. A typical example follows. More about the nature and significance of the curl will be considered in @sec-stokes-theorem.
 
 ### EXAMPLE 2 Rotation of a Rigid Body. Relation to the Curl
 We have seen in Example 5, @sec-vector-product-cross-product, that a rotation of a rigid body $B$ about a fixed axis in space can be described by a vector $\mathbf{w}$ of magnitude $\omega$ in the direction of the axis of rotation, where $\omega$ ($\omega > 0$) is the angular speed of the rotation, and $\mathbf{w}$ is directed so that the rotation appears clockwise if we look in the direction of $\mathbf{w}$.

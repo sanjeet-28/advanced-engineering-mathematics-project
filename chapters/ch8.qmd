@@ -535,7 +535,7 @@ $$
 \mathbf{y}(t) = \mathbf{x}e^{\omega t}.
 $$ {#eq-8-2-8}
 
-This is suggested by a mechanical system of a single mass on a spring (@sec-2-4), whose motion is given by exponential functions (and sines and cosines). Substitution into (@eq-8-2-7) gives
+This is suggested by a mechanical system of a single mass on a spring (@sec-free-oscillations), whose motion is given by exponential functions (and sines and cosines). Substitution into (@eq-8-2-7) gives
 
 $$
 \omega^2\mathbf{x}e^{\omega t} = \mathbf{A}\mathbf{x}e^{\omega t}.
