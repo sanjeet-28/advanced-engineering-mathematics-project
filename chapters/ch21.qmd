@@ -373,7 +373,7 @@ $$y_{n+1} = y_n + hf(x_{n+1}, y_{n+1}) \quad (n = 0, 1, \dots)$$ {#eq-sec211-16}
 
 This formula is obtained by evaluating the right side at the new location $(x_{n+1}, y_{n+1})$; this is called the backward Euler scheme. For known $y_n$ it gives $y_{n+1}$ implicitly, so it defines an implicit method, in contrast to the Euler method (@eq-sec211-3), which gives $y_{n+1}$ explicitly. Hence (@eq-sec211-16) must be solved for $y_{n+1}$. How difficult this is depends on $f$ in (@eq-sec211-1). For a linear ODE this provides no problem, as Example 4 (below) illustrates. The method is particularly useful for “stiff” ODEs, as they occur quite frequently in the study of vibrations, electric circuits, chemical reactions, etc. The situation of stiffness is roughly as follows; for details, see, for example, [E5], [E25], [E26] in App. 1.
 
-Error terms of the methods considered so far involve a higher derivative. And we ask what happens if we let $h$ increase. Now if the error (the derivative) grows fast but the desired solution also grows fast, nothing will happen. However, if that solution does not grow fast, then with growing $h$ the error term can take over to an extent that the numeric result becomes completely nonsensical, as in @fig-21-01. Such an ODE for which $h$ must thus be restricted to small values, and the physical system the ODE models, are called stiff. This term is suggested by a mass–spring system with a stiff spring (spring with a large $k$; see Sec. 2.4). Example 4 illustrates that implicit methods remove the difficulty of increasing $h$ in the case of stiffness: It can be shown that in the application of an implicit method the solution remains stable under any increase of $h$, although the accuracy decreases with increasing $h$.
+Error terms of the methods considered so far involve a higher derivative. And we ask what happens if we let $h$ increase. Now if the error (the derivative) grows fast but the desired solution also grows fast, nothing will happen. However, if that solution does not grow fast, then with growing $h$ the error term can take over to an extent that the numeric result becomes completely nonsensical, as in @fig-21-451. Such an ODE for which $h$ must thus be restricted to small values, and the physical system the ODE models, are called stiff. This term is suggested by a mass–spring system with a stiff spring (spring with a large $k$; see Sec. 2.4). Example 4 illustrates that implicit methods remove the difficulty of increasing $h$ in the case of stiffness: It can be shown that in the application of an implicit method the solution remains stable under any increase of $h$, although the accuracy decreases with increasing $h$.
 
 ### EXAMPLE 4: Backward Euler Method. Stiff ODE
 The initial value problem
@@ -394,14 +394,14 @@ $$y_{n+1} = \frac{y_n + 20h(x_n + h)^2 + 2h(x_n + h)}{1 + 20h}$$ {#eq-sec211-16s
 
 The numeric results in @tbl-backward-euler show the following:
 1. Stability of the backward Euler method for $h = 0.05$ and also for $h = 0.2$ with an error increase by about a factor $4$ for $h = 0.2$,
-2. Stability of the Euler method for $h = 0.05$ but instability for $h = 0.1$ (@fig-21-01),
+2. Stability of the Euler method for $h = 0.05$ but instability for $h = 0.1$ (@fig-21-451),
 3. Stability of RK for $h = 0.1$ but instability for $h = 0.2$.
 
 This illustrates that the ODE is stiff. Note that even in the case of stability the approximation of the solution near $x = 0$ is poor. $\blacksquare$
 
 Stiffness will be considered further in @sec-methods-systems-higher-order in connection with systems of ODEs.
 
-![Fig. 21-01: Euler method with $h = 0.1$ for the stiff ODE in Example 4 and exact solution](../images/fig-21-01.png){#fig-21-01}
+![Fig. 21-01: Euler method with $h = 0.1$ for the stiff ODE in Example 4 and exact solution](../images/chapter21/fig-21-451.png){#fig-21-451}
 
 **Table: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK** {#tbl-backward-euler}
 
@@ -906,9 +906,9 @@ $$\mathbf{y}_{n+1} = \frac{1}{D} \begin{pmatrix} (1 + 11h)y_{1,n} + hy_{2,n} + 1
 2. Stability of the Euler method for $h = 0.1$ but instability for $h = 0.2$.
 3. Stability of RK for $h = 0.2$ but instability for $h = 0.3$.
 
-@fig-21-02 shows the Euler method for $h = 0.18$, an interesting case with initial jumping (for about $x > 3$) but later monotone following the solution curve of $y = y_1$. See also CAS Experiment 15. $\blacksquare$
+@fig-21-452 shows the Euler method for $h = 0.18$, an interesting case with initial jumping (for about $x > 3$) but later monotone following the solution curve of $y = y_1$. See also CAS Experiment 15. $\blacksquare$
 
-![Fig. 21-02: Euler method with $h = 0.18$ in Example 4](../images/fig-21-02.png){#fig-21-02}
+![Fig. 21-02: Euler method with $h = 0.18$ in Example 4](../images/chapter21/fig-21-452.png){#fig-21-452}
 
 ### PROBLEM SET {#sec-ps-21-3}
 
@@ -1008,7 +1008,7 @@ We shall not need
 
 $$u_{xy}(x, y) \approx \frac{1}{4hk}[u(x + h, y + k) - u(x - h, y + k) - u(x + h, y - k) + u(x - h, y - k)]$$ {#eq-sec214-6c}
 
-@fig-21-03a shows the points $(x + h, y), (x - h, y), \dots$ in (@eq-sec214-5a) and (@eq-sec214-6a). We now substitute (@eq-sec214-6a) and (@eq-sec214-6b) into the Poisson equation (@eq-sec214-3), choosing $k = h$ to obtain a simple formula:
+@fig-21-453a shows the points $(x + h, y), (x - h, y), \dots$ in (@eq-sec214-5a) and (@eq-sec214-6a). We now substitute (@eq-sec214-6a) and (@eq-sec214-6b) into the Poisson equation (@eq-sec214-3), choosing $k = h$ to obtain a simple formula:
 
 $$u(x + h, y) + u(x, y + h) + u(x - h, y) + u(x, y - h) - 4u(x, y) = h^2f(x, y)$$ {#eq-sec214-7}
 
@@ -1016,13 +1016,13 @@ This is a difference equation corresponding to (@eq-sec214-3). Hence for the Lap
 
 $$u(x + h, y) + u(x, y + h) + u(x - h, y) + u(x, y - h) - 4u(x, y) = 0$$ {#eq-sec214-8}
 
-$h$ is called the mesh size. Equation (@eq-sec214-8) relates $u$ at $(x, y)$ to $u$ at the four neighboring points shown in @fig-21-03b. It has a remarkable interpretation: $u$ at $(x, y)$ equals the mean of the values of $u$ at the four neighboring points. This is an analog of the mean value property of harmonic functions (Sec. 18.6).
+$h$ is called the mesh size. Equation (@eq-sec214-8) relates $u$ at $(x, y)$ to $u$ at the four neighboring points shown in @fig-21-453b. It has a remarkable interpretation: $u$ at $(x, y)$ equals the mean of the values of $u$ at the four neighboring points. This is an analog of the mean value property of harmonic functions (Sec. 18.6).
 
-Those neighbors are often called $E$ (East), $N$ (North), $W$ (West), $S$ (South). Then @fig-21-03b becomes @fig-21-03c and (@eq-sec214-7) is
+Those neighbors are often called $E$ (East), $N$ (North), $W$ (West), $S$ (South). Then @fig-21-453b becomes @fig-21-453c and (@eq-sec214-7) is
 
 $$u(E) + u(N) + u(W) + u(S) - 4u(x, y) = h^2f(x, y)$$ {#eq-sec214-7star}
 
-![Fig. 21-03: Points and notation in equations (5)–(8) and (7*)](../images/fig-21-03.png){#fig-21-03}
+![Fig. 21-03: Points and notation in equations (5)–(8) and (7*)](../images/chapter21/fig-21-453.png){#fig-21-453}
 
 Our approximation of $h^2\nabla^2 u$ in (@eq-sec214-7) and (@eq-sec214-8) is a 5-point approximation with the coefficient scheme or stencil (also called pattern, molecule, or star)
 
@@ -1033,7 +1033,7 @@ We may now write (@eq-sec214-7) as
 $$\left\{ \begin{matrix} & 1 & \\ 1 & -4 & 1 \\ & 1 & \end{matrix} \right\} u = h^2f(x, y)$$
 
 ### Dirichlet Problem
-In numerics for the Dirichlet problem in a region $R$ we choose an $h$ and introduce a square grid of horizontal and vertical straight lines of distance $h$. Their intersections are called mesh points (or lattice points or nodes). See @fig-21-04.
+In numerics for the Dirichlet problem in a region $R$ we choose an $h$ and introduce a square grid of horizontal and vertical straight lines of distance $h$. Their intersections are called mesh points (or lattice points or nodes). See @fig-21-454.
 
 Then we approximate the given PDE by a difference equation [(@eq-sec214-8) for the Laplace equation], which relates the unknown values of $u$ at the mesh points in $R$ to each other and to the given boundary values (details in Example 1). This gives a linear system of algebraic equations. By solving it we get approximations of the unknown values of $u$ at the mesh points in $R$.
 
@@ -1041,11 +1041,11 @@ We shall see that the number of equations equals the number of unknowns. Now com
 
 Both cases, large $p$ and small $p$, are of interest to the engineer, large $p$ if a fine grid is used to achieve high accuracy, and small $p$ if the boundary values are known only rather inaccurately, so that a coarse grid will do it because in this case it would be meaningless to try for great accuracy in the interior of the region $R$.
 
-We illustrate this approach with an example, keeping the number of equations small, for simplicity. As convenient notations for mesh points and corresponding values of the solution (and of approximate solutions) we use (see also @fig-21-04):
+We illustrate this approach with an example, keeping the number of equations small, for simplicity. As convenient notations for mesh points and corresponding values of the solution (and of approximate solutions) we use (see also @fig-21-454):
 
 $$P_{ij} = (ih, jh), \quad u_{ij} = u(ih, jh)$$ {#eq-sec214-10}
 
-![Fig. 21-04: Region in the xy-plane covered by a grid of mesh h](../images/fig-21-04.png){#fig-21-04}
+![Fig. 21-04: Region in the xy-plane covered by a grid of mesh h](../images/chapter21/fig-21-454.png){#fig-21-454}
 
 With this notation we can write (@eq-sec214-8) for any mesh point $P_{ij}$ in the form
 
@@ -1054,10 +1054,10 @@ $$u_{i+1,j} + u_{i,j+1} + u_{i-1,j} + u_{i,j-1} - 4u_{ij} = 0$$ {#eq-sec214-11}
 **Remark.** Our current discussion and the example that follows illustrate what we may call the reusability of mathematical ideas and methods. Recall that we applied the Gauss–Seidel method to a system of ODEs in Sec. 20.3 and that we can now apply it again to elliptic PDEs. This shows that engineering mathematics has a structure and important mathematical ideas and methods will appear again and again in different situations. The student should find this attractive in that previous knowledge can be reapplied.
 
 ### EXAMPLE 1: Laplace Equation. Liebmann’s Method
-The four sides of a square plate of side 12 cm, made of homogeneous material, are kept at constant temperature $0^\circ\text{C}$ and $100^\circ\text{C}$ as shown in @fig-21-05a. Using a (very wide) grid of mesh 4 cm and applying Liebmann’s method (that is, Gauss–Seidel iteration), find the (steady-state) temperature at the mesh points.
+The four sides of a square plate of side 12 cm, made of homogeneous material, are kept at constant temperature $0^\circ\text{C}$ and $100^\circ\text{C}$ as shown in @fig-21-455a. Using a (very wide) grid of mesh 4 cm and applying Liebmann’s method (that is, Gauss–Seidel iteration), find the (steady-state) temperature at the mesh points.
 
 **Solution.**  
-In the case of independence of time, the heat equation (see Sec. 10.8) $u_t = c^2(u_{xx} + u_{yy})$ reduces to the Laplace equation. Hence our problem is a Dirichlet problem for the latter. We choose the grid shown in @fig-21-05b and consider the mesh points in the order $P_{11}, P_{21}, P_{12}, P_{22}$. We use (@eq-sec214-11) and, in each equation, take to the right all the terms resulting from the given boundary values. Then we obtain the system
+In the case of independence of time, the heat equation (see Sec. 10.8) $u_t = c^2(u_{xx} + u_{yy})$ reduces to the Laplace equation. Hence our problem is a Dirichlet problem for the latter. We choose the grid shown in @fig-21-455b and consider the mesh points in the order $P_{11}, P_{21}, P_{12}, P_{22}$. We use (@eq-sec214-11) and, in each equation, take to the right all the terms resulting from the given boundary values. Then we obtain the system
 
 $$
 \begin{aligned}
@@ -1081,7 +1081,7 @@ $$
 
 These equations are now used for the Gauss–Seidel iteration. They are identical with (2) in Sec. 20.3, where $u_{11} = x_1, u_{21} = x_2, u_{12} = x_3, u_{22} = x_4$, and the iteration is explained there, with 100, 100, 100, 100 chosen as starting values. Some work can be saved by better starting values, usually by taking the average of the boundary values that enter into the linear system. The exact solution of the system is $u_{11} = u_{21} = 87.5, u_{12} = u_{22} = 62.5$, as you may verify. $\blacksquare$
 
-![Fig. 21-05: Example 1 configuration and grid](../images/fig-21-05.png){#fig-21-05}
+![Fig. 21-05: Example 1 configuration and grid](../images/chapter21/fig-21-455.png){#fig-21-455}
 
 **Remark.** It is interesting to note that, if we choose mesh $h = L/n$ ($L$ = side of $R$) and consider the $(n - 1)^2$ internal mesh points (i.e., mesh points not on the boundary) row by row in the order $P_{11}, P_{21}, \dots, P_{n-1,1}, P_{12}, P_{22}, \dots, P_{n-2,2}, \dots$, then the system of equations has the $(n - 1)^2 \times (n - 1)^2$ coefficient matrix
 
@@ -1124,7 +1124,7 @@ Let us consider an example that merely serves to explain the entire method.
 Explain the procedure and formulas of the ADI method in terms of the problem in Example 1, using the same grid and starting values 100, 100, 100, 100.
 
 **Solution.**  
-While working, we keep an eye on @fig-21-05b and the given boundary values. We obtain first approximations $u_{11}^{(1)}, u_{21}^{(1)}, u_{12}^{(1)}, u_{22}^{(1)}$ from (@eq-sec214-15a) with $m = 0$. We write boundary values contained in (@eq-sec214-15a) without an upper index, for better identification and to indicate that these given values remain the same during the iteration. From (@eq-sec214-15a) with $m = 0$ we have for $j = 1$ (first row) the system:
+While working, we keep an eye on @fig-21-455b and the given boundary values. We obtain first approximations $u_{11}^{(1)}, u_{21}^{(1)}, u_{12}^{(1)}, u_{22}^{(1)}$ from (@eq-sec214-15a) with $m = 0$. We write boundary values contained in (@eq-sec214-15a) without an upper index, for better identification and to indicate that these given values remain the same during the iteration. From (@eq-sec214-15a) with $m = 0$ we have for $j = 1$ (first row) the system:
 
 $$
 \begin{aligned}
@@ -1202,7 +1202,7 @@ where $K$ is the larger of $M + 1$ and $N + 1$ (see above). Even better results 
 4. **Finer grid of $3 \times 3$ inner points.** Solve Example 1, choosing $h = 12/4 = 3$ (instead of $h = 12/3 = 4$) and the same starting values.
 
 #### 5–10: GAUSS ELIMINATION, GAUSS–SEIDEL ITERATION
-For the grid in @fig-21-06 compute the potential at the four internal points by Gauss elimination and by 5 Gauss–Seidel steps with starting values 100, 100, 100, 100 (showing the details of your work) if the boundary values on the edges are:
+For the grid in @fig-21-456 compute the potential at the four internal points by Gauss elimination and by 5 Gauss–Seidel steps with starting values 100, 100, 100, 100 (showing the details of your work) if the boundary values on the edges are:
 5. $u(1, 0) = 60, u(2, 0) = 300, u = 100$ on the other three edges.
 6. $u = 0$ on the left, $x^3$ on the lower edge, $27 - 9y^2$ on the right, $x^3 - 27x$ on the upper edge.
 7. $U_0$ on the upper and lower edges, $-U_0$ on the left and right. Sketch the equipotential lines.
@@ -1210,17 +1210,17 @@ For the grid in @fig-21-06 compute the potential at the four internal points by 
 9. $u = \sin \frac{1}{3}\pi x$ on the upper edge, 0 on the other edges, 10 steps.
 10. $u = x^4$ on the lower edge, $81 - 54y^2 + y^4$ on the right, $x^4 - 54x^2y^2 + y^4$ on the upper edge, $y^4$ on the left. Verify the exact solution $x^4 - 6x^2y^2 + y^4$ and determine the error.
 
-![Fig. 21-06: Grid for Problems 5–10](../images/fig-21-06.png){#fig-21-06}
+![Fig. 21-06: Grid for Problems 5–10](../images/chapter21/fig-21-456.png){#fig-21-456}
 
-11. Find the potential in @fig-21-07 using (a) the coarse grid, (b) the fine grid $5 \times 3$, and Gauss elimination. *Hint:* In (b), use symmetry; take $u = 0$ as boundary value at the two points at which the potential has a jump.
+11. Find the potential in @fig-21-457 using (a) the coarse grid, (b) the fine grid $5 \times 3$, and Gauss elimination. *Hint:* In (b), use symmetry; take $u = 0$ as boundary value at the two points at which the potential has a jump.
 
-![Fig. 21-07: Region and grids in Problem 11](../images/fig-21-07.png){#fig-21-07}
+![Fig. 21-07: Region and grids in Problem 11](../images/chapter21/fig-21-457.png){#fig-21-457}
 
 12. **Influence of starting values.** Do Prob. 9 by Gauss–Seidel, starting from 0. Compare and comment.
 13. For the square $0 \le x \le 4, \ 0 \le y \le 4$ let the boundary temperatures be $0^\circ\text{C}$ on the horizontal and $50^\circ\text{C}$ on the vertical edges. Find the temperatures at the interior points of a square grid with $h = 1$.
 14. Using the answer to Prob. 13, try to sketch some isotherms.
 15. Find the isotherms for the square and grid in Prob. 13 if $u = \sin \frac{1}{4}\pi x$ on the horizontal and $-\sin \frac{1}{4}\pi y$ on the vertical edges. Try to sketch some isotherms.
-16. **ADI.** Apply the ADI method to the Dirichlet problem in Prob. 9, using the grid in @fig-21-06, as before and starting values zero.
+16. **ADI.** Apply the ADI method to the Dirichlet problem in Prob. 9, using the grid in @fig-21-456, as before and starting values zero.
 17. What $p_0$ in (@eq-sec214-18) should we choose for Prob. 16? Apply the ADI formulas (@eq-sec214-17a), (@eq-sec214-17b) with that value of $p_0$ to Prob. 16, performing 1 step. Illustrate the improved convergence by comparing with the corresponding values 0.077, 0.308 after the first step in Prob. 16. (Use the starting values zero.)
 18. **CAS PROJECT. Laplace Equation.**  
 (a) Write a program for Gauss–Seidel with 16 equations in 16 unknowns, composing the matrix (@eq-sec214-13) from the indicated $4 \times 4$ submatrices and including a transformation of the vector of the boundary values into the vector $\mathbf{b}$ of $\mathbf{A}\mathbf{x} = \mathbf{b}$.  
@@ -1235,10 +1235,10 @@ Solve the mixed boundary value problem for the Poisson equation
 
 $$\nabla^2 u = u_{xx} + u_{yy} = f(x, y) = 12xy$$
 
-shown in @fig-21-08a.
+shown in @fig-21-458a.
 
 **Solution.**  
-We use the grid shown in @fig-21-08b, where $h = 0.5$. We recall that (7) in @sec-methods-elliptic-pdes has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
+We use the grid shown in @fig-21-458b, where $h = 0.5$. We recall that (7) in @sec-methods-elliptic-pdes has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
 
 $$u_{31} = 0.375, \quad \frac{\partial u_{12}}{\partial n} = \frac{\partial u}{\partial y}\Big|_{12} = 6 \cdot 0.5 = 3$$
 
@@ -1256,7 +1256,7 @@ $$ {#eq-sec215-2a_2}
 
 The only difficulty with these equations seems to be that they involve the unknown values $u_{12}$ and $u_{22}$ of $u$ at $P_{12}$ and $P_{22}$ on the boundary, where the normal derivative $u_n = \partial u/\partial n = \partial u/\partial y$ is given, instead of $u$; but we shall overcome this difficulty as follows.
 
-We consider $P_{12}$ and $P_{22}$. The idea that will help us here is this. We imagine the region $R$ to be extended above to the first row of external mesh points (corresponding to $y = 1.5$), and we assume that the Poisson equation also holds in the extended region. Then we can write down two more equations as before (see @fig-21-08b):
+We consider $P_{12}$ and $P_{22}$. The idea that will help us here is this. We imagine the region $R$ to be extended above to the first row of external mesh points (corresponding to $y = 1.5$), and we assume that the Poisson equation also holds in the extended region. Then we can write down two more equations as before (see @fig-21-458b):
 
 $$
 \begin{aligned}
@@ -1265,7 +1265,7 @@ u_{21} + u_{12} - 4u_{22} + u_{23} &= 3 - 3 = 0
 \end{aligned}
 $$ {#eq-sec215-2b}
 
-On the right, $1.5$ is $12xyh^2$ at $(0.5, 1)$ and $3$ is $12xyh^2$ at $(1, 1)$ and 0 (at $P_{02}$) and 3 (at $P_{32}$) are given boundary values. We remember that we have not yet used the boundary condition on the upper part of the boundary of $R$, and we also notice that in (@eq-sec215-2b) we have introduced two more unknowns $u_{13}, u_{23}$. But we can now use that condition and get rid of $u_{13}, u_{23}$ by applying the central difference formula for $\partial u/\partial y$. From the boundary conditions we then obtain (see @fig-21-08b):
+On the right, $1.5$ is $12xyh^2$ at $(0.5, 1)$ and $3$ is $12xyh^2$ at $(1, 1)$ and 0 (at $P_{02}$) and 3 (at $P_{32}$) are given boundary values. We remember that we have not yet used the boundary condition on the upper part of the boundary of $R$, and we also notice that in (@eq-sec215-2b) we have introduced two more unknowns $u_{13}, u_{23}$. But we can now use that condition and get rid of $u_{13}, u_{23}$ by applying the central difference formula for $\partial u/\partial y$. From the boundary conditions we then obtain (see @fig-21-458b):
 
 $$3 = \frac{\partial u_{12}}{\partial y} \approx \frac{u_{13} - u_{11}}{2h} = u_{13} - u_{11}, \quad \text{hence} \quad u_{13} = u_{11} + 3$$
 
@@ -1295,12 +1295,12 @@ u_{21} &= 0.191 \quad (\text{exact } 0.25)
 \end{aligned}
 $$  $\blacksquare$
 
-![Fig. 21-08: Mixed boundary value problem in Example 1](../images/fig-21-08.png){#fig-21-08}
+![Fig. 21-08: Mixed boundary value problem in Example 1](../images/chapter21/fig-21-458.png){#fig-21-458}
 
 ### Irregular Boundary
 We continue our discussion of boundary value problems for elliptic PDEs in a region $R$ in the $xy$-plane. If $R$ has a simple geometric shape, we can usually arrange for certain mesh points to lie on the boundary $C$ of $R$, and then we can approximate partial derivatives as explained in the last section. However, if $C$ intersects the grid at points that are not mesh points, then at points close to the boundary we must proceed differently, as follows.
 
-The mesh point $O$ in @fig-21-09 is of that kind. For $O$ and its neighbors $A$ and $P$ we obtain from Taylor’s theorem:
+The mesh point $O$ in @fig-21-459 is of that kind. For $O$ and its neighbors $A$ and $P$ we obtain from Taylor’s theorem:
 
 $$u_A = u_O + ah \frac{\partial u_O}{\partial x} + \frac{1}{2}(ah)^2 \frac{\partial^2 u_O}{\partial x^2} + \dots$$ {#eq-sec215-4a}
 
@@ -1332,18 +1332,18 @@ $$\left\{ \begin{matrix} & \frac{4}{3} & \\ \frac{2}{3} & -4 & \frac{4}{3} \\ & 
 
 because $1/[a(1 + a)] = 4/3$, etc. The sum of all five terms still being zero (which is useful for checking).
 
-![Fig. 21-09: Curved boundary C near a mesh point O](../images/fig-21-09.png){#fig-21-09}
+![Fig. 21-09: Curved boundary C near a mesh point O](../images/chapter21/fig-21-459.png){#fig-21-459}
 
-Using the same ideas, you may show that in the case of @fig-21-10:
+Using the same ideas, you may show that in the case of @fig-21-460:
 
 $$\nabla^2 u_O \approx \frac{2}{h^2} \left[ \frac{u_A}{a(a + p)} + \frac{u_B}{b(b + q)} + \frac{u_P}{p(p + a)} + \frac{u_Q}{q(q + b)} - \left( \frac{ap + bq}{abpq} \right) u_O \right]$$ {#eq-sec215-6}
 
 a formula that takes care of all conceivable cases.
 
-![Fig. 21-10: Neighboring points of a mesh point O near a boundary](../images/fig-21-10.png){#fig-21-10}
+![Fig. 21-10: Neighboring points of a mesh point O near a boundary](../images/chapter21/fig-21-460.png){#fig-21-460}
 
 ### EXAMPLE 2: Dirichlet Problem for the Laplace Equation. Curved Boundary
-Find the potential $u$ in the region in @fig-21-11 that has the boundary values given in that figure; here the curved portion of the boundary is an arc of the circle of radius 10 about $(0,0)$. Use the grid in the figure.
+Find the potential $u$ in the region in @fig-21-461 that has the boundary values given in that figure; here the curved portion of the boundary is an arc of the circle of radius 10 about $(0,0)$. Use the grid in the figure.
 
 $u$ is a solution of the Laplace equation. From the given formulas for the boundary values $u = x^3, u = 512 - 24y^2, \dots$ we compute the values at the points where we need them; the result is shown in the figure. For $P_{11}$ and $P_{12}$ we have the usual regular stencil, and for $P_{21}$ and $P_{22}$ we use (@eq-sec215-6), obtaining stencils:
 
@@ -1380,20 +1380,20 @@ $$u_{11} = -54, \quad u_{21} = 54, \quad u_{12} = -297, \quad u_{22} = -432$$
 
 In practice one would use a much finer grid and solve the resulting large system by an indirect method. $\blacksquare$
 
-![Fig. 21-11: Region, boundary values, and grid in Example 2](../images/fig-21-11.png){#fig-21-11}
+![Fig. 21-11: Region, boundary values, and grid in Example 2](../images/chapter21/fig-21-461.png){#fig-21-461}
 
 ### PROBLEM SET {#sec-ps-21-5}
 
 #### 1–7: MIXED BOUNDARY VALUE PROBLEMS
 1. Check the values for the Poisson equation at the end of Example 1 by solving (@eq-sec215-3) by Gauss elimination.
-2. Solve the mixed boundary value problem for the Poisson equation $\nabla^2 u = 2(x^2 + y^2)$ in the region and for the boundary conditions shown in @fig-21-12, using the indicated grid.
+2. Solve the mixed boundary value problem for the Poisson equation $\nabla^2 u = 2(x^2 + y^2)$ in the region and for the boundary conditions shown in @fig-21-462, using the indicated grid.
 3. **CAS EXPERIMENT. Mixed Problem.** Do Example 1 in the text with finer and finer grids of your choice and study the accuracy of the approximate values by comparing with the exact solution $u = 2xy^3$. Verify the latter.
-4. Solve the mixed boundary value problem for the Laplace equation $\nabla^2 u = 0$ in the rectangle in @fig-21-08a (using the grid in @fig-21-08b) and the boundary conditions $u_x = 0$ on the left edge, $u_x = 3$ on the right edge, $u = x^2$ on the lower edge, and $u = x^2 - 1$ on the upper edge.
+4. Solve the mixed boundary value problem for the Laplace equation $\nabla^2 u = 0$ in the rectangle in @fig-21-458a (using the grid in @fig-21-458b) and the boundary conditions $u_x = 0$ on the left edge, $u_x = 3$ on the right edge, $u = x^2$ on the lower edge, and $u = x^2 - 1$ on the upper edge.
 5. Do Example 1 in the text for the Laplace equation (instead of the Poisson equation) with grid and boundary data as before.
-6. Solve $\nabla^2 u = -\pi^2 y \sin \frac{1}{3}\pi x$ for the grid in @fig-21-12 and $u_y(1, 3) = u_y(2, 3) = \frac{1}{2}\sqrt{243}, u = 0$ on the other three sides of the square.
+6. Solve $\nabla^2 u = -\pi^2 y \sin \frac{1}{3}\pi x$ for the grid in @fig-21-462 and $u_y(1, 3) = u_y(2, 3) = \frac{1}{2}\sqrt{243}, u = 0$ on the other three sides of the square.
 7. Solve Prob. 4 when $u_n = 110$ on the upper edge and $u = 110$ on the other edges.
 
-![Fig. 21-12: Grid for Problems 2 and 6](../images/fig-21-12.png){#fig-21-12}
+![Fig. 21-12: Grid for Problems 2 and 6](../images/chapter21/fig-21-462.png){#fig-21-462}
 
 #### 8–16: IRREGULAR BOUNDARY
 8. Verify the stencil shown after (@eq-sec215-5).
@@ -1401,15 +1401,15 @@ In practice one would use a much finer grid and solve the resulting large system
 10. Derive the general formula (@eq-sec215-6) in detail.
 11. Derive the linear system in Example 2 of the text.
 12. Verify the solution in Example 2.
-13. Solve the Laplace equation in the region and for the boundary values shown in @fig-21-13, using the indicated grid. (The sloping portion of the boundary is $y = 4.5 - x$.)
+13. Solve the Laplace equation in the region and for the boundary values shown in @fig-21-463, using the indicated grid. (The sloping portion of the boundary is $y = 4.5 - x$.)
 
-![Fig. 21-13: Grid for Problem 13](../images/fig-21-13.png){#fig-21-13}
+![Fig. 21-13: Grid for Problem 13](../images/chapter21/fig-21-463.png){#fig-21-463}
 
 14. If, in Prob. 13, the axes are grounded ($u = 0$), what constant potential must the other portion of the boundary have in order to produce 220 V at $P_{11}$?
 15. What potential do we have in Prob. 13 if $u = 100\text{ V}$ on the axes and $u = 0$ on the other portion of the boundary?
-16. Solve the Poisson equation $\nabla^2 u = 2$ in the region and for the boundary values shown in @fig-21-14, using the grid also shown in the figure.
+16. Solve the Poisson equation $\nabla^2 u = 2$ in the region and for the boundary values shown in @fig-21-464, using the grid also shown in the figure.
 
-![Fig. 21-14: Grid for Problem 16](../images/fig-21-14.png){#fig-21-14}
+![Fig. 21-14: Grid for Problem 16](../images/chapter21/fig-21-464.png){#fig-21-464}
 
 ## Methods for Parabolic PDEs {#sec-methods-parabolic-pdes}
 
@@ -1433,7 +1433,7 @@ A simple finite difference approximation of (@eq-sec216-1) is [see (6a) in @sec-
 
 $$\frac{1}{k} (u_{i, j+1} - u_{ij}) = \frac{1}{h^2} (u_{i+1, j} - 2u_{ij} + u_{i-1, j})$$ {#eq-sec216-4}
 
-@fig-21-15 shows a corresponding grid and mesh points. The mesh size is $h$ in the $x$-direction and $k$ in the $t$-direction. Formula (@eq-sec216-4) involves the four points shown in @fig-21-16. On the left in (@eq-sec216-4) we have used a forward difference quotient since we have no information for negative $t$ at the start. From (@eq-sec216-4) we calculate $u_{i, j+1}$, which corresponds to time row $j + 1$, in terms of the three other $u$ that correspond to time row $j$. Solving (@eq-sec216-4) for $u_{i, j+1}$, we have
+@fig-21-465 shows a corresponding grid and mesh points. The mesh size is $h$ in the $x$-direction and $k$ in the $t$-direction. Formula (@eq-sec216-4) involves the four points shown in @fig-21-466. On the left in (@eq-sec216-4) we have used a forward difference quotient since we have no information for negative $t$ at the start. From (@eq-sec216-4) we calculate $u_{i, j+1}$, which corresponds to time row $j + 1$, in terms of the three other $u$ that correspond to time row $j$. Solving (@eq-sec216-4) for $u_{i, j+1}$, we have
 
 $$u_{i, j+1} = (1 - 2r)u_{ij} + r(u_{i+1, j} + u_{i-1, j}) \quad \left(r = \frac{k}{h^2}\right)$$ {#eq-sec216-5}
 
@@ -1443,14 +1443,14 @@ $$r = \frac{k}{h^2} \le \frac{1}{2}$$ {#eq-sec216-6}
 
 That is, $u_{ij}$ should have a positive coefficient in (@eq-sec216-5) or (for $r = \frac{1}{2}$) be absent from (@eq-sec216-5). Intuitively, (@eq-sec216-6) means that we should not move too fast in the $t$-direction. An example is given below.
 
-![Fig. 21-15: Grid and mesh points corresponding to (@eq-sec216-4), (@eq-sec216-5)](../images/fig-21-15.png){#fig-21-15}
+![Fig. 21-15: Grid and mesh points corresponding to (@eq-sec216-4), (@eq-sec216-5)](../images/chapter21/fig-21-465.png){#fig-21-465}
 
-![Fig. 21-16: The four points in (@eq-sec216-4) and (@eq-sec216-5)](../images/fig-21-16.png){#fig-21-16}
+![Fig. 21-16: The four points in (@eq-sec216-4) and (@eq-sec216-5)](../images/chapter21/fig-21-466.png){#fig-21-466}
 
 ### Crank–Nicolson Method
 Condition (@eq-sec216-6) is a handicap in practice. Indeed, to attain sufficient accuracy, we have to choose $h$ small, which makes $k$ very small by (@eq-sec216-6). For example, if $h = 0.1$, then $k \le 0.005$. Accordingly, we should look for a more satisfactory discretization of the heat equation.
 
-A method that imposes no restriction on $r = k/h^2$ is the Crank–Nicolson (CN) method,[^5] which uses values of $u$ at the six points in @fig-21-17. The idea of the method is the replacement of the difference quotient on the right side of (@eq-sec216-4) by $\frac{1}{2}$ times the sum of two such difference quotients at two time rows (see @fig-21-17). Instead of (@eq-sec216-4) we then have
+A method that imposes no restriction on $r = k/h^2$ is the Crank–Nicolson (CN) method,[^5] which uses values of $u$ at the six points in @fig-21-467. The idea of the method is the replacement of the difference quotient on the right side of (@eq-sec216-4) by $\frac{1}{2}$ times the sum of two such difference quotients at two time rows (see @fig-21-467). Instead of (@eq-sec216-4) we then have
 
 $$\frac{1}{k} (u_{i, j+1} - u_{ij}) = \frac{1}{2h^2} (u_{i+1, j} - 2u_{ij} + u_{i-1, j}) + \frac{1}{2h^2} (u_{i+1, j+1} - 2u_{i, j+1} + u_{i-1, j+1})$$ {#eq-sec216-7}
 
@@ -1458,7 +1458,7 @@ Multiplying by $2k$ and writing $r = k/h^2$ as before, we collect the terms corr
 
 $$(2 + 2r)u_{i, j+1} - r(u_{i+1, j+1} + u_{i-1, j+1}) = (2 - 2r)u_{ij} + r(u_{i+1, j} + u_{i-1, j})$$ {#eq-sec216-8}
 
-How do we use (@eq-sec216-8)? In general, the three values on the left are unknown, whereas the three values on the right are known. If we divide the $x$-interval $0 \le x \le 1$ in (@eq-sec216-1) into $n$ equal intervals, we have $n - 1$ internal mesh points per time row (see @fig-21-15, where $n = 4$). Then for $j = 0$ and $i = 1, \dots, n - 1$, formula (@eq-sec216-8) gives a linear system of $n - 1$ equations for the $n - 1$ unknown values $u_{11}, u_{21}, \dots, u_{n-1,1}$ in the first time row in terms of the initial values $u_{00}, u_{10}, \dots, u_{n0}$ and the boundary values $u_{01} (= 0), u_{n1} (= 0)$. Similarly for $j = 1, j = 2$, and so on; that is, for each time row we have to solve such a linear system of $n - 1$ equations resulting from (@eq-sec216-8).
+How do we use (@eq-sec216-8)? In general, the three values on the left are unknown, whereas the three values on the right are known. If we divide the $x$-interval $0 \le x \le 1$ in (@eq-sec216-1) into $n$ equal intervals, we have $n - 1$ internal mesh points per time row (see @fig-21-465, where $n = 4$). Then for $j = 0$ and $i = 1, \dots, n - 1$, formula (@eq-sec216-8) gives a linear system of $n - 1$ equations for the $n - 1$ unknown values $u_{11}, u_{21}, \dots, u_{n-1,1}$ in the first time row in terms of the initial values $u_{00}, u_{10}, \dots, u_{n0}$ and the boundary values $u_{01} (= 0), u_{n1} (= 0)$. Similarly for $j = 1, j = 2$, and so on; that is, for each time row we have to solve such a linear system of $n - 1$ equations resulting from (@eq-sec216-8).
 
 Although $r = k/h^2$ is no longer restricted, smaller $r$ will still give better results. In practice, one chooses a $k$ by which one can save a considerable amount of work, without making $r$ too large. For instance, often a good choice is $r = 1$ (which would be impossible in the previous method). Then (@eq-sec216-8) becomes simply
 
@@ -1466,18 +1466,18 @@ $$4u_{i, j+1} - u_{i+1, j+1} - u_{i-1, j+1} = u_{i+1, j} + u_{i-1, j}$$ {#eq-sec
 
 [^5]: JOHN CRANK (1916–2006), English mathematician and physicist at Courtaulds Fundamental Research Laboratory, professor at Brunel University, England. Student of Sir WILLIAM LAWRENCE BRAGG (1890–1971), Australian British physicist, who with his father, Sir WILLIAM HENRY BRAGG (1862–1942) won the Nobel Prize in physics in 1915 for their fundamental work in X-ray crystallography. (This is the only case where a father and a son shared the Nobel Prize for the same research. Furthermore, W. L. Bragg is the youngest Nobel laureate ever.) PHYLLIS NICOLSON (1917–1968), English mathematician, professor at the University of Leeds, England.
 
-![Fig. 21-17: The six points in the Crank–Nicolson formulas (@eq-sec216-7) and (@eq-sec216-8)](../images/fig-21-17.png){#fig-21-17}
+![Fig. 21-17: The six points in the Crank–Nicolson formulas (@eq-sec216-7) and (@eq-sec216-8)](../images/chapter21/fig-21-467.png){#fig-21-467}
 
-![Fig. 21-18: Grid in Example 1](../images/fig-21-18.png){#fig-21-18}
+![Fig. 21-18: Grid in Example 1](../images/chapter21/fig-21-468.png){#fig-21-468}
 
 ### EXAMPLE 1: Temperature in a Metal Bar. Crank–Nicolson Method, Explicit Method
 Consider a laterally insulated metal bar of length 1 and such that $c^2 = 1$ in the heat equation. Suppose that the ends of the bar are kept at temperature $u = 0^\circ\text{C}$ and the temperature in the bar at some instant—call it $t = 0$—is $f(x) = \sin \pi x$. Applying the Crank–Nicolson method with $h = 0.2$ and $r = 1$, find the temperature $u(x, t)$ in the bar for $0 \le t \le 0.2$. Compare the results with the exact solution. Also apply (@eq-sec216-5) with an $r$ satisfying (@eq-sec216-6), say, $r = 0.25$, and with values not satisfying (@eq-sec216-6), say, $r = 1$ and $r = 2.5$.
 
-**Solution by Crank–Nicolson.** Since $r = 1$, formula (@eq-sec216-8) takes the form (@eq-sec216-9). Since $h = 0.2$ and $r = k/h^2 = 1$, we have $k = h^2 = 0.04$. Hence we have to do 5 steps. @fig-21-18 shows the grid. We shall need the initial values
+**Solution by Crank–Nicolson.** Since $r = 1$, formula (@eq-sec216-8) takes the form (@eq-sec216-9). Since $h = 0.2$ and $r = k/h^2 = 1$, we have $k = h^2 = 0.04$. Hence we have to do 5 steps. @fig-21-468 shows the grid. We shall need the initial values
 
 $$u_{10} = \sin 0.2\pi = 0.587785, \quad u_{20} = \sin 0.4\pi = 0.951057$$
 
-Also, $u_{30} = u_{20}$ and $u_{40} = u_{10}$. (Recall that $u_{10}$ means $u$ at $P_{10}$ in @fig-21-18, etc.) In each time row in @fig-21-18 there are 4 internal mesh points. Hence in each time step we would have to solve 4 equations in 4 unknowns. But since the initial temperature distribution is symmetric with respect to $x = 0.5$, and $u = 0$ at both ends for all $t$, we have $u_{31} = u_{21}, u_{41} = u_{11}$ in the first time row and similarly for the other rows. This reduces each system to 2 equations in 2 unknowns. By (@eq-sec216-9), since $u_{31} = u_{21}$ and $u_{01} = 0$, for $j = 0$ these equations are
+Also, $u_{30} = u_{20}$ and $u_{40} = u_{10}$. (Recall that $u_{10}$ means $u$ at $P_{10}$ in @fig-21-468, etc.) In each time row in @fig-21-468 there are 4 internal mesh points. Hence in each time step we would have to solve 4 equations in 4 unknowns. But since the initial temperature distribution is symmetric with respect to $x = 0.5$, and $u = 0$ at both ends for all $t$, we have $u_{31} = u_{21}, u_{41} = u_{11}$ in the first time row and similarly for the other rows. This reduces each system to 2 equations in 2 unknowns. By (@eq-sec216-9), since $u_{31} = u_{21}$ and $u_{01} = 0$, for $j = 0$ these equations are
 
 $$
 \begin{aligned}
@@ -1495,7 +1495,7 @@ $$
 \end{aligned}
 $$
 
-The solution is $u_{12} = 0.271221, u_{22} = 0.438844$, and so on. This gives the temperature distribution (@fig-21-19):
+The solution is $u_{12} = 0.271221, u_{22} = 0.438844$, and so on. This gives the temperature distribution (@fig-21-469):
 
 | $t$ | $x = 0$ | $x = 0.2$ | $x = 0.4$ | $x = 0.6$ | $x = 0.8$ | $x = 1.0$ |
 |---|---|---|---|---|---|---|
@@ -1506,7 +1506,7 @@ The solution is $u_{12} = 0.271221, u_{22} = 0.438844$, and so on. This gives th
 | 0.16 | 0 | 0.125 | 0.202 | 0.202 | 0.125 | 0 |
 | 0.20 | 0 | 0.085 | 0.138 | 0.138 | 0.085 | 0 |
 
-![Fig. 21-19: Temperature distribution in the bar in Example 1](../images/fig-21-19.png){#fig-21-19}
+![Fig. 21-19: Temperature distribution in the bar in Example 1](../images/chapter21/fig-21-469.png){#fig-21-469}
 
 **Comparison with the exact solution.** The present problem can be solved exactly by separating variables (Sec. 12.5); the result is
 
@@ -1617,15 +1617,15 @@ Replacing the derivatives by difference quotients as before, we obtain from (@eq
 
 $$\frac{1}{k^2} (u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2} (u_{i+1, j} - 2u_{ij} + u_{i-1, j})$$ {#eq-sec217-5}
 
-where $h$ is the mesh size in $x$, and $k$ is the mesh size in $t$. This difference equation relates 5 points as shown in @fig-21-20a. It suggests a rectangular grid similar to the grids for parabolic equations in the preceding section. We choose $r^* = k^2/h^2 = 1$. Then $u_{ij}$ drops out and we have
+where $h$ is the mesh size in $x$, and $k$ is the mesh size in $t$. This difference equation relates 5 points as shown in @fig-21-470a. It suggests a rectangular grid similar to the grids for parabolic equations in the preceding section. We choose $r^* = k^2/h^2 = 1$. Then $u_{ij}$ drops out and we have
 
 $$u_{i, j+1} = u_{i-1, j} + u_{i+1, j} - u_{i, j-1}$$ {#eq-sec217-6}
 
-(see @fig-21-20b).
+(see @fig-21-470b).
 
 It can be shown that for $0 < r^* \le 1$ the present explicit method is stable, so that from (@eq-sec217-6) we may expect reasonable results for initial data that have no discontinuities. (For a hyperbolic PDE the latter would propagate into the solution domain—a phenomenon that would be difficult to deal with on our present grid. For unconditionally stable implicit methods see [E1] in App. 1.)
 
-![Fig. 21-20: Mesh points used in (@eq-sec217-5) and (@eq-sec217-6)](../images/fig-21-20.png){#fig-21-20}
+![Fig. 21-20: Mesh points used in (@eq-sec217-5) and (@eq-sec217-6)](../images/chapter21/fig-21-470.png){#fig-21-470}
 
 Equation (@eq-sec217-6) still involves 3 time steps $j - 1, j, j + 1$, whereas the formulas in the parabolic case involved only 2 time steps. Furthermore, we now have 2 initial conditions. So we ask how we get started and how we can use the initial condition (@eq-sec217-3). This can be done as follows.
 
@@ -1650,7 +1650,7 @@ This expresses $u_{i1}$ in terms of the initial data. It is for the beginning on
 ### EXAMPLE 1: Vibrating String, Wave Equation
 Apply the present method with $h = k = 0.2$ to the problem (@eq-sec217-1)–(@eq-sec217-4), where $f(x) = \sin \pi x, g(x) = 0$.
 
-**Solution.** The grid is the same as in @fig-21-18, @sec-methods-parabolic-pdes, except for the values of $t$, which now are $0.2, 0.4, \dots$ (instead of $0.04, 0.08, \dots$). The initial values $u_{00}, u_{10}, \dots$ are the same as in Example 1, @sec-methods-parabolic-pdes. From (@eq-sec217-8) and $g(x) = 0$ we have
+**Solution.** The grid is the same as in @fig-21-468, @sec-methods-parabolic-pdes, except for the values of $t$, which now are $0.2, 0.4, \dots$ (instead of $0.04, 0.08, \dots$). The initial values $u_{00}, u_{10}, \dots$ are the same as in Example 1, @sec-methods-parabolic-pdes. From (@eq-sec217-8) and $g(x) = 0$ we have
 
 $$u_{i1} = \frac{1}{2} (u_{i-1, 0} + u_{i+1, 0})$$
 
@@ -1742,9 +1742,9 @@ Using the present method, solve (@eq-sec217-1)–(@eq-sec217-4) with $h = k = 0.
 26. Apply Euler’s method for systems to $y_1' = y_2, y_2' = -4y_1, y_1(0) = 2, y_2(0) = 0, h = 0.2, 10$ steps. Sketch the solution.
 27. Apply Runge–Kutta for systems to $y'' + y = 2e^x, y(0) = 0, y'(0) = 1, h = 0.2, 5$ steps. Determine the errors.
 28. Apply Runge–Kutta for systems to $y_1' = 6y_1 + 9y_2, y_2' = y_1 + 6y_2, y_1(0) = -3, y_2(0) = -3, h = 0.05, 3$ steps.
-29. Find rough approximate values of the electrostatic potential at $P_{11}, P_{12}, P_{13}$ in @fig-21-21 that lie in a field between conducting plates (in @fig-21-21 appearing as sides of a rectangle) kept at potentials 0 and $220\text{ V}$ as shown. (Use the indicated grid.)
+29. Find rough approximate values of the electrostatic potential at $P_{11}, P_{12}, P_{13}$ in @fig-21-471 that lie in a field between conducting plates (in @fig-21-471 appearing as sides of a rectangle) kept at potentials 0 and $220\text{ V}$ as shown. (Use the indicated grid.)
 
-![Fig. 21-21: Grid for Problem 29](../images/fig-21-21.png){#fig-21-21}
+![Fig. 21-21: Grid for Problem 29](../images/chapter21/fig-21-471.png){#fig-21-471}
 
 30. A laterally insulated homogeneous bar with ends at $x = 0$ and $x = 1$ has initial temperature 0. Its left end is kept at 0, whereas the temperature at the right end varies sinusoidally according to
     $$u(t, 1) = g(t) = \sin \frac{25}{3}\pi t$$
@@ -1752,12 +1752,12 @@ Using the present method, solve (@eq-sec217-1)–(@eq-sec217-4) with $h = k = 0.
 31. Find the solution of the vibrating string problem $u_{tt} = u_{xx}, u(x, 0) = x(1 - x), u_t = 0, u(0, t) = u(1, t) = 0$ by the method in @sec-methods-hyperbolic-pdes with $h = 0.1$ and $k = 0.1$ for $t = 0.3$.
 
 #### 32–34: POTENTIAL
-Find the potential in @fig-21-22, using the given grid and the boundary values:
+Find the potential in @fig-21-472, using the given grid and the boundary values:
 32. $u(P_{01}) = u(P_{03}) = u(P_{41}) = u(P_{43}) = 200$, $u(P_{10}) = u(P_{30}) = -400$, $u(P_{20}) = 1600$, $u(P_{02}) = u(P_{42}) = u(P_{14}) = u(P_{24}) = u(P_{34}) = 0$
 33. $u(P_{10}) = u(P_{30}) = 960, u(P_{20}) = -480, u = 0$ elsewhere on the boundary
 34. $u = 70$ on the upper and left sides, $u = 0$ on the lower and right sides
 
-![Fig. 21-22: Grid for Problems 32–34](../images/fig-21-22.png){#fig-21-22}
+![Fig. 21-22: Grid for Problems 32–34](../images/chapter21/fig-21-472.png){#fig-21-472}
 
 35. Solve $u_t = u_{xx} \ (0 \le x \le 1, t \ge 0), u(x, 0) = x^2(1 - x), u(0, t) = u(1, t) = 0$ by Crank–Nicolson with $h = 0.2, k = 0.04, 5$ time steps.
 
@@ -1829,3 +1829,4 @@ $$\frac{1}{k^2}(u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2}(u_{i+1, j} - 
 here $h$ and $k$ are the mesh sizes of a grid in the $x$- and $y$-directions, respectively, where in (@eq-sum21-6) and (@eq-sum21-7) the variable $y$ is time $t$.
 
 These PDEs are elliptic, parabolic, and hyperbolic, respectively. Corresponding numeric methods differ, for the following reason. For elliptic PDEs we have boundary value problems, and we discussed for them the Gauss–Seidel method (also known as Liebmann’s method) and the ADI method (@sec-methods-elliptic-pdes, @sec-neumann-mixed-problems). For parabolic PDEs we are given one initial condition and boundary conditions, and we discussed an explicit method and the Crank–Nicolson method (@sec-methods-parabolic-pdes). For hyperbolic PDEs, the problems are similar but we are given a second initial condition (@sec-methods-hyperbolic-pdes).
+
