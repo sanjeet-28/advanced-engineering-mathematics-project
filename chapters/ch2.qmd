@@ -2,23 +2,23 @@
 title: "Second-Order Linear ODEs"
 ---
 
-Many important applications in mechanical and electrical engineering, as shown in Secs. 2.4, 2.8, and 2.9, are modeled by linear ordinary differential equations (linear ODEs) of the second order. Their theory is representative of all linear ODEs as is seen when compared to linear ODEs of third and higher order, respectively. However, the solution formulas for second-order linear ODEs are simpler than those of higher order, so it is a natural progression to study ODEs of second order first in this chapter and then of higher order in Chap. 3.
+Many important applications in mechanical and electrical engineering, as shown in @sec-free-oscillations, @sec-forced-oscillations, and @sec-electric-circuits, are modeled by linear ordinary differential equations (linear ODEs) of the second order. Their theory is representative of all linear ODEs as is seen when compared to linear ODEs of third and higher order, respectively. However, the solution formulas for second-order linear ODEs are simpler than those of higher order, so it is a natural progression to study ODEs of second order first in this chapter and then of higher order in <!-- TODO: replace Chap. 3 with actual chapter label -->.
 
 Although ordinary differential equations (ODEs) can be grouped into linear and nonlinear ODEs, nonlinear ODEs are difficult to solve in contrast to linear ODEs for which many beautiful standard methods exist.
 
 Chapter 2 includes the derivation of general and particular solutions, the latter in connection with initial value problems.
 
-For those interested in solution methods for Legendre's, Bessel's, and the hypergeometric equations consult Chap. 5 and for Sturm–Liouville problems Chap. 11.
+For those interested in solution methods for Legendre's, Bessel's, and the hypergeometric equations consult <!-- TODO: replace Chap. 5 with actual chapter label --> and for Sturm–Liouville problems <!-- TODO: replace Chap. 11 with actual chapter label -->.
 
-**COMMENT.** Numerics for second-order ODEs can be studied immediately after this chapter. See Sec. 21.3, which is independent of other sections in Chaps. 19–21.
+**COMMENT.** Numerics for second-order ODEs can be studied immediately after this chapter. See <!-- TODO: replace Sec. 21.3 with actual cross-reference label -->, which is independent of other sections in <!-- TODO: replace Chaps. 19–21 with actual chapter labels -->.
 
-**Prerequisite:** Chap. 1, in particular, Sec. 1.5.
+**Prerequisite:** <!-- TODO: replace Chap. 1 with actual chapter label -->, in particular, <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->.
 **Sections that may be omitted in a shorter course:** 2.3, 2.9, 2.10.
 **References and Answers to Problems:** App. 1 Part A, and App. 2.
 
-## 2.1 Homogeneous Linear ODEs of Second Order {#sec-2-1}
+## Homogeneous Linear ODEs of Second Order {#sec-homogeneous-linear-odes}
 
-We have already considered first-order linear ODEs (Sec. 1.5) and shall now define and discuss linear ODEs of second order. These equations have important engineering applications, especially in connection with mechanical and electrical vibrations (Secs. 2.4, 2.8, 2.9) as well as in wave motion, heat conduction, and other parts of physics, as we shall see in Chap. 12.
+We have already considered first-order linear ODEs (<!-- TODO: replace Sec. 1.5 with actual cross-reference label -->) and shall now define and discuss linear ODEs of second order. These equations have important engineering applications, especially in connection with mechanical and electrical vibrations (@sec-free-oscillations, @sec-forced-oscillations, @sec-electric-circuits) as well as in wave motion, heat conduction, and other parts of physics, as we shall see in <!-- TODO: replace Chap. 12 with actual chapter label -->.
 
 A second-order ODE is called **linear** if it can be written
 
@@ -30,13 +30,13 @@ and **nonlinear** if it cannot be written in this form.
 
 The distinctive feature of (@eq-2-1) is that it is linear in $y$ and its derivatives, whereas the functions $p$, $q$, and $r$ on the right may be any given functions of $x$. If the equation begins with, say, $f(x)y''$, we can divide by $f(x)$ to obtain the standard form (@eq-2-1) with $y''$ as the first term.
 
-The definitions of homogeneous and nonhomogeneous second-order linear ODEs are very similar to those of first-order ODEs discussed in Sec. 1.5. Indeed, if $r(x) \equiv 0$ (that is, $r(x) = 0$ for all $x$ considered; read "$r$ is identically zero"), then (@eq-2-1) reduces to
+The definitions of homogeneous and nonhomogeneous second-order linear ODEs are very similar to those of first-order ODEs discussed in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->. Indeed, if $r(x) \equiv 0$ (that is, $r(x) = 0$ for all $x$ considered; read "$r$ is identically zero"), then (@eq-2-1) reduces to
 
 $$
 y'' + p(x)y' + q(x)y = 0
 $$ {#eq-2-2}
 
-and is called **homogeneous**. If $r(x) \not\equiv 0$, then (@eq-2-1) is called **nonhomogeneous**. This is similar to Sec. 1.5.
+and is called **homogeneous**. If $r(x) \not\equiv 0$, then (@eq-2-1) is called **nonhomogeneous**. This is similar to <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->.
 
 An example of a nonhomogeneous linear ODE is
 
@@ -58,7 +58,7 @@ $$
 
 The functions $p$ and $q$ in (@eq-2-1) and (@eq-2-2) are called the **coefficients** of the ODEs.
 
-Solutions are defined similarly as for first-order ODEs in Chap. 1. A function
+Solutions are defined similarly as for first-order ODEs in <!-- TODO: replace Chap. 1 with actual chapter label -->. A function
 
 $$
 y = h(x)
@@ -68,7 +68,7 @@ is called a **solution** of a (linear or nonlinear) second-order ODE on some ope
 
 ### Homogeneous Linear ODEs: Superposition Principle
 
-Sections 2.1–2.6 will be devoted to homogeneous linear ODEs (@eq-2-2) and the remaining sections of the chapter to nonhomogeneous linear ODEs.
+@sec-homogeneous-linear-odes through @sec-existence-uniqueness will be devoted to homogeneous linear ODEs (@eq-2-2) and the remaining sections of the chapter to nonhomogeneous linear ODEs.
 
 Linear ODEs have a rich solution structure. For the homogeneous equation the backbone of this structure is the **superposition principle** or **linearity principle**, which says that we can obtain further solutions from given ones by adding them or by multiplying them with any constants. Of course, this is a great advantage of homogeneous linear ODEs. Let us first discuss an example.
 
@@ -136,7 +136,7 @@ but their sum $y = x^2 + 1$ is not a solution. Neither is $cy_1 = cx^2$ (for $c 
 
 ### Initial Value Problem. Basis. General Solution
 
-Recall from Chap. 1 that for a first-order ODE, an initial value problem consists of the ODE and one initial condition $y(x_0) = y_0$. The initial condition is used to determine the arbitrary constant $c$ in the general solution of the ODE. This results in a unique solution, as we need it in most applications. That solution is called a particular solution of the ODE. These ideas extend to second-order ODEs as follows.
+Recall from <!-- TODO: replace Chap. 1 with actual chapter label --> that for a first-order ODE, an initial value problem consists of the ODE and one initial condition $y(x_0) = y_0$. The initial condition is used to determine the arbitrary constant $c$ in the general solution of the ODE. This results in a unique solution, as we need it in most applications. That solution is called a particular solution of the ODE. These ideas extend to second-order ODEs as follows.
 
 For a second-order homogeneous linear ODE (@eq-2-2) an initial value problem consists of (@eq-2-2) and two initial conditions
 
@@ -182,7 +182,7 @@ $$
 y = 3.0 \cos x - 0.5 \sin x.
 $$
 
-Figure 29 shows that at $x = 0$ it has the value $3.0$ and the slope $-0.5$, so that its tangent intersects the $x$-axis at $x = 3.0 / 0.5 = 6.0$. (The scales on the axes differ!)
+    @fig-2-29 shows that at $x = 0$ it has the value $3.0$ and the slope $-0.5$, so that its tangent intersects the $x$-axis at $x = 3.0 / 0.5 = 6.0$. (The scales on the axes differ!)
 
 ![Fig. 29. Particular solution and initial tangent in Example 4](../images/chapter2/fig-2-29.png){#fig-2-29}
 
@@ -226,7 +226,7 @@ In contrast, in the case of linear independence these functions are not proporti
 **DEFINITION: Basis (Reformulated)**
 A **basis** of solutions of (@eq-2-2) on an open interval $I$ is a pair of linearly independent solutions of (@eq-2-2) on $I$.
 
-If the coefficients $p$ and $q$ of (@eq-2-2) are continuous on some open interval $I$, then (@eq-2-2) has a general solution. It yields the unique solution of any initial value problem (@eq-2-2), (@eq-2-4). It includes all solutions of (@eq-2-2) on $I$; hence (@eq-2-2) has no singular solutions (solutions not obtainable from a general solution; see also Problem Set 1.1). All this will be shown in Sec. 2.6.
+If the coefficients $p$ and $q$ of (@eq-2-2) are continuous on some open interval $I$, then (@eq-2-2) has a general solution. It yields the unique solution of any initial value problem (@eq-2-2), (@eq-2-4). It includes all solutions of (@eq-2-2) on $I$; hence (@eq-2-2) has no singular solutions (solutions not obtainable from a general solution; see also Problem Set 1.1). All this will be shown in @sec-existence-uniqueness.
 
 ### EXAMPLE 5 Basis, General Solution, Particular Solution
 $\cos x$ and $\sin x$ in Example 4 form a basis of solutions of the ODE $y'' + y = 0$ for all $x$ because their quotient is $\cot x \neq \text{const}$ (or $\tan x \neq \text{const}$). Hence $y = c_1 \cos x + c_2 \sin x$ is a general solution. The solution $y = 3.0 \cos x - 0.5 \sin x$ of the initial value problem is a particular solution.
@@ -398,7 +398,7 @@ Reduce to first order and solve, showing each step in detail. (For variable coef
 
 20. **CAS PROJECT. Linear Independence.** Write a program for testing linear independence and dependence. Try it out on some of the problems in this and the next problem set and on examples of your own.
 
-## 2.2 Homogeneous Linear ODEs with Constant Coefficients {#sec-2-2}
+## Homogeneous Linear ODEs with Constant Coefficients {#sec-constant-coefficient-odes}
 
 We shall now consider second-order homogeneous linear ODEs whose coefficients $a$ and $b$ are constant,
 
@@ -406,9 +406,9 @@ $$
 y'' + ay' + by = 0.
 $$ {#eq-2-10}
 
-These equations have important applications in mechanical and electrical vibrations, as we shall see in Secs. 2.4, 2.8, and 2.9.
+These equations have important applications in mechanical and electrical vibrations, as we shall see in @sec-free-oscillations, @sec-forced-oscillations, and @sec-electric-circuits.
 
-To solve (@eq-2-10), we recall from Sec. 1.5 that the solution of the first-order linear ODE with a constant coefficient $k$
+To solve (@eq-2-10), we recall from <!-- TODO: replace Sec. 1.5 with actual cross-reference label --> that the solution of the first-order linear ODE with a constant coefficient $k$
 
 $$
 y' + ky = 0
@@ -467,7 +467,7 @@ y = c_1 e^{\lambda_1 x} + c_2 e^{\lambda_2 x}.
 $$ {#eq-2-14}
 
 ### EXAMPLE 1 General Solution in the Case of Distinct Real Roots
-We can now solve the ODE $y'' - y = 0$ in Example 6 of Sec. 2.1 systematically. The characteristic equation is $\lambda^2 - 1 = 0$. Its roots are $\lambda_1 = 1$ and $\lambda_2 = -1$. Hence a basis of solutions is $e^x$ and $e^{-x}$ and gives the same general solution as before,
+We can now solve the ODE $y'' - y = 0$ in Example 6 of @sec-homogeneous-linear-odes systematically. The characteristic equation is $\lambda^2 - 1 = 0$. Its roots are $\lambda_1 = 1$ and $\lambda_2 = -1$. Hence a basis of solutions is $e^x$ and $e^{-x}$ and gives the same general solution as before,
 
 $$
 y = c_1 e^x + c_2 e^{-x}.
@@ -505,7 +505,7 @@ $$
 y(0) = c_1 + c_2 = 4, \quad y'(0) = c_1 - 2c_2 = -5.
 $$
 
-Hence $c_1 = 1$ and $c_2 = 3$. This gives the answer $y = e^x + 3e^{-2x}$. Figure 30 shows that the curve begins at $(0, 4)$ with a negative slope (but note that the axes have different scales!), in agreement with the initial conditions.
+Hence $c_1 = 1$ and $c_2 = 3$. This gives the answer $y = e^x + 3e^{-2x}$. @fig-2-30 shows that the curve begins at $(0, 4)$ with a negative slope (but note that the axes have different scales!), in agreement with the initial conditions.
 
 ![Fig. 30. Solution in Example 2](../images/chapter2/fig-2-30.png){#fig-2-30}
 
@@ -580,7 +580,7 @@ $$
 y(0) = c_1 = 3.0, \quad y'(0) = c_2 - 0.5 c_1 = -3.5.
 $$
 
-Hence $c_2 = -3.5 + 1.5 = -2$. The particular solution of the initial value problem is $y = (3.0 - 2x) e^{-0.5x}$. See Fig. 31.
+Hence $c_2 = -3.5 + 1.5 = -2$. The particular solution of the initial value problem is $y = (3.0 - 2x) e^{-0.5x}$. See @fig-2-31.
 
 ![Fig. 31. Solution in Example 4](../images/chapter2/fig-2-31.png){#fig-2-31}
 
@@ -640,7 +640,7 @@ $$
 y = e^{-0.2x} \sin 3x.
 $$
 
-Figure 32 shows $y$ and the curves of $e^{-0.2x}$ and $-e^{-0.2x}$ (dashed), between which the curve of $y$ oscillates. Such "damped vibrations" (with $x$ being time $t$) have important mechanical and electrical applications, as we shall soon see (in Sec. 2.4).
+    @fig-2-32 shows $y$ and the curves of $e^{-0.2x}$ and $-e^{-0.2x}$ (dashed), between which the curve of $y$ oscillates. Such "damped vibrations" (with $x$ being time $t$) have important mechanical and electrical applications, as we shall soon see (in @sec-free-oscillations).
 
 ![Fig. 32. Solution in Example 5](../images/chapter2/fig-2-32.png){#fig-2-32}
 
@@ -657,7 +657,7 @@ $$
 y = A \cos \omega x + B \sin \omega x.
 $$
 
-With $\omega = 1$ this confirms Example 4 in Sec. 2.1. $\square$
+With $\omega = 1$ this confirms Example 4 in @sec-homogeneous-linear-odes. $\square$
 
 | Case | Roots of (@eq-2-12) | Basis of (@eq-2-10) | General Solution of (@eq-2-10) |
 |---|---|---|---|
@@ -675,7 +675,7 @@ $$
 e^z = e^{r + it} = e^r e^{it} = e^r (\cos t + i \sin t).
 $$ {#eq-2-18}
 
-This is motivated as follows. For real $z$, hence $t = 0$, $\cos 0 = 1$, $\sin 0 = 0$, we get the real exponential function $e^r$. It can be shown that $e^{z_1 + z_2} = e^{z_1} e^{z_2}$, just as in the real case (Proof in Sec. 13.5). Finally, if we use the Maclaurin series of $e^{it}$ with $i^2 = -1, i^3 = -i, i^4 = 1, i^5 = i$, etc., and reorder the terms as shown (this is permissible, as can be proved), we obtain the series
+This is motivated as follows. For real $z$, hence $t = 0$, $\cos 0 = 1$, $\sin 0 = 0$, we get the real exponential function $e^r$. It can be shown that $e^{z_1 + z_2} = e^{z_1} e^{z_2}$, just as in the real case (Proof in <!-- TODO: replace Sec. 13.5 with actual cross-reference label -->). Finally, if we use the Maclaurin series of $e^{it}$ with $i^2 = -1, i^3 = -i, i^4 = 1, i^5 = i$, etc., and reorder the terms as shown (this is permissible, as can be proved), we obtain the series
 
 $$
 e^{it} = \sum_{n=0}^{\infty} \frac{(it)^n}{n!} = 1 + it - \frac{t^2}{2!} - i \frac{t^3}{3!} + \frac{t^4}{4!} + \cdots = \left( 1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \cdots \right) + i \left( t - \frac{t^3}{3!} + \frac{t^5}{5!} - \cdots \right).
@@ -711,7 +711,7 @@ $$
 y_1 = e^{\lambda_1 x} = e^{-ax/2} (\cos \omega x + i \sin \omega x), \qquad y_2 = e^{\lambda_2 x} = e^{-ax/2} (\cos \omega x - i \sin \omega x).
 $$
 
-We now add these two lines and multiply the result by $1/2$. This gives $e^{-ax/2} \cos \omega x$ as in (@eq-2-16). Then we subtract the second line from the first and multiply the result by $1/(2i)$. This gives $e^{-ax/2} \sin \omega x$ as in (@eq-2-16). These results obtained by addition and multiplication by constants are again solutions, as follows from the superposition principle in Sec. 2.1. This concludes the derivation of these real solutions in Case III.
+We now add these two lines and multiply the result by $1/2$. This gives $e^{-ax/2} \cos \omega x$ as in (@eq-2-16). Then we subtract the second line from the first and multiply the result by $1/(2i)$. This gives $e^{-ax/2} \sin \omega x$ as in (@eq-2-16). These results obtained by addition and multiplication by constants are again solutions, as follows from the superposition principle in @sec-homogeneous-linear-odes. This concludes the derivation of these real solutions in Case III.
 
 ## PROBLEM SET 2.2
 
@@ -771,7 +771,7 @@ Are the following functions linearly independent on the given interval? Show the
     (c) **Double root.** Verify directly that $x e^{\lambda x}$ with $\lambda = -a/2$ is a solution of (@eq-2-10) in the case of a double root. Verify and explain why $y = x e^{-2x}$ is a solution of $y'' - y' - 6y = 0$ but $y = e^{-2x}$ is not.
     (d) **Limits.** Double roots should be limiting cases of distinct roots $\lambda_1, \lambda_2$ as, say, $\lambda_2 \to \lambda_1$. Experiment with this idea using $\frac{e^{\lambda_2 x} - e^{\lambda_1 x}}{\lambda_2 - \lambda_1}$. (Remember l'Hôpital's rule.) Can you arrive at $x e^{\lambda_1 x}$?
 
-## 2.3 Differential Operators {#sec-2-3}
+## Differential Operators {#sec-differential-operators}
 
 *This short section can be omitted without interrupting the flow of ideas. It will not be used subsequently, except for the notations $Dy, D^2y$, etc. to stand for $y', y''$, etc.*
 
@@ -807,13 +807,13 @@ $$
 L(cy + kw) = cLy + kLw.
 $$
 
-Let us show that from (@eq-2-22) we reach agreement with the results in Sec. 2.2. Since $D e^{\lambda x} = \lambda e^{\lambda x}$ and $D^2 e^{\lambda x} = \lambda^2 e^{\lambda x}$, we obtain
+Let us show that from (@eq-2-22) we reach agreement with the results in @sec-constant-coefficient-odes. Since $D e^{\lambda x} = \lambda e^{\lambda x}$ and $D^2 e^{\lambda x} = \lambda^2 e^{\lambda x}$, we obtain
 
 $$
 L e^{\lambda x} = P(D) e^{\lambda x} = (D^2 + aD + bI) e^{\lambda x} = (\lambda^2 + a\lambda + b) e^{\lambda x} = P(\lambda) e^{\lambda x} = 0.
 $$ {#eq-2-23}
 
-This confirms our result of Sec. 2.2 that $e^{\lambda x}$ is a solution of the ODE (@eq-2-22) if and only if $\lambda$ is a solution of the characteristic equation $P(\lambda) = 0$.
+This confirms our result of @sec-constant-coefficient-odes that $e^{\lambda x}$ is a solution of the ODE (@eq-2-22) if and only if $\lambda$ is a solution of the characteristic equation $P(\lambda) = 0$.
 
 $P(\lambda)$ is a polynomial in the usual sense of algebra. If we replace $\lambda$ by the operator $D$, we obtain the "operator polynomial" $P(D)$. The point of this operational calculus is that $P(D)$ can be treated just like an algebraic quantity. In particular, we can factor it.
 
@@ -830,7 +830,7 @@ $$
 \end{aligned}
 $$
 
-Verify that this agrees with the result of our method in Sec. 2.2. This is not unexpected because we factored $P(D)$ in the same way as the characteristic polynomial $P(\lambda) = \lambda^2 - 3\lambda - 40$.
+Verify that this agrees with the result of our method in @sec-constant-coefficient-odes. This is not unexpected because we factored $P(D)$ in the same way as the characteristic polynomial $P(\lambda) = \lambda^2 - 3\lambda - 40$.
 
 It was essential that $L$ in (@eq-2-22) had constant coefficients. Extension of operator methods to variable-coefficient ODEs is more difficult and will not be considered here.
 
@@ -860,9 +860,9 @@ Factor as in the text and solve.
 14. **Double root.** If $D^2 + aD + bI$ has distinct roots $\lambda$ and $\mu$, show that a particular solution of $(D - \lambda I)(D - \mu I)y = 0$ is $y = \frac{e^{\mu x} - e^{\lambda x}}{\mu - \lambda}$. Obtain from this a solution for a double root by letting $\mu \to \lambda$ and applying l'Hôpital's rule.
 15. **Definition of linearity.** Show that the definition of linearity in the text is equivalent to the following: If $Ly$ and $Lw$ exist, then $L(y + w)$ and $L[kw]$ exist for all constants $k$, and $L[y + w] = Ly + Lw$ as well as $L[ky] = kLy$.
 
-## 2.4 Modeling of Free Oscillations of a Mass–Spring System {#sec-2-4}
+## Modeling of Free Oscillations of a Mass–Spring System {#sec-free-oscillations}
 
-Linear ODEs with constant coefficients have important applications in mechanics, as we show in this section as well as in Sec. 2.8, and in electrical circuits as we show in Sec. 2.9. In this section we model and solve a basic mechanical system consisting of a mass on an elastic spring (a so-called "mass–spring system," @fig-2-33), which moves up and down.
+Linear ODEs with constant coefficients have important applications in mechanics, as we show in this section as well as in @sec-forced-oscillations, and in electrical circuits as we show in @sec-electric-circuits. In this section we model and solve a basic mechanical system consisting of a mass on an elastic spring (a so-called "mass\u2013spring system," @fig-2-33), which moves up and down.
 
 ### Setting Up the Model
 
@@ -896,13 +896,13 @@ $$
 my'' + ky = 0.
 $$ {#eq-2-26}
 
-This is a homogeneous linear ODE with constant coefficients. A general solution is obtained as in Sec. 2.2, namely:
+This is a homogeneous linear ODE with constant coefficients. A general solution is obtained as in @sec-constant-coefficient-odes, namely:
 
 $$
 y(t) = A \cos \omega_0 t + B \sin \omega_0 t
 $$ {#eq-2-27}
 
-where $\omega_0 = \sqrt{k/m}$. This motion is called a **harmonic oscillation** (@fig-2-34). Its frequency is $f = \omega_0 / 2\pi$ Hertz (cycles/sec) because $\cos \omega_0 t$ and $\sin \omega_0 t$ in (@eq-2-27) have the period $2\pi/\omega_0$. The frequency $f$ is called the natural frequency of the system. (We write $\omega_0$ to reserve $\omega$ for Sec. 2.8.)
+where $\omega_0 = \sqrt{k/m}$. This motion is called a **harmonic oscillation** (@fig-2-34). Its frequency is $f = \omega_0 / 2\pi$ Hertz (cycles/sec) because $\cos \omega_0 t$ and $\sin \omega_0 t$ in (@eq-2-27) have the period $2\pi/\omega_0$. The frequency $f$ is called the natural frequency of the system. (We write $\omega_0$ to reserve $\omega$ for @sec-forced-oscillations.)
 
 ![Fig. 34. Typical harmonic oscillations (4) and (4*) with the same $\omega_0$ and different initial velocities: positive (1), zero (2), negative (3)](../images/chapter2/fig-2-34.png){#fig-2-34}
 
@@ -944,7 +944,7 @@ Physically this can be done by connecting the ball to a dashpot; see @fig-2-36. 
 
 The constant $c$ is called the damping constant. Let us show that $c$ is positive. Indeed, the damping force acts against the motion; hence for a downward motion we have $y' > 0$ which for positive $c$ makes $F_2$ negative (an upward force), as it should be. Similarly, for an upward motion we have $y' < 0$ which makes $F_2$ positive (a downward force).
 
-The ODE (@eq-2-28) is homogeneous linear and has constant coefficients. Hence we can solve it by the method in Sec. 2.2. The characteristic equation is (divide (@eq-2-28) by $m$)
+The ODE (@eq-2-28) is homogeneous linear and has constant coefficients. Hence we can solve it by the method in @sec-constant-coefficient-odes. The characteristic equation is (divide (@eq-2-28) by $m$)
 
 $$
 \lambda^2 + \frac{c}{m} \lambda + \frac{k}{m} = 0.
@@ -964,7 +964,7 @@ It is now interesting that depending on the amount of damping present—whether 
 *   **Case II.** $c^2 = 4mk$. A real double root. (**Critical damping**)
 *   **Case III.** $c^2 < 4mk$. Complex conjugate roots. (**Underdamping**)
 
-They correspond to the three Cases I, II, III in Sec. 2.2.
+They correspond to the three Cases I, II, III in @sec-constant-coefficient-odes.
 
 ### Discussion of the Three Cases
 
@@ -1085,7 +1085,7 @@ We see that these damped oscillations have a smaller frequency than the harmonic
 
 ![Fig. 40. The three solutions in Example 2](../images/chapter2/fig-2-40.png){#fig-2-40}
 
-This section concerned free motions of mass–spring systems. Their models are homogeneous linear ODEs. Nonhomogeneous linear ODEs will arise as models of forced motions, that is, motions under the influence of a "driving force." We shall study them in Sec. 2.8, after we have learned how to solve those ODEs.
+This section concerned free motions of mass–spring systems. Their models are homogeneous linear ODEs. Nonhomogeneous linear ODEs will arise as models of forced motions, that is, motions under the influence of a "driving force." We shall study them in @sec-forced-oscillations, after we have learned how to solve those ODEs.
 
 ## PROBLEM SET 2.4
 
@@ -1144,7 +1144,7 @@ This section concerned free motions of mass–spring systems. Their models are h
 
 ![Fig. 47. CAS Project 20](../images/chapter2/fig-2-47.png){#fig-2-47}
 
-## 2.5 Euler–Cauchy Equations {#sec-2-5}
+## Euler–Cauchy Equations {#sec-euler-cauchy}
 
 **Euler–Cauchy equations** are ODEs of the form
 
@@ -1203,7 +1203,7 @@ y = c_1 \sqrt{x} + \frac{c_2}{x} \quad (x > 0).
 ### Case II. A Real Double Root
 A real double root of (@eq-2-35) occurs if and only if the discriminant is zero, which means $(1 - a)^2 - 4b = 0 \Rightarrow b = \frac{1}{4}(1 - a)^2$. Then the auxiliary equation has the double root $m_1 = m_2 = m = \frac{1 - a}{2}$.
 
-This gives one solution $y_1 = x^m$. To find a second linearly independent solution $y_2$, we use the method of reduction of order. We set $y_2 = u y_1$. The formula for reduction of order in standard form (from Sec. 2.1) is
+This gives one solution $y_1 = x^m$. To find a second linearly independent solution $y_2$, we use the method of reduction of order. We set $y_2 = u y_1$. The formula for reduction of order in standard form (from @sec-homogeneous-linear-odes) is
 
 $$
 u = \int U dx \quad \text{where} \quad U = \frac{1}{y_1^2} e^{-\int p(x) dx}.
@@ -1242,7 +1242,7 @@ $$
 x^{\mu + i\nu} = x^\mu (\cos(\nu \ln x) + i \sin(\nu \ln x)), \qquad x^{\mu - i\nu} = x^\mu (\cos(\nu \ln x) - i \sin(\nu \ln x)).
 $$
 
-As in Sec. 2.2, by adding and subtracting these solutions (and multiplying by appropriate constants), we obtain a basis of real solutions:
+As in @sec-constant-coefficient-odes, by adding and subtracting these solutions (and multiplying by appropriate constants), we obtain a basis of real solutions:
 
 $$
 y_1 = x^\mu \cos(\nu \ln x), \qquad y_2 = x^\mu \sin(\nu \ln x).
@@ -1329,7 +1329,7 @@ Solve and graph the solution. Show the details of your work.
     (d) Transform the Euler-Cauchy equation (@eq-2-34) into an ODE with constant coefficients by setting $x = e^t$ (for $x > 0$).
     (e) Obtain the second solution in the critical case from that of a constant-coefficient ODE.
 
-## 2.6 Existence and Uniqueness of Solutions. Wronskian {#sec-2-6}
+## Existence and Uniqueness of Solutions. Wronskian {#sec-existence-uniqueness}
 
 In this section we shall discuss the general theory of homogeneous linear ODEs
 
@@ -1358,7 +1358,7 @@ Central to our present discussion is the following theorem.
 ### THEOREM 1 Existence and Uniqueness Theorem for Initial Value Problems
 If $p(x)$ and $q(x)$ are continuous functions on some open interval $I$ and $x_0$ is in $I$, then the initial value problem consisting of (@eq-2-41) and (@eq-2-42) has a unique solution $y(x)$ on the interval $I$.
 
-The proof of existence uses the same prerequisites as the existence proof in Sec. 1.7; it can be found in Ref. [A11] listed in App. 1. Uniqueness is proved in App. 4.
+The proof of existence uses the same prerequisites as the existence proof in <!-- TODO: replace Sec. 1.7 with actual cross-reference label -->; it can be found in Ref. [A11] listed in App. 1. Uniqueness is proved in App. 4.
 
 ### Linear Independence of Solutions
 
@@ -1412,7 +1412,7 @@ $$
 y(x) = k_1 y_1(x) + k_2 y_2(x).
 $$
 
-Since (@eq-2-41) is homogeneous linear, Theorem 1 in Sec. 2.1 (the superposition principle) implies that $y(x)$ is a solution of (@eq-2-41) on $I$. From (@eq-2-46) we see that it satisfies the initial conditions $y(x_0) = 0, y'(x_0) = 0$. Now another solution of (@eq-2-41) satisfying the same initial conditions is $y^* \equiv 0$. Since the coefficients $p$ and $q$ of (@eq-2-41) are continuous, Theorem 1 applies and gives uniqueness, that is, $y(x) \equiv y^*(x) \equiv 0$, written out:
+Since (@eq-2-41) is homogeneous linear, Theorem 1 in @sec-homogeneous-linear-odes (the superposition principle) implies that $y(x)$ is a solution of (@eq-2-41) on $I$. From (@eq-2-46) we see that it satisfies the initial conditions $y(x_0) = 0, y'(x_0) = 0$. Now another solution of (@eq-2-41) satisfying the same initial conditions is $y^* \equiv 0$. Since the coefficients $p$ and $q$ of (@eq-2-41) are continuous, Theorem 1 applies and gives uniqueness, that is, $y(x) \equiv y^*(x) \equiv 0$, written out:
 
 $$
 k_1 y_1(x) + k_2 y_2(x) = 0
@@ -1537,7 +1537,7 @@ Find the Wronskian. Show linear independence by using quotients and confirm it b
     (d) Why is it likely that formulas of the form (@eq-2-47) should exist?
     (e) Sketch $y_1(x) = x^3$ if $x \ge 0$ (and $0$ if $x < 0$), and $y_2(x) = 0$ if $x \ge 0$ (and $x^3$ if $x < 0$). Show linear independence on $[-1, 1]$. What is their Wronskian? What Euler-Cauchy equation do they satisfy? Is there a contradiction to Theorem 2?
 
-## 2.7 Nonhomogeneous ODEs
+## Nonhomogeneous ODEs {#sec-nonhomogeneous-odes}
 
 We now advance from homogeneous to nonhomogeneous linear ODEs. Consider the second-order nonhomogeneous linear ODE
 
@@ -1585,17 +1585,17 @@ Now for homogeneous ODEs (2) we know that general solutions include all solution
 
 If the coefficients $p(x)$, $q(x)$, and the function $r(x)$ in (1) are continuous on some open interval $I$, then every solution of (1) on $I$ is obtained by assigning suitable values to the arbitrary constants $c_1$ and $c_2$ in a general solution (3) of (1) on $I$.
 
-**PROOF** Let $y^*$ be any solution of (1) on $I$ and $x_0$ any $x$ in $I$. Let (3) be any general solution of (1) on $I$. This solution exists: $y_h = c_1 y_1 + c_2 y_2$ exists by Theorem 3 in Sec. 2.6 because of the continuity assumption, and $y_p$ exists according to a construction to be shown in Sec. 2.10. Now, by Theorem 1(b) just proved, the difference $Y = y^* - y_p$ is a solution of (2) on $I$. At $x_0$ we have
+**PROOF** Let $y^*$ be any solution of (1) on $I$ and $x_0$ any $x$ in $I$. Let (3) be any general solution of (1) on $I$. This solution exists: $y_h = c_1 y_1 + c_2 y_2$ exists by Theorem 3 in @sec-existence-uniqueness because of the continuity assumption, and $y_p$ exists according to a construction to be shown in @sec-variation-of-parameters. Now, by Theorem 1(b) just proved, the difference $Y = y^* - y_p$ is a solution of (2) on $I$. At $x_0$ we have
 $$
 Y(x_0) = y^*(x_0) - y_p(x_0), \qquad Y'(x_0) = y^{*'}(x_0) - y_p'(x_0).
 $$
-Theorem 1 in Sec. 2.6 implies that for these conditions, as for any other initial conditions in $I$, there exists a unique particular solution of (2) obtained by assigning suitable values to $c_1, c_2$ in $y_h$. From this and $y^* = Y + y_p$ the statement follows. $\square$
+Theorem 1 in @sec-existence-uniqueness implies that for these conditions, as for any other initial conditions in $I$, there exists a unique particular solution of (2) obtained by assigning suitable values to $c_1, c_2$ in $y_h$. From this and $y^* = Y + y_p$ the statement follows. $\square$
 
 ### Method of Undetermined Coefficients
 
 Our discussion suggests the following. To solve the nonhomogeneous ODE (1) or an initial value problem for (1), we have to solve the homogeneous ODE (2) and find any solution $y_p$ of (1), so that we obtain a general solution (3) of (1).
 
-How can we find a solution $y_p$ of (1)? One method is the so-called **method of undetermined coefficients**. It is much simpler than another, more general, method (given in Sec. 2.10). Since it applies to models of vibrational systems and electric circuits to be shown in the next two sections, it is frequently used in engineering.
+How can we find a solution $y_p$ of (1)? One method is the so-called **method of undetermined coefficients**. It is much simpler than another, more general, method (given in @sec-variation-of-parameters). Since it applies to models of vibrational systems and electric circuits to be shown in the next two sections, it is frequently used in engineering.
 
 More precisely, the method of undetermined coefficients is suitable for linear ODEs with constant coefficients $a$ and $b$
 
@@ -1603,15 +1603,15 @@ $$
 y'' + ay' + by = r(x) \tag{4}
 $$
 
-when $r(x)$ is an exponential function, a power of $x$, a cosine or sine, or sums or products of such functions. These functions have derivatives similar to $r(x)$ itself. This gives the idea. We choose a form for $y_p$ similar to $r(x)$, but with unknown coefficients to be determined by substituting that $y_p$ and its derivatives into the ODE. **Table 2.1** on p. 82 shows the choice of $y_p$ for practically important forms of $r(x)$. Corresponding rules are as follows.
+when $r(x)$ is an exponential function, a power of $x$, a cosine or sine, or sums or products of such functions. These functions have derivatives similar to $r(x)$ itself. This gives the idea. We choose a form for $y_p$ similar to $r(x)$, but with unknown coefficients to be determined by substituting that $y_p$ and its derivatives into the ODE. @tbl-2-1 shows the choice of $y_p$ for practically important forms of $r(x)$. Corresponding rules are as follows.
 
 **Choice Rules for the Method of Undetermined Coefficients**
 
-**(a) Basic Rule.** If $r(x)$ in (4) is one of the functions in the first column in Table 2.1, choose $y_p$ in the same line and determine its undetermined coefficients by substituting $y_p$ and its derivatives into (4).
+**(a) Basic Rule.** If $r(x)$ in (4) is one of the functions in the first column in @tbl-2-1, choose $y_p$ in the same line and determine its undetermined coefficients by substituting $y_p$ and its derivatives into (4).
 
 **(b) Modification Rule.** If a term in your choice for $y_p$ happens to be a solution of the homogeneous ODE corresponding to (4), multiply this term by $x$ (or by $x^2$ if this solution corresponds to a double root of the characteristic equation of the homogeneous ODE).
 
-**(c) Sum Rule.** If $r(x)$ is a sum of functions in the first column of Table 2.1, choose for $y_p$ the sum of the functions in the corresponding lines of the second column.
+**(c) Sum Rule.** If $r(x)$ is a sum of functions in the first column of @tbl-2-1, choose for $y_p$ the sum of the functions in the corresponding lines of the second column.
 
 The Basic Rule applies when $r(x)$ is a single term. The Modification Rule helps in the indicated case, and to recognize such a case, we have to solve the homogeneous ODE first. The Sum Rule follows by noting that the sum of two solutions of (1) with $r = r_1$ and $r = r_2$ (and the same left side!) is a solution of (1) with $r = r_1 + r_2$. (Verify!)
 
@@ -1785,9 +1785,9 @@ Solve the initial value problem. State which rule you are using. Show each step 
 
 ---
 
-## 2.8 Modeling: Forced Oscillations. Resonance {#sec-forced-oscillations}
+## Modeling: Forced Oscillations. Resonance {#sec-forced-oscillations}
 
-In Sec. 2.4 we considered vertical motions of a mass–spring system (vibration of a mass $m$ on an elastic spring, as in Figs. 33 and 53) and modeled it by the homogeneous linear ODE
+In @sec-free-oscillations we considered vertical motions of a mass–spring system (vibration of a mass $m$ on an elastic spring, as in @fig-2-33 and @fig-2-53) and modeled it by the homogeneous linear ODE
 
 $$
 m y'' + c y' + k y = 0 \tag{1}
@@ -1795,7 +1795,7 @@ $$
 
 Here $y(t)$ as a function of time $t$ is the displacement of the body of mass $m$ from rest.
 
-The mass–spring system of Sec. 2.4 exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia $m y''$, the damping force $c y'$ (if $c > 0$), and the spring force $k y$, a restoring force.
+The mass–spring system of @sec-free-oscillations exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia $m y''$, the damping force $c y'$ (if $c > 0$), and the spring force $k y$, a restoring force.
 
 ![Fig. 53. Mass on a spring](../images/chapter2/fig-2-53.png){#fig-2-53}
 
@@ -1817,7 +1817,7 @@ Its solution will reveal facts that are fundamental in engineering mathematics a
 
 ### Solving the Nonhomogeneous ODE (2)
 
-From Sec. 2.7 we know that a general solution of (2) is the sum of a general solution $y_h$ of the homogeneous ODE (1) plus any particular solution $y_p$ of (2). To find $y_p$ we use the method of undetermined coefficients (Sec. 2.7), starting from
+From @sec-nonhomogeneous-odes we know that a general solution of (2) is the sum of a general solution $y_h$ of the homogeneous ODE (1) plus any particular solution $y_p$ of (2). To find $y_p$ we use the method of undetermined coefficients (@sec-nonhomogeneous-odes), starting from
 
 $$
 y_p(t) = a \cos \omega t + b \sin \omega t \tag{3}
@@ -1891,7 +1891,7 @@ $$
 y_p(t) = \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t = \frac{F_0}{k[1 - (\omega/\omega_0)^2]} \cos \omega t \tag{7}
 $$
 
-Here we must assume that $\omega^2 \neq \omega_0^2$; physically, the frequency $\omega/(2\pi)$ [cycles/sec] of the driving force is different from the natural frequency $\omega_0/(2\pi)$ of the system, which is the frequency of the free undamped motion [see (4) in Sec. 2.4]. From (7) and from (4*) in Sec. 2.4 we have the general solution of the "undamped system"
+Here we must assume that $\omega^2 \neq \omega_0^2$; physically, the frequency $\omega/(2\pi)$ [cycles/sec] of the driving force is different from the natural frequency $\omega_0/(2\pi)$ of the system, which is the frequency of the free undamped motion [see (@eq-2-27star) in @sec-free-oscillations]. From (7) and from (@eq-2-27star) in @sec-free-oscillations we have the general solution of the "undamped system"
 
 $$
 y(t) = C \cos (\omega_0 t - \delta) + \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t \tag{8}
@@ -1921,7 +1921,7 @@ $$
 y'' + \omega_0^2 y = \frac{F_0}{m} \cos \omega_0 t \tag{10}
 $$
 
-Then (7) is no longer valid, and, from the Modification Rule in Sec. 2.7, we conclude that a particular solution of (10) is of the form
+Then (7) is no longer valid, and, from the Modification Rule in @sec-nonhomogeneous-odes, we conclude that a particular solution of (10) is of the form
 
 $$
 y_p(t) = t(a \cos \omega_0 t + b \sin \omega_0 t).
@@ -1955,7 +1955,7 @@ Since $\omega$ is close to $\omega_0$, the difference $\omega_0 - \omega$ is sma
 
 ### Case 2. Damped Forced Oscillations
 
-If the damping of the mass–spring system is not negligibly small, we have $c > 0$ and a damping term $c y'$ in (1) and (2). Then the general solution $y_h$ of the homogeneous ODE (1) approaches zero as $t$ goes to infinity, as we know from Sec. 2.4. Practically, it is zero after a sufficiently long time. Hence the "transient solution" (6) of (2), given by $y = y_h + y_p$, approaches the "steady-state solution" $y_p$. This proves the following.
+If the damping of the mass–spring system is not negligibly small, we have $c > 0$ and a damping term $c y'$ in (1) and (2). Then the general solution $y_h$ of the homogeneous ODE (1) approaches zero as $t$ goes to infinity, as we know from @sec-free-oscillations. Practically, it is zero after a sufficiently long time. Hence the "transient solution" (6) of (2), given by $y = y_h + y_p$, approaches the "steady-state solution" $y_p$. This proves the following.
 
 ::: {.callout-note appearance="simple" icon=false}
 ### THEOREM 1 Steady-State Solution
@@ -2098,11 +2098,11 @@ Find the motion of the mass–spring system modeled by the ODE and the initial c
 
 ---
 
-## 2.9 Modeling: Electric Circuits {#sec-electric-circuits}
+## Modeling: Electric Circuits {#sec-electric-circuits}
 
 Designing good models is a task the computer cannot do. Hence setting up models has become an important task in modern applied mathematics. The best way to gain experience in successful modeling is to carefully examine the modeling process in various fields and applications. Accordingly, modeling electric circuits will be profitable for all students, not just for electrical engineers and computer scientists.
 
-Figure 61 shows an RLC-circuit, as it occurs as a basic building block of large electric networks in computers and elsewhere. An RLC-circuit is obtained from an RL-circuit by adding a capacitor. Recall Example 2 on the RL-circuit in Sec. 1.5: The model of the RL-circuit is
+@fig-2-61 shows an RLC-circuit, as it occurs as a basic building block of large electric networks in computers and elsewhere. An RLC-circuit is obtained from an RL-circuit by adding a capacitor. Recall Example 2 on the RL-circuit in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->: The model of the RL-circuit is
 
 $$
 L I' + R I = E(t).
@@ -2340,7 +2340,7 @@ $$
 m y'' + c y' + k y = F_0 \cos \omega t
 $$
 
-are of the same form. Table 2.2 shows the analogy between the various quantities involved. The inductance $L$ corresponds to the mass $m$ and, indeed, an inductor opposes a change in current, having an "inertia effect" similar to that of a mass. The resistance $R$ corresponds to the damping constant $c$, and a resistor causes loss of energy, just as a damping dashpot does. And so on.
+are of the same form. @tbl-2-2-analogy shows the analogy between the various quantities involved. The inductance $L$ corresponds to the mass $m$ and, indeed, an inductor opposes a change in current, having an "inertia effect" similar to that of a mass. The resistance $R$ corresponds to the damping constant $c$, and a resistor causes loss of energy, just as a damping dashpot does. And so on.
 
 This analogy is strictly quantitative in the sense that to a given mechanical system we can construct an electric circuit whose current will give the exact values of the displacement in the mechanical system when suitable scale factors are introduced.
 
@@ -2417,7 +2417,7 @@ Related to this analogy are transducers, devices that convert changes in a mecha
 
 ---
 
-## 2.10 Solution by Variation of Parameters {#sec-variation-of-parameters}
+## Solution by Variation of Parameters {#sec-variation-of-parameters}
 
 We continue our discussion of nonhomogeneous linear ODEs, that is:
 
@@ -2425,9 +2425,9 @@ $$
 y'' + p(x) y' + q(x) y = r(x) \tag{1}
 $$
 
-In Sec. 2.6 we have seen that a general solution of (1) is the sum of a general solution $y_h$ of the corresponding homogeneous ODE and any particular solution $y_p$ of (1). To obtain $y_p$ when $r(x)$ is not too complicated, we can often use the method of undetermined coefficients, as we have shown in Sec. 2.7 and applied to basic engineering models in Secs. 2.8 and 2.9.
+In @sec-existence-uniqueness we have seen that a general solution of (1) is the sum of a general solution $y_h$ of the corresponding homogeneous ODE and any particular solution $y_p$ of (1). To obtain $y_p$ when $r(x)$ is not too complicated, we can often use the method of undetermined coefficients, as we have shown in @sec-nonhomogeneous-odes and applied to basic engineering models in @sec-forced-oscillations and @sec-electric-circuits.
 
-However, since this method is restricted to functions whose derivatives are of a form similar to itself (powers, exponential functions, etc.), it is desirable to have a method valid for more general ODEs (1), which we shall now develop. It is called the **method of variation of parameters** and is credited to Lagrange (Sec. 2.1). Here $p, q, r$ in (1) may be variable (given functions of $x$), but we assume that they are continuous on some open interval $I$.
+However, since this method is restricted to functions whose derivatives are of a form similar to itself (powers, exponential functions, etc.), it is desirable to have a method valid for more general ODEs (1), which we shall now develop. It is called the **method of variation of parameters** and is credited to Lagrange (@sec-homogeneous-linear-odes). Here $p, q, r$ in (1) may be variable (given functions of $x$), but we assume that they are continuous on some open interval $I$.
 
 Lagrange's method gives a particular solution of (1) on $I$ in the form:
 
@@ -2447,7 +2447,7 @@ $$
 W = y_1 y_2' - y_2 y_1' \tag{4}
 $$
 
-(see Sec. 2.6).
+(see @sec-existence-uniqueness).
 
 ::: {.callout-caution}
 The solution formula (2) is obtained under the assumption that the ODE is written in standard form, with $y''$ as the first term as shown in (1). If it starts with $f(x) y''$, divide first by $f(x)$.
@@ -2469,7 +2469,7 @@ $$
 W(y_1, y_2) = \cos x \cos x - \sin x (-\sin x) = \cos^2 x + \sin^2 x = 1.
 $$
 
-From (2), choosing zero constants of integration, we get the particular solution of the given ODE (Fig. 70):
+From (2), choosing zero constants of integration, we get the particular solution of the given ODE (@fig-2-70):
 
 $$
 y_p = -\cos x \int \sin x \sec x \, dx + \sin x \int \cos x \sec x \, dx
@@ -2483,7 +2483,7 @@ $$
 = \cos x \ln|\cos x| + x \sin x.
 $$
 
-Figure 70 shows $y_p$ and its first term, which is small, so that $x \sin x$ essentially determines the shape of the curve of $y_p$. (Recall from Sec. 2.8 that we have seen $x \sin x$ in connection with resonance, except for notation.) From $y_p$ and the general solution $y_h = c_1 \cos x + c_2 \sin x$ of the homogeneous ODE we obtain the answer:
+@fig-2-70 shows $y_p$ and its first term, which is small, so that $x \sin x$ essentially determines the shape of the curve of $y_p$. (Recall from @sec-forced-oscillations that we have seen $x \sin x$ in connection with resonance, except for notation.) From $y_p$ and the general solution $y_h = c_1 \cos x + c_2 \sin x$ of the homogeneous ODE we obtain the answer:
 
 $$
 y = y_h + y_p = (c_1 + \ln|\cos x|) \cos x + (c_2 + x) \sin x. \tag{6}
@@ -2509,7 +2509,7 @@ $$
 y_p(x) = u(x) y_1(x) + v(x) y_2(x) \tag{7}
 $$
 
-is a particular solution of the nonhomogeneous ODE (1). Note that $y_p$ exists by Theorem 3 in Sec. 2.6 because of the continuity of $p$ and $q$ on $I$. (The continuity of $r$ will be used later.)
+is a particular solution of the nonhomogeneous ODE (1). Note that $y_p$ exists by Theorem 3 in @sec-existence-uniqueness because of the continuity of $p$ and $q$ on $I$. (The continuity of $r$ will be used later.)
 
 We determine $u$ and $v$ by substituting (7) and its derivatives into (1). Differentiating (7), we obtain:
 
@@ -2571,7 +2571,7 @@ $$
 v'(y_1 y_2' - y_2 y_1') = y_1 r \implies v' W = y_1 r \implies v' = \frac{y_1 r}{W}.
 $$
 
-Since $y_1, y_2$ form a basis, we have $W \neq 0$ (by Theorem 2 in Sec. 2.6) and can divide by $W$:
+Since $y_1, y_2$ form a basis, we have $W \neq 0$ (by Theorem 2 in @sec-existence-uniqueness) and can divide by $W$:
 
 $$
 u' = -\frac{y_2 r}{W}, \qquad v' = \frac{y_1 r}{W} \tag{12}
