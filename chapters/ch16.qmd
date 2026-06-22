@@ -1,18 +1,18 @@
 ---
-title: "CHAPTER 16: Laurent Series. Residue Integration"
+title: "Laurent Series. Residue Integration"
 ---
 
-The main purpose of this chapter is to learn about another powerful method for evaluating complex integrals and certain real integrals. It is called **residue integration**. Recall that the first method of evaluating complex integrals consisted of directly applying Cauchy’s integral formula of @sec-cauchy-integral-formula. Then we learned about Taylor series (Chap. 15) and will now generalize Taylor series. The beauty of residue integration, the second method of integration, is that it brings together a lot of the previous material.
+The main purpose of this chapter is to learn about another powerful method for evaluating complex integrals and certain real integrals. It is called **residue integration**. Recall that the first method of evaluating complex integrals consisted of directly applying Cauchy’s integral formula of @sec-cauchy-integral-formula. Then we learned about Taylor series (<!-- TODO: replace Chap. 15 with actual chapter label -->) and will now generalize Taylor series. The beauty of residue integration, the second method of integration, is that it brings together a lot of the previous material.
 
 Laurent series generalize Taylor series. Indeed, whereas a Taylor series has positive integer powers (and a constant term) and converges in a disk, a Laurent series (@sec-laurent-series-sec) is a series of positive and negative integer powers of $z - z_0$ and converges in an annulus (a circular ring) with center $z_0$. Hence, by a Laurent series, we can represent a given function $f(z)$ that is analytic in an annulus and may have singularities outside the ring as well as in the “hole” of the annulus.
 
 We know that for a given function the Taylor series with a given center is unique. We shall see that, in contrast, a function can have several Laurent series with the same center and valid in several concentric annuli. The most important of these series is the one that converges for $0 < |z - z_0| < R$, that is, everywhere near the center $z_0$ except at $z_0$ itself, where $z_0$ is a singular point of $f(z)$. The series (or finite sum) of the negative powers of this Laurent series is called the **principal part** of the singularity of $f(z)$ at $z_0$ and is used to classify this singularity (@sec-singularities-zeros). The coefficient of the $1/(z - z_0)$ power of this series is called the **residue** of $f(z)$ at $z_0$. Residues are used in an elegant and powerful integration method, called **residue integration**, for complex contour integrals (@sec-residue-integration-method) as well as for certain complicated real integrals (@sec-residue-real-integrals).
 
-**Prerequisite:** Chaps. 13, 14, Sec. 15.2.  
+**Prerequisite:** <!-- TODO: replace Chaps. 13 with actual chapter label -->, 14, <!-- TODO: replace Sec. 15.2 with actual cross-reference label -->.  
 **Sections that may be omitted in a shorter course:** 16.2, 16.4.  
 **References and Answers to Problems:** App. 1 Part D, App. 2.
 
-## 16.1 Laurent Series {#sec-laurent-series-sec}
+## Laurent Series {#sec-laurent-series-sec}
 
 Laurent series generalize Taylor series. If, in an application, we want to develop a function $f(z)$ in powers of $z - z_0$ when $f(z)$ is singular at $z_0$ (as defined in @sec-power-series), we cannot use a Taylor series. Instead we can use a new kind of series, called **Laurent series**,[^1] consisting of positive integer powers of $z - z_0$ (and a constant) as well as negative integer powers of $z - z_0$; this is the new feature.
 
@@ -193,7 +193,7 @@ If in Laurent’s theorem $f(z)$ is analytic inside $C_2$, the coefficients $b_n
 
 ***
 
-## PROBLEM SET 16.1
+## PROBLEM SET 16.1 {#sec-problem-set-16-1}
 
 ### 1–8 LAURENT SERIES NEAR A SINGULARITY AT 0
 Expand the function in a Laurent series that converges for $0 < |z| < R$ and determine the precise region of convergence. Show the details of your work.
@@ -242,7 +242,7 @@ Find all Taylor and Laurent series with center $z_0$. Determine the precise regi
 
 [^1]: PIERRE ALPHONSE LAURENT (1813–1854), French military engineer and mathematician, published the theorem in 1843.
 
-## 16.2 Singularities and Zeros. Infinity {#sec-singularities-zeros}
+## Singularities and Zeros. Infinity {#sec-singularities-zeros}
 
 Roughly, a singular point of an analytic function is a $z_0$ at which $f(z)$ ceases to be analytic, and a zero is a $z_0$ at which $f(z_0) = 0$. Precise definitions follow below. In this section we show that Laurent series can be used for classifying singularities and Taylor series for discussing zeros.
 
@@ -381,7 +381,7 @@ An analytic function whose only singularities in the finite plane are poles is c
 
 ***
 
-## PROBLEM SET 16.2
+## PROBLEM SET 16.2 {#sec-problem-set-16-2}
 
 ### 1–10 ZEROS
 Determine the location and order of the zeros.
@@ -428,9 +428,9 @@ Determine the location of the singularities, including those at infinity. For po
     (c) $1/2 < |z| < 2$.
 
 
-## 16.3 Residue Integration Method {#sec-16-3}
+## Residue Integration Method {#sec-16-3}
 
-If $f(z)$ is analytic everywhere on a simple closed path $C$ and inside $C$, then by Cauchy's integral theorem (Sec. 14.2),
+If $f(z)$ is analytic everywhere on a simple closed path $C$ and inside $C$, then by Cauchy's integral theorem (<!-- TODO: replace Sec. 14.2 with actual cross-reference label -->),
 $$
 \oint_C f(z)\,dz = 0.
 $$
@@ -439,12 +439,12 @@ The situation changes if $f(z)$ has a singularity at a point $z_0$ inside $C$ bu
 $$
 f(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^n + \frac{b_1}{z - z_0} + \frac{b_2}{(z - z_0)^2} + \cdots \quad (0 < |z - z_0| < R).
 $$
-that converges for all points near $z_0$ (except at $z_0$ itself), in some domain of the form $0 < |z - z_0| < R$ (sometimes called a *deleted neighborhood*, an old-fashioned term that we shall not use). Now comes the key idea. The coefficient $b_1$ of the first negative power $1/(z - z_0)$ of this Laurent series is given by the integral formula (2) in Sec. 16.1 with $n = 1$, namely,
+that converges for all points near $z_0$ (except at $z_0$ itself), in some domain of the form $0 < |z - z_0| < R$ (sometimes called a *deleted neighborhood*, an old-fashioned term that we shall not use). Now comes the key idea. The coefficient $b_1$ of the first negative power $1/(z - z_0)$ of this Laurent series is given by the integral formula (2) in @sec-laurent-series-sec with $n = 1$, namely,
 $$
 b_1 = \frac{1}{2\pi i} \oint_C f(z)\,dz.
 $$
 
-Now, since we can obtain Laurent series by various methods, without using the integral formulas for the coefficients (see the examples in Sec. 16.1), we can find $b_1$ by one of those methods and then use the formula for $b_1$ for evaluating the integral, that is,
+Now, since we can obtain Laurent series by various methods, without using the integral formulas for the coefficients (see the examples in @sec-laurent-series-sec), we can find $b_1$ by one of those methods and then use the formula for $b_1$ for evaluating the integral, that is,
 
 $$
 \oint_C f(z)\,dz = 2\pi i\, b_1.
@@ -462,7 +462,7 @@ $$ {#eq-16-3-2}
 
 Integrate the function $f(z) = z^{-4} \sin z$ counterclockwise around the unit circle $C$.
 
-**Solution.** From (14) in Sec. 15.4 we obtain the Laurent series
+**Solution.** From (14) in <!-- TODO: replace Sec. 15.4 with actual cross-reference label --> we obtain the Laurent series
 $$
 f(z) = \frac{\sin z}{z^4} = \frac{1}{z^3} - \frac{1}{3!\,z} + \frac{1}{5!} - \frac{z^2}{7!} + \cdots
 $$
@@ -475,7 +475,7 @@ $$
 
 Integrate $f(z) = 1/(z^3 - z^4)$ clockwise around the circle $C$: $|z| = \tfrac{1}{2}$.
 
-**Solution.** $z^3 - z^4 = z^3(1 - z)$ shows that $f(z)$ is singular at $z = 0$ and $z = 1$. Now $z = 1$ lies outside $C$. Hence it is of no interest here. So we need the residue of $f(z)$ at 0. We find it from the Laurent series that converges for $0 < |z| < 1$. This is series (I) in Example 4, Sec. 16.1,
+**Solution.** $z^3 - z^4 = z^3(1 - z)$ shows that $f(z)$ is singular at $z = 0$ and $z = 1$. Now $z = 1$ lies outside $C$. Hence it is of no interest here. So we need the residue of $f(z)$ at 0. We find it from the Laurent series that converges for $0 < |z| < 1$. This is series (I) in Example 4, @sec-laurent-series-sec,
 $$
 \frac{1}{z^3 - z^4} = \frac{1}{z^3} + \frac{1}{z^2} + \frac{1}{z} + 1 + z + \cdots \quad (0 < |z| < 1).
 $$
@@ -484,7 +484,7 @@ $$
 \oint_C \frac{dz}{z^3 - z^4} = -2\pi i \operatorname{Res}_{z=0} f(z) = -2\pi i.
 $$
 
-**CAUTION!** Had we used the wrong series (II) in Example 4, Sec. 16.1,
+**CAUTION!** Had we used the wrong series (II) in Example 4, @sec-laurent-series-sec,
 $$
 \frac{1}{z^3 - z^4} = -\frac{1}{z^4} - \frac{1}{z^5} - \frac{1}{z^6} - \cdots \quad (|z| > 1),
 $$
@@ -506,9 +506,9 @@ $$
 \operatorname{Res}_{z=z_0} f(z) = \operatorname{Res}_{z=z_0} \frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}.
 $$ {#eq-16-3-4}
 
-In @eq-16-3-4 we assume that $f(z) = p(z)/q(z)$ with $p(z_0) \ne 0$ and $q(z)$ has a simple zero at $z_0$, so that $f(z)$ has a simple pole at $z_0$ by Theorem 4 in Sec. 16.2.
+In @eq-16-3-4 we assume that $f(z) = p(z)/q(z)$ with $p(z_0) \ne 0$ and $q(z)$ has a simple zero at $z_0$, so that $f(z)$ has a simple pole at $z_0$ by Theorem 4 in @sec-singularities-zeros.
 
-**PROOF** We prove @eq-16-3-3. For a simple pole at $z_0$ the Laurent series (1), Sec. 16.1, is
+**PROOF** We prove @eq-16-3-3. For a simple pole at $z_0$ the Laurent series (1), @sec-laurent-series-sec, is
 $$
 f(z) = \frac{b_1}{z - z_0} + a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \cdots \quad (0 < |z - z_0| < R).
 $$
@@ -516,7 +516,7 @@ Here $b_1 \ne 0$. (Why?) Multiplying both sides by $z - z_0$ and then letting $z
 $$
 \lim_{z \to z_0} (z - z_0)\,f(z) = b_1 + \lim_{z \to z_0} (z - z_0)[a_0 + a_1(z - z_0) + \cdots] = b_1
 $$
-where the last equality follows from continuity (Theorem 1, Sec. 15.3).
+where the last equality follows from continuity (Theorem 1, <!-- TODO: replace Sec. 15.3 with actual cross-reference label -->).
 
 We prove @eq-16-3-4. The Taylor series of $q(z)$ at a simple zero $z_0$ is
 $$
@@ -552,7 +552,7 @@ $$
 \operatorname{Res}_{z=z_0} f(z) = \lim_{z \to z_0} \left\{ \left[(z - z_0)^2 f(z)\right]' \right\}.
 $$ {#eq-16-3-5star}
 
-**PROOF** We prove @eq-16-3-5. The Laurent series of $f(z)$ converging near $z_0$ (except at $z_0$ itself) is (Sec. 16.2)
+**PROOF** We prove @eq-16-3-5. The Laurent series of $f(z)$ converging near $z_0$ (except at $z_0$ itself) is (@sec-singularities-zeros)
 $$
 f(z) = \frac{b_m}{(z - z_0)^m} + \frac{b_{m-1}}{(z - z_0)^{m-1}} + \cdots + \frac{b_1}{z - z_0} + a_0 + a_1(z - z_0) + \cdots
 $$
@@ -560,7 +560,7 @@ where $b_m \ne 0$. The residue wanted is $b_1$. Multiplying both sides by $(z - 
 $$
 (z - z_0)^m f(z) = b_m + b_{m-1}(z - z_0) + \cdots + b_1(z - z_0)^{m-1} + a_0(z - z_0)^m + \cdots.
 $$
-We see that $b_1$ is now the coefficient of the $(m-1)$th power $(z - z_0)^{m-1}$ of the power series of $g(z) = (z - z_0)^m f(z)$. Hence Taylor's theorem (Sec. 15.4) gives @eq-16-3-5:
+We see that $b_1$ is now the coefficient of the $(m-1)$th power $(z - z_0)^{m-1}$ of the power series of $g(z) = (z - z_0)^m f(z)$. Hence Taylor's theorem (<!-- TODO: replace Sec. 15.4 with actual cross-reference label -->) gives @eq-16-3-5:
 $$
 b_1 = \frac{1}{(m-1)!}\,g^{(m-1)}(z_0) = \frac{1}{(m-1)!} \lim_{z \to z_0} \frac{d^{m-1}}{dz^{m-1}}\left[(z - z_0)^m f(z)\right]. \quad \blacksquare
 $$
@@ -592,7 +592,7 @@ $$
 \oint_C f(z)\,dz + \oint_{C_1} f(z)\,dz + \oint_{C_2} f(z)\,dz + \cdots + \oint_{C_k} f(z)\,dz = 0,
 $$ {#eq-16-3-7}
 
-the integral along $C$ being taken counterclockwise and the other integrals clockwise (as in Figs. 354 and 355, Sec. 14.2). We take the integrals over $C_1, \ldots, C_k$ to the right and compensate the resulting minus sign by reversing the sense of integration. Thus,
+the integral along $C$ being taken counterclockwise and the other integrals clockwise (as in @fig-16-354 and 355, <!-- TODO: replace Sec. 14.2 with actual cross-reference label -->). We take the integrals over $C_1, \ldots, C_k$ to the right and compensate the resulting minus sign by reversing the sense of integration. Thus,
 
 $$
 \oint_C f(z)\,dz = \oint_{C_1} f(z)\,dz + \oint_{C_2} f(z)\,dz + \cdots + \oint_{C_k} f(z)\,dz
@@ -701,7 +701,7 @@ Evaluate (counterclockwise). Show the details.
 25. $\displaystyle\oint_C \frac{\exp(-z^2)}{\sin 4z}\,dz$, $C$: $|z| = 1.5$
 
 
-## 16.4 Residue Integration of Real Integrals {#sec-16-4}
+## Residue Integration of Real Integrals {#sec-16-4}
 
 Surprisingly, residue integration can also be used to evaluate certain classes of complicated real integrals. This shows an advantage of complex analysis over real analysis or calculus.
 
@@ -719,7 +719,7 @@ $$
 \cos\theta = \frac{1}{2}\left(z + \frac{1}{z}\right), \qquad \sin\theta = \frac{1}{2i}\left(z - \frac{1}{z}\right), \qquad d\theta = \frac{dz}{iz}.
 $$ {#eq-16-4-2}
 
-Since $F$ is rational in $\cos\theta$ and $\sin\theta$, @eq-16-4-2 shows that $F$ is now a rational function of $z$, say, $f(z)$. Since $d\theta = dz/(iz)$, we have $J = \oint_C f(z)\,dz/iz$, and, as $\theta$ ranges from 0 to $2\pi$ in @eq-16-4-1, the variable $z$ ranges counterclockwise once around the unit circle $C$. (Review Sec. 13.5 if necessary.)
+Since $F$ is rational in $\cos\theta$ and $\sin\theta$, @eq-16-4-2 shows that $F$ is now a rational function of $z$, say, $f(z)$. Since $d\theta = dz/(iz)$, we have $J = \oint_C f(z)\,dz/iz$, and, as $\theta$ ranges from 0 to $2\pi$ in @eq-16-4-1, the variable $z$ ranges counterclockwise once around the unit circle $C$. (Review <!-- TODO: replace Sec. 13.5 with actual cross-reference label --> if necessary.)
 
 $$
 J = \oint_C \frac{f(z)}{iz}\,dz.
@@ -800,7 +800,7 @@ $$
 |f(z)| \le \frac{k}{|z|^2} \qquad (|z| = R > R_0)
 $$
 
-for sufficiently large constants $k$ and $R_0$. By the ML-inequality in Sec. 14.1,
+for sufficiently large constants $k$ and $R_0$. By the ML-inequality in <!-- TODO: replace Sec. 14.1 with actual cross-reference label -->,
 
 $$
 \left|\int_S f(z)\,dz\right| \le \frac{k}{R^2} \cdot \pi R = \frac{k\pi}{R} \qquad (R > R_0).
@@ -836,7 +836,7 @@ $$
 \operatorname{Res}_{z=z_2} f(z) = \left[\frac{1}{4z^3}\right]_{z=z_2} = \frac{1}{4}\,e^{-9i\pi/4} = \frac{1}{4}\,e^{-i\pi/4}.
 $$
 
-(Here we used $e^{i\pi} = -1$ and $e^{-2\pi i} = 1$.) By (1) in Sec. 13.6 and @eq-16-4-7 in this section,
+(Here we used $e^{i\pi} = -1$ and $e^{-2\pi i} = 1$.) By (1) in <!-- TODO: replace Sec. 13.6 with actual cross-reference label --> and @eq-16-4-7 in this section,
 $$
 \int_{-\infty}^{\infty} \frac{dx}{1 + x^4} = -\frac{2\pi i}{4}\left(e^{i\pi/4} - e^{-i\pi/4}\right) = -\frac{2\pi i}{4} \cdot 2i\sin\frac{\pi}{4} = \pi\sin\frac{\pi}{4} = \frac{\pi}{\sqrt{2}}.
 $$
@@ -854,7 +854,7 @@ $$
 \int_{-\infty}^{\infty} f(x)\cos sx\,dx \qquad \text{and} \qquad \int_{-\infty}^{\infty} f(x)\sin sx\,dx \qquad (s \text{ real})
 $$ {#eq-16-4-8}
 
-as they occur in connection with the Fourier integral (Sec. 11.7).
+as they occur in connection with the Fourier integral (<!-- TODO: replace Sec. 11.7 with actual cross-reference label -->).
 
 If $f(x)$ is a rational function satisfying the assumption on the degree as for @eq-16-4-4, we may consider the corresponding integral
 
@@ -892,7 +892,7 @@ $$
 \int_{-\infty}^{\infty} \frac{\cos sx}{k^2 + x^2}\,dx = \frac{\pi}{k}\,e^{-ks}, \qquad \int_{-\infty}^{\infty} \frac{\sin sx}{k^2 + x^2}\,dx = 0 \qquad (s > 0,\; k > 0).
 $$
 
-**Solution.** In fact, $e^{isz}/(k^2 + z^2)$ has only one pole in the upper half-plane, namely, a simple pole at $z = ik$, and from @eq-16-3-4 in Sec. 16.3 we obtain
+**Solution.** In fact, $e^{isz}/(k^2 + z^2)$ has only one pole in the upper half-plane, namely, a simple pole at $z = ik$, and from @eq-16-3-4 in @sec-16-3 we obtain
 
 $$
 \operatorname{Res}_{z=ik} \frac{e^{isz}}{k^2 + z^2} = \left[\frac{e^{isz}}{2z}\right]_{z=ik} = \frac{e^{-ks}}{2ik}.
@@ -903,7 +903,7 @@ $$
 \int_{-\infty}^{\infty} \frac{e^{isx}}{k^2 + x^2}\,dx = 2\pi i \cdot \frac{e^{-ks}}{2ik} = \frac{\pi}{k}\,e^{-ks}.
 $$
 
-Since $e^{isx} = \cos sx + i\sin sx$, this yields the above results [see also (15) in Sec. 11.7.] $\blacksquare$
+Since $e^{isx} = \cos sx + i\sin sx$, this yields the above results [see also (15) in <!-- TODO: replace Sec. 11.7 with actual cross-reference label -->.] $\blacksquare$
 
 ### Another Kind of Improper Integral
 
@@ -948,7 +948,7 @@ $$
 
 ![Fig. 376. Theorem 1](../images/fig-16-376.png){#fig-16-376}
 
-**PROOF** By the definition of a simple pole (Sec. 16.2) the integrand has for $0 < |z - a| < R$ the Laurent series
+**PROOF** By the definition of a simple pole (@sec-singularities-zeros) the integrand has for $0 < |z - a| < R$ the Laurent series
 $$
 f(z) = \frac{b_1}{z - a} + g(z), \qquad b_1 = \operatorname{Res}_{z=a} f(z).
 $$
@@ -960,7 +960,7 @@ and for all $z$ between $C_2$ and the $x$-axis, and thus bounded on $C_2$, say, 
 $$
 \int_{C_2} f(z)\,dz = \int_0^{\pi} \frac{b_1}{re^{i\theta}}\,ire^{i\theta}\,d\theta + \int_{C_2} g(z)\,dz = b_1\pi i + \int_{C_2} g(z)\,dz.
 $$
-The second integral on the right cannot exceed $M\pi r$ in absolute value, by the ML-inequality (Sec. 14.1), and $M\pi r \to 0$ as $r \to 0$. $\blacksquare$
+The second integral on the right cannot exceed $M\pi r$ in absolute value, by the ML-inequality (<!-- TODO: replace Sec. 14.1 with actual cross-reference label -->), and $M\pi r \to 0$ as $r \to 0$. $\blacksquare$
 
 ![Fig. 377. Application of Theorem 1](../images/fig-16-377.png){#fig-16-377}
 
@@ -1079,12 +1079,12 @@ show that
 $$
 \int_0^{\infty} e^{-x^2}\cos 2bx\,dx = \frac{\sqrt{\pi}}{2}\,e^{-b^2}.
 $$
-(This integral is needed in heat conduction in Sec. 12.7.)
+(This integral is needed in heat conduction in <!-- TODO: replace Sec. 12.7 with actual cross-reference label -->.)
 
 (c) **Inspection.** Solve Probs. 13 and 17 without calculation.
 
 
-## Chapter 16 Review Questions and Problems {#sec-16-review}
+## @ch-laurent-series-residue-integration Review Questions and Problems {#sec-16-review}
 
 1. What is a Laurent series? Its principal part? Its use? Give simple examples.
 
@@ -1143,7 +1143,7 @@ Evaluate by the methods of this chapter. Show details.
 25. $\displaystyle\text{pr.\ v.} \int_{-\infty}^{\infty} \frac{dx}{x^2 - 4ix}$
 
 
-## Summary of Chapter 16 {#sec-16-summary}
+## Summary of @ch-laurent-series-residue-integration {#sec-16-summary}
 
 A **Laurent series** is a series of the form
 
@@ -1187,8 +1187,8 @@ $$
 \operatorname{Res}_{z=z_0} \frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}.
 $$
 
-If the principal part is an infinite series, the singularity of $f(z)$ at $z_0$ is called an **essential singularity** (Sec. 16.2).
+If the principal part is an infinite series, the singularity of $f(z)$ at $z_0$ is called an **essential singularity** (@sec-singularities-zeros).
 
-Section 16.2 also discusses the **extended complex plane**, that is, the complex plane with an improper point ("infinity") attached.
+@sec-singularities-zeros also discusses the **extended complex plane**, that is, the complex plane with an improper point ("infinity") attached.
 
-**Residue integration** may also be used to evaluate certain classes of complicated real integrals (Sec. 16.4).
+**Residue integration** may also be used to evaluate certain classes of complicated real integrals (@sec-16-4).

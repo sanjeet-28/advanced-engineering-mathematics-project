@@ -1,5 +1,5 @@
 ---
-title: "CHAPTER 13: Complex Numbers and Functions. Complex Differentiation"
+title: "Complex Numbers and Functions. Complex Differentiation"
 ---
 
 The transition from "real calculus" to "complex calculus" starts with a discussion of complex numbers and their geometric representation in the complex plane. We then progress to analytic functions in @sec-derivative-analytic-function. We desire functions to be analytic because these are the "useful functions" in the sense that they are differentiable in some domain and operations of complex analysis can be applied to them. The most important equations are therefore the Cauchy–Riemann equations in @sec-cauchy-riemann because they allow a test of analyticity of such functions. Moreover, we show how the Cauchy–Riemann equations are related to the important Laplace equation.
@@ -10,7 +10,7 @@ The remaining sections of the chapter are devoted to elementary complex function
 
 **References and Answers to Problems:** App. 1 Part D, App. 2.
 
-## 13.1 Complex Numbers and Their Geometric Representation {#sec-complex-representation}
+## Complex Numbers and Their Geometric Representation {#sec-complex-representation}
 
 The material in this section will most likely be familiar to the student and serve as a review.
 
@@ -191,10 +191,10 @@ $$
 \bar{z}_1 \bar{z}_2 = (4 - 3i)(2 - 5i) = -7 - 26i
 $$
 
-[^1]: First to use complex numbers for this purpose was the Italian mathematician GIROLAMO CARDANO (1501–1576), who found the formula for solving cubic equations. The term "complex number" was introduced by CARL FRIEDRICH GAUSS (see the footnote in Sec. 5.4), who also paved the way for a general use of complex numbers.
+[^1]: First to use complex numbers for this purpose was the Italian mathematician GIROLAMO CARDANO (1501–1576), who found the formula for solving cubic equations. The term "complex number" was introduced by CARL FRIEDRICH GAUSS (see the footnote in <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->), who also paved the way for a general use of complex numbers.
 [^2]: Sometimes called the Argand diagram, after the French mathematician JEAN ROBERT ARGAND (1768–1822), born in Geneva and later librarian in Paris. His paper on the complex plane appeared in 1806, nine years after a similar memoir by the Norwegian mathematician CASPAR WESSEL (1745–1818), a surveyor of the Danish Academy of Science.
 
-## PROBLEM SET 13.1
+## PROBLEM SET 13.1 {#sec-problem-set-13-1}
 
 ### 1–3 POWERS AND ROTATIONS
 1. **Powers of $i$.** Show that $i^2 = -1, i^3 = -i, i^4 = 1, i^5 = i, \dots$ and $1/i = -i, 1/i^2 = -1, 1/i^3 = i, \dots$.
@@ -230,7 +230,7 @@ Let $z = x + iy$. Showing details, find, in terms of $x$ and $y$:
 19. $\text{Re}(z/\bar{z}), \quad \text{Im}(z/\bar{z})$
 20. $\text{Im}(1/\bar{z}^2)$
 
-## 13.2 Polar Form of Complex Numbers. Powers and Roots {#sec-polar-form}
+## Polar Form of Complex Numbers. Powers and Roots {#sec-polar-form}
 
 We gain further insight into the arithmetic operations of complex numbers if, in addition to the $xy$-coordinates in the complex plane, we also employ the usual polar coordinates $r, \theta$ defined by
 $$
@@ -414,9 +414,9 @@ w_1, \quad w_1 \omega, \quad w_1 \omega^2, \quad \dots, \quad w_1 \omega^{n-1}
 $$ {#eq-13-2-17}
 because multiplying $w_1$ by $\omega^k$ corresponds to increasing the argument of $w_1$ by $2k\pi/n$.
 
-[^3]: ABRAHAM DE MOIVRE (1667–1754), French mathematician, who pioneered the use of complex numbers in trigonometry and also contributed to probability theory (see Sec. 24.8).
+[^3]: ABRAHAM DE MOIVRE (1667–1754), French mathematician, who pioneered the use of complex numbers in trigonometry and also contributed to probability theory (see <!-- TODO: replace Sec. 24.8 with actual cross-reference label -->).
 
-## PROBLEM SET 13.2
+## PROBLEM SET 13.2 {#sec-problem-set-13-2}
 
 ### 1–8 POLAR FORM
 Represent in polar form and graph in the complex plane as in @fig-13-325. Show details.
@@ -445,10 +445,10 @@ Graph in the complex plane and represent in the form $x + iy$:
 17. $\sqrt{8}(\cos \frac{1}{4}\pi + i \sin \frac{1}{4}\pi)$
 18. $\sqrt{50}(\cos \frac{3}{4}\pi + i \sin \frac{3}{4}\pi)$
 
-### 19 CAS PROJECT
+### CAS PROJECT
 **Roots of Unity and Their Graphs.** Write a program for calculating these roots and for graphing them as points on the unit circle. Apply the program to $z^n = 1$ with $n = 2, 3, \dots, 10$. Then extend the program to one for arbitrary roots, and apply it to examples of your choice.
 
-### 20 TEAM PROJECT
+### TEAM PROJECT
 **Square Root.**
 (a) Show that $w^2 = z$ has the values
 $$
@@ -478,7 +478,7 @@ Solve and graph the solutions:
 30. $z^4 + 324 = 0$. Using the solutions, factor $z^4 + 324$ into quadratic factors with real coefficients.
 31. $z^4 - 6iz^2 + 16 = 0$
 
-## 13.3 Derivative. Analytic Function {#sec-derivative-analytic-function}
+## Derivative. Analytic Function {#sec-derivative-analytic-function}
 
 Just as the study of calculus or real analysis required concepts such as domain, neighborhood, function, limit, continuity, derivative, etc., so does the study of complex analysis. Since the functions live in the complex plane, the concepts are slightly more difficult or different from those in real analysis.
 
@@ -641,7 +641,7 @@ f(z) = \frac{g(z)}{h(z)}
 $$
 is called a **rational function**. This $f$ is analytic except at the points where $h(z) = 0$.
 
-## PROBLEM SET 13.3
+## PROBLEM SET 13.3 {#sec-problem-set-13-3}
 
 ### 1–8 REGIONS OF PRACTICAL INTEREST
 Determine and sketch or graph the sets in the complex plane given by:
@@ -680,7 +680,7 @@ Find the value of the derivative of:
 22. $i(1 - z)^n$ at $z = 2i$
 23. $(iz^3 + 3z^2)^3$ at $z = i$
 
-### 24 TEAM PROJECT
+### TEAM PROJECT
 **Limit, Continuity, Derivative.**
 (a) **Limit.** Prove that $\lim_{z \to z_0} f(z) = l$ is equivalent to the pair of relations $\lim_{z \to z_0} \text{Re } f(z) = \text{Re } l$ and $\lim_{z \to z_0} \text{Im } f(z) = \text{Im } l$.
 (b) **Limit.** If a limit exists, show that it is unique.
@@ -691,7 +691,7 @@ Find the value of the derivative of:
 
 25. **WRITING PROJECT. Comparison with Calculus.** Summarize the second part of this section beginning with "Complex Function", and indicate what is conceptually analogous to calculus and what is not.
 
-## 13.4 Cauchy–Riemann Equations. Laplace’s Equation {#sec-cauchy-riemann}
+## Cauchy–Riemann Equations. Laplace’s Equation {#sec-cauchy-riemann}
 
 The Cauchy–Riemann equations are the most important equations in this chapter and one of the pillars on which complex analysis rests. They provide a criterion (a test) for the analyticity of a complex function $f(z) = u(x, y) + i v(x, y)$.
 
@@ -822,9 +822,9 @@ $$
 f(z) = u + iv = x^2 - y^2 - y + i(2xy + x + c) = z^2 + iz + ic.
 $$
 
-[^4]: The French mathematician AUGUSTIN-LOUIS CAUCHY (see Sec. 2.5) and the German mathematicians BERNHARD RIEMANN (1826–1866) and KARL WEIERSTRASS (1815–1897; see also Sec. 15.5) are the founders of complex analysis. Riemann received his Ph.D. under Gauss at Göttingen, where he also taught. He introduced the Riemann integral, and made important contributions to differential geometry and physics.
+[^4]: The French mathematician AUGUSTIN-LOUIS CAUCHY (see <!-- TODO: replace Sec. 2.5 with actual cross-reference label -->) and the German mathematicians BERNHARD RIEMANN (1826–1866) and KARL WEIERSTRASS (1815–1897; see also <!-- TODO: replace Sec. 15.5 with actual cross-reference label -->) are the founders of complex analysis. Riemann received his Ph.D. under Gauss at Göttingen, where he also taught. He introduced the Riemann integral, and made important contributions to differential geometry and physics.
 
-## PROBLEM SET 13.4
+## PROBLEM SET 13.4 {#sec-problem-set-13-4}
 
 1. **CR Equations in polar form.** Derive @eq-13-4-7 from @eq-13-4-1 using the chain rule.
 
@@ -874,7 +874,7 @@ Determine $a$ and $b$ so that the given function is harmonic and find a harmonic
     (c) $f'(z) = 0$
     (d) $|f(z)| = \text{const}$.
 
-## 13.5 Exponential Function {#sec-exponential-function}
+## Exponential Function {#sec-exponential-function}
 
 We begin our discussion of elementary complex functions with the complex exponential function
 $$
@@ -898,7 +898,7 @@ $$
 (e^z)' = (e^x \cos y)_x + i(e^x \sin y)_x = e^x \cos y + i e^x \sin y = e^z
 $$
 
-**REMARK.** We could define $e^z$ by the familiar Maclaurin series, but we would then have to discuss complex series at this early stage. (We show the connection in Sec. 15.4.)
+**REMARK.** We could define $e^z$ by the familiar Maclaurin series, but we would then have to discuss complex series at this early stage. (We show the connection in <!-- TODO: replace Sec. 15.4 with actual cross-reference label -->.)
 
 A function that is analytic for all $z$ is called an **entire function**. Thus, $e^z$ is entire.
 
@@ -969,7 +969,7 @@ To solve $e^z = 3 + 4i$, note first that $|e^z| = e^x = |3 + 4i| = 5$, so $x = \
 Now, since $e^z = e^x(\cos y + i \sin y) = 3 + 4i$, we have $5\cos y = 3, 5\sin y = 4$, so $\cos y = 0.6, \sin y = 0.8$, and $y = 0.927 \pm 2n\pi$.
 Ans. $z = 1.609 + 0.927i \pm 2n\pi i$ ($n = 0, 1, 2, \dots$).
 
-## PROBLEM SET 13.5
+## PROBLEM SET 13.5 {#sec-problem-set-13-5}
 
 1. **$e^z$ is entire.** Prove this.
 
@@ -998,7 +998,7 @@ Find $\text{Re}$ and $\text{Im}$ of:
 16. $\exp(z^3)$
 17. $e^{1/z}$
 
-### 18 TEAM PROJECT
+### TEAM PROJECT
 **Further Properties of the Exponential Function.**
 (a) **Analyticity.** Show that $e^z$ is entire. What about $e^{\bar{z}}$? $e^{z^2}$? $e^{1/z}$?
 (b) **Special values.** Find all $z$ such that (i) $e^z$ is real, (ii) $|e^{-z}| < 1$, (iii) $e^{\bar{z}} = e^z$.
@@ -1012,7 +1012,7 @@ Find all solutions and graph some of them in the complex plane:
 21. $e^z = 4 + 3i$
 22. $e^z = 0$
 
-## 13.6 Trigonometric and Hyperbolic Functions. Euler’s Formula {#sec-trig-hyperbolic}
+## Trigonometric and Hyperbolic Functions. Euler’s Formula {#sec-trig-hyperbolic}
 
 Just as we extended the real exponential to the complex in @sec-exponential-function, we now want to extend the familiar real trigonometric functions to complex trigonometric functions. We can do this by the use of the Euler formulas [see @eq-13-5-5]:
 $$
@@ -1129,7 +1129,7 @@ $$
 \cos iz = \cosh z, \quad \sin iz = i \sinh z
 $$ {#eq-13-6-15}
 
-## PROBLEM SET 13.6
+## PROBLEM SET 13.6 {#sec-problem-set-13-6}
 
 ### 1–3 FORMULAS FOR HYPERBOLIC FUNCTIONS
 Show that:
@@ -1168,7 +1168,7 @@ Find all solutions:
     \text{Re } \tan z = \frac{\sin x \cos x}{\cos^2 x + \sinh^2 y}, \quad \text{Im } \tan z = \frac{\sinh y \cosh y}{\cos^2 x + \sinh^2 y}
     $$
 
-## 13.7 Logarithm. General Power. Principal Value {#sec-logarithm}
+## Logarithm. General Power. Principal Value {#sec-logarithm}
 
 We finally introduce the complex logarithm, which is more complicated than the real logarithm and is infinitely many-valued.
 
@@ -1311,7 +1311,7 @@ $$
 a^z = e^{z \ln a}
 $$ {#eq-13-7-10}
 
-## PROBLEM SET 13.7
+## PROBLEM SET 13.7 {#sec-problem-set-13-7}
 
 ### 1–4 VERIFICATIONS
 1. Verify the computations in Example 1.
@@ -1358,7 +1358,7 @@ Find the principal value. Show details.
 
 29. How can you find the answer to Prob. 24 from the answer to Prob. 23?
 
-### 30 TEAM PROJECT
+### TEAM PROJECT
 **Inverse Trigonometric and Hyperbolic Functions.**
 Show that:
 (a) $\arcsin z = -i \ln (iz + \sqrt{1 - z^2})$
@@ -1369,7 +1369,7 @@ Show that:
 (f) $\text{arctanh } z = \frac{1}{2} \ln \frac{1 + z}{1 - z}$
 (g) Show that $\arcsin z$ is infinitely many-valued, and if $w_1$ is one of these values, the others are of the form $w_1 + 2n\pi$ and $\pi - w_1 + 2n\pi$ ($n = 0, \pm 1, \dots$).
 
-## SUMMARY OF CHAPTER 13
+## SUMMARY OF CHAPTER 13 {#sec-summary-of-chapter-13}
 
 1. **Arithmetic operations:** For addition, subtraction, multiplication, and division see @sec-complex-representation.
 2. **Polar form:** $z = r(\cos \theta + i \sin \theta) = r e^{i\theta}$, see @sec-polar-form.
@@ -1383,7 +1383,7 @@ Show that:
 
 ---
 
-## CHAPTER 13 REVIEW QUESTIONS AND PROBLEMS
+## CHAPTER 13 REVIEW QUESTIONS AND PROBLEMS {#sec-chapter-13-review-questions-and-problems}
 
 ### 1–10 GENERAL QUESTIONS
 1. Divide $15 + 23i$ by $-3 + 7i$. Check the result by multiplication.

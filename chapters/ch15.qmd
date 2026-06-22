@@ -1,18 +1,18 @@
 ---
-title: "CHAPTER 15: Power Series, Taylor Series"
+title: "Power Series, Taylor Series"
 ---
 
-In Chapter 14, we evaluated complex integrals directly by using Cauchy’s integral formula, which was derived from the famous Cauchy integral theorem. We now shift from the approach of Cauchy and Goursat to another approach of evaluating complex integrals, that is, evaluating them by residue integration. This approach, discussed in Chapter 16, first requires a thorough understanding of power series and, in particular, Taylor series. (To develop the theory of residue integration, we still use Cauchy’s integral theorem!)
+In <!-- TODO: replace Chapter 14 with actual chapter label -->, we evaluated complex integrals directly by using Cauchy’s integral formula, which was derived from the famous Cauchy integral theorem. We now shift from the approach of Cauchy and Goursat to another approach of evaluating complex integrals, that is, evaluating them by residue integration. This approach, discussed in <!-- TODO: replace Chapter 16 with actual chapter label -->, first requires a thorough understanding of power series and, in particular, Taylor series. (To develop the theory of residue integration, we still use Cauchy’s integral theorem!)
 
-In this chapter, we focus on complex power series and in particular Taylor series. They are analogs of real power series and Taylor series in calculus. Section 15.1 discusses convergence tests for complex series, which are quite similar to those for real series. Thus, if you are familiar with convergence tests from calculus, you may use Sec. 15.1 as a reference section. The main results of this chapter are that complex power series represent analytic functions, as shown in Sec. 15.3, and that, conversely, every analytic function can be represented by power series, called a Taylor series, as shown in Sec. 15.4. The last section (15.5) on uniform convergence is optional.
+In this chapter, we focus on complex power series and in particular Taylor series. They are analogs of real power series and Taylor series in calculus. @sec-sequences-series-tests discusses convergence tests for complex series, which are quite similar to those for real series. Thus, if you are familiar with convergence tests from calculus, you may use @sec-sequences-series-tests as a reference section. The main results of this chapter are that complex power series represent analytic functions, as shown in @sec-functions-given-by-power-series, and that, conversely, every analytic function can be represented by power series, called a Taylor series, as shown in @sec-taylor-maclaurin-series. The last section (15.5) on uniform convergence is optional.
 
-**Prerequisite:** Chaps. 13, 14.  
+**Prerequisite:** <!-- TODO: replace Chaps. 13 with actual chapter label -->, 14.  
 **Sections that may be omitted in a shorter course:** 15.1, 15.5.  
 **References and Answers to Problems:** App. 1 Part D, App. 2.
 
-## 15.1 Sequences, Series, Convergence Tests {#sec-sequences-series-tests}
+## Sequences, Series, Convergence Tests {#sec-sequences-series-tests}
 
-The basic concepts for complex sequences and series and tests for convergence and divergence are very similar to those concepts in (real) calculus. Thus if you feel at home with real sequences and series and want to take for granted that the ratio test also holds in complex, skip this section and go to Section 15.2.
+The basic concepts for complex sequences and series and tests for convergence and divergence are very similar to those concepts in (real) calculus. Thus if you feel at home with real sequences and series and want to take for granted that the ratio test also holds in complex, skip this section and go to @sec-power-series.
 
 ### Sequences
 
@@ -358,9 +358,9 @@ $$
 $$
 with an error not exceeding 0.05 and compute $s$ to this accuracy.
 
-## 15.2 Power Series {#sec-power-series}
+## Power Series {#sec-power-series}
 
-The student should pay close attention to the material because we shall show how power series play an important role in complex analysis. Indeed, they are the most important series in complex analysis because their sums are analytic functions (Theorem 5, Sec. 15.3), and every analytic function can be represented by power series (Theorem 1, Sec. 15.4).
+The student should pay close attention to the material because we shall show how power series play an important role in complex analysis. Indeed, they are the most important series in complex analysis because their sums are analytic functions (Theorem 5, @sec-functions-given-by-power-series), and every analytic function can be represented by power series (Theorem 1, @sec-taylor-maclaurin-series).
 
 A **power series** in powers of $z - z_0$ is a series of the form
 $$
@@ -382,10 +382,10 @@ The geometric series
 $$
 \sum_{n=0}^{\infty} z^n = 1 + z + z^2 + \dots
 $$
-converges absolutely if $|z| < 1$ and diverges if $|z| \ge 1$ (see Theorem 6 in Sec. 15.1). $\square$
+converges absolutely if $|z| < 1$ and diverges if $|z| \ge 1$ (see Theorem 6 in @sec-sequences-series-tests). $\square$
 
 ### EXAMPLE 2 Convergence for Every $z$
-The power series (which will be the Maclaurin series of $e^z$ in Sec. 15.4)
+The power series (which will be the Maclaurin series of $e^z$ in @sec-taylor-maclaurin-series)
 $$
 \sum_{n=0}^{\infty} rac{z^n}{n!} = 1 + z + rac{z^2}{2!} + rac{z^3}{3!} + \dots
 $$
@@ -417,7 +417,7 @@ eq z_0$, it converges absolutely for every $z$ closer to $z_0$ than $z_1$, that 
 ![Fig. 365. Theorem 1 convergence and divergence regions](../images/fig-15-05.png){#fig-15-05}
 
 **PROOF** (a) For $z = z_0$ the series reduces to the single term $a_0$.  
-(b) Convergence at $z = z_1$ gives by Theorem 3 in Sec. 15.1 $a_n (z_1 - z_0)^n 	o 0$ as $n 	o \infty$. This implies boundedness in absolute value,
+(b) Convergence at $z = z_1$ gives by Theorem 3 in @sec-sequences-series-tests $a_n (z_1 - z_0)^n 	o 0$ as $n 	o \infty$. This implies boundedness in absolute value,
 $$
 |a_n (z_1 - z_0)^n| \le M \quad 	ext{for every} \quad n = 0, 1, \dots.
 $$
@@ -434,7 +434,7 @@ $$
 ight|^n.
 $$ {#eq-15-2-3}
 Now our assumption $|z - z_0| < |z_1 - z_0|$ implies that $\left| rac{z - z_0}{z_1 - z_0} 
-ight| < 1$. Hence the series on the right side of @eq-15-2-3 is a converging geometric series (see Theorem 6 in Sec. 15.1). Absolute convergence of @eq-15-2-1 as stated in (b) now follows by the comparison test in Sec. 15.1.  
+ight| < 1$. Hence the series on the right side of @eq-15-2-3 is a converging geometric series (see Theorem 6 in @sec-sequences-series-tests). Absolute convergence of @eq-15-2-1 as stated in (b) now follows by the comparison test in @sec-sequences-series-tests.  
 (c) If this were false, we would have convergence at a $z_3$ farther away from $z_0$ than $z_2$. This would imply convergence at $z_2$, by (b), a contradiction to our assumption of divergence at $z_2$. $\square$
 
 
@@ -482,7 +482,7 @@ ight| \quad 	ext{(Cauchy–Hadamard formula).}
 $$ {#eq-15-2-6}
 *If $|a_{n+1}/a_n| 	o \infty$, then $R = 0$ (convergence only at the center $z_0$).*
 
-**PROOF** For @eq-15-2-1 the ratio of the terms in the ratio test (Sec. 15.1) is
+**PROOF** For @eq-15-2-1 the ratio of the terms in the ratio test (@sec-sequences-series-tests) is
 $$
 \left| rac{a_{n+1}(z - z_0)^{n+1}}{a_n(z - z_0)^n} 
 ight| = \left| rac{a_{n+1}}{a_n} 
@@ -497,7 +497,7 @@ If $L^* = 0$, then $L = 0$ for every $z$, which gives convergence for all $z$ by
 If $|a_{n+1}/a_n| 	o \infty$, then $\left| rac{a_{n+1}}{a_n} 
 ight||z - z_0| > 1$ for any $z 
 eq z_0$ and all sufficiently large $n$. This implies divergence for all $z 
-eq z_0$ by the ratio test (Theorem 7, Sec. 15.1). $\square$
+eq z_0$ by the ratio test (Theorem 7, @sec-sequences-series-tests). $\square$
 
 Formula @eq-15-2-6 will not help if $L^*$ does not exist, but extensions of Theorem 2 are still possible, as we discuss in Example 6 below.
 
@@ -572,7 +572,7 @@ eq 0$, (iii) replace $a_n$ by $1/a_n$?
     (d) **Understanding (b) and (c) in Theorem 1.** Does there exist a power series in powers of $z$ that converges at $z = 30 + 10i$ and diverges at $z = 31 - 6i$? Give a reason.
 
 
-## 15.3 Functions Given by Power Series {#sec-functions-given-by-power-series}
+## Functions Given by Power Series {#sec-functions-given-by-power-series}
 
 Here, our main goal is to show that power series represent analytic functions. This fact (Theorem 5) and the fact that power series behave nicely under addition, multiplication, differentiation, and integration accounts for their usefulness.
 
@@ -586,14 +586,14 @@ There is no loss of generality because a series in powers of $\hat{z} - z_0$ wit
 $$
 f(z) = \sum_{n=0}^{\infty} a_n z^n = a_0 + a_1 z + a_2 z^2 + \dots \quad (|z| < R).
 $$ {#eq-15-3-2}
-We say that $f(z)$ is **represented** by the power series or that it is **developed** in the power series. For instance, the geometric series represents the function $f(z) = 1 / (1 - z)$ in the interior of the unit circle $|z| < 1$. (See Theorem 6 in Sec. 15.1.)
+We say that $f(z)$ is **represented** by the power series or that it is **developed** in the power series. For instance, the geometric series represents the function $f(z) = 1 / (1 - z)$ in the interior of the unit circle $|z| < 1$. (See Theorem 6 in @sec-sequences-series-tests.)
 
 **Uniqueness of a Power Series Representation.** This is our next goal. It means that a function $f(z)$ cannot be represented by two different power series with the same center. We claim that if $f(z)$ can at all be developed in a power series with center $z_0$, the development is unique. This important fact is frequently used in complex analysis (as well as in calculus). We shall prove it in Theorem 2. The proof will follow from:
 
 ### THEOREM 1 Continuity of the Sum of a Power Series
 *If a function $f(z)$ can be represented by a power series @eq-15-3-2 with radius of convergence $R > 0$, then $f(z)$ is continuous at $z = 0$.*
 
-**PROOF** From @eq-15-3-2 with $z = 0$ we have $f(0) = a_0$. Hence by the definition of continuity we must show that $\lim_{z 	o 0} f(z) = f(0) = a_0$. That is, we must show that for a given $\epsilon > 0$ there is a $\delta > 0$ such that $|z| < \delta$ implies $|f(z) - a_0| < \epsilon$. Now @eq-15-3-2 converges absolutely for $|z| \le r$ with any $r$ such that $0 < r < R$, by Theorem 1 in Sec. 15.2. Hence the series
+**PROOF** From @eq-15-3-2 with $z = 0$ we have $f(0) = a_0$. Hence by the definition of continuity we must show that $\lim_{z 	o 0} f(z) = f(0) = a_0$. That is, we must show that for a given $\epsilon > 0$ there is a $\delta > 0$ such that $|z| < \delta$ implies $|f(z) - a_0| < \epsilon$. Now @eq-15-3-2 converges absolutely for $|z| \le r$ with any $r$ such that $0 < r < R$, by Theorem 1 in @sec-power-series. Hence the series
 $$
 \sum_{n=1}^{\infty} |a_n| r^{n-1} = rac{1}{r} \sum_{n=1}^{\infty} |a_n| r^n
 $$
@@ -646,7 +646,7 @@ $$ {#eq-15-3-3}
 ### THEOREM 3 Termwise Differentiation of a Power Series
 *The derived series of a power series has the same radius of convergence as the original series.*
 
-**PROOF** This follows from @eq-15-2-6 in Sec. 15.2 because
+**PROOF** This follows from @eq-15-2-6 in @sec-power-series because
 $$
 \lim_{n 	o \infty} rac{n|a_n|}{(n+1)|a_{n+1}|} = \lim_{n 	o \infty} rac{n}{n+1} \lim_{n 	o \infty} \left| rac{a_n}{a_{n+1}} 
 ight| = \lim_{n 	o \infty} \left| rac{a_n}{a_{n+1}} 
@@ -708,7 +708,7 @@ The somewhat technical proof of this algebraic identity is given in App. 4.
 $$
 |\Delta z| \sum_{n=2}^{\infty} |a_n| n(n-1) R_0^{n-2}.
 $$ {#eq-15-3-7}
-This series is the second derived series of $\sum a_n z^n$ at $z = R_0$ and converges absolutely by Theorem 3 of this section and Theorem 1 of Sec. 15.2. Hence our present series @eq-15-3-7 converges. Let the sum of @eq-15-3-7 (without the factor $|\Delta z|$) be $K(R_0)$. Since $K(R_0)$ is a constant, our present result is:
+This series is the second derived series of $\sum a_n z^n$ at $z = R_0$ and converges absolutely by Theorem 3 of this section and Theorem 1 of @sec-power-series. Hence our present series @eq-15-3-7 converges. Let the sum of @eq-15-3-7 (without the factor $|\Delta z|$) be $K(R_0)$. Since $K(R_0)$ is a constant, our present result is:
 $$
 \left| rac{f(z + \Delta z) - f(z)}{\Delta z} - f_1(z) 
 ight| \le |\Delta z| K(R_0).
@@ -726,7 +726,7 @@ Letting $\Delta z 	o 0$ and noting that $R_0$ ($|z| < R_0 < R$) is arbitrary, we
 4. **Cauchy product.** Show that $(1 - z)^{-2} = \sum_{n=0}^{\infty} (n + 1) z^n$ (a) by using the Cauchy product, (b) by differentiating a suitable series.
 
 ### 5–15 RADIUS OF CONVERGENCE BY DIFFERENTIATION OR INTEGRATION
-Find the radius of convergence in two ways: (a) directly by the Cauchy–Hadamard formula in Sec. 15.2, and (b) from a series of simpler terms by using Theorem 3 or Theorem 4.
+Find the radius of convergence in two ways: (a) directly by the Cauchy–Hadamard formula in @sec-power-series, and (b) from a series of simpler terms by using Theorem 3 or Theorem 4.
 
 5. $\sum_{n=2}^{\infty} n(n-1) 2^n (z - 2i)^n$
 6. $\sum_{n=1}^{\infty} rac{(-1)^n}{(2n-1)!} \left( z - rac{\pi}{2} 
@@ -756,13 +756,13 @@ $$
     (b) **Fibonacci's rabbit problem.** Compute a list of the number of pairs of rabbits in the first 12 months, if initially there is 1 pair and each pair generates 1 pair per month, beginning in the second month of existence (no deaths occurring).  
     (c) **Generating function.** Show that the generating function of the Fibonacci numbers is $f(z) = rac{z}{1 - z - z^2}$; that is, if a power series @eq-15-3-1 represents $f(z)$, its coefficients must be the Fibonacci numbers, and conversely. *Hint.* Start from $f(z)(1 - z - z^2) = z$ and use Theorem 2.
 
-## 15.4 Taylor and Maclaurin Series {#sec-taylor-maclaurin-series}
+## Taylor and Maclaurin Series {#sec-taylor-maclaurin-series}
 
 The Taylor series of a function $f(z)$, the complex analog of the real Taylor series, is
 $$
 f(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^n \quad 	ext{where} \quad a_n = rac{1}{n!} f^{(n)}(z_0)
 $$ {#eq-15-4-1}
-or, by Cauchy's integral formula for derivatives (Sec. 14.4),
+or, by Cauchy's integral formula for derivatives (<!-- TODO: replace Sec. 14.4 with actual cross-reference label -->),
 $$
 a_n = rac{1}{2\pi i} \oint_C rac{f(z^*)}{(z^* - z_0)^{n+1}} \, dz^*.
 $$ {#eq-15-4-2}
@@ -789,7 +789,7 @@ $$
 $$ {#eq-15-4-5}
 *where $M$ is the maximum of $|f(z)|$ on a circle $|z - z_0| = r$ in $D$ whose interior is also in $D$.*
 
-**PROOF** The key tool is Cauchy’s integral formula in Sec. 14.3; writing $z$ and $z^*$ instead of $z_0$ and $z$ (so that $z^*$ is the variable of integration), we have
+**PROOF** The key tool is Cauchy’s integral formula in <!-- TODO: replace Sec. 14.3 with actual cross-reference label -->; writing $z$ and $z^*$ instead of $z_0$ and $z$ (so that $z^*$ is the variable of integration), we have
 $$
 f(z) = rac{1}{2\pi i} \oint_C rac{f(z^*)}{z^* - z} \, dz^*.
 $$ {#eq-15-4-6}
@@ -838,13 +838,13 @@ $$
 \left| rac{f(z^*)}{z^* - z} 
 ight| \le 	ilde{M}
 $$
-for all $z^*$ on $C$. Also, $C$ has the radius $r = |z^* - z_0|$ and the length $2\pi r$. Hence by the ML-inequality (Sec. 14.1) we obtain from @eq-15-4-3
+for all $z^*$ on $C$. Also, $C$ has the radius $r = |z^* - z_0|$ and the length $2\pi r$. Hence by the ML-inequality (<!-- TODO: replace Sec. 14.1 with actual cross-reference label -->) we obtain from @eq-15-4-3
 $$
 |R_n(z)| = \left| rac{(z - z_0)^{n+1}}{2\pi i} \oint_C rac{f(z^*)}{(z^* - z_0)^{n+1}(z^* - z)} \, dz^* 
 ight| \le rac{|z - z_0|^{n+1}}{2\pi} 	ilde{M} rac{1}{r^{n+1}} 2\pi r = 	ilde{M} r \left( rac{|z - z_0|}{r} 
 ight)^{n+1}.
 $$ {#eq-15-4-10}
-Now $|z - z_0| < r$ because $z$ lies inside $C$. Thus $|z - z_0| / r < 1$, so that the right side of @eq-15-4-10 approaches 0 as $n 	o \infty$. This proves that the Taylor series converges and has the sum $f(z)$. Uniqueness follows from Theorem 2 in the last section. Finally, @eq-15-4-5 follows from $a_n$ in @eq-15-4-1 and the Cauchy inequality in Sec. 14.4. This proves Taylor’s theorem. $\square$
+Now $|z - z_0| < r$ because $z$ lies inside $C$. Thus $|z - z_0| / r < 1$, so that the right side of @eq-15-4-10 approaches 0 as $n 	o \infty$. This proves that the Taylor series converges and has the sum $f(z)$. Uniqueness follows from Theorem 2 in the last section. Finally, @eq-15-4-5 follows from $a_n$ in @eq-15-4-1 and the Cauchy inequality in <!-- TODO: replace Sec. 14.4 with actual cross-reference label -->. This proves Taylor’s theorem. $\square$
 
 
 **Accuracy of Approximation.** We can achieve any preassigned accuracy in approximating $f(z)$ by a partial sum of @eq-15-4-1 by choosing $n$ large enough. This is the practical use of formula @eq-15-4-9.
@@ -864,7 +864,7 @@ Taylor series are power series—of course! Conversely, we have:
 $$
 f(z) = a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + a_3(z - z_0)^3 + \dots.
 $$
-Then $f(z_0) = a_0$. By Theorem 5 in Sec. 15.3 we obtain
+Then $f(z_0) = a_0$. By Theorem 5 in @sec-functions-given-by-power-series we obtain
 $$
 f'(z) = a_1 + 2 a_2(z - z_0) + 3 a_3(z - z_0)^2 + \dots, \quad 	ext{thus} \quad f'(z_0) = a_1
 $$
@@ -888,13 +888,13 @@ $$ {#eq-15-4-11}
 $f(z)$ is singular at $z = 1$; this point lies on the circle of convergence. $\square$
 
 ### EXAMPLE 2 Exponential Function
-We know that the exponential function $e^z$ (Sec. 13.5) is analytic for all $z$, and $(e^z)' = e^z$. Hence from @eq-15-4-1 with $z_0 = 0$ we obtain the Maclaurin series
+We know that the exponential function $e^z$ (<!-- TODO: replace Sec. 13.5 with actual cross-reference label -->) is analytic for all $z$, and $(e^z)' = e^z$. Hence from @eq-15-4-1 with $z_0 = 0$ we obtain the Maclaurin series
 $$
 e^z = \sum_{n=0}^{\infty} rac{z^n}{n!} = 1 + z + rac{z^2}{2!} + \dots.
 $$ {#eq-15-4-12}
 This series is also obtained if we replace $x$ in the familiar Maclaurin series of $e^x$ by $z$.
 
-Furthermore, by setting $z = iy$ in @eq-15-4-12 and separating the series into the real and imaginary parts (see Theorem 2, Sec. 15.1) we obtain
+Furthermore, by setting $z = iy$ in @eq-15-4-12 and separating the series into the real and imaginary parts (see Theorem 2, @sec-sequences-series-tests) we obtain
 $$
 e^{iy} = \sum_{n=0}^{\infty} rac{(iy)^n}{n!} = \sum_{k=0}^{\infty} (-1)^k rac{y^{2k}}{(2k)!} + i \sum_{k=0}^{\infty} (-1)^k rac{y^{2k+1}}{(2k+1)!}.
 $$
@@ -905,14 +905,14 @@ $$ {#eq-15-4-13}
 Indeed, one may use @eq-15-4-12 for defining $e^z$ and derive from @eq-15-4-12 the basic properties of $e^z$. For instance, the differentiation formula $(e^z)' = e^z$ follows readily from @eq-15-4-12 by termwise differentiation. $\square$
 
 ### EXAMPLE 3 Trigonometric and Hyperbolic Functions
-By substituting @eq-15-4-12 into (1) of Sec. 13.6 we obtain
+By substituting @eq-15-4-12 into (1) of <!-- TODO: replace Sec. 13.6 with actual cross-reference label --> we obtain
 $$
 \cos z = \sum_{n=0}^{\infty} rac{(-1)^n}{(2n)!} z^{2n} = 1 - rac{z^2}{2!} + rac{z^4}{4!} - \dots,
 $$ {#eq-15-4-14}
 $$
 \sin z = \sum_{n=0}^{\infty} rac{(-1)^n}{(2n+1)!} z^{2n+1} = z - rac{z^3}{3!} + rac{z^5}{5!} - \dots.
 $$
-When $z = x$ these are the familiar Maclaurin series of the real functions $\cos x$ and $\sin x$. Similarly, by substituting @eq-15-4-12 into (11), Sec. 13.6, we obtain
+When $z = x$ these are the familiar Maclaurin series of the real functions $\cos x$ and $\sin x$. Similarly, by substituting @eq-15-4-12 into (11), <!-- TODO: replace Sec. 13.6 with actual cross-reference label -->, we obtain
 $$
 \cosh z = \sum_{n=0}^{\infty} rac{z^{2n}}{(2n)!} = 1 + rac{z^2}{2!} + rac{z^4}{4!} + \dots,
 $$ {#eq-15-4-15}
@@ -921,7 +921,7 @@ $$
 $$ $\square$
 
 ### EXAMPLE 4 Logarithm
-From @eq-15-4-11 it follows that by integration (Theorem 4, Sec. 15.3) we obtain
+From @eq-15-4-11 it follows that by integration (Theorem 4, @sec-functions-given-by-power-series) we obtain
 $$
 	ext{Ln}(1 + z) = z - rac{z^2}{2} + rac{z^3}{3} - \dots \quad (|z| < 1).
 $$ {#eq-15-4-16}
@@ -1070,9 +1070,9 @@ Find the Taylor series with center $z_0$ and its radius of convergence.
 25. $\sinh(2z - i), \quad z_0 = rac{i}{2}$
 
 
-## 15.5 Uniform Convergence. Optional {#sec-uniform-convergence}
+## Uniform Convergence. Optional {#sec-uniform-convergence}
 
-We know that power series are absolutely convergent (Sec. 15.2, Theorem 1) and, as another basic property, we now show that they are uniformly convergent. Since uniform convergence is of general importance, for instance, in connection with termwise integration of series, we shall discuss it quite thoroughly.
+We know that power series are absolutely convergent (@sec-power-series, Theorem 1) and, as another basic property, we now show that they are uniformly convergent. Since uniform convergence is of general importance, for instance, in connection with termwise integration of series, we shall discuss it quite thoroughly.
 
 To define uniform convergence, we consider a series whose terms are any complex functions $f_0(z), f_1(z), \dots$
 
@@ -1106,7 +1106,7 @@ Uniformity of convergence is thus a property that always refers to an infinite s
 ### EXAMPLE 1 Geometric Series
 Show that the geometric series $1 + z + z^2 + \dots$ is (a) uniformly convergent in any closed disk $|z| \le r < 1$, (b) not uniformly convergent in its whole disk of convergence $|z| < 1$.
 
-**Solution.** (a) For $z$ in that closed disk we have $|1 - z| \ge 1 - r$ (sketch it). This implies that $1 / |1 - z| \le 1 / (1 - r)$. Hence (remember @eq-15-4-8 in Sec. 15.4 with $q = z$)
+**Solution.** (a) For $z$ in that closed disk we have $|1 - z| \ge 1 - r$ (sketch it). This implies that $1 / |1 - z| \le 1 / (1 - r)$. Hence (remember @eq-15-4-8 in @sec-taylor-maclaurin-series with $q = z$)
 $$
 |s(z) - s_n(z)| = \left| \sum_{m=n+1}^{\infty} z^m \right| = \left| \frac{z^{n+1}}{1 - z} \right| \le \frac{r^{n+1}}{1 - r}.
 $$
@@ -1131,7 +1131,7 @@ $$ {#eq-15-5-2}
 $$
 |a_{n+1}(z - z_0)^{n+1} + \dots + a_{n+p}(z - z_0)^{n+p}| \le |a_{n+1}| r^{n+1} + \dots + |a_{n+p}| r^{n+p}.
 $$ {#eq-15-5-3}
-Now @eq-15-5-2 converges absolutely if $|z - z_0| = r < R$ (by Theorem 1 in Sec. 15.2). Hence it follows from the Cauchy convergence principle (Sec. 15.1) that, an $\epsilon > 0$ being given, we can find an $N(\epsilon)$ such that
+Now @eq-15-5-2 converges absolutely if $|z - z_0| = r < R$ (by Theorem 1 in @sec-power-series). Hence it follows from the Cauchy convergence principle (@sec-sequences-series-tests) that, an $\epsilon > 0$ being given, we can find an $N(\epsilon)$ such that
 $$
 |a_{n+1}| r^{n+1} + \dots + |a_{n+p}| r^{n+p} < \epsilon \quad \text{for} \quad n \ge N(\epsilon) \quad \text{and} \quad p = 1, 2, \dots.
 $$
@@ -1182,7 +1182,7 @@ Since $s_N(z)$ is a sum of finitely many functions that are continuous at $z_1$,
 $$
 |s_N(z) - s_N(z_1)| < \frac{\epsilon}{3} \quad \text{for all} \quad z \quad \text{in} \quad G \quad \text{for which} \quad |z - z_1| < \delta.
 $$
-Using $F = s_N + R_N$ and the triangle inequality (Sec. 13.2), for these $z$ we thus obtain
+Using $F = s_N + R_N$ and the triangle inequality (<!-- TODO: replace Sec. 13.2 with actual cross-reference label -->), for these $z$ we thus obtain
 $$
 |F(z) - F(z_1)| = |s_N(z) + R_N(z) - [s_N(z_1) + R_N(z_1)]| \le |s_N(z) - s_N(z_1)| + |R_N(z)| + |R_N(z_1)| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon.
 $$
@@ -1259,7 +1259,7 @@ $$ {#eq-15-5-4}
 $$
 \int_C F(z) \, dz = \int_C s_n(z) \, dz + \int_C R_n(z) \, dz.
 $$
-Let $L$ be the length of $C$. Since the given series converges uniformly, for every given $\epsilon > 0$ we can find a number $N$ such that $|R_n(z)| < \epsilon / L$ for all $n \ge N$ and all $z$ in $G$. By applying the ML-inequality (Sec. 14.1) we thus obtain
+Let $L$ be the length of $C$. Since the given series converges uniformly, for every given $\epsilon > 0$ we can find a number $N$ such that $|R_n(z)| < \epsilon / L$ for all $n \ge N$ and all $z$ in $G$. By applying the ML-inequality (<!-- TODO: replace Sec. 14.1 with actual cross-reference label -->) we thus obtain
 $$
 \left| \int_C R_n(z) \, dz \right| \le \frac{\epsilon}{L} \cdot L = \epsilon \quad \text{for all} \quad n \ge N.
 $$
@@ -1295,7 +1295,7 @@ Does the following series converge uniformly in the disk $|z| \le 1$?
 $$
 \sum_{m=1}^{\infty} \frac{z^{m+1}}{m^2 + \cosh(m|z|)}.
 $$
-**Solution.** Uniform convergence follows by the Weierstrass M-test and the convergence of $\sum 1/m^2$ (see Sec. 15.1, in the proof of Theorem 8) because
+**Solution.** Uniform convergence follows by the Weierstrass M-test and the convergence of $\sum 1/m^2$ (see @sec-sequences-series-tests, in the proof of Theorem 8) because
 $$
 \left| \frac{z^{m+1}}{m^2 + \cosh(m|z|)} \right| \le \frac{|z|^{m+1}}{m^2} \le \frac{1}{m^2}.
 $$ $\square$
@@ -1325,7 +1325,7 @@ where $k$ is a suitable constant, and $k \sum 1/m$ diverges.  $\square$
 ## PROBLEM SET 15.5 {#sec-problem-set-15-5}
 
 1. **CAS EXPERIMENT. Graphs of Partial Sums.**
-   (a) **Fig. 368.** Produce this exciting figure (cf. @fig-15-08) using your CAS. Add further curves, say, those of $s_{256}$, $s_{1024}$, etc. on the same screen.
+   (a) **@fig-15-368.** Produce this exciting figure (cf. @fig-15-08) using your CAS. Add further curves, say, those of $s_{256}$, $s_{1024}$, etc. on the same screen.
    (b) **Power series.** Study the nonuniformity of convergence experimentally by graphing partial sums near the endpoints of the convergence interval for real $z = x$.
 
 ### 2–9 POWER SERIES
@@ -1357,12 +1357,12 @@ Prove that the series converges uniformly in the indicated region.
     (b) **Termwise differentiation.** Derive Theorem 4 from Theorem 3.  
     (c) **Subregions.** Prove that uniform convergence of a series in a region $G$ implies uniform convergence in any portion of $G$. Is the converse true?  
     (d) **Example 2.** Find the precise region of convergence of the series in Example 2 with $x$ replaced by a complex variable $z$.  
-    (e) **Figure 369.** Show that $x^2 \sum_{m=1}^{\infty} (1 + x^2)^{-m} = 1$ if $x \neq 0$ and $0$ if $x = 0$. Verify by computation that the partial sums $s_1, s_2, s_3$ look as shown in Fig. 369.
+    (e) **@fig-15-369.** Show that $x^2 \sum_{m=1}^{\infty} (1 + x^2)^{-m} = 1$ if $x \neq 0$ and $0$ if $x = 0$. Verify by computation that the partial sums $s_1, s_2, s_3$ look as shown in @fig-15-369.
 
 ![Fig. 369. Sum $s$ and partial sums in Team Project 18(e)](../images/fig-15-09.png){#fig-15-09}
 
 ### 19–20 HEAT EQUATION
-Show that (9) in Sec. 12.6 with coefficients (10) is a solution of the heat equation for $t > 0$, assuming that $f(x)$ is continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval. Proceed as follows.
+Show that (9) in <!-- TODO: replace Sec. 12.6 with actual cross-reference label --> with coefficients (10) is a solution of the heat equation for $t > 0$, assuming that $f(x)$ is continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval. Proceed as follows.
 
 19. Show that $|B_n|$ is bounded, say $|B_n| < K$ for all $n$. Conclude that
     $$
@@ -1424,7 +1424,7 @@ Find the Taylor series with the given point as center and its radius of converge
 
 ### Power Series, Taylor Series
 
-Sequences, series, and convergence tests are discussed in Sec. 15.1. A power series is of the form (Sec. 15.2)
+Sequences, series, and convergence tests are discussed in @sec-sequences-series-tests. A power series is of the form (@sec-power-series)
 
 $$
 \sum_{n=0}^{\infty} a_n(z - z_0)^n = a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \cdots;
@@ -1432,13 +1432,13 @@ $$ {#eq-summary-15-1}
 
 $z_0$ is its center. The series (@eq-summary-15-1) converges for $|z - z_0| < R$ and diverges for $|z - z_0| > R$, where $R$ is the **radius of convergence**. Some power series converge for all $z$ (then we write $R = \infty$). In exceptional cases a power series may converge only at the center; such a series is practically useless. Also, $R = \lim |a_n / a_{n+1}|$ if this limit exists.
 
-The series (@eq-summary-15-1) converges absolutely (Sec. 15.2) and uniformly (Sec. 15.5) in every closed disk $|z - z_0| \le r < R$ ($R > 0$). It represents an **analytic function** $f(z)$ for $|z - z_0| < R$. The derivatives $f'(z), f''(z), \dots$ are obtained by termwise differentiation of (@eq-summary-15-1), and these series have the same radius of convergence $R$ as (@eq-summary-15-1) (see Sec. 15.3).
+The series (@eq-summary-15-1) converges absolutely (@sec-power-series) and uniformly (@sec-uniform-convergence) in every closed disk $|z - z_0| \le r < R$ ($R > 0$). It represents an **analytic function** $f(z)$ for $|z - z_0| < R$. The derivatives $f'(z), f''(z), \dots$ are obtained by termwise differentiation of (@eq-summary-15-1), and these series have the same radius of convergence $R$ as (@eq-summary-15-1) (see @sec-functions-given-by-power-series).
 
-Conversely, every analytic function $f(z)$ can be represented by power series. These **Taylor series** of $f(z)$ are of the form (Sec. 15.4)
+Conversely, every analytic function $f(z)$ can be represented by power series. These **Taylor series** of $f(z)$ are of the form (@sec-taylor-maclaurin-series)
 
 $$
 f(z) = \sum_{n=0}^{\infty} \frac{1}{n!} f^{(n)}(z_0)(z - z_0)^n \qquad (|z - z_0| < R),
 $$ {#eq-summary-15-2}
 
-as in calculus. They converge for all $z$ in the open disk with center $z_0$ and radius generally equal to the distance from $z_0$ to the nearest **singularity** of $f(z)$ (point at which $f(z)$ ceases to be analytic as defined in Sec. 15.4). If $f(z)$ is **entire** (analytic for all $z$; see Sec. 13.5), then (@eq-summary-15-2) converges for all $z$. The functions $e^z, \cos z, \sin z$, etc. have **Maclaurin series**, that is, Taylor series with center 0, similar to those in calculus (Sec. 15.4).
+as in calculus. They converge for all $z$ in the open disk with center $z_0$ and radius generally equal to the distance from $z_0$ to the nearest **singularity** of $f(z)$ (point at which $f(z)$ ceases to be analytic as defined in @sec-taylor-maclaurin-series). If $f(z)$ is **entire** (analytic for all $z$; see <!-- TODO: replace Sec. 13.5 with actual cross-reference label -->), then (@eq-summary-15-2) converges for all $z$. The functions $e^z, \cos z, \sin z$, etc. have **Maclaurin series**, that is, Taylor series with center 0, similar to those in calculus (@sec-taylor-maclaurin-series).
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; CHAPTER 16: Laurent Series. Residue Integration – Advanced Engineering Mathematics</title>
+<title>15&nbsp; Laurent Series. Residue Integration – Advanced Engineering Mathematics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch16.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 16: Laurent Series. Residue Integration</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch16.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Laurent Series. Residue Integration</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -208,25 +208,25 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 13: Complex Numbers and Functions. Complex Differentiation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Complex Numbers and Functions. Complex Differentiation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">CHAPTER 14: Complex Integration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Complex Integration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 15: Power Series, Taylor Series</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Power Series, Taylor Series</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch16.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 16: Laurent Series. Residue Integration</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Laurent Series. Residue Integration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -293,7 +293,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-laurent-series-sec" id="toc-sec-laurent-series-sec" class="nav-link active" data-scroll-target="#sec-laurent-series-sec"><span class="header-section-number">15.1</span> 16.1 Laurent Series</a>
+  <li><a href="#sec-laurent-series-sec" id="toc-sec-laurent-series-sec" class="nav-link active" data-scroll-target="#sec-laurent-series-sec"><span class="header-section-number">15.1</span> Laurent Series</a>
   <ul class="collapse">
   <li><a href="#theorem-1-laurents-theorem" id="toc-theorem-1-laurents-theorem" class="nav-link" data-scroll-target="#theorem-1-laurents-theorem"><span class="header-section-number">15.1.1</span> THEOREM 1 Laurent’s Theorem</a></li>
   <li><a href="#example-1-use-of-maclaurin-series" id="toc-example-1-use-of-maclaurin-series" class="nav-link" data-scroll-target="#example-1-use-of-maclaurin-series"><span class="header-section-number">15.1.2</span> EXAMPLE 1 Use of Maclaurin Series</a></li>
@@ -302,14 +302,14 @@ window.Quarto = {
   <li><a href="#example-4-laurent-expansions-in-different-concentric-annuli" id="toc-example-4-laurent-expansions-in-different-concentric-annuli" class="nav-link" data-scroll-target="#example-4-laurent-expansions-in-different-concentric-annuli"><span class="header-section-number">15.1.5</span> EXAMPLE 4 Laurent Expansions in Different Concentric Annuli</a></li>
   <li><a href="#example-5-use-of-partial-fractions" id="toc-example-5-use-of-partial-fractions" class="nav-link" data-scroll-target="#example-5-use-of-partial-fractions"><span class="header-section-number">15.1.6</span> EXAMPLE 5 Use of Partial Fractions</a></li>
   </ul></li>
-  <li><a href="#problem-set-16.1" id="toc-problem-set-16.1" class="nav-link" data-scroll-target="#problem-set-16.1"><span class="header-section-number">15.2</span> PROBLEM SET 16.1</a>
+  <li><a href="#sec-problem-set-16-1" id="toc-sec-problem-set-16-1" class="nav-link" data-scroll-target="#sec-problem-set-16-1"><span class="header-section-number">15.2</span> PROBLEM SET 16.1</a>
   <ul class="collapse">
   <li><a href="#laurent-series-near-a-singularity-at-0" id="toc-laurent-series-near-a-singularity-at-0" class="nav-link" data-scroll-target="#laurent-series-near-a-singularity-at-0"><span class="header-section-number">15.2.1</span> 1–8 LAURENT SERIES NEAR A SINGULARITY AT 0</a></li>
   <li><a href="#laurent-series-near-a-singularity-at-z_0" id="toc-laurent-series-near-a-singularity-at-z_0" class="nav-link" data-scroll-target="#laurent-series-near-a-singularity-at-z_0"><span class="header-section-number">15.2.2</span> 9–16 LAURENT SERIES NEAR A SINGULARITY AT <span class="math inline">\(z_0\)</span></a></li>
   <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects"><span class="header-section-number">15.2.3</span> 17–18 PROJECTS</a></li>
   <li><a href="#taylor-and-laurent-series" id="toc-taylor-and-laurent-series" class="nav-link" data-scroll-target="#taylor-and-laurent-series"><span class="header-section-number">15.2.4</span> 19–25 TAYLOR AND LAURENT SERIES</a></li>
   </ul></li>
-  <li><a href="#sec-singularities-zeros" id="toc-sec-singularities-zeros" class="nav-link" data-scroll-target="#sec-singularities-zeros"><span class="header-section-number">15.3</span> 16.2 Singularities and Zeros. Infinity</a>
+  <li><a href="#sec-singularities-zeros" id="toc-sec-singularities-zeros" class="nav-link" data-scroll-target="#sec-singularities-zeros"><span class="header-section-number">15.3</span> Singularities and Zeros. Infinity</a>
   <ul class="collapse">
   <li><a href="#example-1-poles.-essential-singularities" id="toc-example-1-poles.-essential-singularities" class="nav-link" data-scroll-target="#example-1-poles.-essential-singularities"><span class="header-section-number">15.3.1</span> EXAMPLE 1 Poles. Essential Singularities</a></li>
   <li><a href="#example-2-behavior-near-a-pole" id="toc-example-2-behavior-near-a-pole" class="nav-link" data-scroll-target="#example-2-behavior-near-a-pole"><span class="header-section-number">15.3.2</span> EXAMPLE 2 Behavior Near a Pole</a></li>
@@ -324,14 +324,14 @@ window.Quarto = {
   <li><a href="#analytic-or-singular-at-infinity" id="toc-analytic-or-singular-at-infinity" class="nav-link" data-scroll-target="#analytic-or-singular-at-infinity"><span class="header-section-number">15.3.11</span> Analytic or Singular at Infinity</a></li>
   <li><a href="#example-5-functions-analytic-or-singular-at-infinity.-entire-and-meromorphic-functions" id="toc-example-5-functions-analytic-or-singular-at-infinity.-entire-and-meromorphic-functions" class="nav-link" data-scroll-target="#example-5-functions-analytic-or-singular-at-infinity.-entire-and-meromorphic-functions"><span class="header-section-number">15.3.12</span> EXAMPLE 5 Functions Analytic or Singular at Infinity. Entire and Meromorphic Functions</a></li>
   </ul></li>
-  <li><a href="#problem-set-16.2" id="toc-problem-set-16.2" class="nav-link" data-scroll-target="#problem-set-16.2"><span class="header-section-number">15.4</span> PROBLEM SET 16.2</a>
+  <li><a href="#sec-problem-set-16-2" id="toc-sec-problem-set-16-2" class="nav-link" data-scroll-target="#sec-problem-set-16-2"><span class="header-section-number">15.4</span> PROBLEM SET 16.2</a>
   <ul class="collapse">
   <li><a href="#zeros" id="toc-zeros" class="nav-link" data-scroll-target="#zeros"><span class="header-section-number">15.4.1</span> 1–10 ZEROS</a></li>
   <li><a href="#projects-1" id="toc-projects-1" class="nav-link" data-scroll-target="#projects-1"><span class="header-section-number">15.4.2</span> 11–12 PROJECTS</a></li>
   <li><a href="#singularities" id="toc-singularities" class="nav-link" data-scroll-target="#singularities"><span class="header-section-number">15.4.3</span> 13–22 SINGULARITIES</a></li>
   <li><a href="#general-problems" id="toc-general-problems" class="nav-link" data-scroll-target="#general-problems"><span class="header-section-number">15.4.4</span> 23–25 GENERAL PROBLEMS</a></li>
   </ul></li>
-  <li><a href="#sec-16-3" id="toc-sec-16-3" class="nav-link" data-scroll-target="#sec-16-3"><span class="header-section-number">15.5</span> 16.3 Residue Integration Method</a>
+  <li><a href="#sec-16-3" id="toc-sec-16-3" class="nav-link" data-scroll-target="#sec-16-3"><span class="header-section-number">15.5</span> Residue Integration Method</a>
   <ul class="collapse">
   <li><a href="#example-1-evaluation-of-an-integral-by-means-of-a-residue" id="toc-example-1-evaluation-of-an-integral-by-means-of-a-residue" class="nav-link" data-scroll-target="#example-1-evaluation-of-an-integral-by-means-of-a-residue"><span class="header-section-number">15.5.1</span> EXAMPLE 1 Evaluation of an Integral by Means of a Residue</a></li>
   <li><a href="#example-2-caution-use-the-right-laurent-series" id="toc-example-2-caution-use-the-right-laurent-series" class="nav-link" data-scroll-target="#example-2-caution-use-the-right-laurent-series"><span class="header-section-number">15.5.2</span> EXAMPLE 2 CAUTION! Use the Right Laurent Series!</a></li>
@@ -347,7 +347,7 @@ window.Quarto = {
   <li><a href="#residues" id="toc-residues" class="nav-link" data-scroll-target="#residues"><span class="header-section-number">15.5.12</span> 3–12 RESIDUES</a></li>
   <li><a href="#residue-integration" id="toc-residue-integration" class="nav-link" data-scroll-target="#residue-integration"><span class="header-section-number">15.5.13</span> 14–25 RESIDUE INTEGRATION</a></li>
   </ul></li>
-  <li><a href="#sec-16-4" id="toc-sec-16-4" class="nav-link" data-scroll-target="#sec-16-4"><span class="header-section-number">15.6</span> 16.4 Residue Integration of Real Integrals</a>
+  <li><a href="#sec-16-4" id="toc-sec-16-4" class="nav-link" data-scroll-target="#sec-16-4"><span class="header-section-number">15.6</span> Residue Integration of Real Integrals</a>
   <ul class="collapse">
   <li><a href="#integrals-of-rational-functions-of-costheta-and-sintheta" id="toc-integrals-of-rational-functions-of-costheta-and-sintheta" class="nav-link" data-scroll-target="#integrals-of-rational-functions-of-costheta-and-sintheta"><span class="header-section-number">15.6.1</span> Integrals of Rational Functions of <span class="math inline">\(\cos\theta\)</span> and <span class="math inline">\(\sin\theta\)</span></a></li>
   <li><a href="#example-1-an-integral-of-the-type-1" id="toc-example-1-an-integral-of-the-type-1" class="nav-link" data-scroll-target="#example-1-an-integral-of-the-type-1"><span class="header-section-number">15.6.2</span> EXAMPLE 1 An Integral of the Type (1)</a></li>
@@ -363,12 +363,12 @@ window.Quarto = {
   <li><a href="#improper-integrals-infinite-interval-of-integration" id="toc-improper-integrals-infinite-interval-of-integration" class="nav-link" data-scroll-target="#improper-integrals-infinite-interval-of-integration"><span class="header-section-number">15.6.12</span> 10–22 IMPROPER INTEGRALS: INFINITE INTERVAL OF INTEGRATION</a></li>
   <li><a href="#improper-integrals-poles-on-the-real-axis" id="toc-improper-integrals-poles-on-the-real-axis" class="nav-link" data-scroll-target="#improper-integrals-poles-on-the-real-axis"><span class="header-section-number">15.6.13</span> 23–26 IMPROPER INTEGRALS: POLES ON THE REAL AXIS</a></li>
   </ul></li>
-  <li><a href="#sec-16-review" id="toc-sec-16-review" class="nav-link" data-scroll-target="#sec-16-review"><span class="header-section-number">15.7</span> Chapter 16 Review Questions and Problems</a>
+  <li><a href="#sec-16-review" id="toc-sec-16-review" class="nav-link" data-scroll-target="#sec-16-review"><span class="header-section-number">15.7</span> <span class="citation" data-cites="ch-laurent-series-residue-integration">@ch-laurent-series-residue-integration</span> Review Questions and Problems</a>
   <ul class="collapse">
   <li><a href="#complex-integrals" id="toc-complex-integrals" class="nav-link" data-scroll-target="#complex-integrals"><span class="header-section-number">15.7.1</span> 11–18 COMPLEX INTEGRALS</a></li>
   <li><a href="#real-integrals" id="toc-real-integrals" class="nav-link" data-scroll-target="#real-integrals"><span class="header-section-number">15.7.2</span> 19–25 REAL INTEGRALS</a></li>
   </ul></li>
-  <li><a href="#sec-16-summary" id="toc-sec-16-summary" class="nav-link" data-scroll-target="#sec-16-summary"><span class="header-section-number">15.8</span> Summary of Chapter 16</a></li>
+  <li><a href="#sec-16-summary" id="toc-sec-16-summary" class="nav-link" data-scroll-target="#sec-16-summary"><span class="header-section-number">15.8</span> Summary of <span class="citation" data-cites="ch-laurent-series-residue-integration">@ch-laurent-series-residue-integration</span></a></li>
   </ul>
 </nav>
     </div>
@@ -377,7 +377,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">CHAPTER 16: Laurent Series. Residue Integration</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Laurent Series. Residue Integration</span></h1>
 </div>
 
 
@@ -394,26 +394,26 @@ window.Quarto = {
 </header>
 
 
-<p>The main purpose of this chapter is to learn about another powerful method for evaluating complex integrals and certain real integrals. It is called <strong>residue integration</strong>. Recall that the first method of evaluating complex integrals consisted of directly applying Cauchy’s integral formula of <a href="ch14.html#sec-cauchy-integral-formula" class="quarto-xref"><span>Section 13.5</span></a>. Then we learned about Taylor series (Chap. 15) and will now generalize Taylor series. The beauty of residue integration, the second method of integration, is that it brings together a lot of the previous material.</p>
-<p>Laurent series generalize Taylor series. Indeed, whereas a Taylor series has positive integer powers (and a constant term) and converges in a disk, a Laurent series (<a href="#sec-laurent-series-sec" class="quarto-xref"><span>Section 15.1</span></a>) is a series of positive and negative integer powers of <span class="math inline">\(z - z_0\)</span> and converges in an annulus (a circular ring) with center <span class="math inline">\(z_0\)</span>. Hence, by a Laurent series, we can represent a given function <span class="math inline">\(f(z)\)</span> that is analytic in an annulus and may have singularities outside the ring as well as in the “hole” of the annulus.</p>
-<p>We know that for a given function the Taylor series with a given center is unique. We shall see that, in contrast, a function can have several Laurent series with the same center and valid in several concentric annuli. The most important of these series is the one that converges for <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span>, that is, everywhere near the center <span class="math inline">\(z_0\)</span> except at <span class="math inline">\(z_0\)</span> itself, where <span class="math inline">\(z_0\)</span> is a singular point of <span class="math inline">\(f(z)\)</span>. The series (or finite sum) of the negative powers of this Laurent series is called the <strong>principal part</strong> of the singularity of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> and is used to classify this singularity (<a href="#sec-singularities-zeros" class="quarto-xref"><span>Section 15.3</span></a>). The coefficient of the <span class="math inline">\(1/(z - z_0)\)</span> power of this series is called the <strong>residue</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span>. Residues are used in an elegant and powerful integration method, called <strong>residue integration</strong>, for complex contour integrals (<span class="quarto-unresolved-ref">?sec-residue-integration-method</span>) as well as for certain complicated real integrals (<span class="quarto-unresolved-ref">?sec-residue-real-integrals</span>).</p>
-<p><strong>Prerequisite:</strong> Chaps. 13, 14, Sec. 15.2.<br>
+<p>The main purpose of this chapter is to learn about another powerful method for evaluating complex integrals and certain real integrals. It is called <strong>residue integration</strong>. Recall that the first method of evaluating complex integrals consisted of directly applying Cauchy’s integral formula of <a href="#sec-cauchy-integral-formula" class="quarto-xref"><span class="quarto-unresolved-ref">sec-cauchy-integral-formula</span></a>. Then we learned about Taylor series (<!-- TODO: replace Chap. 15 with actual chapter label -->) and will now generalize Taylor series. The beauty of residue integration, the second method of integration, is that it brings together a lot of the previous material.</p>
+<p>Laurent series generalize Taylor series. Indeed, whereas a Taylor series has positive integer powers (and a constant term) and converges in a disk, a Laurent series (<a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a>) is a series of positive and negative integer powers of <span class="math inline">\(z - z_0\)</span> and converges in an annulus (a circular ring) with center <span class="math inline">\(z_0\)</span>. Hence, by a Laurent series, we can represent a given function <span class="math inline">\(f(z)\)</span> that is analytic in an annulus and may have singularities outside the ring as well as in the “hole” of the annulus.</p>
+<p>We know that for a given function the Taylor series with a given center is unique. We shall see that, in contrast, a function can have several Laurent series with the same center and valid in several concentric annuli. The most important of these series is the one that converges for <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span>, that is, everywhere near the center <span class="math inline">\(z_0\)</span> except at <span class="math inline">\(z_0\)</span> itself, where <span class="math inline">\(z_0\)</span> is a singular point of <span class="math inline">\(f(z)\)</span>. The series (or finite sum) of the negative powers of this Laurent series is called the <strong>principal part</strong> of the singularity of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> and is used to classify this singularity (<a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>). The coefficient of the <span class="math inline">\(1/(z - z_0)\)</span> power of this series is called the <strong>residue</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span>. Residues are used in an elegant and powerful integration method, called <strong>residue integration</strong>, for complex contour integrals (<a href="#sec-residue-integration-method" class="quarto-xref"><span class="quarto-unresolved-ref">sec-residue-integration-method</span></a>) as well as for certain complicated real integrals (<a href="#sec-residue-real-integrals" class="quarto-xref"><span class="quarto-unresolved-ref">sec-residue-real-integrals</span></a>).</p>
+<p><strong>Prerequisite:</strong> <!-- TODO: replace Chaps. 13 with actual chapter label -->, 14, <!-- TODO: replace Sec. 15.2 with actual cross-reference label -->.<br>
 <strong>Sections that may be omitted in a shorter course:</strong> 16.2, 16.4.<br>
 <strong>References and Answers to Problems:</strong> App. 1 Part D, App. 2.</p>
 <section id="sec-laurent-series-sec" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="sec-laurent-series-sec"><span class="header-section-number">15.1</span> 16.1 Laurent Series</h2>
-<p>Laurent series generalize Taylor series. If, in an application, we want to develop a function <span class="math inline">\(f(z)\)</span> in powers of <span class="math inline">\(z - z_0\)</span> when <span class="math inline">\(f(z)\)</span> is singular at <span class="math inline">\(z_0\)</span> (as defined in <a href="ch15.html#sec-power-series" class="quarto-xref"><span>Section 14.3</span></a>), we cannot use a Taylor series. Instead we can use a new kind of series, called <strong>Laurent series</strong>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> consisting of positive integer powers of <span class="math inline">\(z - z_0\)</span> (and a constant) as well as negative integer powers of <span class="math inline">\(z - z_0\)</span>; this is the new feature.</p>
-<p>Laurent series are also used for classifying singularities (<a href="#sec-singularities-zeros" class="quarto-xref"><span>Section 15.3</span></a>) and in a powerful integration method (“residue integration,” <span class="quarto-unresolved-ref">?sec-residue-integration-method</span>).</p>
+<h2 data-number="15.1" class="anchored" data-anchor-id="sec-laurent-series-sec"><span class="header-section-number">15.1</span> Laurent Series</h2>
+<p>Laurent series generalize Taylor series. If, in an application, we want to develop a function <span class="math inline">\(f(z)\)</span> in powers of <span class="math inline">\(z - z_0\)</span> when <span class="math inline">\(f(z)\)</span> is singular at <span class="math inline">\(z_0\)</span> (as defined in <a href="#sec-power-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-power-series</span></a>), we cannot use a Taylor series. Instead we can use a new kind of series, called <strong>Laurent series</strong>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> consisting of positive integer powers of <span class="math inline">\(z - z_0\)</span> (and a constant) as well as negative integer powers of <span class="math inline">\(z - z_0\)</span>; this is the new feature.</p>
+<p>Laurent series are also used for classifying singularities (<a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>) and in a powerful integration method (“residue integration,” <a href="#sec-residue-integration-method" class="quarto-xref"><span class="quarto-unresolved-ref">sec-residue-integration-method</span></a>).</p>
 <p>A Laurent series of <span class="math inline">\(f(z)\)</span> converges in an annulus (in the “hole” of which <span class="math inline">\(f(z)\)</span> may have singularities), as follows.</p>
 <section id="theorem-1-laurents-theorem" class="level3" data-number="15.1.1">
 <h3 data-number="15.1.1" class="anchored" data-anchor-id="theorem-1-laurents-theorem"><span class="header-section-number">15.1.1</span> THEOREM 1 Laurent’s Theorem</h3>
-<p><em>Let <span class="math inline">\(f(z)\)</span> be analytic in a domain containing two concentric circles <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> with center <span class="math inline">\(z_0\)</span> and the annulus between them (blue in <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>). Then <span class="math inline">\(f(z)\)</span> can be represented by the Laurent series</em> <span id="eq-16-1-1"><span class="math display">\[
+<p><em>Let <span class="math inline">\(f(z)\)</span> be analytic in a domain containing two concentric circles <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> with center <span class="math inline">\(z_0\)</span> and the annulus between them (blue in <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-370</span></a>). Then <span class="math inline">\(f(z)\)</span> can be represented by the Laurent series</em> <span id="eq-16-1-1"><span class="math display">\[
 f(z) = \sum_{n=0}^{\infty} a_n(z - z_0)^n + \sum_{n=1}^{\infty} \frac{b_n}{(z - z_0)^n}
 \tag{15.1}\]</span></span> <em>consisting of nonnegative and negative powers. The coefficients of this Laurent series are given by the integrals</em> <span id="eq-16-1-2"><span class="math display">\[
 a_n = \frac{1}{2\pi i} \oint_C \frac{f(z^*)}{(z^* - z_0)^{n+1}} \, dz^*, \quad b_n = \frac{1}{2\pi i} \oint_C (z^* - z_0)^{n-1} f(z^*) \, dz^*
-\tag{15.2}\]</span></span> <em>taken counterclockwise around any simple closed path <span class="math inline">\(C\)</span> that lies in the annulus and encircles the inner circle, as in <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>. <a href="#eq-16-1-1" class="quarto-xref">The variable of integration is denoted by <span class="math inline">\(z^*\)</span> since <span class="math inline">\(z\)</span> is used in (&nbsp;<span>15.1</span></a></em></p>
+\tag{15.2}\]</span></span> <em>taken counterclockwise around any simple closed path <span class="math inline">\(C\)</span> that lies in the annulus and encircles the inner circle, as in <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-370</span></a>. <a href="#eq-16-1-1" class="quarto-xref">The variable of integration is denoted by <span class="math inline">\(z^*\)</span> since <span class="math inline">\(z\)</span> is used in (&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-1-1</span></a></em></p>
 <p><em>This series converges and represents <span class="math inline">\(f(z)\)</span> in the enlarged open annulus obtained from the given annulus by continuously increasing the outer circle <span class="math inline">\(C_1\)</span> and decreasing <span class="math inline">\(C_2\)</span> until each of the two circles reaches a point where <span class="math inline">\(f(z)\)</span> is singular.</em></p>
-<p><em>In the important special case that <span class="math inline">\(z_0\)</span> is the only singular point of <span class="math inline">\(f(z)\)</span> inside <span class="math inline">\(C_2\)</span>, this circle can be shrunk to the point <span class="math inline">\(z_0\)</span>, giving convergence in a disk except at the center. In this case the series (or finite sum) of the negative powers of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) is called the <strong>principal part</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> <a href="#eq-16-1-1" class="quarto-xref">or of that Laurent series (&nbsp;<span>15.1</span></a>.</em></p>
+<p><em>In the important special case that <span class="math inline">\(z_0\)</span> is the only singular point of <span class="math inline">\(f(z)\)</span> inside <span class="math inline">\(C_2\)</span>, this circle can be shrunk to the point <span class="math inline">\(z_0\)</span>, giving convergence in a disk except at the center. In this case the series (or finite sum) of the negative powers of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) is called the <strong>principal part</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> <a href="#eq-16-1-1" class="quarto-xref">or of that Laurent series (&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-1-1</span></a>.</em></p>
 <div id="fig-16-370" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-370-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -424,7 +424,7 @@ Figure&nbsp;15.1: Fig. 370. Laurent’s theorem
 </figcaption>
 </figure>
 </div>
-<p><strong>COMMENT.</strong> Obviously, instead of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>), (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>) we may write (denoting <span class="math inline">\(b_n\)</span> by <span class="math inline">\(a_{-n}\)</span>) <span id="eq-16-1-3"><span class="math display">\[
+<p><strong>COMMENT.</strong> Obviously, instead of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>), (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>) we may write (denoting <span class="math inline">\(b_n\)</span> by <span class="math inline">\(a_{-n}\)</span>) <span id="eq-16-1-3"><span class="math display">\[
 f(z) = \sum_{n=-\infty}^{\infty} a_n (z - z_0)^n
 \tag{15.3}\]</span></span> where all the coefficients are now given by a single integral formula, namely, <span id="eq-16-1-4"><span class="math display">\[
 a_n = \frac{1}{2\pi i} \oint_C \frac{f(z^*)}{(z^* - z_0)^{n+1}} \, dz^* \quad (n = 0, \pm 1, \pm 2, \dots).
@@ -432,19 +432,19 @@ a_n = \frac{1}{2\pi i} \oint_C \frac{f(z^*)}{(z^* - z_0)^{n+1}} \, dz^* \quad (n
 <p>Let us now prove Laurent’s theorem.</p>
 <p><strong>PROOF</strong><br>
 <strong>(a) The nonnegative powers are those of a Taylor series.</strong><br>
-To see this, we use Cauchy’s integral formula in <a href="ch14.html#sec-cauchy-integral-formula" class="quarto-xref"><span>Section 13.5</span></a> with <span class="math inline">\(z^*\)</span> (instead of <span class="math inline">\(z\)</span>) as the variable of integration and <span class="math inline">\(z\)</span> instead of <span class="math inline">\(z_0\)</span>. Let <span class="math inline">\(g(z)\)</span> and <span class="math inline">\(h(z)\)</span> denote the functions represented by the two terms in Cauchy’s formula for a doubly connected domain: <span id="eq-16-1-5"><span class="math display">\[
+To see this, we use Cauchy’s integral formula in <a href="#sec-cauchy-integral-formula" class="quarto-xref"><span class="quarto-unresolved-ref">sec-cauchy-integral-formula</span></a> with <span class="math inline">\(z^*\)</span> (instead of <span class="math inline">\(z\)</span>) as the variable of integration and <span class="math inline">\(z\)</span> instead of <span class="math inline">\(z_0\)</span>. Let <span class="math inline">\(g(z)\)</span> and <span class="math inline">\(h(z)\)</span> denote the functions represented by the two terms in Cauchy’s formula for a doubly connected domain: <span id="eq-16-1-5"><span class="math display">\[
 f(z) = g(z) + h(z) = \frac{1}{2\pi i} \oint_{C_1} \frac{f(z^*)}{z^* - z} \, dz^* - \frac{1}{2\pi i} \oint_{C_2} \frac{f(z^*)}{z^* - z} \, dz^*
-\tag{15.5}\]</span></span> Here <span class="math inline">\(z\)</span> is any point in the given annulus and we integrate counterclockwise over both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, so that the minus sign appears since in Cauchy’s formula for a doubly connected domain the integration over <span class="math inline">\(C_2\)</span> is taken clockwise. We transform each of these two integrals as in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span>. The first integral is precisely as in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span>. Hence we get exactly the same result, namely, the Taylor series of <span class="math inline">\(g(z)\)</span>: <span id="eq-16-1-6"><span class="math display">\[
+\tag{15.5}\]</span></span> Here <span class="math inline">\(z\)</span> is any point in the given annulus and we integrate counterclockwise over both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, so that the minus sign appears since in Cauchy’s formula for a doubly connected domain the integration over <span class="math inline">\(C_2\)</span> is taken clockwise. We transform each of these two integrals as in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a>. The first integral is precisely as in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a>. Hence we get exactly the same result, namely, the Taylor series of <span class="math inline">\(g(z)\)</span>: <span id="eq-16-1-6"><span class="math display">\[
 g(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^n
-\tag{15.6}\]</span></span> with coefficients <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span> <span id="eq-16-1-7"><span class="math display">\[
+\tag{15.6}\]</span></span> with coefficients <a href="#sec-taylor-laurent-series" class="quarto-xref">see&nbsp;<span class="quarto-unresolved-ref ref-noprefix">sec-taylor-laurent-series</span></a> <span id="eq-16-1-7"><span class="math display">\[
 a_n = \frac{1}{2\pi i} \oint_{C_1} \frac{f(z^*)}{(z^* - z_0)^{n+1}} \, dz^*
-\tag{15.7}\]</span></span> Here we can replace <span class="math inline">\(C_1\)</span> by <span class="math inline">\(C\)</span> (see <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>), by the principle of deformation of path, since the point where the integrand in (<a href="#eq-16-1-7" class="quarto-xref">Equation&nbsp;<span>15.7</span></a>) is not analytic, is not a point of the annulus. This proves the formula for the <span class="math inline">\(a_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>).</p>
-<p><strong>(b) The negative powers in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) and the formula for <span class="math inline">\(b_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>) are obtained if we consider <span class="math inline">\(h(z)\)</span>.</strong><br>
-It consists of the second integral times <span class="math inline">\(-1\)</span> in (<a href="#eq-16-1-5" class="quarto-xref">Equation&nbsp;<span>15.5</span></a>). Since <span class="math inline">\(z\)</span> lies in the annulus, it lies in the exterior of the path <span class="math inline">\(C_2\)</span>. Hence the situation differs from that for the first integral. The essential point is that instead of <span class="math inline">\(|(z - z_0)/(z^* - z_0)| &lt; 1\)</span> we now have <span id="eq-16-1-8"><span class="math display">\[
+\tag{15.7}\]</span></span> Here we can replace <span class="math inline">\(C_1\)</span> by <span class="math inline">\(C\)</span> (see <a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-370</span></a>), by the principle of deformation of path, since the point where the integrand in (<a href="#eq-16-1-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-7</span></a>) is not analytic, is not a point of the annulus. This proves the formula for the <span class="math inline">\(a_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>).</p>
+<p><strong>(b) The negative powers in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) and the formula for <span class="math inline">\(b_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>) are obtained if we consider <span class="math inline">\(h(z)\)</span>.</strong><br>
+It consists of the second integral times <span class="math inline">\(-1\)</span> in (<a href="#eq-16-1-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-5</span></a>). Since <span class="math inline">\(z\)</span> lies in the annulus, it lies in the exterior of the path <span class="math inline">\(C_2\)</span>. Hence the situation differs from that for the first integral. The essential point is that instead of <span class="math inline">\(|(z - z_0)/(z^* - z_0)| &lt; 1\)</span> we now have <span id="eq-16-1-8"><span class="math display">\[
 \left| \frac{z^* - z_0}{z - z_0} \right| &lt; 1
-\tag{15.8}\]</span></span> Consequently, we must develop the expression <span class="math inline">\(1/(z^* - z)\)</span> in the integrand of the second integral in (<a href="#eq-16-1-5" class="quarto-xref">Equation&nbsp;<span>15.5</span></a>) in powers of <span class="math inline">\((z^* - z_0)/(z - z_0)\)</span> (instead of the reciprocal of this) to get a convergent series. We find <span id="eq-16-1-9"><span class="math display">\[
+\tag{15.8}\]</span></span> Consequently, we must develop the expression <span class="math inline">\(1/(z^* - z)\)</span> in the integrand of the second integral in (<a href="#eq-16-1-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-5</span></a>) in powers of <span class="math inline">\((z^* - z_0)/(z - z_0)\)</span> (instead of the reciprocal of this) to get a convergent series. We find <span id="eq-16-1-9"><span class="math display">\[
 \frac{1}{z^* - z} = -\frac{1}{z - z_0} \frac{1}{1 - \frac{z^* - z_0}{z - z_0}}
-\tag{15.9}\]</span></span> Compare this for a moment with the expansion of <span class="math inline">\(1/(z^* - z)\)</span> in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span>, to really understand the difference. Then go on and apply formula for a finite geometric sum in <a href="ch15.html#sec-sequences-series-tests" class="quarto-xref"><span>Section 14.1</span></a>, obtaining <span id="eq-16-1-10"><span class="math display">\[
+\tag{15.9}\]</span></span> Compare this for a moment with the expansion of <span class="math inline">\(1/(z^* - z)\)</span> in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a>, to really understand the difference. Then go on and apply formula for a finite geometric sum in <a href="#sec-sequences-series-tests" class="quarto-xref"><span class="quarto-unresolved-ref">sec-sequences-series-tests</span></a>, obtaining <span id="eq-16-1-10"><span class="math display">\[
 \frac{1}{z - z^*} = \frac{1}{z - z_0} \left[ 1 + \frac{z^* - z_0}{z - z_0} + \left(\frac{z^* - z_0}{z - z_0}\right)^2 + \dots + \left(\frac{z^* - z_0}{z - z_0}\right)^n \right] + \frac{1}{z - z^*} \left(\frac{z^* - z_0}{z - z_0}\right)^{n+1}
 \tag{15.10}\]</span></span> Multiplication by <span class="math inline">\(f(z^*)/2\pi i\)</span> and integration over <span class="math inline">\(C_2\)</span> on both sides now yield <span id="eq-16-1-11"><span class="math display">\[
 h(z) = \frac{b_1}{z - z_0} + \frac{b_2}{(z - z_0)^2} + \dots + \frac{b_n}{(z - z_0)^n} + R_n^*(z)
@@ -452,24 +452,24 @@ h(z) = \frac{b_1}{z - z_0} + \frac{b_2}{(z - z_0)^2} + \dots + \frac{b_n}{(z - z
 b_n = \frac{1}{2\pi i} \oint_{C_2} (z^* - z_0)^{n-1} f(z^*) \, dz^*
 \tag{15.12}\]</span></span> and the remainder <span id="eq-16-1-13"><span class="math display">\[
 R_n^*(z) = \frac{1}{2\pi i (z - z_0)^{n+1}} \oint_{C_2} \frac{(z^* - z_0)^{n+1}}{z - z^*} f(z^*) \, dz^*
-\tag{15.13}\]</span></span> As before, we can integrate over <span class="math inline">\(C\)</span> instead of <span class="math inline">\(C_2\)</span> in the integrals on the right. We see that on the right, the power <span class="math inline">\(1/(z - z_0)^n\)</span> is multiplied by <span class="math inline">\(b_n\)</span> as given in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>). This establishes Laurent’s theorem, provided <span id="eq-16-1-14"><span class="math display">\[
+\tag{15.13}\]</span></span> As before, we can integrate over <span class="math inline">\(C\)</span> instead of <span class="math inline">\(C_2\)</span> in the integrals on the right. We see that on the right, the power <span class="math inline">\(1/(z - z_0)^n\)</span> is multiplied by <span class="math inline">\(b_n\)</span> as given in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>). This establishes Laurent’s theorem, provided <span id="eq-16-1-14"><span class="math display">\[
 \lim_{n \to \infty} R_n^*(z) = 0
 \tag{15.14}\]</span></span></p>
-<p><strong>(c) Convergence proof of (<a href="#eq-16-1-14" class="quarto-xref">Equation&nbsp;<span>15.14</span></a>).</strong><br>
-Very often (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) will have only finitely many negative powers. Then there is nothing to be proved. Otherwise, we begin by noting that in (<a href="#eq-16-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a>) the expression <span class="math inline">\(f(z^*)/(z - z^*)\)</span> is bounded in absolute value, say, <span class="math display">\[
+<p><strong>(c) Convergence proof of (<a href="#eq-16-1-14" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-14</span></a>).</strong><br>
+Very often (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) will have only finitely many negative powers. Then there is nothing to be proved. Otherwise, we begin by noting that in (<a href="#eq-16-1-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-13</span></a>) the expression <span class="math inline">\(f(z^*)/(z - z^*)\)</span> is bounded in absolute value, say, <span class="math display">\[
 \left| \frac{f(z^*)}{z - z^*} \right| \le M^*
-\]</span> for all <span class="math inline">\(z^*\)</span> on <span class="math inline">\(C_2\)</span>, because <span class="math inline">\(f(z^*)\)</span> is analytic in the annulus and on <span class="math inline">\(C_2\)</span>, and <span class="math inline">\(z^*\)</span> lies on <span class="math inline">\(C_2\)</span> and <span class="math inline">\(z\)</span> outside, so that <span class="math inline">\(z - z^* \neq 0\)</span>. From this and the ML-inequality (<a href="ch14.html#sec-line-integral" class="quarto-xref"><span>Section 13.1</span></a>) applied to (<a href="#eq-16-1-13" class="quarto-xref">Equation&nbsp;<span>15.13</span></a>) we get the inequality (<span class="math inline">\(L = 2\pi r_2 = \text{length of } C_2\)</span>, <span class="math inline">\(r_2 = |z^* - z_0| = \text{radius of } C_2\)</span>): <span id="eq-16-1-15"><span class="math display">\[
+\]</span> for all <span class="math inline">\(z^*\)</span> on <span class="math inline">\(C_2\)</span>, because <span class="math inline">\(f(z^*)\)</span> is analytic in the annulus and on <span class="math inline">\(C_2\)</span>, and <span class="math inline">\(z^*\)</span> lies on <span class="math inline">\(C_2\)</span> and <span class="math inline">\(z\)</span> outside, so that <span class="math inline">\(z - z^* \neq 0\)</span>. From this and the ML-inequality (<a href="#sec-line-integral" class="quarto-xref"><span class="quarto-unresolved-ref">sec-line-integral</span></a>) applied to (<a href="#eq-16-1-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-13</span></a>) we get the inequality (<span class="math inline">\(L = 2\pi r_2 = \text{length of } C_2\)</span>, <span class="math inline">\(r_2 = |z^* - z_0| = \text{radius of } C_2\)</span>): <span id="eq-16-1-15"><span class="math display">\[
 |R_n^*(z)| \le \frac{1}{2\pi |z - z_0|^{n+1}} M^* L r_2^{n+1} = \frac{M^* L}{2\pi} \left( \frac{r_2}{|z - z_0|} \right)^{n+1}
-\tag{15.15}\]</span></span> From (<a href="#eq-16-1-8" class="quarto-xref">Equation&nbsp;<span>15.8</span></a>) we see that the expression on the right approaches zero as <span class="math inline">\(n\)</span> approaches infinity. This proves (<a href="#eq-16-1-14" class="quarto-xref">Equation&nbsp;<span>15.14</span></a>). The representation (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) with coefficients (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>) is now established in the given annulus.</p>
-<p><strong>(d) Convergence of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) in the enlarged annulus.</strong><br>
-The first series in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) is a Taylor series [representing <span class="math inline">\(g(z)\)</span>]; hence it converges in the disk <span class="math inline">\(D\)</span> with center <span class="math inline">\(z_0\)</span> whose radius <span class="math inline">\(r_1\)</span> equals the distance of the singularity (or singularities) closest to <span class="math inline">\(z_0\)</span>. Also, <span class="math inline">\(f(z)\)</span> must be singular at all points outside <span class="math inline">\(D\)</span> where <span class="math inline">\(f(z)\)</span> is singular.</p>
-<p>The second series in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>), representing <span class="math inline">\(h(z)\)</span>, is a power series in <span class="math inline">\(Z = 1/(z - z_0)\)</span>. Let the given annulus be <span class="math inline">\(r_2 &lt; |z - z_0| &lt; r_1\)</span>, where <span class="math inline">\(r_2\)</span> and <span class="math inline">\(r_1\)</span> are the radii of <span class="math inline">\(C_2\)</span> and <span class="math inline">\(C_1\)</span> respectively (<a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>). This corresponds to <span class="math inline">\(1/r_1 &lt; |Z| &lt; 1/r_2\)</span>. Hence this power series in <span class="math inline">\(Z\)</span> must converge at least in the disk <span class="math inline">\(|Z| &lt; 1/r_2\)</span>. This corresponds to the exterior of <span class="math inline">\(C_2\)</span>, so that <span class="math inline">\(h(z)\)</span> is analytic for all <span class="math inline">\(z\)</span> outside <span class="math inline">\(C_2\)</span>. Also, <span class="math inline">\(f(z)\)</span> must be singular inside <span class="math inline">\(C_2\)</span> where <span class="math inline">\(f(z)\)</span> is singular, and the series of the negative powers of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span>15.1</span></a>) converges for all <span class="math inline">\(z\)</span> in the exterior <span class="math inline">\(E\)</span> of the circle with center <span class="math inline">\(z_0\)</span> and radius equal to the maximum distance from <span class="math inline">\(z_0\)</span> to the singularities of <span class="math inline">\(f(z)\)</span> inside <span class="math inline">\(C_2\)</span>. The domain common to <span class="math inline">\(D\)</span> and <span class="math inline">\(E\)</span> is the enlarged open annulus characterized near the end of Laurent’s theorem, whose proof is now complete.</p>
-<p><strong>Uniqueness.</strong> The Laurent series of a given analytic function in its annulus of convergence is unique (see Team Project 18). However, <span class="math inline">\(f(z)\)</span> may have different Laurent series in two annuli with the same center <span class="math inline">\(z_0\)</span>; see the examples below. The uniqueness is essential. As for a Taylor series, to obtain the coefficients of Laurent series, we do not generally use the integral formulas (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>); instead, we use various other methods, some of which we shall illustrate in our examples. If a Laurent series has been found by any such process, the uniqueness guarantees that it must be the Laurent series of the given function in the given annulus.</p>
+\tag{15.15}\]</span></span> From (<a href="#eq-16-1-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-8</span></a>) we see that the expression on the right approaches zero as <span class="math inline">\(n\)</span> approaches infinity. This proves (<a href="#eq-16-1-14" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-14</span></a>). The representation (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) with coefficients (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>) is now established in the given annulus.</p>
+<p><strong>(d) Convergence of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) in the enlarged annulus.</strong><br>
+The first series in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) is a Taylor series [representing <span class="math inline">\(g(z)\)</span>]; hence it converges in the disk <span class="math inline">\(D\)</span> with center <span class="math inline">\(z_0\)</span> whose radius <span class="math inline">\(r_1\)</span> equals the distance of the singularity (or singularities) closest to <span class="math inline">\(z_0\)</span>. Also, <span class="math inline">\(f(z)\)</span> must be singular at all points outside <span class="math inline">\(D\)</span> where <span class="math inline">\(f(z)\)</span> is singular.</p>
+<p>The second series in (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>), representing <span class="math inline">\(h(z)\)</span>, is a power series in <span class="math inline">\(Z = 1/(z - z_0)\)</span>. Let the given annulus be <span class="math inline">\(r_2 &lt; |z - z_0| &lt; r_1\)</span>, where <span class="math inline">\(r_2\)</span> and <span class="math inline">\(r_1\)</span> are the radii of <span class="math inline">\(C_2\)</span> and <span class="math inline">\(C_1\)</span> respectively (<a href="#fig-16-370" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-370</span></a>). This corresponds to <span class="math inline">\(1/r_1 &lt; |Z| &lt; 1/r_2\)</span>. Hence this power series in <span class="math inline">\(Z\)</span> must converge at least in the disk <span class="math inline">\(|Z| &lt; 1/r_2\)</span>. This corresponds to the exterior of <span class="math inline">\(C_2\)</span>, so that <span class="math inline">\(h(z)\)</span> is analytic for all <span class="math inline">\(z\)</span> outside <span class="math inline">\(C_2\)</span>. Also, <span class="math inline">\(f(z)\)</span> must be singular inside <span class="math inline">\(C_2\)</span> where <span class="math inline">\(f(z)\)</span> is singular, and the series of the negative powers of (<a href="#eq-16-1-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-1</span></a>) converges for all <span class="math inline">\(z\)</span> in the exterior <span class="math inline">\(E\)</span> of the circle with center <span class="math inline">\(z_0\)</span> and radius equal to the maximum distance from <span class="math inline">\(z_0\)</span> to the singularities of <span class="math inline">\(f(z)\)</span> inside <span class="math inline">\(C_2\)</span>. The domain common to <span class="math inline">\(D\)</span> and <span class="math inline">\(E\)</span> is the enlarged open annulus characterized near the end of Laurent’s theorem, whose proof is now complete.</p>
+<p><strong>Uniqueness.</strong> The Laurent series of a given analytic function in its annulus of convergence is unique (see Team Project 18). However, <span class="math inline">\(f(z)\)</span> may have different Laurent series in two annuli with the same center <span class="math inline">\(z_0\)</span>; see the examples below. The uniqueness is essential. As for a Taylor series, to obtain the coefficients of Laurent series, we do not generally use the integral formulas (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>); instead, we use various other methods, some of which we shall illustrate in our examples. If a Laurent series has been found by any such process, the uniqueness guarantees that it must be the Laurent series of the given function in the given annulus.</p>
 </section>
 <section id="example-1-use-of-maclaurin-series" class="level3" data-number="15.1.2">
 <h3 data-number="15.1.2" class="anchored" data-anchor-id="example-1-use-of-maclaurin-series"><span class="header-section-number">15.1.2</span> EXAMPLE 1 Use of Maclaurin Series</h3>
 <p>Find the Laurent series of <span class="math inline">\(z^{-5} \sin z\)</span> with center 0.</p>
-<p><strong>Solution.</strong> From the Maclaurin series of <span class="math inline">\(\sin z\)</span> in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span>, we obtain <span class="math display">\[
+<p><strong>Solution.</strong> From the Maclaurin series of <span class="math inline">\(\sin z\)</span> in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a>, we obtain <span class="math display">\[
 z^{-5} \sin z = \frac{1}{z^5} \left( z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \dots \right) = \frac{1}{z^4} - \frac{1}{6z^2} + \frac{1}{120} - \frac{z^2}{5040} + \dots
 \]</span> Here the “annulus” of convergence is the whole complex plane without the origin (<span class="math inline">\(0 &lt; |z| &lt; \infty\)</span>), and the principal part of the series at 0 is <span class="math display">\[
 \frac{1}{z^4} - \frac{1}{6z^2}. \quad \square
@@ -478,7 +478,7 @@ z^{-5} \sin z = \frac{1}{z^5} \left( z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac
 <section id="example-2-substitution" class="level3" data-number="15.1.3">
 <h3 data-number="15.1.3" class="anchored" data-anchor-id="example-2-substitution"><span class="header-section-number">15.1.3</span> EXAMPLE 2 Substitution</h3>
 <p>Find the Laurent series of <span class="math inline">\(z^2 e^{1/z}\)</span> with center 0.</p>
-<p><strong>Solution.</strong> From the Maclaurin series of <span class="math inline">\(e^z\)</span> in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span> with <span class="math inline">\(z\)</span> replaced by <span class="math inline">\(1/z\)</span>, we obtain a Laurent series whose principal part is an infinite series: <span class="math display">\[
+<p><strong>Solution.</strong> From the Maclaurin series of <span class="math inline">\(e^z\)</span> in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a> with <span class="math inline">\(z\)</span> replaced by <span class="math inline">\(1/z\)</span>, we obtain a Laurent series whose principal part is an infinite series: <span class="math display">\[
 z^2 e^{1/z} = z^2 \left( 1 + \frac{1}{1! z} + \frac{1}{2! z^2} + \frac{1}{3! z^3} + \dots \right) = z^2 + z + \frac{1}{2} + \frac{1}{6z} + \frac{1}{24z^2} + \dots \quad (|z| &gt; 0). \quad \square
 \]</span></p>
 </section>
@@ -512,7 +512,7 @@ f(z) = -\frac{1}{z - 1} - \frac{1}{z - 2} = \frac{1}{1 - z} - \frac{1}{2 - z}
 -\frac{1}{z - 2} = -\frac{1}{z} \frac{1}{1 - 2/z} = -\sum_{n=0}^{\infty} \frac{2^n}{z^{n+1}} \quad (\text{valid if } |z| &gt; 2)
 \]</span></p>
 <ol type="I">
-<li>From (a) and (c), valid for <span class="math inline">\(|z| &lt; 1\)</span> (see <a href="#fig-16-371" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>), <span class="math display">\[
+<li>From (a) and (c), valid for <span class="math inline">\(|z| &lt; 1\)</span> (see <a href="#fig-16-371" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-371</span></a>), <span class="math display">\[
 f(z) = \sum_{n=0}^{\infty} \left( 1 + \frac{1}{2^{n+1}} \right) z^n = \frac{3}{2} + \frac{5}{4} z + \frac{9}{8} z^2 + \dots
 \]</span></li>
 <li>From (c) and (b), valid for <span class="math inline">\(1 &lt; |z| &lt; 2\)</span>, <span class="math display">\[
@@ -520,7 +520,7 @@ f(z) = \sum_{n=0}^{\infty} \frac{1}{2^{n+1}} z^n - \sum_{n=0}^{\infty} \frac{1}{
 \]</span></li>
 <li>From (d) and (b), valid for <span class="math inline">\(|z| &gt; 2\)</span>, <span class="math display">\[
 f(z) = -\sum_{n=0}^{\infty} \frac{2^n + 1}{z^{n+1}} = -\frac{2}{z} - \frac{3}{z^2} - \frac{5}{z^3} - \frac{9}{z^4} - \dots
-\]</span> If in Laurent’s theorem <span class="math inline">\(f(z)\)</span> is analytic inside <span class="math inline">\(C_2\)</span>, the coefficients <span class="math inline">\(b_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span>15.2</span></a>) are zero by Cauchy’s integral theorem, so that the Laurent series reduces to a Taylor series. Examples 3(a) and 5(I) illustrate this. <span class="math inline">\(\square\)</span></li>
+\]</span> If in Laurent’s theorem <span class="math inline">\(f(z)\)</span> is analytic inside <span class="math inline">\(C_2\)</span>, the coefficients <span class="math inline">\(b_n\)</span> in (<a href="#eq-16-1-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-1-2</span></a>) are zero by Cauchy’s integral theorem, so that the Laurent series reduces to a Taylor series. Examples 3(a) and 5(I) illustrate this. <span class="math inline">\(\square\)</span></li>
 </ol>
 <div id="fig-16-371" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -535,8 +535,8 @@ Figure&nbsp;15.2: Fig. 371. Regions of convergence in Example 5
 <hr>
 </section>
 </section>
-<section id="problem-set-16.1" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="problem-set-16.1"><span class="header-section-number">15.2</span> PROBLEM SET 16.1</h2>
+<section id="sec-problem-set-16-1" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="sec-problem-set-16-1"><span class="header-section-number">15.2</span> PROBLEM SET 16.1</h2>
 <section id="laurent-series-near-a-singularity-at-0" class="level3" data-number="15.2.1">
 <h3 data-number="15.2.1" class="anchored" data-anchor-id="laurent-series-near-a-singularity-at-0"><span class="header-section-number">15.2.1</span> 1–8 LAURENT SERIES NEAR A SINGULARITY AT 0</h3>
 <p>Expand the function in a Laurent series that converges for <span class="math inline">\(0 &lt; |z| &lt; R\)</span> and determine the precise region of convergence. Show the details of your work.</p>
@@ -596,19 +596,19 @@ Figure&nbsp;15.2: Fig. 371. Regions of convergence in Example 5
 </section>
 </section>
 <section id="sec-singularities-zeros" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="sec-singularities-zeros"><span class="header-section-number">15.3</span> 16.2 Singularities and Zeros. Infinity</h2>
+<h2 data-number="15.3" class="anchored" data-anchor-id="sec-singularities-zeros"><span class="header-section-number">15.3</span> Singularities and Zeros. Infinity</h2>
 <p>Roughly, a singular point of an analytic function is a <span class="math inline">\(z_0\)</span> at which <span class="math inline">\(f(z)\)</span> ceases to be analytic, and a zero is a <span class="math inline">\(z_0\)</span> at which <span class="math inline">\(f(z_0) = 0\)</span>. Precise definitions follow below. In this section we show that Laurent series can be used for classifying singularities and Taylor series for discussing zeros.</p>
-<p>Singularities were defined in <a href="ch15.html#sec-power-series" class="quarto-xref"><span>Section 14.3</span></a>, as we shall now recall and extend. We also remember that, by definition, a function is a single-valued relation, as was emphasized in <a href="ch13.html#sec-polar-form" class="quarto-xref"><span>Section 12.3</span></a>.</p>
+<p>Singularities were defined in <a href="#sec-power-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-power-series</span></a>, as we shall now recall and extend. We also remember that, by definition, a function is a single-valued relation, as was emphasized in <a href="#sec-polar-form" class="quarto-xref"><span class="quarto-unresolved-ref">sec-polar-form</span></a>.</p>
 <p>We say that a function <span class="math inline">\(f(z)\)</span> is <strong>singular</strong> or has a <strong>singularity</strong> at a point <span class="math inline">\(z_0\)</span> if <span class="math inline">\(f(z)\)</span> is not analytic (perhaps not even defined) at <span class="math inline">\(z_0\)</span>, but every neighborhood of <span class="math inline">\(z_0\)</span> contains points at which <span class="math inline">\(f(z)\)</span> is analytic. We also say that <span class="math inline">\(z_0\)</span> is a <strong>singular point</strong> of <span class="math inline">\(f(z)\)</span>.</p>
 <p>We call <span class="math inline">\(z_0\)</span> an <strong>isolated singularity</strong> of <span class="math inline">\(f(z)\)</span> if <span class="math inline">\(z_0\)</span> has a neighborhood without further singularities of <span class="math inline">\(f(z)\)</span>. Example: <span class="math inline">\(\tan z\)</span> has isolated singularities at <span class="math inline">\(\pm \pi/2, \pm 3\pi/2, \dots\)</span>; <span class="math inline">\(\tan(1/z)\)</span> has a nonisolated singularity at 0. (Explain!)</p>
 <p>Isolated singularities of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> can be classified by the Laurent series <span id="eq-16-2-1"><span class="math display">\[
 f(z) = \sum_{n=0}^{\infty} a_n(z - z_0)^n + \sum_{n=1}^{\infty} \frac{b_n}{(z - z_0)^n}
 \tag{15.16}\]</span></span> valid in the immediate neighborhood of the singular point <span class="math inline">\(z_0\)</span> except at <span class="math inline">\(z_0\)</span> itself, that is, in a region of the form <span class="math display">\[
 0 &lt; |z - z_0| &lt; R.
-\]</span> The sum of the first series is analytic at <span class="math inline">\(z_0\)</span>, as we know from the last section. The second series, containing the negative powers, is called the <strong>principal part</strong> of (<a href="#eq-16-2-1" class="quarto-xref">Equation&nbsp;<span>15.16</span></a>), as we remember from the last section. If it has only finitely many terms, it is of the form <span id="eq-16-2-2"><span class="math display">\[
+\]</span> The sum of the first series is analytic at <span class="math inline">\(z_0\)</span>, as we know from the last section. The second series, containing the negative powers, is called the <strong>principal part</strong> of (<a href="#eq-16-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-2-1</span></a>), as we remember from the last section. If it has only finitely many terms, it is of the form <span id="eq-16-2-2"><span class="math display">\[
 \frac{b_1}{z - z_0} + \dots + \frac{b_m}{(z - z_0)^m} \quad (b_m \neq 0).
 \tag{15.17}\]</span></span> Then the singularity of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> is called a <strong>pole</strong>, and <span class="math inline">\(m\)</span> is called its <strong>order</strong>. Poles of the first order are also known as <strong>simple poles</strong>.</p>
-<p>If the principal part of (<a href="#eq-16-2-1" class="quarto-xref">Equation&nbsp;<span>15.16</span></a>) has infinitely many terms, we say that <span class="math inline">\(f(z)\)</span> has at <span class="math inline">\(z_0\)</span> an <strong>isolated essential singularity</strong>.</p>
+<p>If the principal part of (<a href="#eq-16-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-2-1</span></a>) has infinitely many terms, we say that <span class="math inline">\(f(z)\)</span> has at <span class="math inline">\(z_0\)</span> an <strong>isolated essential singularity</strong>.</p>
 <p>We leave aside nonisolated singularities.</p>
 <section id="example-1-poles.-essential-singularities" class="level3" data-number="15.3.1">
 <h3 data-number="15.3.1" class="anchored" data-anchor-id="example-1-poles.-essential-singularities"><span class="header-section-number">15.3.1</span> EXAMPLE 1 Poles. Essential Singularities</h3>
@@ -662,7 +662,7 @@ e^{(\cos \theta)/r} = c_0, \quad \text{that is,} \quad \frac{\cos \theta}{r} = \
 <li>The function <span class="math inline">\(\sin z^2\)</span> has a second-order zero at 0, and simple zeros at <span class="math inline">\(\pm \sqrt{n\pi}\)</span> (<span class="math inline">\(n = 1, 2, \dots\)</span>).</li>
 <li>The function <span class="math inline">\((1 - \cos z)^2\)</span> has fourth-order zeros at <span class="math inline">\(0, \pm 2\pi, \pm 4\pi, \dots\)</span>. <span class="math inline">\(\square\)</span></li>
 </ul>
-<p><strong>Taylor Series at a Zero.</strong> At an <span class="math inline">\(n\)</span>-th order zero of <span class="math inline">\(f(z)\)</span>, the derivatives <span class="math inline">\(f(z_0), \dots, f^{(n-1)}(z_0)\)</span> are zero, by definition. Hence the first few coefficients of the Taylor series in <span class="quarto-unresolved-ref">?sec-taylor-laurent-series</span> are zero, too, whereas <span class="math inline">\(a_n = f^{(n)}(z_0)/n! \neq 0\)</span>, so that this series takes the form <span id="eq-16-2-3"><span class="math display">\[
+<p><strong>Taylor Series at a Zero.</strong> At an <span class="math inline">\(n\)</span>-th order zero of <span class="math inline">\(f(z)\)</span>, the derivatives <span class="math inline">\(f(z_0), \dots, f^{(n-1)}(z_0)\)</span> are zero, by definition. Hence the first few coefficients of the Taylor series in <a href="#sec-taylor-laurent-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-taylor-laurent-series</span></a> are zero, too, whereas <span class="math inline">\(a_n = f^{(n)}(z_0)/n! \neq 0\)</span>, so that this series takes the form <span id="eq-16-2-3"><span class="math display">\[
 f(z) = a_n(z - z_0)^n + a_{n+1}(z - z_0)^{n+1} + \dots = (z - z_0)^n [a_n + a_{n+1}(z - z_0) + \dots]
 \tag{15.18}\]</span></span> where <span class="math inline">\(a_n \neq 0\)</span>. This is characteristic of such a zero, because, if <span class="math inline">\(f(z)\)</span> has such a Taylor series, it has an <span class="math inline">\(n\)</span>-th order zero at <span class="math inline">\(z_0\)</span>, as follows by differentiation.</p>
 <p>Whereas nonisolated singularities may occur, for zeros we have:</p>
@@ -670,8 +670,8 @@ f(z) = a_n(z - z_0)^n + a_{n+1}(z - z_0)^{n+1} + \dots = (z - z_0)^n [a_n + a_{n
 <section id="theorem-3-zeros" class="level3" data-number="15.3.8">
 <h3 data-number="15.3.8" class="anchored" data-anchor-id="theorem-3-zeros"><span class="header-section-number">15.3.8</span> THEOREM 3 Zeros</h3>
 <p><em>The zeros of an analytic function <span class="math inline">\(f(z) \neq 0\)</span> are isolated; that is, each of them has a neighborhood that contains no further zeros of <span class="math inline">\(f(z)\)</span>.</em></p>
-<p><strong>PROOF</strong> The factor <span class="math inline">\((z - z_0)^n\)</span> in (<a href="#eq-16-2-3" class="quarto-xref">Equation&nbsp;<span>15.18</span></a>) is zero only at <span class="math inline">\(z = z_0\)</span>. The power series in the brackets represents an analytic function (by Theorem 5 in <a href="ch15.html#sec-functions-given-by-power-series" class="quarto-xref"><span>Section 14.5</span></a>), call it <span class="math inline">\(g(z)\)</span>. Now <span class="math inline">\(g(z_0) = a_n \neq 0\)</span>, since an analytic function is continuous, and because of this continuity, <span class="math inline">\(g(z) \neq 0\)</span> also in some neighborhood of <span class="math inline">\(z_0\)</span>. Hence the same holds for <span class="math inline">\(f(z) = (z - z_0)^n g(z)\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>Poles are often caused by zeros in the denominator. (Example: <span class="math inline">\(\tan z\)</span> has poles where <span class="math inline">\(\cos z\)</span> is zero.) This is a major reason for the importance of zeros. The key to the connection is the following theorem, whose proof follows from (<a href="#eq-16-2-3" class="quarto-xref">Equation&nbsp;<span>15.18</span></a>).</p>
+<p><strong>PROOF</strong> The factor <span class="math inline">\((z - z_0)^n\)</span> in (<a href="#eq-16-2-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-2-3</span></a>) is zero only at <span class="math inline">\(z = z_0\)</span>. The power series in the brackets represents an analytic function (by Theorem 5 in <a href="#sec-functions-given-by-power-series" class="quarto-xref"><span class="quarto-unresolved-ref">sec-functions-given-by-power-series</span></a>), call it <span class="math inline">\(g(z)\)</span>. Now <span class="math inline">\(g(z_0) = a_n \neq 0\)</span>, since an analytic function is continuous, and because of this continuity, <span class="math inline">\(g(z) \neq 0\)</span> also in some neighborhood of <span class="math inline">\(z_0\)</span>. Hence the same holds for <span class="math inline">\(f(z) = (z - z_0)^n g(z)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Poles are often caused by zeros in the denominator. (Example: <span class="math inline">\(\tan z\)</span> has poles where <span class="math inline">\(\cos z\)</span> is zero.) This is a major reason for the importance of zeros. The key to the connection is the following theorem, whose proof follows from (<a href="#eq-16-2-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-2-3</span></a>).</p>
 </section>
 <section id="theorem-4-poles-and-zeros" class="level3" data-number="15.3.9">
 <h3 data-number="15.3.9" class="anchored" data-anchor-id="theorem-4-poles-and-zeros"><span class="header-section-number">15.3.9</span> THEOREM 4 Poles and Zeros</h3>
@@ -679,7 +679,7 @@ f(z) = a_n(z - z_0)^n + a_{n+1}(z - z_0)^{n+1} + \dots = (z - z_0)^n [a_n + a_{n
 </section>
 <section id="riemann-sphere.-point-at-infinity" class="level3" data-number="15.3.10">
 <h3 data-number="15.3.10" class="anchored" data-anchor-id="riemann-sphere.-point-at-infinity"><span class="header-section-number">15.3.10</span> Riemann Sphere. Point at Infinity</h3>
-<p>When we want to study complex functions for large <span class="math inline">\(|z|\)</span>, the complex plane will generally become rather inconvenient. Then it may be better to use a representation of complex numbers on the so-called <strong>Riemann sphere</strong>. This is a sphere <span class="math inline">\(S\)</span> of diameter 1 touching the complex <span class="math inline">\(z\)</span>-plane at <span class="math inline">\(z = 0\)</span> (<a href="#fig-16-372" class="quarto-xref">Figure&nbsp;<span>15.3</span></a>), and we let the image of a point <span class="math inline">\(P\)</span> (a number <span class="math inline">\(z\)</span> in the plane) be the intersection of the segment <span class="math inline">\(PN\)</span> with <span class="math inline">\(S\)</span>, where <span class="math inline">\(N\)</span> is the “North Pole” diametrically opposite to the origin in the plane. Then to each <span class="math inline">\(z\)</span> there corresponds a point <span class="math inline">\(P^*\)</span> on <span class="math inline">\(S\)</span>.</p>
+<p>When we want to study complex functions for large <span class="math inline">\(|z|\)</span>, the complex plane will generally become rather inconvenient. Then it may be better to use a representation of complex numbers on the so-called <strong>Riemann sphere</strong>. This is a sphere <span class="math inline">\(S\)</span> of diameter 1 touching the complex <span class="math inline">\(z\)</span>-plane at <span class="math inline">\(z = 0\)</span> (<a href="#fig-16-372" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-372</span></a>), and we let the image of a point <span class="math inline">\(P\)</span> (a number <span class="math inline">\(z\)</span> in the plane) be the intersection of the segment <span class="math inline">\(PN\)</span> with <span class="math inline">\(S\)</span>, where <span class="math inline">\(N\)</span> is the “North Pole” diametrically opposite to the origin in the plane. Then to each <span class="math inline">\(z\)</span> there corresponds a point <span class="math inline">\(P^*\)</span> on <span class="math inline">\(S\)</span>.</p>
 <p>Conversely, each point <span class="math inline">\(P^*\)</span> on <span class="math inline">\(S\)</span> represents a complex number <span class="math inline">\(z\)</span>, except for <span class="math inline">\(N\)</span>, which does not correspond to any point in the complex plane. This suggests that we introduce an additional point, called the <strong>point at infinity</strong> and denoted <span class="math inline">\(\infty\)</span> (“infinity”), and let its image be <span class="math inline">\(N\)</span>. The complex plane together with <span class="math inline">\(\infty\)</span> is called the <strong>extended complex plane</strong>. The complex plane is often called the <strong>finite complex plane</strong>, for distinction, or simply the complex plane as before. The sphere <span class="math inline">\(S\)</span> is called the <strong>Riemann sphere</strong>. The mapping of the extended complex plane onto the sphere is known as a <strong>stereographic projection</strong>.</p>
 <p><em>(What is the image of the Northern Hemisphere? Of the Western Hemisphere? Of a straight line through the origin?)</em></p>
 <div id="fig-16-372" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -709,13 +709,13 @@ f(\infty) = g(0)
 <li>The function <span class="math inline">\(f(z) = z^3\)</span> is singular at <span class="math inline">\(\infty\)</span> and has a third-order pole there since the function <span class="math inline">\(g(w) = f(1/w) = 1/w^3\)</span> has such a pole at <span class="math inline">\(w = 0\)</span>.</li>
 <li>The function <span class="math inline">\(e^z\)</span> has an essential singularity at <span class="math inline">\(\infty\)</span> since <span class="math inline">\(g(w) = e^{1/w}\)</span> has such a singularity at <span class="math inline">\(w = 0\)</span>. Similarly, <span class="math inline">\(\sin z\)</span> and <span class="math inline">\(\cos z\)</span> have an essential singularity at <span class="math inline">\(\infty\)</span>. <span class="math inline">\(\square\)</span></li>
 </ul>
-<p>Recall that an <strong>entire function</strong> is one that is analytic everywhere in the (finite) complex plane. Liouville’s theorem (<a href="ch14.html#sec-line-integral" class="quarto-xref"><span>Section 13.1</span></a>) tells us that the only bounded entire functions are the constants, hence any nonconstant entire function must be unbounded. Hence it has a singularity at <span class="math inline">\(\infty\)</span>: a pole if it is a polynomial or an essential singularity if it is not. The functions just considered are typical in this respect.</p>
+<p>Recall that an <strong>entire function</strong> is one that is analytic everywhere in the (finite) complex plane. Liouville’s theorem (<a href="#sec-line-integral" class="quarto-xref"><span class="quarto-unresolved-ref">sec-line-integral</span></a>) tells us that the only bounded entire functions are the constants, hence any nonconstant entire function must be unbounded. Hence it has a singularity at <span class="math inline">\(\infty\)</span>: a pole if it is a polynomial or an essential singularity if it is not. The functions just considered are typical in this respect.</p>
 <p>An analytic function whose only singularities in the finite plane are poles is called a <strong>meromorphic function</strong>. Examples are rational functions with nonconstant denominator, <span class="math inline">\(\tan z\)</span>, <span class="math inline">\(\cot z\)</span>, <span class="math inline">\(\sec z\)</span>, and <span class="math inline">\(\csc z\)</span>.</p>
 <hr>
 </section>
 </section>
-<section id="problem-set-16.2" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="problem-set-16.2"><span class="header-section-number">15.4</span> PROBLEM SET 16.2</h2>
+<section id="sec-problem-set-16-2" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="sec-problem-set-16-2"><span class="header-section-number">15.4</span> PROBLEM SET 16.2</h2>
 <section id="zeros" class="level3" data-number="15.4.1">
 <h3 data-number="15.4.1" class="anchored" data-anchor-id="zeros"><span class="header-section-number">15.4.1</span> 1–10 ZEROS</h3>
 <p>Determine the location and order of the zeros.</p>
@@ -781,16 +781,16 @@ f(\infty) = g(0)
 </section>
 </section>
 <section id="sec-16-3" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="sec-16-3"><span class="header-section-number">15.5</span> 16.3 Residue Integration Method</h2>
-<p>If <span class="math inline">\(f(z)\)</span> is analytic everywhere on a simple closed path <span class="math inline">\(C\)</span> and inside <span class="math inline">\(C\)</span>, then by Cauchy’s integral theorem (Sec. 14.2), <span class="math display">\[
+<h2 data-number="15.5" class="anchored" data-anchor-id="sec-16-3"><span class="header-section-number">15.5</span> Residue Integration Method</h2>
+<p>If <span class="math inline">\(f(z)\)</span> is analytic everywhere on a simple closed path <span class="math inline">\(C\)</span> and inside <span class="math inline">\(C\)</span>, then by Cauchy’s integral theorem (<!-- TODO: replace Sec. 14.2 with actual cross-reference label -->), <span class="math display">\[
 \oint_C f(z)\,dz = 0.
 \]</span></p>
 <p>The situation changes if <span class="math inline">\(f(z)\)</span> has a singularity at a point <span class="math inline">\(z_0\)</span> inside <span class="math inline">\(C\)</span> but is otherwise analytic on <span class="math inline">\(C\)</span> and inside <span class="math inline">\(C\)</span> as before. Then <span class="math inline">\(f(z)\)</span> has a Laurent series <span class="math display">\[
 f(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^n + \frac{b_1}{z - z_0} + \frac{b_2}{(z - z_0)^2} + \cdots \quad (0 &lt; |z - z_0| &lt; R).
-\]</span> that converges for all points near <span class="math inline">\(z_0\)</span> (except at <span class="math inline">\(z_0\)</span> itself), in some domain of the form <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span> (sometimes called a <em>deleted neighborhood</em>, an old-fashioned term that we shall not use). Now comes the key idea. The coefficient <span class="math inline">\(b_1\)</span> of the first negative power <span class="math inline">\(1/(z - z_0)\)</span> of this Laurent series is given by the integral formula (2) in Sec. 16.1 with <span class="math inline">\(n = 1\)</span>, namely, <span class="math display">\[
+\]</span> that converges for all points near <span class="math inline">\(z_0\)</span> (except at <span class="math inline">\(z_0\)</span> itself), in some domain of the form <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span> (sometimes called a <em>deleted neighborhood</em>, an old-fashioned term that we shall not use). Now comes the key idea. The coefficient <span class="math inline">\(b_1\)</span> of the first negative power <span class="math inline">\(1/(z - z_0)\)</span> of this Laurent series is given by the integral formula (2) in <a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a> with <span class="math inline">\(n = 1\)</span>, namely, <span class="math display">\[
 b_1 = \frac{1}{2\pi i} \oint_C f(z)\,dz.
 \]</span></p>
-<p>Now, since we can obtain Laurent series by various methods, without using the integral formulas for the coefficients (see the examples in Sec. 16.1), we can find <span class="math inline">\(b_1\)</span> by one of those methods and then use the formula for <span class="math inline">\(b_1\)</span> for evaluating the integral, that is,</p>
+<p>Now, since we can obtain Laurent series by various methods, without using the integral formulas for the coefficients (see the examples in <a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a>), we can find <span class="math inline">\(b_1\)</span> by one of those methods and then use the formula for <span class="math inline">\(b_1\)</span> for evaluating the integral, that is,</p>
 <p><span id="eq-16-3-1"><span class="math display">\[
 \oint_C f(z)\,dz = 2\pi i\, b_1.
 \tag{15.20}\]</span></span></p>
@@ -802,21 +802,21 @@ b_1 = \operatorname{Res}_{z=z_0} f(z).
 <section id="example-1-evaluation-of-an-integral-by-means-of-a-residue" class="level3" data-number="15.5.1">
 <h3 data-number="15.5.1" class="anchored" data-anchor-id="example-1-evaluation-of-an-integral-by-means-of-a-residue"><span class="header-section-number">15.5.1</span> EXAMPLE 1 Evaluation of an Integral by Means of a Residue</h3>
 <p>Integrate the function <span class="math inline">\(f(z) = z^{-4} \sin z\)</span> counterclockwise around the unit circle <span class="math inline">\(C\)</span>.</p>
-<p><strong>Solution.</strong> From (14) in Sec. 15.4 we obtain the Laurent series <span class="math display">\[
+<p><strong>Solution.</strong> From (14) in <!-- TODO: replace Sec. 15.4 with actual cross-reference label --> we obtain the Laurent series <span class="math display">\[
 f(z) = \frac{\sin z}{z^4} = \frac{1}{z^3} - \frac{1}{3!\,z} + \frac{1}{5!} - \frac{z^2}{7!} + \cdots
-\]</span> which converges for <span class="math inline">\(|z| &gt; 0\)</span> (that is, for all <span class="math inline">\(z \ne 0\)</span>). This series shows that <span class="math inline">\(f(z)\)</span> has a pole of third order at <span class="math inline">\(z = 0\)</span> and the residue <span class="math inline">\(b_1 = -1/3! = -1/6\)</span>. From <a href="#eq-16-3-1" class="quarto-xref">Equation&nbsp;<span>15.20</span></a> we thus obtain the answer <span class="math display">\[
+\]</span> which converges for <span class="math inline">\(|z| &gt; 0\)</span> (that is, for all <span class="math inline">\(z \ne 0\)</span>). This series shows that <span class="math inline">\(f(z)\)</span> has a pole of third order at <span class="math inline">\(z = 0\)</span> and the residue <span class="math inline">\(b_1 = -1/3! = -1/6\)</span>. From <a href="#eq-16-3-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-1</span></a> we thus obtain the answer <span class="math display">\[
 \oint_C \frac{\sin z}{z^4}\,dz = 2\pi i\,b_1 = -\frac{\pi i}{3}. \quad \blacksquare
 \]</span></p>
 </section>
 <section id="example-2-caution-use-the-right-laurent-series" class="level3" data-number="15.5.2">
 <h3 data-number="15.5.2" class="anchored" data-anchor-id="example-2-caution-use-the-right-laurent-series"><span class="header-section-number">15.5.2</span> EXAMPLE 2 CAUTION! Use the Right Laurent Series!</h3>
 <p>Integrate <span class="math inline">\(f(z) = 1/(z^3 - z^4)\)</span> clockwise around the circle <span class="math inline">\(C\)</span>: <span class="math inline">\(|z| = \tfrac{1}{2}\)</span>.</p>
-<p><strong>Solution.</strong> <span class="math inline">\(z^3 - z^4 = z^3(1 - z)\)</span> shows that <span class="math inline">\(f(z)\)</span> is singular at <span class="math inline">\(z = 0\)</span> and <span class="math inline">\(z = 1\)</span>. Now <span class="math inline">\(z = 1\)</span> lies outside <span class="math inline">\(C\)</span>. Hence it is of no interest here. So we need the residue of <span class="math inline">\(f(z)\)</span> at 0. We find it from the Laurent series that converges for <span class="math inline">\(0 &lt; |z| &lt; 1\)</span>. This is series (I) in Example 4, Sec. 16.1, <span class="math display">\[
+<p><strong>Solution.</strong> <span class="math inline">\(z^3 - z^4 = z^3(1 - z)\)</span> shows that <span class="math inline">\(f(z)\)</span> is singular at <span class="math inline">\(z = 0\)</span> and <span class="math inline">\(z = 1\)</span>. Now <span class="math inline">\(z = 1\)</span> lies outside <span class="math inline">\(C\)</span>. Hence it is of no interest here. So we need the residue of <span class="math inline">\(f(z)\)</span> at 0. We find it from the Laurent series that converges for <span class="math inline">\(0 &lt; |z| &lt; 1\)</span>. This is series (I) in Example 4, <a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a>, <span class="math display">\[
 \frac{1}{z^3 - z^4} = \frac{1}{z^3} + \frac{1}{z^2} + \frac{1}{z} + 1 + z + \cdots \quad (0 &lt; |z| &lt; 1).
 \]</span> We see from it that this residue is 1. Clockwise integration thus yields <span class="math display">\[
 \oint_C \frac{dz}{z^3 - z^4} = -2\pi i \operatorname{Res}_{z=0} f(z) = -2\pi i.
 \]</span></p>
-<p><strong>CAUTION!</strong> Had we used the wrong series (II) in Example 4, Sec. 16.1, <span class="math display">\[
+<p><strong>CAUTION!</strong> Had we used the wrong series (II) in Example 4, <a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a>, <span class="math display">\[
 \frac{1}{z^3 - z^4} = -\frac{1}{z^4} - \frac{1}{z^5} - \frac{1}{z^6} - \cdots \quad (|z| &gt; 1),
 \]</span> we would have obtained the wrong answer, 0, because this series has no power <span class="math inline">\(1/z\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 </section>
@@ -831,24 +831,24 @@ f(z) = \frac{\sin z}{z^4} = \frac{1}{z^3} - \frac{1}{3!\,z} + \frac{1}{5!} - \fr
 <p><span id="eq-16-3-4"><span class="math display">\[
 \operatorname{Res}_{z=z_0} f(z) = \operatorname{Res}_{z=z_0} \frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}.
 \tag{15.23}\]</span></span></p>
-<p>In <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> we assume that <span class="math inline">\(f(z) = p(z)/q(z)\)</span> with <span class="math inline">\(p(z_0) \ne 0\)</span> and <span class="math inline">\(q(z)\)</span> has a simple zero at <span class="math inline">\(z_0\)</span>, so that <span class="math inline">\(f(z)\)</span> has a simple pole at <span class="math inline">\(z_0\)</span> by Theorem 4 in Sec. 16.2.</p>
-<p><strong>PROOF</strong> We prove <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span>15.22</span></a>. For a simple pole at <span class="math inline">\(z_0\)</span> the Laurent series (1), Sec. 16.1, is <span class="math display">\[
+<p>In <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> we assume that <span class="math inline">\(f(z) = p(z)/q(z)\)</span> with <span class="math inline">\(p(z_0) \ne 0\)</span> and <span class="math inline">\(q(z)\)</span> has a simple zero at <span class="math inline">\(z_0\)</span>, so that <span class="math inline">\(f(z)\)</span> has a simple pole at <span class="math inline">\(z_0\)</span> by Theorem 4 in <a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>.</p>
+<p><strong>PROOF</strong> We prove <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-3</span></a>. For a simple pole at <span class="math inline">\(z_0\)</span> the Laurent series (1), <a href="#sec-laurent-series-sec" class="quarto-xref"><span class="quarto-unresolved-ref">sec-laurent-series-sec</span></a>, is <span class="math display">\[
 f(z) = \frac{b_1}{z - z_0} + a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \cdots \quad (0 &lt; |z - z_0| &lt; R).
-\]</span> Here <span class="math inline">\(b_1 \ne 0\)</span>. (Why?) Multiplying both sides by <span class="math inline">\(z - z_0\)</span> and then letting <span class="math inline">\(z \to z_0\)</span>, we obtain the formula <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span>15.22</span></a>: <span class="math display">\[
+\]</span> Here <span class="math inline">\(b_1 \ne 0\)</span>. (Why?) Multiplying both sides by <span class="math inline">\(z - z_0\)</span> and then letting <span class="math inline">\(z \to z_0\)</span>, we obtain the formula <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-3</span></a>: <span class="math display">\[
 \lim_{z \to z_0} (z - z_0)\,f(z) = b_1 + \lim_{z \to z_0} (z - z_0)[a_0 + a_1(z - z_0) + \cdots] = b_1
-\]</span> where the last equality follows from continuity (Theorem 1, Sec. 15.3).</p>
-<p>We prove <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a>. The Taylor series of <span class="math inline">\(q(z)\)</span> at a simple zero <span class="math inline">\(z_0\)</span> is <span class="math display">\[
+\]</span> where the last equality follows from continuity (Theorem 1, <!-- TODO: replace Sec. 15.3 with actual cross-reference label -->).</p>
+<p>We prove <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a>. The Taylor series of <span class="math inline">\(q(z)\)</span> at a simple zero <span class="math inline">\(z_0\)</span> is <span class="math display">\[
 q(z) = (z - z_0)\,q'(z_0) + \frac{(z - z_0)^2}{2!}\,q''(z_0) + \cdots.
-\]</span> Substituting this into <span class="math inline">\(f = p/q\)</span> and then <span class="math inline">\(f\)</span> into <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span>15.22</span></a> gives <span class="math display">\[
+\]</span> Substituting this into <span class="math inline">\(f = p/q\)</span> and then <span class="math inline">\(f\)</span> into <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-3</span></a> gives <span class="math display">\[
 \operatorname{Res}_{z=z_0} f(z) = \lim_{z \to z_0} (z - z_0) \frac{p(z)}{q(z)} = \lim_{z \to z_0} \frac{(z - z_0)\,p(z)}{(z - z_0)[q'(z_0) + (z - z_0)\,q''(z_0)/2 + \cdots]}.
-\]</span> <span class="math inline">\(z - z_0\)</span> cancels. By continuity, the limit of the denominator is <span class="math inline">\(q'(z_0)\)</span> and <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> follows. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> <span class="math inline">\(z - z_0\)</span> cancels. By continuity, the limit of the denominator is <span class="math inline">\(q'(z_0)\)</span> and <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> follows. <span class="math inline">\(\blacksquare\)</span></p>
 </section>
 <section id="example-3-residue-at-a-simple-pole" class="level3" data-number="15.5.4">
 <h3 data-number="15.5.4" class="anchored" data-anchor-id="example-3-residue-at-a-simple-pole"><span class="header-section-number">15.5.4</span> EXAMPLE 3 Residue at a Simple Pole</h3>
-<p><span class="math inline">\(f(z) = (9z + i)/(z^3 + z)\)</span> has a simple pole at <span class="math inline">\(z = i\)</span> because <span class="math inline">\(z^2 + 1 = (z + i)(z - i)\)</span>, and <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span>15.22</span></a> gives the residue <span class="math display">\[
+<p><span class="math inline">\(f(z) = (9z + i)/(z^3 + z)\)</span> has a simple pole at <span class="math inline">\(z = i\)</span> because <span class="math inline">\(z^2 + 1 = (z + i)(z - i)\)</span>, and <a href="#eq-16-3-3" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-3</span></a> gives the residue <span class="math display">\[
 \operatorname{Res}_{z=i} \frac{9z + i}{z(z^2 + 1)} = \lim_{z \to i} (z - i) \frac{9z + i}{z(z + i)(z - i)} = \left[\frac{9z + i}{z(z + i)}\right]_{z=i} = \frac{10i}{-2} = -5i.
 \]</span></p>
-<p>By <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> with <span class="math inline">\(p(i) = 9i + i = 10i\)</span> and <span class="math inline">\(q'(z) = 3z^2 + 1\)</span>, we confirm the result, <span class="math display">\[
+<p>By <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> with <span class="math inline">\(p(i) = 9i + i = 10i\)</span> and <span class="math inline">\(q'(z) = 3z^2 + 1\)</span>, we confirm the result, <span class="math display">\[
 \operatorname{Res}_{z=i} \frac{9z + i}{z(z^2 + 1)} = \left[\frac{9z + i}{3z^2 + 1}\right]_{z=i} = \frac{10i}{-2} = -5i. \quad \blacksquare
 \]</span></p>
 <p><strong>Poles of Any Order at <span class="math inline">\(z_0\)</span>.</strong> The residue of <span class="math inline">\(f(z)\)</span> at an <span class="math inline">\(m\)</span>th-order pole at <span class="math inline">\(z_0\)</span> is</p>
@@ -859,17 +859,17 @@ q(z) = (z - z_0)\,q'(z_0) + \frac{(z - z_0)^2}{2!}\,q''(z_0) + \cdots.
 <p><span id="eq-16-3-5star"><span class="math display">\[
 \operatorname{Res}_{z=z_0} f(z) = \lim_{z \to z_0} \left\{ \left[(z - z_0)^2 f(z)\right]' \right\}.
 \tag{15.25}\]</span></span></p>
-<p><strong>PROOF</strong> We prove <a href="#eq-16-3-5" class="quarto-xref">Equation&nbsp;<span>15.24</span></a>. The Laurent series of <span class="math inline">\(f(z)\)</span> converging near <span class="math inline">\(z_0\)</span> (except at <span class="math inline">\(z_0\)</span> itself) is (Sec. 16.2) <span class="math display">\[
+<p><strong>PROOF</strong> We prove <a href="#eq-16-3-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-5</span></a>. The Laurent series of <span class="math inline">\(f(z)\)</span> converging near <span class="math inline">\(z_0\)</span> (except at <span class="math inline">\(z_0\)</span> itself) is (<a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>) <span class="math display">\[
 f(z) = \frac{b_m}{(z - z_0)^m} + \frac{b_{m-1}}{(z - z_0)^{m-1}} + \cdots + \frac{b_1}{z - z_0} + a_0 + a_1(z - z_0) + \cdots
 \]</span> where <span class="math inline">\(b_m \ne 0\)</span>. The residue wanted is <span class="math inline">\(b_1\)</span>. Multiplying both sides by <span class="math inline">\((z - z_0)^m\)</span> gives <span class="math display">\[
 (z - z_0)^m f(z) = b_m + b_{m-1}(z - z_0) + \cdots + b_1(z - z_0)^{m-1} + a_0(z - z_0)^m + \cdots.
-\]</span> We see that <span class="math inline">\(b_1\)</span> is now the coefficient of the <span class="math inline">\((m-1)\)</span>th power <span class="math inline">\((z - z_0)^{m-1}\)</span> of the power series of <span class="math inline">\(g(z) = (z - z_0)^m f(z)\)</span>. Hence Taylor’s theorem (Sec. 15.4) gives <a href="#eq-16-3-5" class="quarto-xref">Equation&nbsp;<span>15.24</span></a>: <span class="math display">\[
+\]</span> We see that <span class="math inline">\(b_1\)</span> is now the coefficient of the <span class="math inline">\((m-1)\)</span>th power <span class="math inline">\((z - z_0)^{m-1}\)</span> of the power series of <span class="math inline">\(g(z) = (z - z_0)^m f(z)\)</span>. Hence Taylor’s theorem (<!-- TODO: replace Sec. 15.4 with actual cross-reference label -->) gives <a href="#eq-16-3-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-5</span></a>: <span class="math display">\[
 b_1 = \frac{1}{(m-1)!}\,g^{(m-1)}(z_0) = \frac{1}{(m-1)!} \lim_{z \to z_0} \frac{d^{m-1}}{dz^{m-1}}\left[(z - z_0)^m f(z)\right]. \quad \blacksquare
 \]</span></p>
 </section>
 <section id="example-4-residue-at-a-pole-of-higher-order" class="level3" data-number="15.5.5">
 <h3 data-number="15.5.5" class="anchored" data-anchor-id="example-4-residue-at-a-pole-of-higher-order"><span class="header-section-number">15.5.5</span> EXAMPLE 4 Residue at a Pole of Higher Order</h3>
-<p><span class="math inline">\(f(z) = 50z/(z^3 + 2z^2 - 7z + 4)\)</span> has a pole of second order at <span class="math inline">\(z = 1\)</span> because the denominator equals <span class="math inline">\((z + 4)(z - 1)^2\)</span> (verify!). From <a href="#eq-16-3-5star" class="quarto-xref">Equation&nbsp;<span>15.25</span></a> we obtain the residue <span class="math display">\[
+<p><span class="math inline">\(f(z) = 50z/(z^3 + 2z^2 - 7z + 4)\)</span> has a pole of second order at <span class="math inline">\(z = 1\)</span> because the denominator equals <span class="math inline">\((z + 4)(z - 1)^2\)</span> (verify!). From <a href="#eq-16-3-5star" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-5star</span></a> we obtain the residue <span class="math display">\[
 \operatorname{Res}_{z=1} f(z) = \lim_{z \to 1} \frac{d}{dz}\left[(z - 1)^2 f(z)\right] = \lim_{z \to 1} \frac{d}{dz}\left(\frac{50z}{z + 4}\right) = \frac{200}{25} = 8. \quad \blacksquare
 \]</span></p>
 </section>
@@ -893,17 +893,17 @@ Figure&nbsp;15.4: Fig. 373. Residue theorem
 </figcaption>
 </figure>
 </div>
-<p><strong>PROOF</strong> We enclose each of the singular points <span class="math inline">\(z_j\)</span> in a circle <span class="math inline">\(C_j\)</span> with radius small enough that those <span class="math inline">\(k\)</span> circles and <span class="math inline">\(C\)</span> are all separated (<a href="#fig-16-373" class="quarto-xref">Figure&nbsp;<span>15.4</span></a> where <span class="math inline">\(k = 3\)</span>). Then <span class="math inline">\(f(z)\)</span> is analytic in the multiply connected domain <span class="math inline">\(D\)</span> bounded by <span class="math inline">\(C\)</span> and <span class="math inline">\(C_1, \ldots, C_k\)</span> and on the entire boundary of <span class="math inline">\(D\)</span>. From Cauchy’s integral theorem we thus have</p>
+<p><strong>PROOF</strong> We enclose each of the singular points <span class="math inline">\(z_j\)</span> in a circle <span class="math inline">\(C_j\)</span> with radius small enough that those <span class="math inline">\(k\)</span> circles and <span class="math inline">\(C\)</span> are all separated (<a href="#fig-16-373" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-373</span></a> where <span class="math inline">\(k = 3\)</span>). Then <span class="math inline">\(f(z)\)</span> is analytic in the multiply connected domain <span class="math inline">\(D\)</span> bounded by <span class="math inline">\(C\)</span> and <span class="math inline">\(C_1, \ldots, C_k\)</span> and on the entire boundary of <span class="math inline">\(D\)</span>. From Cauchy’s integral theorem we thus have</p>
 <p><span id="eq-16-3-7"><span class="math display">\[
 \oint_C f(z)\,dz + \oint_{C_1} f(z)\,dz + \oint_{C_2} f(z)\,dz + \cdots + \oint_{C_k} f(z)\,dz = 0,
 \tag{15.27}\]</span></span></p>
-<p>the integral along <span class="math inline">\(C\)</span> being taken counterclockwise and the other integrals clockwise (as in Figs. 354 and 355, Sec. 14.2). We take the integrals over <span class="math inline">\(C_1, \ldots, C_k\)</span> to the right and compensate the resulting minus sign by reversing the sense of integration. Thus,</p>
+<p>the integral along <span class="math inline">\(C\)</span> being taken counterclockwise and the other integrals clockwise (as in <a href="#fig-16-354" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-354</span></a> and 355, <!-- TODO: replace Sec. 14.2 with actual cross-reference label -->). We take the integrals over <span class="math inline">\(C_1, \ldots, C_k\)</span> to the right and compensate the resulting minus sign by reversing the sense of integration. Thus,</p>
 <p><span id="eq-16-3-8"><span class="math display">\[
 \oint_C f(z)\,dz = \oint_{C_1} f(z)\,dz + \oint_{C_2} f(z)\,dz + \cdots + \oint_{C_k} f(z)\,dz
 \tag{15.28}\]</span></span></p>
-<p>where all the integrals are now taken counterclockwise. By <a href="#eq-16-3-1" class="quarto-xref">Equation&nbsp;<span>15.20</span></a> and <a href="#eq-16-3-2" class="quarto-xref">Equation&nbsp;<span>15.21</span></a>, <span class="math display">\[
+<p>where all the integrals are now taken counterclockwise. By <a href="#eq-16-3-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-1</span></a> and <a href="#eq-16-3-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-2</span></a>, <span class="math display">\[
 \oint_{C_j} f(z)\,dz = 2\pi i \operatorname{Res}_{z=z_j} f(z), \quad j = 1, \ldots, k,
-\]</span> so that <a href="#eq-16-3-8" class="quarto-xref">Equation&nbsp;<span>15.28</span></a> gives <a href="#eq-16-3-6" class="quarto-xref">Equation&nbsp;<span>15.26</span></a> and the residue theorem is proved. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> so that <a href="#eq-16-3-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-8</span></a> gives <a href="#eq-16-3-6" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-6</span></a> and the residue theorem is proved. <span class="math inline">\(\blacksquare\)</span></p>
 <p>This important theorem has various applications in connection with complex and real integrals. Let us first consider some complex integrals. (Real integrals follow in the next section.)</p>
 </section>
 <section id="example-5-integration-by-the-residue-theorem.-several-contours" class="level3" data-number="15.5.8">
@@ -912,14 +912,14 @@ Figure&nbsp;15.4: Fig. 373. Residue theorem
 <p><span class="math display">\[
 \oint_C \frac{4 - 3z}{z^2 - z}\,dz
 \]</span></p>
-<p><strong>Solution.</strong> The integrand has simple poles at 0 and 1, with residues <a href="#eq-16-3-3" class="quarto-xref">by&nbsp;<span>15.22</span></a> <span class="math display">\[
+<p><strong>Solution.</strong> The integrand has simple poles at 0 and 1, with residues <a href="#eq-16-3-3" class="quarto-xref">by&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-3-3</span></a> <span class="math display">\[
 \operatorname{Res}_{z=0} \frac{4 - 3z}{z(z - 1)} = \left[\frac{4 - 3z}{z - 1}\right]_{z=0} = -4, \qquad \operatorname{Res}_{z=1} \frac{4 - 3z}{z(z - 1)} = \left[\frac{4 - 3z}{z}\right]_{z=1} = 1.
-\]</span> <a href="#eq-16-3-4" class="quarto-xref">Confirm this by&nbsp;<span>15.23</span></a> <strong>Answer:</strong> (a) <span class="math inline">\(2\pi i(-4 + 1) = -6\pi i\)</span>, (b) <span class="math inline">\(-8\pi i\)</span>, (c) <span class="math inline">\(2\pi i\)</span>, (d) 0. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> <a href="#eq-16-3-4" class="quarto-xref">Confirm this by&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-3-4</span></a> <strong>Answer:</strong> (a) <span class="math inline">\(2\pi i(-4 + 1) = -6\pi i\)</span>, (b) <span class="math inline">\(-8\pi i\)</span>, (c) <span class="math inline">\(2\pi i\)</span>, (d) 0. <span class="math inline">\(\blacksquare\)</span></p>
 </section>
 <section id="example-6-another-application-of-the-residue-theorem" class="level3" data-number="15.5.9">
 <h3 data-number="15.5.9" class="anchored" data-anchor-id="example-6-another-application-of-the-residue-theorem"><span class="header-section-number">15.5.9</span> EXAMPLE 6 Another Application of the Residue Theorem</h3>
 <p>Integrate <span class="math inline">\((\tan z)/(z^2 - 1)\)</span> counterclockwise around the circle <span class="math inline">\(C\)</span>: <span class="math inline">\(|z| = \tfrac{3}{2}\)</span>.</p>
-<p><strong>Solution.</strong> <span class="math inline">\(\tan z\)</span> is not analytic at <span class="math inline">\(\pm \pi/2, \pm 3\pi/2, \ldots\)</span>, but all these points lie outside the contour <span class="math inline">\(C\)</span>. Because of the denominator <span class="math inline">\(z^2 - 1 = (z - 1)(z + 1)\)</span>, the given function has simple poles at <span class="math inline">\(\pm 1\)</span>. We thus obtain from <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> and the residue theorem <span class="math display">\[
+<p><strong>Solution.</strong> <span class="math inline">\(\tan z\)</span> is not analytic at <span class="math inline">\(\pm \pi/2, \pm 3\pi/2, \ldots\)</span>, but all these points lie outside the contour <span class="math inline">\(C\)</span>. Because of the denominator <span class="math inline">\(z^2 - 1 = (z - 1)(z + 1)\)</span>, the given function has simple poles at <span class="math inline">\(\pm 1\)</span>. We thus obtain from <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> and the residue theorem <span class="math display">\[
 \oint_C \frac{\tan z}{z^2 - 1}\,dz = 2\pi i \left[\frac{\tan z}{2z}\bigg|_{z=1} + \frac{\tan z}{2z}\bigg|_{z=-1}\right] = 2\pi i \cdot \tan 1 \approx 9.7855i. \quad \blacksquare
 \]</span></p>
 </section>
@@ -929,7 +929,7 @@ Figure&nbsp;15.4: Fig. 373. Residue theorem
 <p><span class="math display">\[
 \oint_C \left(\frac{z\,e^{\pi z}}{z^4 - 16} + z\,e^{\pi/z}\right)\,dz.
 \]</span></p>
-<p><strong>Solution.</strong> Since <span class="math inline">\(z^4 - 16 = 0\)</span> at <span class="math inline">\(z = \pm 2\)</span> and <span class="math inline">\(z = \pm 2i\)</span>, the first term of the integrand has simple poles at <span class="math inline">\(\pm 2i\)</span> inside <span class="math inline">\(C\)</span>, with residues [by <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a>; note that <span class="math inline">\(e^{2\pi i} = 1\)</span>] <span class="math display">\[
+<p><strong>Solution.</strong> Since <span class="math inline">\(z^4 - 16 = 0\)</span> at <span class="math inline">\(z = \pm 2\)</span> and <span class="math inline">\(z = \pm 2i\)</span>, the first term of the integrand has simple poles at <span class="math inline">\(\pm 2i\)</span> inside <span class="math inline">\(C\)</span>, with residues [by <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a>; note that <span class="math inline">\(e^{2\pi i} = 1\)</span>] <span class="math display">\[
 \operatorname{Res}_{z=2i} \frac{z\,e^{\pi z}}{z^4 - 16} = \left[\frac{z\,e^{\pi z}}{4z^3}\right]_{z=2i} = -\frac{1}{16}, \qquad \operatorname{Res}_{z=-2i} \frac{z\,e^{\pi z}}{z^4 - 16} = \left[\frac{z\,e^{\pi z}}{4z^3}\right]_{z=-2i} = -\frac{1}{16},
 \]</span> and simple poles at <span class="math inline">\(\pm 2\)</span>, which lie outside <span class="math inline">\(C\)</span>, so that they are of no interest here. The second term of the integrand has an essential singularity at 0, with residue <span class="math inline">\(\pi^2/2\)</span> as obtained from <span class="math display">\[
 z\,e^{\pi/z} = z\left(1 + \frac{\pi}{z} + \frac{\pi^2}{2!\,z^2} + \frac{\pi^3}{3!\,z^3} + \cdots\right) = z + \pi + \frac{\pi^2}{2} \cdot \frac{1}{z} + \cdots \quad (|z| &gt; 0).
@@ -980,7 +980,7 @@ z\,e^{\pi/z} = z\left(1 + \frac{\pi}{z} + \frac{\pi^2}{2!\,z^2} + \frac{\pi^3}{3
 </section>
 </section>
 <section id="sec-16-4" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="sec-16-4"><span class="header-section-number">15.6</span> 16.4 Residue Integration of Real Integrals</h2>
+<h2 data-number="15.6" class="anchored" data-anchor-id="sec-16-4"><span class="header-section-number">15.6</span> Residue Integration of Real Integrals</h2>
 <p>Surprisingly, residue integration can also be used to evaluate certain classes of complicated real integrals. This shows an advantage of complex analysis over real analysis or calculus.</p>
 <section id="integrals-of-rational-functions-of-costheta-and-sintheta" class="level3" data-number="15.6.1">
 <h3 data-number="15.6.1" class="anchored" data-anchor-id="integrals-of-rational-functions-of-costheta-and-sintheta"><span class="header-section-number">15.6.1</span> Integrals of Rational Functions of <span class="math inline">\(\cos\theta\)</span> and <span class="math inline">\(\sin\theta\)</span></h3>
@@ -992,7 +992,7 @@ J = \int_0^{2\pi} F(\cos\theta,\, \sin\theta)\,d\theta
 <p><span id="eq-16-4-2"><span class="math display">\[
 \cos\theta = \frac{1}{2}\left(z + \frac{1}{z}\right), \qquad \sin\theta = \frac{1}{2i}\left(z - \frac{1}{z}\right), \qquad d\theta = \frac{dz}{iz}.
 \tag{15.30}\]</span></span></p>
-<p>Since <span class="math inline">\(F\)</span> is rational in <span class="math inline">\(\cos\theta\)</span> and <span class="math inline">\(\sin\theta\)</span>, <a href="#eq-16-4-2" class="quarto-xref">Equation&nbsp;<span>15.30</span></a> shows that <span class="math inline">\(F\)</span> is now a rational function of <span class="math inline">\(z\)</span>, say, <span class="math inline">\(f(z)\)</span>. Since <span class="math inline">\(d\theta = dz/(iz)\)</span>, we have <span class="math inline">\(J = \oint_C f(z)\,dz/iz\)</span>, and, as <span class="math inline">\(\theta\)</span> ranges from 0 to <span class="math inline">\(2\pi\)</span> in <a href="#eq-16-4-1" class="quarto-xref">Equation&nbsp;<span>15.29</span></a>, the variable <span class="math inline">\(z\)</span> ranges counterclockwise once around the unit circle <span class="math inline">\(C\)</span>. (Review Sec. 13.5 if necessary.)</p>
+<p>Since <span class="math inline">\(F\)</span> is rational in <span class="math inline">\(\cos\theta\)</span> and <span class="math inline">\(\sin\theta\)</span>, <a href="#eq-16-4-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-2</span></a> shows that <span class="math inline">\(F\)</span> is now a rational function of <span class="math inline">\(z\)</span>, say, <span class="math inline">\(f(z)\)</span>. Since <span class="math inline">\(d\theta = dz/(iz)\)</span>, we have <span class="math inline">\(J = \oint_C f(z)\,dz/iz\)</span>, and, as <span class="math inline">\(\theta\)</span> ranges from 0 to <span class="math inline">\(2\pi\)</span> in <a href="#eq-16-4-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-1</span></a>, the variable <span class="math inline">\(z\)</span> ranges counterclockwise once around the unit circle <span class="math inline">\(C\)</span>. (Review <!-- TODO: replace Sec. 13.5 with actual cross-reference label --> if necessary.)</p>
 <p><span id="eq-16-4-3"><span class="math display">\[
 J = \oint_C \frac{f(z)}{iz}\,dz.
 \tag{15.31}\]</span></span></p>
@@ -1004,7 +1004,7 @@ J = \oint_C \frac{f(z)}{iz}\,dz.
 \]</span></p>
 <p><strong>Solution.</strong> We use <span class="math inline">\(\cos\theta = \frac{1}{2}(z + 1/z)\)</span> and <span class="math inline">\(d\theta = dz/(iz)\)</span>. Then the integral becomes <span class="math display">\[
 \oint_C \frac{dz/iz}{\frac{1}{2} - \frac{1}{2}(z + 1/z)} = \oint_C \frac{dz}{-\frac{i}{2}(z^2 - 2\tfrac{1}{2}z + 1)} = -\frac{2}{i} \oint_C \frac{dz}{(z^2 - \frac{1}{2}z + 1)(z^2 - \frac{1}{2}z - 1)}.
-\]</span> We see that the integrand has a simple pole at <span class="math inline">\(z_1 = \frac{1}{2} + 1\)</span> outside the unit circle <span class="math inline">\(C\)</span>, so that it is of no interest here, and another simple pole at <span class="math inline">\(z_2 = \frac{1}{2} - 1\)</span> (where <span class="math inline">\(|z_2| &lt; 1\)</span>) inside <span class="math inline">\(C\)</span> with residue <a href="#eq-16-3-3" class="quarto-xref">by&nbsp;<span>15.22</span></a> <span class="math display">\[
+\]</span> We see that the integrand has a simple pole at <span class="math inline">\(z_1 = \frac{1}{2} + 1\)</span> outside the unit circle <span class="math inline">\(C\)</span>, so that it is of no interest here, and another simple pole at <span class="math inline">\(z_2 = \frac{1}{2} - 1\)</span> (where <span class="math inline">\(|z_2| &lt; 1\)</span>) inside <span class="math inline">\(C\)</span> with residue <a href="#eq-16-3-3" class="quarto-xref">by&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-3-3</span></a> <span class="math display">\[
 \operatorname{Res}_{z=z_2} \frac{1}{(z^2 - \frac{1}{2}z + 1)(z^2 - \frac{1}{2}z - 1)} = -\frac{1}{2}.
 \]</span></p>
 <p><strong>Answer:</strong> <span class="math inline">\((-2/i) \cdot 2\pi i \cdot (-1/2) = 2\pi\)</span>. (Here <span class="math inline">\(-2/i\)</span> is the factor in front of the last integral.) <span class="math inline">\(\blacksquare\)</span></p>
@@ -1023,18 +1023,18 @@ J = \oint_C \frac{f(z)}{iz}\,dz.
 <p><span id="eq-16-4-5"><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\,dx = \lim_{R \to \infty} \int_{-R}^{R} f(x)\,dx.
 \tag{15.34}\]</span></span></p>
-<p>The limit in <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span>15.34</span></a> is called the <strong>Cauchy principal value</strong> of the integral. It is written</p>
+<p>The limit in <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-5</span></a> is called the <strong>Cauchy principal value</strong> of the integral. It is written</p>
 <p><span class="math display">\[
 \text{pr.\ v.} \int_{-\infty}^{\infty} f(x)\,dx.
 \]</span></p>
-<p>It may exist even if the limits in <a href="#eq-16-4-5r" class="quarto-xref">Equation&nbsp;<span>15.33</span></a> do not. Example: <span class="math display">\[
+<p>It may exist even if the limits in <a href="#eq-16-4-5r" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-5r</span></a> do not. Example: <span class="math display">\[
 \lim_{R \to \infty} \int_{-R}^{R} x\,dx = \lim_{R \to \infty} \left(\frac{R^2}{2} - \frac{R^2}{2}\right) = 0, \quad \text{but} \quad \lim_{b \to \infty} \int_0^b x\,dx = \infty.
 \]</span></p>
-<p>We assume that the function <span class="math inline">\(f(x)\)</span> in <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span>15.32</span></a> is a real rational function whose denominator is different from zero for all real <span class="math inline">\(x\)</span> and is of degree at least two units higher than the degree of the numerator. Then the limits in <a href="#eq-16-4-5r" class="quarto-xref">Equation&nbsp;<span>15.33</span></a> exist, and we may start from <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span>15.34</span></a>. We consider the corresponding contour integral</p>
+<p>We assume that the function <span class="math inline">\(f(x)\)</span> in <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-4</span></a> is a real rational function whose denominator is different from zero for all real <span class="math inline">\(x\)</span> and is of degree at least two units higher than the degree of the numerator. Then the limits in <a href="#eq-16-4-5r" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-5r</span></a> exist, and we may start from <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-5</span></a>. We consider the corresponding contour integral</p>
 <p><span id="eq-16-4-5star"><span class="math display">\[
 \oint_C f(z)\,dz
 \tag{15.35}\]</span></span></p>
-<p>around a path <span class="math inline">\(C\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>. Since <span class="math inline">\(f(x)\)</span> is rational, <span class="math inline">\(f(z)\)</span> has finitely many poles in the upper half-plane, and if we choose <span class="math inline">\(R\)</span> large enough, then <span class="math inline">\(C\)</span> encloses all these poles. By the residue theorem we then obtain</p>
+<p>around a path <span class="math inline">\(C\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-374</span></a>. Since <span class="math inline">\(f(x)\)</span> is rational, <span class="math inline">\(f(z)\)</span> has finitely many poles in the upper half-plane, and if we choose <span class="math inline">\(R\)</span> large enough, then <span class="math inline">\(C\)</span> encloses all these poles. By the residue theorem we then obtain</p>
 <p><span class="math display">\[
 \oint_C f(z)\,dz = \int_S f(z)\,dz + \int_{-R}^{R} f(x)\,dx = 2\pi i \sum \operatorname{Res} f(z)
 \]</span></p>
@@ -1056,11 +1056,11 @@ Figure&nbsp;15.5: Fig. 374. Path <span class="math inline">\(C\)</span> of the c
 <p><span class="math display">\[
 |f(z)| \le \frac{k}{|z|^2} \qquad (|z| = R &gt; R_0)
 \]</span></p>
-<p>for sufficiently large constants <span class="math inline">\(k\)</span> and <span class="math inline">\(R_0\)</span>. By the ML-inequality in Sec. 14.1,</p>
+<p>for sufficiently large constants <span class="math inline">\(k\)</span> and <span class="math inline">\(R_0\)</span>. By the ML-inequality in <!-- TODO: replace Sec. 14.1 with actual cross-reference label -->,</p>
 <p><span class="math display">\[
 \left|\int_S f(z)\,dz\right| \le \frac{k}{R^2} \cdot \pi R = \frac{k\pi}{R} \qquad (R &gt; R_0).
 \]</span></p>
-<p>Hence, as <span class="math inline">\(R\)</span> approaches infinity, the value of the integral over <span class="math inline">\(S\)</span> approaches zero, and <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span>15.34</span></a> and <a href="#eq-16-4-6" class="quarto-xref">Equation&nbsp;<span>15.36</span></a> yield the result</p>
+<p>Hence, as <span class="math inline">\(R\)</span> approaches infinity, the value of the integral over <span class="math inline">\(S\)</span> approaches zero, and <a href="#eq-16-4-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-5</span></a> and <a href="#eq-16-4-6" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-6</span></a> yield the result</p>
 <p><span id="eq-16-4-7"><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\,dx = 2\pi i \sum \operatorname{Res} f(z)
 \tag{15.37}\]</span></span></p>
@@ -1068,7 +1068,7 @@ Figure&nbsp;15.5: Fig. 374. Path <span class="math inline">\(C\)</span> of the c
 </section>
 <section id="example-2-an-improper-integral-from-0-to-infty" class="level3" data-number="15.6.4">
 <h3 data-number="15.6.4" class="anchored" data-anchor-id="example-2-an-improper-integral-from-0-to-infty"><span class="header-section-number">15.6.4</span> EXAMPLE 2 An Improper Integral from 0 to <span class="math inline">\(\infty\)</span></h3>
-<p>Using <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span>15.37</span></a>, show that <span class="math display">\[
+<p>Using <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-7</span></a>, show that <span class="math display">\[
 \int_0^{\infty} \frac{dx}{1 + x^4} = \frac{\pi}{2\sqrt{2}}.
 \]</span></p>
 <p><strong>Solution.</strong> Indeed, <span class="math inline">\(f(z) = 1/(1 + z^4)\)</span> has four simple poles at the points (make a sketch) <span class="math display">\[
@@ -1084,12 +1084,12 @@ Figure&nbsp;15.6: Fig. 375. Example 2
 </figcaption>
 </figure>
 </div>
-<p>The first two of these poles lie in the upper half-plane (<a href="#fig-16-375" class="quarto-xref">Figure&nbsp;<span>15.6</span></a>). From <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> in the last section we find the residues <span class="math display">\[
+<p>The first two of these poles lie in the upper half-plane (<a href="#fig-16-375" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-375</span></a>). From <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> in the last section we find the residues <span class="math display">\[
 \operatorname{Res}_{z=z_1} f(z) = \left[\frac{1}{4z^3}\right]_{z=z_1} = \frac{1}{4}\,e^{-3i\pi/4} = -\frac{1}{4}\,e^{i\pi/4},
 \]</span> <span class="math display">\[
 \operatorname{Res}_{z=z_2} f(z) = \left[\frac{1}{4z^3}\right]_{z=z_2} = \frac{1}{4}\,e^{-9i\pi/4} = \frac{1}{4}\,e^{-i\pi/4}.
 \]</span></p>
-<p>(Here we used <span class="math inline">\(e^{i\pi} = -1\)</span> and <span class="math inline">\(e^{-2\pi i} = 1\)</span>.) By (1) in Sec. 13.6 and <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span>15.37</span></a> in this section, <span class="math display">\[
+<p>(Here we used <span class="math inline">\(e^{i\pi} = -1\)</span> and <span class="math inline">\(e^{-2\pi i} = 1\)</span>.) By (1) in <!-- TODO: replace Sec. 13.6 with actual cross-reference label --> and <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-7</span></a> in this section, <span class="math display">\[
 \int_{-\infty}^{\infty} \frac{dx}{1 + x^4} = -\frac{2\pi i}{4}\left(e^{i\pi/4} - e^{-i\pi/4}\right) = -\frac{2\pi i}{4} \cdot 2i\sin\frac{\pi}{4} = \pi\sin\frac{\pi}{4} = \frac{\pi}{\sqrt{2}}.
 \]</span></p>
 <p>Since <span class="math inline">\(1/(1 + x^4)\)</span> is an even function, we thus obtain, as asserted, <span class="math display">\[
@@ -1098,44 +1098,44 @@ Figure&nbsp;15.6: Fig. 375. Example 2
 </section>
 <section id="fourier-integrals" class="level3" data-number="15.6.5">
 <h3 data-number="15.6.5" class="anchored" data-anchor-id="fourier-integrals"><span class="header-section-number">15.6.5</span> Fourier Integrals</h3>
-<p>The method of evaluating <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span>15.32</span></a> by creating a closed contour (<a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>) and “blowing it up” extends to integrals</p>
+<p>The method of evaluating <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-4</span></a> by creating a closed contour (<a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-374</span></a>) and “blowing it up” extends to integrals</p>
 <p><span id="eq-16-4-8"><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\cos sx\,dx \qquad \text{and} \qquad \int_{-\infty}^{\infty} f(x)\sin sx\,dx \qquad (s \text{ real})
 \tag{15.38}\]</span></span></p>
-<p>as they occur in connection with the Fourier integral (Sec. 11.7).</p>
-<p>If <span class="math inline">\(f(x)\)</span> is a rational function satisfying the assumption on the degree as for <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span>15.32</span></a>, we may consider the corresponding integral</p>
+<p>as they occur in connection with the Fourier integral (<!-- TODO: replace Sec. 11.7 with actual cross-reference label -->).</p>
+<p>If <span class="math inline">\(f(x)\)</span> is a rational function satisfying the assumption on the degree as for <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-4</span></a>, we may consider the corresponding integral</p>
 <p><span class="math display">\[
 \oint_C f(z)\,e^{isz}\,dz \qquad (s \text{ real and positive})
 \]</span></p>
-<p>over the contour <span class="math inline">\(C\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>. Instead of <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span>15.37</span></a> we now get</p>
+<p>over the contour <span class="math inline">\(C\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-374</span></a>. Instead of <a href="#eq-16-4-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-7</span></a> we now get</p>
 <p><span id="eq-16-4-9"><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\,e^{isx}\,dx = 2\pi i \sum \operatorname{Res}\left[f(z)\,e^{isz}\right] \qquad (s &gt; 0)
 \tag{15.39}\]</span></span></p>
-<p>where we sum the residues of <span class="math inline">\(f(z)\,e^{isz}\)</span> at its poles in the upper half-plane. Equating the real and the imaginary parts on both sides of <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span>15.39</span></a>, we have</p>
+<p>where we sum the residues of <span class="math inline">\(f(z)\,e^{isz}\)</span> at its poles in the upper half-plane. Equating the real and the imaginary parts on both sides of <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-9</span></a>, we have</p>
 <p><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\cos sx\,dx = -2\pi \sum \operatorname{Im}\operatorname{Res}\left[f(z)\,e^{isz}\right],
 \]</span> <span id="eq-16-4-10"><span class="math display">\[
 \int_{-\infty}^{\infty} f(x)\sin sx\,dx = 2\pi \sum \operatorname{Re}\operatorname{Res}\left[f(z)\,e^{isz}\right].
 \tag{15.40}\]</span></span></p>
-<p>To establish <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span>15.39</span></a>, we must show <a href="#eq-16-4-4" class="quarto-xref">as for&nbsp;<span>15.32</span></a> that the value of the integral over the semicircle <span class="math inline">\(S\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span>15.5</span></a> approaches 0 as <span class="math inline">\(R \to \infty\)</span>. Now <span class="math inline">\(s &gt; 0\)</span> and <span class="math inline">\(S\)</span> lies in the upper half-plane <span class="math inline">\(y \ge 0\)</span>. Hence</p>
+<p>To establish <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-9</span></a>, we must show <a href="#eq-16-4-4" class="quarto-xref">as for&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-4-4</span></a> that the value of the integral over the semicircle <span class="math inline">\(S\)</span> in <a href="#fig-16-374" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-374</span></a> approaches 0 as <span class="math inline">\(R \to \infty\)</span>. Now <span class="math inline">\(s &gt; 0\)</span> and <span class="math inline">\(S\)</span> lies in the upper half-plane <span class="math inline">\(y \ge 0\)</span>. Hence</p>
 <p><span class="math display">\[
 |e^{isz}| = |e^{is(x+iy)}| = |e^{isx}|\,|e^{-sy}| = 1 \cdot e^{-sy} \le 1 \qquad (s &gt; 0,\; y \ge 0).
 \]</span></p>
-<p>From this we obtain the inequality <span class="math inline">\(|f(z)\,e^{isz}| = |f(z)|\,|e^{isz}| \le |f(z)|\)</span> <span class="math inline">\((s &gt; 0,\; y \ge 0)\)</span>. This reduces our present problem to that for <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span>15.32</span></a>. Continuing as before gives <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span>15.39</span></a> and <a href="#eq-16-4-10" class="quarto-xref">Equation&nbsp;<span>15.40</span></a>.</p>
+<p>From this we obtain the inequality <span class="math inline">\(|f(z)\,e^{isz}| = |f(z)|\,|e^{isz}| \le |f(z)|\)</span> <span class="math inline">\((s &gt; 0,\; y \ge 0)\)</span>. This reduces our present problem to that for <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-4</span></a>. Continuing as before gives <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-9</span></a> and <a href="#eq-16-4-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-10</span></a>.</p>
 </section>
 <section id="example-3-an-application-of-10" class="level3" data-number="15.6.6">
 <h3 data-number="15.6.6" class="anchored" data-anchor-id="example-3-an-application-of-10"><span class="header-section-number">15.6.6</span> EXAMPLE 3 An Application of (10)</h3>
 <p>Show that <span class="math display">\[
 \int_{-\infty}^{\infty} \frac{\cos sx}{k^2 + x^2}\,dx = \frac{\pi}{k}\,e^{-ks}, \qquad \int_{-\infty}^{\infty} \frac{\sin sx}{k^2 + x^2}\,dx = 0 \qquad (s &gt; 0,\; k &gt; 0).
 \]</span></p>
-<p><strong>Solution.</strong> In fact, <span class="math inline">\(e^{isz}/(k^2 + z^2)\)</span> has only one pole in the upper half-plane, namely, a simple pole at <span class="math inline">\(z = ik\)</span>, and from <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span>15.23</span></a> in Sec. 16.3 we obtain</p>
+<p><strong>Solution.</strong> In fact, <span class="math inline">\(e^{isz}/(k^2 + z^2)\)</span> has only one pole in the upper half-plane, namely, a simple pole at <span class="math inline">\(z = ik\)</span>, and from <a href="#eq-16-3-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-3-4</span></a> in <a href="#sec-16-3" class="quarto-xref"><span class="quarto-unresolved-ref">sec-16-3</span></a> we obtain</p>
 <p><span class="math display">\[
 \operatorname{Res}_{z=ik} \frac{e^{isz}}{k^2 + z^2} = \left[\frac{e^{isz}}{2z}\right]_{z=ik} = \frac{e^{-ks}}{2ik}.
 \]</span></p>
 <p>Thus <span class="math display">\[
 \int_{-\infty}^{\infty} \frac{e^{isx}}{k^2 + x^2}\,dx = 2\pi i \cdot \frac{e^{-ks}}{2ik} = \frac{\pi}{k}\,e^{-ks}.
 \]</span></p>
-<p>Since <span class="math inline">\(e^{isx} = \cos sx + i\sin sx\)</span>, this yields the above results [see also (15) in Sec. 11.7.] <span class="math inline">\(\blacksquare\)</span></p>
+<p>Since <span class="math inline">\(e^{isx} = \cos sx + i\sin sx\)</span>, this yields the above results [see also (15) in <!-- TODO: replace Sec. 11.7 with actual cross-reference label -->.] <span class="math inline">\(\blacksquare\)</span></p>
 </section>
 <section id="another-kind-of-improper-integral" class="level3" data-number="15.6.7">
 <h3 data-number="15.6.7" class="anchored" data-anchor-id="another-kind-of-improper-integral"><span class="header-section-number">15.6.7</span> Another Kind of Improper Integral</h3>
@@ -1143,7 +1143,7 @@ Figure&nbsp;15.6: Fig. 375. Example 2
 <p><span id="eq-16-4-11"><span class="math display">\[
 \int_A^B f(x)\,dx
 \tag{15.41}\]</span></span></p>
-<p>whose integrand becomes infinite at a point <span class="math inline">\(a\)</span> in the interval of integration, <span class="math inline">\(\lim_{x \to a} |f(x)| = \infty\)</span>. By definition, this integral <a href="#eq-16-4-11" class="quarto-xref">Equation&nbsp;<span>15.41</span></a> means</p>
+<p>whose integrand becomes infinite at a point <span class="math inline">\(a\)</span> in the interval of integration, <span class="math inline">\(\lim_{x \to a} |f(x)| = \infty\)</span>. By definition, this integral <a href="#eq-16-4-11" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-11</span></a> means</p>
 <p><span id="eq-16-4-12"><span class="math display">\[
 \int_A^B f(x)\,dx = \lim_{\varepsilon \to 0} \int_A^{a-\varepsilon} f(x)\,dx + \lim_{h \to 0} \int_{a+h}^B f(x)\,dx
 \tag{15.42}\]</span></span></p>
@@ -1162,7 +1162,7 @@ Figure&nbsp;15.6: Fig. 375. Example 2
 </section>
 <section id="thm-16-4-poles-real" class="level3" data-number="15.6.8">
 <h3 data-number="15.6.8" class="anchored" data-anchor-id="thm-16-4-poles-real"><span class="header-section-number">15.6.8</span> THEOREM 1 Simple Poles on the Real Axis</h3>
-<p><em>If <span class="math inline">\(f(z)\)</span> has a simple pole at <span class="math inline">\(z = a\)</span> on the real axis, then (<a href="#fig-16-376" class="quarto-xref">Figure&nbsp;<span>15.7</span></a>)</em> <span class="math display">\[
+<p><em>If <span class="math inline">\(f(z)\)</span> has a simple pole at <span class="math inline">\(z = a\)</span> on the real axis, then (<a href="#fig-16-376" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-376</span></a>)</em> <span class="math display">\[
 \lim_{r \to 0} \int_{C_2} f(z)\,dz = \pi i\,\operatorname{Res}_{z=a} f(z).
 \]</span></p>
 <div id="fig-16-376" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1175,13 +1175,13 @@ Figure&nbsp;15.7: Fig. 376. Theorem 1
 </figcaption>
 </figure>
 </div>
-<p><strong>PROOF</strong> By the definition of a simple pole (Sec. 16.2) the integrand has for <span class="math inline">\(0 &lt; |z - a| &lt; R\)</span> the Laurent series <span class="math display">\[
+<p><strong>PROOF</strong> By the definition of a simple pole (<a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>) the integrand has for <span class="math inline">\(0 &lt; |z - a| &lt; R\)</span> the Laurent series <span class="math display">\[
 f(z) = \frac{b_1}{z - a} + g(z), \qquad b_1 = \operatorname{Res}_{z=a} f(z).
-\]</span> Here <span class="math inline">\(g(z)\)</span> is analytic on the semicircle of integration (<a href="#fig-16-376" class="quarto-xref">Figure&nbsp;<span>15.7</span></a>) <span class="math display">\[
+\]</span> Here <span class="math inline">\(g(z)\)</span> is analytic on the semicircle of integration (<a href="#fig-16-376" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-376</span></a>) <span class="math display">\[
 C_2: \quad z = a + re^{i\theta}, \qquad 0 \le \theta \le \pi
 \]</span> and for all <span class="math inline">\(z\)</span> between <span class="math inline">\(C_2\)</span> and the <span class="math inline">\(x\)</span>-axis, and thus bounded on <span class="math inline">\(C_2\)</span>, say, <span class="math inline">\(|g(z)| \le M\)</span>. By integration, <span class="math display">\[
 \int_{C_2} f(z)\,dz = \int_0^{\pi} \frac{b_1}{re^{i\theta}}\,ire^{i\theta}\,d\theta + \int_{C_2} g(z)\,dz = b_1\pi i + \int_{C_2} g(z)\,dz.
-\]</span> The second integral on the right cannot exceed <span class="math inline">\(M\pi r\)</span> in absolute value, by the ML-inequality (Sec. 14.1), and <span class="math inline">\(M\pi r \to 0\)</span> as <span class="math inline">\(r \to 0\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+\]</span> The second integral on the right cannot exceed <span class="math inline">\(M\pi r\)</span> in absolute value, by the ML-inequality (<!-- TODO: replace Sec. 14.1 with actual cross-reference label -->), and <span class="math inline">\(M\pi r \to 0\)</span> as <span class="math inline">\(r \to 0\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 <div id="fig-16-377" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-16-377-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1192,7 +1192,7 @@ Figure&nbsp;15.8: Fig. 377. Application of Theorem 1
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-16-377" class="quarto-xref">Figure&nbsp;<span>15.8</span></a> shows the idea of applying Theorem 1 to obtain the principal value of the integral of a rational function from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>. For sufficiently large <span class="math inline">\(R\)</span> the integral over the entire contour in <a href="#fig-16-377" class="quarto-xref">Figure&nbsp;<span>15.8</span></a> has the value <span class="math inline">\(J\)</span> given by <span class="math inline">\(2\pi i\)</span> times the sum of the residues of <span class="math inline">\(f(z)\)</span> at the singularities in the upper half-plane. We assume that <span class="math inline">\(f(x)\)</span> satisfies the degree condition imposed in connection with <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span>15.32</span></a>. Then the value of the integral over the large semicircle <span class="math inline">\(S\)</span> approaches 0 as <span class="math inline">\(R \to \infty\)</span>. For the integral over <span class="math inline">\(C_2\)</span> (clockwise!) <span class="math inline">\(r \to 0\)</span> approaches the value</p>
+<p><a href="#fig-16-377" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-377</span></a> shows the idea of applying Theorem 1 to obtain the principal value of the integral of a rational function from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>. For sufficiently large <span class="math inline">\(R\)</span> the integral over the entire contour in <a href="#fig-16-377" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-16-377</span></a> has the value <span class="math inline">\(J\)</span> given by <span class="math inline">\(2\pi i\)</span> times the sum of the residues of <span class="math inline">\(f(z)\)</span> at the singularities in the upper half-plane. We assume that <span class="math inline">\(f(x)\)</span> satisfies the degree condition imposed in connection with <a href="#eq-16-4-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-4</span></a>. Then the value of the integral over the large semicircle <span class="math inline">\(S\)</span> approaches 0 as <span class="math inline">\(R \to \infty\)</span>. For the integral over <span class="math inline">\(C_2\)</span> (clockwise!) <span class="math inline">\(r \to 0\)</span> approaches the value</p>
 <p><span class="math display">\[
 K = -\pi i\,\operatorname{Res}_{z=a} f(z)
 \]</span></p>
@@ -1213,7 +1213,7 @@ z = 1, \quad \operatorname{Res}_{z=1} f(z) = \left[\frac{1}{(z - 2)(z^2 + 1)}\ri
 z = 2, \quad \operatorname{Res}_{z=2} f(z) = \left[\frac{1}{(z - 1)(z^2 + 1)}\right]_{z=2} = \frac{1}{5},
 \]</span> <span class="math display">\[
 z = i, \quad \operatorname{Res}_{z=i} f(z) = \left[\frac{1}{(z^2 - 3z + 2)(z + i)}\right]_{z=i} = \frac{3 - i}{20},
-\]</span> and at <span class="math inline">\(z = -i\)</span> in the lower half-plane, which is of no interest here. From <a href="#eq-16-4-14" class="quarto-xref">Equation&nbsp;<span>15.44</span></a> we get the answer <span class="math display">\[
+\]</span> and at <span class="math inline">\(z = -i\)</span> in the lower half-plane, which is of no interest here. From <a href="#eq-16-4-14" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-14</span></a> we get the answer <span class="math display">\[
 \text{pr.\ v.} \int_{-\infty}^{\infty} \frac{dx}{(x^2 - 3x + 2)(x^2 + 1)} = 2\pi i\left(\frac{3 - i}{20}\right) + \pi i\left(-\frac{1}{2} + \frac{1}{5}\right) = \frac{\pi}{10}. \quad \blacksquare$
 \]</span></p>
 <p>More integrals of the kind considered in this section are included in the problem set. Try also your CAS, which may sometimes give you false results on complex integrals.</p>
@@ -1267,18 +1267,18 @@ z = i, \quad \operatorname{Res}_{z=i} f(z) = \left[\frac{1}{(z^2 - 3z + 2)(z + i
 <p><strong>27. CAS EXPERIMENT. Simple Poles on the Real Axis.</strong> Experiment with integrals <span class="math inline">\(\int_{-\infty}^{\infty} f(x)\,dx\)</span>, <span class="math inline">\(f(x) = [(x - a_1)(x - a_2) \cdots (x - a_k)]^{-1}\)</span>, <span class="math inline">\(a_j\)</span> real and all different, <span class="math inline">\(k \ge 1\)</span>. Conjecture that the principal value of these integrals is 0. Try to prove this for a special <span class="math inline">\(k\)</span>, say, <span class="math inline">\(k = 3\)</span>. For general <span class="math inline">\(k\)</span>.</p>
 <p><strong>28. TEAM PROJECT. Comments on Real Integrals.</strong></p>
 <ol type="a">
-<li><p>Formula <a href="#eq-16-4-10" class="quarto-xref">Equation&nbsp;<span>15.40</span></a> follows from <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span>15.39</span></a>. Give the details.</p></li>
+<li><p>Formula <a href="#eq-16-4-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-10</span></a> follows from <a href="#eq-16-4-9" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-4-9</span></a>. Give the details.</p></li>
 <li><p><strong>Use of auxiliary results.</strong> Integrating <span class="math inline">\(e^{-z^2}\)</span> around the boundary <span class="math inline">\(C\)</span> of the rectangle with vertices <span class="math inline">\(-a, a, a + ib, -a + ib\)</span>, letting <span class="math inline">\(a \to \infty\)</span>, and using <span class="math display">\[
 \int_0^{\infty} e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2},
 \]</span> show that <span class="math display">\[
 \int_0^{\infty} e^{-x^2}\cos 2bx\,dx = \frac{\sqrt{\pi}}{2}\,e^{-b^2}.
-\]</span> (This integral is needed in heat conduction in Sec. 12.7.)</p></li>
+\]</span> (This integral is needed in heat conduction in <!-- TODO: replace Sec. 12.7 with actual cross-reference label -->.)</p></li>
 <li><p><strong>Inspection.</strong> Solve Probs. 13 and 17 without calculation.</p></li>
 </ol>
 </section>
 </section>
 <section id="sec-16-review" class="level2" data-number="15.7">
-<h2 data-number="15.7" class="anchored" data-anchor-id="sec-16-review"><span class="header-section-number">15.7</span> Chapter 16 Review Questions and Problems</h2>
+<h2 data-number="15.7" class="anchored" data-anchor-id="sec-16-review"><span class="header-section-number">15.7</span> <span class="citation" data-cites="ch-laurent-series-residue-integration">@ch-laurent-series-residue-integration</span> Review Questions and Problems</h2>
 <ol type="1">
 <li><p>What is a Laurent series? Its principal part? Its use? Give simple examples.</p></li>
 <li><p>What kind of singularities did we discuss? Give definitions and examples.</p></li>
@@ -1320,17 +1320,17 @@ z = i, \quad \operatorname{Res}_{z=i} f(z) = \left[\frac{1}{(z^2 - 3z + 2)(z + i
 </section>
 </section>
 <section id="sec-16-summary" class="level2" data-number="15.8">
-<h2 data-number="15.8" class="anchored" data-anchor-id="sec-16-summary"><span class="header-section-number">15.8</span> Summary of Chapter 16</h2>
+<h2 data-number="15.8" class="anchored" data-anchor-id="sec-16-summary"><span class="header-section-number">15.8</span> Summary of <span class="citation" data-cites="ch-laurent-series-residue-integration">@ch-laurent-series-residue-integration</span></h2>
 <p>A <strong>Laurent series</strong> is a series of the form</p>
 <p><span id="eq-16-sum-1"><span class="math display">\[
 f(z) = \sum_{n=0}^{\infty} a_n(z - z_0)^n + \sum_{n=1}^{\infty} \frac{b_n}{(z - z_0)^n}
 \tag{15.45}\]</span></span></p>
-<p>or, more briefly written <a href="#eq-16-sum-1" class="quarto-xref">but this means the same as&nbsp;<span>15.45</span></a></p>
+<p>or, more briefly written <a href="#eq-16-sum-1" class="quarto-xref">but this means the same as&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-sum-1</span></a></p>
 <p><span id="eq-16-sum-1star"><span class="math display">\[
 f(z) = \sum_{n=-\infty}^{\infty} a_n(z - z_0)^n, \qquad a_n = \frac{1}{2\pi i} \oint_C \frac{f(z^*)}{(z^* - z_0)^{n+1}}\,dz^*
 \tag{15.46}\]</span></span></p>
-<p>where <span class="math inline">\(n = 0, \pm 1, \pm 2, \ldots\)</span>. This series converges in an open annulus (ring) <span class="math inline">\(A\)</span> with center <span class="math inline">\(z_0\)</span>. In <span class="math inline">\(A\)</span> the function <span class="math inline">\(f(z)\)</span> is analytic. At points not in <span class="math inline">\(A\)</span> it may have singularities. The first series in <a href="#eq-16-sum-1" class="quarto-xref">Equation&nbsp;<span>15.45</span></a> is a power series. In a given annulus, a Laurent series of <span class="math inline">\(f(z)\)</span> is unique, but <span class="math inline">\(f(z)\)</span> may have different Laurent series in different annuli with the same center.</p>
-<p>Of particular importance is the Laurent series <a href="#eq-16-sum-1" class="quarto-xref">Equation&nbsp;<span>15.45</span></a> that converges in a neighborhood of <span class="math inline">\(z_0\)</span> except at <span class="math inline">\(z_0\)</span> itself, say, for <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span> (<span class="math inline">\(R &gt; 0\)</span>, suitable). The series (or finite sum) of the negative powers in this Laurent series is called the <strong>principal part</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span>. The coefficient <span class="math inline">\(b_1\)</span> of <span class="math inline">\(1/(z - z_0)\)</span> in this series is called the <strong>residue</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> and is given by <a href="#eq-16-sum-1" class="quarto-xref">see&nbsp;<span>15.45</span></a></p>
+<p>where <span class="math inline">\(n = 0, \pm 1, \pm 2, \ldots\)</span>. This series converges in an open annulus (ring) <span class="math inline">\(A\)</span> with center <span class="math inline">\(z_0\)</span>. In <span class="math inline">\(A\)</span> the function <span class="math inline">\(f(z)\)</span> is analytic. At points not in <span class="math inline">\(A\)</span> it may have singularities. The first series in <a href="#eq-16-sum-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-sum-1</span></a> is a power series. In a given annulus, a Laurent series of <span class="math inline">\(f(z)\)</span> is unique, but <span class="math inline">\(f(z)\)</span> may have different Laurent series in different annuli with the same center.</p>
+<p>Of particular importance is the Laurent series <a href="#eq-16-sum-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-16-sum-1</span></a> that converges in a neighborhood of <span class="math inline">\(z_0\)</span> except at <span class="math inline">\(z_0\)</span> itself, say, for <span class="math inline">\(0 &lt; |z - z_0| &lt; R\)</span> (<span class="math inline">\(R &gt; 0\)</span>, suitable). The series (or finite sum) of the negative powers in this Laurent series is called the <strong>principal part</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span>. The coefficient <span class="math inline">\(b_1\)</span> of <span class="math inline">\(1/(z - z_0)\)</span> in this series is called the <strong>residue</strong> of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> and is given by <a href="#eq-16-sum-1" class="quarto-xref">see&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-16-sum-1</span></a></p>
 <p><span class="math display">\[
 b_1 = \operatorname{Res}_{z=z_0} f(z) = \frac{1}{2\pi i} \oint_C f(z^*)\,dz^*.
 \]</span></p>
@@ -1348,9 +1348,9 @@ b_1 = \operatorname{Res}_{z=z_0} f(z) = \frac{1}{2\pi i} \oint_C f(z^*)\,dz^*.
 <p>also, <span class="math display">\[
 \operatorname{Res}_{z=z_0} \frac{p(z)}{q(z)} = \frac{p(z_0)}{q'(z_0)}.
 \]</span></p>
-<p>If the principal part is an infinite series, the singularity of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> is called an <strong>essential singularity</strong> (Sec. 16.2).</p>
-<p>Section 16.2 also discusses the <strong>extended complex plane</strong>, that is, the complex plane with an improper point (“infinity”) attached.</p>
-<p><strong>Residue integration</strong> may also be used to evaluate certain classes of complicated real integrals (Sec. 16.4).</p>
+<p>If the principal part is an infinite series, the singularity of <span class="math inline">\(f(z)\)</span> at <span class="math inline">\(z_0\)</span> is called an <strong>essential singularity</strong> (<a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a>).</p>
+<p><a href="#sec-singularities-zeros" class="quarto-xref"><span class="quarto-unresolved-ref">sec-singularities-zeros</span></a> also discusses the <strong>extended complex plane</strong>, that is, the complex plane with an improper point (“infinity”) attached.</p>
+<p><strong>Residue integration</strong> may also be used to evaluate certain classes of complicated real integrals (<a href="#sec-16-4" class="quarto-xref"><span class="quarto-unresolved-ref">sec-16-4</span></a>).</p>
 
 
 </section>
@@ -1764,8 +1764,8 @@ b_1 = \operatorname{Res}_{z=z_0} f(z) = \frac{1}{2\pi i} \oint_C f(z^*)\,dz^*.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/ch15.html" class="pagination-link" aria-label="CHAPTER 15: Power Series, Taylor Series">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">CHAPTER 15: Power Series, Taylor Series</span></span>
+      <a href="../chapters/ch15.html" class="pagination-link" aria-label="Power Series, Taylor Series">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Power Series, Taylor Series</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

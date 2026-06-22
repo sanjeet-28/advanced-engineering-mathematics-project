@@ -1,8 +1,8 @@
 ---
-title: "CHAPTER 14: Complex Integration"
+title: "Complex Integration"
 ---
 
-Chapter 13 laid the groundwork for the study of complex analysis, covered complex numbers in the complex plane, limits, and differentiation, and introduced the most important concept of analyticity. A complex function is analytic in some domain if it is differentiable in that domain. Complex analysis deals with such functions and their applications. The Cauchy–Riemann equations, in Sec. 13.4, were the heart of Chapter 13 and allowed a means of checking whether a function is indeed analytic. In that section, we also saw that analytic functions satisfy Laplace’s equation, the most important PDE in physics.
+<!-- TODO: replace Chapter 13 with actual chapter label --> laid the groundwork for the study of complex analysis, covered complex numbers in the complex plane, limits, and differentiation, and introduced the most important concept of analyticity. A complex function is analytic in some domain if it is differentiable in that domain. Complex analysis deals with such functions and their applications. The Cauchy–Riemann equations, in <!-- TODO: replace Sec. 13.4 with actual cross-reference label -->, were the heart of <!-- TODO: replace Chapter 13 with actual chapter label --> and allowed a means of checking whether a function is indeed analytic. In that section, we also saw that analytic functions satisfy Laplace’s equation, the most important PDE in physics.
 
 We now consider the next part of complex calculus, that is, we shall discuss the first approach to complex integration. It centers around the very important Cauchy integral theorem (also called the Cauchy–Goursat theorem) in @sec-cauchy-integral-theorem. This theorem is important because it allows, through its implied Cauchy integral formula of @sec-cauchy-integral-formula, the evaluation of integrals having an analytic integrand. Furthermore, the Cauchy integral formula shows the surprising result that analytic functions have derivatives of all orders. Hence, in this respect, complex analytic functions behave much more simply than real-valued functions of real variables, which may have derivatives only up to a certain order.
 
@@ -10,15 +10,15 @@ Complex integration is attractive for several reasons. Some basic properties of 
 
 Finally, complex integration is used in connection with special functions, such as gamma functions (consult [GenRef1]), the error function, and various polynomials (see [GenRef10]). These functions are applied to problems in physics.
 
-The second approach to complex integration is integration by residues, which we shall cover in Chapter 16.
+The second approach to complex integration is integration by residues, which we shall cover in <!-- TODO: replace Chapter 16 with actual chapter label -->.
 
-**Prerequisite:** Chap. 13.
+**Prerequisite:** <!-- TODO: replace Chap. 13 with actual chapter label -->.
 
 **Section that may be omitted in a shorter course:** 14.1, 14.5.
 
 **References and Answers to Problems:** App. 1 Part D, App. 2.
 
-## 14.1 Line Integral in the Complex Plane {#sec-line-integral}
+## Line Integral in the Complex Plane {#sec-line-integral}
 
 As in calculus, in complex analysis we distinguish between definite integrals and indefinite integrals or antiderivatives. Here an indefinite integral is a function whose derivative equals a given analytic function in a region. By inverting known differentiation formulas we may find many types of indefinite integrals.
 
@@ -125,7 +125,7 @@ It is simpler than the next method, but it is suitable for analytic functions on
 
 A domain $D$ is called **simply connected** if every simple closed curve (closed curve without self-intersections) encloses only points of $D$.
 
-For instance, a circular disk is simply connected, whereas an annulus (Sec. 13.3) is not simply connected. (Explain!)
+For instance, a circular disk is simply connected, whereas an annulus (<!-- TODO: replace Sec. 13.3 with actual cross-reference label -->) is not simply connected. (Explain!)
 
 ### THEOREM 1 Indefinite Integration of Analytic Functions
 Let $f(z)$ be analytic in a simply connected domain $D$. Then there exists an indefinite integral of $f(z)$ in the domain $D$, that is, an analytic function $F(z)$ such that $F'(z) = f(z)$ in $D$, and for all paths in $D$ joining two points $z_0$ and $z_1$ in $D$ we have
@@ -136,7 +136,7 @@ $$ {#eq-14-1-9}
 
 This theorem will be proved in the next section.
 
-Simple connectedness is quite essential in Theorem 1, as we shall see in Example 5. Since analytic functions are our main concern, and since differentiation formulas will often help in finding $F(z)$ for a given $f(z) = F'(z)$, the present method is of great practical interest. If $f(z)$ is entire (Sec. 13.5), we can take for $D$ the complex plane (which is certainly simply connected).
+Simple connectedness is quite essential in Theorem 1, as we shall see in Example 5. Since analytic functions are our main concern, and since differentiation formulas will often help in finding $F(z)$ for a given $f(z) = F'(z)$, the present method is of great practical interest. If $f(z)$ is entire (<!-- TODO: replace Sec. 13.5 with actual cross-reference label -->), we can take for $D$ the complex plane (which is certainly simply connected).
 
 ### EXAMPLE 1
 $$
@@ -184,14 +184,14 @@ $$
 (D) Integrate $f[z(t)]\dot{z}(t)$ over $t$ from $a$ to $b$.
 
 ### EXAMPLE 5 A Basic Result: Integral of $1/z$ Around the Unit Circle
-We show that by integrating $1/z$ counterclockwise around the unit circle (the circle of radius 1 and center 0; see Sec. 13.3) we obtain
+We show that by integrating $1/z$ counterclockwise around the unit circle (the circle of radius 1 and center 0; see <!-- TODO: replace Sec. 13.3 with actual cross-reference label -->) we obtain
 $$
 \oint_C \frac{dz}{z} = 2\pi i \quad (C \text{ the unit circle, counterclockwise}).
 $$ {#eq-14-1-11}
 This is a very important result that we shall need quite often.
 
 **Solution.**  
-(A) We may represent the unit circle $C$ in Fig. 330 of Sec. 13.3 by
+(A) We may represent the unit circle $C$ in @fig-14-330 of <!-- TODO: replace Sec. 13.3 with actual cross-reference label --> by
 $$
 z(t) = \cos t + i \sin t = e^{it} \quad (0 \le t \le 2\pi),
 $$
@@ -223,7 +223,7 @@ and obtain
 $$
 \oint_C (z - z_0)^m \, dz = \int_0^{2\pi} \rho^m e^{imt} i \rho e^{it} \, dt = i \rho^{m+1} \int_0^{2\pi} e^{i(m+1)t} \, dt.
 $$
-By the Euler formula (5) in Sec. 13.6 the right side equals
+By the Euler formula (5) in <!-- TODO: replace Sec. 13.6 with actual cross-reference label --> the right side equals
 $$
 i \rho^{m+1} \left[ \int_0^{2\pi} \cos(m+1)t \, dt + i \int_0^{2\pi} \sin(m+1)t \, dt \right].
 $$
@@ -265,7 +265,7 @@ $$
 $$ {#eq-14-1-13}
 $L$ is the length of $C$ and $M$ a constant such that $|f(z)| \le M$ everywhere on $C$.
 
-**PROOF** Taking the absolute value in @eq-14-1-2 and applying the generalized inequality (6*) in Sec. 13.2, we obtain
+**PROOF** Taking the absolute value in @eq-14-1-2 and applying the generalized inequality (6*) in <!-- TODO: replace Sec. 13.2 with actual cross-reference label -->, we obtain
 $$
 |S_n| = \left| \sum_{m=1}^n f(\zeta_m) \Delta z_m \right| \le \sum_{m=1}^n |f(\zeta_m)| |\Delta z_m| \le M \sum_{m=1}^n |\Delta z_m|.
 $$
@@ -289,7 +289,7 @@ The absolute value of the integral is $|-2/3 + 2i/3| = \frac{2}{3}\sqrt{2} \appr
 
 **Summary on Integration.** Line integrals of $f(z)$ can always be evaluated by @eq-14-1-10, using a representation @eq-14-1-1 of the path of integration. If $f(z)$ is analytic, indefinite integration by @eq-14-1-9 as in calculus will be simpler (proof in the next section).
 
-## PROBLEM SET 14.1
+## PROBLEM SET 14.1 {#sec-problem-set-14-1}
 
 ### 1–10 FIND THE PATH and sketch it.
 1. $z(t) = (1 + i)t \quad (2 \le t \le 5)$
@@ -341,7 +341,7 @@ Integrate by the first method or state why it does not apply and use the second 
     (d) **Continuous deformation of path.** Choose another family, for example, semi-ellipses $z(t) = a \cos t + i \sin t, \ -\pi/2 \le t \le \pi/2$, and experiment as in (c).
 35. **ML-inequality.** Find an upper bound of the absolute value of the integral in Prob. 21.
 
-## 14.2 Cauchy’s Integral Theorem {#sec-cauchy-integral-theorem}
+## Cauchy’s Integral Theorem {#sec-cauchy-integral-theorem}
 
 This section is the focal point of the chapter. We have just seen in @sec-line-integral that a line integral of a function $f(z)$ generally depends not merely on the endpoints of the path, but also on the choice of the path itself. This dependence often complicates situations. Hence conditions under which this does not occur are of considerable importance. Namely, if $f(z)$ is analytic in a domain $D$ and $D$ is simply connected (see @sec-line-integral and also below), then the integral will not depend on the choice of a path between given points. This result (Theorem 2) follows from Cauchy’s integral theorem, along with other basic consequences that make Cauchy’s integral theorem the most important theorem in this chapter and fundamental throughout complex analysis.
 
@@ -351,7 +351,7 @@ Let us continue our discussion of simple connectedness which we started in @sec-
 
 ![Fig. 345. Closed paths](../images/fig-14-07.png){#fig-14-07}
 
-2. **A simply connected domain** $D$ in the complex plane is a domain (Sec. 13.3) such that every simple closed path in $D$ encloses only points of $D$. Examples: The interior of a circle ("open disk"), ellipse, or any simple closed curve. A domain that is not simply connected is called **multiply connected**. Examples: An annulus (Sec. 13.3), a disk without the center, for example, $0 < |z| < 1$. See also @fig-14-08.
+2. **A simply connected domain** $D$ in the complex plane is a domain (<!-- TODO: replace Sec. 13.3 with actual cross-reference label -->) such that every simple closed path in $D$ encloses only points of $D$. Examples: The interior of a circle ("open disk"), ellipse, or any simple closed curve. A domain that is not simply connected is called **multiply connected**. Examples: An annulus (<!-- TODO: replace Sec. 13.3 with actual cross-reference label -->), a disk without the center, for example, $0 < |z| < 1$. See also @fig-14-08.
 
 More precisely, a bounded domain $D$ (that is, a domain that lies entirely in some circle about the origin) is called **$p$-fold connected** if its boundary consists of $p$ closed connected sets without common points. These sets can be curves, segments, or single points (such as $z = 0$ for $0 < |z| < 1$, for which $p = 2$). Thus, $D$ has $p - 1$ "holes," where "hole" may also mean a segment or even a single point. Hence an annulus is doubly connected ($p = 2$).
 
@@ -400,15 +400,15 @@ for counterclockwise integration around the unit circle (see @sec-line-integral)
 
 In other words, by Cauchy’s theorem, if $f(z)$ is analytic on a simple closed path $C$ and everywhere inside $C$, with no exception, not even a single point, then @eq-14-2-1 holds. The point that causes trouble here is $z = 0$ where $1/z$ is not analytic. $\square$
 
-**PROOF** Cauchy proved his integral theorem under the additional assumption that the derivative $f'(z)$ is continuous (which is true, but would need an extra proof). His proof proceeds as follows. From @eq-14-1-8 in Sec. 14.1 we have
+**PROOF** Cauchy proved his integral theorem under the additional assumption that the derivative $f'(z)$ is continuous (which is true, but would need an extra proof). His proof proceeds as follows. From @eq-14-1-8 in @sec-line-integral we have
 $$
 \oint_C f(z) \, dz = \oint_C (u \, dx - v \, dy) + i \oint_C (u \, dy + v \, dx).
 $$
-Since $f(z)$ is analytic in $D$, its derivative $f'(z)$ exists in $D$. Since $f'(z)$ is assumed to be continuous, (4) and (5) in Sec. 13.4 imply that $u$ and $v$ have continuous partial derivatives in $D$. Hence Green’s theorem (Sec. 10.4) (with $u$ and $-v$ instead of $F_1$ and $F_2$) is applicable and gives
+Since $f(z)$ is analytic in $D$, its derivative $f'(z)$ exists in $D$. Since $f'(z)$ is assumed to be continuous, (4) and (5) in <!-- TODO: replace Sec. 13.4 with actual cross-reference label --> imply that $u$ and $v$ have continuous partial derivatives in $D$. Hence Green’s theorem (<!-- TODO: replace Sec. 10.4 with actual cross-reference label -->) (with $u$ and $-v$ instead of $F_1$ and $F_2$) is applicable and gives
 $$
 \oint_C (u \, dx - v \, dy) = \iint_R \left( -\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} \right) \, dx \, dy
 $$
-where $R$ is the region bounded by $C$. The second Cauchy–Riemann equation (Sec. 13.4) shows that the integrand on the right is identically zero. Hence the integral on the left is zero. In the same fashion it follows by the use of the first Cauchy–Riemann equation that the last integral in the above formula is zero. This completes Cauchy’s proof. $\square$
+where $R$ is the region bounded by $C$. The second Cauchy–Riemann equation (<!-- TODO: replace Sec. 13.4 with actual cross-reference label -->) shows that the integrand on the right is identically zero. Hence the integral on the left is zero. In the same fashion it follows by the use of the first Cauchy–Riemann equation that the last integral in the above formula is zero. This completes Cauchy’s proof. $\square$
 
 Goursat’s proof without the condition that $f'(z)$ is continuous[^1] is much more complicated. We leave it optional and include it in App. 4.
 
@@ -446,18 +446,18 @@ This idea is related to path independence. We may imagine that the path $C_2$ in
 ![Fig. 351. Continuous deformation of path](../images/fig-14-13.png){#fig-14-13}
 
 ### EXAMPLE 6 A Basic Result: Integral of Integer Powers
-From Example 6 in Sec. 14.1 and the principle of deformation of path it follows that
+From Example 6 in @sec-line-integral and the principle of deformation of path it follows that
 $$
 \oint_C (z - z_0)^m \, dz = \begin{cases} 2\pi i & (m = -1), \\ 0 & (m \neq -1 \text{ and integer}) \end{cases}
 $$ {#eq-14-2-3}
-for counterclockwise integration around any simple closed path $C$ containing $z_0$ in its interior. Indeed, the circle $|z - z_0| = \rho$ in Example 6 of Sec. 14.1 can be continuously deformed in two steps into a path as just indicated, namely, by first deforming, say, one semicircle and then the other one. (Make a sketch). $\square$
+for counterclockwise integration around any simple closed path $C$ containing $z_0$ in its interior. Indeed, the circle $|z - z_0| = \rho$ in Example 6 of @sec-line-integral can be continuously deformed in two steps into a path as just indicated, namely, by first deforming, say, one semicircle and then the other one. (Make a sketch). $\square$
 
 ### Existence of Indefinite Integral
 
-We shall now justify our indefinite integration method in the preceding section [formula @eq-14-1-9 in Sec. 14.1]. The proof will need Cauchy’s integral theorem.
+We shall now justify our indefinite integration method in the preceding section [formula @eq-14-1-9 in @sec-line-integral]. The proof will need Cauchy’s integral theorem.
 
 ### THEOREM 3 Existence of Indefinite Integral
-If $f(z)$ is analytic in a simply connected domain $D$, then there exists an indefinite integral $F(z)$ of $f(z)$ in $D$—thus, $F'(z) = f(z)$—which is analytic in $D$, and for all paths in $D$ joining any two points $z_0$ and $z_1$ in $D$, the integral of $f(z)$ from $z_0$ to $z_1$ can be evaluated by formula @eq-14-1-9 in Sec. 14.1.
+If $f(z)$ is analytic in a simply connected domain $D$, then there exists an indefinite integral $F(z)$ of $f(z)$ in $D$—thus, $F'(z) = f(z)$—which is analytic in $D$, and for all paths in $D$ joining any two points $z_0$ and $z_1$ in $D$, the integral of $f(z)$ from $z_0$ to $z_1$ can be evaluated by formula @eq-14-1-9 in @sec-line-integral.
 
 **PROOF** The conditions of Cauchy’s integral theorem are satisfied. Hence the line integral of $f(z)$ from any $z_0$ in $D$ to any $z$ in $D$ is independent of path in $D$. We keep $z_0$ fixed. Then this integral becomes a function of $z$, call it $F(z)$,
 $$
@@ -481,7 +481,7 @@ By this trick and from @eq-14-2-5 we get a single integral:
 $$
 \frac{F(z + \Delta z) - F(z)}{\Delta z} - f(z) = \frac{1}{\Delta z} \int_z^{z + \Delta z} [f(z^*) - f(z)] \, dz^*.
 $$
-Since $f(z)$ is analytic, it is continuous (see Team Project (24d) in Sec. 13.3). An $\epsilon > 0$ being given, we can thus find a $\delta > 0$ such that $|f(z^*) - f(z)| < \epsilon$ when $|z^* - z| < \delta$. Hence, letting $|\Delta z| < \delta$, we see that the ML-inequality (Sec. 14.1) yields
+Since $f(z)$ is analytic, it is continuous (see Team Project (24d) in <!-- TODO: replace Sec. 13.3 with actual cross-reference label -->). An $\epsilon > 0$ being given, we can thus find a $\delta > 0$ such that $|f(z^*) - f(z)| < \epsilon$ when $|z^* - z| < \delta$. Hence, letting $|\Delta z| < \delta$, we see that the ML-inequality (@sec-line-integral) yields
 $$
 \left| \frac{F(z + \Delta z) - F(z)}{\Delta z} - f(z) \right| = \left| \frac{1}{\Delta z} \int_z^{z + \Delta z} [f(z^*) - f(z)] \, dz^* \right| \le \frac{1}{|\Delta z|} \epsilon |\Delta z| = \epsilon.
 $$
@@ -494,7 +494,7 @@ $$
 F(z) = \int f(z) \, dz.
 $$
 
-The relationship between $F(z)$ and any other indefinite integral $G(z)$ of $f(z)$ is as in real calculus: $G(z) = F(z) + C$, where $C$ is a constant. (Prove it). This follows because their difference has a derivative that is identically zero, which implies that it must be a constant. (See Example 3 in Sec. 13.4).
+The relationship between $F(z)$ and any other indefinite integral $G(z)$ of $f(z)$ is as in real calculus: $G(z) = F(z) + C$, where $C$ is a constant. (Prove it). This follows because their difference has a derivative that is identically zero, which implies that it must be a constant. (See Example 3 in <!-- TODO: replace Sec. 13.4 with actual cross-reference label -->).
 
 ![Fig. 352. Path of integration](../images/fig-14-14.png){#fig-14-14}
 
@@ -523,7 +523,7 @@ $$ {#eq-14-2-7}
 
 ![Fig. 355. Triply connected domain](../images/fig-14-17.png){#fig-14-17}
 
-## PROBLEM SET 14.2
+## PROBLEM SET 14.2 {#sec-problem-set-14-2}
 
 ### 1–8 COMMENTS ON TEXT AND EXAMPLES
 1. **Deformation range.** Find the edit range of the path of integration in Example 5 (unit circle) for which the value of the integral is still $2\pi i$.
@@ -563,7 +563,7 @@ Integrate counterclockwise around the boundary of the region $D$ (where $D$ is t
 29. $f(z) = \bar{z}$, boundary of the square with vertices 0, 1, $1+i$, $i$
 30. $f(z) = 1/(z^2 + 2z)$, boundary of the disk $|z + 1| \le 1.5$
 
-## 14.3 Cauchy’s Integral Formula {#sec-cauchy-integral-formula}
+## Cauchy’s Integral Formula {#sec-cauchy-integral-formula}
 
 The most important consequence of Cauchy's integral theorem is Cauchy’s integral formula. It expresses the value of an analytic function $f(z)$ at any point $z_0$ in a simply connected domain $D$ in terms of the values of $f(z)$ on a simple closed path $C$ in $D$ that encloses $z_0$. This is a very surprising result. It means that the values of an analytic function on the boundary of a domain determine the values of the function in the interior of the domain!
 
@@ -580,11 +580,11 @@ See @fig-14-18.
 
 ![Fig. 356. Cauchy’s integral formula](../images/fig-14-18.png){#fig-14-18}
 
-**PROOF** By assumption, $f(z)$ is analytic in $D$. Hence the integrand $f(z)/(z - z_0)$ is analytic in $D$ except at $z_0$. By @eq-14-2-6 in Sec. 14.2, we can replace $C$ by a small circle $K$ of radius $r$ and center $z_0$ (see @fig-14-19), without altering the value of the integral. Since $f(z)$ is analytic, it is continuous at $z_0$. Hence, an $\epsilon > 0$ being given, we can find a $\delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ for all $z$ in the disk $|z - z_0| < \delta$. We choose $r < \delta$. We can now write $f(z) = f(z_0) + [f(z) - f(z_0)]$. Substituting this into the integral over $K$, we obtain
+**PROOF** By assumption, $f(z)$ is analytic in $D$. Hence the integrand $f(z)/(z - z_0)$ is analytic in $D$ except at $z_0$. By @eq-14-2-6 in @sec-cauchy-integral-theorem, we can replace $C$ by a small circle $K$ of radius $r$ and center $z_0$ (see @fig-14-19), without altering the value of the integral. Since $f(z)$ is analytic, it is continuous at $z_0$. Hence, an $\epsilon > 0$ being given, we can find a $\delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ for all $z$ in the disk $|z - z_0| < \delta$. We choose $r < \delta$. We can now write $f(z) = f(z_0) + [f(z) - f(z_0)]$. Substituting this into the integral over $K$, we obtain
 $$
 \oint_K \frac{f(z)}{z - z_0} \, dz = \oint_K \frac{f(z_0) + [f(z) - f(z_0)]}{z - z_0} \, dz = f(z_0) \oint_K \frac{dz}{z - z_0} + \oint_K \frac{f(z) - f(z_0)}{z - z_0} \, dz.
 $$
-The first term on the right equals $f(z_0) \cdot 2\pi i$, which follows from Example 6 in Sec. 14.2. In the second term, $|f(z) - f(z_0)| < \epsilon$ at each point of $K$. The length of $K$ is $2\pi r$. Hence, by the ML-inequality in Sec. 14.1,
+The first term on the right equals $f(z_0) \cdot 2\pi i$, which follows from Example 6 in @sec-cauchy-integral-theorem. In the second term, $|f(z) - f(z_0)| < \epsilon$ at each point of $K$. The length of $K$ is $2\pi r$. Hence, by the ML-inequality in @sec-line-integral,
 $$
 \left| \oint_K \frac{f(z) - f(z_0)}{z - z_0} \, dz \right| \le \frac{\epsilon}{r} \cdot 2\pi r = 2\pi \epsilon.
 $$
@@ -642,9 +642,9 @@ By linearity of integration
 $$
 \oint_{C_4} g(z) \, dz = \oint_{C_4} \, dz + \oint_{C_4} \frac{dz}{z - 1} - \oint_{C_4} \frac{dz}{z + 1} = 0 + 2\pi i - 2\pi i = 0.
 $$
-Can you verify this using @eq-14-2-6 in Sec. 14.2? Yes, by deforming $C_4$ into two small circles around 1 and -1 (see @fig-14-21). $\square$
+Can you verify this using @eq-14-2-6 in @sec-cauchy-integral-theorem? Yes, by deforming $C_4$ into two small circles around 1 and -1 (see @fig-14-21). $\square$
 
-Multiply connected domains can be handled as in Sec. 14.2. For instance, if $f(z)$ is analytic on $C_1$ and $C_2$ and in the ring-shaped domain bounded by $C_1$ and $C_2$ (see @fig-14-21) and $z_0$ is any point in this domain, then
+Multiply connected domains can be handled as in @sec-cauchy-integral-theorem. For instance, if $f(z)$ is analytic on $C_1$ and $C_2$ and in the ring-shaped domain bounded by $C_1$ and $C_2$ (see @fig-14-21) and $z_0$ is any point in this domain, then
 $$
 f(z_0) = \frac{1}{2\pi i} \oint_{C_1} \frac{f(z)}{z - z_0} \, dz - \frac{1}{2\pi i} \oint_{C_2} \frac{f(z)}{z - z_0} \, dz
 $$ {#eq-14-3-3}
@@ -652,7 +652,7 @@ where both integrals are taken counterclockwise.
 
 ![Fig. 359. Formula (3) multiple boundaries](../images/fig-14-21.png){#fig-14-21}
 
-## PROBLEM SET 14.3
+## PROBLEM SET 14.3 {#sec-problem-set-14-3}
 
 ### 1–8 INTEGRATION
 Evaluate the contour integral counterclockwise. Show the details.
@@ -677,12 +677,12 @@ Evaluate the contour integral counterclockwise around the given contour.
 
 ### 16–20
 16. **Cauchy's integral formula.** Prove @eq-14-3-1 by writing $f(z) = f(z_0) + (z - z_0)g(z)$, where $g(z)$ is analytic, enclosing $z_0$ by a small circle $K$ of radius $r$ (as in @fig-14-18) and taking the limit as $r \to 0$.
-17. **Indefinite integration.** Show that the method in Sec. 14.1 can be applied to the integral in Example 2.
+17. **Indefinite integration.** Show that the method in @sec-line-integral can be applied to the integral in Example 2.
 18. **Continuous deformation.** Show that the integral in Example 2 is independent of the path of integration.
 19. **Team Project.** Show that @eq-14-3-3 follows from Cauchy's integral theorem.
 20. **Self-intersection.** If $C$ is a closed curve with a double point (self-intersection), say, like an 8, can we apply Cauchy's integral formula? Explain.
 
-## 14.4 Derivatives of Analytic Functions {#sec-derivatives-analytic-functions}
+## Derivatives of Analytic Functions {#sec-derivatives-analytic-functions}
 
 As another surprising consequence of Cauchy's integral formula, we shall now show that an analytic function has derivatives of all orders. This is a very important result, which has no analog in real calculus (where a function may have a first derivative but no second derivative, etc.).
 
@@ -730,7 +730,7 @@ Hence the difference is:
 $$
 \oint_C \frac{f(z) \Delta z}{(z - z_0 - \Delta z)(z - z_0)^2} \, dz.
 $$
-We show by the ML-inequality (Sec. 14.1) that the integral on the right approaches zero as $\Delta z \to 0$. Since $f(z)$ is analytic on $C$ and $C$ is closed, $|f(z)|$ is bounded, say, $|f(z)| \le K$. Let $d$ be the smallest distance from $z_0$ to the points of $C$ (see @fig-14-22). Then for all $z$ on $C$ we have $|z - z_0| \ge d$, hence
+We show by the ML-inequality (@sec-line-integral) that the integral on the right approaches zero as $\Delta z \to 0$. Since $f(z)$ is analytic on $C$ and $C$ is closed, $|f(z)|$ is bounded, say, $|f(z)| \le K$. Let $d$ be the smallest distance from $z_0$ to the points of $C$ (see @fig-14-22). Then for all $z$ on $C$ we have $|z - z_0| \ge d$, hence
 $$
 \frac{1}{|z - z_0|^2} \le \frac{1}{d^2}.
 $$
@@ -748,7 +748,7 @@ $$
 $$
 This approaches zero as $\Delta z \to 0$. Formula @eq-14-4-1 is proved. $\square$
 
-Note that we used Cauchy’s integral formula @eq-14-3-1star, Sec. 14.3, but if all we had known about $f(z_0)$ is the fact that it can be represented by @eq-14-3-1star, Sec. 14.3, our argument would still have worked! This means that if a continuous function $f(z)$ can be represented by @eq-14-3-1star, Sec. 14.3, then it is analytic! We shall use this fact in proving Morera’s theorem.
+Note that we used Cauchy’s integral formula @eq-14-3-1star, @sec-cauchy-integral-formula, but if all we had known about $f(z_0)$ is the fact that it can be represented by @eq-14-3-1star, @sec-cauchy-integral-formula, our argument would still have worked! This means that if a continuous function $f(z)$ can be represented by @eq-14-3-1star, @sec-cauchy-integral-formula, then it is analytic! We shall use this fact in proving Morera’s theorem.
 
 ### Applications of Theorem 1
 
@@ -774,7 +774,7 @@ $$
 
 We develop other general results about analytic functions, further showing the versatility of Cauchy’s integral theorem.
 
-**Cauchy's Inequality.** Theorem 1 yields a basic inequality that has many applications. To get it, all we have to do is to choose for $C$ in @eq-14-4-3 a circle of radius $r$ and center $z_0$ and apply the ML-inequality (Sec. 14.1); with $|f(z)| \le M$ on $C$ we obtain from @eq-14-4-3
+**Cauchy's Inequality.** Theorem 1 yields a basic inequality that has many applications. To get it, all we have to do is to choose for $C$ in @eq-14-4-3 a circle of radius $r$ and center $z_0$ and apply the ML-inequality (@sec-line-integral); with $|f(z)| \le M$ on $C$ we obtain from @eq-14-4-3
 $$
 |f^{(n)}(z_0)| = \frac{n!}{2\pi} \left| \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \right| \le \frac{n!}{2\pi} \frac{M}{r^{n+1}} 2\pi r = \frac{n! M}{r^n}.
 $$
@@ -783,12 +783,12 @@ $$
 |f^{(n)}(z_0)| \le \frac{n! M}{r^n}.
 $$ {#eq-14-4-4}
 
-To gain a first impression of the importance of this inequality, let us prove a famous theorem on entire functions (definition in Sec. 13.5).
+To gain a first impression of the importance of this inequality, let us prove a famous theorem on entire functions (definition in <!-- TODO: replace Sec. 13.5 with actual cross-reference label -->).
 
 ### THEOREM 2 Liouville’s Theorem
 If an entire function is bounded in absolute value in the whole complex plane, then this function must be a constant.
 
-**PROOF** By assumption, $|f(z)| \le K$ for all $z$. Using @eq-14-4-4 with $n = 1$, we see that $|f'(z_0)| \le K/r$. Since $f(z)$ is entire, this holds for every $r$, so that we can take $r$ as large as we please and conclude that $f'(z_0) = 0$. Since $z_0$ is arbitrary, $f'(z) = u_x + i v_x = 0$ for all $z$ (see (4) in Sec. 13.4), hence $u_x = v_x = 0$, and $u_y = v_y = 0$ by the Cauchy–Riemann equations. Thus $u = \text{const}$, $v = \text{const}$, and $f = u + iv = \text{const}$ for all $z$. This completes the proof. $\square$
+**PROOF** By assumption, $|f(z)| \le K$ for all $z$. Using @eq-14-4-4 with $n = 1$, we see that $|f'(z_0)| \le K/r$. Since $f(z)$ is entire, this holds for every $r$, so that we can take $r$ as large as we please and conclude that $f'(z_0) = 0$. Since $z_0$ is arbitrary, $f'(z) = u_x + i v_x = 0$ for all $z$ (see (4) in <!-- TODO: replace Sec. 13.4 with actual cross-reference label -->), hence $u_x = v_x = 0$, and $u_y = v_y = 0$ by the Cauchy–Riemann equations. Thus $u = \text{const}$, $v = \text{const}$, and $f = u + iv = \text{const}$ for all $z$. This completes the proof. $\square$
 
 Another very interesting consequence of Theorem 1 is the converse of Cauchy’s integral theorem:
 
@@ -799,7 +799,7 @@ $$
 $$ {#eq-14-4-5}
 for every closed path $C$ in $D$, then $f(z)$ is analytic in $D$.
 
-**PROOF** In Sec. 14.2 we showed that if $f(z)$ is analytic in a simply connected domain $D$, then
+**PROOF** In @sec-cauchy-integral-theorem we showed that if $f(z)$ is analytic in a simply connected domain $D$, then
 $$
 F(z) = \int_{z_0}^z f(z^*) \, dz^*
 $$
@@ -807,7 +807,7 @@ is analytic in $D$ and $F'(z) = f(z)$. In the proof we used only the continuity 
 
 [^2]: GIACINTO MORERA (1856–1909), Italian mathematician who made important contributions to elasticity and complex analysis.
 
-## PROBLEM SET 14.4
+## PROBLEM SET 14.4 {#sec-problem-set-14-4}
 
 ### 1–8 EVALUATION OF INTEGRALS
 Integrate counterclockwise around the circle $|z| = 2$. Show the details.
@@ -834,13 +834,13 @@ Evaluate the contour integral counterclockwise around the given contour.
 18. $\oint_C \frac{\sinh z}{z^n} \, dz$, $C: |z| = 1$ counterclockwise, $n$ integer
 19. $\oint_C \frac{e^{3z}}{(4z - \pi i)^3} \, dz$, $C: |z| = 1$, counterclockwise
 
-### 20 TEAM PROJECT. Theory on Growth
+### TEAM PROJECT. Theory on Growth
 (a) **Growth of entire functions.** If $f(z)$ is not a constant and is analytic for all (finite) $z$, and $R$ and $M$ are any positive real numbers (no matter how large), show that there exist values of $z$ for which $|z| > R$ and $|f(z)| > M$. *Hint.* Use Liouville’s theorem.  
 (b) **Growth of polynomials.** If $f(z)$ is a polynomial in $z$ of degree $n > 0$ and $M$ is an arbitrary positive real number (no matter how large), show that there exists a positive real number $R$ such that $|f(z)| > M$ for all $|z| > R$.  
 (c) **Exponential function.** Show that $f(z) = e^z$ has the property characterized in (a) but does not have that characterized in (b).  
 (d) **Fundamental theorem of algebra.** If $f(z)$ is a polynomial in $z$, not a constant, then $f(z) = 0$ for at least one value of $z$. Prove this. *Hint.* Use (a).
 
-## CHAPTER 14 REVIEW QUESTIONS AND PROBLEMS
+## CHAPTER 14 REVIEW QUESTIONS AND PROBLEMS {#sec-chapter-14-review-questions-and-problems}
 
 1. What is a parametric representation of a curve? What is its advantage?
 2. What did we assume about paths of integration $z = z(t)$? What is $\dot{z} = dz/dt$ geometrically?
@@ -876,27 +876,27 @@ Integrate by a suitable method.
 29. $\oint_C \left[ \frac{2}{z - 2i} - \frac{1}{z - 4i} \right] \, dz$ clockwise around $|z - 1| = 2.5$.
 30. $\int_C \sin z \, dz$ from 0 to $(1 + i)$.
 
-## SUMMARY OF CHAPTER 14
+## SUMMARY OF CHAPTER 14 {#sec-summary-of-chapter-14}
 
 ### Complex Integration
 The complex line integral of a function $f(z)$ taken over a path $C$ is denoted by
 $$
 \int_C f(z) \, dz \quad \text{or, if $C$ is closed, also by} \quad \oint_C f(z) \, dz
 $$ {#eq-sum-1}
-(Sec. 14.1).
+(@sec-line-integral).
 
 If $f(z)$ is analytic in a simply connected domain $D$, then we can evaluate @eq-sum-1 as in calculus by indefinite integration and substitution of limits, that is,
 $$
 \int_C f(z) \, dz = F(z_1) - F(z_0) \quad [F'(z) = f(z)]
 $$ {#eq-sum-2}
-for every path $C$ in $D$ from a point $z_0$ to a point $z_1$ (see Sec. 14.1). These assumptions imply independence of path, that is, @eq-sum-2 depends only on $z_0$ and $z_1$ (and on $f(z)$, of course) but not on the choice of $C$ (Sec. 14.2). The existence of an $F(z)$ such that $F'(z) = f(z)$ is proved in Sec. 14.2 by Cauchy’s integral theorem (see below).
+for every path $C$ in $D$ from a point $z_0$ to a point $z_1$ (see @sec-line-integral). These assumptions imply independence of path, that is, @eq-sum-2 depends only on $z_0$ and $z_1$ (and on $f(z)$, of course) but not on the choice of $C$ (@sec-cauchy-integral-theorem). The existence of an $F(z)$ such that $F'(z) = f(z)$ is proved in @sec-cauchy-integral-theorem by Cauchy’s integral theorem (see below).
 
 A general method of integration, not restricted to analytic functions, uses the equation $z = z(t)$ of $C$, where $a \le t \le b$,
 $$
 \int_C f(z) \, dz = \int_a^b f(z(t)) \dot{z}(t) \, dt \quad \left( \dot{z} = \frac{dz}{dt} \right).
 $$ {#eq-sum-3}
 
-**Cauchy’s integral theorem** is the most important theorem in this chapter. It states that if $f(z)$ is analytic in a simply connected domain $D$, then for every closed path $C$ in $D$ (Sec. 14.2),
+**Cauchy’s integral theorem** is the most important theorem in this chapter. It states that if $f(z)$ is analytic in a simply connected domain $D$, then for every closed path $C$ in $D$ (@sec-cauchy-integral-theorem),
 $$
 \oint_C f(z) \, dz = 0.
 $$ {#eq-sum-4}
@@ -906,9 +906,9 @@ $$
 f(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - z_0} \, dz.
 $$ {#eq-sum-5}
 
-Furthermore, under these assumptions $f(z)$ has derivatives of all orders in $D$ that are themselves analytic functions in $D$ and (Sec. 14.4)
+Furthermore, under these assumptions $f(z)$ has derivatives of all orders in $D$ that are themselves analytic functions in $D$ and (@sec-derivatives-analytic-functions)
 $$
 f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \quad (n = 1, 2, \dots).
 $$ {#eq-sum-6}
 
-This implies Morera’s theorem (the converse of Cauchy’s integral theorem) and Cauchy’s inequality (Sec. 14.4), which in turn implies Liouville’s theorem that an entire function that is bounded in the whole complex plane must be constant.
+This implies Morera’s theorem (the converse of Cauchy’s integral theorem) and Cauchy’s inequality (@sec-derivatives-analytic-functions), which in turn implies Liouville’s theorem that an entire function that is bounded in the whole complex plane must be constant.
