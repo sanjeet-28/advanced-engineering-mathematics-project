@@ -1,22 +1,22 @@
 ---
-title: "CHAPTER 09: Vector Differential Calculus. Grad, Div, Curl"
+title: "Vector Differential Calculus. Grad, Div, Curl"
 ---
 
-Engineering, physics, and computer sciences, in general, but particularly solid mechanics, aerodynamics, aeronautics, fluid flow, heat flow, electrostatics, quantum physics, laser technology, robotics as well as other areas have applications that require an understanding of vector calculus. This field encompasses vector differential calculus and vector integral calculus. Indeed, the engineer, physicist, and mathematician need a good grounding in these areas as provided by the carefully chosen material of Chaps. 9 and 10.
+Engineering, physics, and computer sciences, in general, but particularly solid mechanics, aerodynamics, aeronautics, fluid flow, heat flow, electrostatics, quantum physics, laser technology, robotics as well as other areas have applications that require an understanding of vector calculus. This field encompasses vector differential calculus and vector integral calculus. Indeed, the engineer, physicist, and mathematician need a good grounding in these areas as provided by the carefully chosen material of <!-- TODO: replace Chaps. 9 and 10 with actual chapter labels -->Chaps. 9 and 10.
 
 Forces, velocities, and various other quantities may be thought of as vectors. Vectors appear frequently in the applications above and also in the biological and social sciences, so it is natural that problems are modeled in 3-space. This is the space of three dimensions with the usual measurement of distance, as given by the Pythagorean theorem. Within that realm, 2-space (the plane) is a special case. Working in 3-space requires that we extend the common differential calculus to vector differential calculus, that is, the calculus that deals with vector functions and vector fields and is explained in this chapter.
 
-Chapter 9 is arranged in three groups of sections. Sections 9.1–9.3 extend the basic algebraic operations of vectors into 3-space. These operations include the inner product and the cross product. Sections 9.4 and 9.5 form the heart of vector differential calculus. Finally, Secs. 9.7–9.9 discuss three physically important concepts related to scalar and vector fields: gradient (@sec-9-7), divergence (@sec-9-8), and curl (@sec-9-9). They are expressed in Cartesian coordinates in this chapter and, if desired, expressed in curvilinear coordinates in a short section in App. A3.4.
+Chapter 9 is arranged in three groups of sections. @sec-vectors-2-space-3-space to @sec-vector-product-cross-product extend the basic algebraic operations of vectors into 3-space. These operations include the inner product and the cross product. @sec-vector-scalar-functions-fields-derivatives and @sec-curves-arc-length-curvature-torsion form the heart of vector differential calculus. Finally, @sec-gradient-scalar-field-directional-derivative to @sec-curl-vector-field discuss three physically important concepts related to scalar and vector fields: gradient (@sec-gradient-scalar-field-directional-derivative), divergence (@sec-divergence-vector-field), and curl (@sec-curl-vector-field). They are expressed in Cartesian coordinates in this chapter and, if desired, expressed in curvilinear coordinates in a short section in <!-- TODO: replace App. A3.4 with actual link -->App. A3.4.
 
-We shall keep this chapter independent of Chaps. 7 and 8. Our present approach is in harmony with Chap. 7, with the restriction to two and three dimensions providing for a richer theory with basic physical, engineering, and geometric applications.
+We shall keep this chapter independent of <!-- TODO: replace Chaps. 7 and 8 with actual chapter labels -->Chaps. 7 and 8. Our present approach is in harmony with <!-- TODO: replace Chap. 7 with actual chapter label -->Chap. 7, with the restriction to two and three dimensions providing for a richer theory with basic physical, engineering, and geometric applications.
 
-**Prerequisite:** Elementary use of second- and third-order determinants in Sec. 9.3.  
-**Sections that may be omitted in a shorter course:** 9.5, 9.6.  
-**References and Answers to Problems:** App. 1 Part B, App. 2.
+**Prerequisite:** Elementary use of second- and third-order determinants in @sec-vector-product-cross-product.  
+**Sections that may be omitted in a shorter course:** @sec-curves-arc-length-curvature-torsion, @sec-calculus-review-functions-several-variables.  
+**References and Answers to Problems:** <!-- TODO: replace App. 1 with actual link -->App. 1 Part B, <!-- TODO: replace App. 2 with actual link -->App. 2.
 
 ***
 
-## 9.1 Vectors in 2-Space and 3-Space {#sec-9-1}
+## Vectors in 2-Space and 3-Space {#sec-vectors-2-space-3-space}
 
 In engineering, physics, mathematics, and other areas we encounter two kinds of quantities. They are scalars and vectors.
 
@@ -28,8 +28,9 @@ More formally, we denote vectors by lowercase boldface letters $\mathbf{a}, \mat
 
 A vector of length 1 is called a **unit vector**.
 
-![Fig. 164. Force and velocity](/images/cover.png){#fig-9-164 width=30%}
-![Fig. 165. Translation](/images/cover.png){#fig-9-165 width=30%}
+![Fig. 164. Force and velocity](../images/chapter9/fig-9-164.png){#fig-9-164 width=30%}
+
+![Fig. 165. Translation](../images/chapter9/fig-9-165.png){#fig-9-165 width=30%}
 
 Of course, we would like to calculate with vectors. For instance, we want to find the resultant of forces or compare parallel forces of different magnitude. This motivates our next ideas: to define **components** of a vector, and then the two basic algebraic operations of vector addition and scalar multiplication.
 
@@ -38,7 +39,7 @@ For this we must first define **equality of vectors** in a way that is practical
 ### DEFINITION: Equality of Vectors
 Two vectors $\mathbf{a}$ and $\mathbf{b}$ are equal, written $\mathbf{a} = \mathbf{b}$, if they have the same length and the same direction (as explained in @fig-9-166; in particular, note (B)). Hence a vector can be arbitrarily translated; that is, its initial point can be chosen arbitrarily.
 
-![Fig. 166. (A) Equal vectors. (B)–(D) Different vectors](/images/cover.png){#fig-9-166 width=60%}
+![Fig. 166. (A) Equal vectors. (B)–(D) Different vectors](../images/chapter9/fig-9-166.png){#fig-9-166 width=60%}
 
 ### Components of a Vector
 We choose an $xyz$ Cartesian coordinate system in space (@fig-9-167), that is, a usual rectangular coordinate system with the same scale of measurement on the three mutually perpendicular coordinate axes. Let $\mathbf{a}$ be a given vector with initial point $P: (x_1, y_1, z_1)$ and terminal point $Q: (x_2, y_2, z_2)$. Then the three coordinate differences
@@ -74,9 +75,11 @@ If we choose the origin $(0, 0, 0)$ as the initial point of $\mathbf{a}$, the co
 
 A Cartesian coordinate system being given, the **position vector** $\mathbf{r}$ of a point $A: (x, y, z)$ is the vector with the origin $(0, 0, 0)$ as the initial point and $A$ as the terminal point (see @fig-9-169). Thus in components, $\mathbf{r} = [x, y, z]$. This can be seen directly from (@eq-9-1-1) with $x_1 = y_1 = z_1 = 0$.
 
-![Fig. 167. Cartesian coordinate system](/images/cover.png){#fig-9-167 width=25%}
-![Fig. 168. Components of a vector](/images/cover.png){#fig-9-168 width=25%}
-![Fig. 169. Position vector r of a point A: (x, y, z)](/images/cover.png){#fig-9-169 width=25%}
+![Fig. 167. Cartesian coordinate system](../images/chapter9/fig-9-167.png){#fig-9-167 width=25%}
+
+![Fig. 168. Components of a vector](../images/chapter9/fig-9-168.png){#fig-9-168 width=25%}
+
+![Fig. 169. Position vector r of a point A: (x, y, z)](../images/chapter9/fig-9-169.png){#fig-9-169 width=25%}
 
 ### THEOREM 1 Vectors as Ordered Triples of Real Numbers
 A fixed Cartesian coordinate system being given, each vector is uniquely determined by its ordered triple of corresponding components. Conversely, to each ordered triple of real numbers $(a_1, a_2, a_3)$ there corresponds precisely one vector $\mathbf{a} = [a_1, a_2, a_3]$, with $(0, 0, 0)$ corresponding to the **zero vector** $\mathbf{0}$, which has length 0 and no direction.
@@ -101,8 +104,9 @@ For forces, this addition is the **parallelogram law** by which we obtain the **
 
 @fig-9-172 shows (for the plane) that the "algebraic" way and the "geometric way" of vector addition give the same vector.
 
-![Fig. 170. Vector addition](/images/cover.png){#fig-9-170 width=30%}
-![Fig. 171. Resultant of two forces (parallelogram law)](/images/cover.png){#fig-9-171 width=30%}
+![Fig. 170. Vector addition](../images/chapter9/fig-9-170.png){#fig-9-170 width=30%}
+
+![Fig. 171. Resultant of two forces (parallelogram law)](../images/chapter9/fig-9-171.png){#fig-9-171 width=30%}
 
 ### Basic Properties of Vector Addition
 Familiar laws for real numbers give immediately:
@@ -118,9 +122,11 @@ $$ {#eq-9-1-4}
 
 Properties (a) and (b) are verified geometrically in @fig-9-173 and @fig-9-174. Furthermore, $-\mathbf{a}$ denotes the vector having the length $|\mathbf{a}|$ and the direction opposite to that of $\mathbf{a}$.
 
-![Fig. 172. Vector addition](/images/cover.png){#fig-9-172 width=30%}
-![Fig. 173. Commutativity of vector addition](/images/cover.png){#fig-9-173 width=30%}
-![Fig. 174. Associativity of vector addition](/images/cover.png){#fig-9-174 width=30%}
+![Fig. 172. Vector addition](../images/chapter9/fig-9-172.png){#fig-9-172 width=30%}
+
+![Fig. 173. Commutativity of vector addition](../images/chapter9/fig-9-173.png){#fig-9-173 width=30%}
+
+![Fig. 174. Associativity of vector addition](../images/chapter9/fig-9-174.png){#fig-9-174 width=30%}
 
 In (@eq-9-1-4)(b) we may simply write $\mathbf{u} + \mathbf{v} + \mathbf{w}$, and similarly for sums of more than three vectors. Instead of $\mathbf{a} + \mathbf{a}$ we also write $2\mathbf{a}$, and so on. This (and the notation $-\mathbf{a}$ used just before) motivates defining the second algebraic operation for vectors as follows.
 
@@ -133,7 +139,7 @@ $$ {#eq-9-1-5}
 
 Geometrically, if $\mathbf{a} \neq \mathbf{0}$, then $c\mathbf{a}$ with $c > 0$ has the direction of $\mathbf{a}$ and with $c < 0$ the direction opposite to $\mathbf{a}$. In any case, the length of $c\mathbf{a}$ is $|c\mathbf{a}| = |c||\mathbf{a}|$, and $c\mathbf{a} = \mathbf{0}$ if $\mathbf{a} = \mathbf{0}$ or $c = 0$ (or both). (See @fig-9-175.)
 
-![Fig. 175. Scalar multiplication](/images/cover.png){#fig-9-175 width=50%}
+![Fig. 175. Scalar multiplication](../images/chapter9/fig-9-175.png){#fig-9-175 width=50%}
 
 ### Basic Properties of Scalar Multiplication
 From the definitions we obtain directly:
@@ -191,10 +197,11 @@ In Example 2 we have $\mathbf{a} = 4\mathbf{i} + \frac{1}{3}\mathbf{k}$, $\mathb
 
 All the vectors $\mathbf{a} = [a_1, a_2, a_3] = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ (with real numbers as components) form the real vector space $\mathbb{R}^3$ with the two algebraic operations of vector addition and scalar multiplication as just defined. $\mathbb{R}^3$ has dimension 3. The triple of vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ is called a **standard basis** of $\mathbb{R}^3$. Given a Cartesian coordinate system, the representation (@eq-9-1-8) of a given vector is unique.
 
-Vector space $\mathbb{R}^3$ is a model of a general vector space, as discussed in Sec. 7.9, but is not needed in this chapter.
+Vector space $\mathbb{R}^3$ is a model of a general vector space, as discussed in @sec-vector-spaces-inner-product-spaces-linear-transformations, but is not needed in this chapter.
 
-![Fig. 176. Difference of vectors](/images/cover.png){#fig-9-176 width=35%}
-![Fig. 177. The unit vectors i, j, k and representation (8)](/images/cover.png){#fig-9-177 width=35%}
+![Fig. 176. Difference of vectors](../images/chapter9/fig-9-176.png){#fig-9-176 width=35%}
+
+![Fig. 177. The unit vectors i, j, k and representation (8)](../images/chapter9/fig-9-177.png){#fig-9-177 width=35%}
 
 ***
 
@@ -257,7 +264,7 @@ Find the resultant in terms of components and its magnitude.
 37. **Force polygon. Truss.** Find the forces in the system of two rods (truss) in the figure, where $|\mathbf{p}| = 1000$ nt.  
     *Hint.* Forces in equilibrium form a polygon, the force polygon.
 
-    ![Problem 37 Truss and Force Polygon](/images/cover.png){#fig-9-p37 width=60%}
+    ![Problem 37 Truss and Force Polygon](../images/cover.png){#fig-9-p37 width=60%}
 
 38. **TEAM PROJECT. Geometric Applications.** To increase your skill in dealing with vectors, use vectors to prove the following.
     (a) The diagonals of a parallelogram bisect each other.
@@ -270,7 +277,7 @@ Find the resultant in terms of components and its magnitude.
 
 ***
 
-## 9.2 Inner Product (Dot Product). Orthogonality {#sec-9-2}
+## Inner Product (Dot Product). Orthogonality {#sec-inner-product-dot-product-orthogonality}
 
 The inner product or dot product can be motivated by calculating work done by a constant force, determining components of forces, or other applications. It involves the length of vectors and the angle between them. The inner product is a kind of multiplication of two vectors, defined in such a way that the outcome is a scalar. Indeed, another term for inner product is scalar product, a term we shall not use here. The definition of the inner product is as follows.
 
@@ -292,7 +299,7 @@ $$ {#eq-9-2-2}
 
 The second line in (@eq-9-2-1) is needed because $\gamma$ is undefined when $\mathbf{a} = \mathbf{0}$ or $\mathbf{b} = \mathbf{0}$. The derivation of (@eq-9-2-2) from (@eq-9-2-1) is shown below.
 
-![Fig. 178. Angle between vectors and value of inner product](/images/cover.png){#fig-9-178 width=60%}
+![Fig. 178. Angle between vectors and value of inner product](../images/chapter9/fig-9-178.png){#fig-9-178 width=60%}
 
 ### Orthogonality
 Since the cosine in (@eq-9-2-1) may be positive, 0, or negative, so may be the inner product (@fig-9-178). The case that the inner product is zero is of particular practical interest and suggests the following concept.
@@ -364,10 +371,10 @@ $$
 |\mathbf{a} + \mathbf{b}|^2 + |\mathbf{a} - \mathbf{b}|^2 = 2(|\mathbf{a}|^2 + |\mathbf{b}|^2) \quad \text{(Parallelogram equality)}.
 $$ {#eq-9-2-8}
 
-Equations (@eq-9-2-6)–(@eq-9-2-8) play a basic role in so-called Hilbert spaces, which are abstract inner product spaces. Hilbert spaces form the basis of quantum mechanics; for details see [GenRef7] listed in App. 1.
+Equations (@eq-9-2-6)–(@eq-9-2-8) play a basic role in so-called Hilbert spaces, which are abstract inner product spaces. Hilbert spaces form the basis of quantum mechanics; for details see [GenRef7] listed in <!-- TODO: replace App. 1 with actual link -->App. 1.
 
 ### Derivation of (@eq-9-2-2) from (@eq-9-2-1)
-We write $\mathbf{a} = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ and $\mathbf{b} = b_1\mathbf{i} + b_2\mathbf{j} + b_3\mathbf{k}$, as in (@eq-9-1-8) of Sec. 9.1. If we substitute this into $\mathbf{a} \cdot \mathbf{b}$ and use (@eq-9-2-5a-star), we first have a sum of $3 \times 3 = 9$ products:
+We write $\mathbf{a} = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ and $\mathbf{b} = b_1\mathbf{i} + b_2\mathbf{j} + b_3\mathbf{k}$, as in (@eq-9-1-8) of @sec-vectors-2-space-3-space. If we substitute this into $\mathbf{a} \cdot \mathbf{b}$ and use (@eq-9-2-5a-star), we first have a sum of $3 \times 3 = 9$ products:
 
 $$
 \mathbf{a} \cdot \mathbf{b} = a_1 b_1 \mathbf{i} \cdot \mathbf{i} + a_1 b_2 \mathbf{i} \cdot \mathbf{j} + \dots + a_3 b_3 \mathbf{k} \cdot \mathbf{k}.
@@ -376,10 +383,10 @@ $$
 Now $\mathbf{i}, \mathbf{j}, \mathbf{k}$ are unit vectors, so that $\mathbf{i} \cdot \mathbf{i} = \mathbf{j} \cdot \mathbf{j} = \mathbf{k} \cdot \mathbf{k} = 1$ by (@eq-9-2-3). Since the coordinate axes are perpendicular, so are $\mathbf{i}, \mathbf{j}, \mathbf{k}$, and Theorem 1 implies that the other six of those nine products are 0, namely, $\mathbf{i} \cdot \mathbf{j} = \mathbf{j} \cdot \mathbf{i} = \mathbf{j} \cdot \mathbf{k} = \mathbf{k} \cdot \mathbf{j} = \mathbf{k} \cdot \mathbf{i} = \mathbf{i} \cdot \mathbf{k} = 0$. But this reduces our sum for $\mathbf{a} \cdot \mathbf{b}$ to (@eq-9-2-2). $\square$
 
 ### Applications of Inner Products
-Typical applications of inner products are shown in the following examples and in Problem Set 9.2.
+Typical applications of inner products are shown in the following examples and in @sec-problem-set-9-2.
 
 ### EXAMPLE 2 Work Done by a Force Expressed as an Inner Product
-This is a major application. It concerns a body on which a constant force $\mathbf{p}$ acts. (For a variable force, see Sec. 10.1.) Let the body be given a displacement $\mathbf{d}$. Then the work done by $\mathbf{p}$ in the displacement is defined as
+This is a major application. It concerns a body on which a constant force $\mathbf{p}$ acts. (For a variable force, see @sec-10-1.) Let the body be given a displacement $\mathbf{d}$. Then the work done by $\mathbf{p}$ in the displacement is defined as
 
 $$
 W = |\mathbf{p}||\mathbf{d}| \cos \alpha = \mathbf{p} \cdot \mathbf{d},
@@ -387,8 +394,9 @@ $$ {#eq-9-2-9}
 
 that is, magnitude $|\mathbf{p}|$ of the force times length $|\mathbf{d}|$ of the displacement times the cosine of the angle $\alpha$ between $\mathbf{p}$ and $\mathbf{d}$ (@fig-9-179). If $\alpha < 90^\circ$, then $W > 0$. If $\mathbf{p}$ and $\mathbf{d}$ are orthogonal, then the work is zero. If $\alpha > 90^\circ$, then $W < 0$, which means that in the displacement one has to do work against the force. For example, think of swimming across a river at some angle $\alpha$ against the current.
 
-![Fig. 179. Work done by a force](/images/cover.png){#fig-9-179 width=35%}
-![Fig. 180. Force vector component](/images/cover.png){#fig-9-180 width=35%}
+![Fig. 179. Work done by a force](../images/chapter9/fig-9-179.png){#fig-9-179 width=35%}
+
+![Fig. 180. Force vector component](../images/chapter9/fig-9-180.png){#fig-9-180 width=35%}
 
 ### EXAMPLE 3 Component of a Force in a Given Direction
 What force in the rope in @fig-9-180 will hold a car of 5000 lb in equilibrium if the ramp makes an angle of $25^\circ$ with the horizontal?
@@ -428,7 +436,7 @@ $$ {#eq-9-2-10}
 
 Here $p$ is taken with the plus sign if $p\mathbf{b}$ has the direction of $\mathbf{b}$ and with the minus sign if $p\mathbf{b}$ has the direction opposite to $\mathbf{b}$.
 
-![Fig. 181. Component of a vector a in the direction of a vector b](/images/cover.png){#fig-9-181 width=60%}
+![Fig. 181. Component of a vector a in the direction of a vector b](../images/chapter9/fig-9-181.png){#fig-9-181 width=60%}
 
 Multiplying (@eq-9-2-10) by $|\mathbf{b}|/|\mathbf{b}| = 1$, we have $\mathbf{a} \cdot \mathbf{b}$ in the numerator and thus
 
@@ -444,12 +452,12 @@ $$ {#eq-9-2-12}
 
 @fig-9-182 shows the projection $p$ of $\mathbf{a}$ in the direction of $\mathbf{b}$ (as in @fig-9-181) and the projection $q = |\mathbf{b}| \cos \gamma$ of $\mathbf{b}$ in the direction of $\mathbf{a}$.
 
-![Fig. 182. Projections p of a on b and q of b on a](/images/cover.png){#fig-9-182 width=30%}
+![Fig. 182. Projections p of a on b and q of b on a](../images/chapter9/fig-9-182.png){#fig-9-182 width=30%}
 
 ### EXAMPLE 4 Orthonormal Basis
 By definition, an **orthonormal basis** for 3-space is a basis $\{\mathbf{a}, \mathbf{b}, \mathbf{c}\}$ consisting of orthogonal unit vectors. It has the great advantage that the determination of the coefficients in representations $\mathbf{v} = l_1\mathbf{a} + l_2\mathbf{b} + l_3\mathbf{c}$ of a given vector $\mathbf{v}$ is very simple. We claim that $l_1 = \mathbf{a} \cdot \mathbf{v}$, $l_2 = \mathbf{b} \cdot \mathbf{v}$, $l_3 = \mathbf{c} \cdot \mathbf{v}$. Indeed, this follows simply by taking the inner products of the representation with $\mathbf{a}, \mathbf{b}, \mathbf{c}$, respectively, and using the orthonormality of the basis, $\mathbf{a} \cdot \mathbf{v} = l_1 \mathbf{a} \cdot \mathbf{a} + l_2 \mathbf{a} \cdot \mathbf{b} + l_3 \mathbf{a} \cdot \mathbf{c} = l_1$, etc.
 
-For example, the unit vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ in (@eq-9-1-8), Sec. 9.1, associated with a Cartesian coordinate system form an orthonormal basis, called the **standard basis** with respect to the given coordinate system. $\square$
+For example, the unit vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ in (@eq-9-1-8), @sec-vectors-2-space-3-space, associated with a Cartesian coordinate system form an orthonormal basis, called the **standard basis** with respect to the given coordinate system. $\square$
 
 ### EXAMPLE 5 Orthogonal Straight Lines in the Plane
 Find the straight line $L_1$ through the point $P: (1, 3)$ in the $xy$-plane and perpendicular to the straight line $L_2: x - 2y + 2 = 0$; see @fig-9-183.
@@ -486,12 +494,13 @@ From (@eq-9-2-12) we see that $p$ is the projection of $\mathbf{r}$ in the direc
 
 Furthermore, from this and the definition of projection, it follows that $|p|$ is the distance of the plane from the origin. Representation (@eq-9-2-14) is called **Hesse's normal form** of a plane. In our case, $\mathbf{a} = [4, 2, 4]$, $c = -7$, $|\mathbf{a}| = 6$, $\mathbf{n} = \frac{1}{6}\mathbf{a} = \left[\frac{2}{3}, \frac{1}{3}, \frac{2}{3}\right]$, and the plane has the distance $7/6$ from the origin. $\square$
 
-![Fig. 183. Orthogonal lines in Example 5](/images/cover.png){#fig-9-183 width=35%}
-![Fig. 184. Normal vector to a plane](/images/cover.png){#fig-9-184 width=35%}
+![Fig. 183. Orthogonal lines in Example 5](../images/chapter9/fig-9-183.png){#fig-9-183 width=35%}
+
+![Fig. 184. Normal vector to a plane](../images/chapter9/fig-9-184.png){#fig-9-184 width=35%}
 
 ***
 
-### Problem Set 9.2 {#sec-problem-set-9-2}
+### @sec-problem-set-9-2 {#sec-problem-set-9-2}
 
 #### 1–10: INNER PRODUCT
 Let $\mathbf{a} = [1, -3, 5]$, $\mathbf{b} = [4, 0, 8]$, $\mathbf{c} = [-2, 9, 1]$. Find:
@@ -558,9 +567,9 @@ Find the component of $\mathbf{a}$ in the direction of $\mathbf{b}$. Make a sket
 
 ***
 
-## 9.3 Vector Product (Cross Product) {#sec-9-3}
+## Vector Product (Cross Product) {#sec-vector-product-cross-product}
 
-We shall define another form of multiplication of vectors, inspired by applications, whose result will be a vector. This is in contrast to the dot product of Sec. 9.2 where multiplication resulted in a scalar. We can construct a vector $\mathbf{v}$ that is perpendicular to two vectors $\mathbf{a}$ and $\mathbf{b}$, which are two sides of a parallelogram on a plane in space as indicated in @fig-9-185, such that the length $|\mathbf{v}|$ is numerically equal to the area of that parallelogram. Here then is the new concept.
+We shall define another form of multiplication of vectors, inspired by applications, whose result will be a vector. This is in contrast to the dot product of @sec-inner-product-dot-product-orthogonality where multiplication resulted in a scalar. We can construct a vector $\mathbf{v}$ that is perpendicular to two vectors $\mathbf{a}$ and $\mathbf{b}$, which are two sides of a parallelogram on a plane in space as indicated in @fig-9-185, such that the length $|\mathbf{v}|$ is numerically equal to the area of that parallelogram. Here then is the new concept.
 
 ### DEFINITION: Vector Product (Cross Product, Outer Product) of Vectors
 The **vector product** or **cross product** $\mathbf{a} \times \mathbf{b}$ (read "$\mathbf{a}$ cross $\mathbf{b}$") of two vectors $\mathbf{a}$ and $\mathbf{b}$ is the vector $\mathbf{v}$ denoted by
@@ -574,7 +583,7 @@ II. If both vectors are nonzero vectors, then vector $\mathbf{v}$ has the length
 $$
 |\mathbf{v}| = |\mathbf{a} \times \mathbf{b}| = |\mathbf{a}||\mathbf{b}| \sin \gamma,
 $$ {#eq-9-3-1}
-where $\gamma$ is the angle between $\mathbf{a}$ and $\mathbf{b}$ as in Sec. 9.2.
+where $\gamma$ is the angle between $\mathbf{a}$ and $\mathbf{b}$ as in @sec-inner-product-dot-product-orthogonality.
 
 Furthermore, by design, $\mathbf{a}$ and $\mathbf{b}$ form the sides of a parallelogram on a plane in space. The parallelogram is shaded in blue in @fig-9-185. The area of this blue parallelogram is precisely given by @eq-9-3-1, so that the length $|\mathbf{v}|$ of the vector $\mathbf{v}$ is equal to the area of that parallelogram.
 
@@ -591,17 +600,19 @@ $$
 v_1 = a_2 b_3 - a_3 b_2, \quad v_2 = a_3 b_1 - a_1 b_3, \quad v_3 = a_1 b_2 - a_2 b_1.
 $$ {#eq-9-3-2}
 
-Here the Cartesian coordinate system is right-handed, as explained below (see also @fig-9-188). (For a left-handed system, each component of $\mathbf{v}$ must be multiplied by $-1$. Derivation of (@eq-9-3-2) in App. 4.)
+Here the Cartesian coordinate system is right-handed, as explained below (see also @fig-9-188). (For a left-handed system, each component of $\mathbf{v}$ must be multiplied by $-1$. Derivation of (@eq-9-3-2) in <!-- TODO: replace App. 4 with actual link -->App. 4.)
 
-![Fig. 185. Vector product](/images/cover.png){#fig-9-185 width=30%}
-![Fig. 186. Right-handed triple of vectors a, b, v](/images/cover.png){#fig-9-186 width=30%}
-![Fig. 187. Right-handed screw](/images/cover.png){#fig-9-187 width=30%}
+![Fig. 185. Vector product](../images/chapter9/fig-9-185.png){#fig-9-185 width=30%}
+
+![Fig. 186. Right-handed triple of vectors a, b, v](../images/chapter9/fig-9-186.png){#fig-9-186 width=30%}
+
+![Fig. 187. Right-handed screw](../images/chapter9/fig-9-187.png){#fig-9-187 width=30%}
 
 **Right-Handed Triple.** A triple of vectors $\mathbf{a}, \mathbf{b}, \mathbf{v}$ is right-handed if the vectors in the given order assume the same sort of orientation as the thumb, index finger, and middle finger of the right hand when these are held as in @fig-9-186. We may also say that if $\mathbf{a}$ is rotated into the direction of $\mathbf{b}$ through the angle $\gamma$ ($\le \pi$), then $\mathbf{v}$ advances in the same direction as a right-handed screw would if turned in the same way (@fig-9-187).
 
-**Right-Handed Cartesian Coordinate System.** The system is called right-handed if the corresponding unit vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ in the positive directions of the axes (see Sec. 9.1) form a right-handed triple as in @fig-9-188a. The system is called left-handed if the sense of $\mathbf{k}$ is reversed, as in @fig-9-188b. In applications, we prefer right-handed systems.
+**Right-Handed Cartesian Coordinate System.** The system is called right-handed if the corresponding unit vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ in the positive directions of the axes (see @sec-vectors-2-space-3-space) form a right-handed triple as in @fig-9-188(a). The system is called left-handed if the sense of $\mathbf{k}$ is reversed, as in @fig-9-188(b). In applications, we prefer right-handed systems.
 
-![Fig. 188. The two types of Cartesian coordinate systems: (a) Right-handed, (b) Left-handed](/images/cover.png){#fig-9-188 width=60%}
+![Fig. 188. The two types of Cartesian coordinate systems: (a) Right-handed, (b) Left-handed](../images/chapter9/fig-9-188.png){#fig-9-188 width=60%}
 
 ### How to Memorize (@eq-9-3-2)
 If you know second- and third-order determinants, you see that (@eq-9-3-2) can be written
@@ -655,7 +666,7 @@ $$
 \mathbf{b} \times \mathbf{a} = -(\mathbf{a} \times \mathbf{b}) \quad (\text{see } @fig-9-189).
 $$ {#eq-9-3-6}
 
-![Fig. 189. Anticommutativity of cross multiplication](/images/cover.png){#fig-9-189 width=35%}
+![Fig. 189. Anticommutativity of cross multiplication](../images/chapter9/fig-9-189.png){#fig-9-189 width=35%}
 
 (d) Cross multiplication is not associative; that is, in general,
 $$
@@ -691,7 +702,7 @@ $$
 $$ {#eq-9-3-8}
 is called the **moment vector** or **vector moment** of $\mathbf{p}$ about $Q$. Its magnitude is $m$. If $\mathbf{m} \neq \mathbf{0}$, its direction is that of the axis of the rotation about $Q$ that $\mathbf{p}$ has the tendency to produce. This axis is perpendicular to both $\mathbf{r}$ and $\mathbf{p}$. $\square$
 
-![Fig. 190. Moment of a force p](/images/cover.png){#fig-9-190 width=35%}
+![Fig. 190. Moment of a force p](../images/chapter9/fig-9-190.png){#fig-9-190 width=35%}
 
 ### EXAMPLE 4 Moment of a Force
 Find the moment of the force $\mathbf{p}$ about the center $Q$ of a wheel, as given in @fig-9-191.
@@ -706,7 +717,7 @@ $$
 $$
 This moment vector $\mathbf{m}$ is normal, i.e., perpendicular to the plane of the wheel. Hence it has the direction of the axis of rotation about the center $Q$ of the wheel that the force $\mathbf{p}$ has the tendency to produce. The moment points in the negative $z$-direction. This is the direction in which a right-handed screw would advance if turned in that way. $\square$
 
-![Fig. 191. Moment of a force p](/images/cover.png){#fig-9-191 width=35%}
+![Fig. 191. Moment of a force p](../images/chapter9/fig-9-191.png){#fig-9-191 width=35%}
 
 ### EXAMPLE 5 Velocity of a Rotating Body
 A rotation of a rigid body $B$ in space can be simply and uniquely described by a vector $\mathbf{w}$ as follows. The direction of $\mathbf{w}$ is that of the axis of rotation and such that the rotation appears clockwise if one looks from the initial point of $\mathbf{w}$ to its terminal point. The length of $\mathbf{w}$ is equal to the angular speed $\omega$ ($\omega \ge 0$) of the rotation, that is, the linear (or tangential) speed of a point of $B$ divided by its distance from the axis of rotation.
@@ -721,7 +732,7 @@ $$
 $$ {#eq-9-3-9}
 This simple formula is useful for determining $\mathbf{v}$ at any point of $B$. $\square$
 
-![Fig. 192. Rotation of a rigid body](/images/cover.png){#fig-9-192 width=35%}
+![Fig. 192. Rotation of a rigid body](../images/chapter9/fig-9-192.png){#fig-9-192 width=35%}
 
 ### Scalar Triple Product
 
@@ -730,7 +741,7 @@ $$
 (\mathbf{a} \ \mathbf{b} \ \mathbf{c}) = \mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}).
 $$ {#eq-9-3-10-star}
 
-The scalar triple product is indeed a scalar since (@eq-9-3-10-star) involves a dot product, which in turn is a scalar. We want to express the scalar triple product in components and as a third-order determinant. To this end, let $\mathbf{a} = [a_1, a_2, a_3]$, $\mathbf{b} = [b_1, b_2, b_3]$, and $\mathbf{c} = [c_1, c_2, c_3]$. Also set $\mathbf{b} \times \mathbf{c} = \mathbf{v} = [v_1, v_2, v_3]$. Then from the dot product in components [formula (@eq-9-2-2) in Sec. 9.2] and from (@eq-9-3-2-star) with $\mathbf{b}$ and $\mathbf{c}$ instead of $\mathbf{a}$ and $\mathbf{b}$ we first obtain
+The scalar triple product is indeed a scalar since (@eq-9-3-10-star) involves a dot product, which in turn is a scalar. We want to express the scalar triple product in components and as a third-order determinant. To this end, let $\mathbf{a} = [a_1, a_2, a_3]$, $\mathbf{b} = [b_1, b_2, b_3]$, and $\mathbf{c} = [c_1, c_2, c_3]$. Also set $\mathbf{b} \times \mathbf{c} = \mathbf{v} = [v_1, v_2, v_3]$. Then from the dot product in components [formula (@eq-9-2-2) in @sec-inner-product-dot-product-orthogonality] and from (@eq-9-3-2-star) with $\mathbf{b}$ and $\mathbf{c}$ instead of $\mathbf{a}$ and $\mathbf{b}$ we first obtain
 $$
 \mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) = \mathbf{a} \cdot \mathbf{v} = a_1 v_1 + a_2 v_2 + a_3 v_3 = a_1 \begin{vmatrix} b_2 & b_3 \\ c_2 & c_3 \end{vmatrix} - a_2 \begin{vmatrix} b_1 & b_3 \\ c_1 & c_3 \end{vmatrix} + a_3 \begin{vmatrix} b_1 & b_2 \\ c_1 & c_2 \end{vmatrix}.
 $$
@@ -766,7 +777,7 @@ as given by the absolute value of (@eq-9-3-11). (Note that $\beta$ is the angle 
 
 (c) Three nonzero vectors, whose initial points coincide, are linearly independent if and only if the vectors do not lie in the same plane nor lie on the same straight line. This happens if and only if the triple product in (b) is not zero, so that the independence criterion follows. (The case of one of the vectors being the zero vector is trivial.) $\square$
 
-![Fig. 193. Geometric interpretation of a scalar triple product](/images/cover.png){#fig-9-193 width=35%}
+![Fig. 193. Geometric interpretation of a scalar triple product](../images/chapter9/fig-9-193.png){#fig-9-193 width=35%}
 
 ### EXAMPLE 6 Tetrahedron
 A tetrahedron is determined by three edge vectors $\mathbf{a}, \mathbf{b}, \mathbf{c}$, as indicated in @fig-9-194. Find the volume of the tetrahedron in @fig-9-194, when $\mathbf{a} = [2, 0, 3], \mathbf{b} = [0, 4, 1], \mathbf{c} = [5, 6, 0]$.
@@ -779,7 +790,7 @@ Hence $V = 72$. The minus sign indicates that if the coordinates are right-hande
 
 The volume of a tetrahedron is $\frac{1}{6}$ of that of the parallelepiped (can you prove it?), hence $12$. $\square$
 
-![Fig. 194. Tetrahedron](/images/cover.png){#fig-9-194 width=30%}
+![Fig. 194. Tetrahedron](../images/chapter9/fig-9-194.png){#fig-9-194 width=30%}
 
 This is the end of vector algebra (in space $\mathbb{R}^3$ and in the plane). Vector calculus (differentiation) begins in the next section.
 
@@ -847,7 +858,7 @@ $$ {#eq-9-3-16}
 
 ***
 
-## 9.4 Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives {#sec-9-4}
+## Vector and Scalar Functions and Their Fields. Vector Calculus: Derivatives {#sec-vector-scalar-functions-fields-derivatives}
 
 Our discussion of vector calculus begins with identifying the two types of functions on which it operates. Let $P$ be any point in a domain of definition. Typical domains in applications are three-dimensional, or a surface or a curve in space. Then we define a vector function $\mathbf{v}$, whose values are vectors, that is,
 $$
@@ -873,8 +884,9 @@ f(P) = f(x, y, z).
 $$
 We illustrate our discussion of vector functions, scalar functions, vector fields, and scalar fields by the following three examples.
 
-![Fig. 195. Field of tangent vectors of a curve](/images/cover.png){#fig-9-195 width=30%}
-![Fig. 196. Field of normal vectors of a surface](/images/cover.png){#fig-9-196 width=30%}
+![Fig. 195. Field of tangent vectors of a curve](../images/chapter9/fig-9-195.png){#fig-9-195 width=30%}
+
+![Fig. 196. Field of normal vectors of a surface](../images/chapter9/fig-9-196.png){#fig-9-196 width=30%}
 
 ### EXAMPLE 1 Scalar Function (Euclidean Distance in Space)
 The distance $f(P)$ of any point $P$ from a fixed point $P_0$ in space is a scalar function whose domain of definition is the whole space. $f(P)$ defines a scalar field in space. If we introduce a Cartesian coordinate system and $P_0$ has the coordinates $x_0, y_0, z_0$, then $f$ is given by the well-known formula
@@ -884,7 +896,7 @@ $$
 where $x, y, z$ are the coordinates of $P$. If we replace the given Cartesian coordinate system with another such system by translating and rotating the given system, then the values of the coordinates of $P$ and $P_0$ will in general change, but $f(P)$ will have the same value as before. Hence $f(P)$ is a scalar function. The direction cosines of the straight line through $P$ and $P_0$ are not scalars because their values depend on the choice of the coordinate system. $\square$
 
 ### EXAMPLE 2 Vector Field (Velocity Field)
-At any instant the velocity vectors $\mathbf{v}(P)$ of a rotating body $B$ constitute a vector field, called the velocity field of the rotation. If we introduce a Cartesian coordinate system having the origin on the axis of rotation, then (see Example 5 in Sec. 9.3)
+At any instant the velocity vectors $\mathbf{v}(P)$ of a rotating body $B$ constitute a vector field, called the velocity field of the rotation. If we introduce a Cartesian coordinate system having the origin on the axis of rotation, then (see Example 5 in @sec-vector-product-cross-product)
 $$
 \mathbf{v}(x, y, z) = \mathbf{w} \times \mathbf{r} = \mathbf{w} \times [x, y, z] = \mathbf{w} \times (x\mathbf{i} + y\mathbf{j} + z\mathbf{k})
 $$ {#eq-9-4-1}
@@ -894,7 +906,7 @@ $$
 $$
 An example of a rotating body and the corresponding velocity field are shown in @fig-9-197. $\square$
 
-![Fig. 197. Velocity field of a rotating body](/images/cover.png){#fig-9-197 width=30%}
+![Fig. 197. Velocity field of a rotating body](../images/chapter9/fig-9-197.png){#fig-9-197 width=30%}
 
 ### EXAMPLE 3 Vector Field (Field of Force, Gravitational Field)
 Let a particle $A$ of mass $M$ be fixed at a point $P_0$ and let a particle $B$ of mass $m$ be free to take up various positions $P$ in space. Then $A$ attracts $B$. According to Newton’s law of gravitation the corresponding gravitational force $\mathbf{p}$ is directed from $P$ to $P_0$, and its magnitude is proportional to $1/r^2$, where $r$ is the distance between $P$ and $P_0$, say,
@@ -918,7 +930,7 @@ $$
 $$ {#eq-9-4-3}
 This vector function describes the gravitational force acting on $B$. $\square$
 
-![Fig. 198. Gravitational field in Example 3](/images/cover.png){#fig-9-198 width=35%}
+![Fig. 198. Gravitational field in Example 3](../images/chapter9/fig-9-198.png){#fig-9-198 width=35%}
 
 ### Vector Calculus
 
@@ -963,7 +975,7 @@ $$
 $$ {#eq-9-4-9}
 This vector $\mathbf{v}'(t)$ is called the **derivative** of $\mathbf{v}(t)$. See @fig-9-199.
 
-![Fig. 199. Derivative of a vector function](/images/cover.png){#fig-9-199 width=35%}
+![Fig. 199. Derivative of a vector function](../images/chapter9/fig-9-199.png){#fig-9-199 width=35%}
 
 In components with respect to a given Cartesian coordinate system,
 $$
@@ -1018,7 +1030,7 @@ Let $\mathbf{r}(t_1, t_2) = a \cos t_1 \mathbf{i} + a \sin t_1 \mathbf{j} + t_2 
 $$
 \frac{\partial \mathbf{r}}{\partial t_1} = -a \sin t_1 \mathbf{i} + a \cos t_1 \mathbf{j} \quad \text{and} \quad \frac{\partial \mathbf{r}}{\partial t_2} = \mathbf{k}.
 $$
-Various physical and geometric applications of derivatives of vector functions will be discussed in the next sections as well as in Chap. 10. $\square$
+Various physical and geometric applications of derivatives of vector functions will be discussed in the next sections as well as in <!-- TODO: replace Chap. 10 with actual chapter label -->Chap. 10. $\square$
 
 ***
 
@@ -1075,18 +1087,18 @@ Sketch figures similar to @fig-9-198. Try to interpret the field of $\mathbf{v}$
 
 ***
 
-## 9.5 Curves. Arc Length. Curvature. Torsion {#sec-9-5}
+## Curves. Arc Length. Curvature. Torsion {#sec-curves-arc-length-curvature-torsion}
 
-Vector calculus has important applications to curves (Sec. 9.5) and surfaces (to be covered in Sec. 10.5) in physics and geometry. The application of vector calculus to geometry is a field known as **differential geometry**. Differential geometric methods are applied to problems in mechanics, computer-aided as well as traditional engineering design, geodesy, geography, space travel, and relativity theory. For details, see [GenRef8] and [GenRef9] in App. 1.
+Vector calculus has important applications to curves (@sec-curves-arc-length-curvature-torsion) and surfaces (to be covered in @sec-10-5) in physics and geometry. The application of vector calculus to geometry is a field known as **differential geometry**. Differential geometric methods are applied to problems in mechanics, computer-aided as well as traditional engineering design, geodesy, geography, space travel, and relativity theory. For details, see [GenRef8] and [GenRef9] in <!-- TODO: replace App. 1 with actual link -->App. 1.
 
 Bodies that move in space form paths that may be represented by curves $C$. This and other applications show the need for **parametric representations** of $C$ with parameter $t$, which may denote time or something else (see @fig-9-200). A typical parametric representation is given by
 $$
 \mathbf{r}(t) = [x(t), y(t), z(t)] = x(t)\mathbf{i} + y(t)\mathbf{j} + z(t)\mathbf{k}.
 $$ {#eq-9-5-1}
 
-![Fig. 200. Parametric representation of a curve](/images/cover.png){#fig-9-200 width=35%}
+![Fig. 200. Parametric representation of a curve](../images/chapter9/fig-9-200.png){#fig-9-200 width=35%}
 
-Here $t$ is the parameter and $x, y, z$ are Cartesian coordinates, that is, the usual rectangular coordinates as shown in Sec. 9.1. To each value $t = t_0$, there corresponds a point of $C$ with position vector $\mathbf{r}(t_0)$ whose coordinates are $x(t_0), y(t_0), z(t_0)$. This is illustrated in @fig-9-201 and @fig-9-202.
+Here $t$ is the parameter and $x, y, z$ are Cartesian coordinates, that is, the usual rectangular coordinates as shown in @sec-vectors-2-space-3-space. To each value $t = t_0$, there corresponds a point of $C$ with position vector $\mathbf{r}(t_0)$ whose coordinates are $x(t_0), y(t_0), z(t_0)$. This is illustrated in @fig-9-201 and @fig-9-202.
 
 The use of parametric representations has key advantages over other representations that involve projections into the $xy$-plane and $xz$-plane or involve a pair of equations with $y$ or with $z$ as independent variable. The projections look like this:
 $$
@@ -1121,8 +1133,9 @@ $$
 $$
 If $b = a$, then (@eq-9-5-3) represents a circle of radius $a$. $\square$
 
-![Fig. 201. Circle in Example 1](/images/cover.png){#fig-9-201 width=35%}
-![Fig. 202. Ellipse in Example 2](/images/cover.png){#fig-9-202 width=35%}
+![Fig. 201. Circle in Example 1](../images/chapter9/fig-9-201.png){#fig-9-201 width=35%}
+
+![Fig. 202. Ellipse in Example 2](../images/chapter9/fig-9-202.png){#fig-9-202 width=35%}
 
 ### EXAMPLE 3 Straight Line
 A straight line $L$ through a point $A$ with position vector $\mathbf{a}$ in the direction of a constant vector $\mathbf{b}$ (see @fig-9-203) can be represented parametrically in the form
@@ -1134,7 +1147,7 @@ $$
 \mathbf{r}(t) = [3, 2, 0] + t[1, 1, 0] = [3 + t, 2 + t, 0].
 $$ $\square$
 
-![Fig. 203. Parametric representation of a straight line](/images/cover.png){#fig-9-203 width=35%}
+![Fig. 203. Parametric representation of a straight line](../images/chapter9/fig-9-203.png){#fig-9-203 width=35%}
 
 A plane curve is a curve that lies in a plane in space. A curve that is not plane is called a **twisted curve**. A standard example of a twisted curve is the following.
 
@@ -1145,14 +1158,15 @@ $$
 $$ {#eq-9-5-5}
 is called a **circular helix**. It lies on the cylinder $x^2 + y^2 = a^2$. If $c > 0$, the helix is shaped like a right-handed screw (@fig-9-204). If $c < 0$, it looks like a left-handed screw (@fig-9-205). If $c = 0$, then (@eq-9-5-5) is a circle. $\square$
 
-![Fig. 204. Right-handed circular helix](/images/cover.png){#fig-9-204 width=30%}
-![Fig. 205. Left-handed circular helix](/images/cover.png){#fig-9-205 width=30%}
+![Fig. 204. Right-handed circular helix](../images/chapter9/fig-9-204.png){#fig-9-204 width=30%}
+
+![Fig. 205. Left-handed circular helix](../images/chapter9/fig-9-205.png){#fig-9-205 width=30%}
 
 A **simple curve** is a curve without multiple points, that is, without points at which the curve intersects or touches itself. Circle and helix are simple curves. @fig-9-206 shows curves that are not simple. An example is $[\sin 2t, \cos t, 0]$. Can you sketch it?
 
 An **arc** of a curve is the portion between any two points of the curve. For simplicity, we say "curve" for curves as well as for arcs.
 
-![Fig. 206. Curves with multiple points](/images/cover.png){#fig-9-206 width=40%}
+![Fig. 206. Curves with multiple points](../images/chapter9/fig-9-206.png){#fig-9-206 width=40%}
 
 ### Tangent to a Curve
 The next idea is the approximation of a curve by straight lines, leading to tangents and to a definition of length. Tangents are straight lines touching a curve. The tangent to a simple curve $C$ at a point $P$ of $C$ is the limiting position of a straight line $L$ through $P$ and a point $Q$ of $C$ as $Q$ approaches $P$ along $C$. See @fig-9-207.
@@ -1177,8 +1191,9 @@ $$
 $$ {#eq-9-5-9}
 (see @fig-9-208). This is the sum of the position vector $\mathbf{r}$ of $P$ and a multiple of the tangent vector $\mathbf{r}'$ of $C$ at $P$. Both vectors depend on $P$. The variable $w$ is the parameter in (@eq-9-5-9).
 
-![Fig. 207. Tangent to a curve](/images/cover.png){#fig-9-207 width=35%}
-![Fig. 208. Tangent vector representation](/images/cover.png){#fig-9-208 width=35%}
+![Fig. 207. Tangent to a curve](../images/chapter9/fig-9-207.png){#fig-9-207 width=35%}
+
+![Fig. 208. Tangent vector representation](../images/chapter9/fig-9-208.png){#fig-9-208 width=35%}
 
 ### EXAMPLE 5 Tangent to an Ellipse
 Find the tangent to the ellipse $\frac{1}{4}x^2 + y^2 = 1$ at $P: (\sqrt{2}, 1/\sqrt{2})$.
@@ -1202,7 +1217,7 @@ This gives a broken line of chords with endpoints $\mathbf{r}(t_0), \dots, \math
 $$
 l = \int_a^b \sqrt{\mathbf{r}' \cdot \mathbf{r}'} \, dt = \int_a^b |\mathbf{r}'| \, dt.
 $$ {#eq-9-5-10}
-$l$ is called the **length** of $C$, and $C$ is called **rectifiable**. Formula (@eq-9-5-10) is made plausible in calculus for plane curves and is proved for curves in space in [GenRef8] listed in App. 1.
+$l$ is called the **length** of $C$, and $C$ is called **rectifiable**. Formula (@eq-9-5-10) is made plausible in calculus for plane curves and is proved for curves in space in [GenRef8] listed in <!-- TODO: replace App. 1 with actual link -->App. 1.
 
 The actual evaluation of the integral (@eq-9-5-10) will, in general, be difficult. However, some simple cases are given in the problem set.
 
@@ -1213,7 +1228,7 @@ s(t) = \int_a^t \sqrt{\mathbf{r}' \cdot \mathbf{r}'} \, d\tilde{t} = \int_a^t |\
 $$ {#eq-9-5-11}
 Here the variable of integration is denoted by $\tilde{t}$ because $t$ is now used in the upper limit. Geometrically, $s(t_0)$ with some $t_0 > a$ is the length of the arc of $C$ between the points with parametric values $a$ and $t_0$. The choice of $a$ (the point $s = 0$) is arbitrary; changing $a$ means changing $s$ by a constant.
 
-![Fig. 209. Length of a curve](/images/cover.png){#fig-9-209 width=35%}
+![Fig. 209. Length of a curve](../images/chapter9/fig-9-209.png){#fig-9-209 width=35%}
 
 **Linear Element $ds$.** If we differentiate (@eq-9-5-11) and square, we have
 $$
@@ -1265,9 +1280,9 @@ where $\mathbf{u}(s)$ is the unit tangent vector (@eq-9-5-14). Another different
 $$
 \mathbf{a}(t) = \frac{d\mathbf{v}}{dt} = \frac{d}{dt}\left(\mathbf{u}(s)\frac{ds}{dt}\right) = \frac{d\mathbf{u}}{ds}\left(\frac{ds}{dt}\right)^2 + \mathbf{u}(s)\frac{d^2s}{dt^2}.
 $$ {#eq-9-5-18}
-Since the tangent vector $\mathbf{u}(s)$ has constant length (length one), its derivative $d\mathbf{u}/ds$ is perpendicular to $\mathbf{u}(s)$, from the result in Example 4 in Sec. 9.4. Hence the first term on the right of (@eq-9-5-18) is the normal acceleration vector, and the second term on the right is the tangential acceleration vector, so that (@eq-9-5-18) is of the form (@eq-9-5-17).
+Since the tangent vector $\mathbf{u}(s)$ has constant length (length one), its derivative $d\mathbf{u}/ds$ is perpendicular to $\mathbf{u}(s)$, from the result in Example 4 in @sec-vector-scalar-functions-fields-derivatives. Hence the first term on the right of (@eq-9-5-18) is the normal acceleration vector, and the second term on the right is the tangential acceleration vector, so that (@eq-9-5-18) is of the form (@eq-9-5-17).
 
-Now the length $|\mathbf{a}_{\text{tan}}|$ is the absolute value of the projection of $\mathbf{a}$ in the direction of $\mathbf{v}$, given by (@eq-9-2-11) in Sec. 9.2 with $\mathbf{b} = \mathbf{v}$; that is, $|\mathbf{a}_{\text{tan}}| = |\mathbf{a} \cdot \mathbf{v}|/|\mathbf{v}|$. Hence $\mathbf{a}_{\text{tan}}$ is this expression times the unit vector $(1/|\mathbf{v}|)\mathbf{v}$ in the direction of $\mathbf{v}$, that is,
+Now the length $|\mathbf{a}_{\text{tan}}|$ is the absolute value of the projection of $\mathbf{a}$ in the direction of $\mathbf{v}$, given by (@eq-9-2-11) in @sec-inner-product-dot-product-orthogonality with $\mathbf{b} = \mathbf{v}$; that is, $|\mathbf{a}_{\text{tan}}| = |\mathbf{a} \cdot \mathbf{v}|/|\mathbf{v}|$. Hence $\mathbf{a}_{\text{tan}}$ is this expression times the unit vector $(1/|\mathbf{v}|)\mathbf{v}$ in the direction of $\mathbf{v}$, that is,
 $$
 \mathbf{a}_{\text{tan}} = \frac{\mathbf{a} \cdot \mathbf{v}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}. \quad \text{Also,} \quad \mathbf{a}_{\text{norm}} = \mathbf{a} - \mathbf{a}_{\text{tan}}.
 $$ {#eq-9-5-18-star}
@@ -1292,12 +1307,12 @@ $$
 $$ {#eq-9-5-19}
 This shows that $\mathbf{a} = -\omega^2\mathbf{r}$ (@fig-9-210), so that there is an acceleration toward the center, called the **centripetal acceleration** of the motion. It occurs because the velocity vector is changing direction at a constant rate. Its magnitude is constant, $|\mathbf{a}| = \omega^2|\mathbf{r}| = \omega^2 R$. Multiplying $\mathbf{a}$ by the mass $m$ of $B$, we get the centripetal force $m\mathbf{a}$. The opposite vector $-m\mathbf{a}$ is called the centrifugal force. At each instant these two forces are in equilibrium. We see that in this motion the acceleration vector is normal (perpendicular) to $C$; hence there is no tangential acceleration. $\square$
 
-![Fig. 210. Centripetal acceleration a](/images/cover.png){#fig-9-210 width=35%}
+![Fig. 210. Centripetal acceleration a](../images/chapter9/fig-9-210.png){#fig-9-210 width=35%}
 
 ### EXAMPLE 8 Superposition of Rotations. Coriolis Acceleration
 A projectile is moving with constant speed along a meridian of the rotating Earth in @fig-9-211. Find its acceleration.
 
-![Fig. 211. Superposition of two rotations](/images/cover.png){#fig-9-211 width=35%}
+![Fig. 211. Superposition of two rotations](../images/chapter9/fig-9-211.png){#fig-9-211 width=35%}
 
 **Solution.** Let $x, y, z$ be a fixed Cartesian coordinate system in space, with unit vectors $\mathbf{i}, \mathbf{j}, \mathbf{k}$ in the directions of the axes. Let the Earth, together with a unit vector $\mathbf{b}$, be rotating about the $z$-axis with angular speed $\omega > 0$ (see Example 7). Since $\mathbf{b}$ is rotating together with the Earth, it is of the form
 $$
@@ -1327,7 +1342,7 @@ By analogy with Example 7 and because of $\mathbf{b}'' = -\omega^2\mathbf{b}$ in
 The second, unexpected term $-2\gamma R\sin\gamma t \mathbf{b}'$ in $\mathbf{a}$ is called the **Coriolis acceleration** (see @fig-9-211) and is due to the interaction of the two rotations. On the Northern Hemisphere, $\sin\gamma t > 0$ (for $t > 0$; also $\gamma > 0$ by assumption), so that $\mathbf{a}_{\text{cor}}$ has the direction of $-\mathbf{b}'$, that is, opposite to the rotation of the Earth. $|\mathbf{a}_{\text{cor}}|$ is maximum at the North Pole and zero at the equator. The projectile $B$ of mass $m$ experiences a force $-m\mathbf{a}_{\text{cor}}$ opposite to $m\mathbf{a}_{\text{cor}}$, which tends to let $B$ deviate from $M$ to the right (and in the Southern Hemisphere, where $\sin\gamma t < 0$, to the left). This deviation has been observed for missiles, rockets, shells, and atmospheric airflow. $\square$
 
 ### Curvature and Torsion. Optional
-This last topic of Sec. 9.5 is optional but completes our discussion of curves relevant to vector calculus.
+This last topic of @sec-curves-arc-length-curvature-torsion is optional but completes our discussion of curves relevant to vector calculus.
 
 The **curvature** $\kappa(s)$ of a curve $C: \mathbf{r}(s)$ ($s$ the arc length) at a point $P$ of $C$ measures the rate of change $|\mathbf{u}'(s)|$ of the unit tangent vector $\mathbf{u}(s)$ at $P$. Hence $\kappa(s)$ measures the deviation of $C$ at $P$ from a straight line (its tangent at $P$). Since $\mathbf{u}(s) = \mathbf{r}'(s)$, the definition is
 $$
@@ -1342,7 +1357,7 @@ Here $\mathbf{p} = (1/\kappa)\mathbf{u}'$ is called the **unit principal normal 
 $$
 |\tau(s)| = |\mathbf{b}'(s)|.
 $$ {#eq-9-5-23-star}
-Whereas $\kappa(s)$ is nonnegative, it is practical to give the torsion a sign, motivated by "right-handed" and "left-handed" (see @fig-9-204 and @fig-9-205). This needs a little further calculation. Since $\mathbf{b}$ is a unit vector, it has constant length. Hence $\mathbf{b}'$ is perpendicular to $\mathbf{b}$ (see Example 4 in Sec. 9.4). Now $\mathbf{b}'$ is also perpendicular to $\mathbf{u}$ because, by the definition of vector product, we have $\mathbf{b} \cdot \mathbf{u} = 0$, $\mathbf{b} \cdot \mathbf{u}' = 0$. This implies
+Whereas $\kappa(s)$ is nonnegative, it is practical to give the torsion a sign, motivated by "right-handed" and "left-handed" (see @fig-9-204 and @fig-9-205). This needs a little further calculation. Since $\mathbf{b}$ is a unit vector, it has constant length. Hence $\mathbf{b}'$ is perpendicular to $\mathbf{b}$ (see Example 4 in @sec-vector-scalar-functions-fields-derivatives). Now $\mathbf{b}'$ is also perpendicular to $\mathbf{u}$ because, by the definition of vector product, we have $\mathbf{b} \cdot \mathbf{u} = 0$, $\mathbf{b} \cdot \mathbf{u}' = 0$. This implies
 $$
 (\mathbf{b} \cdot \mathbf{u})' = \mathbf{b}' \cdot \mathbf{u} + \mathbf{b} \cdot \mathbf{u}' = \mathbf{b}' \cdot \mathbf{u} + 0 = 0.
 $$
@@ -1352,7 +1367,7 @@ $$
 $$ {#eq-9-5-23}
 The minus sign is chosen to make the torsion of a right-handed helix positive and that of a left-handed helix negative (@fig-9-204 and @fig-9-205). The orthonormal vector triple $\mathbf{u}, \mathbf{p}, \mathbf{b}$ is called the **trihedron** of $C$. @fig-9-212 also shows the names of the three straight lines in the directions of $\mathbf{u}, \mathbf{p}, \mathbf{b}$, which are the intersections of the osculating plane, the normal plane, and the rectifying plane.
 
-![Fig. 212. Trihedron. Unit vectors u, p, b and planes](/images/cover.png){#fig-9-212 width=50%}
+![Fig. 212. Trihedron. Unit vectors u, p, b and planes](../images/chapter9/fig-9-212.png){#fig-9-212 width=50%}
 
 ***
 
@@ -1468,15 +1483,15 @@ $$ {#eq-9-5-24}
 
 ***
 
-## 9.6 Calculus Review: Functions of Several Variables. Optional {#sec-9-6}
+## Calculus Review: Functions of Several Variables (Optional) {#sec-calculus-review-functions-several-variables}
 
-The parametric representations of curves $C$ required vector functions that depended on a single variable $x$, $s$, or $t$. We now want to systematically cover vector functions of several variables. This optional section is inserted into the book for your convenience and to make the book reasonably self-contained. Go onto Sec. 9.7 and consult Sec. 9.6 only when needed. For partial derivatives, see App. A3.2.
+The parametric representations of curves $C$ required vector functions that depended on a single variable $x$, $s$, or $t$. We now want to systematically cover vector functions of several variables. This optional section is inserted into the book for your convenience and to make the book reasonably self-contained. Go onto @sec-gradient-scalar-field-directional-derivative and consult @sec-calculus-review-functions-several-variables only when needed. For partial derivatives, see App. A3.2.
 
 ### Chain Rules
 
 @fig-9-213 shows the notations in the following basic theorem.
 
-![Fig. 213. Notations in Theorem 1](/images/cover.png){#fig-9-213 width=35%}
+![Fig. 213. Notations in Theorem 1](../images/chapter9/fig-9-213.png){#fig-9-213 width=35%}
 
 ### THEOREM 1 Chain Rule
 Let $w = f(x, y, z)$ be continuous and have continuous first partial derivatives in a domain $D$ in $xyz$-space. Let $x = x(u, v)$, $y = y(u, v)$, $z = z(u, v)$ be functions that are continuous and have first partial derivatives in a domain $B$ in the $uv$-plane, where $B$ is such that for every point $(u, v)$ in $B$, the corresponding point $[x(u, v), \, y(u, v), \, z(u, v)]$ lies in $D$. See @fig-9-213. Then the function
@@ -1537,7 +1552,7 @@ Hence, by (@eq-9-6-1), the partial derivatives are
 $$
 \frac{\partial \tilde{w}}{\partial x} = \frac{\partial f}{\partial x} + \frac{\partial f}{\partial z}\frac{\partial g}{\partial x}, \quad \frac{\partial \tilde{w}}{\partial y} = \frac{\partial f}{\partial y} + \frac{\partial f}{\partial z}\frac{\partial g}{\partial y} \quad [z = g(x, y)].
 $$ {#eq-9-6-6}
-We shall need this formula in Sec. 10.9.
+We shall need this formula in @sec-10-9.
 
 ### EXAMPLE 2 Partial Derivatives on Surface
 Let $w = f = x^3 + y^3 + z^3$ and let $z = g = x^2 + y^2$. Then (@eq-9-6-6) gives
@@ -1572,11 +1587,11 @@ f(x_0 + h) - f(x_0) = h\frac{\partial f}{\partial x},
 $$ {#eq-9-6-9}
 where in (@eq-9-6-9), the domain $D$ is a segment of the $x$-axis and the derivative is taken at a suitable point between $x_0$ and $x_0 + h$.
 
-![Fig. 214. Mean value theorem for a function of two variables [Formula (8)]](/images/cover.png){#fig-9-214 width=35%}
+![Fig. 214. Mean value theorem for a function of two variables [Formula (8)]](../images/chapter9/fig-9-214.png){#fig-9-214 width=35%}
 
 ***
 
-## 9.7 Gradient of a Scalar Field. Directional Derivative {#sec-9-7}
+## Gradient of a Scalar Field. Directional Derivative {#sec-gradient-scalar-field-directional-derivative}
 
 We shall see that some of the vector fields that occur in applications—not all of them!—can be obtained from scalar fields. Using scalar fields instead of vector fields is of a considerable advantage because scalar fields are easier to use than vector fields. It is the "gradient" that allows us to obtain vector fields from scalar fields, and thus the gradient is of great practical importance to the engineer.
 
@@ -1587,7 +1602,7 @@ $$
 $$ {#eq-9-7-1}
 
 **Remarks.**  
-For a definition of the gradient in curvilinear coordinates, see App. A3.4.  
+For a definition of the gradient in curvilinear coordinates, see <!-- TODO: replace App. A3.4 with actual link -->App. A3.4.  
 As a quick example, if $f(x, y, z) = 2y^3 + 4xz + 3x$, then $\text{grad } f = [4z + 3, \, 6y^2, \, 4x]$.  
 Furthermore, we will show later in this section that (@eq-9-7-1) actually does define a vector.
 
@@ -1608,7 +1623,7 @@ D_{\mathbf{b}} f = \frac{df}{ds} = \lim_{s \to 0} \frac{f(Q) - f(P)}{s}.
 $$ {#eq-9-7-2}
 Here $Q$ is a variable point on the straight line $L$ in the direction of $\mathbf{b}$, and $|s|$ is the distance between $P$ and $Q$. Also, $s > 0$ if $Q$ lies in the direction of $\mathbf{b}$ (as in @fig-9-215), $s < 0$ if $Q$ lies in the direction of $-\mathbf{b}$, and $s = 0$ if $Q = P$.
 
-![Fig. 215. Directional derivative](/images/cover.png){#fig-9-215 width=35%}
+![Fig. 215. Directional derivative](../images/chapter9/fig-9-215.png){#fig-9-215 width=35%}
 
 The next idea is to use Cartesian $xyz$-coordinates and for $\mathbf{b}$ a unit vector. Then the line $L$ is given by
 $$
@@ -1618,7 +1633,7 @@ where $\mathbf{p}_0$ is the position vector of $P$. Equation (@eq-9-7-2) now sho
 $$
 D_{\mathbf{b}} f = \frac{df}{ds} = \frac{\partial f}{\partial x} x' + \frac{\partial f}{\partial y} y' + \frac{\partial f}{\partial z} z'
 $$ {#eq-9-7-4}
-where primes denote derivatives with respect to $s$ (which are taken at $s = 0$). But here, differentiating (@eq-9-7-3) gives $\mathbf{r}' = x'\mathbf{i} + y'\mathbf{j} + z'\mathbf{k} = \mathbf{b}$. Hence (@eq-9-7-4) is simply the inner product of $\text{grad } f$ and $\mathbf{b}$ [see formula (@eq-9-2-2) in Sec. 9.2]; that is,
+where primes denote derivatives with respect to $s$ (which are taken at $s = 0$). But here, differentiating (@eq-9-7-3) gives $\mathbf{r}' = x'\mathbf{i} + y'\mathbf{j} + z'\mathbf{k} = \mathbf{b}$. Hence (@eq-9-7-4) is simply the inner product of $\text{grad } f$ and $\mathbf{b}$ [see formula (@eq-9-2-2) in @sec-inner-product-dot-product-orthogonality]; that is,
 $$
 D_{\mathbf{b}} f = \frac{df}{ds} = \mathbf{b} \cdot \text{grad } f \quad (|\mathbf{b}| = 1).
 $$ {#eq-9-7-5}
@@ -1646,7 +1661,7 @@ Incidentally, the direction makes the gradient eminently useful: $\text{grad } f
 Let $f(P) = f(x, y, z)$ be a scalar function having continuous first partial derivatives in some domain $B$ in space. Then $\text{grad } f$ exists in $B$ and is a vector, that is, its length and direction are independent of the particular choice of Cartesian coordinates. If $\text{grad } f(P) \neq \mathbf{0}$ at some point $P$, it has the direction of maximum increase of $f$ at $P$.
 
 **PROOF**  
-From (@eq-9-7-5) and the definition of inner product [formula (@eq-9-2-1) in Sec. 9.2] we have
+From (@eq-9-7-5) and the definition of inner product [formula (@eq-9-2-1) in @sec-inner-product-dot-product-orthogonality] we have
 $$
 D_{\mathbf{b}} f = |\mathbf{b}||\text{grad } f| \cos \gamma = |\text{grad } f| \cos \gamma
 $$ {#eq-9-7-6}
@@ -1663,7 +1678,7 @@ $$
 $$
 Hence $\text{grad } f$ is orthogonal to all the tangent vectors $\mathbf{r}'$ in the tangent plane, so that it is a normal vector of $S$ at $P$. Our result is as follows (see @fig-9-216).
 
-![Fig. 216. Gradient as surface normal vector](/images/cover.png){#fig-9-216 width=35%}
+![Fig. 216. Gradient as surface normal vector](../images/chapter9/fig-9-216.png){#fig-9-216 width=35%}
 
 ### THEOREM 2 Gradient as Surface Normal Vector
 Let $f$ be a differentiable scalar function in space. Let $f(x, y, z) = c = \text{const}$ represent a surface $S$. Then if the gradient of $f$ at a point $P$ of $S$ is not the zero vector, it is a normal vector of $S$ at $P$.
@@ -1680,12 +1695,12 @@ $$
 $$
 $\mathbf{n}$ points downward since it has a negative $z$-component. The other unit normal vector of the cone at $P$ is $-\mathbf{n}$. $\square$
 
-![Fig. 217. Cone and unit normal vector n](/images/cover.png){#fig-9-217 width=35%}
+![Fig. 217. Cone and unit normal vector n](../images/chapter9/fig-9-217.png){#fig-9-217 width=35%}
 
 ### Vector Fields That Are Gradients of Scalar Fields ("Potentials")
-At the beginning of this section we mentioned that some vector fields have the advantage that they can be obtained from scalar fields, which can be worked with more easily. Such a vector field is given by a vector function $\mathbf{v}(P)$, which is obtained as the gradient of a scalar function, say, $\mathbf{v}(P) = \text{grad } f(P)$. The function $f(P)$ is called a **potential function** or a **potential** of $\mathbf{v}(P)$. Such a $\mathbf{v}(P)$ and the corresponding vector field are called **conservative** because in such a vector field, energy is conserved; that is, no energy is lost (or gained) in displacing a body (or a charge in the case of an electrical field) from a point $P$ to another point in the field and back to $P$. We show this in Sec. 10.2.
+At the beginning of this section we mentioned that some vector fields have the advantage that they can be obtained from scalar fields, which can be worked with more easily. Such a vector field is given by a vector function $\mathbf{v}(P)$, which is obtained as the gradient of a scalar function, say, $\mathbf{v}(P) = \text{grad } f(P)$. The function $f(P)$ is called a **potential function** or a **potential** of $\mathbf{v}(P)$. Such a $\mathbf{v}(P)$ and the corresponding vector field are called **conservative** because in such a vector field, energy is conserved; that is, no energy is lost (or gained) in displacing a body (or a charge in the case of an electrical field) from a point $P$ to another point in the field and back to $P$. We show this in @sec-10-2.
 
-Conservative fields play a central role in physics and engineering. A basic application concerns the gravitational force (see Example 3 in Sec. 9.4) and we show that it has a potential which satisfies Laplace's equation, the most important partial differential equation in physics and its applications.
+Conservative fields play a central role in physics and engineering. A basic application concerns the gravitational force (see Example 3 in @sec-vector-scalar-functions-fields-derivatives) and we show that it has a potential which satisfies Laplace's equation, the most important partial differential equation in physics and its applications.
 
 ### THEOREM 3 Gravitational Field. Laplace’s Equation
 The force of attraction
@@ -1733,9 +1748,9 @@ The great importance of the Laplace equation also results from the fact that the
 $$
 \mathbf{p} = k \frac{\mathbf{r}}{r^3} \quad (\text{Coulomb's law}).
 $$ {#eq-9-7-12}
-Laplace’s equation will be discussed in detail in Chaps. 12 and 18.
+Laplace’s equation will be discussed in detail in <!-- TODO: replace Chaps. 12 and 18 with actual chapter labels -->Chaps. 12 and 18.
 
-A method for finding out whether a given vector field has a potential will be explained in Sec. 9.9.
+A method for finding out whether a given vector field has a potential will be explained in @sec-curl-vector-field.
 
 ***
 
@@ -1789,9 +1804,9 @@ Experiments show that in a temperature field, heat flows in the direction of max
 
 ***
 
-## 9.8 Divergence of a Vector Field {#sec-9-8}
+## Divergence of a Vector Field {#sec-divergence-vector-field}
 
-Vector calculus owes much of its importance in engineering and physics to the gradient, divergence, and curl. From a scalar field we can obtain a vector field by the gradient (Sec. 9.7). Conversely, from a vector field we can obtain a scalar field by the divergence or another vector field by the curl (to be discussed in Sec. 9.9). These concepts were suggested by basic physical applications. This will be evident from our examples.
+Vector calculus owes much of its importance in engineering and physics to the gradient, divergence, and curl. From a scalar field we can obtain a vector field by the gradient (@sec-gradient-scalar-field-directional-derivative). Conversely, from a vector field we can obtain a scalar field by the divergence or another vector field by the curl (to be discussed in @sec-curl-vector-field). These concepts were suggested by basic physical applications. This will be evident from our examples.
 
 To begin, let $\mathbf{v}(x, y, z)$ be a differentiable vector function, where $x, y, z$ are Cartesian coordinates, and let $v_1, v_2, v_3$ be the components of $\mathbf{v}$. Then the function
 $$
@@ -1807,7 +1822,7 @@ Another common notation for the divergence is
 $$
 \text{div } \mathbf{v} = \nabla \cdot \mathbf{v} = \left[ \frac{\partial}{\partial x}, \, \frac{\partial}{\partial y}, \, \frac{\partial}{\partial z} \right] \cdot [v_1, \, v_2, \, v_3] = \frac{\partial v_1}{\partial x} + \frac{\partial v_2}{\partial y} + \frac{\partial v_3}{\partial z},
 $$
-with the understanding that the "product" $(\partial/\partial x)v_1$ in the dot product means the partial derivative $\partial v_1/\partial x$, etc. This is a convenient notation, but nothing more. Note that $\nabla \cdot \mathbf{v}$ means the scalar $\text{div } \mathbf{v}$, whereas $\nabla f$ means the vector $\text{grad } f$ defined in Sec. 9.7.
+with the understanding that the "product" $(\partial/\partial x)v_1$ in the dot product means the partial derivative $\partial v_1/\partial x$, etc. This is a convenient notation, but nothing more. Note that $\nabla \cdot \mathbf{v}$ means the scalar $\text{div } \mathbf{v}$, whereas $\nabla f$ means the vector $\text{grad } f$ defined in @sec-gradient-scalar-field-directional-derivative.
 
 In Example 2 we shall see that the divergence has an important physical meaning.
 
@@ -1818,7 +1833,7 @@ The divergence $\text{div } \mathbf{v}$ is a scalar function, that is, its value
 $$
 \text{div } \mathbf{v} = \frac{\partial v_1^*}{\partial x^*} + \frac{\partial v_2^*}{\partial y^*} + \frac{\partial v_3^*}{\partial z^*}.
 $$ {#eq-9-8-2}
-We shall prove this theorem in Sec. 10.7, using integrals.
+We shall prove this theorem in @sec-10-7, using integrals.
 
 Presently, let us turn to the more immediate practical task of gaining a feel for the significance of the divergence. Let $f(x, y, z)$ be a twice differentiable scalar function. Then its gradient exists,
 $$
@@ -1828,7 +1843,7 @@ and we can differentiate once more, the first component with respect to $x$, the
 $$
 \text{div } \mathbf{v} = \text{div}(\text{grad } f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}.
 $$
-Hence we have the basic result that the divergence of the gradient is the Laplacian (Sec. 9.7),
+Hence we have the basic result that the divergence of the gradient is the Laplacian (@sec-gradient-scalar-field-directional-derivative),
 $$
 \text{div}(\text{grad } f) = \nabla^2 f.
 $$ {#eq-9-8-3}
@@ -1836,10 +1851,10 @@ $$ {#eq-9-8-3}
 ### EXAMPLE 1 Gravitational Force. Laplace’s Equation
 The gravitational force $\mathbf{p}$ in Theorem 3 of the last section is the gradient of the scalar function $f(x, y, z) = c/r$, which satisfies Laplace's equation $\nabla^2 f = 0$. According to (@eq-9-8-3) this implies that $\text{div } \mathbf{p} = 0$ ($r > 0$). $\square$
 
-The following example from hydrodynamics shows the physical significance of the divergence of a vector field. We shall get back to this topic in Sec. 10.8 and add further physical details.
+The following example from hydrodynamics shows the physical significance of the divergence of a vector field. We shall get back to this topic in @sec-10-8 and add further physical details.
 
 ### EXAMPLE 2 Flow of a Compressible Fluid. Physical Meaning of the Divergence
-We consider the motion of a fluid in a region $R$ having no sources or sinks in $R$, that is, no points at which fluid is produced or disappears. The concept of fluid state is meant to cover also gases and vapors. Fluids in the restricted sense, or liquids, such as water or oil, have very small compressibility, which can be neglected in many problems. In contrast, gases and vapors have high compressibility. Their density $\rho$ ($=$ mass per unit volume) depends on the coordinates $x, y, z$ in space and may also depend on time $t$. We assume that our fluid is compressible. We consider the flow through a rectangular box $B$ of small edges $\Delta x, \Delta y, \Delta z$ parallel to the coordinate axes as shown in @fig-9-218. (Here $\Delta$ is a standard notation for small quantities and, of course, has nothing to do with the notation for the Laplacian in (@eq-9-7-11) of Sec. 9.7.) The box $B$ has the volume $\Delta V = \Delta x \Delta y \Delta z$.
+We consider the motion of a fluid in a region $R$ having no sources or sinks in $R$, that is, no points at which fluid is produced or disappears. The concept of fluid state is meant to cover also gases and vapors. Fluids in the restricted sense, or liquids, such as water or oil, have very small compressibility, which can be neglected in many problems. In contrast, gases and vapors have high compressibility. Their density $\rho$ ($=$ mass per unit volume) depends on the coordinates $x, y, z$ in space and may also depend on time $t$. We assume that our fluid is compressible. We consider the flow through a rectangular box $B$ of small edges $\Delta x, \Delta y, \Delta z$ parallel to the coordinate axes as shown in @fig-9-218. (Here $\Delta$ is a standard notation for small quantities and, of course, has nothing to do with the notation for the Laplacian in (@eq-9-7-11) of @sec-gradient-scalar-field-directional-derivative.) The box $B$ has the volume $\Delta V = \Delta x \Delta y \Delta z$.
 
 Let $\mathbf{v} = [v_1, v_2, v_3] = v_1\mathbf{i} + v_2\mathbf{j} + v_3\mathbf{k}$ be the velocity vector of the motion. We set
 $$
@@ -1866,7 +1881,7 @@ $$
 -\frac{\partial \rho}{\partial t} \Delta V \Delta t.
 $$
 
-![Fig. 218. Physical interpretation of the divergence](/images/cover.png){#fig-9-218 width=35%}
+![Fig. 218. Physical interpretation of the divergence](../images/chapter9/fig-9-218.png){#fig-9-218 width=35%}
 
 If we equate both expressions, divide the resulting equation by $\Delta V\Delta t$, and let $\Delta x, \Delta y, \Delta z$, and $\Delta t$ approach zero, then we obtain
 $$
@@ -1890,7 +1905,7 @@ This relation is known as the condition of incompressibility. It expresses the f
 
 From this discussion you should conclude and remember that, roughly speaking, *the divergence measures outflow minus inflow.* $\square$
 
-**Comment.** The divergence theorem of Gauss, an integral theorem involving the divergence, follows in the next chapter (Sec. 10.7).
+**Comment.** The divergence theorem of Gauss, an integral theorem involving the divergence, follows in the next chapter (@sec-10-7).
 
 ***
 
@@ -1927,7 +1942,7 @@ Find $\text{div } \mathbf{v}$ and its value at $P$.
 
 11. **Incompressible flow.** Show that the flow with velocity vector $\mathbf{v} = y\mathbf{i}$ is incompressible. Show that the particles that at time $t = 0$ are in the cube whose faces are portions of the planes $x = 0, x = 1, y = 0, y = 1, z = 0, z = 1$ occupy at $t = 1$ the volume 1.
 12. **Compressible flow.** Consider the flow with velocity vector $\mathbf{v} = x\mathbf{i}$. Show that the individual particles have the position vectors $\mathbf{r}(t) = c_1 e^t \mathbf{i} + c_2 \mathbf{j} + c_3 \mathbf{k}$ with constant $c_1, c_2, c_3$. Show that the particles that at $t = 0$ are in the cube of Prob. 11 at $t = 1$ occupy the volume $e$.
-13. **Rotational flow.** The velocity vector $\mathbf{v}(x, y, z)$ of an incompressible fluid rotating in a cylindrical vessel is of the form $\mathbf{v} = \mathbf{w} \times \mathbf{r}$, where $\mathbf{w}$ is the (constant) rotation vector; see Example 5 in Sec. 9.3. Show that $\text{div } \mathbf{v} = 0$. Is this plausible because of our present Example 2?
+13. **Rotational flow.** The velocity vector $\mathbf{v}(x, y, z)$ of an incompressible fluid rotating in a cylindrical vessel is of the form $\mathbf{v} = \mathbf{w} \times \mathbf{r}$, where $\mathbf{w}$ is the (constant) rotation vector; see Example 5 in @sec-vector-product-cross-product. Show that $\text{div } \mathbf{v} = 0$. Is this plausible because of our present Example 2?
 14. Does $\text{div } \mathbf{u} = \text{div } \mathbf{v}$ imply $\mathbf{u} = \mathbf{v}$ or $\mathbf{u} = \mathbf{v} + \mathbf{k}$ ($ \mathbf{k} $ constant)? Give reason.
 
 #### 15–20: LAPLACIAN
@@ -1941,16 +1956,16 @@ Calculate $\nabla^2 f$ by Eq. (@eq-9-8-3). Check by direct differentiation. Indi
 
 ***
 
-## 9.9 Curl of a Vector Field {#sec-9-9}
+## Curl of a Vector Field {#sec-curl-vector-field}
 
-The concepts of gradient (Sec. 9.7), divergence (Sec. 9.8), and curl are of fundamental importance in vector calculus and frequently applied in vector fields. In this section we define and discuss the concept of the curl and apply it to several engineering problems.
+The concepts of gradient (@sec-gradient-scalar-field-directional-derivative), divergence (@sec-divergence-vector-field), and curl are of fundamental importance in vector calculus and frequently applied in vector fields. In this section we define and discuss the concept of the curl and apply it to several engineering problems.
 
 Let $\mathbf{v}(x, y, z) = [v_1, v_2, v_3] = v_1\mathbf{i} + v_2\mathbf{j} + v_3\mathbf{k}$ be a differentiable vector function of the Cartesian coordinates $x, y, z$. Then the curl of the vector function $\mathbf{v}$ or of the vector field given by $\mathbf{v}$ is defined by the "symbolic" determinant
 $$
 \text{curl } \mathbf{v} = \nabla \times \mathbf{v} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ v_1 & v_2 & v_3 \end{vmatrix} = \left( \frac{\partial v_3}{\partial y} - \frac{\partial v_2}{\partial z} \right) \mathbf{i} + \left( \frac{\partial v_1}{\partial z} - \frac{\partial v_3}{\partial x} \right) \mathbf{j} + \left( \frac{\partial v_2}{\partial x} - \frac{\partial v_1}{\partial y} \right) \mathbf{k}.
 $$ {#eq-9-9-1}
 
-This is the formula when $x, y, z$ are right-handed. If they are left-handed, the determinant has a minus sign in front (just as in (@eq-9-3-2-double-star) in Sec. 9.3).
+This is the formula when $x, y, z$ are right-handed. If they are left-handed, the determinant has a minus sign in front (just as in (@eq-9-3-2-double-star) in @sec-vector-product-cross-product).
 
 Instead of $\text{curl } \mathbf{v}$ one also uses the notation $\text{rot } \mathbf{v}$. This is suggested by "rotation," an application explored in Example 2. Note that $\text{curl } \mathbf{v}$ is a vector, as shown in Theorem 3.
 
@@ -1963,16 +1978,16 @@ $$
 \text{curl } \mathbf{v} = -3x\mathbf{i} + y\mathbf{j} + (3z - z)\mathbf{k} = -3x\mathbf{i} + y\mathbf{j} + 2z\mathbf{k}.
 $$ $\square$
 
-The curl has many applications. A typical example follows. More about the nature and significance of the curl will be considered in Sec. 10.9.
+The curl has many applications. A typical example follows. More about the nature and significance of the curl will be considered in @sec-10-9.
 
 ### EXAMPLE 2 Rotation of a Rigid Body. Relation to the Curl
-We have seen in Example 5, Sec. 9.3, that a rotation of a rigid body $B$ about a fixed axis in space can be described by a vector $\mathbf{w}$ of magnitude $\omega$ in the direction of the axis of rotation, where $\omega$ ($\omega > 0$) is the angular speed of the rotation, and $\mathbf{w}$ is directed so that the rotation appears clockwise if we look in the direction of $\mathbf{w}$.
+We have seen in Example 5, @sec-vector-product-cross-product, that a rotation of a rigid body $B$ about a fixed axis in space can be described by a vector $\mathbf{w}$ of magnitude $\omega$ in the direction of the axis of rotation, where $\omega$ ($\omega > 0$) is the angular speed of the rotation, and $\mathbf{w}$ is directed so that the rotation appears clockwise if we look in the direction of $\mathbf{w}$.
 
-According to (@eq-9-3-9), Sec. 9.3, the velocity field of the rotation can be represented in the form
+According to (@eq-9-3-9), @sec-vector-product-cross-product, the velocity field of the rotation can be represented in the form
 $$
 \mathbf{v} = \mathbf{w} \times \mathbf{r}
 $$
-where $\mathbf{r}$ is the position vector of a moving point with respect to a Cartesian coordinate system having the origin on the axis of rotation. Let us choose right-handed Cartesian coordinates such that the axis of rotation is the $z$-axis. Then (see Example 2 in Sec. 9.4)
+where $\mathbf{r}$ is the position vector of a moving point with respect to a Cartesian coordinate system having the origin on the axis of rotation. Let us choose right-handed Cartesian coordinates such that the axis of rotation is the $z$-axis. Then (see Example 2 in @sec-vector-scalar-functions-fields-derivatives)
 $$
 \mathbf{w} = [0, 0, \omega] = \omega\mathbf{k}, \quad \mathbf{v} = \mathbf{w} \times \mathbf{r} = [-\omega y, \, \omega x, \, 0] = -\omega y\mathbf{i} + \omega x\mathbf{j}.
 $$
@@ -2001,19 +2016,19 @@ $$ {#eq-9-9-3}
 Both (@eq-9-9-2) and (@eq-9-9-3) follow directly from the definitions by straightforward calculation. In the proof of (@eq-9-9-3) the six terms cancel in pairs. $\square$
 
 ### EXAMPLE 3 Rotational and Irrotational Fields
-The field in Example 2 is not irrotational. A similar velocity field is obtained by stirring tea or coffee in a cup. The gravitational field in Theorem 3 of Sec. 9.7 has $\text{curl } \mathbf{p} = \mathbf{0}$. It is an irrotational gradient field. $\square$
+The field in Example 2 is not irrotational. A similar velocity field is obtained by stirring tea or coffee in a cup. The gravitational field in Theorem 3 of @sec-gradient-scalar-field-directional-derivative has $\text{curl } \mathbf{p} = \mathbf{0}$. It is an irrotational gradient field. $\square$
 
-The term "irrotational" for $\text{curl } \mathbf{v} = \mathbf{0}$ is suggested by the use of the curl for characterizing the rotation in a field. If a gradient field occurs elsewhere, not as a velocity field, it is usually called conservative (see Sec. 9.7). Relation (@eq-9-9-3) is plausible because of the interpretation of the curl as a rotation and of the divergence as a flux (see Example 2 in Sec. 9.8).
+The term "irrotational" for $\text{curl } \mathbf{v} = \mathbf{0}$ is suggested by the use of the curl for characterizing the rotation in a field. If a gradient field occurs elsewhere, not as a velocity field, it is usually called conservative (see @sec-gradient-scalar-field-directional-derivative). Relation (@eq-9-9-3) is plausible because of the interpretation of the curl as a rotation and of the divergence as a flux (see Example 2 in @sec-divergence-vector-field).
 
-Finally, since the curl is defined in terms of coordinates, we should do what we did for the gradient in Sec. 9.7, namely, to find out whether the curl is a vector. This is true, as follows.
+Finally, since the curl is defined in terms of coordinates, we should do what we did for the gradient in @sec-gradient-scalar-field-directional-derivative, namely, to find out whether the curl is a vector. This is true, as follows.
 
 ### THEOREM 3 Invariance of the Curl
 $\text{curl } \mathbf{v}$ is a vector. It has a length and a direction that are independent of the particular choice of a Cartesian coordinate system in space.
 
 **PROOF**  
-The proof is quite involved and shown in App. A4. $\square$
+The proof is quite involved and shown in <!-- TODO: replace App. A4 with actual link -->App. A4. $\square$
 
-We have completed our discussion of vector differential calculus. The companion Chap. 10 on vector integral calculus follows and makes use of many concepts covered in this chapter, including dot and cross products, parametric representation of curves $C$, along with grad, div, and curl.
+We have completed our discussion of vector differential calculus. The companion <!-- TODO: replace Chap. 10 with actual chapter label -->Chap. 10 on vector integral calculus follows and makes use of many concepts covered in this chapter, including dot and cross products, parametric representation of curves $C$, along with grad, div, and curl.
 
 ***
 
@@ -2057,7 +2072,7 @@ With respect to right-handed coordinates, let $\mathbf{u} = [y, z, x]$, $\mathbf
 
 ***
 
-## Chapter 9 Review Questions and Problems {#sec-chapter-9-review}
+## Review Questions and Problems {#sec-review-questions-problems-chapter-9}
 
 1. What is a vector? A vector function? A vector field? A scalar? A scalar function? A scalar field? Give examples.
 2. What is an inner product, a vector product, a scalar triple product? What applications motivate these products?
@@ -2120,7 +2135,7 @@ Let $f = xy - yz$, $\mathbf{v} = [2y, 2z, 4x + z]$, and $\mathbf{w} = [3z^2, x^2
 
 ***
 
-## Summary of Chapter 9 {#sec-chapter-9-summary}
+## Summary {#sec-summary-chapter-9}
 
 All vectors of the form $\mathbf{a} = [a_1, a_2, a_3] = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ constitute the real vector space $\mathbb{R}^3$ with componentwise vector addition
 $$
@@ -2130,13 +2145,13 @@ and componentwise scalar multiplication ($c$ a scalar, a real number)
 $$
 c[a_1, a_2, a_3] = [ca_1, ca_2, ca_3]
 $$ {#eq-9-sum-2}
-(Sec. 9.1). For instance, the resultant of forces $\mathbf{a}$ and $\mathbf{b}$ is the sum $\mathbf{a} + \mathbf{b}$.
+(@sec-vectors-2-space-3-space). For instance, the resultant of forces $\mathbf{a}$ and $\mathbf{b}$ is the sum $\mathbf{a} + \mathbf{b}$.
 
 The **inner product** or **dot product** of two vectors is defined by
 $$
 \mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}| \cos \gamma = a_1 b_1 + a_2 b_2 + a_3 b_3
 $$ {#eq-9-sum-3}
-(Sec. 9.2) where $\gamma$ is the angle between $\mathbf{a}$ and $\mathbf{b}$. This gives for the norm or length $|\mathbf{a}|$ of $\mathbf{a}$
+(@sec-inner-product-dot-product-orthogonality) where $\gamma$ is the angle between $\mathbf{a}$ and $\mathbf{b}$. This gives for the norm or length $|\mathbf{a}|$ of $\mathbf{a}$
 $$
 |\mathbf{a}| = \sqrt{\mathbf{a} \cdot \mathbf{a}} = \sqrt{a_1^2 + a_2^2 + a_3^2}
 $$ {#eq-9-sum-4}
@@ -2146,11 +2161,11 @@ The **vector product** or **cross product** $\mathbf{v} = \mathbf{a} \times \mat
 $$
 |\mathbf{a} \times \mathbf{b}| = |\mathbf{a}||\mathbf{b}| \sin \gamma
 $$ {#eq-9-sum-5}
-(Sec. 9.3) and perpendicular to both $\mathbf{a}$ and $\mathbf{b}$ such that $\mathbf{a}, \mathbf{b}, \mathbf{v}$ form a right-handed triple. In terms of components with respect to right-handed coordinates,
+(@sec-vector-product-cross-product) and perpendicular to both $\mathbf{a}$ and $\mathbf{b}$ such that $\mathbf{a}, \mathbf{b}, \mathbf{v}$ form a right-handed triple. In terms of components with respect to right-handed coordinates,
 $$
 \mathbf{a} \times \mathbf{b} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}
 $$ {#eq-9-sum-6}
-(Sec. 9.3). The vector product is suggested, for instance, by moments of forces or by rotations.  
+(@sec-vector-product-cross-product). The vector product is suggested, for instance, by moments of forces or by rotations.  
 **CAUTION!** This multiplication is anticommutative, $\mathbf{a} \times \mathbf{b} = -(\mathbf{b} \times \mathbf{a})$, and is not associative.
 
 An (oblique) box with edges $\mathbf{a}, \mathbf{b}, \mathbf{c}$ has volume equal to the absolute value of the **scalar triple product**
@@ -2166,42 +2181,42 @@ and to vector functions of more than one variable (see below). The derivative of
 $$
 \mathbf{v}'(t) = \frac{d\mathbf{v}}{dt} = \lim_{\Delta t \to 0} \frac{\mathbf{v}(t + \Delta t) - \mathbf{v}(t)}{\Delta t} = [v_1', v_2', v_3'] = v_1'\mathbf{i} + v_2'\mathbf{j} + v_3'\mathbf{k}.
 $$ {#eq-9-sum-8}
-Differentiation rules are as in calculus. They imply (Sec. 9.4)
+Differentiation rules are as in calculus. They imply (@sec-vector-scalar-functions-fields-derivatives)
 $$
 (\mathbf{u} \cdot \mathbf{v})' = \mathbf{u}' \cdot \mathbf{v} + \mathbf{u} \cdot \mathbf{v}', \quad (\mathbf{u} \times \mathbf{v})' = \mathbf{u}' \times \mathbf{v} + \mathbf{u} \times \mathbf{v}'.
 $$
 
-Curves $C$ in space represented by the position vector $\mathbf{r}(t)$ have $\mathbf{r}'(t)$ as a tangent vector (the velocity $\mathbf{v}$ in mechanics when $t$ is time), $\mathbf{r}'(s)$ ($s$ arc length, Sec. 9.5) as the unit tangent vector $\mathbf{u}$, and $|\mathbf{r}''(s)| = \kappa$ as the curvature (the acceleration in mechanics).
+Curves $C$ in space represented by the position vector $\mathbf{r}(t)$ have $\mathbf{r}'(t)$ as a tangent vector (the velocity $\mathbf{v}$ in mechanics when $t$ is time), $\mathbf{r}'(s)$ ($s$ arc length, @sec-curves-arc-length-curvature-torsion) as the unit tangent vector $\mathbf{u}$, and $|\mathbf{r}''(s)| = \kappa$ as the curvature (the acceleration in mechanics).
 
 Vector functions $\mathbf{v}(x, y, z) = [v_1(x, y, z), v_2(x, y, z), v_3(x, y, z)]$ represent vector fields in space. Partial derivatives with respect to the Cartesian coordinates $x, y, z$ are obtained componentwise, for instance,
 $$
 \frac{\partial \mathbf{v}}{\partial x} = \left[ \frac{\partial v_1}{\partial x}, \, \frac{\partial v_2}{\partial x}, \, \frac{\partial v_3}{\partial x} \right] = \frac{\partial v_1}{\partial x}\mathbf{i} + \frac{\partial v_2}{\partial x}\mathbf{j} + \frac{\partial v_3}{\partial x}\mathbf{k}
 $$ {#eq-9-sum-8-star}
-(Sec. 9.6).
+(@sec-calculus-review-functions-several-variables).
 
 The **gradient** of a scalar function $f$ is
 $$
 \text{grad } f = \nabla f = \left[ \frac{\partial f}{\partial x}, \, \frac{\partial f}{\partial y}, \, \frac{\partial f}{\partial z} \right] = \frac{\partial f}{\partial x}\mathbf{i} + \frac{\partial f}{\partial y}\mathbf{j} + \frac{\partial f}{\partial z}\mathbf{k}
 $$ {#eq-9-sum-9}
-(Sec. 9.7). The directional derivative of $f$ in the direction of a vector $\mathbf{a}$ is
+(@sec-gradient-scalar-field-directional-derivative). The directional derivative of $f$ in the direction of a vector $\mathbf{a}$ is
 $$
 D_{\mathbf{a}} f = \frac{df}{ds} = \frac{1}{|\mathbf{a}|} \mathbf{a} \cdot \nabla f
 $$ {#eq-9-sum-10}
-(Sec. 9.7).
+(@sec-gradient-scalar-field-directional-derivative).
 
 The **divergence** of a vector function $\mathbf{v}$ is
 $$
 \text{div } \mathbf{v} = \nabla \cdot \mathbf{v} = \frac{\partial v_1}{\partial x} + \frac{\partial v_2}{\partial y} + \frac{\partial v_3}{\partial z}
 $$ {#eq-9-sum-11}
-(Sec. 9.8).
+(@sec-divergence-vector-field).
 
 The **curl** of $\mathbf{v}$ is
 $$
 \text{curl } \mathbf{v} = \nabla \times \mathbf{v} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ v_1 & v_2 & v_3 \end{vmatrix}
 $$ {#eq-9-sum-12}
-(Sec. 9.9), or minus the determinant if the coordinates are left-handed.
+(@sec-curl-vector-field), or minus the determinant if the coordinates are left-handed.
 
-Some basic formulas for grad, div, curl are (Secs. 9.7–9.9):
+Some basic formulas for grad, div, curl are (@sec-gradient-scalar-field-directional-derivative to @sec-curl-vector-field):
 $$
 \begin{aligned}
 \nabla(fg) &= f\nabla g + g\nabla f \\
@@ -2233,6 +2248,6 @@ $$
 \end{aligned}
 $$ {#eq-9-sum-17}
 
-For grad, div, curl, and $\nabla^2$ in curvilinear coordinates see App. A3.4.
+For grad, div, curl, and $\nabla^2$ in curvilinear coordinates see <!-- TODO: replace App. A3.4 with actual link -->App. A3.4.
 
 ***

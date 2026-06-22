@@ -2,28 +2,28 @@
 title: "Partial Differential Equations (PDEs)"
 ---
 
-A PDE is an equation that contains one or more partial derivatives of an unknown function that depends on at least two variables. Usually one of these deals with time $t$ and the remaining with space (spatial variable(s)). The most important PDEs are the wave equations that can model the vibrating string (@sec-12-2, @sec-12-3, @sec-12-4, @sec-12-12) and the vibrating membrane (@sec-12-8, @sec-12-9, @sec-12-10), the heat equation for temperature in a bar or wire (@sec-12-5, @sec-12-6), and the Laplace equation for electrostatic potentials (@sec-12-6, @sec-12-10, @sec-12-11). PDEs are very important in dynamics, elasticity, heat transfer, electromagnetic theory, and quantum mechanics. They have a much wider range of applications than ODEs, which can model only the simplest physical systems. Thus PDEs are subjects of many ongoing research and development projects.
+A PDE is an equation that contains one or more partial derivatives of an unknown function that depends on at least two variables. Usually one of these deals with time $t$ and the remaining with space (spatial variable(s)). The most important PDEs are the wave equations that can model the vibrating string (@sec-modeling-vibrating-string-wave-equation, @sec-solution-by-separating-variables, @sec-dalemberts-solution-wave-equation, @sec-solution-pdes-laplace-transforms) and the vibrating membrane (@sec-modeling-membrane-two-dimensional-wave-equation, @sec-rectangular-membrane-double-fourier-series, @sec-laplacian-polar-coordinates-circular-membrane), the heat equation for temperature in a bar or wire (@sec-modeling-heat-flow-heat-equation, @sec-heat-equation-solution-fourier-series), and the Laplace equation for electrostatic potentials (@sec-heat-equation-solution-fourier-series, @sec-laplacian-polar-coordinates-circular-membrane, @sec-laplaces-equation-cylindrical-spherical-coordinates). PDEs are very important in dynamics, elasticity, heat transfer, electromagnetic theory, and quantum mechanics. They have a much wider range of applications than ODEs, which can model only the simplest physical systems. Thus PDEs are subjects of many ongoing research and development projects.
 
-Realizing that modeling with PDEs is more involved than modeling with ODEs, we take a gradual, well-planned approach to modeling with PDEs. To do this we carefully derive the PDE that models the phenomena, such as the one-dimensional wave equation for a vibrating elastic string (say a violin string) in @sec-12-2, and then solve the PDE in a separate section, that is, @sec-12-3. In a similar vein, we derive the heat equation in @sec-12-5 and then solve and generalize it in @sec-12-6.
+Realizing that modeling with PDEs is more involved than modeling with ODEs, we take a gradual, well-planned approach to modeling with PDEs. To do this we carefully derive the PDE that models the phenomena, such as the one-dimensional wave equation for a vibrating elastic string (say a violin string) in @sec-modeling-vibrating-string-wave-equation, and then solve the PDE in a separate section, that is, @sec-solution-by-separating-variables. In a similar vein, we derive the heat equation in @sec-modeling-heat-flow-heat-equation and then solve and generalize it in @sec-heat-equation-solution-fourier-series.
 
-We derive these PDEs from physics and consider methods for solving initial and boundary value problems, that is, methods of obtaining solutions which satisfy the conditions required by the physical situations. In @sec-12-7 and @sec-12-12 we show how PDEs can also be solved by Fourier and Laplace transform methods.
+We derive these PDEs from physics and consider methods for solving initial and boundary value problems, that is, methods of obtaining solutions which satisfy the conditions required by the physical situations. In @sec-heat-equation-modeling-very-long-bars and @sec-solution-pdes-laplace-transforms we show how PDEs can also be solved by Fourier and Laplace transform methods.
 
-**COMMENT.** Numerics for PDEs is explained in Secs. 21.4–21.7, which, for greater teaching flexibility, is designed to be independent of the other sections on numerics in Part E.
+**COMMENT.** Numerics for PDEs is explained in <!-- TODO: replace Secs. 21.4–21.7 with actual cross-reference labels -->, which, for greater teaching flexibility, is designed to be independent of the other sections on numerics in Part E.
 
-**Prerequisites:** Linear ODEs (Chap. 2), Fourier series (Chap. 11).
+**Prerequisites:** Linear ODEs (<!-- TODO: replace Chap. 2 with actual chapter label -->), Fourier series (<!-- TODO: replace Chap. 11 with actual chapter label -->).
 
 **Sections that may be omitted in a shorter course:** 12.7, 12.10–12.12.
 
 **References and Answers to Problems:** App. 1 Part C, and App. 2.
 
 
-## 12.1 Basic Concepts of PDEs {#sec-12-1}
+## Basic Concepts of PDEs {#sec-basic-concepts-pdes}
 
 A partial differential equation (PDE) is an equation involving one or more partial derivatives of an (unknown) function, call it $u$, that depends on two or more variables, often time $t$ and one or several variables in space. The order of the highest derivative is called the order of the PDE. Just as was the case for ODEs, second-order PDEs will be the most important ones in applications.
 
-Just as for ordinary differential equations (ODEs) we say that a PDE is linear if it is of the first degree in the unknown function $u$ and its partial derivatives. Otherwise we call it nonlinear. Thus, all the equations in @sec-12-1-1 are linear. We call a linear PDE homogeneous if each of its terms contains either $u$ or one of its partial derivatives. Otherwise we call the equation nonhomogeneous. Thus, (4) in @sec-12-1-1 (with $f$ not identically zero) is nonhomogeneous, whereas the other equations are homogeneous.
+Just as for ordinary differential equations (ODEs) we say that a PDE is linear if it is of the first degree in the unknown function $u$ and its partial derivatives. Otherwise we call it nonlinear. Thus, all the equations in @sec-important-second-order-pdes are linear. We call a linear PDE homogeneous if each of its terms contains either $u$ or one of its partial derivatives. Otherwise we call the equation nonhomogeneous. Thus, (4) in @sec-important-second-order-pdes (with $f$ not identically zero) is nonhomogeneous, whereas the other equations are homogeneous.
 
-### EXAMPLE 1 Important Second-Order PDEs {#sec-12-1-1}
+### Important Second-Order PDEs {#sec-important-second-order-pdes}
 
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} \quad \text{One-dimensional wave equation}
@@ -51,7 +51,7 @@ $$ {#eq-12-1-6}
 
 Here $c$ is a positive constant, $t$ is time, $x, y, z$ are Cartesian coordinates, and dimension is the number of these coordinates in the equation.
 
-A solution of a PDE in some region $R$ of the space of the independent variables is a function that has all the partial derivatives appearing in the PDE in some domain $D$ (definition in Sec. 9.6) containing $R$, and satisfies the PDE everywhere in $R$.
+A solution of a PDE in some region $R$ of the space of the independent variables is a function that has all the partial derivatives appearing in the PDE in some domain $D$ (definition in <!-- TODO: replace Sec. 9.6 with actual cross-reference label -->) containing $R$, and satisfies the PDE everywhere in $R$.
 
 Often one merely requires that the function is continuous on the boundary of $R$, has those derivatives in the interior of $R$, and satisfies the PDE in the interior of $R$. Letting $R$ lie in $D$ simplifies the situation regarding derivatives on the boundary of $R$, which is then the same on the boundary as it is in the interior of $R$.
 
@@ -71,21 +71,21 @@ u = c_1 u_1 + c_2 u_2
 $$
 with any constants $c_1$ and $c_2$ is also a solution of that PDE in the region $R$.
 
-The simple proof of this important theorem is quite similar to that of Theorem 1 in Sec. 2.1 and is left to the student.
+The simple proof of this important theorem is quite similar to that of Theorem 1 in <!-- TODO: replace Sec. 2.1 with actual cross-reference label --> and is left to the student.
 
 Verification of solutions in Probs. 2–13 proceeds as for ODEs. Problems 16–23 concern PDEs solvable like ODEs. To help the student with them, we consider two typical examples.
 
-### EXAMPLE 2 Solving $u_{xx} = 0$ Like an ODE {#sec-12-1-2}
+### Solving $u_{xx} = 0$ Like an ODE {#sec-solving-uxx-0-like-an-ode}
 
 Find solutions $u$ of the PDE $u_{xx} = 0$ depending on $x$ and $y$.
 
-**Solution.** Since no $y$-derivatives occur, we can solve this PDE like $u'' = 0$. In Sec. 2.2 we would have obtained $u = ax + b$ with constants $a$ and $b$. Here $a$ and $b$ may be functions of $y$, so that the answer is
+**Solution.** Since no $y$-derivatives occur, we can solve this PDE like $u'' = 0$. In <!-- TODO: replace Sec. 2.2 with actual cross-reference label --> we would have obtained $u = ax + b$ with constants $a$ and $b$. Here $a$ and $b$ may be functions of $y$, so that the answer is
 $$
 u(x, y) = a(y)x + b(y)
 $$
 with arbitrary functions $a(y)$ and $b(y)$. We thus have a great variety of solutions. Check the result by differentiation. <span class="math inline">\square</span>
 
-### EXAMPLE 3 Solving $u_{xy} = -u_x$ Like an ODE {#sec-12-1-3}
+### Solving $u_{xy} = -u_x$ Like an ODE {#sec-solving-uxy-ux-like-an-ode}
 
 Find solutions $u = u(x, y)$ of this PDE.
 
@@ -96,7 +96,7 @@ $$
 here, $f(x)$ and $g(y)$ are arbitrary. <span class="math inline">\square</span>
 
 
-## PROBLEM SET 12.1 {#sec-ps-12-1}
+## PROBLEM SET 12.1 {#sec-problem-set-12-1}
 
 **1. Fundamental theorem.** Prove it for second-order PDEs in two and three independent variables. *Hint.* Prove it by substitution.
 
@@ -179,13 +179,13 @@ This happens if a PDE involves derivatives with respect to one variable only (or
 **25. System of PDEs.** Solve $u_{xx} = 0, \ u_{yy} = 0$.
 
 
-## 12.2 Modeling: Vibrating String, Wave Equation {#sec-12-2}
+## Modeling: Vibrating String, Wave Equation {#sec-modeling-vibrating-string-wave-equation}
 
-In this section we model a vibrating string, which will lead to our first important PDE, that is, equation (@eq-12-2-3) which will then be solved in @sec-12-3. The student should pay very close attention to this delicate modeling process and detailed derivation starting from scratch, as the skills learned can be applied to modeling other phenomena in general and in particular to modeling a vibrating membrane (@sec-12-8).
+In this section we model a vibrating string, which will lead to our first important PDE, that is, equation (@eq-12-2-3) which will then be solved in @sec-solution-by-separating-variables. The student should pay very close attention to this delicate modeling process and detailed derivation starting from scratch, as the skills learned can be applied to modeling other phenomena in general and in particular to modeling a vibrating membrane (@sec-modeling-membrane-two-dimensional-wave-equation).
 
 We want to derive the PDE modeling small transverse vibrations of an elastic string, such as a violin string. We place the string along the $x$-axis, stretch it to length $L$, and fasten it at the ends $x = 0$ and $x = L$. We then distort the string, and at some instant, call it $t = 0$, we release it and allow it to vibrate. The problem is to determine the vibrations of the string, that is, to find its deflection $u(x, t)$ at any point $x$ and at any time $t \ge 0$; see @fig-12-1.
 
-$u(x, t)$ will be the solution of a PDE that is the model of our physical system to be derived. This PDE should not be too complicated, so that we can solve it. Reasonable simplifying assumptions (just as for ODEs modeling vibrations in Chap. 2) are as follows.
+$u(x, t)$ will be the solution of a PDE that is the model of our physical system to be derived. This PDE should not be too complicated, so that we can solve it. Reasonable simplifying assumptions (just as for ODEs modeling vibrations in <!-- TODO: replace Chap. 2 with actual chapter label -->) are as follows.
 
 ### Physical Assumptions
 1. The mass of the string per unit length is constant ("homogeneous string"). The string is perfectly elastic and does not offer any resistance to bending.
@@ -204,7 +204,7 @@ $$
 T_1 \cos \alpha = T_2 \cos \beta = T = \text{const}.
 $$ {#eq-12-2-1}
 
-In the vertical direction we have two forces, namely, the vertical components $-T_1 \sin \alpha$ and $T_2 \sin \beta$ of $T_1$ and $T_2$; here the minus sign appears because the component at $P$ is directed downward. By Newton's second law (Sec. 2.4) the resultant of these two forces is equal to the mass $\rho \Delta x$ of the portion times the acceleration $\partial^2 u / \partial t^2$, evaluated at some point between $x$ and $x + \Delta x$; here $\rho$ is the mass of the undeflected string per unit length, and $\Delta x$ is the length of the portion of the undeflected string. ($\Delta$ is generally used to denote small quantities; this has nothing to do with the Laplacian $\nabla^2$, which is sometimes also denoted by $\Delta$.) Hence
+In the vertical direction we have two forces, namely, the vertical components $-T_1 \sin \alpha$ and $T_2 \sin \beta$ of $T_1$ and $T_2$; here the minus sign appears because the component at $P$ is directed downward. By Newton's second law (<!-- TODO: replace Sec. 2.4 with actual cross-reference label -->) the resultant of these two forces is equal to the mass $\rho \Delta x$ of the portion times the acceleration $\partial^2 u / \partial t^2$, evaluated at some point between $x$ and $x + \Delta x$; here $\rho$ is the mass of the undeflected string per unit length, and $\Delta x$ is the length of the portion of the undeflected string. ($\Delta$ is generally used to denote small quantities; this has nothing to do with the Laplacian $\nabla^2$, which is sometimes also denoted by $\Delta$.) Hence
 $$
 T_2 \sin \beta - T_1 \sin \alpha = \rho \Delta x \frac{\partial^2 u}{\partial t^2}.
 $$
@@ -229,12 +229,12 @@ $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}, \quad c^2 = \frac{T}{\rho}.
 $$ {#eq-12-2-3}
 
-This is called the **one-dimensional wave equation**. We see that it is homogeneous and of the second order. The physical constant $T/\rho$ is denoted by $c^2$ (instead of $c$) to indicate that this constant is positive, a fact that will be essential to the form of the solutions. "One-dimensional" means that the equation involves only one space variable, $x$. In the next section we shall complete setting up the model and then show how to solve it by a general method that is probably the most important one for PDEs in engineering mathematics.
+This is called the **one-dimensional wave equation**. We see that it is homogeneous and of the second order. The physical constant $T/\rho$ is denoted by $c^2$ (instead of $c$) to indicate that this constant is positive, a fact that will be essential to the form of the solutions. "One-dimensional" means that the equation involves only one space variable, $x$. In @sec-solution-by-separating-variables we shall complete setting up the model and then show how to solve it by a general method that is probably the most important one for PDEs in engineering mathematics.
 
 
-## 12.3 Solution by Separating Variables. Use of Fourier Series {#sec-12-3}
+## Solution by Separating Variables. Use of Fourier Series {#sec-solution-by-separating-variables}
 
-We continue our work from @sec-12-2, where we modeled a vibrating string and obtained the one-dimensional wave equation. We now have to complete the model by adding additional conditions and then solving the resulting model.
+We continue our work from @sec-modeling-vibrating-string-wave-equation, where we modeled a vibrating string and obtained the one-dimensional wave equation. We now have to complete the model by adding additional conditions and then solving the resulting model.
 
 The model of a vibrating elastic string (a violin string, for instance) consists of the one-dimensional wave equation
 $$
@@ -242,7 +242,7 @@ $$
 $$ {#eq-12-3-1}
 for the unknown deflection $u(x, t)$ of the string, a PDE that we have just obtained, and some additional conditions, which we shall now derive.
 
-Since the string is fastened at the ends $x = 0$ and $x = L$ (see @sec-12-2), we have the two boundary conditions
+Since the string is fastened at the ends $x = 0$ and $x = L$ (see @sec-modeling-vibrating-string-wave-equation), we have the two boundary conditions
 $$
 u(0, t) = 0 \quad \text{and} \quad u(L, t) = 0 \quad \text{for all } t \ge 0.
 $$ {#eq-12-3-2}
@@ -351,12 +351,12 @@ the $n$th normal mode has $n-1$ nodes, that is, points of the string that do not
 
 @fig-12-3 shows the second normal mode for various values of $t$. At any instant the string has the form of a sine wave. When the left part of the string is moving down, the other half is moving up, and conversely. For the other modes the situation is similar.
 
-Tuning is done by changing the tension $T$. Our formula for the frequency $\lambda_n / 2\pi = cn / 2L$ of $u_n$ with $c = \sqrt{T/\rho}$ [see (3), @sec-12-2] confirms that effect because it shows that the frequency is proportional to the tension. $T$ cannot be increased indefinitely, but can you see what to do to get a string with a high fundamental mode? (Think of both $L$ and $\rho$.) Why is a violin smaller than a double-bass?
+Tuning is done by changing the tension $T$. Our formula for the frequency $\lambda_n / 2\pi = cn / 2L$ of $u_n$ with $c = \sqrt{T/\rho}$ [see (3), @sec-modeling-vibrating-string-wave-equation] confirms that effect because it shows that the frequency is proportional to the tension. $T$ cannot be increased indefinitely, but can you see what to do to get a string with a high fundamental mode? (Think of both $L$ and $\rho$.) Why is a violin smaller than a double-bass?
 
 ![Fig. 288. Second normal mode for various values of t](../images/fig-12-3.png){#fig-12-3}
 
 ### Step 3. Solution of the Entire Problem. Fourier Series
-The eigenfunctions (@eq-12-3-11) satisfy the wave equation (@eq-12-3-1) and the boundary conditions (@eq-12-3-2) (string fixed at the ends). A single $u_n$ will generally not satisfy the initial conditions (@eq-12-3-3). But since the wave equation (@eq-12-3-1) is linear and homogeneous, it follows from Fundamental Theorem 1 in @sec-12-1 that the sum of finitely many solutions $u_n$ is a solution of (@eq-12-3-1). To obtain a solution that also satisfies the initial conditions (@eq-12-3-3), we consider the infinite series (with $\lambda_n = cn\pi / L$ as before)
+The eigenfunctions (@eq-12-3-11) satisfy the wave equation (@eq-12-3-1) and the boundary conditions (@eq-12-3-2) (string fixed at the ends). A single $u_n$ will generally not satisfy the initial conditions (@eq-12-3-3). But since the wave equation (@eq-12-3-1) is linear and homogeneous, it follows from Fundamental Theorem 1 in @sec-basic-concepts-pdes that the sum of finitely many solutions $u_n$ is a solution of (@eq-12-3-1). To obtain a solution that also satisfies the initial conditions (@eq-12-3-3), we consider the infinite series (with $\lambda_n = cn\pi / L$ as before)
 $$
 u(x, t) = \sum_{n=1}^{\infty} u_n(x, t) = \sum_{n=1}^{\infty} \left( B_n \cos \lambda_n t + B_n^* \sin \lambda_n t \right) \sin \frac{n\pi}{L} x.
 $$ {#eq-12-3-12}
@@ -366,7 +366,7 @@ From (@eq-12-3-12) and the first condition in (@eq-12-3-3) we obtain
 $$
 u(x, 0) = \sum_{n=1}^{\infty} B_n \sin \frac{n\pi}{L} x = f(x) \quad (0 \le x \le L).
 $$ {#eq-12-3-13}
-Hence we must choose the $B_n$'s so that $u(x, 0)$ becomes the Fourier sine series of $f(x)$. Thus, by (4) in Sec. 11.3,
+Hence we must choose the $B_n$'s so that $u(x, 0)$ becomes the Fourier sine series of $f(x)$. Thus, by (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->,
 $$
 B_n = \frac{2}{L} \int_{0}^{L} f(x) \sin \frac{n\pi}{L} x \, dx, \quad n = 1, 2, \dots
 $$ {#eq-12-3-14}
@@ -376,7 +376,7 @@ Similarly, by differentiating (@eq-12-3-12) with respect to $t$ and using the se
 $$
 \left. \frac{\partial u}{\partial t} \right|_{t=0} = \sum_{n=1}^{\infty} \left. \left( -B_n \lambda_n \sin \lambda_n t + B_n^* \lambda_n \cos \lambda_n t \right) \sin \frac{n\pi}{L} x \right|_{t=0} = \sum_{n=1}^{\infty} B_n^* \lambda_n \sin \frac{n\pi}{L} x = g(x).
 $$
-Hence we must choose the $B_n^*$'s so that for $t=0$ the derivative $\partial u / \partial t$ becomes the Fourier sine series of $g(x)$. Thus, again by (4) in Sec. 11.3,
+Hence we must choose the $B_n^*$'s so that for $t=0$ the derivative $\partial u / \partial t$ becomes the Fourier sine series of $g(x)$. Thus, again by (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->,
 $$
 B_n^* \lambda_n = \frac{2}{L} \int_{0}^{L} g(x) \sin \frac{n\pi}{L} x \, dx.
 $$
@@ -394,7 +394,7 @@ $$
 u(x, t) = \sum_{n=1}^{\infty} B_n \cos \lambda_n t \sin \frac{n\pi}{L} x, \quad \lambda_n = \frac{cn\pi}{L}.
 $$ {#eq-12-3-16}
 
-It is possible to sum this series, that is, to write the result in a closed or finite form. For this purpose we use the formula [see (11), App. A3.1]
+It is possible to sum this series, that is, to write the result in a closed or finite form. For this purpose we use the formula [see (11), <!-- TODO: replace App. A3.1 with actual cross-reference label -->]
 $$
 \cos \frac{cn\pi}{L} t \sin \frac{n\pi}{L} x = \frac{1}{2} \left[ \sin \frac{n\pi}{L} (x - ct) + \sin \frac{n\pi}{L} (x + ct) \right].
 $$
@@ -411,14 +411,14 @@ where $f^*$ is the odd periodic extension of $f$ with the period $2L$ (@fig-12-4
 ![Fig. 289. Odd periodic extension of f(x)](../images/fig-12-4.png){#fig-12-4}
 
 ### Generalized Solution
-If $f'(x)$ and $f''(x)$ are merely piecewise continuous (see Sec. 6.1), or if those one-sided derivatives are not zero, then for each $t$ there will be finitely many values of $x$ at which the second derivatives of $u$ appearing in (@eq-12-3-1) do not exist. Except at these points the wave equation will still be satisfied. We may then regard $u(x, t)$ as a **"generalized solution"**, as it is called, that is, as a solution in a broader sense. For instance, a triangular initial deflection as in Example 1 (below) leads to a generalized solution.
+If $f'(x)$ and $f''(x)$ are merely piecewise continuous (see <!-- TODO: replace Sec. 6.1 with actual cross-reference label -->), or if those one-sided derivatives are not zero, then for each $t$ there will be finitely many values of $x$ at which the second derivatives of $u$ appearing in (@eq-12-3-1) do not exist. Except at these points the wave equation will still be satisfied. We may then regard $u(x, t)$ as a **"generalized solution"**, as it is called, that is, as a solution in a broader sense. For instance, a triangular initial deflection as in Example 1 (below) leads to a generalized solution.
 
 ### Physical Interpretation of the Solution (@eq-12-3-17)
 The graph of $f^*(x - ct)$ is obtained from the graph of $f^*(x)$ by shifting the latter $ct$ units to the right (@fig-12-5). This means that $f^*(x - ct)$ ($c > 0$) represents a wave that is traveling to the right as $t$ increases. Similarly, $f^*(x + ct)$ represents a wave that is traveling to the left, and $u(x, t)$ is the superposition of these two waves.
 
 ![Fig. 290. Interpretation of (17)](../images/fig-12-5.png){#fig-12-5}
 
-### EXAMPLE 1 Vibrating String if the Initial Deflection Is Triangular {#sec-12-3-1}
+### Vibrating String if the Initial Deflection Is Triangular {#sec-vibrating-string-initial-deflection-triangular}
 
 Find the solution of the wave equation (@eq-12-3-1) satisfying (@eq-12-3-2) and corresponding to the triangular initial deflection
 $$
@@ -429,7 +429,7 @@ f(x) = \begin{cases}
 $$
 and initial velocity zero. (@fig-12-6 shows $f(x) = u(x, 0)$ at the top.)
 
-**Solution.** Since $g(x) = 0$, we have $B_n^* = 0$ in (@eq-12-3-12), and from Example 4 in Sec. 11.3 we see that the $B_n$ are given by (5), Sec. 11.3. Thus (@eq-12-3-12) takes the form
+**Solution.** Since $g(x) = 0$, we have $B_n^* = 0$ in (@eq-12-3-12), and from Example 4 in <!-- TODO: replace Sec. 11.3 with actual cross-reference label --> we see that the $B_n$ are given by (5), <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->. Thus (@eq-12-3-12) takes the form
 $$
 u(x, t) = \frac{8k}{\pi^2} \left( \sin \frac{\pi}{L} x \cos \frac{\pi c}{L} t - \frac{1}{9} \sin \frac{3\pi}{L} x \cos \frac{3\pi c}{L} t + \frac{1}{25} \sin \frac{5\pi}{L} x \cos \frac{5\pi c}{L} t - \dots \right).
 $$
@@ -439,7 +439,7 @@ For graphing the solution we may use $u(x, 0) = f(x)$ and the above interpretati
 ![Fig. 291. Solution u(x, t) in Example 1 for various values of t (right part of the figure) obtained as the superposition of a wave traveling to the right (dashed) and a wave traveling to the left (left part of the figure)](../images/fig-12-6.png){#fig-12-6}
 
 
-## PROBLEM SET 12.3 {#sec-ps-12-3}
+## PROBLEM SET 12.3 {#sec-problem-set-12-3}
 
 **1. Frequency.** How does the frequency of the fundamental mode of the vibrating string depend on the length of the string? On the mass per unit length? What happens if we double the tension? Why is a contrabass larger than a violin?
 
@@ -564,9 +564,9 @@ $$ {#eq-12-3-23}
 Find approximate solutions of (@eq-12-3-23).
 
 
-## 12.4 D’Alembert’s Solution of the Wave Equation. Characteristics {#sec-12-4}
+## D’Alembert’s Solution of the Wave Equation. Characteristics {#sec-dalemberts-solution-wave-equation}
 
-It is interesting that the solution (@eq-12-3-17), @sec-12-3, of the wave equation
+It is interesting that the solution (@eq-12-3-17), @sec-solution-by-separating-variables, of the wave equation
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}, \quad c^2 = \frac{T}{\rho}
 $$ {#eq-12-4-1}
@@ -574,7 +574,7 @@ can be immediately obtained by transforming (@eq-12-4-1) in a suitable way, name
 $$
 v = x + ct, \quad w = x - ct.
 $$ {#eq-12-4-2}
-Then $u$ becomes a function of $v$ and $w$. The derivatives in (@eq-12-4-1) can now be expressed in terms of derivatives with respect to $v$ and $w$ by the use of the chain rule in Sec. 9.6. Denoting partial derivatives by subscripts, we see from (@eq-12-4-2) that $v_x = 1$ and $w_x = 1$. For simplicity let us denote $u(x, t)$, as a function of $v$ and $w$, by the same letter $u$. Then
+Then $u$ becomes a function of $v$ and $w$. The derivatives in (@eq-12-4-1) can now be expressed in terms of derivatives with respect to $v$ and $w$ by the use of the chain rule in <!-- TODO: replace Sec. 9.6 with actual cross-reference label -->. Denoting partial derivatives by subscripts, we see from (@eq-12-4-2) that $v_x = 1$ and $w_x = 1$. For simplicity let us denote $u(x, t)$, as a function of $v$ and $w$, by the same letter $u$. Then
 $$
 u_x = u_v v_x + u_w w_x = u_v + u_w.
 $$
@@ -586,7 +586,7 @@ Transforming the other derivative in (@eq-12-4-1) by the same procedure, we find
 $$
 u_{tt} = c^2 (u_{vv} - 2u_{vw} + u_{ww}).
 $$
-By inserting these two results in (@eq-12-4-1) we get (see footnote 2 in App. A3.2)
+By inserting these two results in (@eq-12-4-1) we get (see footnote 2 in <!-- TODO: replace App. A3.2 with actual cross-reference label -->)
 $$
 \frac{\partial^2 u}{\partial v \partial w} = 0.
 $$ {#eq-12-4-3}
@@ -600,15 +600,15 @@ u(x, t) = \phi(x + ct) + \psi(x - ct).
 $$ {#eq-12-4-4}
 This is known as **d’Alembert’s solution**[^1] of the wave equation (@eq-12-4-1).
 
-Its derivation was much more elegant than the method in @sec-12-3, but d’Alembert’s method is special, whereas the use of Fourier series applies to various equations, as we shall see.
+Its derivation was much more elegant than the method in @sec-solution-by-separating-variables, but d’Alembert’s method is special, whereas the use of Fourier series applies to various equations, as we shall see.
 
-[^1]: JEAN LE ROND D’ALEMBERT (1717–1783), French mathematician, also known for his important work in mechanics. We mention that the general theory of PDEs provides a systematic way for finding the transformation (@eq-12-4-2) that simplifies (@eq-12-4-1). See Ref. [C8] in App. 1.
+[^1]: JEAN LE ROND D’ALEMBERT (1717–1783), French mathematician, also known for his important work in mechanics. We mention that the general theory of PDEs provides a systematic way for finding the transformation (@eq-12-4-2) that simplifies (@eq-12-4-1). See Ref. [C8] in <!-- TODO: replace App. 1 with actual cross-reference label -->.
 
 ### D’Alembert’s Solution Satisfying the Initial Conditions
 $$
 u(x, 0) = f(x) \quad \text{and} \quad u_t(x, 0) = g(x).
 $$ {#eq-12-4-5}
-These are the same as (3) in @sec-12-3. By differentiating (@eq-12-4-4) we have
+These are the same as (3) in @sec-solution-by-separating-variables. By differentiating (@eq-12-4-4) we have
 $$
 u_t(x, t) = c \phi'(x + ct) - c \psi'(x - ct)
 $$ {#eq-12-4-6}
@@ -643,11 +643,11 @@ If the initial velocity is zero, we see that this reduces to
 $$
 u(x, t) = \frac{1}{2} \left[ f(x + ct) + f(x - ct) \right],
 $$ {#eq-12-4-13}
-in agreement with (@eq-12-3-17) in @sec-12-3. You may show that because of the boundary conditions (2) in that section the function $f$ must be odd and must have the period $2L$.
+in agreement with (@eq-12-3-17) in @sec-solution-by-separating-variables. You may show that because of the boundary conditions (2) in that section the function $f$ must be odd and must have the period $2L$.
 
 Our result shows that the two initial conditions [the functions $f(x)$ and $g(x)$ in (@eq-12-4-5)] determine the solution uniquely.
 
-The solution of the wave equation by the Laplace transform method will be shown in @sec-12-12.
+The solution of the wave equation by the Laplace transform method will be shown in @sec-solution-pdes-laplace-transforms.
 
 ### Characteristics. Types and Normal Forms of PDEs
 The idea of d’Alembert’s solution is just a special instance of the method of characteristics. This concerns PDEs of the form
@@ -656,13 +656,13 @@ A u_{xx} + 2B u_{xy} + C u_{yy} = F(x, y, u, u_x, u_y)
 $$ {#eq-12-4-14}
 (as well as PDEs in more than two variables). Equation (@eq-12-4-14) is called **quasilinear** because it is linear in the highest derivatives (but may be arbitrary otherwise). There are three types of PDEs (@eq-12-4-14), depending on the discriminant $AC - B^2$, as follows.
 
-| Type | Defining Condition | Example in @sec-12-1 |
+| Type | Defining Condition | Example in @sec-basic-concepts-pdes |
 |---|---|---|
 | **Hyperbolic** | $AC - B^2 < 0$ | Wave equation (@eq-12-1-1) |
 | **Parabolic** | $AC - B^2 = 0$ | Heat equation (@eq-12-1-2) |
 | **Elliptic** | $AC - B^2 > 0$ | Laplace equation (@eq-12-1-3) |
 
-Note that (1) and (2) in @sec-12-1 involve $t$, but to have $y$ as in (@eq-12-4-14), we set $y = ct$ in (1), obtaining $u_{tt} - c^2 u_{xx} = c^2 (u_{yy} - u_{xx}) = 0$. And in (2) we set $y = c^2 t$, so that $u_t - c^2 u_{xx} = c^2 (u_y - u_{xx})$.
+Note that (1) and (2) in @sec-basic-concepts-pdes involve $t$, but to have $y$ as in (@eq-12-4-14), we set $y = ct$ in (1), obtaining $u_{tt} - c^2 u_{xx} = c^2 (u_{yy} - u_{xx}) = 0$. And in (2) we set $y = c^2 t$, so that $u_t - c^2 u_{xx} = c^2 (u_y - u_{xx})$.
 
 $A$, $B$, $C$ may be functions of $x, y$, so that a PDE may be of mixed type, that is, of different type in different regions of the $xy$-plane. An important mixed-type PDE is the Tricomi equation (see Prob. 20).
 
@@ -679,18 +679,18 @@ where $y' = dy/dx$ (note $-2B$, not $+2B$). The solutions of (@eq-12-4-15) are c
 | **Parabolic** | $v = x$, $w = \Phi$ (or $\Psi$) | $u_{ww} = F_2$ |
 | **Elliptic** | $v = \frac{1}{2}(\Phi + \Psi)$, $w = \frac{1}{2i}(\Phi - \Psi)$ | $u_{vv} + u_{ww} = F_3$ |
 
-Here, $\Phi = \Phi(x, y)$, $\Psi = \Psi(x, y)$, $F_1 = F_1(v, w, u, u_v, u_w)$, etc., and we denote $u$ as function of $v, w$ again by $u$, for simplicity. We see that the normal form of a hyperbolic PDE is as in d’Alembert’s solution. In the parabolic case we get just one family of solutions $\Phi = \Psi$. In the elliptic case, $i = \sqrt{-1}$, and the characteristics are complex and are of minor interest. For derivation, see Ref. [GenRef3] in App. 1.
+Here, $\Phi = \Phi(x, y)$, $\Psi = \Psi(x, y)$, $F_1 = F_1(v, w, u, u_v, u_w)$, etc., and we denote $u$ as function of $v, w$ again by $u$, for simplicity. We see that the normal form of a hyperbolic PDE is as in d’Alembert’s solution. In the parabolic case we get just one family of solutions $\Phi = \Psi$. In the elliptic case, $i = \sqrt{-1}$, and the characteristics are complex and are of minor interest. For derivation, see Ref. [GenRef3] in <!-- TODO: replace App. 1 with actual cross-reference label -->.
 
-### EXAMPLE 1 D’Alembert’s Solution Obtained Systematically {#exm-12-4-1}
+### D’Alembert’s Solution Obtained Systematically {#sec-dalemberts-solution-obtained-systematically}
 
 The theory of characteristics gives d’Alembert’s solution in a systematic fashion. To see this, we write the wave equation $u_{tt} - c^2 u_{xx} = 0$ in the form (@eq-12-4-14) by setting $y = ct$. By the chain rule, $u_t = u_y y_t = c u_y$ and $u_{tt} = c^2 u_{yy}$. Division by $c^2$ gives $u_{yy} - u_{xx} = 0$, as stated before. Hence the characteristic equation is $(y')^2 - 1 = (y' + 1)(y' - 1) = 0$. The two families of solutions (characteristics) are $\Phi(x, y) = y + x = \text{const}$ and $\Psi(x, y) = y - x = \text{const}$. This gives the new variables $v = \Phi = y + x = ct + x$ and $w = \Psi = y - x = ct - x$ and d’Alembert’s solution $u = \phi(x + ct) + \psi(x - ct)$. <span class="math inline">\square</span>
 
 
-## PROBLEM SET 12.4 {#sec-ps-12-4}
+## PROBLEM SET 12.4 {#sec-problem-set-12-4}
 
 **1.** Show that $c$ is the speed of each of the two waves given by (@eq-12-4-4).
 
-**2.** Show that, because of the boundary conditions (2), Sec. 12.3, the function $f$ in (@eq-12-4-13) of this section must be odd and of period $2L$.
+**2.** Show that, because of the boundary conditions (2), @sec-solution-by-separating-variables, the function $f$ in (@eq-12-4-13) of this section must be odd and of period $2L$.
 
 **3.** If a steel wire 2 m in length weighs 0.9 nt (about 0.20 lb) and is stretched by a tensile force of 300 nt (about 67.4 lb), what is the corresponding speed of transverse waves?
 
@@ -698,7 +698,7 @@ The theory of characteristics gives d’Alembert’s solution in a systematic fa
 
 **5–8 GRAPHING SOLUTIONS**
 
-Using (@eq-12-4-13) sketch or graph a figure (similar to @fig-12-6 in @sec-12-3) of the deflection $u(x, t)$ of a vibrating string (length $L = 1$, ends fixed, $c = 1$) starting with initial velocity 0 and initial deflection ($k$ small, say, $k = 0.01$).
+Using (@eq-12-4-13) sketch or graph a figure (similar to @fig-12-6 in @sec-solution-by-separating-variables) of the deflection $u(x, t)$ of a vibrating string (length $L = 1$, ends fixed, $c = 1$) starting with initial velocity 0 and initial deflection ($k$ small, say, $k = 0.01$).
 
 **5.** $f(x) = k \sin \pi x$
 
@@ -741,16 +741,16 @@ $$
 A_n = \frac{2}{L} \int_{0}^{L} f(x) \sin p_n x \, dx, \quad p_n = \frac{(2n+1)\pi}{2L}.
 $$
 
-**20. Tricomi and Airy equations.** Show that the Tricomi equation $y u_{xx} + u_{yy} = 0$ is of mixed type. Obtain the Airy equation $G'' - y G = 0$ from the Tricomi equation by separation. (For solutions, see p. 446 of Ref. [GenRef1] listed in App. 1.)
+**20. Tricomi and Airy equations.** Show that the Tricomi equation $y u_{xx} + u_{yy} = 0$ is of mixed type. Obtain the Airy equation $G'' - y G = 0$ from the Tricomi equation by separation. (For solutions, see p. 446 of Ref. [GenRef1] listed in <!-- TODO: replace App. 1 with actual cross-reference label -->.)
 
 
-## 12.5 Modeling: Heat Flow from a Body in Space. Heat Equation {#sec-12-5}
+## Modeling: Heat Flow from a Body in Space. Heat Equation {#sec-modeling-heat-flow-heat-equation}
 
-After the wave equation (@sec-12-2) we now derive and discuss the next "big" PDE, the heat equation, which governs the temperature $u$ in a body in space. We obtain this model of temperature distribution under the following.
+After the wave equation (@sec-modeling-vibrating-string-wave-equation) we now derive and discuss the next "big" PDE, the heat equation, which governs the temperature $u$ in a body in space. We obtain this model of temperature distribution under the following.
 
 ### Physical Assumptions
 1. The specific heat $\sigma$ and the density $\rho$ of the material of the body are constant. No heat is produced or disappears in the body.
-2. Experiments show that, in a body, heat flows in the direction of decreasing temperature, and the rate of flow is proportional to the gradient (cf. Sec. 9.7) of the temperature; that is, the velocity $\mathbf{v}$ of the heat flow in the body is of the form
+2. Experiments show that, in a body, heat flows in the direction of decreasing temperature, and the rate of flow is proportional to the gradient (cf. <!-- TODO: replace Sec. 9.7 with actual cross-reference label -->) of the temperature; that is, the velocity $\mathbf{v}$ of the heat flow in the body is of the form
 $$
 \mathbf{v} = -K \operatorname{grad} u
 $$ {#eq-12-5-1}
@@ -759,7 +759,7 @@ where $u(x, y, z, t)$ is the temperature at a point $(x, y, z)$ and time $t$.
 
 Under these assumptions we can model heat flow as follows.
 
-Let $T$ be a region in the body bounded by a surface $S$ with outer unit normal vector $\mathbf{n}$ such that the divergence theorem (Sec. 10.7) applies. Then
+Let $T$ be a region in the body bounded by a surface $S$ with outer unit normal vector $\mathbf{n}$ such that the divergence theorem (<!-- TODO: replace Sec. 10.7 with actual cross-reference label -->) applies. Then
 $$
 \mathbf{v} \cdot \mathbf{n}
 $$
@@ -768,7 +768,7 @@ $$
 \iint_S \mathbf{v} \cdot \mathbf{n} \, dA.
 $$
 
-Note that, so far, this parallels the derivation on fluid flow in Example 1 of Sec. 10.8. Using Gauss's theorem (Sec. 10.7), we now convert our surface integral into a volume integral over the region $T$. Because of (@eq-12-5-1) this gives [use (3) in Sec. 9.8]
+Note that, so far, this parallels the derivation on fluid flow in Example 1 of <!-- TODO: replace Sec. 10.8 with actual cross-reference label -->. Using Gauss's theorem (<!-- TODO: replace Sec. 10.7 with actual cross-reference label -->), we now convert our surface integral into a volume integral over the region $T$. Because of (@eq-12-5-1) this gives [use (3) in <!-- TODO: replace Sec. 9.8 with actual cross-reference label -->]
 $$
 \iint_S \mathbf{v} \cdot \mathbf{n} \, dA = -K \iint_S (\operatorname{grad} u) \cdot \mathbf{n} \, dA = -K \iiint_T \operatorname{div} (\operatorname{grad} u) \, dx \, dy \, dz
 $$
@@ -813,9 +813,9 @@ $$
 The heat equation is also called the **diffusion equation** because it also models chemical diffusion processes of one substance or gas into another.
 
 
-## 12.6 Heat Equation: Solution by Fourier Series. Steady Two-Dimensional Heat Problems. Dirichlet Problem {#sec-12-6}
+## Heat Equation: Solution by Fourier Series. Steady Two-Dimensional Heat Problems. Dirichlet Problem {#sec-heat-equation-solution-fourier-series}
 
-We want to solve the (one-dimensional) heat equation just developed in @sec-12-5 and give several applications. This is followed much later in this section by an extension of the heat equation to two dimensions.
+We want to solve the (one-dimensional) heat equation just developed in @sec-modeling-heat-flow-heat-equation and give several applications. This is followed much later in this section by an extension of the heat equation to two dimensions.
 
 As an important application of the heat equation, let us first consider the temperature in a long thin metal bar or wire of constant cross section and homogeneous material, which is oriented along the $x$-axis (@fig-12-9) and is perfectly insulated laterally, so that heat flows in the $x$-direction only. Then besides time $t$, $u$ depends only on $x$, so that the Laplacian reduces to $u_{xx} = \partial^2 u / \partial x^2$, and the heat equation becomes the **one-dimensional heat equation**
 $$
@@ -836,7 +836,7 @@ $$ {#eq-12-6-3}
 
 Here we must have $f(0) = 0$ and $f(L) = 0$ because of (@eq-12-6-2).
 
-We shall determine a solution $u(x, t)$ of (@eq-12-6-1) satisfying (@eq-12-6-2) and (@eq-12-6-3)—one initial condition will be enough, as opposed to two initial conditions for the wave equation. Technically, our method will parallel that for the wave equation in @sec-12-3: a separation of variables, followed by the use of Fourier series. You may find a step-by-step comparison worthwhile.
+We shall determine a solution $u(x, t)$ of (@eq-12-6-1) satisfying (@eq-12-6-2) and (@eq-12-6-3)—one initial condition will be enough, as opposed to two initial conditions for the wave equation. Technically, our method will parallel that for the wave equation in @sec-solution-by-separating-variables: a separation of variables, followed by the use of Fourier series. You may find a step-by-step comparison worthwhile.
 
 ![Fig. 294. Bar under consideration](../images/fig-12-9.png){#fig-12-9}
 
@@ -846,7 +846,7 @@ $$
 \frac{\dot{G}}{c^2 G} = \frac{F''}{F}.
 $$ {#eq-12-6-4}
 
-The left side depends only on $t$ and the right side only on $x$, so that both sides must equal a constant $k$ (as in @sec-12-3). You may show that for $k = 0$ or $k > 0$ the only solution $u = FG$ satisfying (@eq-12-6-2) is $u \equiv 0$. For negative $k = -p^2$ we have from (@eq-12-6-4)
+The left side depends only on $t$ and the right side only on $x$, so that both sides must equal a constant $k$ (as in @sec-solution-by-separating-variables). You may show that for $k = 0$ or $k > 0$ the only solution $u = FG$ satisfying (@eq-12-6-2) is $u \equiv 0$. For negative $k = -p^2$ we have from (@eq-12-6-4)
 $$
 \frac{\dot{G}}{c^2 G} = \frac{F''}{F} = -p^2.
 $$
@@ -882,9 +882,9 @@ $$
 F_n(x) = \sin \frac{n\pi x}{L}, \quad n = 1, 2, \dots
 $$
 
-(As in @sec-12-3, we need not consider negative integer values of $n$.)
+(As in @sec-solution-by-separating-variables, we need not consider negative integer values of $n$.)
 
-All this was literally the same as in @sec-12-3. From now on it differs since (@eq-12-6-6) differs from (6) in @sec-12-3. We now solve (@eq-12-6-6). For $p = n\pi / L$, as just obtained, (@eq-12-6-6) becomes
+All this was literally the same as in @sec-solution-by-separating-variables. From now on it differs since (@eq-12-6-6) differs from (6) in @sec-solution-by-separating-variables. We now solve (@eq-12-6-6). For $p = n\pi / L$, as just obtained, (@eq-12-6-6) becomes
 $$
 \dot{G}_n + \lambda_n^2 G_n = 0 \quad \text{where} \quad \lambda_n = \frac{cn\pi}{L}.
 $$
@@ -910,16 +910,16 @@ $$
 u(x, 0) = \sum_{n=1}^{\infty} B_n \sin \frac{n\pi x}{L} = f(x).
 $$
 
-Ranked for (@eq-12-6-9) to satisfy (@eq-12-6-3), the $B_n$'s must be the coefficients of the Fourier sine series of $f(x)$, as given by (4) in Sec. 11.3; thus
+Ranked for (@eq-12-6-9) to satisfy (@eq-12-6-3), the $B_n$'s must be the coefficients of the Fourier sine series of $f(x)$, as given by (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->; thus
 $$
 B_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n\pi x}{L} \, dx \quad (n = 1, 2, \dots).
 $$ {#eq-12-6-10}
 
-The solution of our problem can be established, assuming that $f(x)$ is piecewise continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval; that is, under these assumptions the series (@eq-12-6-9) with coefficients (@eq-12-6-10) is the solution of our physical problem. A proof requires knowledge of uniform convergence and will be given at a later occasion (Probs. 19, 20 in Problem Set 15.5).
+The solution of our problem can be established, assuming that $f(x)$ is piecewise continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval; that is, under these assumptions the series (@eq-12-6-9) with coefficients (@eq-12-6-10) is the solution of our physical problem. A proof requires knowledge of uniform convergence and will be given at a later occasion (<!-- TODO: replace Problem Set 15.5 with actual cross-reference label -->).
 
 Because of the exponential factor, all the terms in (@eq-12-6-9) approach zero as $t$ approaches infinity. The rate of decay increases with $n$.
 
-### EXAMPLE 1 Sinusoidal Initial Temperature
+### Sinusoidal Initial Temperature {#sec-sinusoidal-initial-temperature}
 Find the temperature $u(x, t)$ in a laterally insulated copper bar 80 cm long if the initial temperature is $100 \sin(\pi x / 80)^\circ\text{C}$ and the ends are kept at $0^\circ\text{C}$. How long will it take for the maximum temperature in the bar to drop to $50^\circ\text{C}$? First guess, then calculate. Physical data for copper: density $8.92 \text{ g/cm}^3$, specific heat $0.092 \text{ cal}/(\text{g }^\circ\text{C})$, thermal conductivity $0.95 \text{ cal}/(\text{cm sec }^\circ\text{C})$.
 
 **Solution.** The initial condition gives
@@ -943,7 +943,7 @@ $$
 
 Also, $100 e^{-0.001785t} = 50$ when $t = (\ln 0.5) / (-0.001785) = 388 \text{ [sec]} \approx 6.5 \text{ [min]}$. Does your guess, or at least its order of magnitude, agree with this result? <span class="math inline">\square</span>
 
-### EXAMPLE 2 Speed of Decay
+### Speed of Decay {#sec-speed-of-decay}
 Solve the problem in Example 1 when the initial temperature is $100 \sin(3\pi x / 80)^\circ\text{C}$ and the other data are as before.
 
 **Solution.** In (@eq-12-6-9), instead of $n = 1$ we now have $n = 3$, and $\lambda_3^2 = 9\lambda_1^2 = 9 \times 0.001785 = 0.01607$, so that the solution now is
@@ -957,7 +957,7 @@ Had we chosen a bigger $n$, the decay would have been still faster, and in a sum
 
 ![Fig. 295. Example 3. Decrease of temperature with time t for L = \pi and c = 1](../images/fig-12-10.png){#fig-12-10}
 
-### EXAMPLE 3 "Triangular" Initial Temperature in a Bar
+### "Triangular" Initial Temperature in a Bar {#sec-triangular-initial-temperature-in-a-bar}
 Find the temperature in a laterally insulated bar of length $L$ whose ends are kept at temperature 0, assuming that the initial temperature is
 $$
 f(x) = \begin{cases}
@@ -976,14 +976,14 @@ Integration gives $B_n = 0$ if $n$ is even,
 $$
 B_n = \frac{4L}{n^2\pi^2} \quad (n = 1, 5, 9, \dots) \quad \text{and} \quad B_n = -\frac{4L}{n^2\pi^2} \quad (n = 3, 7, 11, \dots)
 $$
-(see also Example 4 in Sec. 11.3 with $k = L/2$). Hence the solution is
+(see also Example 4 in <!-- TODO: replace Sec. 11.3 with actual cross-reference label --> with $k = L/2$). Hence the solution is
 $$
 u(x, t) = \frac{4L}{\pi^2} \left[ \sin \frac{\pi x}{L} \exp\left(-\left(\frac{c\pi}{L}\right)^2 t\right) - \frac{1}{9} \sin \frac{3\pi x}{L} \exp\left(-\left(\frac{3c\pi}{L}\right)^2 t\right) + \frac{1}{25} \sin \frac{5\pi x}{L} \exp\left(-\left(\frac{5c\pi}{L}\right)^2 t\right) - \dots \right].
 $$
 
-@fig-12-10 shows that the temperature decreases with increasing $t$, because of the heat loss due to the cooling of the ends. Compare @fig-12-10 and @fig-12-6 in @sec-12-3 and comment. <span class="math inline">\square</span>
+@fig-12-10 shows that the temperature decreases with increasing $t$, because of the heat loss due to the cooling of the ends. Compare @fig-12-10 and @fig-12-6 in @sec-solution-by-separating-variables and comment. <span class="math inline">\square</span>
 
-### EXAMPLE 4 Bar with Insulated Ends. Eigenvalue 0
+### Bar with Insulated Ends. Eigenvalue 0 {#sec-bar-with-insulated-ends-eigenvalue-0}
 Find a solution formula of (@eq-12-6-1), (@eq-12-6-3) with (@eq-12-6-2) replaced by the condition that both ends of the bar are insulated.
 
 **Solution.** Physical experiments show that the rate of heat flow is proportional to the gradient of the temperature. Hence if the ends $x=0$ and $x=L$ of the bar are insulated, so that no heat can flow through the ends, we have $\operatorname{grad} u = u_x = \partial u / \partial x$ and the boundary conditions
@@ -1011,15 +1011,15 @@ Its coefficients result from the initial condition (@eq-12-6-3),
 $$
 u(x, 0) = \sum_{n=0}^{\infty} A_n \cos \frac{n\pi x}{L} = f(x),
 $$
-in the form of (2) in Sec. 11.3, that is,
+in the form of (2) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->, that is,
 $$
 A_0 = \frac{1}{L} \int_0^L f(x) \, dx, \quad A_n = \frac{2}{L} \int_0^L f(x) \cos \frac{n\pi x}{L} \, dx \quad (n = 1, 2, \dots).
 $$ {#eq-12-6-13} <span class="math inline">\square</span>
 
-### EXAMPLE 5 "Triangular" Initial Temperature in a Bar with Insulated Ends
+### "Triangular" Initial Temperature in a Bar with Insulated Ends {#sec-triangular-initial-temperature-in-a-bar-with-insulated-ends}
 Find the temperature in the bar in Example 3, assuming that the ends are insulated (instead of being kept at temperature 0).
 
-**Solution.** For the triangular initial temperature, (@eq-12-6-13) gives $A_0 = L/4$ and (see also Example 4 in Sec. 11.3 with $k = L/2$)
+**Solution.** For the triangular initial temperature, (@eq-12-6-13) gives $A_0 = L/4$ and (see also Example 4 in <!-- TODO: replace Sec. 11.3 with actual cross-reference label --> with $k = L/2$)
 $$
 A_n = \frac{2}{L} \left[ \int_0^{L/2} x \cos \frac{n\pi x}{L} \, dx + \int_{L/2}^L (L-x) \cos \frac{n\pi x}{L} \, dx \right] = \frac{2L}{n^2\pi^2} \left( 2 \cos \frac{n\pi}{2} - \cos n\pi - 1 \right).
 $$
@@ -1031,7 +1031,7 @@ $$
 
 We see that the terms decrease with increasing $t$, and $u \to L/4$ as $t \to \infty$; this is the mean value of the initial temperature. This is plausible because no heat can escape from this totally insulated bar. In contrast, the cooling of the ends in Example 3 led to heat loss and $u \to 0$, the temperature at which the ends were kept. <span class="math inline">\square</span>
 
-### Steady Two-Dimensional Heat Problems. Laplace's Equation
+### Steady Two-Dimensional Heat Problems. Laplace's Equation {#sec-steady-two-dimensional-heat-problems}
 We shall now extend our discussion from one to two space dimensions and consider the two-dimensional heat equation
 $$
 \frac{\partial u}{\partial t} = c^2 \nabla^2 u = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
@@ -1040,7 +1040,7 @@ for steady (that is, time-independent) problems. Then $\partial u / \partial t =
 $$
 \nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
 $$ {#eq-12-6-14}
-(which has already occurred in Sec. 10.8 and will be considered further in @sec-12-8–@sec-12-11). A heat problem then consists of this PDE to be considered in some region $R$ of the $xy$-plane and a given boundary condition on the boundary curve $C$ of $R$. This is a boundary value problem (BVP). One calls it:
+(which has already occurred in <!-- TODO: replace Sec. 10.8 with actual cross-reference label --> and will be considered further in @sec-modeling-membrane-two-dimensional-wave-equation to @sec-laplaces-equation-cylindrical-spherical-coordinates). A heat problem then consists of this PDE to be considered in some region $R$ of the $xy$-plane and a given boundary condition on the boundary curve $C$ of $R$. This is a boundary value problem (BVP). One calls it:
 
 * **First BVP or Dirichlet Problem** if $u$ is prescribed on $C$ ("Dirichlet boundary condition")
 * **Second BVP or Neumann Problem** if the normal derivative $u_n = \partial u / \partial n$ is prescribed on $C$ ("Neumann boundary condition")
@@ -1105,7 +1105,7 @@ $$
 u(x, b) = \sum_{n=1}^{\infty} \left( A_n^* \sinh \frac{n\pi b}{a} \right) \sin \frac{n\pi x}{a}.
 $$
 
-This shows that the expressions in the parentheses must be the Fourier sine coefficients $b_n$ of $f(x)$; that is, by (4) in Sec. 11.3,
+This shows that the expressions in the parentheses must be the Fourier sine coefficients $b_n$ of $f(x)$; that is, by (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->,
 $$
 A_n^* \sinh \frac{n\pi b}{a} = \frac{2}{a} \int_0^a f(x) \sin \frac{n\pi x}{a} \, dx.
 $$
@@ -1119,17 +1119,17 @@ $$
 A_n^* = \frac{2}{a \sinh(n\pi b / a)} \int_0^a f(x) \sin \frac{n\pi x}{a} \, dx.
 $$ {#eq-12-6-18}
 
-We have obtained this solution formally, neither considering convergence nor showing that the series for $u$, $u_{xx}$, and $u_{yy}$ have the right sums. This can be proved if one assumes that $f$ and $f'$ are continuous and $f''$ is piecewise continuous on the interval $0 \le x \le a$. The proof is somewhat involved and relies on uniform convergence. It can be found in [C4] listed in App. 1.
+We have obtained this solution formally, neither considering convergence nor showing that the series for $u$, $u_{xx}$, and $u_{yy}$ have the right sums. This can be proved if one assumes that $f$ and $f'$ are continuous and $f''$ is piecewise continuous on the interval $0 \le x \le a$. The proof is somewhat involved and relies on uniform convergence. It can be found in [C4] listed in <!-- TODO: replace App. 1 with actual cross-reference label -->.
 
 ### Unifying Power of Methods. Electrostatics, Elasticity
 The Laplace equation (@eq-12-6-14) also governs the electrostatic potential of electrical charges in any region that is free of these charges. Thus our steady-state heat problem can also be interpreted as an electrostatic potential problem. Then (@eq-12-6-17), (@eq-12-6-18) is the potential in the rectangle $R$ when the upper side of $R$ is at potential $f(x)$ and the other three sides are grounded.
 
-Actually, in the steady-state case, the two-dimensional wave equation (to be considered in @sec-12-8 and @sec-12-9) also reduces to (@eq-12-6-14). Then (@eq-12-6-17), (@eq-12-6-18) is the displacement of a rectangular elastic membrane (rubber sheet, drumhead) that is fixed along its boundary, with three sides lying in the $xy$-plane and the fourth side given the displacement $f(x)$.
+Actually, in the steady-state case, the two-dimensional wave equation (to be considered in @sec-modeling-membrane-two-dimensional-wave-equation and @sec-rectangular-membrane-double-fourier-series) also reduces to (@eq-12-6-14). Then (@eq-12-6-17), (@eq-12-6-18) is the displacement of a rectangular elastic membrane (rubber sheet, drumhead) that is fixed along its boundary, with three sides lying in the $xy$-plane and the fourth side given the displacement $f(x)$.
 
 This is another impressive demonstration of the unifying power of mathematics. It illustrates that entirely different physical systems may have the same mathematical model and can thus be treated by the same mathematical methods.
 
 
-## PROBLEM SET 12.6 {#sec-ps-12-6}
+## PROBLEM SET 12.6 {#sec-problem-set-12-6}
 
 **1. Decay.** How does the rate of decay of (@eq-12-6-8) with fixed $n$ depend on the specific heat, the density, and the thermal conductivity of the material?
 
@@ -1137,7 +1137,7 @@ This is another impressive demonstration of the unifying power of mathematics. I
 
 **3. Eigenfunctions.** Sketch or graph and compare the first three eigenfunctions (@eq-12-6-8) with $B_n = 1$, $c = 1$, and $L = \pi$ for $t = 0, 0.1, 0.2, \dots, 1.0$.
 
-**4. WRITING PROJECT. Wave and Heat Equations.** Compare these PDEs with respect to general behavior of eigenfunctions and kind of boundary and initial conditions. State the difference between @fig-12-6 in @sec-12-3 and @fig-12-10.
+**4. WRITING PROJECT. Wave and Heat Equations.** Compare these PDEs with respect to general behavior of eigenfunctions and kind of boundary and initial conditions. State the difference between @fig-12-6 in @sec-solution-by-separating-variables and @fig-12-10.
 
 **5–7 LATERALLY INSULATED BAR**
 
@@ -1159,7 +1159,7 @@ Find the temperature $u(x, t)$ in a bar of silver of length 10 cm and constant c
 
 "Adiabatic" means no heat exchange with the neighborhood, because the bar is completely insulated, also at the ends. Physical Information: The heat flux at the ends is proportional to the value of $\partial u / \partial x$ there.
 
-**11.** Show that for the completely insulated bar, $u_x(0, t) = 0$, $u_x(L, t) = 0$, $u(x, 0) = f(x)$ and separation of variables gives the following solution, with $A_n$ given by (2) in Sec. 11.3:
+**11.** Show that for the completely insulated bar, $u_x(0, t) = 0$, $u_x(L, t) = 0$, $u(x, 0) = f(x)$ and separation of variables gives the following solution, with $A_n$ given by (2) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label -->:
 $$
 u(x, t) = A_0 + \sum_{n=1}^{\infty} A_n \cos \frac{n\pi x}{L} e^{-(cn\pi/L)^2 t}.
 $$
@@ -1205,13 +1205,13 @@ $$
 **25.** Find formulas similar to (@eq-12-6-17), (@eq-12-6-18) for the temperature in the rectangle $R$ of the text when the lower side of $R$ is kept at temperature $f(x)$ and the other sides are kept at $0^\circ\text{C}$.
 
 
-## 12.7 Heat Equation: Modeling Very Long Bars. Solution by Fourier Integrals and Transforms {#sec-12-7}
+## Heat Equation: Modeling Very Long Bars. Solution by Fourier Integrals and Transforms {#sec-heat-equation-modeling-very-long-bars}
 
 Our discussion of the heat equation
 $$
 \frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2}
 $$ {#eq-12-7-1}
-in the last section extends to bars of infinite length, which are good models of very long bars or wires (such as a wire of length, say, 300 ft). Then the role of Fourier series in the solution process will be taken by Fourier integrals (Sec. 11.7).
+in the last section extends to bars of infinite length, which are good models of very long bars or wires (such as a wire of length, say, 300 ft). Then the role of Fourier series in the solution process will be taken by Fourier integrals (<!-- TODO: replace Sec. 11.7 with actual cross-reference label -->).
 
 Let us illustrate the method by solving (@eq-12-7-1) for a bar that extends to infinity on both sides (and is laterally insulated as before). Then we do not have boundary conditions, but only the initial condition
 $$
@@ -1252,12 +1252,12 @@ $$
 u(x, 0) = \int_0^{\infty} [A(p) \cos px + B(p) \sin px] \, dp = f(x).
 $$ {#eq-12-7-7}
 
-This gives $A(p)$ and $B(p)$ in terms of $f(x)$; indeed, from (4) in Sec. 11.7 we have
+This gives $A(p)$ and $B(p)$ in terms of $f(x)$; indeed, from (4) in <!-- TODO: replace Sec. 11.7 with actual cross-reference label --> we have
 $$
 A(p) = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \cos pv \, dv, \quad B(p) = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \sin pv \, dv.
 $$ {#eq-12-7-8}
 
-According to (1*), Sec. 11.9, our Fourier integral (@eq-12-7-7) with these $A(p)$ and $B(p)$ can be written
+According to (1*), <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->, our Fourier integral (@eq-12-7-7) with these $A(p)$ and $B(p)$ can be written
 $$
 u(x, 0) = \frac{1}{\pi} \int_0^{\infty} \left[ \int_{-\infty}^{\infty} f(v) \cos (px - pv) \, dv \right] \, dp.
 $$
@@ -1277,7 +1277,7 @@ $$
 \int_0^{\infty} e^{-s^2} \cos 2bs \, ds = \frac{\sqrt{\pi}}{2} e^{-b^2}.
 $$ {#eq-12-7-10}
 
-[A derivation of (@eq-12-7-10) is given in Problem Set 16.4 (Team Project 24).] This takes the form of our inner integral if we choose $p = s / (c\sqrt{t})$ as a new variable of integration and set
+[A derivation of (@eq-12-7-10) is given in <!-- TODO: replace Problem Set 16.4 with actual cross-reference label --> (Team Project 24).] This takes the form of our inner integral if we choose $p = s / (c\sqrt{t})$ as a new variable of integration and set
 $$
 b = \frac{x-v}{2c\sqrt{t}}.
 $$
@@ -1299,7 +1299,7 @@ $$ {#eq-12-7-12}
 
 If $f(x)$ is bounded for all values of $x$ and integrable in every finite interval, it can be shown (see Ref. [C10]) that the function (@eq-12-7-11) or (@eq-12-7-12) satisfies (@eq-12-7-1) and (@eq-12-7-2). Hence this function is the required solution in the present case.
 
-### EXAMPLE 1 Temperature in an Infinite Bar
+### Temperature in an Infinite Bar {#sec-temperature-in-an-infinite-bar}
 Find the temperature in the infinite bar if the initial temperature is (@fig-12-13)
 $$
 f(x) = \begin{cases}
@@ -1320,21 +1320,21 @@ $$
 u(x, t) = \frac{U_0}{\sqrt{\pi}} \int_{-(1+x)/(2c\sqrt{t})}^{(1-x)/(2c\sqrt{t})} e^{-z^2} \, dz \quad (t > 0).
 $$ {#eq-12-7-13}
 
-We mention that this integral is not an elementary function, but can be expressed in terms of the error function, whose values have been tabulated (see CAS Project 9, @sec-ps-12-7). @fig-12-14 shows $u(x, t)$ for $U_0 = 100^\circ\text{C}$, $c^2 = 1\text{ cm}^2/\text{sec}$, and several values of $t$. <span class="math inline">\square</span>
+We mention that this integral is not an elementary function, but can be expressed in terms of the error function, whose values have been tabulated (see CAS Project 9, @sec-problem-set-12-7). @fig-12-14 shows $u(x, t)$ for $U_0 = 100^\circ\text{C}$, $c^2 = 1\text{ cm}^2/\text{sec}$, and several values of $t$. <span class="math inline">\square</span>
 
 ![Fig. 299. Solution u(x, t) in Example 1 for U_0 = 100^\circ\text{C}, c^2 = 1\text{ cm}^2\text{/sec}, and several values of t](../images/fig-12-14.png){#fig-12-14}
 
 ### Use of Fourier Transforms
-The Fourier transform is closely related to the Fourier integral, from which we obtained the transform in Sec. 11.9. And the transition to the Fourier cosine and sine transform in Sec. 11.8 was even simpler. Hence it should not surprise you that we can use these transforms for solving our present or similar problems. The Fourier transform applies to problems concerning the entire axis, and the Fourier cosine and sine transforms to problems involving the positive half-axis. Let us explain these transform methods by typical applications that fit our present discussion.
+The Fourier transform is closely related to the Fourier integral, from which we obtained the transform in <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->. And the transition to the Fourier cosine and sine transform in <!-- TODO: replace Sec. 11.8 with actual cross-reference label --> was even simpler. Hence it should not surprise you that we can use these transforms for solving our present or similar problems. The Fourier transform applies to problems concerning the entire axis, and the Fourier cosine and sine transforms to problems involving the positive half-axis. Let us explain these transform methods by typical applications that fit our present discussion.
 
-### EXAMPLE 2 Temperature in the Infinite Bar in Example 1
+### Temperature in the Infinite Bar in Example 1 {#sec-temperature-in-the-infinite-bar-in-example-1}
 Solve Example 1 using the Fourier transform.
 
 **Solution.** The problem consists of the heat equation (@eq-12-7-1) and the initial condition (@eq-12-7-2), which in this example is $f(x) = U_0$ if $|x| < 1$ and 0 otherwise.
 
 Our strategy is to take the Fourier transform with respect to $x$ and then to solve the resulting ordinary DE in $t$. The details are as follows.
 
-Let $\hat{u} = \mathcal{F}(u)$ denote the Fourier transform of $u$, regarded as a function of $x$. From (10) in Sec. 11.9 we see that the heat equation (@eq-12-7-1) gives
+Let $\hat{u} = \mathcal{F}(u)$ denote the Fourier transform of $u$, regarded as a function of $x$. From (10) in <!-- TODO: replace Sec. 11.9 with actual cross-reference label --> we see that the heat equation (@eq-12-7-1) gives
 $$
 \mathcal{F}(u_t) = c^2 \mathcal{F}(u_{xx}) = c^2 (-w^2) \mathcal{F}(u) = -c^2 w^2 \hat{u}.
 $$
@@ -1348,7 +1348,7 @@ $$
 \frac{\partial \hat{u}}{\partial t} = -c^2 w^2 \hat{u}.
 $$
 
-Since this equation involves only a derivative with respect to $t$ but none with respect to $w$, this is a first-order ordinary DE, with $t$ as the independent variable and $w$ as a parameter. By separating variables (Sec. 1.3) we get the general solution
+Since this equation involves only a derivative with respect to $t$ but none with respect to $w$, this is a first-order ordinary DE, with $t$ as the independent variable and $w$ as a parameter. By separating variables (<!-- TODO: replace Sec. 1.3 with actual cross-reference label -->) we get the general solution
 $$
 \hat{u}(w, t) = C(w) e^{-c^2 w^2 t}
 $$
@@ -1361,7 +1361,7 @@ $$
 \hat{u}(w, t) = \hat{f}(w) e^{-c^2 w^2 t}.
 $$
 
-The inversion formula (7), Sec. 11.9, now gives the solution
+The inversion formula (7), <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->, now gives the solution
 $$
 u(x, t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{f}(w) e^{-c^2 w^2 t} e^{iwx} \, dw.
 $$ {#eq-12-7-14}
@@ -1376,7 +1376,7 @@ $$
 u(x, t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(v) \left[ \int_{-\infty}^{\infty} e^{-c^2 w^2 t} e^{iw(x - v)} \, dw \right] \, dv.
 $$
 
-By the Euler formula (3), Sec. 11.9, the integrand of the inner integral equals
+By the Euler formula (3), <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->, the integrand of the inner integral equals
 $$
 e^{-c^2 w^2 t} \cos (wx - wv) + i e^{-c^2 w^2 t} \sin (wx - wv).
 $$
@@ -1388,7 +1388,7 @@ $$
 
 This agrees with (@eq-12-7-9) (with $p = w$) and leads to the further formulas (@eq-12-7-11) and (@eq-12-7-13). <span class="math inline">\square</span>
 
-### EXAMPLE 3 Solution in Example 1 by the Method of Convolution
+### Solution in Example 1 by the Method of Convolution {#sec-solution-in-example-1-by-the-method-of-convolution}
 Solve the heat problem in Example 1 by the method of convolution.
 
 **Solution.** The beginning is as in Example 2 and leads to (@eq-12-7-14), that is,
@@ -1396,7 +1396,7 @@ $$
 u(x, t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{f}(w) e^{-c^2 w^2 t} e^{iwx} \, dw.
 $$ {#eq-12-7-15}
 
-Now comes the crucial idea. We recognize that this is of the form (13) in Sec. 11.9, that is,
+Now comes the crucial idea. We recognize that this is of the form (13) in <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->, that is,
 $$
 u(x, t) = \mathcal{F}^{-1}\{ \sqrt{2\pi} \hat{f}(w) \hat{g}(w) \} = (f * g)(x)
 $$ {#eq-12-7-16}
@@ -1405,11 +1405,11 @@ $$
 \hat{g}(w) = \frac{1}{\sqrt{2\pi}} e^{-c^2 w^2 t}.
 $$ {#eq-12-7-17}
 
-Since, by the definition of convolution [(11), Sec. 11.9],
+Since, by the definition of convolution [(11), <!-- TODO: replace Sec. 11.9 with actual cross-reference label -->],
 $$
 (f * g)(x) = \int_{-\infty}^{\infty} f(p) g(x-p) \, dp,
 $$ {#eq-12-7-18}
-as our next and last step we must determine the inverse Fourier transform $g$ of $\hat{g}$. For this we can use formula 9 in Table III of Sec. 11.10,
+as our next and last step we must determine the inverse Fourier transform $g$ of $\hat{g}$. For this we can use formula 9 in Table III of <!-- TODO: replace Sec. 11.10 with actual cross-reference label -->,
 $$
 \mathcal{F}(e^{-ax^2}) = \frac{1}{\sqrt{2a}} e^{-w^2 / (4a)}
 $$
@@ -1430,8 +1430,8 @@ $$ {#eq-12-7-19}
 
 This solution formula of our problem agrees with (@eq-12-7-11). We wrote $(f * g)(x)$ without indicating the parameter $t$ with respect to which we did not integrate. <span class="math inline">\square</span>
 
-### EXAMPLE 4 Fourier Sine Transform Applied to the Heat Equation
-If a laterally insulated bar extends from $x = 0$ to infinity, we can use the Fourier sine transform. We let the initial temperature be $u(x, 0) = f(x)$ and impose the boundary condition $u(0, t) = 0$. Then from the heat equation and (9b) in Sec. 11.8, since $f(0) = u(0, 0) = 0$, we obtain
+### Fourier Sine Transform Applied to the Heat Equation {#sec-fourier-sine-transform-applied-to-the-heat-equation}
+If a laterally insulated bar extends from $x = 0$ to infinity, we can use the Fourier sine transform. We let the initial temperature be $u(x, 0) = f(x)$ and impose the boundary condition $u(0, t) = 0$. Then from the heat equation and (9b) in <!-- TODO: replace Sec. 11.8 with actual cross-reference label -->, since $f(0) = u(0, 0) = 0$, we obtain
 $$
 \mathcal{F}_s(u_t) = \frac{\partial \hat{u}_s}{\partial t} = c^2 \mathcal{F}_s(u_{xx}) = c^2 \left( -w^2 \hat{u}_s(w, t) + \sqrt{\frac{2}{\pi}} w u(0, t) \right) = -c^2 w^2 \hat{u}_s(w, t).
 $$
@@ -1460,7 +1460,7 @@ $$ {#eq-12-7-20}
 ![Fig. 300. Solution (20) in Example 4](../images/fig-12-15.png){#fig-12-15}
 
 
-## PROBLEM SET 12.7 {#sec-ps-12-7}
+## PROBLEM SET 12.7 {#sec-problem-set-12-7}
 
 **1. CAS PROJECT. Heat Flow.**
 (a) Graph the basic @fig-12-14.
@@ -1473,7 +1473,7 @@ Using (@eq-12-7-6), obtain the solution of (@eq-12-7-1) in integral form satisfy
 
 **2.** $f(x) = 1$ if $|x| < a$ and 0 otherwise.
 
-**3.** $f(x) = \frac{1}{1 + x^2}$. *Hint.* Use (15) in Sec. 11.7.
+**3.** $f(x) = \frac{1}{1 + x^2}$. *Hint.* Use (15) in <!-- TODO: replace Sec. 11.7 with actual cross-reference label -->.
 
 **4.** $f(x) = e^{-|x|}$
 
@@ -1481,7 +1481,7 @@ Using (@eq-12-7-6), obtain the solution of (@eq-12-7-1) in integral form satisfy
 
 **6.** $f(x) = x$ if $|x| < 1$ and 0 otherwise.
 
-**7.** $f(x) = \frac{\sin x}{x}$. *Hint.* Use Prob. 4 in Sec. 11.7.
+**7.** $f(x) = \frac{\sin x}{x}$. *Hint.* Use Prob. 4 in <!-- TODO: replace Sec. 11.7 with actual cross-reference label -->.
 
 **8.** Verify that $u$ in the solution of Prob. 7 satisfies the initial condition.
 
@@ -1513,14 +1513,14 @@ $$
 
 **14.** Express the temperature (@eq-12-7-13) in terms of the error function.
 
-**15.** Show that $\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-s^2/2} \, ds = \frac{1}{2} + \frac{1}{2} \text{erf}\left( \frac{x}{\sqrt{2}} \right)$. Here, the integral is the definition of the "distribution function of the normal probability distribution" to be discussed in Sec. 24.8.
+**15.** Show that $\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-s^2/2} \, ds = \frac{1}{2} + \frac{1}{2} \text{erf}\left( \frac{x}{\sqrt{2}} \right)$. Here, the integral is the definition of the "distribution function of the normal probability distribution" to be discussed in <!-- TODO: replace Sec. 24.8 with actual cross-reference label -->.
 
 
-## 12.8 Modeling: Membrane, Two-Dimensional Wave Equation {#sec-12-8}
+## Modeling: Membrane, Two-Dimensional Wave Equation {#sec-modeling-membrane-two-dimensional-wave-equation}
 
-Since the modeling here will be similar to that of @sec-12-2, you may want to take another look at @sec-12-2.
+Since the modeling here will be similar to that of @sec-modeling-vibrating-string-wave-equation, you may want to take another look at @sec-modeling-vibrating-string-wave-equation.
 
-The vibrating string in @sec-12-2 is a basic one-dimensional vibrational problem. Equally important is its two-dimensional analog, namely, the motion of an elastic membrane, such as a drumhead, that is stretched and then fixed along its edge. Indeed, setting up the model will proceed almost as in @sec-12-2.
+The vibrating string in @sec-modeling-vibrating-string-wave-equation is a basic one-dimensional vibrational problem. Equally important is its two-dimensional analog, namely, the motion of an elastic membrane, such as a drumhead, that is stretched and then fixed along its edge. Indeed, setting up the model will proceed almost as in @sec-modeling-vibrating-string-wave-equation.
 
 ### Physical Assumptions
 1. The mass of the membrane per unit area is constant ("homogeneous membrane"). The membrane is perfectly flexible and offers no resistance to bending.
@@ -1530,7 +1530,7 @@ The vibrating string in @sec-12-2 is a basic one-dimensional vibrational problem
 Although these assumptions cannot be realized exactly, they hold relatively accurately for small transverse vibrations of a thin elastic membrane, so that we shall obtain a good model, for instance, of a drumhead.
 
 ### Derivation of the PDE of the Model ("Two-Dimensional Wave Equation") from Forces
-As in @sec-12-2 the model will consist of a PDE and additional conditions. The PDE will be obtained by the same method as in @sec-12-2, namely, by considering the forces acting on a small portion of the physical system, the membrane in @fig-12-16, as it is moving up and down.
+As in @sec-modeling-vibrating-string-wave-equation the model will consist of a PDE and additional conditions. The PDE will be obtained by the same method as in @sec-modeling-vibrating-string-wave-equation, namely, by considering the forces acting on a small portion of the physical system, the membrane in @fig-12-16, as it is moving up and down.
 
 Since the deflections of the membrane and the angles of inclination are small, the sides of the portion are approximately equal to $\Delta x$ and $\Delta y$. The tension $T$ is the force per unit length. Hence the forces acting on the sides of the portion are approximately $T\Delta x$ and $T\Delta y$. Since the membrane is perfectly flexible, these forces are tangent to the moving membrane at every instant.
 
@@ -1556,7 +1556,7 @@ where $x_1$ and $x_2$ are values between $x$ and $x + \Delta x$.
 ![Fig. 301. Vibrating membrane](../images/fig-12-16.png){#fig-12-16}
 
 ### Newton's Second Law Gives the PDE of the Model
-By Newton's second law (see Sec. 2.4) the sum of the forces given by (@eq-12-8-1) and (@eq-12-8-2) is equal to the mass $\rho \Delta A$ of that small portion times the acceleration $\partial^2 u / \partial t^2$; here $\rho$ is the mass of the undeflected membrane per unit area, and $\Delta A = \Delta x \Delta y$ is the area of that portion when it is undeflected. Thus
+By Newton's second law (see <!-- TODO: replace Sec. 2.4 with actual cross-reference label -->) the sum of the forces given by (@eq-12-8-1) and (@eq-12-8-2) is equal to the mass $\rho \Delta A$ of that small portion times the acceleration $\partial^2 u / \partial t^2$; here $\rho$ is the mass of the undeflected membrane per unit area, and $\Delta A = \Delta x \Delta y$ is the area of that portion when it is undeflected. Thus
 $$
 \rho \Delta x \Delta y \frac{\partial^2 u}{\partial t^2} = T\Delta y [u_x(x + \Delta x, y_1) - u_x(x, y_2)] + T\Delta x [u_y(x_1, y + \Delta y) - u_y(x_2, y)]
 $$
@@ -1570,7 +1570,7 @@ $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), \quad c^2 = \frac{T}{\rho}.
 $$ {#eq-12-8-3}
 
-This PDE is called the **two-dimensional wave equation**. The expression in parentheses is the Laplacian $\nabla^2 u$ of $u$ (Sec. 10.8). Hence (@eq-12-8-3) can be written
+This PDE is called the **two-dimensional wave equation**. The expression in parentheses is the Laplacian $\nabla^2 u$ of $u$ (<!-- TODO: replace Sec. 10.8 with actual cross-reference label -->). Hence (@eq-12-8-3) can be written
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u.
 $$ {#eq-12-8-3prime}
@@ -1578,9 +1578,9 @@ $$ {#eq-12-8-3prime}
 Solutions of the wave equation (@eq-12-8-3) will be obtained and discussed in the next section.
 
 
-## 12.9 Rectangular Membrane. Double Fourier Series {#sec-12-9}
+## Rectangular Membrane. Double Fourier Series {#sec-rectangular-membrane-double-fourier-series}
 
-Now we develop a solution for the PDE obtained in @sec-12-8. Details are as follows.
+Now we develop a solution for the PDE obtained in @sec-modeling-membrane-two-dimensional-wave-equation. Details are as follows.
 
 The model of the vibrating membrane for obtaining the displacement $u(x, y, t)$ of a point $(x, y)$ of the membrane from rest ($u=0$) at time $t$ is
 $$
@@ -1596,7 +1596,7 @@ $$
 u_t(x, y, 0) = g(x, y).
 $$ {#eq-12-9-3b}
 
-Here (@eq-12-9-1) is the two-dimensional wave equation with $c^2 = T/\rho$ just derived, (@eq-12-9-2) is the boundary condition (membrane fixed along the boundary in the $xy$-plane for all times $t \ge 0$), and (@eq-12-9-3a), (@eq-12-9-3b) are the initial conditions at $t=0$, consisting of the given initial displacement (initial shape) $f(x, y)$ and the given initial velocity $g(x, y)$, where $u_t = \partial u / \partial t$. We see that these conditions are quite similar to those for the string in @sec-12-2.
+Here (@eq-12-9-1) is the two-dimensional wave equation with $c^2 = T/\rho$ just derived, (@eq-12-9-2) is the boundary condition (membrane fixed along the boundary in the $xy$-plane for all times $t \ge 0$), and (@eq-12-9-3a), (@eq-12-9-3b) are the initial conditions at $t=0$, consisting of the given initial displacement (initial shape) $f(x, y)$ and the given initial velocity $g(x, y)$, where $u_t = \partial u / \partial t$. We see that these conditions are quite similar to those for the string in @sec-modeling-vibrating-string-wave-equation.
 
 Let us consider the rectangular membrane $R$ in @fig-12-17. This is our first important model. It is much simpler than the circular drumhead, which will follow later. First we note that the boundary in equation (@eq-12-9-2) is the rectangle in @fig-12-17. We shall solve this problem in three steps:
 
@@ -1616,7 +1616,7 @@ $$
 \frac{\ddot{G}}{c^2 G} = \frac{1}{F}(F_{xx} + F_{yy}).
 $$
 
-Since the left side depends only on $t$, whereas the right side is independent of $t$, both sides must equal a constant. By a simple investigation we see that only negative values of that constant will lead to solutions that satisfy (@eq-12-9-2) without being identically zero; this is similar to @sec-12-3. Denoting that negative constant by $-
+Since the left side depends only on $t$, whereas the right side is independent of $t$, both sides must equal a constant. By a simple investigation we see that only negative values of that constant will lead to solutions that satisfy (@eq-12-9-2) without being identically zero; this is similar to @sec-solution-by-separating-variables. Denoting that negative constant by $-
 u^2$, we have
 $$
 \frac{\ddot{G}}{c^2 G} = \frac{1}{F}(F_{xx} + F_{yy}) = -
@@ -1714,7 +1714,7 @@ with $\lambda_{mn}$ according to (@eq-12-9-9), are solutions of the wave equatio
 #### Discussion of Eigenfunctions
 It is very interesting that, depending on $a$ and $b$, several functions $F_{mn}$ may correspond to the same eigenvalue. Physically this means that there may exist vibrations having the same frequency but entirely different nodal lines (curves of points on the membrane that do not move). Let us illustrate this with the following example.
 
-### EXAMPLE 1 Eigenvalues and Eigenfunctions of the Square Membrane
+### Eigenvalues and Eigenfunctions of the Square Membrane {#sec-eigenvalues-and-eigenfunctions-of-the-square-membrane}
 Consider the square membrane with $a = b = 1$. From (@eq-12-9-9) we obtain its eigenvalues
 $$
 \lambda_{mn} = c\pi\sqrt{m^2 + n^2}.
@@ -1766,7 +1766,7 @@ This happens because 65 can be expressed as the sum of two squares of positive i
 ![Fig. 304. Nodal lines of the solution (12) for some values of B_21](../images/fig-12-19.png){#fig-12-19}
 
 ### Step 3. Solution of the Model (@eq-12-9-1), (@eq-12-9-2), (@eq-12-9-3a), (@eq-12-9-3b). Double Fourier Series
-So far we have solutions (@eq-12-9-10) satisfying (@eq-12-9-1) and (@eq-12-9-2) only. To obtain the solutions that also satisfy (@eq-12-9-3a), (@eq-12-9-3b), we proceed as in @sec-12-3. We consider the double series
+So far we have solutions (@eq-12-9-10) satisfying (@eq-12-9-1) and (@eq-12-9-2) only. To obtain the solutions that also satisfy (@eq-12-9-3a), (@eq-12-9-3b), we proceed as in @sec-solution-by-separating-variables. We consider the double series
 $$
 u(x, y, t) = \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} u_{mn}(x, y, t) = \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} \left( B_{mn} \cos \lambda_{mn} t + B_{mn}^* \sin \lambda_{mn} t \right) \sin \frac{m\pi x}{a} \sin \frac{n\pi y}{b}.
 $$ {#eq-12-9-14}
@@ -1785,12 +1785,12 @@ $$
 f(x, y) = \sum_{m=1}^{\infty} K_m(y) \sin \frac{m\pi x}{a}.
 $$
 
-For fixed $y$ this is the Fourier sine series of $f(x, y)$, considered as a function of $x$. From (4) in Sec. 11.3 we see that the coefficients of this expansion are
+For fixed $y$ this is the Fourier sine series of $f(x, y)$, considered as a function of $x$. From (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label --> we see that the coefficients of this expansion are
 $$
 K_m(y) = \frac{2}{a} \int_0^a f(x, y) \sin \frac{m\pi x}{a} \, dx.
 $$ {#eq-12-9-17}
 
-Furthermore, (@eq-12-9-16) is the Fourier sine series of $K_m(y)$, and from (4) in Sec. 11.3 it follows that the coefficients are
+Furthermore, (@eq-12-9-16) is the Fourier sine series of $K_m(y)$, and from (4) in <!-- TODO: replace Sec. 11.3 with actual cross-reference label --> it follows that the coefficients are
 $$
 B_{mn} = \frac{2}{b} \int_0^b K_m(y) \sin \frac{n\pi y}{b} \, dy.
 $$
@@ -1814,7 +1814,7 @@ $$ {#eq-12-9-19}
 #### Result
 If $f$ and $g$ in (@eq-12-9-3a), (@eq-12-9-3b) are such that $u$ can be represented by (@eq-12-9-14), then (@eq-12-9-14) with coefficients (@eq-12-9-18) and (@eq-12-9-19) is the solution of the model (@eq-12-9-1), (@eq-12-9-2), (@eq-12-9-3a), (@eq-12-9-3b).
 
-### EXAMPLE 2 Vibration of a Rectangular Membrane
+### Vibration of a Rectangular Membrane {#sec-vibration-of-a-rectangular-membrane}
 Find the vibrations of a rectangular membrane of sides $a = 4\text{ ft}$ and $b = 2\text{ ft}$ (@fig-12-20) if the tension is 12.5 lb/ft, the density is 2.5 slugs/$\text{ft}^2$ (as for light rubber), the initial velocity is 0, and the initial displacement is
 $$
 f(x, y) = 0.1 x(4-x) y(2-y) = 0.1(4x - x^2)(2y - y^2) \text{ ft}.
@@ -1858,7 +1858,7 @@ To discuss this solution, we note that the first term is very similar to the ini
 ![Fig. 305. Example 2](../images/fig-12-20.png){#fig-12-20}
 
 
-## PROBLEM SET 12.9 {#sec-ps-12-9}
+## PROBLEM SET 12.9 {#sec-problem-set-12-9}
 
 **1. Frequency.** How does the frequency of the eigenfunctions of the rectangular membrane change (a) If we double the tension? (b) If we take a membrane of half the density of the original one? (c) If we double the sides of the membrane? Give reasons.
 
@@ -1920,9 +1920,9 @@ and initial velocity 0.
 **20. Forced vibrations.** Show that forced vibrations of a membrane are modeled by the PDE $u_{tt} = c^2 \nabla^2 u + P/\rho$, where $P(x, y, t)$ is the external force per unit area acting perpendicular to the $xy$-plane.
 
 
-## 12.10 Laplacian in Polar Coordinates. Circular Membrane. Fourier–Bessel Series {#sec-12-10}
+## Laplacian in Polar Coordinates. Circular Membrane. Fourier–Bessel Series {#sec-laplacian-polar-coordinates-circular-membrane}
 
-It is a general principle in boundary value problems for PDEs to choose coordinates that make the formula for the boundary as simple as possible. Here polar coordinates are used for this purpose as follows. Since we want to discuss circular membranes (drumheads), we first transform the Laplacian in the wave equation (1), @sec-12-9,
+It is a general principle in boundary value problems for PDEs to choose coordinates that make the formula for the boundary as simple as possible. Here polar coordinates are used for this purpose as follows. Since we want to discuss circular membranes (drumheads), we first transform the Laplacian in the wave equation (1), @sec-rectangular-membrane-double-fourier-series,
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
 $$ {#eq-12-10-1}
@@ -1931,7 +1931,7 @@ $$
 r = \sqrt{x^2 + y^2}, \quad \tan \theta = \frac{y}{x}.
 $$
 
-By the chain rule (Sec. 9.6) we obtain
+By the chain rule (<!-- TODO: replace Sec. 9.6 with actual cross-reference label -->) we obtain
 $$
 u_x = u_r r_x + u_\theta \theta_x.
 $$
@@ -1974,7 +1974,7 @@ $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2} \right), \quad c^2 = \frac{T}{\rho}.
 $$ {#eq-12-10-6}
 
-We shall consider a membrane of radius $R$ (@fig-12-22) and determine solutions $u(r, t)$ that are radially symmetric. (Solutions also depending on the angle $\theta$ will be discussed in the problem set.) Then $u_{\theta\theta} = 0$ in (@eq-12-10-6) and the model of the problem (the analog of (1), (2), (3) in @sec-12-9) is
+We shall consider a membrane of radius $R$ (@fig-12-22) and determine solutions $u(r, t)$ that are radially symmetric. (Solutions also depending on the angle $\theta$ will be discussed in the problem set.) Then $u_{\theta\theta} = 0$ in (@eq-12-10-6) and the model of the problem (the analog of (1), (2), (3) in @sec-rectangular-membrane-double-fourier-series) is
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} \right)
 $$ {#eq-12-10-7}
@@ -2011,7 +2011,7 @@ $$
 W'' + \frac{1}{r} W' + k^2 W = 0.
 $$ {#eq-12-10-11}
 
-We can reduce (@eq-12-10-11) to Bessel's equation (Sec. 5.4) if we set $s = kr$. Then $1/r = k/s$ and, retaining the notation $W$ for simplicity, we obtain by the chain rule
+We can reduce (@eq-12-10-11) to Bessel's equation (<!-- TODO: replace Sec. 5.4 with actual cross-reference label -->) if we set $s = kr$. Then $1/r = k/s$ and, retaining the notation $W$ for simplicity, we obtain by the chain rule
 $$
 W' = \frac{dW}{dr} = \frac{dW}{ds} \frac{ds}{dr} = \frac{dW}{ds} k \quad \text{and} \quad W'' = \frac{d^2W}{ds^2} k^2.
 $$
@@ -2020,11 +2020,11 @@ $$
 \frac{d^2 W}{ds^2} + \frac{1}{s} \frac{dW}{ds} + W = 0.
 $$ {#eq-12-10-12}
 
-This is Bessel's equation (1), Sec. 5.4, with parameter $
+This is Bessel's equation (1), <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->, with parameter $
 u = 0$.
 
 ### Step 2. Satisfying the Boundary Condition (@eq-12-10-8)
-Solutions of (@eq-12-10-12) are the Bessel functions $J_0$ and $Y_0$ of the first and second kind (see Secs. 5.4, 5.5). But $Y_0$ becomes infinite at $s \to 0$, so that we cannot use it because the deflection of the membrane must always remain finite. This leaves us with
+Solutions of (@eq-12-10-12) are the Bessel functions $J_0$ and $Y_0$ of the first and second kind (see <!-- TODO: replace Secs. 5.4, 5.5 with actual cross-reference label -->). But $Y_0$ becomes infinite at $s \to 0$, so that we cannot use it because the deflection of the membrane must always remain finite. This leaves us with
 $$
 W(r) = J_0(s) = J_0(kr) \quad (s = kr).
 $$ {#eq-12-10-13}
@@ -2072,14 +2072,14 @@ $$
 u(r, 0) = \sum_{m=1}^{\infty} A_m J_0\left( \frac{\alpha_m r}{R} \right) = f(r).
 $$ {#eq-12-10-18}
 
-Thus for the series (@eq-12-10-17) to satisfy the condition (@eq-12-10-9a), the constants $A_m$ must be the coefficients of the Fourier–Bessel series (@eq-12-10-18) that represents $f(r)$ in terms of $J_0(\alpha_m r / R)$; that is [see (9) in Sec. 11.6 with $n=0$, $a_m = \alpha_m$, and $x = r$],
+Thus for the series (@eq-12-10-17) to satisfy the condition (@eq-12-10-9a), the constants $A_m$ must be the coefficients of the Fourier–Bessel series (@eq-12-10-18) that represents $f(r)$ in terms of $J_0(\alpha_m r / R)$; that is [see (9) in <!-- TODO: replace Sec. 11.6 with actual cross-reference label --> with $n=0$, $a_m = \alpha_m$, and $x = r$],
 $$
 A_m = \frac{2}{R^2 J_1^2(\alpha_m)} \int_0^R r f(r) J_0\left( \frac{\alpha_m r}{R} \right) \, dr \quad (m = 1, 2, \dots).
 $$ {#eq-12-10-19}
 
 Differentiability of $f(r)$ in the interval $0 \le r \le R$ is sufficient for the existence of the development (@eq-12-10-18); see Ref. [A13]. The coefficients $B_m$ in (@eq-12-10-17) can be determined from (@eq-12-10-9b) in a similar fashion. Numeric values of $A_m$ and $B_m$ may be obtained from a CAS or by a numeric integration method, using tables of $J_0$ and $J_1$. However, numeric integration can sometimes be avoided, as the following example shows.
 
-### EXAMPLE 1 Vibrations of a Circular Membrane
+### Vibrations of a Circular Membrane {#sec-vibrations-of-a-circular-membrane}
 Find the vibrations of a circular drumhead of radius 1 ft and density 2 slugs/$\text{ft}^2$ if the tension is 8 lb/ft, the initial velocity is 0, and the initial displacement is
 $$
 f(r) = 1 - r^2 \text{ [ft]}.
@@ -2090,7 +2090,7 @@ $$
 A_m = \frac{2}{J_1^2(\alpha_m)} \int_0^1 r(1-r^2) J_0(\alpha_m r) \, dr.
 $$
 
-We can evaluate this integral by using (21c), Sec. 5.4, with $
+We can evaluate this integral by using (21c), <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->, with $
 \nu=1$, that is, $\frac{d}{ds} [s^
 \nu J_
 \nu(s)] = s^
@@ -2108,7 +2108,7 @@ A_m = \frac{4 J_2(\alpha_m)}{\alpha_m^2 J_1^2(\alpha_m)} = \frac{8}{\alpha_m^3 J
 $$
 where the last equality follows from the recurrence relation $J_0(s) + J_2(s) = \frac{2}{s} J_1(s)$, which for $s = \alpha_m$ (since $J_0(\alpha_m) = 0$) gives $J_2(\alpha_m) = \frac{2}{\alpha_m} J_1(\alpha_m)$.
 
-Table 9.5 on p. 409 of [GenRef1] gives $\alpha_m$ and $J_1(\alpha_m) = -J_0'(\alpha_m)$ by (21b), Sec. 5.4, with $
+Table 9.5 on p. 409 of [GenRef1] gives $\alpha_m$ and $J_1(\alpha_m) = -J_0'(\alpha_m)$ by (21b), <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->, with $
 \nu=0$, and compute the coefficients $A_m$:
 
 | $m$ | Zeros $\alpha_m$ | $J_1(\alpha_m)$ | $J_2(\alpha_m)$ | $A_m$ |
@@ -2129,17 +2129,17 @@ $$
 f(r) = 1.108 J_0(2.4048r) - 0.140 J_0(5.5201r) + 0.045 J_0(8.6537r) - \dots
 $$
 
-We see that the coefficients decrease relatively slowly. The sum of the explicitly given coefficients in the table is 0.99915. The sum of all the coefficients should be 1. (Why?) Hence by the Leibniz test in App. A3.3 the partial sum of those terms gives about three correct decimals of the amplitude $f(r)$.
+We see that the coefficients decrease relatively slowly. The sum of the explicitly given coefficients in the table is 0.99915. The sum of all the coefficients should be 1. (Why?) Hence by the Leibniz test in <!-- TODO: replace App. A3.3 with actual cross-reference label --> the partial sum of those terms gives about three correct decimals of the amplitude $f(r)$.
 
 Since $\lambda_m = c k_m = c\alpha_m / R = 2\alpha_m$, from (@eq-12-10-17) we thus obtain the solution (with $r$ measured in feet and $t$ in seconds)
 $$
 u(r, t) = 1.108 J_0(2.4048r) \cos 4.8097t - 0.140 J_0(5.5201r) \cos 11.0402t + 0.045 J_0(8.6537r) \cos 17.3075t - \dots
 $$
 
-In @fig-12-24, $m=1$ gives an idea of the motion of the first term of our series, $m=2$ of the second term, and $m=3$ of the third term, so that we can "see" our result about as well as for a violin string in @sec-12-3. <span class="math inline">\square</span>
+In @fig-12-24, $m=1$ gives an idea of the motion of the first term of our series, $m=2$ of the second term, and $m=3$ of the third term, so that we can "see" our result about as well as for a violin string in @sec-solution-by-separating-variables. <span class="math inline">\square</span>
 
 
-## PROBLEM SET 12.10 {#sec-ps-12-10}
+## PROBLEM SET 12.10 {#sec-problem-set-12-10}
 
 **1–3 RADIAL SYMMETRY**
 
@@ -2157,7 +2157,7 @@ In @fig-12-24, $m=1$ gives an idea of the motion of the first term of our series
 $$
 u(r, \theta) = a_0 + \sum_{n=1}^{\infty} \left(\frac{r}{R}\right)^n (a_n \cos n\theta + b_n \sin n\theta)
 $$ {#eq-12-10-20}
-where $a_n, b_n$ are the Fourier coefficients of $f$ (see Sec. 11.1).
+where $a_n, b_n$ are the Fourier coefficients of $f$ (see <!-- TODO: replace Sec. 11.1 with actual cross-reference label -->).
 
 (c) **Dirichlet problem.** Solve the Dirichlet problem using (@eq-12-10-20) if $R=1$ and the boundary values are $u(\theta) = -100\text{ volts}$ if $-\pi < \theta < 0$, and $100\text{ volts}$ if $0 < \theta < \pi$. (Sketch this disk, indicate the boundary values.)
 
@@ -2267,7 +2267,7 @@ $$ {#eq-12-10-28b}
 **25. Semicircular membrane.** Show that $u_{11}$ represents the fundamental mode of a semicircular membrane and find the corresponding frequency when $c^2 = 1$ and $R = 1$.
 
 
-## 12.11 Laplace’s Equation in Cylindrical and Spherical Coordinates. Potential {#sec-12-11}
+## Laplace’s Equation in Cylindrical and Spherical Coordinates. Potential {#sec-laplaces-equation-cylindrical-spherical-coordinates}
 
 One of the most important PDEs in physics and engineering applications is Laplace’s equation, given by
 $$
@@ -2276,9 +2276,9 @@ $$ {#eq-12-11-1}
 
 Here, $x, y, z$ are Cartesian coordinates in space, $u_{xx} = \partial^2 u / \partial x^2$, etc. The expression $\nabla^2 u$ is called the Laplacian of $u$. The theory of the solutions of (@eq-12-11-1) is called **potential theory**. Solutions of (@eq-12-11-1) that have continuous second partial derivatives are known as **harmonic functions**.
 
-Laplace’s equation occurs mainly in gravitation, electrostatics, steady-state heat flow (@sec-12-5), and fluid flow.
+Laplace’s equation occurs mainly in gravitation, electrostatics, steady-state heat flow (@sec-modeling-heat-flow-heat-equation), and fluid flow.
 
-Recall from Sec. 9.7 that the gravitational potential $u(x, y, z)$ at a point $(x, y, z)$ resulting from a single mass located at a point $(X, Y, Z)$ is
+Recall from <!-- TODO: replace Sec. 9.7 with actual cross-reference label --> that the gravitational potential $u(x, y, z)$ at a point $(x, y, z)$ resulting from a single mass located at a point $(X, Y, Z)$ is
 $$
 u(x, y, z) = \frac{c}{r} = \frac{c}{\sqrt{(x-X)^2 + (y-Y)^2 + (z-Z)^2}} \quad (r 
 eq 0)
@@ -2288,9 +2288,9 @@ $$
 u(x, y, z) = k \iiint_T \frac{\rho(X, Y, Z)}{r} \, dX \, dY \, dZ.
 $$ {#eq-12-11-3}
 
-It satisfies (@eq-12-11-1) because $\nabla^2(1/r) = 0$ (Sec. 9.7) and $\rho$ is not a function of $x, y, z$.
+It satisfies (@eq-12-11-1) because $\nabla^2(1/r) = 0$ (<!-- TODO: replace Sec. 9.7 with actual cross-reference label -->) and $\rho$ is not a function of $x, y, z$.
 
-Practical problems involving Laplace’s equation are boundary value problems in a region $T$ in space with boundary surface $S$. Such problems can be grouped into three types (see also @sec-12-6 for the two-dimensional case):
+Practical problems involving Laplace’s equation are boundary value problems in a region $T$ in space with boundary surface $S$. Such problems can be grouped into three types (see also @sec-heat-equation-solution-fourier-series for the two-dimensional case):
 
 * **(I) First boundary value problem or Dirichlet problem** if $u$ is prescribed on $S$.
 * **(II) Second boundary value problem or Neumann problem** if the normal derivative $u_n = \partial u / \partial n$ is prescribed on $S$.
@@ -2303,7 +2303,7 @@ The first step in solving a boundary value problem is generally the introduction
 $$
 x = r \cos \theta, \quad y = r \sin \theta, \quad z = z \quad (r \ge 0, \ 0 \le \theta \le 2\pi)
 $$ {#eq-12-11-4}
-(see @fig-12-26). For these we get $\nabla^2 u$ immediately by adding $u_{zz}$ to (@eq-12-10-5) in @sec-12-10; thus,
+(see @fig-12-26). For these we get $\nabla^2 u$ immediately by adding $u_{zz}$ to (@eq-12-10-5) in @sec-laplacian-polar-coordinates-circular-membrane; thus,
 $$
 \nabla^2 u = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2} + \frac{\partial^2 u}{\partial z^2}.
 $$ {#eq-12-11-5}
@@ -2385,7 +2385,7 @@ $$
 (1-w^2) \frac{d^2 H}{dw^2} - 2w \frac{dH}{dw} + n(n+1)H = 0.
 $$ {#eq-12-11-15prime}
 
-This is Legendre's equation (see Sec. 5.3). For integer $n = 0, 1, 2, \dots$ the Legendre polynomials
+This is Legendre's equation (see <!-- TODO: replace Sec. 5.3 with actual cross-reference label -->). For integer $n = 0, 1, 2, \dots$ the Legendre polynomials
 $$
 H_n(\phi) = P_n(w) = P_n(\cos \phi) \quad (n = 0, 1, \dots)
 $$
@@ -2406,7 +2406,7 @@ Since $S$ is given by $r = R$, for (@eq-12-11-17) to satisfy the Dirichlet condi
 $$
 u(R, \phi) = \sum_{n=0}^{\infty} A_n R^n P_n(\cos \phi) = f(\phi);
 $$ {#eq-12-11-18}
-that is, (@eq-12-11-18) must be the Fourier–Legendre series of $f(\phi)$. From (7) in Sec. 5.8 we get the coefficients:
+that is, (@eq-12-11-18) must be the Fourier–Legendre series of $f(\phi)$. From (7) in <!-- TODO: replace Sec. 5.8 with actual cross-reference label --> we get the coefficients:
 $$
 A_n R^n = \frac{2n+1}{2} \int_{-1}^1 f(w) P_n(w) \, dw.
 $$
@@ -2430,7 +2430,7 @@ $$ {#eq-12-11-21}
 
 The next example illustrates all this for a sphere of radius 1 consisting of two hemispheres that are separated by a small strip of insulating material along the equator, so that these hemispheres can be kept at different potentials (110 V and 0 V).
 
-### EXAMPLE 1 Spherical Capacitor
+### Spherical Capacitor {#sec-spherical-capacitor}
 Find the potential inside and outside a spherical capacitor consisting of two metallic hemispheres of radius 1 ft separated by a small slit for reasons of insulation, if the upper hemisphere is kept at 110 V and the lower is grounded (@fig-12-28).
 
 **Solution.** The given boundary condition is
@@ -2445,7 +2445,7 @@ Since $R = 1$, we thus obtain from (@eq-12-11-19)
 $$
 A_n = \frac{2n+1}{2} \int_0^{\pi/2} 110 P_n(\cos \phi) \sin \phi \, d\phi = 55 (2n+1) \int_0^1 P_n(w) \, dw
 $$
-where $w = \cos \phi$. We can evaluate this integral by using (11) in Sec. 5.2, obtaining
+where $w = \cos \phi$. We can evaluate this integral by using (11) in <!-- TODO: replace Sec. 5.2 with actual cross-reference label -->, obtaining
 $$
 A_n = 55 (2n+1) \sum_{m=0}^M (-1)^m \frac{(2n-2m)!}{2^n m! (n-m)! (n-2m)!} \int_0^1 w^{n-2m} \, dw
 $$
@@ -2474,13 +2474,13 @@ $$
 u(r, \phi) = \frac{55}{r} + \frac{165}{2r^2} P_1(\cos \phi) - \frac{385}{8r^4} P_3(\cos \phi) + \dots
 $$ {#eq-12-11-24}
 
-Partial sums of these series can now be used for computing approximate values of the inner and outer potential. Also, it is interesting to see that far away from the sphere the potential is approximately that of a point charge, namely, $55/r$. (Compare with Theorem 3 in Sec. 9.7.) See @fig-12-29. <span class="math inline">\square</span>
+Partial sums of these series can now be used for computing approximate values of the inner and outer potential. Also, it is interesting to see that far away from the sphere the potential is approximately that of a point charge, namely, $55/r$. (Compare with Theorem 3 in <!-- TODO: replace Sec. 9.7 with actual cross-reference label -->.) See @fig-12-29. <span class="math inline">\square</span>
 
 ![Fig. 313. Spherical capacitor in Example 1](../images/fig-12-28.png){#fig-12-28}
 
 ![Fig. 314. Partial sums of the first 4, 6, and 11 nonzero terms of (23) for r = R = 1](../images/fig-12-29.png){#fig-12-29}
 
-### EXAMPLE 2 Simpler Cases
+### Simpler Cases {#sec-simpler-cases}
 The technicalities encountered in cases that are similar to the one shown in Example 1 can often be avoided. For instance, find the potential inside the sphere $S: r = R = 1$ when $S$ is kept at the potential $f(\phi) = \cos 2\phi$.
 
 **Solution.** Let $w = \cos \phi$. We have $\cos 2\phi = 2 \cos^2 \phi - 1 = 2w^2 - 1$. Expressed in terms of Legendre polynomials:
@@ -2498,7 +2498,7 @@ u(r, \phi) = -\frac{1}{3} P_0(\cos \phi) + \frac{4}{3} r^2 P_2(\cos \phi) = -\fr
 $$ <span class="math inline">\square</span>
 
 
-## PROBLEM SET 12.11 {#sec-ps-12-11}
+## PROBLEM SET 12.11 {#sec-problem-set-12-11}
 
 **1. Spherical coordinates.** Derive (@eq-12-11-7) from $\nabla^2 u$ in Cartesian coordinates.
 
@@ -2590,9 +2590,9 @@ $$
 **25. Reflection in a sphere.** If $u(r, \theta, \phi)$ satisfies $\nabla^2 u = 0$, show that $v(r, \theta, \phi) = \frac{1}{r} u\left(\frac{1}{r}, \theta, \phi\right)$ satisfies $\nabla^2 v = 0$.
 
 
-## 12.12 Solution of PDEs by Laplace Transforms {#sec-12-12}
+## Solution of PDEs by Laplace Transforms {#sec-solution-of-pdes-by-laplace-transforms}
 
-Readers familiar with Chap. 6 may wonder whether Laplace transforms can also be used for solving partial differential equations. The answer is yes, particularly if one of the independent variables ranges over the positive axis. The steps to obtain a solution are similar to those in Chap. 6. For a PDE in two variables they are as follows.
+Readers familiar with <!-- TODO: replace Chap. 6 with actual cross-reference label --> may wonder whether Laplace transforms can also be used for solving partial differential equations. The answer is yes, particularly if one of the independent variables ranges over the positive axis. The steps to obtain a solution are similar to those in <!-- TODO: replace Chap. 6 with actual cross-reference label -->. For a PDE in two variables they are as follows.
 
 1. Take the Laplace transform with respect to one of the two variables, usually $t$. This gives an ODE for the transform of the unknown function. This is so since the derivatives of this function with respect to the other variable slip into the transformed equation. The latter also incorporates the given boundary and initial conditions.
 2. Solving that ODE, obtain the transform of the unknown function.
@@ -2602,7 +2602,7 @@ If the coefficients of the given equation do not depend on $t$, the use of Lapla
 
 We explain the method in terms of a typical example.
 
-### EXAMPLE 1 Semi-Infinite String
+### Semi-Infinite String {#sec-semi-infinite-string}
 Find the displacement $w(x, t)$ of an elastic string subject to the following conditions. (We write $w$ since we need $u$ to denote the unit step function.)
 
 (i) The string is initially at rest on the $x$-axis from $x=0$ to $\infty$ ("semi-infinite string").
@@ -2620,7 +2620,7 @@ $$
 
 Of course there is no infinite string, but our model describes a long string or rope (of negligible weight) with its right end fixed far out on the $x$-axis.
 
-**Solution.** We have to solve the wave equation (Sec. 12.2)
+**Solution.** We have to solve the wave equation (@sec-modeling-vibrating-string-wave-equation)
 $$
 \frac{\partial^2 w}{\partial t^2} = c^2 \frac{\partial^2 w}{\partial x^2}, \quad c^2 = \frac{T}{\rho}
 $$ {#eq-12-12-1}
@@ -2633,7 +2633,7 @@ $$
 w(x, 0) = 0, \quad \left. \frac{\partial w}{\partial t} \right|_{t=0} = 0.
 $$ {#eq-12-12-3}
 
-We take the Laplace transform with respect to $t$. By (2) in Sec. 6.2,
+We take the Laplace transform with respect to $t$. By (2) in <!-- TODO: replace Sec. 6.2 with actual cross-reference label -->,
 $$
 \mathcal{L}\left\{ \frac{\partial^2 w}{\partial t^2} \right\} = s^2 \mathcal{L}\{w\} - s w(x, 0) - w_t(x, 0) = c^2 \mathcal{L}\left\{ \frac{\partial^2 w}{\partial x^2} \right\}.
 $$
@@ -2672,7 +2672,7 @@ $$
 W(x, s) = F(s) e^{-sx/c}.
 $$
 
-From the second shifting theorem (Sec. 6.3) with $a = x/c$ we obtain the inverse transform
+From the second shifting theorem (<!-- TODO: replace Sec. 6.3 with actual cross-reference label -->) with $a = x/c$ we obtain the inverse transform
 $$
 w(x, t) = f\left(t - \frac{x}{c}\right) u\left(t - \frac{x}{c}\right)
 $$ {#eq-12-12-5}
@@ -2688,13 +2688,13 @@ This is a single sine wave traveling to the right with speed $c$. Note that a po
 
 ![Fig. 317. Traveling wave in Example 1](../images/fig-12-32.png){#fig-12-32}
 
-We have reached the end of Chapter 12, in which we concentrated on the most important partial differential equations (PDEs) in physics and engineering. We have also reached the end of Part C on Fourier Analysis and PDEs.
+We have reached the end of <!-- TODO: replace Chapter 12 with actual cross-reference label -->, in which we concentrated on the most important partial differential equations (PDEs) in physics and engineering. We have also reached the end of <!-- TODO: replace Part C with actual cross-reference label --> on Fourier Analysis and PDEs.
 
 ### Outlook
-We have seen that PDEs underlie the modeling process of various important engineering applications. Indeed, PDEs are the subject of many ongoing research projects. Numerics for PDEs follows in Secs. 21.4–21.7, which are designed to be independent of the other sections on numerics. In the next part, that is, Part D on complex analysis, we turn to an area of a different nature that is also highly important to the engineer. It is of note that Part D includes another approach to the two-dimensional Laplace equation with applications, as shown in Chap. 18.
+We have seen that PDEs underlie the modeling process of various important engineering applications. Indeed, PDEs are the subject of many ongoing research projects. Numerics for PDEs follows in <!-- TODO: replace Secs. 21.4–21.7 with actual cross-reference label -->, which are designed to be independent of the other sections on numerics. In the next part, that is, <!-- TODO: replace Part D with actual cross-reference label --> on complex analysis, we turn to an area of a different nature that is also highly important to the engineer. It is of note that <!-- TODO: replace Part D with actual cross-reference label --> includes another approach to the two-dimensional Laplace equation with applications, as shown in <!-- TODO: replace Chap. 18 with actual cross-reference label -->.
 
 
-## PROBLEM SET 12.12 {#sec-ps-12-12}
+## PROBLEM SET 12.12 {#sec-problem-set-12-12}
 
 **1.** Verify the solution in Example 1. What traveling wave do we obtain in Example 1 for a nonterminating sinusoidal motion of the left end starting at $t=0$?
 
@@ -2738,7 +2738,7 @@ $$
 $$
 w_0(x, t) = 1 - \text{erf}\left( \frac{x}{2c\sqrt{t}} \right)
 $$
-with the error function erf as defined in @sec-ps-12-7.
+with the error function erf as defined in @sec-problem-set-12-7.
 
 **12. Duhamel's formula.** Show that in Prob. 11, $W_0(x, s) = \frac{1}{s} e^{-x\sqrt{s}/c}$ and the convolution theorem gives Duhamel's formula
 $$
@@ -2746,7 +2746,7 @@ w(x, t) = \int_0^t f(t-\tau) \frac{\partial w_0}{\partial \tau} \, d\tau.
 $$
 
 
-## CHAPTER 12 REVIEW QUESTIONS AND PROBLEMS {#sec-ch12-review}
+## CHAPTER REVIEW QUESTIONS AND PROBLEMS {#sec-chapter-review-questions-and-problems}
 
 **1.** For what kinds of problems will modeling lead to an ODE? To a PDE?
 
@@ -2864,24 +2864,24 @@ Find the potential in the following charge-free regions:
 **40.** In the interior of a sphere of radius 1 kept at the potential $f(\phi) = \cos 3\phi + 3 \cos \phi$ (referred to our usual spherical coordinates).
 
 
-## SUMMARY OF CHAPTER 12 {#sec-ch12-summary}
+## SUMMARY OF CHAPTER {#sec-summary-of-chapter}
 
-Whereas ODEs (Chaps. 1–6) serve as models of problems involving only one independent variable, problems involving two or more independent variables (space variables or time $t$ and one or several space variables) lead to PDEs. This accounts for the enormous importance of PDEs to the engineer and physicist. Most important are:
+Whereas ODEs (<!-- TODO: replace Chaps. 1–6 with actual cross-reference label -->) serve as models of problems involving only one independent variable, problems involving two or more independent variables (space variables or time $t$ and one or several space variables) lead to PDEs. This accounts for the enormous importance of PDEs to the engineer and physicist. Most important are:
 
 $$
-\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} \quad \text{One-dimensional wave equation (Secs. 12.2–12.4)}
+\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} \quad \text{One-dimensional wave equation (<!-- TODO: replace Secs. 12.2–12.4 with actual cross-reference label -->)}
 $$ {#eq-ch12-sum-1}
 $$
-\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) \quad \text{Two-dimensional wave equation (Secs. 12.8–12.10)}
+\frac{\partial^2 u}{\partial t^2} = c^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) \quad \text{Two-dimensional wave equation (<!-- TODO: replace Secs. 12.8–12.10 with actual cross-reference label -->)}
 $$ {#eq-ch12-sum-2}
 $$
-\frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2} \quad \text{One-dimensional heat equation (Secs. 12.5, 12.6, 12.7)}
+\frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2} \quad \text{One-dimensional heat equation (<!-- TODO: replace Secs. 12.5, 12.6, 12.7 with actual cross-reference label -->)}
 $$ {#eq-ch12-sum-3}
 $$
-\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0 \quad \text{Two-dimensional Laplace equation (Secs. 12.6, 12.10)}
+\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0 \quad \text{Two-dimensional Laplace equation (<!-- TODO: replace Secs. 12.6, 12.10 with actual cross-reference label -->)}
 $$ {#eq-ch12-sum-4}
 $$
-\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} = 0 \quad \text{Three-dimensional Laplace equation (Sec. 12.11).}
+\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} = 0 \quad \text{Three-dimensional Laplace equation (@sec-laplaces-equation-cylindrical-spherical-coordinates).}
 $$ {#eq-ch12-sum-5}
 
 Equations (@eq-ch12-sum-1) and (@eq-ch12-sum-2) are hyperbolic, (@eq-ch12-sum-3) is parabolic, (@eq-ch12-sum-4) and (@eq-ch12-sum-5) are elliptic.
@@ -2892,17 +2892,17 @@ In practice, one is interested in obtaining the solution of such an equation in 
 * **Neumann problem** if $u_n = \partial u / \partial n$ is prescribed on $S$,
 * **Mixed problem** if $u$ is prescribed on one part of $S$ and $u_n$ on the other.
 
-A general method for solving such problems is the **method of separating variables** or product method, in which one assumes solutions in the form of products of functions each depending on one variable only. Thus equation (@eq-ch12-sum-1) is solved by setting $u(x, t) = F(x)G(t)$; see @sec-12-3; similarly for (@eq-ch12-sum-3) (see @sec-12-6). Substitution into the given equation yields ordinary differential equations for $F$ and $G$, and from these one gets infinitely many solutions $F = F_n$ and $G = G_n$ such that the corresponding functions
+A general method for solving such problems is the **method of separating variables** or product method, in which one assumes solutions in the form of products of functions each depending on one variable only. Thus equation (@eq-ch12-sum-1) is solved by setting $u(x, t) = F(x)G(t)$; see @sec-solution-by-separating-variables; similarly for (@eq-ch12-sum-3) (see @sec-heat-equation-solution-fourier-series). Substitution into the given equation yields ordinary differential equations for $F$ and $G$, and from these one gets infinitely many solutions $F = F_n$ and $G = G_n$ such that the corresponding functions
 $$
 u_n(x, t) = F_n(x)G_n(t)
 $$
-are solutions of the PDE satisfying the given boundary conditions. These are the **eigenfunctions** of the problem, and the corresponding **eigenvalues** determine the frequency of the vibration (or the rapidity of the decrease of temperature in the case of the heat equation, etc.). To satisfy also the initial condition (or conditions), one must consider infinite series of the $u_n$, whose coefficients turn out to be the Fourier coefficients of the functions $f$ and $g$ representing the given initial conditions (@sec-12-3, @sec-12-6). Hence Fourier series (and Fourier integrals) are of basic importance here (@sec-12-3, @sec-12-6, @sec-12-7, @sec-12-9).
+are solutions of the PDE satisfying the given boundary conditions. These are the **eigenfunctions** of the problem, and the corresponding **eigenvalues** determine the frequency of the vibration (or the rapidity of the decrease of temperature in the case of the heat equation, etc.). To satisfy also the initial condition (or conditions), one must consider infinite series of the $u_n$, whose coefficients turn out to be the Fourier coefficients of the functions $f$ and $g$ representing the given initial conditions (@sec-solution-by-separating-variables, @sec-heat-equation-solution-fourier-series). Hence Fourier series (and Fourier integrals) are of basic importance here (@sec-solution-by-separating-variables, @sec-heat-equation-solution-fourier-series, @sec-heat-equation-modeling-very-long-bars, @sec-rectangular-membrane-double-fourier-series).
 
 Steady-state problems are problems in which the solution does not depend on time $t$. For these, the heat equation $u_t = c^2 \nabla^2 u$ becomes the Laplace equation.
 
-Before solving an initial or boundary value problem, one often transforms the PDE into coordinates in which the boundary of the region considered is given by simple formulas. Thus in polar coordinates given by $x = r \cos \theta, y = r \sin \theta$, the Laplacian becomes (@sec-12-10)
+Before solving an initial or boundary value problem, one often transforms the PDE into coordinates in which the boundary of the region considered is given by simple formulas. Thus in polar coordinates given by $x = r \cos \theta, y = r \sin \theta$, the Laplacian becomes (@sec-laplacian-polar-coordinates-circular-membrane)
 $$
 \nabla^2 u = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r} \frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2};
 $$
-for cylindrical and spherical coordinates see @sec-12-11. If one now separates the variables, one gets Bessel’s equation (circular membrane, @sec-12-10) and Legendre’s equation (spherical potential problem, @sec-12-11).
+for cylindrical and spherical coordinates see @sec-laplaces-equation-cylindrical-spherical-coordinates. If one now separates the variables, one gets Bessel’s equation (circular membrane, @sec-laplacian-polar-coordinates-circular-membrane) and Legendre’s equation (spherical potential problem, @sec-laplaces-equation-cylindrical-spherical-coordinates).
 

@@ -1,10 +1,11 @@
 ---
-title: "CHAPTER 06: Laplace Transforms"
+title: "Laplace Transforms"
 ---
+
 
 Laplace transforms are invaluable for any engineer's mathematical toolbox as they make solving linear ODEs and related initial value problems, as well as systems of linear ODEs, much easier. Applications abound: electrical networks, springs, mixing problems, signal processing, and other areas of engineering and physics.
 
-The process of solving an ODE using the Laplace transform method consists of three steps, shown schematically in Fig. 113:
+The process of solving an ODE using the Laplace transform method consists of three steps, shown schematically in @fig-6-113:
 
 **Step 1.** The given ODE is transformed into an algebraic equation, called the **subsidiary equation**.
 
@@ -14,30 +15,30 @@ The process of solving an ODE using the Laplace transform method consists of thr
 
 ![Fig. 113. Solving an IVP by Laplace transforms](../images/fig-6-113.png){#fig-6-113}
 
-The key motivation for learning about Laplace transforms is that the process of solving an ODE is simplified to an algebraic problem (and transformations). This type of mathematics that converts problems of calculus to algebraic problems is known as **operational calculus**. The Laplace transform method has two main advantages over the methods discussed in Chaps. 1–4:
+The key motivation for learning about Laplace transforms is that the process of solving an ODE is simplified to an algebraic problem (and transformations). This type of mathematics that converts problems of calculus to algebraic problems is known as **operational calculus**. The Laplace transform method has two main advantages over the methods discussed in @ch-first-order-odes and <!-- TODO: replace Chaps. 2-4 with actual chapter labels -->Chaps. 2–4:
 
 **I.** Problems are solved more directly: Initial value problems are solved without first determining a general solution. Nonhomogeneous ODEs are solved without first solving the corresponding homogeneous ODE.
 
-**II.** More importantly, the use of the **unit step function** (Heaviside function in Sec. 6.3) and **Dirac's delta** (in Sec. 6.4) make the method particularly powerful for problems with inputs (driving forces) that have discontinuities or represent short impulses or complicated periodic functions.
+**II.** More importantly, the use of the **unit step function** (Heaviside function in @sec-unit-step-function) and **Dirac's delta** (in @sec-dirac-delta) make the method particularly powerful for problems with inputs (driving forces) that have discontinuities or represent short impulses or complicated periodic functions.
 
 The following chart shows where to find information on the Laplace transform in this book.
 
 | Topic | Where to find it |
 |---|---|
-| ODEs, engineering applications and Laplace transforms | Chapter 6 |
-| PDEs, engineering applications and Laplace transforms | Section 12.11 |
-| List of general formulas of Laplace transforms | Section 6.8 |
-| List of Laplace transforms and inverses | Section 6.9 |
+| ODEs, engineering applications and Laplace transforms | @ch-laplace-transforms |
+| PDEs, engineering applications and Laplace transforms | <!-- TODO: replace Section 12.11 with actual cross-reference label -->Section 12.11 |
+| List of general formulas of Laplace transforms | @sec-general-formulas |
+| List of Laplace transforms and inverses | @sec-table-transforms |
 
 Note: Your CAS can handle most Laplace transforms.
 
-**Prerequisite:** Chap. 2
+**Prerequisite:** <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2
 
 **Sections that may be omitted in a shorter course:** 6.5, 6.7
 
 **References and Answers to Problems:** App. 1 Part A, App. 2.
 
-## 6.1 Laplace Transform. Linearity. First Shifting Theorem (s-Shifting) {#sec-laplace-transform-linearity}
+## Laplace Transform. Linearity. First Shifting Theorem (s-Shifting) {#sec-laplace-transform-linearity}
 
 In this section, we learn about Laplace transforms and some of their properties. Because Laplace transforms are of basic importance to the engineer, the student should pay close attention to the material. Applications to ODEs follow in the next section.
 
@@ -139,7 +140,7 @@ $$L_c\left(1 + \frac{\omega^2}{s^2}\right) = \frac{1}{s}, \qquad L_c = \frac{s}{
 
 $$L_s\left(1 + \frac{\omega^2}{s^2}\right) = \frac{\omega}{s^2}, \qquad L_s = \frac{\omega}{s^2 + \omega^2}. \quad \square$$
 
-**Basic transforms** are listed in Table 6.1. We shall see that from these almost all the others can be obtained by the use of the general properties of the Laplace transform. Formulas 1–3 are special cases of formula 4, which is proved by induction. Indeed, it is true for $n = 0$ because of Example 1 and $0! = 1$. We make the induction hypothesis that it holds for any integer $n \geq 0$ and then get it for $n+1$ directly from (@eq-6-1). Indeed, integration by parts first gives
+**Basic transforms** are listed in @tbl-laplace-transforms. We shall see that from these almost all the others can be obtained by the use of the general properties of the Laplace transform. Formulas 1–3 are special cases of formula 4, which is proved by induction. Indeed, it is true for $n = 0$ because of Example 1 and $0! = 1$. We make the induction hypothesis that it holds for any integer $n \geq 0$ and then get it for $n+1$ directly from (@eq-6-1). Indeed, integration by parts first gives
 
 $$\mathcal{L}(t^{n+1}) = \int_0^{\infty} e^{-st} t^{n+1}\, dt = \left[-\frac{1}{s} e^{-st} t^{n+1}\right]_0^{\infty} + \frac{n+1}{s}\int_0^{\infty} e^{-st} t^n\, dt.$$
 
@@ -148,8 +149,6 @@ Now the integral-free part is zero and the last part is $(n+1)/s$ times $\mathca
 $$\mathcal{L}(t^{n+1}) = \frac{n+1}{s} \mathcal{L}(t^n) = \frac{n+1}{s} \cdot \frac{n!}{s^{n+1}} = \frac{(n+1)!}{s^{n+2}}.$$
 
 This proves formula 4.
-
-**Table 6.1 Some Functions $f(t)$ and Their Laplace Transforms $\mathcal{L}(f)$**
 
 | $f(t)$ | $\mathcal{L}(f)$ | $f(t)$ | $\mathcal{L}(f)$ |
 |--------|-----------------|--------|-----------------|
@@ -160,7 +159,9 @@ This proves formula 4.
 | $t^a$ $(a > 0)$ | $\dfrac{\Gamma(a+1)}{s^{a+1}}$ | $e^{at}\cos \omega t$ | $\dfrac{s-a}{(s-a)^2+\omega^2}$ |
 | $e^{at}$ | $\dfrac{1}{s-a}$ | $e^{at}\sin \omega t$ | $\dfrac{\omega}{(s-a)^2+\omega^2}$ |
 
-$\Gamma(a+1)$ in formula 5 is the so-called gamma function [(15) in Sec. 5.5 or (24) in App. A3.1]. We get formula 5 from (@eq-6-1), setting $st = x$:
+: Some Functions $f(t)$ and Their Laplace Transforms $\mathcal{L}(f)$ {#tbl-laplace-transforms}
+
+$\Gamma(a+1)$ in formula 5 is the so-called gamma function [(15) in <!-- TODO: replace Sec. 5.5 with actual cross-reference label -->Sec. 5.5 or (24) in App. A3.1]. We get formula 5 from (@eq-6-1), setting $st = x$:
 
 $$\mathcal{L}(t^a) = \int_0^{\infty} e^{-st} t^a\, dt = \int_0^{\infty} e^{-x} \left(\frac{x}{s}\right)^a \frac{dx}{s} = \frac{1}{s^{a+1}} \int_0^{\infty} e^{-x} x^a\, dx$$
 
@@ -192,7 +193,7 @@ If $F(s)$ exists (i.e., is finite) for $s$ greater than some $k$, then our first
 
 ### EXAMPLE 5 s-Shifting: Damped Vibrations. Completing the Square
 
-From Example 4 and the first shifting theorem we immediately obtain formulas 11 and 12 in Table 6.1,
+From Example 4 and the first shifting theorem we immediately obtain formulas 11 and 12 in @tbl-laplace-transforms,
 
 $$\mathcal{L}\{e^{at}\cos \omega t\} = \frac{s-a}{(s-a)^2+\omega^2}, \qquad \mathcal{L}\{e^{at}\sin \omega t\} = \frac{\omega}{(s-a)^2+\omega^2}.$$
 
@@ -204,7 +205,7 @@ $$\mathcal{L}(f) = \frac{3s - 137}{s^2 + 2s + 401}.$$
 
 $$f = \mathcal{L}^{-1}\left\{\frac{3(s+1) - 140}{(s+1)^2 + 400}\right\} = 3\mathcal{L}^{-1}\left\{\frac{s+1}{(s+1)^2+20^2}\right\} - 7\mathcal{L}^{-1}\left\{\frac{20}{(s+1)^2+20^2}\right\}.$$
 
-We now see that the inverse of the right side is the damped vibration (Fig. 114)
+We now see that the inverse of the right side is the damped vibration (@fig-6-114)
 
 $$f(t) = e^{-t}(3\cos 20t - 7\sin 20t). \quad \square$$
 
@@ -220,7 +221,7 @@ $$ |f(t)| \leq Me^{kt}. $$ {#eq-6-growth}
 
 (The growth restriction (@eq-6-growth) is sometimes called "growth of exponential order," which may be misleading since it hides that the exponent must be $kt$, not $kt^2$ or similar.)
 
-$f(t)$ need not be continuous, but it should not be too bad. The technical term (generally used in mathematics) is **piecewise continuity**. $f(t)$ is piecewise continuous on a finite interval $a \leq t \leq b$ where $f$ is defined, if this interval can be divided into finitely many subintervals in each of which $f$ is continuous and has finite limits as $t$ approaches either endpoint of such a subinterval from the interior. This then gives finite jumps as in Fig. 115 as the only possible discontinuities, but this suffices in most applications, and so does the following theorem.
+$f(t)$ need not be continuous, but it should not be too bad. The technical term (generally used in mathematics) is **piecewise continuity**. $f(t)$ is piecewise continuous on a finite interval $a \leq t \leq b$ where $f$ is defined, if this interval can be divided into finitely many subintervals in each of which $f$ is continuous and has finite limits as $t$ approaches either endpoint of such a subinterval from the interior. This then gives finite jumps as in @fig-6-115 as the only possible discontinuities, but this suffices in most applications, and so does the following theorem.
 
 ![Fig. 115. Example of a piecewise continuous function $f(t)$. (The dots mark the function values at the jumps.)](../images/fig-6-115.png){#fig-6-115}
 
@@ -236,7 +237,7 @@ Note that (@eq-6-growth) can be readily checked. For instance, $\cosh t \leq e^t
 
 **Uniqueness.** If the Laplace transform of a given function exists, it is uniquely determined. Conversely, it can be shown that if two functions (both defined on the positive real axis) have the same transform, these functions cannot differ over an interval of positive length, although they may differ at isolated points (see Ref. [A14] in App. 1). Hence we may say that the inverse of a given transform is essentially unique. In particular, if two continuous functions have the same transform, they are completely identical.
 
-### PROBLEM SET 6.1
+### PROBLEM SET {#sec-ps-6-1}
 
 **1–16 LAPLACE TRANSFORMS**
 
@@ -250,22 +251,22 @@ Find the transform. Show the details of your work. Assume that $a, b, \omega, \t
 6. $e^{-t} \sinh 4t$
 7. $\sin(\omega t + \theta)$
 8. $1.5\sin(3t - \pi/2)$
-9. (Graph shown in Fig. 116a)
-10. (Graph shown in Fig. 116b)
-11. (Graph shown in Fig. 116c)
-12. (Graph shown in Fig. 116d)
-13. (Graph shown in Fig. 116e)
-14. (Graph shown in Fig. 116f)
-15. (Graph shown in Fig. 116g)
-16. (Graph shown in Fig. 116h)
+9. (Graph shown in <!-- TODO: replace Fig. 116a with actual cross-reference label -->Fig. 116a)
+10. (Graph shown in <!-- TODO: replace Fig. 116b with actual cross-reference label -->Fig. 116b)
+11. (Graph shown in <!-- TODO: replace Fig. 116c with actual cross-reference label -->Fig. 116c)
+12. (Graph shown in <!-- TODO: replace Fig. 116d with actual cross-reference label -->Fig. 116d)
+13. (Graph shown in <!-- TODO: replace Fig. 116e with actual cross-reference label -->Fig. 116e)
+14. (Graph shown in <!-- TODO: replace Fig. 116f with actual cross-reference label -->Fig. 116f)
+15. (Graph shown in <!-- TODO: replace Fig. 116g with actual cross-reference label -->Fig. 116g)
+16. (Graph shown in <!-- TODO: replace Fig. 116h with actual cross-reference label -->Fig. 116h)
 
 **17–24 SOME THEORY**
 
-17. **Table 6.1.** Convert this table to a table for finding inverse transforms (with obvious changes, e.g., $\mathcal{L}^{-1}(1/s^n) = t^{n-1}/(n-1)!$, etc.).
+17. **@tbl-laplace-transforms.** Convert this table to a table for finding inverse transforms (with obvious changes, e.g., $\mathcal{L}^{-1}(1/s^n) = t^{n-1}/(n-1)!$, etc.).
 
 18. Using $\mathcal{L}(f)$ in Prob. 10, find $\mathcal{L}(f_1)$, where $f_1(t) = 0$ if $t < 2$ and $f_1(t) = 1$ if $t > 2$.
 
-19. **Table 6.1.** Derive formula 6 from formulas 9 and 10.
+19. **@tbl-laplace-transforms.** Derive formula 6 from formulas 9 and 10.
 
 20. **Nonexistence.** Show that $e^{t^2}$ does not satisfy a condition of the form (@eq-6-growth).
 
@@ -324,9 +325,9 @@ In Probs. 33–36 find the transform. In Probs. 37–45 find the inverse transfo
 
 45. $\dfrac{k_0}{(s+a)} + \dfrac{k_1}{(s+a)^2}$
 
-## 6.2 Transforms of Derivatives and Integrals. ODEs {#sec-transforms-derivatives-integrals}
+## Transforms of Derivatives and Integrals. ODEs {#sec-transforms-derivatives-integrals}
 
-The Laplace transform is a method of solving ODEs and initial value problems. The crucial idea is that operations of calculus on functions are replaced by operations of algebra on transforms. Roughly, **differentiation** of $f(t)$ will correspond to **multiplication** of $\mathcal{L}(f)$ by $s$ (see Theorems 1 and 2) and **integration** of $f(t)$ to **division** of $\mathcal{L}(f)$ by $s$. To solve ODEs, we must first consider the Laplace transform of derivatives. You have encountered such an idea in your study of logarithms. Under the application of the natural logarithm, a product of numbers becomes a sum of their logarithms, a division of numbers becomes their difference of logarithms (see Appendix 3, formulas (2), (3)). To simplify calculations was one of the main reasons that logarithms were invented in pre-computer times.
+The Laplace transform is a method of solving ODEs and initial value problems. The crucial idea is that operations of calculus on functions are replaced by operations of algebra on transforms. Roughly, **differentiation** of $f(t)$ will correspond to **multiplication** of $\mathcal{L}(f)$ by $s$ (see Theorems 1 and 2) and **integration** of $f(t)$ to **division** of $\mathcal{L}(f)$ by $s$. To solve ODEs, we must first consider the Laplace transform of derivatives. You have encountered such an idea in your study of logarithms. Under the application of the natural logarithm, a product of numbers becomes a sum of their logarithms, a division of numbers becomes their difference of logarithms (see Appendix 3, formulas <!-- TODO: verify equation reference -->(2), <!-- TODO: verify equation reference -->(3)). To simplify calculations was one of the main reasons that logarithms were invented in pre-computer times.
 
 ### THEOREM 1 Laplace Transform of Derivatives
 
@@ -336,13 +337,13 @@ $$ \mathcal{L}(f') = s\mathcal{L}(f) - f(0) $$ {#eq-6-deriv1}
 
 $$ \mathcal{L}(f'') = s^2\mathcal{L}(f) - sf(0) - f'(0). $$ {#eq-6-deriv2}
 
-Formula (@eq-6-deriv1) holds if $f(t)$ is continuous for all $t \geq 0$ and satisfies the growth restriction (@eq-6-growth) in Sec. 6.1 and $f'(t)$ is piecewise continuous on every finite interval on the semi-axis $t \geq 0$. Similarly, (@eq-6-deriv2) holds if $f$ and $f'$ are continuous for all $t \geq 0$ and satisfy the growth restriction and $f''$ is piecewise continuous on every finite interval on the semi-axis $t \geq 0$.
+Formula (@eq-6-deriv1) holds if $f(t)$ is continuous for all $t \geq 0$ and satisfies the growth restriction (@eq-6-growth) in @sec-laplace-transform-linearity and $f'(t)$ is piecewise continuous on every finite interval on the semi-axis $t \geq 0$. Similarly, (@eq-6-deriv2) holds if $f$ and $f'$ are continuous for all $t \geq 0$ and satisfy the growth restriction and $f''$ is piecewise continuous on every finite interval on the semi-axis $t \geq 0$.
 
 **PROOF** We prove (@eq-6-deriv1) first under the additional assumption that $f'$ is continuous. Then, by the definition and integration by parts,
 
 $$\mathcal{L}(f') = \int_0^{\infty} e^{-st} f'(t)\, dt = \Big[e^{-st} f(t)\Big]_0^{\infty} + s \int_0^{\infty} e^{-st} f(t)\, dt.$$
 
-Since $f$ satisfies (@eq-6-growth) in Sec. 6.1, the integrated part on the right is zero at the upper limit when $s > k$, and at the lower limit it contributes $-f(0)$. The last integral is $\mathcal{L}(f)$. It exists for $s > k$ because of Theorem 3 in Sec. 6.1. Hence $\mathcal{L}(f')$ exists when $s > k$ and (@eq-6-deriv1) holds.
+Since $f$ satisfies (@eq-6-growth) in @sec-laplace-transform-linearity, the integrated part on the right is zero at the upper limit when $s > k$, and at the lower limit it contributes $-f(0)$. The last integral is $\mathcal{L}(f)$. It exists for $s > k$ because of Theorem 3 in @sec-laplace-transform-linearity. Hence $\mathcal{L}(f')$ exists when $s > k$ and (@eq-6-deriv1) holds.
 
 If $f'$ is merely piecewise continuous, the proof is similar. In this case the interval of integration of $f'$ must be broken up into parts such that $f'$ is continuous in each such part.
 
@@ -354,19 +355,19 @@ Continuing by substitution as in the proof of (@eq-6-deriv2) and using induction
 
 ### THEOREM 2 Laplace Transform of the Derivative $f^{(n)}$ of Any Order
 
-Let $f, f', \ldots, f^{(n-1)}$ be continuous for all $t \geq 0$ and satisfy the growth restriction (@eq-6-growth) in Sec. 6.1. Furthermore, let $f^{(n)}$ be piecewise continuous on every finite interval on the semi-axis $t \geq 0$. Then the transform of $f^{(n)}$ satisfies
+Let $f, f', \ldots, f^{(n-1)}$ be continuous for all $t \geq 0$ and satisfy the growth restriction (@eq-6-growth) in @sec-laplace-transform-linearity. Furthermore, let $f^{(n)}$ be piecewise continuous on every finite interval on the semi-axis $t \geq 0$. Then the transform of $f^{(n)}$ satisfies
 
 $$ \mathcal{L}(f^{(n)}) = s^n \mathcal{L}(f) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - f^{(n-1)}(0). $$ {#eq-6-deriv-n}
 
-### EXAMPLE 1 Transform of a Resonance Term (Sec. 2.8)
+### EXAMPLE 1 Transform of a Resonance Term (<!-- TODO: replace Sec. 2.8 with actual cross-reference label -->Sec. 2.8)
 
 Let $f(t) = t\sin \omega t$. Then $f(0) = 0$, $f'(t) = \sin \omega t + \omega t \cos \omega t$, $f'(0) = 0$, $f'' = 2\omega \cos \omega t - \omega^2 t\sin \omega t$. Hence by (@eq-6-deriv2),
 
 $$\mathcal{L}(f'') = \frac{2\omega s}{s^2+\omega^2} - \omega^2 \mathcal{L}(f) = s^2\mathcal{L}(f), \quad \text{thus} \quad \mathcal{L}(f) = \mathcal{L}(t\sin \omega t) = \frac{2\omega s}{(s^2+\omega^2)^2}. \quad \square$$
 
-### EXAMPLE 2 Formulas 7 and 8 in Table 6.1, Sec. 6.1
+### EXAMPLE 2 Formulas 7 and 8 in @tbl-laplace-transforms, @sec-laplace-transform-linearity
 
-This is a third derivation of $\mathcal{L}(\cos \omega t)$ and $\mathcal{L}(\sin \omega t)$; cf. Example 4 in Sec. 6.1. Let $f(t) = \cos \omega t$. Then $f(0) = 1$, $f'(0) = 0$, $f''(t) = -\omega^2 \cos \omega t$. From this and (@eq-6-deriv2) we obtain
+This is a third derivation of $\mathcal{L}(\cos \omega t)$ and $\mathcal{L}(\sin \omega t)$; cf. Example 4 in @sec-laplace-transform-linearity. Let $f(t) = \cos \omega t$. Then $f(0) = 1$, $f'(0) = 0$, $f''(t) = -\omega^2 \cos \omega t$. From this and (@eq-6-deriv2) we obtain
 
 $$\mathcal{L}(f'') = s^2\mathcal{L}(f) - s = -\omega^2 \mathcal{L}(f). \quad \text{By algebra,} \quad \mathcal{L}(\cos \omega t) = \frac{s}{s^2+\omega^2}.$$
 
@@ -380,11 +381,11 @@ Differentiation and integration are inverse operations, and so are multiplicatio
 
 ### THEOREM 3 Laplace Transform of Integral
 
-Let $F(s)$ denote the transform of a function $f(t)$ which is piecewise continuous for $t \geq 0$ and satisfies a growth restriction (@eq-6-growth), Sec. 6.1. Then, for $s > 0$, $s > k$, and $t > 0$,
+Let $F(s)$ denote the transform of a function $f(t)$ which is piecewise continuous for $t \geq 0$ and satisfies a growth restriction (@eq-6-growth), @sec-laplace-transform-linearity. Then, for $s > 0$, $s > k$, and $t > 0$,
 
 $$ \mathcal{L}\left\{\int_0^t f(\tau)\, d\tau\right\} = \frac{1}{s}F(s), \quad \text{thus} \quad \int_0^t f(\tau)\, d\tau = \mathcal{L}^{-1}\left\{\frac{1}{s}F(s)\right\}. $$ {#eq-6-integral}
 
-**PROOF** Denote the integral in (@eq-6-integral) by $g(t)$. Since $f(t)$ is piecewise continuous, $g(t)$ is continuous, and (@eq-6-growth), Sec. 6.1, gives
+**PROOF** Denote the integral in (@eq-6-integral) by $g(t)$. Since $f(t)$ is piecewise continuous, $g(t)$ is continuous, and (@eq-6-growth), @sec-laplace-transform-linearity, gives
 
 $$|g(t)| = \left|\int_0^t f(\tau)\, d\tau\right| \leq \int_0^t |f(\tau)|\, d\tau \leq M\int_0^t e^{k\tau}\, d\tau = \frac{M}{k}(e^{kt} - 1) \leq \frac{M}{k}e^{kt} \quad (k > 0).$$
 
@@ -394,15 +395,15 @@ $$\mathcal{L}\{f(t)\} = \mathcal{L}\{g'(t)\} = s\mathcal{L}\{g(t)\} - g(0) = s\m
 
 Division by $s$ and interchange of the left and right sides gives the first formula in (@eq-6-integral), from which the second follows by taking the inverse transform on both sides. $\square$
 
-### EXAMPLE 3 Application of Theorem 3: Formulas 19 and 20 in the Table of Sec. 6.9
+### EXAMPLE 3 Application of Theorem 3: Formulas 19 and 20 in the Table of @sec-table-transforms
 
 Using Theorem 3, find the inverse of $\dfrac{1}{s(s^2+\omega^2)}$ and $\dfrac{1}{s^2(s^2+\omega^2)}$.
 
-**Solution.** From Table 6.1 in Sec. 6.1 and the integration in (@eq-6-integral) (second formula with the sides interchanged) we obtain
+**Solution.** From @tbl-laplace-transforms in @sec-laplace-transform-linearity and the integration in (@eq-6-integral) (second formula with the sides interchanged) we obtain
 
 $$\mathcal{L}^{-1}\left\{\frac{1}{s^2+\omega^2}\right\} = \frac{\sin \omega t}{\omega}, \qquad \mathcal{L}^{-1}\left\{\frac{1}{s(s^2+\omega^2)}\right\} = \frac{1}{\omega}\int_0^t \sin \omega\tau\, d\tau = \frac{1}{\omega^2}(1 - \cos \omega t).$$
 
-This is formula 19 in Sec. 6.9. Integrating this result again and using (@eq-6-integral) as before, we obtain formula 20 in Sec. 6.9:
+This is formula 19 in @sec-table-transforms. Integrating this result again and using (@eq-6-integral) as before, we obtain formula 20 in @sec-table-transforms:
 
 $$\mathcal{L}^{-1}\left\{\frac{1}{s^2(s^2+\omega^2)}\right\} = \frac{1}{\omega^2}\int_0^t (1 - \cos \omega\tau)\, d\tau = \frac{t}{\omega^2} - \frac{\sin \omega t}{\omega^3}.$$
 
@@ -438,7 +439,7 @@ $$Q = \frac{Y}{R} = \frac{\mathcal{L}(\text{output})}{\mathcal{L}(\text{input})}
 
 and this explains the name of $Q$. Note that $Q$ depends neither on $r(t)$ nor on the initial conditions (but only on $a$ and $b$).
 
-**Step 3. Inversion of $Y$ to obtain $y = \mathcal{L}^{-1}(Y)$.** We reduce (@eq-6-Ysol) (usually by partial fractions as in calculus) to a sum of terms whose inverses can be found from the tables (e.g., in Sec. 6.1 or Sec. 6.9) or by a CAS, so that we obtain the solution
+**Step 3. Inversion of $Y$ to obtain $y = \mathcal{L}^{-1}(Y)$.** We reduce (@eq-6-Ysol) (usually by partial fractions as in calculus) to a sum of terms whose inverses can be found from the tables (e.g., in @sec-laplace-transform-linearity or @sec-table-transforms) or by a CAS, so that we obtain the solution
 
 $$y(t) = \mathcal{L}^{-1}(Y)$$
 
@@ -450,7 +451,7 @@ Solve
 
 $$y'' - y = t, \quad y(0) = 1, \quad y'(0) = 1.$$
 
-**Solution. Step 1.** From (@eq-6-deriv2) and Table 6.1 we get the subsidiary equation with $Y = \mathcal{L}(y)$
+**Solution. Step 1.** From (@eq-6-deriv2) and @tbl-laplace-transforms we get the subsidiary equation with $Y = \mathcal{L}(y)$
 
 $$s^2 Y - sy(0) - y'(0) - Y = \frac{1}{s^2}, \quad \text{thus} \quad (s^2 - 1)Y = s + 1 + \frac{1}{s^2}.$$
 
@@ -462,11 +463,11 @@ Simplification of the first fraction and an expansion of the last fraction gives
 
 $$Y = \frac{1}{s-1} + \frac{1}{s^2-1} - \frac{1}{s^2}.$$
 
-**Step 3.** From this expression for $Y$ and Table 6.1 we obtain the solution
+**Step 3.** From this expression for $Y$ and @tbl-laplace-transforms we obtain the solution
 
 $$y(t) = \mathcal{L}^{-1}(Y) = \mathcal{L}^{-1}\left\{\frac{1}{s-1}\right\} + \mathcal{L}^{-1}\left\{\frac{1}{s^2-1}\right\} - \mathcal{L}^{-1}\left\{\frac{1}{s^2}\right\} = e^t + \sinh t - t. \quad \square$$
 
-The diagram in Fig. 116 summarizes our approach.
+The diagram in @fig-6-116 summarizes our approach.
 
 ![Fig. 116. Steps of the Laplace transform method](../images/fig-6-116.png){#fig-6-116}
 
@@ -484,11 +485,11 @@ The solution is
 
 $$Y = \frac{0.16(s+1)}{s^2 + s + 9} = \frac{0.16(s+1) + 0.08}{(s+\frac{1}{2})^2 + \frac{35}{4}}.$$
 
-Hence by the first shifting theorem and the formulas for cos and sin in Table 6.1 we obtain
+Hence by the first shifting theorem and the formulas for cos and sin in @tbl-laplace-transforms we obtain
 
 $$y(t) = \mathcal{L}^{-1}(Y) = e^{-t/2}\left(0.16\cos\sqrt{\tfrac{35}{4}}\,t + \frac{0.08}{\sqrt{35/4}}\sin\sqrt{\tfrac{35}{4}}\,t\right) = e^{-0.5t}(0.16\cos 2.96t + 0.027\sin 2.96t). \quad \square$$
 
-This agrees with Example 2, Case (III) in Sec. 2.4. The work was less.
+This agrees with Example 2, Case (III) in <!-- TODO: replace Sec. 2.4 with actual cross-reference label -->Sec. 2.4. The work was less.
 
 ### Advantages of the Laplace Method
 
@@ -506,7 +507,7 @@ $$y'' + y = 2t, \quad y\!\left(\tfrac{\pi}{4}\right) = \tfrac{\pi}{2}, \quad y'\
 
 $$\tilde{y}'' + \tilde{y} = 2\!\left(\tilde{t}+\tfrac{\pi}{4}\right), \quad \tilde{y}(0) = \tfrac{\pi}{2}, \quad \tilde{y}'(0) = 2 - \tfrac{1}{\sqrt{2}}$$
 
-where $\tilde{y}(\tilde{t}) = y(t)$. Using (@eq-6-deriv2) and Table 6.1 and denoting the transform of $\tilde{y}$ by $\tilde{Y}$, we see that the subsidiary equation of the "shifted" initial value problem is
+where $\tilde{y}(\tilde{t}) = y(t)$. Using (@eq-6-deriv2) and @tbl-laplace-transforms and denoting the transform of $\tilde{y}$ by $\tilde{Y}$, we see that the subsidiary equation of the "shifted" initial value problem is
 
 $$s^2\tilde{Y} - s\cdot\tfrac{\pi}{2} - \left(2 - \tfrac{1}{\sqrt{2}}\right) + \tilde{Y} = \frac{2}{s^2} + \frac{\pi/2}{s}, \quad \text{thus} \quad (s^2+1)\tilde{Y} = \frac{2}{s^2} + \frac{\pi}{2s} + \frac{\pi}{2}s + 2 - \tfrac{1}{\sqrt{2}}.$$
 
@@ -522,7 +523,7 @@ Now $\tilde{t} = t - \pi/4$, $\sin\tilde{t} = \frac{1}{\sqrt{2}}(\sin t - \cos t
 
 $$y = 2t - \sin t + \cos t. \quad \square$$
 
-### PROBLEM SET 6.2
+### PROBLEM SET {#sec-ps-6-2}
 
 **1–11 INITIAL VALUE PROBLEMS (IVPs)**
 
@@ -564,15 +565,15 @@ Using (@eq-6-deriv1) or (@eq-6-deriv2), find $\mathcal{L}(f)$ if $f(t)$ equals:
 
 (a) $\mathcal{L}(t\cos \omega t) = \dfrac{s^2 - \omega^2}{(s^2+\omega^2)^2}$
 
-and from this and Example 1: (b) formula 21, (c) 22, (d) 23 in Sec. 6.9,
+and from this and Example 1: (b) formula 21, (c) 22, (d) 23 in @sec-table-transforms,
 
 (e) $\mathcal{L}(t\cosh at) = \dfrac{s^2+a^2}{(s^2-a^2)^2}$
 
 (f) $\mathcal{L}(t\sinh at) = \dfrac{2as}{(s^2-a^2)^2}$
 
-(g) Verify (1*) for $f(t) = e^{-t}$ if $0 < t < 1$ and $0$ if $t > 1$.
+(g) Verify (@eq-6-1star-ext) for $f(t) = e^{-t}$ if $0 < t < 1$ and $0$ if $t > 1$.
 
-(d) Compare the Laplace transform of solving ODEs with the method in Chap. 2. Give examples of your own to illustrate the advantages of the present method (to the extent we have seen them so far).
+(d) Compare the Laplace transform of solving ODEs with the method in <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2. Give examples of your own to illustrate the advantages of the present method (to the extent we have seen them so far).
 
 **23–29 INVERSE TRANSFORMS BY INTEGRATION**
 
@@ -592,19 +593,19 @@ Using Theorem 3, find $f(t)$ if $\mathcal{L}(F)$ equals:
 
 29. $\dfrac{1}{s^3 + as^2}$
 
-30. **PROJECT. Comments on Sec. 6.2.**
+30. **PROJECT. Comments on @sec-transforms-derivatives-integrals.**
 
 (a) Give reasons why Theorems 1 and 2 are more important than Theorem 3.
 
-(b) Extend Theorem 1 by showing that if $f(t)$ is continuous, except for an ordinary discontinuity (finite jump) at some $t = a > 0$, the other conditions remaining as in Theorem 1, then (see Fig. 117)
+(b) Extend Theorem 1 by showing that if $f(t)$ is continuous, except for an ordinary discontinuity (finite jump) at some $t = a > 0$, the other conditions remaining as in Theorem 1, then (see @fig-6-117)
 
 $$ \mathcal{L}(f') = s\mathcal{L}(f) - f(0) - [f(a+0) - f(a-0)]e^{-as}. $$ {#eq-6-1star-ext}
 
 ![Fig. 117. Formula (1*)](../images/fig-6-117.png){#fig-6-117}
 
-## 6.3 Unit Step Function (Heaviside Function). Second Shifting Theorem (t-Shifting) {#sec-unit-step-function}
+## Unit Step Function (Heaviside Function). Second Shifting Theorem (t-Shifting) {#sec-unit-step-function}
 
-This section and the next one are extremely important because we shall now reach the point where the Laplace transform method shows its real power in applications and its superiority over the classical approach of Chap. 2. The reason is that we shall introduce two auxiliary functions, the **unit step function** or **Heaviside function** $u(t-a)$ (below) and **Dirac's delta** $\delta(t-a)$ (in Sec. 6.4). These functions are suitable for solving ODEs with complicated right sides of considerable engineering interest, such as single waves, inputs (driving forces) that are discontinuous or act for some time only, periodic inputs more general than just cosine and sine, or impulsive forces acting for an instant (hammerblows, for example).
+This section and the next one are extremely important because we shall now reach the point where the Laplace transform method shows its real power in applications and its superiority over the classical approach of <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2. The reason is that we shall introduce two auxiliary functions, the **unit step function** or **Heaviside function** $u(t-a)$ (below) and **Dirac's delta** $\delta(t-a)$ (in @sec-dirac-delta). These functions are suitable for solving ODEs with complicated right sides of considerable engineering interest, such as single waves, inputs (driving forces) that are discontinuous or act for some time only, periodic inputs more general than just cosine and sine, or impulsive forces acting for an instant (hammerblows, for example).
 
 ### Unit Step Function (Heaviside Function) $u(t - a)$
 
@@ -616,9 +617,9 @@ $$ u(t-a) = \begin{cases} 0 & \text{if } t < a \\ 1 & \text{if } t > a \end{case
 
 ![Fig. 119. Unit step function $u(t-a)$](../images/fig-6-119.png){#fig-6-119}
 
-Figure 118 shows the special case $u(t)$, which has its jump at zero, and Fig. 119 the general case $u(t-a)$ for an arbitrary positive $a$. (For Heaviside, see Sec. 6.1.)
+@fig-6-118 shows the special case $u(t)$, which has its jump at zero, and @fig-6-119 the general case $u(t-a)$ for an arbitrary positive $a$. (For Heaviside, see @sec-laplace-transform-linearity.)
 
-The transform of $u(t-a)$ follows directly from the defining integral in Sec. 6.1,
+The transform of $u(t-a)$ follows directly from the defining integral in @sec-laplace-transform-linearity,
 
 $$\mathcal{L}\{u(t-a)\} = \int_0^{\infty} e^{-st} u(t-a)\, dt = \int_a^{\infty} e^{-st} \cdot 1\, dt = \left[-\frac{e^{-st}}{s}\right]_{t=a}^{\infty};$$
 
@@ -626,11 +627,11 @@ here the integration begins at $t = a$ ($\geq 0$) because $u(t-a)$ is 0 for $t <
 
 $$ \mathcal{L}\{u(t-a)\} = \frac{e^{-as}}{s} \quad (s > 0). $$ {#eq-6-ustep-transform}
 
-The unit step function is a typical "engineering function" made to measure for engineering applications, which often involve functions (mechanical or electrical driving forces) that are either "off" or "on." Multiplying functions $f(t)$ with $u(t-a)$, we can produce all sorts of effects. The simple basic idea is illustrated in Figs. 120 and 121. In Fig. 120 the given function is shown in (A). In (B) it is switched off between $t = 0$ and $t = 2$ (because $u(t-2) = 0$ when $t < 2$) and is switched on beginning at $t = 2$. In (C) it is shifted to the right by 2 units, say, for instance, by 2 sec, so that it begins 2 sec later in the same fashion as before. More generally we have the following.
+The unit step function is a typical "engineering function" made to measure for engineering applications, which often involve functions (mechanical or electrical driving forces) that are either "off" or "on." Multiplying functions $f(t)$ with $u(t-a)$, we can produce all sorts of effects. The simple basic idea is illustrated in @fig-6-120 and @fig-6-121. In @fig-6-120 the given function is shown in (A). In (B) it is switched off between $t = 0$ and $t = 2$ (because $u(t-2) = 0$ when $t < 2$) and is switched on beginning at $t = 2$. In (C) it is shifted to the right by 2 units, say, for instance, by 2 sec, so that it begins 2 sec later in the same fashion as before. More generally we have the following.
 
 Let $f(t) = 0$ for all negative $t$. Then $f(t-a)u(t-a)$ with $a > 0$ is $f(t)$ shifted (translated) to the right by the amount $a$.
 
-Figure 121 shows the effect of many unit step functions, three of them in (A) and infinitely many in (B) when continued periodically to the right; this is the effect of a rectifier that clips off the negative half-waves of a sinusoidal voltage. CAUTION! Make sure that you fully understand these figures, in particular the difference between parts (B) and (C) of Fig. 120. Figure 120(C) will be applied next.
+@fig-6-121 shows the effect of many unit step functions, three of them in (A) and infinitely many in (B) when continued periodically to the right; this is the effect of a rectifier that clips off the negative half-waves of a sinusoidal voltage. CAUTION! Make sure that you fully understand these figures, in particular the difference between parts (B) and (C) of @fig-6-120. @fig-6-120(C) will be applied next.
 
 ![Fig. 120. Effects of the unit step function: (A) Given function. (B) Switching off and on. (C) Shift.](../images/fig-6-120.png){#fig-6-120}
 
@@ -638,7 +639,7 @@ Figure 121 shows the effect of many unit step functions, three of them in (A) an
 
 ### Time Shifting (t-Shifting): Replacing $t$ by $t - a$ in $f(t)$
 
-The first shifting theorem ("s-shifting") in Sec. 6.1 concerned transforms $F(s) = \mathcal{L}\{f(t)\}$ and $F(s-a) = \mathcal{L}\{e^{at}f(t)\}$. The second shifting theorem will concern functions $f(t)$ and $f(t-a)$. Unit step functions are just tools, and the theorem will be needed to apply them in connection with any other functions.
+The first shifting theorem ("s-shifting") in @sec-laplace-transform-linearity concerned transforms $F(s) = \mathcal{L}\{f(t)\}$ and $F(s-a) = \mathcal{L}\{e^{at}f(t)\}$. The second shifting theorem will concern functions $f(t)$ and $f(t-a)$. Unit step functions are just tools, and the theorem will be needed to apply them in connection with any other functions.
 
 ### THEOREM 1 Second Shifting Theorem; Time Shifting
 
@@ -654,7 +655,7 @@ Or, if we take the inverse on both sides, we can write
 
 $$ f(t-a)u(t-a) = \mathcal{L}^{-1}\{e^{-as}F(s)\}. $$ {#eq-6-t-shift-inv}
 
-Practically speaking, if we know $F(s)$, we can obtain the transform of (@eq-6-shifted-f) by multiplying $F(s)$ by $e^{-as}$. In Fig. 120, the transform of $5\sin t$ is $F(s) = 5/(s^2+1)$, hence the shifted function $5\sin(t-2)u(t-2)$ shown in Fig. 120(C) has the transform
+Practically speaking, if we know $F(s)$, we can obtain the transform of (@eq-6-shifted-f) by multiplying $F(s)$ by $e^{-as}$. In @fig-6-120, the transform of $5\sin t$ is $F(s) = 5/(s^2+1)$, hence the shifted function $5\sin(t-2)u(t-2)$ shown in @fig-6-120(C) has the transform
 
 $$e^{-2s}F(s) = \frac{5e^{-2s}}{s^2+1}.$$
 
@@ -676,7 +677,7 @@ $$e^{-as}F(s) = \int_0^{\infty} e^{-st}f(t-a)u(t-a)\, dt = \int_0^{\infty} e^{-s
 
 Write the following function using unit step functions and find its transform.
 
-$$f(t) = \begin{cases} 2 & \text{if } 0 < t < 1 \\ \frac{1}{2}t^2 & \text{if } 1 < t < \frac{\pi}{2} \\ \cos t & \text{if } t > \frac{\pi}{2} \end{cases} \quad \text{(Fig. 122)}$$
+$$f(t) = \begin{cases} 2 & \text{if } 0 < t < 1 \\ \frac{1}{2}t^2 & \text{if } 1 < t < \frac{\pi}{2} \\ \cos t & \text{if } t > \frac{\pi}{2} \end{cases} \quad \text{(@fig-6-122)}$$
 
 **Solution. Step 1.** In terms of unit step functions,
 
@@ -716,23 +717,23 @@ Find the inverse transform $f(t)$ of
 
 $$F(s) = \frac{e^{-s}}{s^2+\pi^2} + \frac{e^{-2s}}{s^2+\pi^2} + \frac{e^{-3s}}{(s+2)^2}.$$
 
-**Solution.** Without the exponential functions in the numerator the three terms of $F(s)$ would have the inverses $(\sin \pi t)/\pi$, $(\sin \pi t)/\pi$, and $te^{-2t}$ because $1/s^2$ has the inverse $t$, so that $1/(s+2)^2$ has the inverse $te^{-2t}$ by the first shifting theorem in Sec. 6.1. Hence by the second shifting theorem (t-shifting),
+**Solution.** Without the exponential functions in the numerator the three terms of $F(s)$ would have the inverses $(\sin \pi t)/\pi$, $(\sin \pi t)/\pi$, and $te^{-2t}$ because $1/s^2$ has the inverse $t$, so that $1/(s+2)^2$ has the inverse $te^{-2t}$ by the first shifting theorem in @sec-laplace-transform-linearity. Hence by the second shifting theorem (t-shifting),
 
 $$f(t) = \frac{1}{\pi}\sin(\pi(t-1))u(t-1) + \frac{1}{\pi}\sin(\pi(t-2))u(t-2) + (t-3)e^{-2(t-3)}u(t-3).$$
 
-Now $\sin(\pi t - \pi) = -\sin \pi t$ and $\sin(\pi t - 2\pi) = \sin \pi t$, so that the first and second terms cancel each other when $t > 2$. Hence we obtain $f(t) = 0$ if $0 < t < 1$, $-(\sin \pi t)/\pi$ if $1 < t < 2$, $0$ if $2 < t < 3$, and $(t-3)e^{-2(t-3)}$ if $t > 3$. See Fig. 123. $\square$
+Now $\sin(\pi t - \pi) = -\sin \pi t$ and $\sin(\pi t - 2\pi) = \sin \pi t$, so that the first and second terms cancel each other when $t > 2$. Hence we obtain $f(t) = 0$ if $0 < t < 1$, $-(\sin \pi t)/\pi$ if $1 < t < 2$, $0$ if $2 < t < 3$, and $(t-3)e^{-2(t-3)}$ if $t > 3$. See @fig-6-123. $\square$
 
 ![Fig. 123. $f(t)$ in Example 2](../images/fig-6-123.png){#fig-6-123}
 
 ### EXAMPLE 3 Response of an RC-Circuit to a Single Rectangular Wave
 
-Find the current $i(t)$ in the RC-circuit in Fig. 124 if a single rectangular wave with voltage $V_0$ is applied. The circuit is assumed to be quiescent before the wave is applied.
+Find the current $i(t)$ in the RC-circuit in @fig-6-124 if a single rectangular wave with voltage $V_0$ is applied. The circuit is assumed to be quiescent before the wave is applied.
 
-**Solution.** The input is $V_0[u(t-a) - u(t-b)]$. Hence the circuit is modeled by the integro-differential equation (see Sec. 2.9 and Fig. 124)
+**Solution.** The input is $V_0[u(t-a) - u(t-b)]$. Hence the circuit is modeled by the integro-differential equation (see <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9 and @fig-6-124)
 
 $$Ri(t) + \frac{q(t)}{C} = Ri(t) + \frac{1}{C}\int_0^t i(t)\, dt = v(t) = V_0[u(t-a) - u(t-b)].$$
 
-Using Theorem 3 in Sec. 6.2 and formula (@eq-6-ustep-transform) in this section, we obtain the subsidiary equation
+Using Theorem 3 in @sec-transforms-derivatives-integrals and formula (@eq-6-ustep-transform) in this section, we obtain the subsidiary equation
 
 $$RI(s) + \frac{I(s)}{sC} = \frac{V_0}{s}(e^{-as} - e^{-bs}).$$
 
@@ -740,7 +741,7 @@ Solving this equation algebraically for $I(s)$, we get
 
 $$I(s) = F(s)(e^{-as} - e^{-bs}) \quad \text{where} \quad F(s) = \frac{V_0/R}{s + 1/(RC)} \quad \text{and} \quad \mathcal{L}^{-1}(F) = \frac{V_0}{R}e^{-t/(RC)},$$
 
-the last expression being obtained from Table 6.1 in Sec. 6.1. Hence Theorem 1 yields the solution (Fig. 124)
+the last expression being obtained from @tbl-laplace-transforms in @sec-laplace-transform-linearity. Hence Theorem 1 yields the solution (@fig-6-124)
 
 $$i(t) = \mathcal{L}^{-1}(I) = \mathcal{L}^{-1}\{e^{-as}F(s)\} - \mathcal{L}^{-1}\{e^{-bs}F(s)\} = \frac{V_0}{R}\left[e^{-(t-a)/(RC)}u(t-a) - e^{-(t-b)/(RC)}u(t-b)\right];$$
 
@@ -754,17 +755,17 @@ where $K_1 = V_0 e^{a/(RC)}/R$ and $K_2 = V_0 e^{b/(RC)}/R$. $\square$
 
 ### EXAMPLE 4 Response of an RLC-Circuit to a Sinusoidal Input Acting Over a Time Interval
 
-Find the response (the current) of the RLC-circuit in Fig. 125, where $E(t)$ is sinusoidal, acting for a short time interval only, say,
+Find the response (the current) of the RLC-circuit in @fig-6-125, where $E(t)$ is sinusoidal, acting for a short time interval only, say,
 
 $$E(t) = 100\sin 400t \quad \text{if } 0 < t < 2\pi \quad \text{and} \quad E(t) = 0 \quad \text{if } t > 2\pi$$
 
 and current and charge are initially zero.
 
-**Solution.** The electromotive force $E(t)$ can be represented by $(100\sin 400t)(1 - u(t-2\pi))$. Hence the model for the current $i(t)$ in the circuit is the integro-differential equation (see Sec. 2.9)
+**Solution.** The electromotive force $E(t)$ can be represented by $(100\sin 400t)(1 - u(t-2\pi))$. Hence the model for the current $i(t)$ in the circuit is the integro-differential equation (see <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9)
 
 $$0.1i' + 11i + 100\int_0^t i(t)\, dt = (100\sin 400t)(1 - u(t-2\pi)), \quad i(0) = 0, \quad i'(0) = 0.$$
 
-From Theorems 2 and 3 in Sec. 6.2 we obtain the subsidiary equation for $I(s) = \mathcal{L}(i)$
+From Theorems 2 and 3 in @sec-transforms-derivatives-integrals we obtain the subsidiary equation for $I(s) = \mathcal{L}(i)$
 
 $$0.1sI + 11I + \frac{100I}{s} = \frac{100 \cdot 400}{s^2+400^2}\left(1 - \frac{e^{-2\pi s}}{s}\right).$$
 
@@ -791,11 +792,11 @@ Since $K = 258.66 = 0.6467 \cdot 400$, we thus obtain for the first term $I_1$ i
 
 $$I_1 = \frac{-0.2776}{s+10} + \frac{2.6144}{s+100} - \frac{2.3368s}{s^2+400^2} + \frac{0.6467 \cdot 400}{s^2+400^2}.$$
 
-From Table 6.1 in Sec. 6.1 we see that its inverse is
+From @tbl-laplace-transforms in @sec-laplace-transform-linearity we see that its inverse is
 
 $$i_1(t) = -0.2776e^{-10t} + 2.6144e^{-100t} - 2.3368\cos 400t + 0.6467\sin 400t.$$
 
-This is the current $i(t)$ when $0 < t < 2\pi$. It agrees for $0 < t < 2\pi$ with that in Example 1 of Sec. 2.9 (except for notation), which concerned the same RLC-circuit. Its graph in Fig. 63 in Sec. 2.9 shows that the exponential terms decrease very rapidly. Note that the present amount of work was substantially less.
+This is the current $i(t)$ when $0 < t < 2\pi$. It agrees for $0 < t < 2\pi$ with that in Example 1 of <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9 (except for notation), which concerned the same RLC-circuit. Its graph in <!-- TODO: replace Fig. 63 with actual cross-reference label -->Fig. 63 in <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9 shows that the exponential terms decrease very rapidly. Note that the present amount of work was substantially less.
 
 The second term $I_2$ of $I$ differs from the first term by the factor $e^{-2\pi s}$. Since $\cos 400(t-2\pi) = \cos 400t$ and $\sin 400(t-2\pi) = \sin 400t$, the second shifting theorem (Theorem 1) gives the inverse $i_2(t) = 0$ if $0 < t < 2\pi$, and for $t > 2\pi$ it gives
 
@@ -809,7 +810,7 @@ It goes to zero very rapidly, practically within 0.5 sec. $\square$
 
 ![Fig. 125. RLC-circuit in Example 4](../images/fig-6-125.png){#fig-6-125}
 
-### PROBLEM SET 6.3
+### PROBLEM SET {#sec-ps-6-3}
 
 1. **Report on Shifting Theorems.** Explain and compare the different roles of the two shifting theorems, using your own formulations and simple examples. Give no proofs.
 
@@ -858,7 +859,7 @@ Using the Laplace transform and showing the details, solve
 
 **28–30 RL-CIRCUIT**
 
-Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in Fig. 126, assuming $i(0) = 0$ and:
+Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in @fig-6-126, assuming $i(0) = 0$ and:
 
 28. $R = 1\,\text{k}\Omega$ ($= 1000\,\Omega$), $L = 1\,\text{H}$, $v = 0$ if $0 < t < \pi$, and $40\sin t$ V if $t > \pi$
 29. $R = 25\,\Omega$, $L = 0.1\,\text{H}$, $v = 490e^{-5t}$ V if $0 < t < 1$ and $0$ if $t > 1$
@@ -866,13 +867,13 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 
 ![Fig. 126. Problems 28–30](../images/fig-6-126.png){#fig-6-126}
 
-31. **Discharge in RC-circuit.** Using the Laplace transform, find the charge $q(t)$ on the capacitor of capacitance $C$ in Fig. 127 if the capacitor is charged so that its potential is $V_0$ and the switch is closed at $t = 0$.
+31. **Discharge in RC-circuit.** Using the Laplace transform, find the charge $q(t)$ on the capacitor of capacitance $C$ in @fig-6-127 if the capacitor is charged so that its potential is $V_0$ and the switch is closed at $t = 0$.
 
 ![Fig. 127. Problem 31](../images/fig-6-127.png){#fig-6-127}
 
 **32–34 RC-CIRCUIT**
 
-Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in Fig. 128 with $R = 10\,\Omega$ and $C = 10^{-2}$ F, where the current at $t = 0$ is assumed to be zero, and:
+Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in @fig-6-128 with $R = 10\,\Omega$ and $C = 10^{-2}$ F, where the current at $t = 0$ is assumed to be zero, and:
 
 32. $v = 0$ if $t < 4$ and $14 \times 10^6 e^{-3t}$ V if $t > 4$
 33. $v = 0$ if $t < 2$ and $100(t-2)$ V if $t > 2$
@@ -882,7 +883,7 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 
 **35–37 LC-CIRCUIT**
 
-Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in Fig. 129, assuming zero initial current and charge on the capacitor and:
+Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in @fig-6-129, assuming zero initial current and charge on the capacitor and:
 
 35. $L = 1$ H, $C = 10^{-2}$ F, $v = -9900\cos t$ V if $\pi < t < 3\pi$ and $0$ otherwise
 36. $L = 1$ H, $C = 0.25$ F, $v = 200(t - \frac{1}{3}t^3)$ V if $0 < t < 1$ and $0$ if $t > 1$
@@ -892,7 +893,7 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 
 **38–40 RLC-CIRCUIT**
 
-Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in Fig. 130, assuming zero initial current and charge and:
+Using the Laplace transform and showing the details, find the current $i(t)$ in the circuit in @fig-6-130, assuming zero initial current and charge and:
 
 38. $R = 4\,\Omega$, $L = 1$ H, $C = 0.05$ F, $v = 34e^{-t}$ V if $0 < t < 4$ and $0$ if $t > 4$
 39. $R = 2\,\Omega$, $L = 1$ H, $C = 0.5$ F, $v(t) = 1$ kV if $0 < t < 2$ and $0$ if $t > 2$
@@ -902,7 +903,7 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 
 ![Fig. 131. Current in Problem 40](../images/fig-6-131.png){#fig-6-131}
 
-## 6.4 Short Impulses. Dirac's Delta Function. Partial Fractions {#sec-dirac-delta}
+## Short Impulses. Dirac's Delta Function. Partial Fractions {#sec-dirac-delta}
 
 An airplane making a "hard" landing, a mechanical system being hit by a hammerblow, a ship being hit by a single high wave, a tennis ball being hit by a racket, and many other similar examples appear in everyday life. They are phenomena of an impulsive nature where actions of forces—mechanical, electrical, etc.—are applied over short intervals of time.
 
@@ -910,9 +911,9 @@ We can model such phenomena and problems by "Dirac's delta function," and solve 
 
 To model situations of that type, we consider the function
 
-$$ f_k(t-a) = \begin{cases} 1/k & \text{if } a \leq t \leq a+k \\ 0 & \text{otherwise} \end{cases} \quad \text{(Fig. 132)} $$ {#eq-6-impulse-fn}
+$$ f_k(t-a) = \begin{cases} 1/k & \text{if } a \leq t \leq a+k \\ 0 & \text{otherwise} \end{cases} \quad \text{(@fig-6-132)} $$ {#eq-6-impulse-fn}
 
-(and later its limit as $k \to 0$). This function represents, for instance, a force of magnitude $1/k$ acting from $t = a$ to $t = a + k$, where $k$ is positive and small. In mechanics, the integral of a force acting over a time interval $a \leq t \leq a + k$ is called the **impulse** of the force; similarly for electromotive forces $E(t)$ acting on circuits. Since the blue rectangle in Fig. 132 has area 1, the impulse of $f_k$ in (@eq-6-impulse-fn) is
+(and later its limit as $k \to 0$). This function represents, for instance, a force of magnitude $1/k$ acting from $t = a$ to $t = a + k$, where $k$ is positive and small. In mechanics, the integral of a force acting over a time interval $a \leq t \leq a + k$ is called the **impulse** of the force; similarly for electromotive forces $E(t)$ acting on circuits. Since the blue rectangle in @fig-6-132 has area 1, the impulse of $f_k$ in (@eq-6-impulse-fn) is
 
 $$ I_k = \int_0^{\infty} f_k(t-a)\, dt = \int_a^{a+k} \frac{1}{k}\, dt = 1. $$ {#eq-6-impulse-area}
 
@@ -950,11 +951,11 @@ The unit step and unit impulse functions can now be used on the right side of OD
 
 ### EXAMPLE 1 Mass–Spring System Under a Square Wave
 
-Determine the response of the damped mass–spring system (see Sec. 2.8) under a square wave, modeled by (see Fig. 133)
+Determine the response of the damped mass–spring system (see <!-- TODO: replace Sec. 2.8 with actual cross-reference label -->Sec. 2.8) under a square wave, modeled by (see @fig-6-133)
 
 $$y'' + 3y' + 2y = r(t) = u(t-1) - u(t-2), \quad y(0) = 0, \quad y'(0) = 0.$$
 
-**Solution.** From (@eq-6-deriv1) and (@eq-6-deriv2) in Sec. 6.2 and (@eq-6-ustep-transform) and (@eq-6-t-shift) in this section we obtain the subsidiary equation
+**Solution.** From (@eq-6-deriv1) and (@eq-6-deriv2) in @sec-transforms-derivatives-integrals and (@eq-6-ustep-transform) and (@eq-6-t-shift) in this section we obtain the subsidiary equation
 
 $$s^2 Y + 3sY + 2Y = \frac{1}{s}(e^{-s} - e^{-2s}). \quad \text{Solution} \quad Y(s) = \frac{1}{s(s^2+3s+2)}(e^{-s} - e^{-2s}).$$
 
@@ -962,11 +963,11 @@ Using the notation $F(s)$ and partial fractions, we obtain
 
 $$F(s) = \frac{1}{s(s^2+3s+2)} = \frac{1}{s(s+1)(s+2)} = \frac{\frac{1}{2}}{s} - \frac{1}{s+1} + \frac{\frac{1}{2}}{s+2}.$$
 
-From Table 6.1 in Sec. 6.1, we see that the inverse is
+From @tbl-laplace-transforms in @sec-laplace-transform-linearity, we see that the inverse is
 
 $$f(t) = \mathcal{L}^{-1}(F) = \tfrac{1}{2} - e^{-t} + \tfrac{1}{2}e^{-2t}.$$
 
-Therefore, by Theorem 1 in Sec. 6.3 (t-shifting) we obtain the square-wave response shown in Fig. 133,
+Therefore, by Theorem 1 in @sec-unit-step-function (t-shifting) we obtain the square-wave response shown in @fig-6-133,
 
 $$y = \mathcal{L}^{-1}(F(s)e^{-s} - F(s)e^{-2s}) = f(t-1)u(t-1) - f(t-2)u(t-2)$$
 
@@ -992,21 +993,21 @@ $$y(t) = \mathcal{L}^{-1}(Y) = \begin{cases} 0 & \text{if } 0 < t < 1 \\ e^{-(t-
 
 ![Fig. 134. Response to a hammerblow in Example 2](../images/fig-6-134.png){#fig-6-134}
 
-$y(t)$ is shown in Fig. 134. Can you imagine how Fig. 133 approaches Fig. 134 as the wave becomes shorter and shorter, the area of the rectangle remaining 1? $\square$
+$y(t)$ is shown in @fig-6-134. Can you imagine how @fig-6-133 approaches @fig-6-134 as the wave becomes shorter and shorter, the area of the rectangle remaining 1? $\square$
 
 ### EXAMPLE 3 Four-Terminal RLC-Network
 
-Find the output voltage response in Fig. 135 if $R = 20\,\Omega$, $L = 1$ H, $C = 10^{-4}$ F, the input is $\delta(t)$ (a unit impulse at time $t = 0$), and current and charge are zero at time $t = 0$.
+Find the output voltage response in @fig-6-135 if $R = 20\,\Omega$, $L = 1$ H, $C = 10^{-4}$ F, the input is $\delta(t)$ (a unit impulse at time $t = 0$), and current and charge are zero at time $t = 0$.
 
-**Solution.** To understand what is going on, note that the network is an RLC-circuit to which two wires at $A$ and $B$ are attached for recording the voltage $v(t)$ on the capacitor. Recalling from Sec. 2.9 that current $i(t)$ and charge $q(t)$ are related by $i = q' = dq/dt$, we obtain the model
+**Solution.** To understand what is going on, note that the network is an RLC-circuit to which two wires at $A$ and $B$ are attached for recording the voltage $v(t)$ on the capacitor. Recalling from <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9 that current $i(t)$ and charge $q(t)$ are related by $i = q' = dq/dt$, we obtain the model
 
 $$Li' + Ri + \frac{q}{C} = Lq'' + Rq' + \frac{q}{C} = q'' + 20q' + 10\,000q = \delta(t).$$
 
-From (@eq-6-deriv1) and (@eq-6-deriv2) in Sec. 6.2 and (@eq-6-dirac-transform) in this section we obtain the subsidiary equation for $Q(s) = \mathcal{L}(q)$
+From (@eq-6-deriv1) and (@eq-6-deriv2) in @sec-transforms-derivatives-integrals and (@eq-6-dirac-transform) in this section we obtain the subsidiary equation for $Q(s) = \mathcal{L}(q)$
 
 $$(s^2 + 20s + 10\,000)Q = 1. \quad \text{Solution} \quad Q = \frac{1}{(s+10)^2 + 9900}.$$
 
-By the first shifting theorem in Sec. 6.1 we obtain from $Q$ damped oscillations for $q$ and $v$; rounding $\sqrt{9900} \approx 99.502$, we get (Fig. 135)
+By the first shifting theorem in @sec-laplace-transform-linearity we obtain from $Q$ damped oscillations for $q$ and $v$; rounding $\sqrt{9900} \approx 99.502$, we get (@fig-6-135)
 
 $$q = \mathcal{L}^{-1}(Q) = \frac{1}{99.50}e^{-10t}\sin 99.50t \quad \text{and} \quad v = \frac{q}{C} = 100.5\,e^{-10t}\sin 99.50t. \quad \square$$
 
@@ -1014,7 +1015,7 @@ $$q = \mathcal{L}^{-1}(Q) = \frac{1}{99.50}e^{-10t}\sin 99.50t \quad \text{and} 
 
 ### More on Partial Fractions
 
-We have seen that the solution $Y$ of a subsidiary equation usually appears as a quotient of polynomials $Y(s) = F(s)/G(s)$, so that a partial fraction representation leads to a sum of expressions whose inverses we can obtain from a table, aided by the first shifting theorem (Sec. 6.1). These representations are sometimes called **Heaviside expansions**.
+We have seen that the solution $Y$ of a subsidiary equation usually appears as a quotient of polynomials $Y(s) = F(s)/G(s)$, so that a partial fraction representation leads to a sum of expressions whose inverses we can obtain from a table, aided by the first shifting theorem (@sec-laplace-transform-linearity). These representations are sometimes called **Heaviside expansions**.
 
 An unrepeated factor $s - a$ in $G(s)$ requires a single partial fraction $A/(s-a)$. See Examples 1 and 2. Repeated real factors $(s-a)^2$, $(s-a)^3$, etc., require partial fractions
 
@@ -1022,17 +1023,17 @@ $$\frac{A_2}{(s-a)^2} + \frac{A_1}{s-a}, \qquad \frac{A_3}{(s-a)^3} + \frac{A_2}
 
 The inverses are $(A_2 t + A_1)e^{at}$, $(\frac{1}{2}A_3 t^2 + A_2 t + A_1)e^{at}$, etc.
 
-Unrepeated complex factors $(s-\alpha)(s-\bar{\alpha})$, $\alpha = a + ib$, $\bar{\alpha} = a - ib$, require a partial fraction $(As + B)/[(s-a)^2 + b^2]$. For an application, see Example 4 in Sec. 6.3.
+Unrepeated complex factors $(s-\alpha)(s-\bar{\alpha})$, $\alpha = a + ib$, $\bar{\alpha} = a - ib$, require a partial fraction $(As + B)/[(s-a)^2 + b^2]$. For an application, see Example 4 in @sec-unit-step-function.
 
 A further one is the following.
 
 ### EXAMPLE 4 Unrepeated Complex Factors. Damped Forced Vibrations
 
-Solve the initial value problem for a damped mass–spring system acted upon by a sinusoidal force for some time interval (Fig. 136),
+Solve the initial value problem for a damped mass–spring system acted upon by a sinusoidal force for some time interval (@fig-6-136),
 
 $$y'' + 2y' + 2y = r(t), \quad r(t) = 10\sin 2t \text{ if } 0 < t < \pi \text{ and } 0 \text{ if } t > \pi; \quad y(0) = 1, \quad y'(0) = -5.$$
 
-**Solution.** From Table 6.1, (@eq-6-deriv1), (@eq-6-deriv2) in Sec. 6.2, and the second shifting theorem in Sec. 6.3, we obtain the subsidiary equation
+**Solution.** From @tbl-laplace-transforms, (@eq-6-deriv1), (@eq-6-deriv2) in @sec-transforms-derivatives-integrals, and the second shifting theorem in @sec-unit-step-function, we obtain the subsidiary equation
 
 $$(s^2 Y - s + 5) + 2(sY - 1) + 2Y = 10\cdot\frac{2}{s^2+4}(1 - e^{-\pi s}).$$
 
@@ -1040,7 +1041,7 @@ We collect the $Y$-terms, $(s^2+2s+2)Y$, take $-s+5-2 = -s+3$ to the right, and 
 
 $$ Y = \frac{20}{(s^2+4)(s^2+2s+2)} - \frac{20e^{-\pi s}}{(s^2+4)(s^2+2s+2)} + \frac{s-3}{s^2+2s+2}. $$ {#eq-6-ex4-Y}
 
-For the last fraction we get from Table 6.1 and the first shifting theorem
+For the last fraction we get from @tbl-laplace-transforms and the first shifting theorem
 
 $$ \mathcal{L}^{-1}\left\{\frac{s+1-4}{(s+1)^2+1}\right\} = e^{-t}(\cos t - 4\sin t). $$ {#eq-6-ex4-last}
 
@@ -1065,7 +1066,7 @@ The sum of this inverse and (@eq-6-ex4-last) is the solution of the problem for 
 
 $$ y(t) = 3e^{-t}\cos t - 2\cos 2t - \sin 2t \quad \text{if } 0 < t < \pi. $$ {#eq-6-ex4-sol1}
 
-In the second fraction in (@eq-6-ex4-Y), taken with the minus sign, we have the factor $e^{-\pi s}$, so that from (@eq-6-ex4-pfrac) and the second shifting theorem (Sec. 6.3) we get the inverse transform of this fraction for $t > 0$ in the form
+In the second fraction in (@eq-6-ex4-Y), taken with the minus sign, we have the factor $e^{-\pi s}$, so that from (@eq-6-ex4-pfrac) and the second shifting theorem (@sec-unit-step-function) we get the inverse transform of this fraction for $t > 0$ in the form
 
 $$+2\cos(2t-2\pi) + \sin(2t-2\pi) - e^{-(t-\pi)}[2\cos(t-\pi) + 4\sin(t-\pi)]$$
 $$= 2\cos 2t + \sin 2t + e^{-(t-\pi)}(2\cos t + 4\sin t).$$
@@ -1074,13 +1075,13 @@ The sum of this and (@eq-6-ex4-sol1) is the solution for $t > \pi$,
 
 $$ y(t) = e^{-t}[(3 + 2e^{\pi})\cos t + 4e^{\pi}\sin t] \quad \text{if } t > \pi. $$ {#eq-6-ex4-sol2}
 
-Figure 136 shows (@eq-6-ex4-sol1) (for $0 < t < \pi$) and (@eq-6-ex4-sol2) (for $t > \pi$), a beginning vibration, which goes to zero rapidly because of the damping and the absence of a driving force after $t = \pi$. $\square$
+@fig-6-136 shows (@eq-6-ex4-sol1) (for $0 < t < \pi$) and (@eq-6-ex4-sol2) (for $t > \pi$), a beginning vibration, which goes to zero rapidly because of the damping and the absence of a driving force after $t = \pi$. $\square$
 
 ![Fig. 136. Example 4](../images/fig-6-136.png){#fig-6-136}
 
 The case of repeated complex factors $(s-\alpha)(s-\bar\alpha)^2$, which is important in connection with resonance, will be handled by "convolution" in the next section.
 
-### PROBLEM SET 6.4
+### PROBLEM SET {#sec-ps-6-4}
 
 1. **CAS PROJECT. Effect of Damping.** Consider a vibrating system of your choice modeled by
 
@@ -1094,7 +1095,7 @@ $$y'' + cy' + ky = \delta(t).$$
 
 2. **CAS EXPERIMENT. Limit of a Rectangular Wave. Effects of Impulse.**
 
-(a) In Example 1 in the text, take a rectangular wave of area 1 from 1 to $1+k$. Graph the responses for a sequence of values of $k$ approaching zero, illustrating that for smaller and smaller $k$ those curves approach the curve shown in Fig. 134. Hint: If your CAS gives no solution for the differential equation, involving $k$, take specific $k$'s from the beginning.
+(a) In Example 1 in the text, take a rectangular wave of area 1 from 1 to $1+k$. Graph the responses for a sequence of values of $k$ approaching zero, illustrating that for smaller and smaller $k$ those curves approach the curve shown in @fig-6-134. Hint: If your CAS gives no solution for the differential equation, involving $k$, take specific $k$'s from the beginning.
 
 (b) Experiment on the response of the ODE in Example 1 (or of another ODE of your choice) to an impulse $\delta(t-a)$ for various systematically chosen $a$ ($> 0$); choose initial conditions $y(0) \neq 0$, $y'(0) = 0$. Also consider the solution if no impulse is applied. Is there a dependence of the response on $a$? On $b$ if you choose $b\delta(t-a)$? Would $-\delta(t-a')$ with $a' > a$ annihilate the effect of $\delta(t-a)$? Can you think of other questions that one could consider experimentally by inspecting graphs?
 
@@ -1139,11 +1140,11 @@ $$ \mathcal{L}(f) = \frac{1}{1-e^{-ps}}\int_0^p e^{-st}f(t)\, dt \quad (s > 0). 
 
 Prove this theorem. Hint: Write $\int_0^{\infty} = \int_0^p + \int_p^{2p} + \cdots$.
 
-(b) **Half-wave rectifier.** Using (@eq-6-periodic), show that the half-wave rectification of $\sin \omega t$ in Fig. 137 has the Laplace transform
+(b) **Half-wave rectifier.** Using (@eq-6-periodic), show that the half-wave rectification of $\sin \omega t$ in @fig-6-137 has the Laplace transform
 
 $$\mathcal{L}(f) = \frac{\omega(1 + e^{-\pi s/\omega})}{(s^2+\omega^2)(1 - e^{-2\pi s/\omega})} = \frac{\omega}{(s^2+\omega^2)(1 - e^{-\pi s/\omega})}.$$
 
-(A half-wave rectifier clips the negative portions of the curve. A full-wave rectifier converts them to positive; see Fig. 138.)
+(A half-wave rectifier clips the negative portions of the curve. A full-wave rectifier converts them to positive; see @fig-6-138.)
 
 (c) **Full-wave rectifier.** Show that the Laplace transform of the full-wave rectification of $\sin \omega t$ is
 
@@ -1153,15 +1154,15 @@ $$\frac{\omega}{s^2+\omega^2}\coth\frac{\pi s}{2\omega}.$$
 
 ![Fig. 138. Full-wave rectification](../images/fig-6-138.png){#fig-6-138}
 
-(d) **Saw-tooth wave.** Find the Laplace transform of the saw-tooth wave in Fig. 139.
+(d) **Saw-tooth wave.** Find the Laplace transform of the saw-tooth wave in @fig-6-139.
 
 ![Fig. 139. Saw-tooth wave](../images/fig-6-139.png){#fig-6-139}
 
-15. **Staircase function.** Find the Laplace transform of the staircase function in Fig. 140 by noting that it is the difference of $kt/p$ and the function in 14(d).
+15. **Staircase function.** Find the Laplace transform of the staircase function in @fig-6-140 by noting that it is the difference of $kt/p$ and the function in 14(d).
 
 ![Fig. 140. Staircase function](../images/fig-6-140.png){#fig-6-140}
 
-## 6.5 Convolution. Integral Equations {#sec-convolution}
+## Convolution. Integral Equations {#sec-convolution}
 
 Convolution has to do with the multiplication of transforms. The situation is as follows. Addition of transforms provides no problem; we know that $\mathcal{L}(f + g) = \mathcal{L}(f) + \mathcal{L}(g)$. Now multiplication of transforms occurs frequently in connection with ODEs, integral equations, and elsewhere. Then we usually know $\mathcal{L}(f)$ and $\mathcal{L}(g)$ and would like to know the function whose transform is the product $\mathcal{L}(f)\mathcal{L}(g)$. We might perhaps guess that it is $fg$, but this is false. The transform of a product is generally different from the product of the transforms of the factors,
 
@@ -1175,7 +1176,7 @@ $$ h(t) = (f * g)(t) = \int_0^t f(\tau)g(t-\tau)\, d\tau. $$ {#eq-6-convolution}
 
 ### THEOREM 1 Convolution Theorem
 
-If two functions $f$ and $g$ satisfy the assumption in the existence theorem in Sec. 6.1, so that their transforms $F$ and $G$ exist, the product $H = FG$ is the transform of $h$ given by (@eq-6-convolution). (Proof after Example 2.)
+If two functions $f$ and $g$ satisfy the assumption in the existence theorem in @sec-laplace-transform-linearity, so that their transforms $F$ and $G$ exist, the product $H = FG$ is the transform of $h$ given by (@eq-6-convolution). (Proof after Example 2.)
 
 ### EXAMPLE 1 Convolution
 
@@ -1193,7 +1194,7 @@ $$H(s) = \mathcal{L}(h)(s) = \frac{1}{a}\left(\frac{1}{s-a} - \frac{1}{s}\right)
 
 Let $H(s) = 1/(s^2+\omega^2)^2$. Find $h(t)$.
 
-**Solution.** The inverse of $1/(s^2+\omega^2)$ is $(\sin \omega t)/\omega$. Hence from (@eq-6-convolution) and the first formula in (11) in App. 3.1 we obtain
+**Solution.** The inverse of $1/(s^2+\omega^2)$ is $(\sin \omega t)/\omega$. Hence from (@eq-6-convolution) and the first formula in <!-- TODO: verify equation reference -->(11) in App. 3.1 we obtain
 
 $$h(t) = \frac{\sin \omega t}{\omega} * \frac{\sin \omega t}{\omega} = \frac{1}{\omega^2}\int_0^t \sin \omega\tau \sin\omega(t-\tau)\, d\tau$$
 
@@ -1201,7 +1202,7 @@ $$= \frac{1}{2\omega^2}\int_0^t [-\cos\omega t + \cos(2\omega\tau - \omega t)]\,
 
 $$= \frac{1}{2\omega^2}\left[-\tau\cos\omega t + \frac{\sin(2\omega\tau - \omega t)}{2\omega}\right]_{\tau=0}^{t} = \frac{1}{2\omega^2}\left[-t\cos\omega t + \frac{\sin\omega t}{\omega}\right] \quad \square$$
 
-in agreement with formula 21 in the table in Sec. 6.9.
+in agreement with formula 21 in the table in @sec-table-transforms.
 
 **PROOF** We prove the Convolution Theorem 1. CAUTION! Note which ones are the variables of integration! We can denote them as we want, for instance, by $\tau$ and $p$, and write
 
@@ -1215,7 +1216,7 @@ $t$ in $F$ and $\tau$ in $G$ vary independently. Hence we can insert the $G$-int
 
 $$F(s)G(s) = \int_0^{\infty} e^{-st}f(t)\cdot e^{st}\int_t^{\infty} e^{-s\tau}g(\tau-t)\, d\tau\, dt = \int_0^{\infty} f(t)\int_t^{\infty} e^{-s\tau}g(\tau-t)\, d\tau\, dt.$$
 
-Here we integrate for fixed $t$ over $\tau$ from $t$ to $\infty$ and then over $t$ from 0 to $\infty$. This is the blue region in Fig. 141. Under the assumption on $f$ and $g$ the order of integration can be reversed (see Ref. [A5] for a proof using uniform convergence). We then integrate first over $t$ from 0 to $\tau$ and then over $\tau$ from 0 to $\infty$, that is,
+Here we integrate for fixed $t$ over $\tau$ from $t$ to $\infty$ and then over $t$ from 0 to $\infty$. This is the blue region in @fig-6-141. Under the assumption on $f$ and $g$ the order of integration can be reversed (see Ref. [A5] for a proof using uniform convergence). We then integrate first over $t$ from 0 to $\tau$ and then over $\tau$ from 0 to $\infty$, that is,
 
 $$F(s)G(s) = \int_0^{\infty} e^{-s\tau}\int_0^{\tau} f(t)g(\tau-t)\, dt\, d\tau = \int_0^{\infty} e^{-s\tau}h(\tau)\, d\tau = \mathcal{L}(h) = H(s).$$
 
@@ -1240,7 +1241,7 @@ $$t * 1 = \int_0^t \tau \cdot 1\, d\tau = \frac{1}{2}t^2 \neq t.$$
 
 $(f * f)(t) \geq 0$ may not hold. For instance, Example 2 with $\omega = 1$ gives
 
-$$\sin t * \sin t = -\tfrac{1}{2}t\cos t + \tfrac{1}{2}\sin t \quad \text{(Fig. 142)}. \quad \square$$
+$$\sin t * \sin t = -\tfrac{1}{2}t\cos t + \tfrac{1}{2}\sin t \quad \text{(@fig-6-142)}. \quad \square$$
 
 ![Fig. 142. Example 3](../images/fig-6-142.png){#fig-6-142}
 
@@ -1248,7 +1249,7 @@ We shall now take up the case of a complex double root (left aside in the last s
 
 ### EXAMPLE 4 Repeated Complex Factors. Resonance
 
-In an undamped mass–spring system, resonance occurs if the frequency of the driving force equals the natural frequency of the system. Then the model is (see Sec. 2.8)
+In an undamped mass–spring system, resonance occurs if the frequency of the driving force equals the natural frequency of the system. Then the model is (see <!-- TODO: replace Sec. 2.8 with actual cross-reference label -->Sec. 2.8)
 
 $$y'' + \omega_0^2 y = K\sin\omega_0 t$$
 
@@ -1260,15 +1261,15 @@ This is a transform as in Example 2 with $\omega = \omega_0$ and multiplied by $
 
 $$y(t) = K\omega_0 \cdot \frac{1}{2\omega_0^2}\left(-t\cos\omega_0 t + \frac{\sin\omega_0 t}{\omega_0}\right) = \frac{K}{2\omega_0^2}(-\omega_0 t\cos\omega_0 t + \sin\omega_0 t).$$
 
-We see that the first term grows without bound. Clearly, in the case of resonance such a term must occur. (See also a similar kind of solution in Fig. 55 in Sec. 2.8.) $\square$
+We see that the first term grows without bound. Clearly, in the case of resonance such a term must occur. (See also a similar kind of solution in <!-- TODO: replace Fig. 55 with actual cross-reference label -->Fig. 55 in <!-- TODO: replace Sec. 2.8 with actual cross-reference label -->Sec. 2.8.) $\square$
 
 ### Application to Nonhomogeneous Linear ODEs
 
-Nonhomogeneous linear ODEs can now be solved by a general method based on convolution by which the solution is obtained in the form of an integral. To see this, recall from Sec. 6.2 that the subsidiary equation of the ODE
+Nonhomogeneous linear ODEs can now be solved by a general method based on convolution by which the solution is obtained in the form of an integral. To see this, recall from @sec-transforms-derivatives-integrals that the subsidiary equation of the ODE
 
 $$ y'' + ay' + by = r(t) \qquad (a,\, b \text{ constant}) $$ {#eq-6-nonhom-ode}
 
-has the solution [(@eq-6-Ysol) in Sec. 6.2]
+has the solution [(@eq-6-Ysol) in @sec-transforms-derivatives-integrals]
 
 $$Y(s) = [(s+a)y(0) + y'(0)]Q(s) + R(s)Q(s)$$
 
@@ -1282,7 +1283,7 @@ Using convolution, determine the response of the damped mass–spring system mod
 
 $$y'' + 3y' + 2y = r(t), \quad r(t) = 1 \text{ if } 1 < t < 2 \text{ and } 0 \text{ otherwise}, \quad y(0) = y'(0) = 0.$$
 
-This system with an input (a driving force) that acts for some time only (Fig. 143) has been solved by partial fraction reduction in Sec. 6.4 (Example 1).
+This system with an input (a driving force) that acts for some time only (@fig-6-143) has been solved by partial fraction reduction in @sec-dirac-delta (Example 1).
 
 **Solution by Convolution.** The transfer function and its inverse are
 
@@ -1300,7 +1301,7 @@ If $t > 2$, we have to integrate from $\tau = 1$ to 2 (not to $t$). This gives
 
 $$y(t) = e^{-(t-2)} - \tfrac{1}{2}e^{-2(t-2)} - (e^{-(t-1)} - \tfrac{1}{2}e^{-2(t-1)}).$$
 
-Figure 143 shows the input (the square wave) and the interesting output, which is zero from 0 to 1, then increases, reaches a maximum (near 2.6) after the input has become zero (why?), and finally decreases to zero in a monotone fashion. $\square$
+@fig-6-143 shows the input (the square wave) and the interesting output, which is zero from 0 to 1, then increases, reaches a maximum (near 2.6) after the input has become zero (why?), and finally decreases to zero in a monotone fashion. $\square$
 
 ![Fig. 143. Square wave and response in Example 5](../images/fig-6-143.png){#fig-6-143}
 
@@ -1338,7 +1339,7 @@ $(s^2 - s - 1)$ cancels on both sides, so that solving for $Y$ simply gives
 
 $$Y(s) = \frac{s}{s^2-1} \qquad \text{and the solution is} \qquad y(t) = \cosh t. \quad \square$$
 
-### PROBLEM SET 6.5
+### PROBLEM SET {#sec-ps-6-5}
 
 **1–7 CONVOLUTIONS BY INTEGRATION**
 
@@ -1384,7 +1385,7 @@ Solve by the Laplace transform, showing the details:
 
 (c) Distributivity, $f * (g_1 + g_2) = f * g_1 + f * g_2$
 
-(d) **Dirac's delta.** Derive the sifting formula (@eq-6-sifting) in Sec. 6.4 by using $f_k$ with $a = 0$ [(@eq-6-impulse-fn), Sec. 6.4] and applying the mean value theorem for integrals.
+(d) **Dirac's delta.** Derive the sifting formula (@eq-6-sifting) in @sec-dirac-delta by using $f_k$ with $a = 0$ [(@eq-6-impulse-fn), @sec-dirac-delta] and applying the mean value theorem for integrals.
 
 (e) **Unspecified driving force.** Show that forced vibrations governed by
 
@@ -1418,13 +1419,13 @@ Showing details, find $f(t)$ if $\mathcal{L}(f)$ equals:
 
 26. **Partial Fractions.** Solve Probs. 17, 21, and 23 by partial fraction reduction.
 
-## 6.6 Differentiation and Integration of Transforms. ODEs with Variable Coefficients {#sec-diff-int-transforms}
+## Differentiation and Integration of Transforms. ODEs with Variable Coefficients {#sec-diff-int-transforms}
 
-The variety of methods for obtaining transforms and inverse transforms and their application in solving ODEs is surprisingly large. We have seen that they include direct integration, the use of linearity (Sec. 6.1), shifting (Secs. 6.1, 6.3), convolution (Sec. 6.5), and differentiation and integration of functions $f(t)$ (Sec. 6.2). In this section, we shall consider operations of somewhat lesser importance. They are the differentiation and integration of transforms $F(s)$ and corresponding operations for functions $f(t)$. We show how they are applied to ODEs with variable coefficients.
+The variety of methods for obtaining transforms and inverse transforms and their application in solving ODEs is surprisingly large. We have seen that they include direct integration, the use of linearity (@sec-laplace-transform-linearity), shifting (@sec-laplace-transform-linearity, @sec-unit-step-function), convolution (@sec-convolution), and differentiation and integration of functions $f(t)$ (@sec-transforms-derivatives-integrals). In this section, we shall consider operations of somewhat lesser importance. They are the differentiation and integration of transforms $F(s)$ and corresponding operations for functions $f(t)$. We show how they are applied to ODEs with variable coefficients.
 
 ### Differentiation of Transforms
 
-It can be shown that, if a function $f(t)$ satisfies the conditions of the existence theorem in Sec. 6.1, then the derivative $F'(s) = dF/ds$ of the transform $F(s) = \mathcal{L}(f)$ can be obtained by differentiating $F(s)$ under the integral sign with respect to $s$ (proof in Ref. [GenRef4] listed in App. 1). Thus, if
+It can be shown that, if a function $f(t)$ satisfies the conditions of the existence theorem in @sec-laplace-transform-linearity, then the derivative $F'(s) = dF/ds$ of the transform $F(s) = \mathcal{L}(f)$ can be obtained by differentiating $F(s)$ under the integral sign with respect to $s$ (proof in Ref. [GenRef4] listed in App. 1). Thus, if
 
 $$F(s) = \int_0^{\infty} e^{-st}f(t)\, dt, \qquad \text{then} \qquad F'(s) = -\int_0^{\infty} e^{-st}tf(t)\, dt.$$
 
@@ -1436,7 +1437,7 @@ where the second formula is obtained by applying $\mathcal{L}^{-1}$ on both side
 
 In this way, differentiation of the transform of a function corresponds to the multiplication of the function by $-t$.
 
-### EXAMPLE 1 Differentiation of Transforms. Formulas 21–23 in Sec. 6.9
+### EXAMPLE 1 Differentiation of Transforms. Formulas 21–23 in @sec-table-transforms
 
 We shall derive the following three formulas.
 
@@ -1446,25 +1447,25 @@ We shall derive the following three formulas.
 | $\dfrac{s}{(s^2+b^2)^2}$ | $\dfrac{t}{2b}\sin bt$ |
 | $\dfrac{s^2}{(s^2+b^2)^2}$ | $\dfrac{1}{2b}(\sin bt + bt\cos bt)$ |
 
-**Solution.** From (@eq-6-diff-transform) and formula 8 (with $\omega = b$) in Table 6.1 of Sec. 6.1 we obtain by differentiation (CAUTION! Chain rule!)
+**Solution.** From (@eq-6-diff-transform) and formula 8 (with $\omega = b$) in @tbl-laplace-transforms of @sec-laplace-transform-linearity we obtain by differentiation (CAUTION! Chain rule!)
 
 $$\mathcal{L}(t\sin bt) = \frac{2bs}{(s^2+b^2)^2}.$$
 
-Dividing by $2b$ and using the linearity of $\mathcal{L}$, we obtain (3).
+Dividing by $2b$ and using the linearity of $\mathcal{L}$, we obtain <!-- TODO: verify equation reference -->(3).
 
-Formulas (2) and (4) are obtained as follows. From (@eq-6-diff-transform) and formula 7 (with $\omega = b$) in Table 6.1 we find
+Formulas <!-- TODO: verify equation reference -->(2) and <!-- TODO: verify equation reference -->(4) are obtained as follows. From (@eq-6-diff-transform) and formula 7 (with $\omega = b$) in @tbl-laplace-transforms we find
 
 $$ \mathcal{L}(t\cos bt) = -\frac{d}{ds}\left(\frac{s}{s^2+b^2}\right) = \frac{(s^2+b^2) - 2s^2}{(s^2+b^2)^2} = \frac{s^2-b^2}{(s^2+b^2)^2}. $$ {#eq-6-tcosbt}
 
-From this and formula 8 (with $\omega = b$) in Table 6.1 we have
+From this and formula 8 (with $\omega = b$) in @tbl-laplace-transforms we have
 
 $$\mathcal{L}\left(t\cos bt \pm \frac{\sin bt}{b}\right) = \frac{s^2-b^2}{(s^2+b^2)^2} \pm \frac{1}{s^2+b^2}.$$
 
-On the right we now take the common denominator. Then we see that for the plus sign the numerator becomes $s^2 - b^2 + s^2 + b^2 = 2s^2$, so that (4) follows by division by 2. Similarly, for the minus sign the numerator takes the form $s^2 - b^2 - s^2 - b^2 = -2b^2$, and we obtain (2). This agrees with Example 2 in Sec. 6.5. $\square$
+On the right we now take the common denominator. Then we see that for the plus sign the numerator becomes $s^2 - b^2 + s^2 + b^2 = 2s^2$, so that <!-- TODO: verify equation reference -->(4) follows by division by 2. Similarly, for the minus sign the numerator takes the form $s^2 - b^2 - s^2 - b^2 = -2b^2$, and we obtain <!-- TODO: verify equation reference -->(2). This agrees with Example 2 in @sec-convolution. $\square$
 
 ### Integration of Transforms
 
-Similarly, if $f(t)$ satisfies the conditions of the existence theorem in Sec. 6.1 and the limit of $f(t)/t$, as $t$ approaches 0 from the right, exists, then for $s > k$,
+Similarly, if $f(t)$ satisfies the conditions of the existence theorem in @sec-laplace-transform-linearity and the limit of $f(t)/t$, as $t$ approaches 0 from the right, exists, then for $s > k$,
 
 $$ \mathcal{L}\left\{\frac{f(t)}{t}\right\} = \int_s^{\infty} F(\tilde{s})\, d\tilde{s}, \qquad \text{hence} \qquad \mathcal{L}^{-1}\left\{\int_s^{\infty} F(\tilde{s})\, d\tilde{s}\right\} = \frac{f(t)}{t}. $$ {#eq-6-int-transform}
 
@@ -1494,7 +1495,7 @@ Taking the inverse transform and using (@eq-6-diff-transform), we obtain
 
 $$\mathcal{L}^{-1}\{F'(s)\} = \mathcal{L}^{-1}\left\{\frac{2s}{s^2-\omega^2} - \frac{2}{s}\right\} = 2\cosh\omega t - 2 = -tf(t).$$
 
-Hence the inverse $f(t)$ of $F(s)$ is $f(t) = 2(1 - \cosh\omega t)/t$. This agrees with formula 42 in Sec. 6.9.
+Hence the inverse $f(t)$ of $F(s)$ is $f(t) = 2(1 - \cosh\omega t)/t$. This agrees with formula 42 in @sec-table-transforms.
 
 Alternatively, if we let
 
@@ -1506,13 +1507,13 @@ $$\mathcal{L}^{-1}\left\{\ln\frac{s^2+\omega^2}{s^2}\right\} = \mathcal{L}^{-1}\
 
 the minus occurring since $s$ is the lower limit of integration.
 
-In a similar way we obtain formula 43 in Sec. 6.9,
+In a similar way we obtain formula 43 in @sec-table-transforms,
 
 $$\mathcal{L}^{-1}\left\{\ln\!\left(1 + \frac{a^2}{s^2}\right)\right\} = \frac{2}{t}(1 - \cosh at). \quad \square$$
 
 ### Special Linear ODEs with Variable Coefficients
 
-Formula (@eq-6-diff-transform) can be used to solve certain ODEs with variable coefficients. The idea is this. Let $\mathcal{L}(y) = Y$. Then $\mathcal{L}(y') = sY - y(0)$ (see Sec. 6.2). Hence by (@eq-6-diff-transform),
+Formula (@eq-6-diff-transform) can be used to solve certain ODEs with variable coefficients. The idea is this. Let $\mathcal{L}(y) = Y$. Then $\mathcal{L}(y') = sY - y(0)$ (see @sec-transforms-derivatives-integrals). Hence by (@eq-6-diff-transform),
 
 $$ \mathcal{L}(ty') = -\frac{d}{ds}[sY - y(0)] = -Y - s\frac{dY}{ds}. $$ {#eq-6-ty-prime}
 
@@ -1544,7 +1545,7 @@ We write $\ell_n = \mathcal{L}^{-1}(Y)$ and prove **Rodrigues's formula**
 
 $$ \ell_0 = 1, \qquad \ell_n(t) = \frac{e^t}{n!}\frac{d^n}{dt^n}(t^n e^{-t}), \qquad n = 1, 2, \ldots $$ {#eq-6-rodrigues}
 
-These are polynomials because the exponential terms cancel if we perform the indicated differentiations. They are called **Laguerre polynomials** and are usually denoted by $L_n$ (see Problem Set 5.7, but we continue to reserve capital letters for transforms). We prove (@eq-6-rodrigues). By Table 6.1 and the first shifting theorem (s-shifting),
+These are polynomials because the exponential terms cancel if we perform the indicated differentiations. They are called **Laguerre polynomials** and are usually denoted by $L_n$ (see <!-- TODO: replace Problem Set 5.7 with actual cross-reference label -->Problem Set 5.7, but we continue to reserve capital letters for transforms). We prove (@eq-6-rodrigues). By @tbl-laplace-transforms and the first shifting theorem (s-shifting),
 
 $$\mathcal{L}(t^n e^{-t}) = \frac{n!}{(s+1)^{n+1}}, \qquad \text{hence by (@eq-6-deriv-n)} \qquad \mathcal{L}\left(\frac{d^n}{dt^n}(t^n e^{-t})\right) = \frac{n!\, s^n}{(s+1)^{n+1}}$$
 
@@ -1552,7 +1553,7 @@ because the derivatives up to the order $n-1$ are zero at 0. Now make another sh
 
 $$\mathcal{L}(\ell_n) = \frac{(s-1)^n}{s^{n+1}} = Y. \quad \square$$
 
-### PROBLEM SET 6.6
+### PROBLEM SET {#sec-ps-6-6}
 
 1. **REVIEW REPORT. Differentiation and Integration of Functions and Transforms.** Make a draft of these four operations from memory. Then compare your draft with the text and write a 2- to 3-page report on these operations and their significance in applications.
 
@@ -1611,15 +1612,15 @@ Using differentiation, integration, s-shifting, or convolution, and showing the 
 
 20. $\ln\dfrac{s+a}{s+b}$
 
-## 6.7 Systems of ODEs {#sec-systems-odes}
+## Systems of ODEs {#sec-systems-odes}
 
-The Laplace transform method may also be used for solving systems of ODEs, as we shall explain in terms of typical applications. We consider a first-order linear system with constant coefficients (as discussed in Sec. 4.1)
+The Laplace transform method may also be used for solving systems of ODEs, as we shall explain in terms of typical applications. We consider a first-order linear system with constant coefficients (as discussed in <!-- TODO: replace Sec. 4.1 with actual cross-reference label -->Sec. 4.1)
 
 $$ y_1' = a_{11}y_1 + a_{12}y_2 + g_1(t) $$ {#eq-6-sys1}
 
 $$ y_2' = a_{21}y_1 + a_{22}y_2 + g_2(t). $$ {#eq-6-sys2}
 
-Writing $Y_1 = \mathcal{L}(y_1)$, $Y_2 = \mathcal{L}(y_2)$, $G_1 = \mathcal{L}(g_1)$, $G_2 = \mathcal{L}(g_2)$, we obtain from (@eq-6-deriv1) in Sec. 6.2 the **subsidiary system**
+Writing $Y_1 = \mathcal{L}(y_1)$, $Y_2 = \mathcal{L}(y_2)$, $G_1 = \mathcal{L}(g_1)$, $G_2 = \mathcal{L}(g_2)$, we obtain from (@eq-6-deriv1) in @sec-transforms-derivatives-integrals the **subsidiary system**
 
 $$sY_1 - y_1(0) = a_{11}Y_1 + a_{12}Y_2 + G_1(s)$$
 $$sY_2 - y_2(0) = a_{21}Y_1 + a_{22}Y_2 + G_2(s).$$
@@ -1638,13 +1639,13 @@ $$\mathbf{y}' = \mathbf{A}\mathbf{y} + \mathbf{g} \qquad \text{and} \qquad (\mat
 
 ### EXAMPLE 1 Mixing Problem Involving Two Tanks
 
-Tank $T_1$ in Fig. 144 initially contains 100 gal of pure water. Tank $T_2$ initially contains 100 gal of water in which 150 lb of salt are dissolved. The inflow into $T_1$ is 2 gal/min from $T_2$ and 6 gal/min containing 6 lb of salt from the outside. The inflow into $T_2$ is 8 gal/min from $T_1$. The outflow from $T_2$ is $2 + 6 = 8$ gal/min, as shown in the figure. The mixtures are kept uniform by stirring. Find and plot the salt contents $y_1(t)$ and $y_2(t)$ in $T_1$ and $T_2$, respectively.
+Tank $T_1$ in @fig-6-144 initially contains 100 gal of pure water. Tank $T_2$ initially contains 100 gal of water in which 150 lb of salt are dissolved. The inflow into $T_1$ is 2 gal/min from $T_2$ and 6 gal/min containing 6 lb of salt from the outside. The inflow into $T_2$ is 8 gal/min from $T_1$. The outflow from $T_2$ is $2 + 6 = 8$ gal/min, as shown in the figure. The mixtures are kept uniform by stirring. Find and plot the salt contents $y_1(t)$ and $y_2(t)$ in $T_1$ and $T_2$, respectively.
 
 **Solution.** The model is obtained in the form of two equations
 
 $$\text{Time rate of change} = \text{Inflow/min} - \text{Outflow/min}$$
 
-for the two tanks (see Sec. 4.1). Thus,
+for the two tanks (see <!-- TODO: replace Sec. 4.1 with actual cross-reference label -->Sec. 4.1). Thus,
 
 $$y_1' = -\frac{8}{100}y_1 + \frac{2}{100}y_2 + 6, \qquad y_2' = \frac{8}{100}y_1 - \frac{8}{100}y_2.$$
 
@@ -1653,7 +1654,7 @@ The initial conditions are $y_1(0) = 0$, $y_2(0) = 150$. From this we see that t
 $$(-0.08 - s)Y_1 + 0.02Y_2 = -\frac{6}{s}$$
 $$0.08Y_1 + (-0.08 - s)Y_2 = -150.$$
 
-We solve this algebraically for $Y_1$ and $Y_2$ by elimination (or by Cramer's rule in Sec. 7.7), and we write the solutions in terms of partial fractions,
+We solve this algebraically for $Y_1$ and $Y_2$ by elimination (or by Cramer's rule in <!-- TODO: replace Sec. 7.7 with actual cross-reference label -->Sec. 7.7), and we write the solutions in terms of partial fractions,
 
 $$Y_1 = \frac{9s + 0.48}{s(s+0.12)(s+0.04)} = \frac{100}{s} - \frac{62.5}{s+0.12} - \frac{37.5}{s+0.04}$$
 
@@ -1664,17 +1665,17 @@ By taking the inverse transform we arrive at the solution
 $$y_1 = 100 - 62.5e^{-0.12t} - 37.5e^{-0.04t}$$
 $$y_2 = 100 + 125e^{-0.12t} - 75e^{-0.04t}.$$
 
-Figure 144 shows the interesting plot of these functions. Can you give physical explanations for their main features? Why do they have the limit 100? Why is $y_2$ not monotone, whereas $y_1$ is? Why is $y_1$ from some time on suddenly larger than $y_2$? Etc. $\square$
+@fig-6-144 shows the interesting plot of these functions. Can you give physical explanations for their main features? Why do they have the limit 100? Why is $y_2$ not monotone, whereas $y_1$ is? Why is $y_1$ from some time on suddenly larger than $y_2$? Etc. $\square$
 
 ![Fig. 144. Mixing problem in Example 1](../images/fig-6-144.png){#fig-6-144}
 
-Other systems of ODEs of practical importance can be solved by the Laplace transform method in a similar way, and eigenvalues and eigenvectors, as we had to determine them in Chap. 4, will come out automatically, as we have seen in Example 1.
+Other systems of ODEs of practical importance can be solved by the Laplace transform method in a similar way, and eigenvalues and eigenvectors, as we had to determine them in <!-- TODO: replace Chap. 4 with actual chapter label -->Chap. 4, will come out automatically, as we have seen in Example 1.
 
 ### EXAMPLE 2 Electrical Network
 
-Find the currents $i_1(t)$ and $i_2(t)$ in the network in Fig. 145 with $L$ and $R$ measured in terms of the usual units (see Sec. 2.9), $v(t) = 100$ volts if $0 < t < 0.5$ sec and $0$ thereafter, and $i_1(0) = 0$, $i_2(0) = 0$.
+Find the currents $i_1(t)$ and $i_2(t)$ in the network in @fig-6-145 with $L$ and $R$ measured in terms of the usual units (see <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9), $v(t) = 100$ volts if $0 < t < 0.5$ sec and $0$ thereafter, and $i_1(0) = 0$, $i_2(0) = 0$.
 
-**Solution.** The model of the network is obtained from Kirchhoff's Voltage Law as in Sec. 2.9. For the lower circuit we obtain
+**Solution.** The model of the network is obtained from Kirchhoff's Voltage Law as in <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9. For the lower circuit we obtain
 
 $$0.8i_1' + 1(i_1 - i_2) = 1.4i_1 = 100[1 - u(t - \tfrac{1}{2})]$$
 
@@ -1690,7 +1691,7 @@ and for the upper
 
 $$i_2' - i_1 + i_2 = 0.$$
 
-With $i_1(0) = 0$, $i_2(0) = 0$ we obtain from (@eq-6-deriv1) in Sec. 6.2 and the second shifting theorem the subsidiary system
+With $i_1(0) = 0$, $i_2(0) = 0$ we obtain from (@eq-6-deriv1) in @sec-transforms-derivatives-integrals and the second shifting theorem the subsidiary system
 
 $$(s+3)I_1 - 1.25I_2 = 125\left(\frac{1}{s} - \frac{e^{-s/2}}{s}\right)$$
 $$-I_1 + (s+1)I_2 = 0.$$
@@ -1727,17 +1728,17 @@ Can you explain physically why both currents eventually go to zero, and why $i_1
 
 Systems of ODEs of higher order can be solved by the Laplace transform method in a similar fashion. As an important application, typical of many similar mechanical systems, we consider coupled vibrating masses on springs.
 
-### EXAMPLE 3 Model of Two Masses on Springs (Fig. 146)
+### EXAMPLE 3 Model of Two Masses on Springs (@fig-6-146)
 
-The mechanical system in Fig. 146 consists of two bodies of mass 1 on three springs of the same spring constant $k$ and of negligibly small masses of the springs. Also damping is assumed to be practically zero. Then the model of the physical system is the system of ODEs
+The mechanical system in @fig-6-146 consists of two bodies of mass 1 on three springs of the same spring constant $k$ and of negligibly small masses of the springs. Also damping is assumed to be practically zero. Then the model of the physical system is the system of ODEs
 
 $$ y_1'' = -ky_1 + k(y_2 - y_1) $$ {#eq-6-spring1}
 
 $$ y_2'' = -k(y_2 - y_1) - ky_2. $$ {#eq-6-spring2}
 
-Here $y_1$ and $y_2$ are the displacements of the bodies from their positions of static equilibrium. These ODEs follow from Newton's second law, Mass $\times$ Acceleration $=$ Force, as in Sec. 2.4 for a single body. We again regard downward forces as positive and upward as negative. On the upper body, $-ky_1$ is the force of the upper spring and $k(y_2-y_1)$ that of the middle spring, $y_2 - y_1$ being the net change in spring length—think this over before going on. On the lower body, $-k(y_2 - y_1)$ is the force of the middle spring and $-ky_2$ that of the lower spring.
+Here $y_1$ and $y_2$ are the displacements of the bodies from their positions of static equilibrium. These ODEs follow from Newton's second law, Mass $\times$ Acceleration $=$ Force, as in <!-- TODO: replace Sec. 2.4 with actual cross-reference label -->Sec. 2.4 for a single body. We again regard downward forces as positive and upward as negative. On the upper body, $-ky_1$ is the force of the upper spring and $k(y_2-y_1)$ that of the middle spring, $y_2 - y_1$ being the net change in spring length—think this over before going on. On the lower body, $-k(y_2 - y_1)$ is the force of the middle spring and $-ky_2$ that of the lower spring.
 
-We shall determine the solution corresponding to the initial conditions $y_1(0) = 1$, $y_2(0) = 1$, $y_1'(0) = \sqrt{3k}$, $y_2'(0) = -\sqrt{3k}$. Let $Y_1 = \mathcal{L}(y_1)$ and $Y_2 = \mathcal{L}(y_2)$. Then from (@eq-6-deriv2) in Sec. 6.2 and the initial conditions we obtain the subsidiary system
+We shall determine the solution corresponding to the initial conditions $y_1(0) = 1$, $y_2(0) = 1$, $y_1'(0) = \sqrt{3k}$, $y_2'(0) = -\sqrt{3k}$. Let $Y_1 = \mathcal{L}(y_1)$ and $Y_2 = \mathcal{L}(y_2)$. Then from (@eq-6-deriv2) in @sec-transforms-derivatives-integrals and the initial conditions we obtain the subsidiary system
 
 $$s^2 Y_1 - s - \sqrt{3k} = -kY_1 + k(Y_2 - Y_1)$$
 $$s^2 Y_2 - s + \sqrt{3k} = -k(Y_2 - Y_1) - kY_2.$$
@@ -1749,13 +1750,13 @@ $$-kY_1 + (s^2 + 2k)Y_2 = s - \sqrt{3k}.$$
 
 ![Fig. 146. Example 3](../images/fig-6-146.png){#fig-6-146}
 
-Elimination (or Cramer's rule in Sec. 7.7) yields the solution, which we can expand in terms of partial fractions,
+Elimination (or Cramer's rule in <!-- TODO: replace Sec. 7.7 with actual cross-reference label -->Sec. 7.7) yields the solution, which we can expand in terms of partial fractions,
 
 $$Y_1 = \frac{(s + \sqrt{3k})(s^2+2k) + k(s - \sqrt{3k})}{(s^2+2k)^2 - k^2} = \frac{s}{s^2+k} + \frac{\sqrt{3k}}{s^2+3k}$$
 
 $$Y_2 = \frac{(s^2+2k)(s - \sqrt{3k}) + k(s + \sqrt{3k})}{(s^2+2k)^2 - k^2} = \frac{s}{s^2+k} - \frac{\sqrt{3k}}{s^2+3k}.$$
 
-Hence the solution of our initial value problem is (Fig. 147)
+Hence the solution of our initial value problem is (@fig-6-147)
 
 $$y_1(t) = \mathcal{L}^{-1}(Y_1) = \cos\sqrt{k}\,t + \sin\sqrt{3k}\,t$$
 $$y_2(t) = \mathcal{L}^{-1}(Y_2) = \cos\sqrt{k}\,t - \sin\sqrt{3k}\,t.$$
@@ -1764,15 +1765,15 @@ We see that the motion of each mass is harmonic (the system is undamped!), being
 
 ![Fig. 147. Solutions in Example 3](../images/fig-6-147.png){#fig-6-147}
 
-### PROBLEM SET 6.7
+### PROBLEM SET {#sec-ps-6-7}
 
 1. **TEAM PROJECT. Comparison of Methods for Linear Systems of ODEs.**
 
-(a) **Models.** Solve the models in Examples 1 and 2 of Sec. 4.1 by Laplace transforms and compare the amount of work with that in Sec. 4.1. Show the details of your work.
+(a) **Models.** Solve the models in Examples 1 and 2 of <!-- TODO: replace Sec. 4.1 with actual cross-reference label -->Sec. 4.1 by Laplace transforms and compare the amount of work with that in <!-- TODO: replace Sec. 4.1 with actual cross-reference label -->Sec. 4.1. Show the details of your work.
 
-(b) **Homogeneous Systems.** Solve the systems (8), (11)–(13) in Sec. 4.3 by Laplace transforms. Show the details.
+(b) **Homogeneous Systems.** Solve the systems (8), (11)–(13) in <!-- TODO: replace Sec. 4.3 with actual cross-reference label -->Sec. 4.3 by Laplace transforms. Show the details.
 
-(c) **Nonhomogeneous System.** Solve the system (3) in Sec. 4.6 by Laplace transforms. Show the details.
+(c) **Nonhomogeneous System.** Solve the system (3) in <!-- TODO: replace Sec. 4.6 with actual cross-reference label -->Sec. 4.6 by Laplace transforms. Show the details.
 
 **2–15 SYSTEMS OF ODEs**
 
@@ -1814,13 +1815,13 @@ Using the Laplace transform and showing the details of your work, solve the IVP:
 
 18. **Mixing problem.** What will happen in Example 1 if you double all flows (in particular, an increase to 12 gal/min containing 12 lb of salt from the outside), leaving the size of the tanks and the initial conditions as before? First guess, then calculate. Can you relate the new solution to the old one?
 
-19. **Electrical network.** Using Laplace transforms, find the currents $i_1(t)$ and $i_2(t)$ in Fig. 148, where $v(t) = 390\cos t$ and $i_1(0) = 0$, $i_2(0) = 0$. How soon will the currents practically reach their steady state?
+19. **Electrical network.** Using Laplace transforms, find the currents $i_1(t)$ and $i_2(t)$ in @fig-6-148, where $v(t) = 390\cos t$ and $i_1(0) = 0$, $i_2(0) = 0$. How soon will the currents practically reach their steady state?
 
 ![Fig. 148. Electrical network and currents in Problem 19](../images/fig-6-148.png){#fig-6-148}
 
 20. **Single cosine wave.** Solve Prob. 19 when the EMF (electromotive force) is acting from 0 to $2\pi$ only. Can you do this just by looking at Prob. 19, practically without calculation?
 
-## 6.8 Laplace Transform: General Formulas {#sec-general-formulas}
+## Laplace Transform: General Formulas {#sec-general-formulas}
 
 | Formula | Name, Comments | Sec. |
 |---|---|---|
@@ -1841,7 +1842,7 @@ Using the Laplace transform and showing the details of your work, solve the IVP:
 | $\mathcal{L}\!\left\{\dfrac{f(t)}{t}\right\} = \displaystyle\int_s^{\infty} F(\tilde{s})\, d\tilde{s}$ | Integration of Transform | 6.6 |
 | $\mathcal{L}(f) = \dfrac{1}{1-e^{-ps}}\displaystyle\int_0^p e^{-st}f(t)\, dt$ | $f$ Periodic with Period $p$ | Project 6.4 |
 
-## 6.9 Table of Laplace Transforms {#sec-table-transforms}
+## Table of Laplace Transforms {#sec-table-transforms}
 
 For more extensive tables, see Ref. [A9] in Appendix 1.
 
@@ -1893,11 +1894,11 @@ For more extensive tables, see Ref. [A9] in Appendix 1.
 | 44 | $\arctan\dfrac{\omega}{s}$ | $\dfrac{1}{t}\sin\omega t$ | |
 | 45 | $\text{arccot}\,s$ | $\text{Si}(t)$ | App. A3.1 |
 
-## Chapter 6 Review Questions and Problems {#sec-ch6-review}
+## Review Questions and Problems {#sec-ch6-review}
 
 1. State the Laplace transforms of a few simple functions from memory.
 2. What are the steps of solving an ODE by the Laplace transform?
-3. In what cases of solving ODEs is the present method preferable to that in Chap. 2?
+3. In what cases of solving ODEs is the present method preferable to that in <!-- TODO: replace Chap. 2 with actual chapter label -->Chap. 2?
 4. What property of the Laplace transform is crucial in solving ODEs?
 5. Is $\mathcal{L}\{f(t)+g(t)\} = \mathcal{L}\{f(t)\}+\mathcal{L}\{g(t)\}$? Is $\mathcal{L}\{f(t)g(t)\} = \mathcal{L}\{f(t)\}\mathcal{L}\{g(t)\}$? Explain.
 6. When and how do you use the unit step function and Dirac's delta?
@@ -1960,7 +1961,7 @@ Solve by the Laplace transform, showing the details and graphing the solution:
 
 Model and solve by the Laplace transform:
 
-38. Show that the model of the mechanical system in Fig. 149 (no friction, no damping) is
+38. Show that the model of the mechanical system in @fig-6-149 (no friction, no damping) is
 
 $$m_1 y_1'' = -k_1 y_1 + k_2(y_2-y_1), \qquad m_2 y_2'' = -k_2(y_2-y_1) - k_3 y_2.$$
 
@@ -1970,19 +1971,19 @@ $$m_1 y_1'' = -k_1 y_1 + k_2(y_2-y_1), \qquad m_2 y_2'' = -k_2(y_2-y_1) - k_3 y_
 
 40. Find the model (the system of ODEs) in Prob. 38 extended by adding another mass $m_3$ and another spring of modulus $k_4$ in series.
 
-41. Find the current $i(t)$ in the RC-circuit in Fig. 150, where $R = 10\,\Omega$, $C = 0.1$ F, $v(t) = 10t$ V if $0 < t < 4$, $v(t) = 40$ V if $t > 4$, and the initial charge on the capacitor is 0.
+41. Find the current $i(t)$ in the RC-circuit in @fig-6-150, where $R = 10\,\Omega$, $C = 0.1$ F, $v(t) = 10t$ V if $0 < t < 4$, $v(t) = 40$ V if $t > 4$, and the initial charge on the capacitor is 0.
 
 ![Fig. 150. RC-circuit](../images/fig-6-150.png){#fig-6-150}
 
-42. Find and graph the charge $q(t)$ and the current $i(t)$ in the LC-circuit in Fig. 151, assuming $L = 1$ H, $C = 1$ F, $v(t) = 1 - e^{-t}$ if $0 < t < \pi$, $v(t) = 0$ if $t > \pi$, and zero initial current and charge.
+42. Find and graph the charge $q(t)$ and the current $i(t)$ in the LC-circuit in @fig-6-151, assuming $L = 1$ H, $C = 1$ F, $v(t) = 1 - e^{-t}$ if $0 < t < \pi$, $v(t) = 0$ if $t > \pi$, and zero initial current and charge.
 
 ![Fig. 151. LC-circuit](../images/fig-6-151.png){#fig-6-151}
 
-43. Find the current $i(t)$ in the RLC-circuit in Fig. 152, where $R = 160\,\Omega$, $L = 20$ H, $C = 0.002$ F, $v(t) = 37\sin 10t$ V, and current and charge at $t = 0$ are zero.
+43. Find the current $i(t)$ in the RLC-circuit in @fig-6-152, where $R = 160\,\Omega$, $L = 20$ H, $C = 0.002$ F, $v(t) = 37\sin 10t$ V, and current and charge at $t = 0$ are zero.
 
 ![Fig. 152. RLC-circuit](../images/fig-6-152.png){#fig-6-152}
 
-44. Show that, by Kirchhoff's Voltage Law (Sec. 2.9), the currents in the network in Fig. 153 are obtained from the system
+44. Show that, by Kirchhoff's Voltage Law (<!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9), the currents in the network in @fig-6-153 are obtained from the system
 
 $$Li_1' + R(i_1 - i_2) = v(t), \qquad R(i_2' - i_1') + \frac{1}{C}i_2 = 0.$$
 
@@ -1990,21 +1991,21 @@ Solve this system, assuming that $R = 10\,\Omega$, $L = 20$ H, $C = 0.05$ F, $v 
 
 ![Fig. 153. Network in Problem 44](../images/fig-6-153.png){#fig-6-153}
 
-45. See the setup in Fig. 154 and find the currents $i_1(t)$ and $i_2(t)$ when the switch is closed at $t = 0$. Find the limits of $i_1(t)$ and $i_2(t)$ as $t \to \infty$, (i) from the solution, (ii) directly from the given network.
+45. See the setup in @fig-6-154 and find the currents $i_1(t)$ and $i_2(t)$ when the switch is closed at $t = 0$. Find the limits of $i_1(t)$ and $i_2(t)$ as $t \to \infty$, (i) from the solution, (ii) directly from the given network.
 
 ![Fig. 154. Network in Problem 45](../images/fig-6-154.png){#fig-6-154}
 
-## Summary of Chapter 6 {#sec-ch6-summary}
+## SUMMARY: Laplace Transforms {#sec-ch6-summary}
 
 ### Laplace Transforms
 
 The main purpose of Laplace transforms is the solution of differential equations and systems of such equations, as well as corresponding initial value problems. The **Laplace transform** $F(s) = \mathcal{L}(f)$ of a function $f(t)$ is defined by
 
-$$ F(s) = \mathcal{L}(f) = \int_0^{\infty} e^{-st}f(t)\, dt \qquad \text{(Sec. 6.1)}. $$ {#eq-6-summary-def}
+$$ F(s) = \mathcal{L}(f) = \int_0^{\infty} e^{-st}f(t)\, dt \qquad \text{(@sec-laplace-transform-linearity)}. $$ {#eq-6-summary-def}
 
 This definition is motivated by the property that the differentiation of $f$ with respect to $t$ corresponds to the multiplication of the transform $F$ by $s$; more precisely,
 
-$$ \mathcal{L}(f') = s\mathcal{L}(f) - f(0), \qquad \mathcal{L}(f'') = s^2\mathcal{L}(f) - sf(0) - f'(0) \qquad \text{(Sec. 6.2)} $$ {#eq-6-summary-deriv}
+$$ \mathcal{L}(f') = s\mathcal{L}(f) - f(0), \qquad \mathcal{L}(f'') = s^2\mathcal{L}(f) - sf(0) - f'(0) \qquad \text{(@sec-transforms-derivatives-integrals)} $$ {#eq-6-summary-deriv}
 
 etc. Hence by taking the transform of a given differential equation
 
@@ -2014,15 +2015,15 @@ and writing $\mathcal{L}(y) = Y(s)$, we obtain the **subsidiary equation**
 
 $$ (s^2 + as + b)Y = \mathcal{L}(r) + sf(0) + f'(0) + af(0). $$ {#eq-6-summary-sub}
 
-Here, in obtaining the transform $\mathcal{L}(r)$ we can get help from the small table in Sec. 6.1 or the larger table in Sec. 6.9. This is the **first step**. In the **second step** we solve the subsidiary equation algebraically for $Y(s)$. In the **third step** we determine the inverse transform
+Here, in obtaining the transform $\mathcal{L}(r)$ we can get help from the small table in @sec-laplace-transform-linearity or the larger table in @sec-table-transforms. This is the **first step**. In the **second step** we solve the subsidiary equation algebraically for $Y(s)$. In the **third step** we determine the inverse transform
 
 $$y(t) = \mathcal{L}^{-1}(Y),$$
 
-that is, the solution of the problem. This is generally the hardest step, and in it we may again use one of those two tables. $Y(s)$ will often be a rational function, so that we can obtain the inverse $\mathcal{L}^{-1}(Y)$ by **partial fraction reduction** (Sec. 6.4) if we see no simpler way.
+that is, the solution of the problem. This is generally the hardest step, and in it we may again use one of those two tables. $Y(s)$ will often be a rational function, so that we can obtain the inverse $\mathcal{L}^{-1}(Y)$ by **partial fraction reduction** (@sec-dirac-delta) if we see no simpler way.
 
-The Laplace method avoids the determination of a general solution of the homogeneous ODE, and we also need not determine values of arbitrary constants in a general solution from initial conditions; instead, we can insert the latter directly into (@eq-6-summary-sub). Two further facts account for the practical importance of the Laplace transform. First, it has some basic properties and resulting techniques that simplify the determination of transforms and inverses. The most important of these properties are listed in Sec. 6.8, together with references to the corresponding sections. More on the use of **unit step functions** and **Dirac's delta** can be found in Secs. 6.3 and 6.4, and more on **convolution** in Sec. 6.5. Second, due to these properties, the present method is particularly suitable for handling right sides $r(t)$ given by different expressions over different intervals of time, for instance, when $r(t)$ is a square wave or an impulse or of a form such as $r(t) = \cos t$ if $0 \leq t \leq 4\pi$ and $0$ elsewhere.
+The Laplace method avoids the determination of a general solution of the homogeneous ODE, and we also need not determine values of arbitrary constants in a general solution from initial conditions; instead, we can insert the latter directly into (@eq-6-summary-sub). Two further facts account for the practical importance of the Laplace transform. First, it has some basic properties and resulting techniques that simplify the determination of transforms and inverses. The most important of these properties are listed in @sec-general-formulas, together with references to the corresponding sections. More on the use of **unit step functions** and **Dirac's delta** can be found in @sec-unit-step-function and @sec-dirac-delta, and more on **convolution** in @sec-convolution. Second, due to these properties, the present method is particularly suitable for handling right sides $r(t)$ given by different expressions over different intervals of time, for instance, when $r(t)$ is a square wave or an impulse or of a form such as $r(t) = \cos t$ if $0 \leq t \leq 4\pi$ and $0$ elsewhere.
 
-The application of the Laplace transform to systems of ODEs is shown in Sec. 6.7. (The application to PDEs follows in Sec. 12.12.)
+The application of the Laplace transform to systems of ODEs is shown in @sec-systems-odes. (The application to PDEs follows in <!-- TODO: replace Sec. 12.12 with actual cross-reference label -->Sec. 12.12.)
 
 [^1]: PIERRE SIMON MARQUIS DE LAPLACE (1749–1827), great French mathematician, was a professor in Paris. He developed the foundation of potential theory and made important contributions to celestial mechanics, astronomy in general, special functions, and probability theory. Napoléon Bonaparte was his student for a year. For Laplace's interesting political involvements, see Ref. [GenRef2], listed in App. 1. The powerful practical Laplace transform techniques were developed over a century later by the English electrical engineer OLIVER HEAVISIDE (1850–1925) and were often called "Heaviside calculus." We shall drop variables when this simplifies formulas without causing confusion. For instance, in (@eq-6-1) we wrote $\mathcal{L}(f)$ instead of $\mathcal{L}(f)(s)$ and in (@eq-6-1star) $\mathcal{L}^{-1}(F)$ instead of $\mathcal{L}^{-1}(F)(t)$.
 
