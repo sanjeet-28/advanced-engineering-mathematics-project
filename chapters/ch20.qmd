@@ -1,20 +1,22 @@
 ---
-title: "CHAPTER 20: Numeric Linear Algebra"
+title: "Numeric Linear Algebra"
 ---
 
-This chapter deals with two main topics. The first topic is how to solve linear systems of equations numerically. We start with Gauss elimination, which may be familiar to some readers, but this time in an algorithmic setting with partial pivoting. Variants of this method (Doolittle, Crout, Cholesky, Gauss–Jordan) are discussed in Sec. 20.2. All these methods are direct methods, that is, methods of numerics where we know in advance how many steps they will take until they arrive at a solution. However, small pivots and roundoff error magnification may produce nonsensical results, such as in the Gauss method. A shift occurs in Sec. 20.3, where we discuss numeric iteration methods or indirect methods to address our first topic. Here we cannot be totally sure how many steps will be needed to arrive at a good answer. Several factors—such as how far is the starting value from our initial solution, how is the problem structure influencing speed of convergence, how accurate would we like our result to be—determine the outcome of these methods. Moreover, our computation cycle may not converge. Gauss–Seidel iteration and Jacobi iteration are discussed in Sec. 20.3. Section 20.4 is at the heart of addressing the pitfalls of numeric linear algebra. It is concerned with problems that are ill-conditioned. We learn to estimate how "bad" such a problem is by calculating the condition number of its matrix.
+# Numeric Linear Algebra {#ch-numeric-linear-algebra}
 
-The second topic (Secs. 20.6–20.9) is how to solve eigenvalue problems numerically. Eigenvalue problems appear throughout engineering, physics, mathematics, economics, and many areas. For large or very large matrices, determining the eigenvalues is difficult as it involves finding the roots of the characteristic equations, which are high-degree polynomials. As such, there are different approaches to tackling this problem. Some methods, such as Gerschgorin's method and Collatz's method only provide a range in which eigenvalues lie and thus are known as inclusion methods. Others such as tridiagonalization and QR-factorization actually find all the eigenvalues. The area is quite ingenious and should be fascinating to the reader.
+This chapter deals with two main topics. The first topic is how to solve linear systems of equations numerically. We start with Gauss elimination, which may be familiar to some readers, but this time in an algorithmic setting with partial pivoting. Variants of this method (Doolittle, Crout, Cholesky, Gauss–Jordan) are discussed in @sec-lu-factorization. All these methods are direct methods, that is, methods of numerics where we know in advance how many steps they will take until they arrive at a solution. However, small pivots and roundoff error magnification may produce nonsensical results, such as in the Gauss method. A shift occurs in @sec-iterative-methods, where we discuss numeric iteration methods or indirect methods to address our first topic. Here we cannot be totally sure how many steps will be needed to arrive at a good answer. Several factors—such as how far is the starting value from our initial solution, how is the problem structure influencing speed of convergence, how accurate would we like our result to be—determine the outcome of these methods. Moreover, our computation cycle may not converge. Gauss–Seidel iteration and Jacobi iteration are discussed in @sec-iterative-methods. @sec-ill-conditioning is at the heart of addressing the pitfalls of numeric linear algebra. It is concerned with problems that are ill-conditioned. We learn to estimate how "bad" such a problem is by calculating the condition number of its matrix.
 
-**COMMENT.** This chapter is independent of Chap. 19 and can be studied immediately after Chap. 7 or 8.
+The second topic (@sec-eigenvalue-problems to @sec-qr-factorization) is how to solve eigenvalue problems numerically. Eigenvalue problems appear throughout engineering, physics, mathematics, economics, and many areas. For large or very large matrices, determining the eigenvalues is difficult as it involves finding the roots of the characteristic equations, which are high-degree polynomials. As such, there are different approaches to tackling this problem. Some methods, such as Gerschgorin's method and Collatz's method only provide a range in which eigenvalues lie and thus are known as inclusion methods. Others such as tridiagonalization and QR-factorization actually find all the eigenvalues. The area is quite ingenious and should be fascinating to the reader.
 
-**Prerequisite:** Secs. 7.1, 7.2, 8.1.  
-**Sections that may be omitted in a shorter course:** 20.4, 20.5, 20.9.  
+**COMMENT.** This chapter is independent of <!-- TODO: replace Chap. 19 with actual chapter label -->Chap. 19 and can be studied immediately after <!-- TODO: replace Chap. 7 or 8 with actual chapter label -->Chap. 7 or 8.
+
+**Prerequisite:** <!-- TODO: replace Secs. 7.1, 7.2, 8.1 with actual cross-reference label -->Secs. 7.1, 7.2, 8.1.  
+**Sections that may be omitted in a shorter course:** @sec-ill-conditioning, @sec-least-squares, and @sec-qr-factorization.  
 **References and Answers to Problems:** App. 1 Part E, App. 2.
 
-## 20.1 Linear Systems: Gauss Elimination {#sec-gauss-elimination}
+## Linear Systems: Gauss Elimination {#sec-gauss-elimination}
 
-The basic method for solving systems of linear equations by Gauss elimination and back substitution was explained in Sec. 7.3. If you covered Sec. 7.3, you may wonder why we cover Gauss elimination again. The reason is that here we cover Gauss elimination in the setting of numerics and introduce new material such as pivoting, row scaling, and operation count. Furthermore, we give an algorithmic representation of Gauss elimination in Table 20.1 that can be readily converted into software. We also show when Gauss elimination runs into difficulties with small pivots and what to do about it. The reader should pay close attention to the material as variants of Gauss elimination are covered in Sec. 20.2 and, furthermore, the general problem of solving linear systems is the focus of the first half of this chapter.
+The basic method for solving systems of linear equations by Gauss elimination and back substitution was explained in <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3. If you covered <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3, you may wonder why we cover Gauss elimination again. The reason is that here we cover Gauss elimination in the setting of numerics and introduce new material such as pivoting, row scaling, and operation count. Furthermore, we give an algorithmic representation of Gauss elimination in @tbl-gauss-algorithm that can be readily converted into software. We also show when Gauss elimination runs into difficulties with small pivots and what to do about it. The reader should pay close attention to the material as variants of Gauss elimination are covered in @sec-lu-factorization and, furthermore, the general problem of solving linear systems is the focus of the first half of this chapter.
 
 A linear system of $n$ equations in $n$ unknowns $x_1, \ldots, x_n$ is a set of equations of the form
 $$
@@ -25,7 +27,7 @@ E_2: \quad & a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
 E_n: \quad & a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nn}x_n = b_n
 \end{aligned}
 $$ {#eq-linear-system-20-1}
-where the coefficients $a_{jk}$ and the $b_j$ are given numbers. The system is called homogeneous if all the $b_j$ are zero; otherwise it is called nonhomogeneous. Using matrix multiplication (Sec. 7.2), we can write (@eq-linear-system-20-1) as a single vector equation
+where the coefficients $a_{jk}$ and the $b_j$ are given numbers. The system is called homogeneous if all the $b_j$ are zero; otherwise it is called nonhomogeneous. Using matrix multiplication (<!-- TODO: replace Sec. 7.2 with actual cross-reference label -->Sec. 7.2), we can write (@eq-linear-system-20-1) as a single vector equation
 $$Ax = b$$ {#eq-matrix-system-20-2}
 where the coefficient matrix $A = [a_{jk}]$ is the $n \times n$ matrix
 $$
@@ -52,9 +54,9 @@ a_{n1} & a_{n2} & \cdots & a_{nn} & \mid & b_n
 $$
 A solution of (@eq-linear-system-20-1) is a set of numbers $x_1, \ldots, x_n$ that satisfy all the $n$ equations, and a solution vector of (@eq-linear-system-20-1) is a vector $x$ whose components constitute a solution of (@eq-linear-system-20-1).
 
-The method of solving such a system by determinants (Cramer's rule in Sec. 7.7) is not practical, even with efficient methods for evaluating the determinants.
+The method of solving such a system by determinants (Cramer's rule in <!-- TODO: replace Sec. 7.7 with actual cross-reference label -->Sec. 7.7) is not practical, even with efficient methods for evaluating the determinants.
 
-A practical method for the solution of a linear system is the so-called Gauss elimination, which we shall now discuss (proceeding independently of Sec. 7.3).
+A practical method for the solution of a linear system is the so-called Gauss elimination, which we shall now discuss (proceeding independently of <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3).
 
 ### Gauss Elimination
 
@@ -68,7 +70,7 @@ $$
 $$
 and back substitution gives $x_3 = 0.5$ from the third equation, then $x_2 = (-7 - 2 \cdot 0.5)/8 = -1$ from the second equation, and finally $x_1 = (26 - 2(-1) - 8(0.5))/6 = 4$ from the first equation.
 
-How do we reduce a given system (@eq-linear-system-20-1) to triangular form? In the first step we eliminate $x_1$ from equations $E_2$ to $E_n$ in (@eq-linear-system-20-1). We do this by adding (or subtracting) suitable multiples of $E_1$ to (from) equations $E_2$ to $E_n$ and taking the resulting equations, call them $E_2^*, \ldots, E_n^*$, as the new equations. The first equation, $E_1$, is called the pivot equation in this step, and $a_{11}$ is called the pivot. This equation is left unaltered. In the second step we take the new second equation $E_2^*$ (which no longer contains $x_1$) as the pivot equation and use it to eliminate $x_2$ from $E_3^*$ to $E_n^*$. And so on. After $n-1$ steps this gives a triangular system that can be solved by back substitution as just shown. In this way we obtain precisely all solutions of the given system (as proved in Sec. 7.3).
+How do we reduce a given system (@eq-linear-system-20-1) to triangular form? In the first step we eliminate $x_1$ from equations $E_2$ to $E_n$ in (@eq-linear-system-20-1). We do this by adding (or subtracting) suitable multiples of $E_1$ to (from) equations $E_2$ to $E_n$ and taking the resulting equations, call them $E_2^*, \ldots, E_n^*$, as the new equations. The first equation, $E_1$, is called the pivot equation in this step, and $a_{11}$ is called the pivot. This equation is left unaltered. In the second step we take the new second equation $E_2^*$ (which no longer contains $x_1$) as the pivot equation and use it to eliminate $x_2$ from $E_3^*$ to $E_n^*$. And so on. After $n-1$ steps this gives a triangular system that can be solved by back substitution as just shown. In this way we obtain precisely all solutions of the given system (as proved in <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3).
 
 The pivot (in step $k$) must be different from zero and should be large in absolute value to avoid roundoff magnification by the multiplication in the elimination. For this we choose as our pivot equation one that has the absolutely largest $a_{jk}$ in column $k$ on or below the main diagonal (actually, the uppermost if there are several such equations). This popular method is called **partial pivoting**. It is used in CASs (e.g., in Maple).
 
@@ -76,7 +78,7 @@ Partial pivoting distinguishes it from total pivoting, which involves both row a
 
 Let us illustrate this method with a simple example.
 
-### EXAMPLE 1 Gauss Elimination. Partial Pivoting {#exm-gauss-pivoting}
+### Gauss Elimination. Partial Pivoting {#exm-gauss-pivoting}
 
 Solve the system
 $$
@@ -162,9 +164,9 @@ x_1 &= (26 - 2(-1) - 8(0.5)) / 6 = 4
 $$
 This is the correct solution. $\blacksquare$
 
-The general algorithm for the Gauss elimination is shown in Table 20.1. To help explain the algorithm, we have numbered some of its lines. $x_i$ is denoted by $x_i$ for uniformity. In lines 1 and 2 we look for a possible pivot. For $j = k, \ldots, n$, we find a row $m$ containing the element in column $k$ of greatest absolute value. If $a_{mk} = 0$, we output "No unique solution exists" (lines 3). Otherwise, we swap row $k$ and row $m$. In lines 4 and 5 we perform row elimination, updating the coefficient matrix and the right-hand side.
+The general algorithm for the Gauss elimination is shown in @tbl-gauss-algorithm. To help explain the algorithm, we have numbered some of its lines. $x_i$ is denoted by $x_i$ for uniformity. In lines 1 and 2 we look for a possible pivot. For $j = k, \ldots, n$, we find a row $m$ containing the element in column $k$ of greatest absolute value. If $a_{mk} = 0$, we output "No unique solution exists" (lines 3). Otherwise, we swap row $k$ and row $m$. In lines 4 and 5 we perform row elimination, updating the coefficient matrix and the right-hand side.
 
-**Table 20.1: Algorithm Gauss**
+**Table: Algorithm Gauss** {#tbl-gauss-algorithm}
 
 *ALGORITHM GAUSS* ($A = [a_{jk}], \ b$)
 
@@ -198,13 +200,13 @@ End
 
 End GAUSS
 
-### EXAMPLE 2 Gauss Elimination in Table 20.1, Sample Computation {#exm-gauss-sample}
+### Gauss Elimination in @tbl-gauss-algorithm, Sample Computation {#exm-gauss-sample}
 
 In Example 1 we had $a_{11} = 0$, so that pivoting was necessary. The greatest coefficient in Column 1 was 6. Thus in line 1, $m = 3$ and we interchanged row 1 and row 3. Then in lines 4 and 5 we computed $m_{21} = 3/6 = 0.5$ and $m_{31} = 0/6 = 0$, and then updated rows 2 and 3. In Step 2 we had 8 as the greatest coefficient in Column 2, hence $m = 3$. We interchanged rows 2 and 3, computed $m_{32} = 4/8 = 0.5$ in line 4, and updated row 3. This produced the triangular form used in the back substitution. $\blacksquare$
 
 If in Step $k$, $a_{kk} = 0$, we must pivot. If $a_{kk}$ is small, we should pivot because of roundoff error magnification that may seriously affect accuracy or even produce nonsensical results.
 
-### EXAMPLE 3 Difficulty with Small Pivots {#exm-small-pivots}
+### Difficulty with Small Pivots {#exm-small-pivots}
 
 The solution of the system
 $$
@@ -274,9 +276,9 @@ We see that it grows more slowly than the number of operations in the forward el
 
 ---
 
-### PROBLEM SET 20.1 {#sec-ps20-1}
+### Problem Set {#sec-ps20-1}
 
-#### 1–3 GEOMETRIC INTERPRETATION
+#### Geometric Interpretation
 Solve graphically and explain geometrically.
 1.
 $$
@@ -301,7 +303,7 @@ $$
 \end{aligned}
 $$
 
-#### 4–16 GAUSS ELIMINATION
+#### Gauss Elimination
 Solve the following linear systems by Gauss elimination, with partial pivoting if necessary (but without scaling). Show the intermediate steps. Check the result by substitution. If no solution or more than one solution exists, give a reason.
 4.
 $$
@@ -451,7 +453,7 @@ $$
     \end{aligned}
     $$
 
-## 20.2 Linear Systems: LU-Factorization, Matrix Inversion {#sec-lu-factorization}
+## Linear Systems: LU-Factorization, Matrix Inversion {#sec-lu-factorization}
 
 We continue our discussion of numeric methods for solving linear systems of $n$ equations in $n$ unknowns
 $$Ax = b$$ {#eq-lu-system-1}
@@ -477,9 +479,9 @@ $$
 0 & -7
 \end{bmatrix}
 $$
-It can be proved that for any nonsingular matrix (see Sec. 7.8) the rows can be reordered so that the resulting matrix $A$ has an LU-factorization (@eq-lu-decomp-2) in which $L$ turns out to be the matrix of the multipliers of the Gauss elimination, with main diagonal $1, \dots, 1$, and $U$ is the matrix of the triangular system at the end of the Gauss elimination (see Ref. [E5] listed in App. 1).
+It can be proved that for any nonsingular matrix (see <!-- TODO: replace Sec. 7.8 with actual cross-reference label -->Sec. 7.8) the rows can be reordered so that the resulting matrix $A$ has an LU-factorization (@eq-lu-decomp-2) in which $L$ turns out to be the matrix of the multipliers of the Gauss elimination, with main diagonal $1, \dots, 1$, and $U$ is the matrix of the triangular system at the end of the Gauss elimination (see Ref. [E5] listed in App. 1).
 
-The crucial idea now is that $L$ and $U$ in (@eq-lu-decomp-2) can be computed directly, without solving simultaneous equations (thus, without using the Gauss elimination). As an operation count shows, this needs about $n^3/3$ operations, about half as many as the Gauss elimination, which needs about $2n^3/3$ (see Sec. 20.1). And once we have (@eq-lu-decomp-2), we can use it for solving $Ax = b$ in two steps, involving only about $n^2$ operations, simply by noting that $Ax = b$ may be written $LUx = b$, which is:
+The crucial idea now is that $L$ and $U$ in (@eq-lu-decomp-2) can be computed directly, without solving simultaneous equations (thus, without using the Gauss elimination). As an operation count shows, this needs about $n^3/3$ operations, about half as many as the Gauss elimination, which needs about $2n^3/3$ (see @sec-gauss-elimination). And once we have (@eq-lu-decomp-2), we can use it for solving $Ax = b$ in two steps, involving only about $n^2$ operations, simply by noting that $Ax = b$ may be written $LUx = b$, which is:
 $$
 \begin{aligned}
 (a) \quad & Ly = b \\
@@ -493,9 +495,9 @@ A similar method, **Crout's method**,^2^ is obtained from (@eq-lu-decomp-2) if $
 > ^1^ MYRICK H. DOOLITTLE (1830–1913). American mathematician employed by the U.S. Coast and Geodetic Survey Office. His method appeared in *U.S. Coast and Geodetic Survey*, 1878, 115–120.  
 > ^2^ PRESCOTT DURAND CROUT (1907–1984), American mathematician, professor at MIT, also worked at General Electric.
 
-### EXAMPLE 1 Doolittle's Method {#exm-doolittle}
+### Doolittle's Method {#exm-doolittle}
 
-Solve the system in Example 1 of Sec. 20.1 by Doolittle's method.
+Solve the system in Example 1 of @sec-gauss-elimination by Doolittle's method.
 
 **Solution.** The decomposition $A = LU$ is obtained from
 $$
@@ -588,7 +590,7 @@ $$
 3x_1 + 5x_2 + 2x_3 &= 8 \implies 3x_1 - 5 + 1 = 8 \implies x_1 = 4
 \end{aligned}
 $$
-This agrees with the solution in Example 1 of Sec. 20.1. $\blacksquare$
+This agrees with the solution in Example 1 of @sec-gauss-elimination. $\blacksquare$
 
 Our formulas in Example 1 suggest that for general $n$ the entries of the matrices $U = [u_{jk}]$ and $L = [m_{jk}]$ (with main diagonal $1, \dots, 1$) in the Doolittle method are computed from:
 $$
@@ -663,7 +665,7 @@ If $A$ is symmetric but not positive definite, this method could still be applie
 
 > ^3^ ANDRÉ-LOUIS CHOLESKY (1875–1918), French military officer, geodesist, and mathematician. Surveyed Crete and North Africa. Died in World War I. His method was published posthumously in *Bulletin Géodésique* in 1924 but received little attention until JOHN TODD (1911–2007)—Irish-American mathematician, numerical analyst, and early pioneer of computer methods in numerics, professor at Caltech, and close personal friend and collaborator of ERWIN KREYSZIG—taught Cholesky's method in his analysis course at King's College, London, in the 1940s.
 
-### EXAMPLE 2 Cholesky's Method {#exm-cholesky}
+### Cholesky's Method {#exm-cholesky}
 
 Solve by Cholesky's method:
 $$
@@ -731,7 +733,7 @@ $$
 By back substitution we find $x_3 = 5/5 = 1$, then $x_2 = (-27 - (-3)(1))/4 = -6$, and finally $x_1 = (7 - 1(-6) - 7(1))/2 = 3$. The solution is $x^T = [3, -6, 1]$. $\blacksquare$
 
 ::: {#thm-cholesky-stability}
-## Theorem 1: Stability of the Cholesky Factorization
+## Stability of the Cholesky Factorization
 
 The Cholesky $LL^T$-factorization is numerically stable.
 :::
@@ -750,13 +752,13 @@ The inverse of a nonsingular square matrix $A$ may be determined in principle by
 $$Ax = b_j \qquad (j = 1, \ldots, n)$$ {#eq-inversion-7}
 where $b_j$ is the $j$-th column of the unit matrix $I$.
 
-However, it is preferable to produce $A^{-1}$ by operating on the unit matrix $I$ in the same way as the Gauss–Jordan algorithm, reducing $A$ to $I$. A typical illustrative example of this method is given in Sec. 7.8.
+However, it is preferable to produce $A^{-1}$ by operating on the unit matrix $I$ in the same way as the Gauss–Jordan algorithm, reducing $A$ to $I$. A typical illustrative example of this method is given in <!-- TODO: replace Sec. 7.8 with actual cross-reference label -->Sec. 7.8.
 
 ---
 
-### PROBLEM SET 20.2 {#sec-ps20-2}
+### Problem Set {#sec-ps20-2}
 
-#### 1–5 DOOLITTLE'S METHOD
+#### Doolittle's Method
 Show the factorization and solve by Doolittle's method.
 1.
 $$
@@ -811,7 +813,7 @@ $$
    (d) Give the formulas for factoring a tridiagonal matrix by Crout's method.  
    (e) When can you obtain Crout's factorization from Doolittle's by transposition?
 
-#### 7–12 CHOLESKY'S METHOD
+#### Cholesky's Method
 Show the factorization and solve.
 7.
 $$
@@ -868,7 +870,7 @@ $$
 
 14. **CAS PROJECT. Cholesky's Method.**  
     (a) Write a program for solving linear systems by Cholesky's method and apply it to Example 2 in the text, to Probs. 7–9, and to systems of your choice.  
-    (b) **Splines.** Apply the factorization part of the program to the following matrices (as they occur in connection with splines, see (9), Sec. 19.4 with $c_j = 1$).
+    (b) **Splines.** Apply the factorization part of the program to the following matrices (as they occur in connection with splines, see (9), <!-- TODO: replace Sec. 19.4 with actual cross-reference label -->Sec. 19.4 with $c_j = 1$).
     $$
     \begin{bmatrix}
     2 & 1 & 0 \\
@@ -884,7 +886,7 @@ $$
     \end{bmatrix}
     $$
 
-#### 15–19 INVERSE
+#### Inverse
 Find the inverse by the Gauss–Jordan method, showing the details.
 15. In Prob. 1
 16. In Prob. 4
@@ -901,19 +903,19 @@ Find the inverse by the Gauss–Jordan method, showing the details.
     \end{bmatrix}
     $$
 
-## 20.3 Linear Systems: Solution by Iteration {#sec-iterative-methods}
+## Linear Systems: Solution by Iteration {#sec-iterative-methods}
 
 The Gauss elimination and its variants in the last two sections belong to the direct methods for solving linear systems of equations; these are methods that give solutions after an amount of computation that can be specified in advance. In contrast, in an indirect or iterative method we start from an approximation to the true solution and, if successful, obtain better and better approximations from a computational cycle repeated as often as may be necessary for achieving a required accuracy, so that the amount of arithmetic depends upon the accuracy required and varies from case to case.
 
-We apply iterative methods if the convergence is rapid (if matrices have large main diagonal entries, as we shall see), so that we save operations compared to a direct method. We also use iterative methods if a large system is sparse, that is, has very many zero coefficients, so that one would waste space in storing zeros, for instance, 9995 zeros per equation in a potential problem of $10000$ equations in $10000$ unknowns with typically only 5 nonzero terms per equation (more on this in Sec. 21.4).
+We apply iterative methods if the convergence is rapid (if matrices have large main diagonal entries, as we shall see), so that we save operations compared to a direct method. We also use iterative methods if a large system is sparse, that is, has very many zero coefficients, so that one would waste space in storing zeros, for instance, 9995 zeros per equation in a potential problem of $10000$ equations in $10000$ unknowns with typically only 5 nonzero terms per equation (more on this in <!-- TODO: replace Sec. 21.4 with actual cross-reference label -->Sec. 21.4).
 
 ### Gauss–Seidel Iteration Method^4^
 
 This is an iterative method of great practical importance, which we can simply explain in terms of an example.
 
-> ^4^ PHILIPP LUDWIG VON SEIDEL (1821–1896), German mathematician. For Gauss see footnote 5 in Sec. 5.4.
+> ^4^ PHILIPP LUDWIG VON SEIDEL (1821–1896), German mathematician. For Gauss see footnote 5 in <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->Sec. 5.4.
 
-### EXAMPLE 1 Gauss–Seidel Iteration {#exm-gauss-seidel}
+### Gauss–Seidel Iteration {#exm-gauss-seidel}
 
 We consider the linear system
 $$
@@ -968,7 +970,7 @@ Further steps give the values:
 
 Hence convergence to the exact solution $x_1 = 87.5, \ x_2 = 87.5, \ x_3 = 62.5, \ x_4 = 62.5$ seems rather fast. $\blacksquare$
 
-An algorithm for the Gauss–Seidel iteration is shown in Table 20.2. To obtain the algorithm, let us derive the general formulas for this iteration.
+An algorithm for the Gauss–Seidel iteration is shown in @tbl-gauss-seidel-iteration. To obtain the algorithm, let us derive the general formulas for this iteration.
 
 We assume that $a_{jj} = 1$ for $j = 1, \ldots, n$. (Note that this can be achieved if we can rearrange the equations so that no diagonal coefficient is zero; then we may divide each equation by the corresponding diagonal coefficient.) We now write
 $$A = I + L + U$$ {#eq-split-matrix-4}
@@ -978,9 +980,9 @@ Taking $Lx$ and $Ux$ to the right, we obtain, since $Ix = x$:
 $$x = b - Lx - Ux$$ {#eq-iteration-base-5}
 Remembering from (@eq-seidel-first-step-3) in Example 1 that below the main diagonal we took "new" approximations and above the main diagonal "old" ones, we obtain from (@eq-iteration-base-5) the desired iteration formulas:
 $$x^{(m+1)} = b - Lx^{(m+1)} - Ux^{(m)}$$ {#eq-seidel-matrix-6}
-where $x^{(m+1)}$ is the $(m+1)$-th approximation and $x^{(m)}$ is the $m$-th approximation. In components this gives the formula in line 1 in Table 20.2. The matrix $A$ must satisfy $a_{jj} \neq 0$ for all $j$. In Table 20.2 our assumption $a_{jj} = 1$ is no longer required, but is automatically taken care of by the factor $1/a_{jj}$ in line 1.
+where $x^{(m+1)}$ is the $(m+1)$-th approximation and $x^{(m)}$ is the $m$-th approximation. In components this gives the formula in line 1 in @tbl-gauss-seidel-iteration. The matrix $A$ must satisfy $a_{jj} \neq 0$ for all $j$. In @tbl-gauss-seidel-iteration our assumption $a_{jj} = 1$ is no longer required, but is automatically taken care of by the factor $1/a_{jj}$ in line 1.
 
-**Table 20.2: Gauss–Seidel Iteration**
+**Table: Gauss–Seidel Iteration** {#tbl-gauss-seidel-iteration}
 
 *ALGORITHM GAUSS–SEIDEL* ($A, \ b, \ x^{(0)}, \ \varepsilon, \ N$)
 
@@ -1013,7 +1015,7 @@ and by multiplying by $(I + L)^{-1}$ from the left,
 $$x^{(m+1)} = Cx^{(m)} + (I + L)^{-1}b$$ {#eq-iteration-conv-7}
 where
 $$C = -(I + L)^{-1}U$$
-The Gauss–Seidel iteration converges for every $x^{(0)}$ if and only if all the eigenvalues (Sec. 8.1) of the "iteration matrix" $C$ have absolute value less than 1 (Proof in Ref. [E5], p. 191, listed in App. 1).
+The Gauss–Seidel iteration converges for every $x^{(0)}$ if and only if all the eigenvalues (<!-- TODO: replace Sec. 8.1 with actual cross-reference label -->Sec. 8.1) of the "iteration matrix" $C$ have absolute value less than 1 (Proof in Ref. [E5], p. 191, listed in App. 1).
 
 **CAUTION!** If you want to get $C$, first divide the rows of $A$ by $a_{jj}$ to have main diagonal $1, \dots, 1$.
 
@@ -1031,7 +1033,7 @@ These are the most frequently used matrix norms in numerics.
 
 In most cases the choice of one of these norms is a matter of computational convenience. However, the following example shows that sometimes one of these norms is preferable to the others.
 
-### EXAMPLE 2 Test of Convergence of the Gauss–Seidel Iteration {#exm-gs-convergence}
+### Test of Convergence of the Gauss–Seidel Iteration {#exm-gs-convergence}
 
 Test whether the Gauss–Seidel iteration converges for the system
 $$
@@ -1100,9 +1102,9 @@ $$x^{(m+1)} = b + (I - A)x^{(m)}$$ {#eq-jacobi-matrix-13}
 
 ---
 
-### PROBLEM SET 20.3 {#sec-ps20-3}
+### Problem Set {#sec-ps20-3}
 
-#### 1–10 GAUSS–SEIDEL ITERATION
+#### Gauss–Seidel Iteration
 Do 3 steps of the Gauss–Seidel iteration, starting from $x^{(0)} = [0, \ 0, \ 0]^T$. Show the details of the computation. Hint. Make sure that you solve each equation for the variable that has the largest coefficient (why?). Show the details.
 1.
 $$
@@ -1205,14 +1207,14 @@ $$
     $$x^{(m+1)} = x^{(m)} + \omega(b - Lx^{(m+1)} - (U + I)x^{(m)})$$ {#eq-sor-formula-14}
     intended to give more rapid convergence. A recommended value is $\omega = 2 / (1 + \sqrt{1 - \rho(C)^2})$, where $\rho(C)$ is the spectral radius of $C$. Apply SOR to the matrix in (b) for $t = 0.5$ and $\omega = 1, \ 1.2$, and $0.8$ and notice the improvement of convergence. (Spectacular gains are made with larger systems.)
 
-#### 14–17 JACOBI ITERATION
+#### Jacobi Iteration
 Do 5 steps, starting from $x^{(0)} = [1, \ 1, \ 1]^T$. Compare with the Gauss–Seidel iteration. Which of the two seems to converge faster? Show the details of your work.
 14. The system in Prob. 4
 15. The system in Prob. 9
 16. The system in Prob. 8
 17. Show convergence in Prob. 16 by verifying that $C = I - A$, where $A$ is the matrix in Prob. 16 with the rows divided by the corresponding main diagonal entries, has the eigenvalues $-0.519589 \pm 0.246603i$ and $0.209178$.
 
-#### 18–20 NORMS
+#### Norms
 Compute the norms (@eq-frob-norm-9), (@eq-col-norm-10), (@eq-row-norm-11) for the following (square) matrices. Comment on the reasons for greater or smaller differences among the three numbers.
 18. The matrix in Prob. 8
 19. The matrix in Prob. 4
@@ -1225,7 +1227,7 @@ k & -2k & k \\
 \end{bmatrix}
 $$
 
-## 20.4 Linear Systems: Ill-Conditioning, Norms {#sec-ill-conditioning}
+## Linear Systems: Ill-Conditioning, Norms {#sec-ill-conditioning}
 
 One does not need much experience to observe that some systems are good, giving accurate solutions even under roundoff or coefficient inaccuracies, whereas others are bad, so that these inaccuracies affect the solution strongly. We want to see what is going on and whether or not we can "trust" a linear system. Let us first formulate the two relevant concepts (ill- and well-conditioned) for general numeric work and then turn to linear systems and matrices.
 
@@ -1233,11 +1235,11 @@ A computational problem is called **ill-conditioned** (or ill-posed) if "small" 
 
 These concepts are qualitative. We would certainly regard a magnification of inaccuracies by a factor 100 as "large," but could debate where to draw the line between "large" and "small," depending on the kind of problem and on our viewpoint. Double precision may sometimes help, but if data are measured inaccurately, one should attempt changing the mathematical setting of the problem to a well-conditioned one.
 
-Let us now turn to linear systems. Figure @fig-20-01 explains that ill-conditioning occurs if and only if the two equations $Ax = b$ give two nearly parallel lines, so that their intersection point (the solution of the system) moves substantially if we raise or lower a line just a little. For larger systems the situation is similar in principle, although geometry no longer helps. We shall see that we may regard ill-conditioning as an approach to singularity of the matrix.
+Let us now turn to linear systems. @fig-20-01 explains that ill-conditioning occurs if and only if the two equations $Ax = b$ give two nearly parallel lines, so that their intersection point (the solution of the system) moves substantially if we raise or lower a line just a little. For larger systems the situation is similar in principle, although geometry no longer helps. We shall see that we may regard ill-conditioning as an approach to singularity of the matrix.
 
 ![Fig. 445: (a) Well-conditioned and (b) ill-conditioned linear system of two equations in two unknowns](../images/fig-20-01.png){#fig-20-01}
 
-### EXAMPLE 1 An Ill-Conditioned System {#exm-ill-conditioned}
+### An Ill-Conditioned System {#exm-ill-conditioned}
 
 You may verify that the system
 $$
@@ -1265,7 +1267,7 @@ Now $b = Ax$, so that
 $$r = A(x - \tilde{x})$$ {#eq-residual-error-2}
 Hence $r$ is small if $x - \tilde{x}$ has high accuracy, but the converse may be false:
 
-### EXAMPLE 2 Inaccurate Approximate Solution with a Small Residual {#exm-inaccurate-residual}
+### Inaccurate Approximate Solution with a Small Residual {#exm-inaccurate-residual}
 
 The system
 $$
@@ -1310,7 +1312,7 @@ $$
 $$ {#eq-standard-norms-5}
 For $n = 3$ the $l_2$-norm is the usual length of a vector in three-dimensional space. The $l_1$-norm and $l_\infty$-norm are generally more convenient in computation. But all three norms are in common use.
 
-### EXAMPLE 3 Vector Norms {#exm-vector-norms}
+### Vector Norms {#exm-vector-norms}
 
 If $x^T = [2, \ -3, \ 0, \ 1, \ -4]$, then $\|x\|_1 = 10, \ \|x\|_2 = \sqrt{30}, \ \|x\|_\infty = 4$. $\blacksquare$
 
@@ -1327,8 +1329,8 @@ $$\|A\| = \max_{\|x\| = 1} \|Ax\|$$ {#eq-matrix-norm-def-10}
 The maximum in (@eq-matrix-norm-def-10) and thus also in (@eq-matrix-norm-def-9) exists. And the name "matrix norm" is justified because $\|A\|$ satisfies (@eq-norm-properties-3) with $x$ and $y$ replaced by $A$ and $B$.
 
 Note carefully that $\|A\|$ depends on the vector norm that we selected. In particular, one can show that:
-- For the $l_1$-norm (@eq-standard-norms-5) one gets the column "sum" norm (@eq-col-norm-10), Sec. 20.3.
-- For the $l_\infty$-norm (@eq-standard-norms-5) one gets the row "sum" norm (@eq-row-norm-11), Sec. 20.3.
+- For the $l_1$-norm (@eq-standard-norms-5) one gets the column "sum" norm (@eq-col-norm-10), @sec-iterative-methods.
+- For the $l_\infty$-norm (@eq-standard-norms-5) one gets the row "sum" norm (@eq-row-norm-11), @sec-iterative-methods.
 
 By taking our best possible (our smallest) $c = \|A\|$, we have from (@eq-matrix-norm-ineq-8)
 $$\|Ax\| \le \|A\|\|x\|$$ {#eq-matrix-norm-ineq-11}
@@ -1336,7 +1338,7 @@ This is the formula we shall need. Formula (@eq-matrix-norm-def-9) also implies 
 $$\|AB\| \le \|A\|\|B\|$$ {#eq-matrix-norm-ineq-12}
 thus $\|A^n\| \le \|A\|^n$.
 
-### EXAMPLE 4 Matrix Norms {#exm-matrix-norms}
+### Matrix Norms {#exm-matrix-norms}
 
 Compute the matrix norms of the coefficient matrix $A$ in Example 1 and of its inverse assuming that we use (a) the $l_1$-vector norm, (b) the $l_\infty$-vector norm.
 $$
@@ -1350,10 +1352,10 @@ A^{-1} = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-**Solution.** We use the definitions in Sec. 20.3.
-(a) The $l_1$-vector norm gives the column "sum" norm (@eq-col-norm-10), Sec. 20.3; from Column 2 we thus obtain
+**Solution.** We use the definitions in @sec-iterative-methods.
+(a) The $l_1$-vector norm gives the column "sum" norm (@eq-col-norm-10), @sec-iterative-methods; from Column 2 we thus obtain
 $$\|A\| = 2.0001, \qquad \|A^{-1}\| = 10,000$$
-(b) The $l_\infty$-vector norm gives the row "sum" norm (@eq-row-norm-11), Sec. 20.3; thus from Row 1 we obtain
+(b) The $l_\infty$-vector norm gives the row "sum" norm (@eq-row-norm-11), @sec-iterative-methods; thus from Row 1 we obtain
 $$\|A\| = 2, \qquad \|A^{-1}\| = 10,000.5$$
 We notice that $\|A^{-1}\|$ is surprisingly large, which makes the product $\|A\|\|A^{-1}\|$ large (about $20,001$). We shall see below that this is typical of an ill-conditioned system. $\blacksquare$
 
@@ -1364,7 +1366,7 @@ $$\kappa(A) = \|A\|\|A^{-1}\|$$ {#eq-cond-def-13}
 The role of the condition number is seen from the following theorem.
 
 ::: {#thm-condition-number}
-## Theorem 1: Condition Number
+## Condition Number
 
 A linear system of equations $Ax = b$ and its matrix $A$ whose condition number (@eq-cond-def-13) is small are well-conditioned. A large condition number indicates ill-conditioning.
 :::
@@ -1375,7 +1377,7 @@ Multiplying (@eq-residual-error-2) by $A^{-1}$ from the left, we have $x - \tild
 $$\frac{\|x - \tilde{x}\|}{\|x\|} \le \|A^{-1}\|\frac{\|r\|}{\|x\|} \le \|A^{-1}\|\frac{\|A\|\|r\|}{\|b\|} = \kappa(A)\frac{\|r\|}{\|b\|}$$ {#eq-cond-proof-15}
 Hence if $\kappa(A)$ is small, a small relative residual $\|r\|/\|b\|$ implies a small relative error $\|x - \tilde{x}\|/\|x\|$, so that the system is well-conditioned. However, this does not hold if $\kappa(A)$ is large; then a small relative residual does not necessarily imply a small relative error. $\blacksquare$
 
-### EXAMPLE 5 Condition Numbers. Gauss–Seidel Iteration {#exm-cond-gs}
+### Condition Numbers. Gauss–Seidel Iteration {#exm-cond-gs}
 
 $$
 A = \begin{bmatrix}
@@ -1391,7 +1393,7 @@ A^{-1} = \frac{1}{56}
 -2 & -9 & 19
 \end{bmatrix}
 $$
-Since $A$ is symmetric, (@eq-col-norm-10) and (@eq-row-norm-11) in Sec. 20.3 give the same condition number
+Since $A$ is symmetric, (@eq-col-norm-10) and (@eq-row-norm-11) in @sec-iterative-methods give the same condition number
 $$\kappa(A) = 7 \times \frac{30}{56} = 3.75$$
 We see that a linear system with this $A$ is well-conditioned.
 
@@ -1411,13 +1413,13 @@ For instance, if $b^T = [14, \ 0, \ 28]$, the Gauss algorithm gives the solution
 
 $\blacksquare$
 
-### EXAMPLE 6 Ill-Conditioned Linear System {#exm-ill-cond-example}
+### Ill-Conditioned Linear System {#exm-ill-cond-example}
 
-Example 4 gives by (@eq-col-norm-10) or (@eq-row-norm-11), Sec. 20.3, for the matrix in Example 1 the very large condition number
+Example 4 gives by (@eq-col-norm-10) or (@eq-row-norm-11), @sec-iterative-methods, for the matrix in Example 1 the very large condition number
 $$\kappa(A) = 2.0001 \times 10,000 = 20,001$$
 This confirms that the system is very ill-conditioned.
 
-Similarly in Example 2, where by Sec. 7.8 and 6D-computation:
+Similarly in Example 2, where by <!-- TODO: replace Sec. 7.8 with actual cross-reference label -->Sec. 7.8 and 6D-computation:
 $$A^{-1} = \frac{1}{0.0002}
 \begin{bmatrix}
 1.0000 & -1.0001 \\
@@ -1450,7 +1452,7 @@ $$\frac{\|dx\|}{\|x + dx\|} \le \kappa(A)\frac{\|dA\|}{\|A\|}$$ {#eq-matrix-inac
 $$\frac{\|dx\|}{\|x\|} \le \kappa(A)\frac{\|db\|}{\|b\|}$$ {#eq-rhs-inacc-bound-17}
 Hence $\|dx\|/\|x\|$ must remain relatively small whenever $\|db\|/\|b\|$ is small.
 
-### EXAMPLE 7 Inaccuracies. Bounds (@eq-matrix-inacc-bound-16) and (@eq-rhs-inacc-bound-17) {#exm-inacc-bounds}
+### Inaccuracies. Bounds (@eq-matrix-inacc-bound-16) and (@eq-rhs-inacc-bound-17) {#exm-inacc-bounds}
 
 If each of the nine entries of $A$ in Example 5 is measured with an inaccuracy of $0.1$, then $\|dA\|_\infty = 3 \times 0.1 = 0.3$, and (@eq-matrix-inacc-bound-16) gives
 $$\frac{\|dx\|_\infty}{\|x + dx\|_\infty} \le \kappa(A)\frac{\|dA\|_\infty}{\|A\|_\infty} = 3.75 \times \frac{0.3}{7} = 0.1607 = 16\%$$
@@ -1469,9 +1471,9 @@ This is the end of our discussion of numerics for solving linear systems. In the
 
 ---
 
-### PROBLEM SET 20.4 {#sec-ps20-4}
+### Problem Set {#sec-ps20-4}
 
-#### 1–6 VECTOR NORMS
+#### Vector Norms
 Compute the norms (@eq-standard-norms-5). Compute a corresponding unit vector (vector of norm 1) with respect to the $l_1$-norm.
 1. $x^T = [0.2, \ 0.6, \ -2.1, \ 3.0]$
 2. $x^T = [4, \ -1, \ 8]$
@@ -1483,7 +1485,7 @@ Compute the norms (@eq-standard-norms-5). Compute a corresponding unit vector (v
 7. For what $x$ will $\|x\|_1 = \|x\|_2$?
 8. Show that $\|x\|_\infty \le \|x\|_2 \le \|x\|_1$.
 
-#### 9–16 MATRIX NORMS, CONDITION NUMBERS
+#### Matrix Norms, Condition Numbers
 Compute the matrix norm and the condition number corresponding to the $l_1$-vector norm.
 9.
 $$
@@ -1546,7 +1548,7 @@ $$
 17. Verify (@eq-matrix-norm-ineq-11) for $x^T = [31, \ 5, \ -4]$ taken with the $l_1$-norm and the matrix in Prob. 13.
 18. Verify (@eq-matrix-norm-ineq-12) for the matrices in Probs. 9 and 10.
 
-#### 19–20 ILL-CONDITIONED SYSTEMS
+#### Ill-Conditioned Systems
 Solve $Ax = b_1$ and $Ax = b_2$. Compare the solutions and comment. Compute the condition number of $A$.
 19.
 $$
@@ -1569,7 +1571,7 @@ $$
 
 21. **Residual.** For $\tilde{x}^T = [-10.0, \ -14.1]$ in Prob. 19 guess what the residual of $A\tilde{x} = b_1$ very poorly approximating $x$ might be. Then calculate and comment.
 
-22. Show that $\|I\| = 1$ for the matrix norms (@eq-col-norm-10), (@eq-row-norm-11), Sec. 20.3, and for the Frobenius norm $\|I\|_F = \sqrt{n}$.
+22. Show that $\|I\| = 1$ for the matrix norms (@eq-col-norm-10), (@eq-row-norm-11), @sec-iterative-methods, and for the Frobenius norm $\|I\|_F = \sqrt{n}$.
 
 23. **CAS EXPERIMENT. Hilbert Matrices.** The $n \times n$ Hilbert matrix is $H_n = [h_{jk}]$ where $h_{jk} = 1/(j + k - 1)$. For example,
     $$
@@ -1595,7 +1597,7 @@ $$
 
 25. **WRITING PROJECT. Norms and Their Use in This Section.** Make a list of the most important of the many ideas covered in this section and write a report on them.
 
-## 20.5 Least Squares Method {#sec-least-squares}
+## Least Squares Method {#sec-least-squares}
 
 Having discussed numerics for linear systems, we now turn to an important application, curve fitting, in which the solutions are obtained from linear systems.
 
@@ -1603,9 +1605,9 @@ In curve fitting we are given $n$ points (pairs of numbers) $(x_1, y_1), \ldots,
 $$f(x_j) \approx y_j \qquad (j = 1, \ldots, n)$$
 approximately. The type of function (for example, polynomials, exponential functions, sine and cosine functions) may be suggested by the nature of the problem (the underlying physical law, for instance), and in many cases a polynomial of a certain degree will be appropriate.
 
-Let us begin with a motivation. If we require strict equality $f(x_j) = y_j$ and use polynomials of sufficiently high degree, we may apply one of the methods discussed in Sec. 19.3 in connection with interpolation. However, in certain situations this would not be the appropriate solution of the actual problem. For instance, to the four points
+Let us begin with a motivation. If we require strict equality $f(x_j) = y_j$ and use polynomials of sufficiently high degree, we may apply one of the methods discussed in <!-- TODO: replace Sec. 19.3 with actual cross-reference label -->Sec. 19.3 in connection with interpolation. However, in certain situations this would not be the appropriate solution of the actual problem. For instance, to the four points
 $$( -1.3, \ 0.103 ), \quad ( -0.1, \ 1.099 ), \quad ( 0.2, \ 0.808 ), \quad ( 1.3, \ 1.897 )$$ {#eq-four-points-1}
-there corresponds the interpolation polynomial (Fig. @fig-20-02), but if we graph the points, we see that they lie nearly on a straight line. Hence if these values are obtained in an experiment and thus involve an experimental error, and if the nature of the experiment suggests a linear relation, we better fit a straight line through the points (Fig. @fig-20-02). Such a line may be useful for predicting values to be expected for other values of $x$. A widely used principle for fitting straight lines is the **method of least squares** by Gauss and Legendre. In the present situation it may be formulated as follows.
+there corresponds the interpolation polynomial (@fig-20-02), but if we graph the points, we see that they lie nearly on a straight line. Hence if these values are obtained in an experiment and thus involve an experimental error, and if the nature of the experiment suggests a linear relation, we better fit a straight line through the points (@fig-20-02). Such a line may be useful for predicting values to be expected for other values of $x$. A widely used principle for fitting straight lines is the **method of least squares** by Gauss and Legendre. In the present situation it may be formulated as follows.
 
 ![Fig. 446: Approximate fitting of a straight line](../images/fig-20-02.png){#fig-20-02}
 
@@ -1613,7 +1615,7 @@ there corresponds the interpolation polynomial (Fig. @fig-20-02), but if we grap
 $$y = a + bx$$ {#eq-least-squares-line-2}
 should be fitted through the given points $(x_1, y_1), \ldots, (x_n, y_n)$ so that the sum of the squares of the distances of those points from the straight line is minimum, where the distance is measured in the vertical direction (the $y$-direction).
 
-The point on the line with abscissa $x_j$ has the ordinate $a + bx_j$. Hence its distance from $y_j$ is $|y_j - a - bx_j|$ (Fig. @fig-20-03) and that sum of squares is
+The point on the line with abscissa $x_j$ has the ordinate $a + bx_j$. Hence its distance from $y_j$ is $|y_j - a - bx_j|$ (@fig-20-03) and that sum of squares is
 $$q = \sum_{j=1}^n (y_j - a - bx_j)^2$$
 $q$ depends on $a$ and $b$. A necessary condition for $q$ to be minimum is:
 $$
@@ -1633,7 +1635,7 @@ These equations are called the **normal equations** of our problem.
 
 ![Fig. 447: Vertical distance of a point from a straight line $y = a + bx$](../images/fig-20-03.png){#fig-20-03}
 
-### EXAMPLE 1 Straight Line {#exm-least-squares-line}
+### Straight Line {#exm-least-squares-line}
 
 Using the method of least squares, fit a straight line to the four points given in formula (@eq-four-points-1).
 
@@ -1646,7 +1648,7 @@ $$
 0.1a + 3.43b &= 2.3839
 \end{aligned}
 $$
-The solution (rounded to 4D) is $a = 0.9601, \ b = 0.6670$, and we obtain the straight line (Fig. @fig-20-02)
+The solution (rounded to 4D) is $a = 0.9601, \ b = 0.6670$, and we obtain the straight line (@fig-20-02)
 $$y = 0.9601 + 0.6670x$$
 $\blacksquare$
 
@@ -1671,7 +1673,7 @@ b_0 \sum x_j^2 + b_1 \sum x_j^3 + b_2 \sum x_j^4 &= \sum x_j^2 y_j
 \end{aligned}
 $$ {#eq-quadratic-normal-8}
 
-### EXAMPLE 2 Quadratic Parabola by Least Squares {#exm-least-squares-parabola}
+### Quadratic Parabola by Least Squares {#exm-least-squares-parabola}
 
 Fit a parabola through the data $(0, \ 5), \ (2, \ 4), \ (4, \ 1), \ (6, \ 6), \ (8, \ 7)$.
 
@@ -1690,19 +1692,19 @@ $$
 120b_0 + 800b_1 + 5664b_2 &= 696
 \end{aligned}
 $$
-Solving them we obtain the quadratic least squares parabola (Fig. @fig-20-04)
+Solving them we obtain the quadratic least squares parabola (@fig-20-04)
 $$y = 5.11429 - 1.41429x + 0.21429x^2$$
 $\blacksquare$
 
 ![Fig. 448: Least squares parabola in Example 2](../images/fig-20-04.png){#fig-20-04}
 
-For a general polynomial (@eq-least-squares-poly-5) the normal equations form a linear system of equations in the unknowns $b_0, \dots, b_m$. When its matrix $M$ is nonsingular, we can solve the system by Cholesky's method (Sec. 20.2) because then $M$ is positive definite (and symmetric). When the equations are nearly linearly dependent, the normal equations may become ill-conditioned and should be replaced by other methods; see [E5], Sec. 5.7, listed in App. 1.
+For a general polynomial (@eq-least-squares-poly-5) the normal equations form a linear system of equations in the unknowns $b_0, \dots, b_m$. When its matrix $M$ is nonsingular, we can solve the system by Cholesky's method (@sec-lu-factorization) because then $M$ is positive definite (and symmetric). When the equations are nearly linearly dependent, the normal equations may become ill-conditioned and should be replaced by other methods; see [E5], Sec. 5.7, listed in App. 1.
 
 ---
 
-### PROBLEM SET 20.5 {#sec-ps20-5}
+### Problem Set {#sec-ps20-5}
 
-#### 1–6 FITTING A STRAIGHT LINE
+#### Fitting a Straight Line
 Fit a straight line to the given points by least squares. Show the details. Check your result by sketching the points and the line. Judge the goodness of fit.
 1. $(0, \ 2), \ (2, \ 0), \ (3, \ -2), \ (5, \ -3)$
 2. How does the line in Prob. 1 change if you add a point far above it, say, $(10, \ 530)$? Guess first.
@@ -1713,7 +1715,7 @@ Fit a straight line to the given points by least squares. Show the details. Chec
 
 7. Derive the normal equations (@eq-quadratic-normal-8).
 
-#### 8–11 FITTING A QUADRATIC PARABOLA
+#### Fitting a Quadratic Parabola
 Fit a parabola (@eq-quadratic-poly-7) to the points. Check by sketching.
 8. $( -1, \ 5 ), \ ( 1, \ 3 ), \ ( 2, \ 4 ), \ ( 3, \ 8 )$
 9. $( -2, \ -30 ), \ ( -1, \ -4 ), \ ( 0, \ 4 ), \ ( 1, \ 4 ), \ ( 2, \ 22 ), \ ( 3, \ 68 )$
@@ -1733,7 +1735,7 @@ Fit a parabola (@eq-quadratic-poly-7) to the points. Check by sketching.
     where
     $$h_{jk} = \int_a^b y_j(x)y_k(x) \, dx, \qquad b_j = \int_a^b f(x)y_j(x) \, dx$$ {#eq-proj-normal-10}
     (b) **Polynomial.** What form does (@eq-proj-normal-10) take if $F_m(x) = a_0 + a_1 x + \cdots + a_m x^m$? What is the coefficient matrix of (@eq-proj-normal-10) in this case when the interval is $0 \le x \le 1$?  
-    (c) **Orthogonal functions.** What are the solutions of (@eq-proj-normal-10) if $y_0, \ldots, y_m$ are orthogonal on the interval $a \le x \le b$? (For the definition, see Sec. 11.5.)
+    (c) **Orthogonal functions.** What are the solutions of (@eq-proj-normal-10) if $y_0, \ldots, y_m$ are orthogonal on the interval $a \le x \le b$? (For the definition, see <!-- TODO: replace Sec. 11.5 with actual cross-reference label -->Sec. 11.5.)
 
 > ^5^ HENRI LEBESGUE (1875–1941), great French mathematician, creator of a modern theory of measure and integration in his famous doctoral thesis of 1902.
 
@@ -1742,11 +1744,11 @@ Fit a parabola (@eq-quadratic-poly-7) to the points. Check by sketching.
     (b) $(-4, \ 0), \ (-3, \ 0), \ (-2, \ 0), \ (-1, \ 0), \ (0, \ 1), \ (1, \ 0), \ (2, \ 0), \ (3, \ 0), \ (4, \ 0)$  
     (c) Choose five points on a straight line, e.g., $(0, \ 0), \ (1, \ 1), \ \ldots, \ (4, \ 4)$. Move one point 1 unit upward and find the quadratic least squares polynomial. Do this for each point. Graph the five polynomials on common axes. Which of the five motions has the greatest effect?
 
-## 20.6 Matrix Eigenvalue Problems: Introduction {#sec-eigenvalue-problems}
+## Matrix Eigenvalue Problems: Introduction {#sec-eigenvalue-problems}
 
-We now come to the second part of our chapter on numeric linear algebra. In the first part of this chapter we discussed methods of solving systems of linear equations, which included Gauss elimination with backward substitution. This method is known as a direct method since it gives solutions after a prescribed amount of computation. The Gauss method was modified by Doolittle's method, Crout's method, and Cholesky's method, each requiring fewer arithmetic operations than Gauss. Finally we presented indirect methods of solving systems of linear equations, that is, the Gauss–Seidel method and the Jacobi iteration. The indirect methods require an undetermined number of iterations. That number depends on how far we start from the true solution and what degree of accuracy we require. Moreover, depending on the problem, convergence may be fast or slow or our computation cycle might not even converge. This led to the concepts of ill-conditioned problems and condition numbers that help us gain some control over difficulties inherent in numerics.
+We now come to the second part of our chapter on numeric linear algebra. In the first part of this chapter we discussed methods of solving systems of linear equations, which included Gauss elimination with backward substitution. This method is known as a direct method since it gives solutions after a prescribed amount of computation. The Gauss method was modified by Doolittle's method, Crout's method, and Cholesky's method, each requiring fewer arithmetic operations than Gauss. Finally we presented indirect methods of solving systems of linear equations, that is, the Gauss–Seidel method and the Jacobi iteration. The indirect methods require an undetermined number of iterations. That number depends on how far we start from the true solution and what degree of accuracy we require. Moreover, depending on the problem, convergence may be fast or slow or our computation cycle might not even converge. This led to the concepts of ill-conditioned problems and condition numbers that help us gain some control over difficulties inherent in @sec-ill-conditioning.
 
-The second part of this chapter deals with some of the most important ideas and numeric methods for matrix eigenvalue problems. This very extensive part of numeric linear algebra is of great practical importance, with much research going on, and hundreds, if not thousands, of papers published in various mathematical journals (see the references in [E8], [E9], [E11], [E29]). We begin with the concepts and general results we shall need in explaining and applying numeric methods for eigenvalue problems. (For typical models of eigenvalue problems see Chap. 8.)
+The second part of this chapter deals with some of the most important ideas and numeric methods for matrix eigenvalue problems. This very extensive part of numeric linear algebra is of great practical importance, with much research going on, and hundreds, if not thousands, of papers published in various mathematical journals (see the references in [E8], [E9], [E11], [E29]). We begin with the concepts and general results we shall need in explaining and applying numeric methods for eigenvalue problems. (For typical models of eigenvalue problems see <!-- TODO: replace Chap. 8 with actual chapter label -->Chap. 8.)
 
 An eigenvalue or characteristic value (or latent root) of a given $n \times n$ matrix $A = [a_{jk}]$ is a real or complex number $\lambda$ such that the vector equation
 $$Ax = \lambda x$$ {#eq-eigen-system-1}
@@ -1754,10 +1756,10 @@ has a nontrivial solution, that is, a solution $x \neq 0$, which is then called 
 
 Equation (@eq-eigen-system-1) can be written
 $$(A - \lambda I)x = 0$$ {#eq-eigen-eq-2}
-where $I$ is the unit matrix. This homogeneous system has a nontrivial solution if and only if the characteristic determinant is 0 (see Theorem 2 in Sec. 7.5). This gives (see Sec. 8.1):
+where $I$ is the unit matrix. This homogeneous system has a nontrivial solution if and only if the characteristic determinant is 0 (see Theorem 2 in <!-- TODO: replace Sec. 7.5 with actual cross-reference label -->Sec. 7.5). This gives (see <!-- TODO: replace Sec. 8.1 with actual cross-reference label -->Sec. 8.1):
 
 ::: {#thm-eigenvalues}
-## Theorem 1: Eigenvalues
+## Eigenvalues
 
 The eigenvalues of $A$ are the solutions of the characteristic equation
 $$\det(A - \lambda I) = 0$$ {#eq-eigen-char-eq-3}
@@ -1765,7 +1767,7 @@ $$\det(A - \lambda I) = 0$$ {#eq-eigen-char-eq-3}
 
 Developing the characteristic determinant, we obtain the characteristic polynomial of $A$, which is of degree $n$ in $\lambda$. Hence $A$ has at least one and at most $n$ numerically different eigenvalues. If $A$ is real, so are the coefficients of the characteristic polynomial. By familiar algebra it follows that then the roots (the eigenvalues of $A$) are real or complex conjugates in pairs.
 
-To give you some orientation of the underlying approaches of numerics for eigenvalue problems, note the following. For large or very large matrices it may be very difficult to determine the eigenvalues, since, in general, it is difficult to find the roots of characteristic polynomials of higher degrees. We will discuss different numeric methods for finding eigenvalues that achieve different results. Some methods, such as in Sec. 20.7, will give us only regions in which complex eigenvalues lie (Gerschgorin's method) or the intervals in which the largest and smallest real eigenvalue lie (Collatz method). Other methods compute all eigenvalues, such as the Householder tridiagonalization method and the QR-method in Sec. 20.9.
+To give you some orientation of the underlying approaches of numerics for eigenvalue problems, note the following. For large or very large matrices it may be very difficult to determine the eigenvalues, since, in general, it is difficult to find the roots of characteristic polynomials of higher degrees. We will discuss different numeric methods for finding eigenvalues that achieve different results. Some methods, such as in @sec-eigen-inclusion, will give us only regions in which complex eigenvalues lie (Gerschgorin's method) or the intervals in which the largest and smallest real eigenvalue lie (Collatz method). Other methods compute all eigenvalues, such as the Householder tridiagonalization method and the QR-method in @sec-qr-factorization.
 
 To continue our discussion, we shall usually denote the eigenvalues of $A$ by $\lambda_1, \lambda_2, \ldots, \lambda_n$, with the understanding that some (or all) of them may be equal.
 
@@ -1787,15 +1789,15 @@ $$B = T^{-1}AT$$ {#eq-similarity-7}
 Similarity is important for the following reason.
 
 ::: {#thm-similar-matrices}
-## Theorem 2: Similar Matrices
+## Similar Matrices
 
-Similar matrices have the same eigenvalues. If $x$ is an eigenvector of $A$, then $y = T^{-1}x$ is an eigenvector of $B$ in (@eq-similarity-7) corresponding to the same eigenvalue. (Proof in Sec. 8.4.)
+Similar matrices have the same eigenvalues. If $x$ is an eigenvector of $A$, then $y = T^{-1}x$ is an eigenvector of $B$ in (@eq-similarity-7) corresponding to the same eigenvalue. (Proof in <!-- TODO: replace Sec. 8.4 with actual cross-reference label -->Sec. 8.4.)
 :::
 
 Another theorem that has various applications in numerics is as follows.
 
 ::: {#thm-spectral-shift}
-## Theorem 3: Spectral Shift
+## Spectral Shift
 
 If $A$ has the eigenvalues $\lambda_1, \ldots, \lambda_n$, then $A - kI$ with arbitrary $k$ has the eigenvalues $\lambda_1 - k, \ldots, \lambda_n - k$.
 :::
@@ -1803,7 +1805,7 @@ If $A$ has the eigenvalues $\lambda_1, \ldots, \lambda_n$, then $A - kI$ with ar
 This theorem is a special case of the following spectral mapping theorem.
 
 ::: {#thm-spectral-mapping}
-## Theorem 4: Polynomial Matrices
+## Polynomial Matrices
 
 If $\lambda$ is an eigenvalue of $A$, then $q(\lambda) = a_s \lambda^s + a_{s-1} \lambda^{s-1} + \cdots + a_1 \lambda + a_0$ is an eigenvalue of the polynomial matrix:
 $$q(A) = a_s A^s + a_{s-1} A^{s-1} + \cdots + a_1 A + a_0 I$$
@@ -1816,20 +1818,20 @@ $\blacksquare$
 The eigenvalues of important special matrices can be characterized as follows.
 
 ::: {#thm-special-matrices}
-## Theorem 5: Special Matrices
+## Special Matrices
 
 - The eigenvalues of Hermitian matrices (i.e., $A^T = A$), hence of real symmetric matrices (i.e., $A^T = A$), are real.
 - The eigenvalues of skew-Hermitian matrices (i.e., $A^T = -A$), hence of real skew-symmetric matrices (i.e., $A^T = -A$), are pure imaginary or 0.
-- The eigenvalues of unitary matrices (i.e., $A^T = A^{-1}$), hence of orthogonal matrices (i.e., $A^T = A^{-1}$), have absolute value 1. (Proofs in Secs. 8.3 and 8.5.)
+- The eigenvalues of unitary matrices (i.e., $A^T = A^{-1}$), hence of orthogonal matrices (i.e., $A^T = A^{-1}$), have absolute value 1. (Proofs in <!-- TODO: replace Secs. 8.3 and 8.5 with actual cross-reference label -->Secs. 8.3 and 8.5.)
 :::
 
 The choice of a numeric method for matrix eigenvalue problems depends essentially on two circumstances, on the kind of matrix (real symmetric, real general, complex, sparse, or full) and on the kind of information to be obtained, that is, whether one wants to know all eigenvalues or merely specific ones, for instance, the largest eigenvalue, whether eigenvalues and eigenvectors are wanted, and so on. It is clear that we cannot enter into a systematic discussion of all these and further possibilities that arise in practice, but we shall concentrate on some basic aspects and methods that will give us a general understanding of this fascinating field.
 
 ---
 
-### PROBLEM SET 20.6 {#sec-ps20-6}
+### Problem Set {#sec-ps20-6}
 
-#### 1–5 EIGENVALUES AND EIGENVECTORS
+#### Eigenvalues and Eigenvectors
 Find the eigenvalues and eigenvectors of the following matrices.
 1.
 $$
@@ -1880,7 +1882,7 @@ $$
 14. Show that if $A$ is Hermitian, then its eigenvalues are real.
 15. Show that if $A$ is skew-Hermitian, then its eigenvalues are pure imaginary or zero.
 
-## 20.7 Inclusion of Matrix Eigenvalues {#sec-eigen-inclusion}
+## Inclusion of Matrix Eigenvalues {#sec-eigen-inclusion}
 
 The whole of numerics for matrix eigenvalues is motivated by the fact that, except for a few trivial cases, we cannot determine eigenvalues exactly by a finite process because these values are the roots of a polynomial of $n$-th degree. Hence we must mainly use iteration.
 
@@ -1889,7 +1891,7 @@ In this section we state a few general theorems that give approximations and err
 The important theorem by Gerschgorin gives a region consisting of closed circular disks in the complex plane and including all the eigenvalues of a given matrix. Indeed, for each $j = 1, \dots, n$, the inequality (@eq-gerschgorin-disk-1) determines a closed circular disk in the complex $\lambda$-plane with center $a_{jj}$ and radius given by the right side of (@eq-gerschgorin-disk-1); and Theorem 1 states that each of the eigenvalues of $A$ lies in one of these $n$ disks.
 
 ::: {#thm-gerschgorin}
-## Theorem 1: Gerschgorin's Theorem
+## Gerschgorin's Theorem
 
 Let $\lambda$ be an eigenvalue of an arbitrary $n \times n$ matrix $A = [a_{jk}]$. Then for some integer $j$ ($1 \le j \le n$) we have:
 $$|a_{jj} - \lambda| \le \sum_{k \neq j} |a_{jk}|$$ {#eq-gerschgorin-disk-1}
@@ -1903,7 +1905,7 @@ Division by $x_j$ (which cannot be zero; why?) and reshuffling terms gives
 $$a_{jj} - \lambda = -\sum_{k \neq j} a_{jk}\frac{x_k}{x_j}$$
 By taking absolute values on both sides of this equation, applying the triangle inequality $|a + b| \le |a| + |b|$, and observing that $|x_k/x_j| \le 1$ because of the choice of $j$ (which is crucial!), we obtain (@eq-gerschgorin-disk-1), and the theorem is proved. $\blacksquare$
 
-### EXAMPLE 1 Gerschgorin's Theorem {#exm-gerschgorin}
+### Gerschgorin's Theorem {#exm-gerschgorin}
 
 For the eigenvalues of the matrix
 $$
@@ -1913,7 +1915,7 @@ A = \begin{bmatrix}
 0.5 & 1 & 1
 \end{bmatrix}
 $$
-we get the Gerschgorin disks (Fig. @fig-20-05):
+we get the Gerschgorin disks (@fig-20-05):
 - Disk $D_1$: Center $0$, radius $1$.
 - Disk $D_2$: Center $5$, radius $1.5$.
 - Disk $D_3$: Center $1$, radius $1.5$.
@@ -1922,14 +1924,14 @@ The centers are the main diagonal entries of $A$. These would be the eigenvalues
 $$\lambda_1 \approx 0, \qquad \lambda_2 \approx 5, \qquad \lambda_3 \approx 1$$
 then the radii of the disks are corresponding error bounds.
 
-Since $A$ is symmetric, it follows from Theorem 5, Sec. 20.6, that the spectrum of $A$ must actually lie in the real intervals $[-1, \ 1]$, $[3.5, \ 6.5]$, $[-0.5, \ 2.5]$.
+Since $A$ is symmetric, it follows from Theorem 5, @sec-eigenvalue-problems, that the spectrum of $A$ must actually lie in the real intervals $[-1, \ 1]$, $[3.5, \ 6.5]$, $[-0.5, \ 2.5]$.
 
 It is interesting that here the Gerschgorin disks form two disjoint sets, namely, $D_1 \cup D_3$, which contains two eigenvalues, and $D_2$, which contains one eigenvalue. This is typical, as the following theorem shows. $\blacksquare$
 
 ![Fig. 449: Gerschgorin disks in Example 1](../images/fig-20-05.png){#fig-20-05}
 
 ::: {#thm-gerschgorin-disjoint}
-## Theorem 2: Gerschgorin disks (disjoint sets)
+## Gerschgorin disks (disjoint sets)
 
 If $S$ disks of the Gerschgorin disks form a connected set $G$ that is disjoint from the remaining $n-S$ disks, then $G$ contains precisely $S$ eigenvalues of $A$. (Proof in Ref. [E5] listed in App. 1.)
 :::
@@ -1937,7 +1939,7 @@ If $S$ disks of the Gerschgorin disks form a connected set $G$ that is disjoint 
 Another important theorem is Collatz's theorem, which gives bounds for the eigenvalues of matrices with positive entries.
 
 ::: {#thm-collatz}
-## Theorem 3: Collatz's Theorem
+## Collatz's Theorem
 
 Let $A = [a_{jk}]$ be a real $n \times n$ matrix whose entries are all positive. Let $x$ be any vector with positive components. Let $g = [g_1, \dots, g_n]^T$ be defined by
 $$g_j = \frac{1}{x_j}\sum_{k=1}^n a_{jk}x_k$$
@@ -1945,7 +1947,7 @@ Then the interval containing the dominant eigenvalue $\lambda_{\max}$ is:
 $$\min_j g_j \le \lambda_{\max} \le \max_j g_j$$ {#eq-collatz-bounds-3}
 :::
 
-### EXAMPLE 2 Bounds for Eigenvalues (Collatz) {#exm-collatz}
+### Bounds for Eigenvalues (Collatz) {#exm-collatz}
 
 Let
 $$
@@ -1978,9 +1980,9 @@ $\blacksquare$
 
 ---
 
-### PROBLEM SET 20.7 {#sec-ps20-7}
+### Problem Set {#sec-ps20-7}
 
-#### 1–5 GERSCHGORIN DISKS
+#### Gerschgorin Disks
 Find the Gerschgorin disks. Find the eigenvalues and verify Gerschgorin's theorem.
 1.
 $$
@@ -2023,7 +2025,7 @@ $$
 
 6. Prove that the eigenvalues of $A^T$ are the same as those of $A$. Hence show that we can also use column sums in Gerschgorin's theorem.
 
-#### 7–10 COLLATZ'S THEOREM
+#### Collatz's Theorem
 Apply Collatz's theorem to estimate the dominant eigenvalue of the following matrices, using the given vector $x$.
 7.
 $$
@@ -2056,7 +2058,7 @@ $$
 
 15. **Inclusion.** Can we conclude from Gerschgorin's theorem that there is an eigenvalue in every disk? Explain.
 
-## 20.8 Power Method for Eigenvalues {#sec-power-method}
+## Power Method for Eigenvalues {#sec-power-method}
 
 The power method is an iterative method for determining the dominant eigenvalue (the eigenvalue of largest absolute value) and its corresponding eigenvector. This method is very simple and is particularly suitable for sparse matrices.
 
@@ -2074,7 +2076,7 @@ where $\theta_{m+1}$ is the component of $y^{(m+1)}$ of largest absolute value.
 
 Under suitable conditions, the sequence of scaling factors $\theta_m$ converges to the dominant eigenvalue $\lambda_1$, and the sequence of vectors $x^{(m)}$ converges to a corresponding eigenvector.
 
-### EXAMPLE 1 Power Method {#exm-power-method}
+### Power Method {#exm-power-method}
 
 Apply the power method to the matrix
 $$
@@ -2130,9 +2132,9 @@ The exact dominant eigenvalue is $\lambda_1 = 6.942$, and the corresponding eige
 
 ---
 
-### PROBLEM SET 20.8 {#sec-ps20-8}
+### Problem Set {#sec-ps20-8}
 
-#### 1–5 POWER METHOD
+#### Power Method
 Apply the power method (3 steps) to find the dominant eigenvalue and eigenvector of the following matrices, starting from $x^{(0)} = [1, \ 1]^T$ or $x^{(0)} = [1, \ 1, \ 1]^T$. Show the details.
 1.
 $$
@@ -2195,7 +2197,7 @@ $$
 
 15. **CAS Experiment.** Write a program for the power method and apply it to Probs. 1–5. Find how many steps are needed to get 6S accuracy.
 
-## 20.9 Tridiagonalization and QR-Factorization {#sec-qr-factorization}
+## Tridiagonalization and QR-Factorization {#sec-qr-factorization}
 
 For determining all eigenvalues of a real symmetric matrix, two steps are usually performed:
 1. **Tridiagonalization:** The matrix is reduced to tridiagonal form (only the main diagonal and the diagonals immediately adjacent to it contain nonzero entries) by orthogonal similarity transformations. The popular method for this is **Householder's method**.
@@ -2211,7 +2213,7 @@ with $v$ a unit vector ($v^T v = 1$). We choose $v$ such that the first column o
 
 In step $k$ we create zeros in Row $k$ and Column $k$ below the subdiagonal entry by:
 $$A^{(k)} = P^{(k)}A^{(k-1)}P^{(k)}$$
-After $n-2$ steps, we obtain a tridiagonal matrix $B = A^{(n-2)}$ (Fig. @fig-20-06).
+After $n-2$ steps, we obtain a tridiagonal matrix $B = A^{(n-2)}$ (@fig-20-06).
 
 ![Fig. 450: Householder's method for a $5 \times 5$ matrix. $B$ is tridiagonal](../images/fig-20-06.png){#fig-20-06}
 
@@ -2223,7 +2225,7 @@ where $Q_0$ is orthogonal and $R_0$ is upper triangular. We then compute:
 $$B_1 = R_0 Q_0$$ {#eq-qr-next-3}
 which is similar to $B_0$ because $B_1 = Q_0^T B_0 Q_0$. In step $m$ we factor $B_m = Q_m R_m$ and compute $B_{m+1} = R_m Q_m$. Under suitable conditions, the sequence of matrices $B_m$ converges to a diagonal matrix containing the eigenvalues of $B$ on its main diagonal.
 
-### EXAMPLE 1 Householder Tridiagonalization {#exm-householder}
+### Householder Tridiagonalization {#exm-householder}
 
 Tridiagonalize the matrix:
 $$
@@ -2266,7 +2268,7 @@ A^{(1)} = \begin{bmatrix}
 $$
 This matrix is tridiagonal. $\blacksquare$
 
-### EXAMPLE 2 QR Factorization {#exm-qr}
+### QR Factorization {#exm-qr}
 
 Find the QR factorization of the tridiagonal matrix:
 $$
@@ -2326,9 +2328,9 @@ We see that the off-diagonal entries have decreased from $1$ to $0.5$. $\blacksq
 
 ---
 
-### PROBLEM SET 20.9 {#sec-ps20-9}
+### Problem Set {#sec-ps20-9}
 
-#### 1–5 HOUSEHOLDER'S METHOD
+#### Householder's Method
 Tridiagonalize the following matrices by Householder's method.
 1.
 $$
@@ -2371,7 +2373,7 @@ $$
 \end{bmatrix}
 $$
 
-#### 6–10 QR METHOD
+#### QR Method
 Do 2 steps of the QR method for the following matrices. Show the details.
 6. The tridiagonal matrix in Example 2.
 7.
@@ -2407,7 +2409,7 @@ $$
 
 15. **CAS Experiment.** Write a program for the QR-method and apply it to Probs. 6–10. Find how many steps are needed to get diagonal entries accurate to 6S.
 
-## CHAPTER 20 REVIEW QUESTIONS AND PROBLEMS {#sec-review-questions-20}
+## Review Questions and Problems {#sec-review-questions-20}
 
 1. What are direct and indirect methods for solving linear systems? Give examples.
 2. When would you apply Gauss elimination and when Gauss-Seidel iteration?
@@ -2459,20 +2461,20 @@ $$
     \end{bmatrix}
     $$
 
-## SUMMARY OF CHAPTER 20 {#sec-summary-20}
+## Summary of Chapter {#sec-summary-20}
 
 This chapter deals with numeric methods for solving systems of linear equations and for finding eigenvalues and eigenvectors.
 
-A linear system of equations $Ax = b$ can be solved by direct methods (methods where the number of operations is known in advance) or by indirect (iterative) methods. The standard direct method is the **Gauss elimination** (Sec. 20.1) with **back substitution**, which is modified by partial pivoting to avoid division by zero or small pivots that can lead to large rounding errors. Naive Gauss elimination requires $2n^3/3$ operations, whereas back substitution requires $n^2$ operations.
+A linear system of equations $Ax = b$ can be solved by direct methods (methods where the number of operations is known in advance) or by indirect (iterative) methods. The standard direct method is the **Gauss elimination** (@sec-gauss-elimination) with **back substitution**, which is modified by partial pivoting to avoid division by zero or small pivots that can lead to large rounding errors. Naive Gauss elimination requires $2n^3/3$ operations, whereas back substitution requires $n^2$ operations.
 
-Variants of the Gauss elimination include **LU-factorization** (Sec. 20.2), where $A = LU$ is factorized into a lower triangular matrix $L$ and an upper triangular matrix $U$. This factorization is used to solve $Ax = b$ in two steps, $Ly = b$ and $Ux = y$. In **Doolittle's method**, $L$ has diagonal $1, \dots, 1$. In **Crout's method**, $U$ has diagonal $1, \dots, 1$. For symmetric, positive definite matrices, we can write $A = L L^T$, which is called **Cholesky's method**. LU-factorization is computationally efficient when we need to solve the system for different right sides $b$. The **Gauss–Jordan method** is used for matrix inversion.
+Variants of the Gauss elimination include **LU-factorization** (@sec-lu-factorization), where $A = LU$ is factorized into a lower triangular matrix $L$ and an upper triangular matrix $U$. This factorization is used to solve $Ax = b$ in two steps, $Ly = b$ and $Ux = y$. In **Doolittle's method**, $L$ has diagonal $1, \dots, 1$. In **Crout's method**, $U$ has diagonal $1, \dots, 1$. For symmetric, positive definite matrices, we can write $A = L L^T$, which is called **Cholesky's method**. LU-factorization is computationally efficient when we need to solve the system for different right sides $b$. The **Gauss–Jordan method** is used for matrix inversion.
 
-Iterative methods (Sec. 20.3) are used for large, sparse systems where direct methods are too expensive. The **Gauss–Seidel iteration** is a successive correction method, whereas the **Jacobi iteration** is a simultaneous correction method. Convergence of iterative methods depends on the spectral radius of the iteration matrix. A sufficient condition for convergence is that some matrix norm of the iteration matrix is less than 1.
+Iterative methods (@sec-iterative-methods) are used for large, sparse systems where direct methods are too expensive. The **Gauss–Seidel iteration** is a successive correction method, whereas the **Jacobi iteration** is a simultaneous correction method. Convergence of iterative methods depends on the spectral radius of the iteration matrix. A sufficient condition for convergence is that some matrix norm of the iteration matrix is less than 1.
 
-**Ill-conditioning** of a linear system (Sec. 20.4) means that small changes in the coefficient matrix or the right side cause large changes in the solution. It is measured by the **condition number** $\kappa(A) = \|A\|\|A^{-1}\|$. A large condition number indicates that the system is ill-conditioned.
+**Ill-conditioning** of a linear system (@sec-ill-conditioning) means that small changes in the coefficient matrix or the right side cause large changes in the solution. It is measured by the **condition number** $\kappa(A) = \|A\|\|A^{-1}\|$. A large condition number indicates that the system is ill-conditioned.
 
-The **least squares method** (Sec. 20.5) is an important curve-fitting technique where we fit a polynomial $p(x) = b_0 + b_1 x + \cdots + b_m x^m$ through $n$ points by minimizing the sum of squares of vertical distances. This leads to a system of linear equations called the normal equations.
+The **least squares method** (@sec-least-squares) is an important curve-fitting technique where we fit a polynomial $p(x) = b_0 + b_1 x + \cdots + b_m x^m$ through $n$ points by minimizing the sum of squares of vertical distances. This leads to a system of linear equations called the normal equations.
 
-Matrix eigenvalue problems (Sec. 20.6) are solved by iterative methods. **Inclusion methods** such as **Gerschgorin's theorem** (Sec. 20.7) provide circular disks in the complex plane containing the eigenvalues. **Collatz's theorem** provides bounds for the dominant eigenvalue of positive matrices. The **power method** (Sec. 20.8) is used to find the dominant eigenvalue and eigenvector.
+Matrix eigenvalue problems (@sec-eigenvalue-problems) are solved by iterative methods. **Inclusion methods** such as **Gerschgorin's theorem** (@sec-eigen-inclusion) provide circular disks in the complex plane containing the eigenvalues. **Collatz's theorem** provides bounds for the dominant eigenvalue of positive matrices. The **power method** (@sec-power-method) is used to find the dominant eigenvalue and eigenvector.
 
-For finding all eigenvalues of a real symmetric matrix, we first tridiagonalize the matrix by **Householder's method** (Sec. 20.9), and then apply the **QR-factorization method** iteratively (Sec. 20.9).
+For finding all eigenvalues of a real symmetric matrix, we first tridiagonalize the matrix by **Householder's method** (@sec-qr-factorization), and then apply the **QR-factorization method** iteratively (@sec-qr-factorization).
