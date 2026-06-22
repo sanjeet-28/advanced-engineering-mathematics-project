@@ -866,11 +866,11 @@ Linear ODEs with constant coefficients have important applications in mechanics,
 
 ### Setting Up the Model
 
-We take an ordinary coil spring that resists extension as well as compression. We suspend it vertically from a fixed support and attach a body at its lower end, for instance, an iron ball, as shown in @fig-2-33. We let $y = 0$ denote the position of the ball when the system is at rest (@fig-2-33b). Furthermore, we choose the downward direction as positive, thus regarding downward forces as positive and upward forces as negative.
+We take an ordinary coil spring that resists extension as well as compression. We suspend it vertically from a fixed support and attach a body at its lower end, for instance, an iron ball, as shown in @fig-2-33. We let $y = 0$ denote the position of the ball when the system is at rest. Furthermore, we choose the downward direction as positive, thus regarding downward forces as positive and upward forces as negative.
 
 ![Fig. 33. Mechanical mass–spring system](../images/chapter2/fig-2-33.png){#fig-2-33}
 
-We now let the ball move, as follows. We pull it down by an amount $y > 0$ (@fig-2-33c). This causes a spring force
+We now let the ball move, as follows. We pull it down by an amount $y > 0$. This causes a spring force
 
 $$
 F_1 = -ky

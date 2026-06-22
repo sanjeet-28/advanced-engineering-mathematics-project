@@ -208,7 +208,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/ch13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Complex Numbers and Functions. Complex Differentiation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CHAPTER 13: Complex Numbers and Functions. Complex Differentiation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -465,7 +465,7 @@ window.Quarto = {
 </header>
 
 
-<p>Many important applications in mechanical and electrical engineering, as shown in <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>, and <a href="#sec-electric-circuits" class="quarto-xref"><span class="quarto-unresolved-ref">sec-electric-circuits</span></a>, are modeled by linear ordinary differential equations (linear ODEs) of the second order. Their theory is representative of all linear ODEs as is seen when compared to linear ODEs of third and higher order, respectively. However, the solution formulas for second-order linear ODEs are simpler than those of higher order, so it is a natural progression to study ODEs of second order first in this chapter and then of higher order in <!-- TODO: replace Chap. 3 with actual chapter label -->.</p>
+<p>Many important applications in mechanical and electrical engineering, as shown in <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>, and <a href="#sec-electric-circuits" class="quarto-xref"><span>Section 3.17</span></a>, are modeled by linear ordinary differential equations (linear ODEs) of the second order. Their theory is representative of all linear ODEs as is seen when compared to linear ODEs of third and higher order, respectively. However, the solution formulas for second-order linear ODEs are simpler than those of higher order, so it is a natural progression to study ODEs of second order first in this chapter and then of higher order in <!-- TODO: replace Chap. 3 with actual chapter label -->.</p>
 <p>Although ordinary differential equations (ODEs) can be grouped into linear and nonlinear ODEs, nonlinear ODEs are difficult to solve in contrast to linear ODEs for which many beautiful standard methods exist.</p>
 <p>Chapter 2 includes the derivation of general and particular solutions, the latter in connection with initial value problems.</p>
 <p>For those interested in solution methods for Legendre’s, Bessel’s, and the hypergeometric equations consult <!-- TODO: replace Chap. 5 with actual chapter label --> and for Sturm–Liouville problems <!-- TODO: replace Chap. 11 with actual chapter label -->.</p>
@@ -473,18 +473,18 @@ window.Quarto = {
 <p><strong>Prerequisite:</strong> <!-- TODO: replace Chap. 1 with actual chapter label -->, in particular, <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->. <strong>Sections that may be omitted in a shorter course:</strong> 2.3, 2.9, 2.10. <strong>References and Answers to Problems:</strong> App. 1 Part A, and App. 2.</p>
 <section id="sec-homogeneous-linear-odes" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-homogeneous-linear-odes"><span class="header-section-number">3.1</span> Homogeneous Linear ODEs of Second Order</h2>
-<p>We have already considered first-order linear ODEs (<!-- TODO: replace Sec. 1.5 with actual cross-reference label -->) and shall now define and discuss linear ODEs of second order. These equations have important engineering applications, especially in connection with mechanical and electrical vibrations (<a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>, <a href="#sec-electric-circuits" class="quarto-xref"><span class="quarto-unresolved-ref">sec-electric-circuits</span></a>) as well as in wave motion, heat conduction, and other parts of physics, as we shall see in <!-- TODO: replace Chap. 12 with actual chapter label -->.</p>
+<p>We have already considered first-order linear ODEs (<!-- TODO: replace Sec. 1.5 with actual cross-reference label -->) and shall now define and discuss linear ODEs of second order. These equations have important engineering applications, especially in connection with mechanical and electrical vibrations (<a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>, <a href="#sec-electric-circuits" class="quarto-xref"><span>Section 3.17</span></a>) as well as in wave motion, heat conduction, and other parts of physics, as we shall see in <!-- TODO: replace Chap. 12 with actual chapter label -->.</p>
 <p>A second-order ODE is called <strong>linear</strong> if it can be written</p>
 <p><span id="eq-2-1"><span class="math display">\[
 y'' + p(x)y' + q(x)y = r(x)
 \tag{3.1}\]</span></span></p>
 <p>and <strong>nonlinear</strong> if it cannot be written in this form.</p>
-<p>The distinctive feature of (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-1</span></a>) is that it is linear in <span class="math inline">\(y\)</span> and its derivatives, whereas the functions <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, and <span class="math inline">\(r\)</span> on the right may be any given functions of <span class="math inline">\(x\)</span>. If the equation begins with, say, <span class="math inline">\(f(x)y''\)</span>, we can divide by <span class="math inline">\(f(x)\)</span> to obtain the standard form (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-1</span></a>) with <span class="math inline">\(y''\)</span> as the first term.</p>
-<p>The definitions of homogeneous and nonhomogeneous second-order linear ODEs are very similar to those of first-order ODEs discussed in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->. Indeed, if <span class="math inline">\(r(x) \equiv 0\)</span> (that is, <span class="math inline">\(r(x) = 0\)</span> for all <span class="math inline">\(x\)</span> considered; read “<span class="math inline">\(r\)</span> is identically zero”), then (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-1</span></a>) reduces to</p>
+<p>The distinctive feature of (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) is that it is linear in <span class="math inline">\(y\)</span> and its derivatives, whereas the functions <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, and <span class="math inline">\(r\)</span> on the right may be any given functions of <span class="math inline">\(x\)</span>. If the equation begins with, say, <span class="math inline">\(f(x)y''\)</span>, we can divide by <span class="math inline">\(f(x)\)</span> to obtain the standard form (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) with <span class="math inline">\(y''\)</span> as the first term.</p>
+<p>The definitions of homogeneous and nonhomogeneous second-order linear ODEs are very similar to those of first-order ODEs discussed in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->. Indeed, if <span class="math inline">\(r(x) \equiv 0\)</span> (that is, <span class="math inline">\(r(x) = 0\)</span> for all <span class="math inline">\(x\)</span> considered; read “<span class="math inline">\(r\)</span> is identically zero”), then (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) reduces to</p>
 <p><span id="eq-2-2"><span class="math display">\[
 y'' + p(x)y' + q(x)y = 0
 \tag{3.2}\]</span></span></p>
-<p>and is called <strong>homogeneous</strong>. If <span class="math inline">\(r(x) \not\equiv 0\)</span>, then (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-1</span></a>) is called <strong>nonhomogeneous</strong>. This is similar to <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->.</p>
+<p>and is called <strong>homogeneous</strong>. If <span class="math inline">\(r(x) \not\equiv 0\)</span>, then (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) is called <strong>nonhomogeneous</strong>. This is similar to <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->.</p>
 <p>An example of a nonhomogeneous linear ODE is</p>
 <p><span class="math display">\[
 y'' + 25y = e^{-x} \cos x,
@@ -497,7 +497,7 @@ xy'' + y' + xy = 0, \quad \text{written in standard form} \quad y'' + \frac{1}{x
 <p><span class="math display">\[
 y''y + (y')^2 = 0.
 \]</span></p>
-<p>The functions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> in (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-1</span></a>) and (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) are called the <strong>coefficients</strong> of the ODEs.</p>
+<p>The functions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> in (<a href="#eq-2-1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) and (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) are called the <strong>coefficients</strong> of the ODEs.</p>
 <p>Solutions are defined similarly as for first-order ODEs in <!-- TODO: replace Chap. 1 with actual chapter label -->. A function</p>
 <p><span class="math display">\[
 y = h(x)
@@ -505,7 +505,7 @@ y = h(x)
 <p>is called a <strong>solution</strong> of a (linear or nonlinear) second-order ODE on some open interval <span class="math inline">\(I\)</span> if <span class="math inline">\(h\)</span> is defined and twice differentiable throughout that interval and is such that the ODE becomes an identity if we replace the unknown <span class="math inline">\(y\)</span> by <span class="math inline">\(h\)</span>, the derivative <span class="math inline">\(y'\)</span> by <span class="math inline">\(h'\)</span>, and the second derivative <span class="math inline">\(y''\)</span> by <span class="math inline">\(h''\)</span>. Examples are given below.</p>
 <section id="homogeneous-linear-odes-superposition-principle" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="homogeneous-linear-odes-superposition-principle"><span class="header-section-number">3.1.1</span> Homogeneous Linear ODEs: Superposition Principle</h3>
-<p><a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a> through <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a> will be devoted to homogeneous linear ODEs (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) and the remaining sections of the chapter to nonhomogeneous linear ODEs.</p>
+<p><a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a> through <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a> will be devoted to homogeneous linear ODEs (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) and the remaining sections of the chapter to nonhomogeneous linear ODEs.</p>
 <p>Linear ODEs have a rich solution structure. For the homogeneous equation the backbone of this structure is the <strong>superposition principle</strong> or <strong>linearity principle</strong>, which says that we can obtain further solutions from given ones by adding them or by multiplying them with any constants. Of course, this is a great advantage of homogeneous linear ODEs. Let us first discuss an example.</p>
 </section>
 <section id="example-1-homogeneous-linear-odes-superposition-of-solutions" class="level3" data-number="3.1.2">
@@ -530,8 +530,8 @@ y = c_1 y_1 + c_2 y_2
 </section>
 <section id="theorem-1-fundamental-theorem-for-the-homogeneous-linear-ode-2" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="theorem-1-fundamental-theorem-for-the-homogeneous-linear-ode-2"><span class="header-section-number">3.1.3</span> THEOREM 1 Fundamental Theorem for the Homogeneous Linear ODE (2)</h3>
-<p>For a homogeneous linear ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>), any linear combination of two solutions on an open interval <span class="math inline">\(I\)</span> is again a solution of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>. In particular, for such an equation, sums and constant multiples of solutions are again solutions.</p>
-<p><strong>PROOF</strong> Let <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> be solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>. Then by substituting <span class="math inline">\(y = c_1 y_1 + c_2 y_2\)</span> and its derivatives into (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>), and using the familiar rule <span class="math inline">\((c_1 y_1 + c_2 y_2)' = c_1 y_1' + c_2 y_2'\)</span>, etc., we get</p>
+<p>For a homogeneous linear ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>), any linear combination of two solutions on an open interval <span class="math inline">\(I\)</span> is again a solution of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>. In particular, for such an equation, sums and constant multiples of solutions are again solutions.</p>
+<p><strong>PROOF</strong> Let <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> be solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>. Then by substituting <span class="math inline">\(y = c_1 y_1 + c_2 y_2\)</span> and its derivatives into (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>), and using the familiar rule <span class="math inline">\((c_1 y_1 + c_2 y_2)' = c_1 y_1' + c_2 y_2'\)</span>, etc., we get</p>
 <p><span class="math display">\[
 \begin{aligned}
 y'' + py' + qy &amp;= (c_1 y_1 + c_2 y_2)'' + p(c_1 y_1 + c_2 y_2)' + q(c_1 y_1 + c_2 y_2) \\
@@ -539,7 +539,7 @@ y'' + py' + qy &amp;= (c_1 y_1 + c_2 y_2)'' + p(c_1 y_1 + c_2 y_2)' + q(c_1 y_1 
 &amp;= c_1(y_1'' + py_1' + qy_1) + c_2(y_2'' + py_2' + qy_2) = 0,
 \end{aligned}
 \]</span></p>
-<p>since <span class="math inline">\(y_1'' + py_1' + qy_1 = 0\)</span> and <span class="math inline">\(y_2'' + py_2' + qy_2 = 0\)</span> because <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are solutions, by assumption. This shows that <span class="math inline">\(y\)</span> is a solution of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>since <span class="math inline">\(y_1'' + py_1' + qy_1 = 0\)</span> and <span class="math inline">\(y_2'' + py_2' + qy_2 = 0\)</span> because <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are solutions, by assumption. This shows that <span class="math inline">\(y\)</span> is a solution of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><strong>CAUTION!</strong> Don’t forget that this highly important theorem holds for homogeneous linear ODEs only but does not hold for nonhomogeneous linear or nonlinear ODEs, as the following two examples illustrate.</p>
 </section>
 <section id="example-2-a-nonhomogeneous-linear-ode" class="level3" data-number="3.1.4">
@@ -561,16 +561,16 @@ y''y - xy' = 0,
 <section id="initial-value-problem.-basis.-general-solution" class="level3" data-number="3.1.6">
 <h3 data-number="3.1.6" class="anchored" data-anchor-id="initial-value-problem.-basis.-general-solution"><span class="header-section-number">3.1.6</span> Initial Value Problem. Basis. General Solution</h3>
 <p>Recall from <!-- TODO: replace Chap. 1 with actual chapter label --> that for a first-order ODE, an initial value problem consists of the ODE and one initial condition <span class="math inline">\(y(x_0) = y_0\)</span>. The initial condition is used to determine the arbitrary constant <span class="math inline">\(c\)</span> in the general solution of the ODE. This results in a unique solution, as we need it in most applications. That solution is called a particular solution of the ODE. These ideas extend to second-order ODEs as follows.</p>
-<p>For a second-order homogeneous linear ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) an initial value problem consists of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) and two initial conditions</p>
+<p>For a second-order homogeneous linear ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) an initial value problem consists of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) and two initial conditions</p>
 <p><span id="eq-2-4"><span class="math display">\[
 y(x_0) = K_0, \quad y'(x_0) = K_1.
 \tag{3.4}\]</span></span></p>
 <p>These conditions prescribe given values <span class="math inline">\(K_0\)</span> and <span class="math inline">\(K_1\)</span> of the solution and its first derivative (the slope of its curve) at the same given <span class="math inline">\(x_0\)</span> in the open interval considered.</p>
-<p>The conditions (<a href="#eq-2-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-4</span></a>) are used to determine the two arbitrary constants <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> in a <strong>general solution</strong></p>
+<p>The conditions (<a href="#eq-2-4" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>) are used to determine the two arbitrary constants <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> in a <strong>general solution</strong></p>
 <p><span id="eq-2-5"><span class="math display">\[
 y = c_1 y_1 + c_2 y_2
 \tag{3.5}\]</span></span></p>
-<p>of the ODE; here, <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are suitable solutions of the ODE, with “suitable” to be explained after the next example. This results in a unique solution, passing through the point <span class="math inline">\((x_0, K_0)\)</span> with <span class="math inline">\(K_1\)</span> as the tangent direction (the slope) at that point. That solution is called a <strong>particular solution</strong> of the ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>).</p>
+<p>of the ODE; here, <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are suitable solutions of the ODE, with “suitable” to be explained after the next example. This results in a unique solution, passing through the point <span class="math inline">\((x_0, K_0)\)</span> with <span class="math inline">\(K_1\)</span> as the tangent direction (the slope) at that point. That solution is called a <strong>particular solution</strong> of the ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>).</p>
 </section>
 <section id="example-4-initial-value-problem" class="level3" data-number="3.1.7">
 <h3 data-number="3.1.7" class="anchored" data-anchor-id="example-4-initial-value-problem"><span class="header-section-number">3.1.7</span> EXAMPLE 4 Initial Value Problem</h3>
@@ -607,8 +607,8 @@ Figure&nbsp;3.1: Fig. 29. Particular solution and initial tangent in Example 4
 y = c_1 \cos x + c_2 (k \cos x) = C \cos x \quad \text{where} \quad C = c_1 + c_2 k.
 \]</span></p>
 <p>Hence we are no longer able to satisfy two initial conditions with only one arbitrary constant <span class="math inline">\(C\)</span>. Consequently, in defining the concept of a general solution, we must exclude proportionality. And we see at the same time why the concept of a general solution is of importance in connection with initial value problems. <span class="math inline">\(\square\)</span></p>
-<p><strong>DEFINITION: General Solution, Basis, Particular Solution</strong> A <strong>general solution</strong> of an ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on an open interval <span class="math inline">\(I\)</span> is a solution (<a href="#eq-2-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-5</span></a>) in which <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span> that are not proportional, and <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are arbitrary constants. These <span class="math inline">\(y_1, y_2\)</span> are called a <strong>basis</strong> (or a <strong>fundamental system</strong>) of solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>.</p>
-<p>A <strong>particular solution</strong> of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span> is obtained if we assign specific values to <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> in (<a href="#eq-2-5" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-5</span></a>).</p>
+<p><strong>DEFINITION: General Solution, Basis, Particular Solution</strong> A <strong>general solution</strong> of an ODE (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on an open interval <span class="math inline">\(I\)</span> is a solution (<a href="#eq-2-5" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>) in which <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span> that are not proportional, and <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are arbitrary constants. These <span class="math inline">\(y_1, y_2\)</span> are called a <strong>basis</strong> (or a <strong>fundamental system</strong>) of solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>.</p>
+<p>A <strong>particular solution</strong> of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span> is obtained if we assign specific values to <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> in (<a href="#eq-2-5" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>).</p>
 <p>Furthermore, as usual, <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are called <strong>proportional</strong> on <span class="math inline">\(I\)</span> if for all <span class="math inline">\(x\)</span> on <span class="math inline">\(I\)</span>,</p>
 <p><span id="eq-2-6"><span class="math display">\[
 y_1 = k y_2 \quad \text{or} \quad y_2 = l y_1
@@ -619,13 +619,13 @@ y_1 = k y_2 \quad \text{or} \quad y_2 = l y_1
 k_1 y_1(x) + k_2 y_2(x) = 0
 \tag{3.7}\]</span></span></p>
 <p>everywhere on <span class="math inline">\(I\)</span> implies <span class="math inline">\(k_1 = 0\)</span> and <span class="math inline">\(k_2 = 0\)</span>.</p>
-<p>And <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are called <strong>linearly dependent</strong> on <span class="math inline">\(I\)</span> if (<a href="#eq-2-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-7</span></a>) also holds for some constants <span class="math inline">\(k_1, k_2\)</span>, not both zero. Then, if <span class="math inline">\(k_1 \neq 0\)</span> or <span class="math inline">\(k_2 \neq 0\)</span>, we can divide and see that <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are proportional,</p>
+<p>And <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are called <strong>linearly dependent</strong> on <span class="math inline">\(I\)</span> if (<a href="#eq-2-7" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>) also holds for some constants <span class="math inline">\(k_1, k_2\)</span>, not both zero. Then, if <span class="math inline">\(k_1 \neq 0\)</span> or <span class="math inline">\(k_2 \neq 0\)</span>, we can divide and see that <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are proportional,</p>
 <p><span class="math display">\[
 y_1 = -\frac{k_2}{k_1} y_2 \quad \text{or} \quad y_2 = -\frac{k_1}{k_2} y_1.
 \]</span></p>
-<p>In contrast, in the case of linear independence these functions are not proportional because then we cannot divide in (<a href="#eq-2-7" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-7</span></a>). This gives the following:</p>
-<p><strong>DEFINITION: Basis (Reformulated)</strong> A <strong>basis</strong> of solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on an open interval <span class="math inline">\(I\)</span> is a pair of linearly independent solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>.</p>
-<p>If the coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) are continuous on some open interval <span class="math inline">\(I\)</span>, then (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) has a general solution. It yields the unique solution of any initial value problem (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>), (<a href="#eq-2-4" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-4</span></a>). It includes all solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) on <span class="math inline">\(I\)</span>; hence (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-2</span></a>) has no singular solutions (solutions not obtainable from a general solution; see also Problem Set 1.1). All this will be shown in <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a>.</p>
+<p>In contrast, in the case of linear independence these functions are not proportional because then we cannot divide in (<a href="#eq-2-7" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>). This gives the following:</p>
+<p><strong>DEFINITION: Basis (Reformulated)</strong> A <strong>basis</strong> of solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on an open interval <span class="math inline">\(I\)</span> is a pair of linearly independent solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>.</p>
+<p>If the coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) are continuous on some open interval <span class="math inline">\(I\)</span>, then (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) has a general solution. It yields the unique solution of any initial value problem (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>), (<a href="#eq-2-4" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>). It includes all solutions of (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) on <span class="math inline">\(I\)</span>; hence (<a href="#eq-2-2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) has no singular solutions (solutions not obtainable from a general solution; see also Problem Set 1.1). All this will be shown in <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a>.</p>
 </section>
 <section id="example-5-basis-general-solution-particular-solution" class="level3" data-number="3.1.8">
 <h3 data-number="3.1.8" class="anchored" data-anchor-id="example-5-basis-general-solution-particular-solution"><span class="header-section-number">3.1.8</span> EXAMPLE 5 Basis, General Solution, Particular Solution</h3>
@@ -695,7 +695,7 @@ u = \int v dx = \frac{x^2}{2} + x + \ln|x-1|,
 <p><span id="eq-2-8"><span class="math display">\[
 y'' + p(x)y' + q(x)y = 0
 \tag{3.8}\]</span></span></p>
-<p>Note that we now take the ODE in standard form, with <span class="math inline">\(y''\)</span> as the first term, not <span class="math inline">\(f(x)y''\)</span> — this is essential in applying our subsequent formulas. We assume a solution <span class="math inline">\(y_1(x)\)</span> of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-8</span></a>), on an open interval <span class="math inline">\(I\)</span>, to be known and want to find a basis. For this we need a second linearly independent solution <span class="math inline">\(y_2(x)\)</span> of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-8</span></a>) on <span class="math inline">\(I\)</span>. To get <span class="math inline">\(y_2\)</span>, we substitute <span class="math inline">\(y = y_2 = uy_1\)</span>, <span class="math inline">\(y' = u'y_1 + uy_1'\)</span>, <span class="math inline">\(y'' = u''y_1 + 2u'y_1' + uy_1''\)</span> into (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-8</span></a>). This gives</p>
+<p>Note that we now take the ODE in standard form, with <span class="math inline">\(y''\)</span> as the first term, not <span class="math inline">\(f(x)y''\)</span> — this is essential in applying our subsequent formulas. We assume a solution <span class="math inline">\(y_1(x)\)</span> of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span>3.8</span></a>), on an open interval <span class="math inline">\(I\)</span>, to be known and want to find a basis. For this we need a second linearly independent solution <span class="math inline">\(y_2(x)\)</span> of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span>3.8</span></a>) on <span class="math inline">\(I\)</span>. To get <span class="math inline">\(y_2\)</span>, we substitute <span class="math inline">\(y = y_2 = uy_1\)</span>, <span class="math inline">\(y' = u'y_1 + uy_1'\)</span>, <span class="math inline">\(y'' = u''y_1 + 2u'y_1' + uy_1''\)</span> into (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span>3.8</span></a>). This gives</p>
 <p><span class="math display">\[
 (u''y_1 + 2u'y_1' + uy_1'') + p(u'y_1 + uy_1') + quy_1 = 0.
 \]</span></p>
@@ -703,7 +703,7 @@ y'' + p(x)y' + q(x)y = 0
 <p><span class="math display">\[
 u''y_1 + u'(2y_1' + py_1) + u(y_1'' + py_1' + qy_1) = 0.
 \]</span></p>
-<p>Now comes the main point. Since <span class="math inline">\(y_1\)</span> is a solution of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-8</span></a>), the expression in the last parentheses is zero. Hence <span class="math inline">\(u\)</span> is gone, and we are left with an ODE in <span class="math inline">\(u''\)</span> and <span class="math inline">\(u'\)</span>. We divide this remaining ODE by <span class="math inline">\(y_1\)</span> and set <span class="math inline">\(U = u'\)</span>, thus <span class="math inline">\(U' = u''\)</span>. This gives</p>
+<p>Now comes the main point. Since <span class="math inline">\(y_1\)</span> is a solution of (<a href="#eq-2-8" class="quarto-xref">Equation&nbsp;<span>3.8</span></a>), the expression in the last parentheses is zero. Hence <span class="math inline">\(u\)</span> is gone, and we are left with an ODE in <span class="math inline">\(u''\)</span> and <span class="math inline">\(u'\)</span>. We divide this remaining ODE by <span class="math inline">\(y_1\)</span> and set <span class="math inline">\(U = u'\)</span>, thus <span class="math inline">\(U' = u''\)</span>. This gives</p>
 <p><span class="math display">\[
 U'y_1 + U(2y_1' + py_1) = 0, \quad \text{hence} \quad U' + U\left( 2\frac{y_1'}{y_1} + p \right) = 0.
 \]</span></p>
@@ -768,16 +768,16 @@ y_2 = y_1 u = y_1 \int U dx = y_1 \int \frac{e^{-\int p dx}}{y_1^2} dx.
 <p><span id="eq-2-10"><span class="math display">\[
 y'' + ay' + by = 0.
 \tag{3.10}\]</span></span></p>
-<p>These equations have important applications in mechanical and electrical vibrations, as we shall see in <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>, and <a href="#sec-electric-circuits" class="quarto-xref"><span class="quarto-unresolved-ref">sec-electric-circuits</span></a>.</p>
-<p>To solve (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>), we recall from <!-- TODO: replace Sec. 1.5 with actual cross-reference label --> that the solution of the first-order linear ODE with a constant coefficient <span class="math inline">\(k\)</span></p>
+<p>These equations have important applications in mechanical and electrical vibrations, as we shall see in <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a>, <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>, and <a href="#sec-electric-circuits" class="quarto-xref"><span>Section 3.17</span></a>.</p>
+<p>To solve (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>), we recall from <!-- TODO: replace Sec. 1.5 with actual cross-reference label --> that the solution of the first-order linear ODE with a constant coefficient <span class="math inline">\(k\)</span></p>
 <p><span class="math display">\[
 y' + ky = 0
 \]</span></p>
-<p>is an exponential function <span class="math inline">\(y = c e^{-kx}\)</span>. This gives us the idea to try as a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>) the function</p>
+<p>is an exponential function <span class="math inline">\(y = c e^{-kx}\)</span>. This gives us the idea to try as a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>) the function</p>
 <p><span id="eq-2-11"><span class="math display">\[
 y = e^{\lambda x}.
 \tag{3.11}\]</span></span></p>
-<p>Substituting (<a href="#eq-2-11" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-11</span></a>) and its derivatives <span class="math inline">\(y' = \lambda e^{\lambda x}\)</span> and <span class="math inline">\(y'' = \lambda^2 e^{\lambda x}\)</span> into our equation (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>), we obtain</p>
+<p>Substituting (<a href="#eq-2-11" class="quarto-xref">Equation&nbsp;<span>3.11</span></a>) and its derivatives <span class="math inline">\(y' = \lambda e^{\lambda x}\)</span> and <span class="math inline">\(y'' = \lambda^2 e^{\lambda x}\)</span> into our equation (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>), we obtain</p>
 <p><span class="math display">\[
 (\lambda^2 + a\lambda + b)e^{\lambda x} = 0.
 \]</span></p>
@@ -785,17 +785,17 @@ y = e^{\lambda x}.
 <p><span id="eq-2-12"><span class="math display">\[
 \lambda^2 + a\lambda + b = 0,
 \tag{3.12}\]</span></span></p>
-<p>then the exponential function (<a href="#eq-2-11" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-11</span></a>) is a solution of the ODE (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>). Now from algebra we recall that the roots of this quadratic equation (1) are</p>
+<p>then the exponential function (<a href="#eq-2-11" class="quarto-xref">Equation&nbsp;<span>3.11</span></a>) is a solution of the ODE (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>). Now from algebra we recall that the roots of this quadratic equation (1) are</p>
 <p><span id="eq-2-13"><span class="math display">\[
 \lambda_1 = -\frac{a}{2} + \sqrt{\frac{a^2}{4} - b}, \qquad \lambda_2 = -\frac{a}{2} - \sqrt{\frac{a^2}{4} - b}.
 \tag{3.13}\]</span></span></p>
 <ol class="example" type="1">
-<li>and (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-13</span></a>) will be basic because our derivation shows that the functions</li>
+<li>and (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span>3.13</span></a>) will be basic because our derivation shows that the functions</li>
 </ol>
 <p><span class="math display">\[
 y_1 = e^{\lambda_1 x} \quad \text{and} \quad y_2 = e^{\lambda_2 x}
 \]</span></p>
-<p>are solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>). Verify this by substituting <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>).</p>
+<p>are solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>). Verify this by substituting <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>).</p>
 <p>From algebra we further know that the quadratic equation (1) may have three kinds of roots, depending on the sign of the discriminant <span class="math inline">\(a^2 - 4b\)</span>, namely:</p>
 <ul>
 <li><strong>(Case I)</strong> Two distinct real roots if <span class="math inline">\(a^2 - 4b &gt; 0\)</span>,</li>
@@ -804,7 +804,7 @@ y_1 = e^{\lambda_1 x} \quad \text{and} \quad y_2 = e^{\lambda_2 x}
 </ul>
 <section id="case-i.-two-distinct-real-roots-lambda_1-and-lambda_2" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="case-i.-two-distinct-real-roots-lambda_1-and-lambda_2"><span class="header-section-number">3.3.1</span> Case I. Two Distinct Real Roots <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span></h3>
-<p>In this case, a basis of solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>) on any interval is</p>
+<p>In this case, a basis of solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>) on any interval is</p>
 <p><span class="math display">\[
 y_1 = e^{\lambda_1 x} \quad \text{and} \quad y_2 = e^{\lambda_2 x}
 \]</span></p>
@@ -815,7 +815,7 @@ y = c_1 e^{\lambda_1 x} + c_2 e^{\lambda_2 x}.
 </section>
 <section id="example-1-general-solution-in-the-case-of-distinct-real-roots" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="example-1-general-solution-in-the-case-of-distinct-real-roots"><span class="header-section-number">3.3.2</span> EXAMPLE 1 General Solution in the Case of Distinct Real Roots</h3>
-<p>We can now solve the ODE <span class="math inline">\(y'' - y = 0\)</span> in Example 6 of <a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a> systematically. The characteristic equation is <span class="math inline">\(\lambda^2 - 1 = 0\)</span>. Its roots are <span class="math inline">\(\lambda_1 = 1\)</span> and <span class="math inline">\(\lambda_2 = -1\)</span>. Hence a basis of solutions is <span class="math inline">\(e^x\)</span> and <span class="math inline">\(e^{-x}\)</span> and gives the same general solution as before,</p>
+<p>We can now solve the ODE <span class="math inline">\(y'' - y = 0\)</span> in Example 6 of <a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a> systematically. The characteristic equation is <span class="math inline">\(\lambda^2 - 1 = 0\)</span>. Its roots are <span class="math inline">\(\lambda_1 = 1\)</span> and <span class="math inline">\(\lambda_2 = -1\)</span>. Hence a basis of solutions is <span class="math inline">\(e^x\)</span> and <span class="math inline">\(e^{-x}\)</span> and gives the same general solution as before,</p>
 <p><span class="math display">\[
 y = c_1 e^x + c_2 e^{-x}.
 \]</span></p>
@@ -842,7 +842,7 @@ y = c_1 e^x + c_2 e^{-2x}.
 <p><span class="math display">\[
 y(0) = c_1 + c_2 = 4, \quad y'(0) = c_1 - 2c_2 = -5.
 \]</span></p>
-<p>Hence <span class="math inline">\(c_1 = 1\)</span> and <span class="math inline">\(c_2 = 3\)</span>. This gives the answer <span class="math inline">\(y = e^x + 3e^{-2x}\)</span>. <a href="#fig-2-30" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-30</span></a> shows that the curve begins at <span class="math inline">\((0, 4)\)</span> with a negative slope (but note that the axes have different scales!), in agreement with the initial conditions.</p>
+<p>Hence <span class="math inline">\(c_1 = 1\)</span> and <span class="math inline">\(c_2 = 3\)</span>. This gives the answer <span class="math inline">\(y = e^x + 3e^{-2x}\)</span>. <a href="#fig-2-30" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> shows that the curve begins at <span class="math inline">\((0, 4)\)</span> with a negative slope (but note that the axes have different scales!), in agreement with the initial conditions.</p>
 <div id="fig-2-30" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -856,11 +856,11 @@ Figure&nbsp;3.2: Fig. 30. Solution in Example 2
 </section>
 <section id="case-ii.-real-double-root" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="case-ii.-real-double-root"><span class="header-section-number">3.3.4</span> Case II. Real Double Root</h3>
-<p>If the discriminant is zero, we see directly from (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-13</span></a>) that we get only one root, <span class="math inline">\(\lambda = -a/2\)</span>, hence only one solution,</p>
+<p>If the discriminant is zero, we see directly from (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span>3.13</span></a>) that we get only one root, <span class="math inline">\(\lambda = -a/2\)</span>, hence only one solution,</p>
 <p><span class="math display">\[
 y_1 = e^{-ax/2}.
 \]</span></p>
-<p>To obtain a second independent solution (needed for a basis), we use the method of reduction of order discussed in the last section, setting <span class="math inline">\(y_2 = u y_1\)</span>. Substituting this and its derivatives <span class="math inline">\(y_2' = u'y_1 + uy_1'\)</span> and <span class="math inline">\(y_2'' = u''y_1 + 2u'y_1' + uy_1''\)</span> into (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>), we first have</p>
+<p>To obtain a second independent solution (needed for a basis), we use the method of reduction of order discussed in the last section, setting <span class="math inline">\(y_2 = u y_1\)</span>. Substituting this and its derivatives <span class="math inline">\(y_2' = u'y_1 + uy_1'\)</span> and <span class="math inline">\(y_2'' = u''y_1 + 2u'y_1' + uy_1''\)</span> into (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>), we first have</p>
 <p><span class="math display">\[
 (u''y_1 + 2u'y_1' + uy_1'') + a(u'y_1 + uy_1') + buy_1 = 0.
 \]</span></p>
@@ -868,12 +868,12 @@ y_1 = e^{-ax/2}.
 <p><span class="math display">\[
 u''y_1 + u'(2y_1' + a y_1) + u(y_1'' + a y_1' + b y_1) = 0.
 \]</span></p>
-<p>The expression in the last parentheses is zero, since <span class="math inline">\(y_1\)</span> is a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>). The expression in the first parentheses is zero, too, since</p>
+<p>The expression in the last parentheses is zero, since <span class="math inline">\(y_1\)</span> is a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>). The expression in the first parentheses is zero, too, since</p>
 <p><span class="math display">\[
 2y_1' + a y_1 = 2 \left( -\frac{a}{2} y_1 \right) + a y_1 = 0.
 \]</span></p>
 <p>We are thus left with <span class="math inline">\(u'' y_1 = 0\)</span>. Hence <span class="math inline">\(u'' = 0\)</span>. By two integrations, <span class="math inline">\(u = c_1 x + c_2\)</span>. To get a second independent solution <span class="math inline">\(y_2\)</span>, we can simply choose <span class="math inline">\(c_1 = 1\)</span> and <span class="math inline">\(c_2 = 0\)</span> and take <span class="math inline">\(u = x\)</span>. Then <span class="math inline">\(y_2 = x y_1\)</span>. Since these solutions are not proportional, they form a basis.</p>
-<p>Hence in the case of a double root of (1) a basis of solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>) on any interval is</p>
+<p>Hence in the case of a double root of (1) a basis of solutions of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>) on any interval is</p>
 <p><span class="math display">\[
 e^{-ax/2}, \quad x e^{-ax/2}.
 \]</span></p>
@@ -881,7 +881,7 @@ e^{-ax/2}, \quad x e^{-ax/2}.
 <p><span id="eq-2-15"><span class="math display">\[
 y = (c_1 + c_2 x) e^{-ax/2}.
 \tag{3.15}\]</span></span></p>
-<p><strong>WARNING!</strong> If <span class="math inline">\(\lambda\)</span> is a simple root of (1), then <span class="math inline">\(y = (c_1 + c_2 x) e^{\lambda x}\)</span> is not a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>).</p>
+<p><strong>WARNING!</strong> If <span class="math inline">\(\lambda\)</span> is a simple root of (1), then <span class="math inline">\(y = (c_1 + c_2 x) e^{\lambda x}\)</span> is not a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>).</p>
 </section>
 <section id="example-3-general-solution-in-the-case-of-a-double-root" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="example-3-general-solution-in-the-case-of-a-double-root"><span class="header-section-number">3.3.5</span> EXAMPLE 3 General Solution in the Case of a Double Root</h3>
@@ -905,7 +905,7 @@ y' = c_2 e^{-0.5x} - 0.5(c_1 + c_2 x) e^{-0.5x}.
 <p><span class="math display">\[
 y(0) = c_1 = 3.0, \quad y'(0) = c_2 - 0.5 c_1 = -3.5.
 \]</span></p>
-<p>Hence <span class="math inline">\(c_2 = -3.5 + 1.5 = -2\)</span>. The particular solution of the initial value problem is <span class="math inline">\(y = (3.0 - 2x) e^{-0.5x}\)</span>. See <a href="#fig-2-31" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-31</span></a>.</p>
+<p>Hence <span class="math inline">\(c_2 = -3.5 + 1.5 = -2\)</span>. The particular solution of the initial value problem is <span class="math inline">\(y = (3.0 - 2x) e^{-0.5x}\)</span>. See <a href="#fig-2-31" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>.</p>
 <div id="fig-2-31" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-31-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -924,7 +924,7 @@ Figure&nbsp;3.3: Fig. 31. Solution in Example 4
 <p><span class="math display">\[
 \lambda_1 = -\frac{a}{2} + i\omega, \qquad \lambda_2 = -\frac{a}{2} - i\omega
 \]</span></p>
-<p>where <span class="math inline">\(\omega = \sqrt{b - \frac{1}{4} a^2} &gt; 0\)</span>. These give the complex solutions of the ODE (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>). However, we will show that we can obtain a basis of real solutions</p>
+<p>where <span class="math inline">\(\omega = \sqrt{b - \frac{1}{4} a^2} &gt; 0\)</span>. These give the complex solutions of the ODE (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>). However, we will show that we can obtain a basis of real solutions</p>
 <p><span id="eq-2-16"><span class="math display">\[
 y_1 = e^{-ax/2} \cos \omega x, \qquad y_2 = e^{-ax/2} \sin \omega x.
 \tag{3.16}\]</span></span></p>
@@ -944,7 +944,7 @@ y'' + 0.4y' + 9.04y = 0, \quad y(0) = 0, \quad y'(0) = 3.
 <p><span class="math display">\[
 \lambda = -0.2 \pm 3i.
 \]</span></p>
-<p>Hence <span class="math inline">\(a/2 = 0.2, \omega = 3\)</span>, and a general solution (<a href="#eq-2-17" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-17</span></a>) is</p>
+<p>Hence <span class="math inline">\(a/2 = 0.2, \omega = 3\)</span>, and a general solution (<a href="#eq-2-17" class="quarto-xref">Equation&nbsp;<span>3.17</span></a>) is</p>
 <p><span class="math display">\[
 y = e^{-0.2x} (A \cos 3x + B \sin 3x).
 \]</span></p>
@@ -978,7 +978,7 @@ y'' + \omega^2 y = 0
 <p><span class="math display">\[
 y = A \cos \omega x + B \sin \omega x.
 \]</span></p>
-<p>With <span class="math inline">\(\omega = 1\)</span> this confirms Example 4 in <a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a>. <span class="math inline">\(\square\)</span></p>
+<p>With <span class="math inline">\(\omega = 1\)</span> this confirms Example 4 in <a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a>. <span class="math inline">\(\square\)</span></p>
 <div id="tbl-cases" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cases-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -996,8 +996,8 @@ Table&nbsp;3.1: <strong>Summary of Cases I–III</strong>
 <tr class="header">
 <th>Case</th>
 <th>Roots of (1)</th>
-<th>Basis of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>)</th>
-<th>General Solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>)</th>
+<th>Basis of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>)</th>
+<th>General Solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>)</th>
 </tr>
 </thead>
 <tbody>
@@ -1027,7 +1027,7 @@ Table&nbsp;3.1: <strong>Summary of Cases I–III</strong>
 </section>
 <section id="derivation-in-case-iii.-complex-exponential-function" class="level3" data-number="3.3.10">
 <h3 data-number="3.3.10" class="anchored" data-anchor-id="derivation-in-case-iii.-complex-exponential-function"><span class="header-section-number">3.3.10</span> Derivation in Case III. Complex Exponential Function</h3>
-<p>If verification of the solutions in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-16</span></a>) satisfies you, skip this systematic derivation of these real solutions from the complex solutions by means of the complex exponential function of a complex variable <span class="math inline">\(z = r + it\)</span>. We write <span class="math inline">\(z = r + it\)</span>, not <span class="math inline">\(x + iy\)</span> because <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> occur in the ODE. The definition of <span class="math inline">\(e^z\)</span> in terms of the real functions <span class="math inline">\(e^r\)</span>, <span class="math inline">\(\cos t\)</span>, and <span class="math inline">\(\sin t\)</span> is</p>
+<p>If verification of the solutions in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>) satisfies you, skip this systematic derivation of these real solutions from the complex solutions by means of the complex exponential function of a complex variable <span class="math inline">\(z = r + it\)</span>. We write <span class="math inline">\(z = r + it\)</span>, not <span class="math inline">\(x + iy\)</span> because <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> occur in the ODE. The definition of <span class="math inline">\(e^z\)</span> in terms of the real functions <span class="math inline">\(e^r\)</span>, <span class="math inline">\(\cos t\)</span>, and <span class="math inline">\(\sin t\)</span> is</p>
 <p><span id="eq-2-18"><span class="math display">\[
 e^z = e^{r + it} = e^r e^{it} = e^r (\cos t + i \sin t).
 \tag{3.18}\]</span></span></p>
@@ -1039,22 +1039,22 @@ e^{it} = \sum_{n=0}^{\infty} \frac{(it)^n}{n!} = 1 + it - \frac{t^2}{2!} - i \fr
 <p><span id="eq-2-19"><span class="math display">\[
 e^{it} = \cos t + i \sin t,
 \tag{3.19}\]</span></span></p>
-<p>called <strong>Euler’s formula</strong>. Multiplication by <span class="math inline">\(e^r\)</span> gives (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-18</span></a>).</p>
-<p>For later use we note that <span class="math inline">\(e^{-it} = \cos(-t) + i \sin(-t) = \cos t - i \sin t\)</span>, so that by addition and subtraction of this and (<a href="#eq-2-19" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-19</span></a>),</p>
+<p>called <strong>Euler’s formula</strong>. Multiplication by <span class="math inline">\(e^r\)</span> gives (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>).</p>
+<p>For later use we note that <span class="math inline">\(e^{-it} = \cos(-t) + i \sin(-t) = \cos t - i \sin t\)</span>, so that by addition and subtraction of this and (<a href="#eq-2-19" class="quarto-xref">Equation&nbsp;<span>3.19</span></a>),</p>
 <p><span id="eq-2-20"><span class="math display">\[
 \cos t = \frac{1}{2}(e^{it} + e^{-it}), \qquad \sin t = \frac{1}{2i}(e^{it} - e^{-it}).
 \tag{3.20}\]</span></span></p>
-<p>After these comments on the definition (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-18</span></a>), let us now turn to Case III.</p>
-<p>In Case III the radicand in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-13</span></a>) is negative. Hence <span class="math inline">\(4b - a^2\)</span> is positive and, using <span class="math inline">\(\sqrt{-1} = i\)</span>, we obtain in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-13</span></a>)</p>
+<p>After these comments on the definition (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>), let us now turn to Case III.</p>
+<p>In Case III the radicand in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span>3.13</span></a>) is negative. Hence <span class="math inline">\(4b - a^2\)</span> is positive and, using <span class="math inline">\(\sqrt{-1} = i\)</span>, we obtain in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span>3.13</span></a>)</p>
 <p><span class="math display">\[
 \sqrt{\frac{a^2}{4} - b} = \sqrt{-\left( b - \frac{a^2}{4} \right)} = i \omega
 \]</span></p>
-<p>with <span class="math inline">\(\omega\)</span> defined as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-16</span></a>). Hence in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-13</span></a>), <span class="math inline">\(\lambda_1 = -a/2 + i\omega\)</span> and <span class="math inline">\(\lambda_2 = -a/2 - i\omega\)</span>.</p>
-<p>Using (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-18</span></a>) with <span class="math inline">\(r = -ax/2\)</span> and <span class="math inline">\(t = \omega x\)</span>, we thus obtain</p>
+<p>with <span class="math inline">\(\omega\)</span> defined as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>). Hence in (<a href="#eq-2-13" class="quarto-xref">Equation&nbsp;<span>3.13</span></a>), <span class="math inline">\(\lambda_1 = -a/2 + i\omega\)</span> and <span class="math inline">\(\lambda_2 = -a/2 - i\omega\)</span>.</p>
+<p>Using (<a href="#eq-2-18" class="quarto-xref">Equation&nbsp;<span>3.18</span></a>) with <span class="math inline">\(r = -ax/2\)</span> and <span class="math inline">\(t = \omega x\)</span>, we thus obtain</p>
 <p><span class="math display">\[
 y_1 = e^{\lambda_1 x} = e^{-ax/2} (\cos \omega x + i \sin \omega x), \qquad y_2 = e^{\lambda_2 x} = e^{-ax/2} (\cos \omega x - i \sin \omega x).
 \]</span></p>
-<p>We now add these two lines and multiply the result by <span class="math inline">\(1/2\)</span>. This gives <span class="math inline">\(e^{-ax/2} \cos \omega x\)</span> as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-16</span></a>). Then we subtract the second line from the first and multiply the result by <span class="math inline">\(1/(2i)\)</span>. This gives <span class="math inline">\(e^{-ax/2} \sin \omega x\)</span> as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-16</span></a>). These results obtained by addition and multiplication by constants are again solutions, as follows from the superposition principle in <a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a>. This concludes the derivation of these real solutions in Case III.</p>
+<p>We now add these two lines and multiply the result by <span class="math inline">\(1/2\)</span>. This gives <span class="math inline">\(e^{-ax/2} \cos \omega x\)</span> as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>). Then we subtract the second line from the first and multiply the result by <span class="math inline">\(1/(2i)\)</span>. This gives <span class="math inline">\(e^{-ax/2} \sin \omega x\)</span> as in (<a href="#eq-2-16" class="quarto-xref">Equation&nbsp;<span>3.16</span></a>). These results obtained by addition and multiplication by constants are again solutions, as follows from the superposition principle in <a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a>. This concludes the derivation of these real solutions in Case III.</p>
 </section>
 </section>
 <section id="problem-set-2.2" class="level2" data-number="3.4">
@@ -1078,9 +1078,9 @@ y_1 = e^{\lambda_1 x} = e^{-ax/2} (\cos \omega x + i \sin \omega x), \qquad y_2 
 <li><p><strong>Instability.</strong> Solve <span class="math inline">\(y'' - y = 0\)</span> for the initial conditions <span class="math inline">\(y(0) = 1, y'(0) = -1\)</span>. Then change the initial conditions to <span class="math inline">\(y(0) = 1.001, y'(0) = -0.999\)</span>, and explain why this small change of 0.001 at <span class="math inline">\(t=0\)</span> causes a large change later, e.g., <span class="math inline">\(y \approx 22\)</span> at <span class="math inline">\(t=10\)</span>. This is instability: a small initial difference in setting a quantity (a current, for instance) becomes larger and larger with time <span class="math inline">\(t\)</span>.</p></li>
 <li><p><strong>TEAM PROJECT. General Properties of Solutions.</strong></p>
 <ol type="a">
-<li><strong>Coefficient formulas.</strong> Show how <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> in (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>) can be expressed in terms of <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Explain how these formulas can be used in constructing equations for given bases.</li>
+<li><strong>Coefficient formulas.</strong> Show how <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> in (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>) can be expressed in terms of <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Explain how these formulas can be used in constructing equations for given bases.</li>
 <li><strong>Root zero.</strong> Solve <span class="math inline">\(y'' + 4y' = 0\)</span> (i) by the present method, and (ii) by reduction to first order. Can you explain why the result must be the same in both cases? Can you do the same for a general ODE <span class="math inline">\(y'' + ay' = 0\)</span>?</li>
-<li><strong>Double root.</strong> Verify directly that <span class="math inline">\(x e^{\lambda x}\)</span> with <span class="math inline">\(\lambda = -a/2\)</span> is a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-10</span></a>) in the case of a double root. Verify and explain why <span class="math inline">\(y = x e^{-2x}\)</span> is a solution of <span class="math inline">\(y'' - y' - 6y = 0\)</span> but <span class="math inline">\(y = e^{-2x}\)</span> is not.</li>
+<li><strong>Double root.</strong> Verify directly that <span class="math inline">\(x e^{\lambda x}\)</span> with <span class="math inline">\(\lambda = -a/2\)</span> is a solution of (<a href="#eq-2-10" class="quarto-xref">Equation&nbsp;<span>3.10</span></a>) in the case of a double root. Verify and explain why <span class="math inline">\(y = x e^{-2x}\)</span> is a solution of <span class="math inline">\(y'' - y' - 6y = 0\)</span> but <span class="math inline">\(y = e^{-2x}\)</span> is not.</li>
 <li><strong>Limits.</strong> Double roots should be limiting cases of distinct roots <span class="math inline">\(\lambda_1, \lambda_2\)</span> as, say, <span class="math inline">\(\lambda_2 \to \lambda_1\)</span>. Experiment with this idea using <span class="math inline">\(\frac{e^{\lambda_2 x} - e^{\lambda_1 x}}{\lambda_2 - \lambda_1}\)</span>. (Remember l’Hôpital’s rule.) Can you arrive at <span class="math inline">\(x e^{\lambda_1 x}\)</span>?</li>
 </ol></li>
 </ol>
@@ -1110,11 +1110,11 @@ Ly = P(D)y = (D^2 + aD + bI)y = 0.
 <p><span class="math display">\[
 L(cy + kw) = cLy + kLw.
 \]</span></p>
-<p>Let us show that from (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-22</span></a>) we reach agreement with the results in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>. Since <span class="math inline">\(D e^{\lambda x} = \lambda e^{\lambda x}\)</span> and <span class="math inline">\(D^2 e^{\lambda x} = \lambda^2 e^{\lambda x}\)</span>, we obtain</p>
+<p>Let us show that from (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span>3.22</span></a>) we reach agreement with the results in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>. Since <span class="math inline">\(D e^{\lambda x} = \lambda e^{\lambda x}\)</span> and <span class="math inline">\(D^2 e^{\lambda x} = \lambda^2 e^{\lambda x}\)</span>, we obtain</p>
 <p><span id="eq-2-23"><span class="math display">\[
 L e^{\lambda x} = P(D) e^{\lambda x} = (D^2 + aD + bI) e^{\lambda x} = (\lambda^2 + a\lambda + b) e^{\lambda x} = P(\lambda) e^{\lambda x} = 0.
 \tag{3.23}\]</span></span></p>
-<p>This confirms our result of <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a> that <span class="math inline">\(e^{\lambda x}\)</span> is a solution of the ODE (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-22</span></a>) if and only if <span class="math inline">\(\lambda\)</span> is a solution of the characteristic equation <span class="math inline">\(P(\lambda) = 0\)</span>.</p>
+<p>This confirms our result of <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a> that <span class="math inline">\(e^{\lambda x}\)</span> is a solution of the ODE (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span>3.22</span></a>) if and only if <span class="math inline">\(\lambda\)</span> is a solution of the characteristic equation <span class="math inline">\(P(\lambda) = 0\)</span>.</p>
 <p><span class="math inline">\(P(\lambda)\)</span> is a polynomial in the usual sense of algebra. If we replace <span class="math inline">\(\lambda\)</span> by the operator <span class="math inline">\(D\)</span>, we obtain the “operator polynomial” <span class="math inline">\(P(D)\)</span>. The point of this operational calculus is that <span class="math inline">\(P(D)\)</span> can be treated just like an algebraic quantity. In particular, we can factor it.</p>
 <section id="example-1-factorization-solution-of-an-ode" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="example-1-factorization-solution-of-an-ode"><span class="header-section-number">3.5.1</span> EXAMPLE 1 Factorization, Solution of an ODE</h3>
@@ -1126,8 +1126,8 @@ L e^{\lambda x} = P(D) e^{\lambda x} = (D^2 + aD + bI) e^{\lambda x} = (\lambda^
 &amp;= y'' + 5y' - 8y' - 40y = y'' - 3y' - 40y = 0.
 \end{aligned}
 \]</span></p>
-<p>Verify that this agrees with the result of our method in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>. This is not unexpected because we factored <span class="math inline">\(P(D)\)</span> in the same way as the characteristic polynomial <span class="math inline">\(P(\lambda) = \lambda^2 - 3\lambda - 40\)</span>.</p>
-<p>It was essential that <span class="math inline">\(L\)</span> in (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-22</span></a>) had constant coefficients. Extension of operator methods to variable-coefficient ODEs is more difficult and will not be considered here.</p>
+<p>Verify that this agrees with the result of our method in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>. This is not unexpected because we factored <span class="math inline">\(P(D)\)</span> in the same way as the characteristic polynomial <span class="math inline">\(P(\lambda) = \lambda^2 - 3\lambda - 40\)</span>.</p>
+<p>It was essential that <span class="math inline">\(L\)</span> in (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span>3.22</span></a>) had constant coefficients. Extension of operator methods to variable-coefficient ODEs is more difficult and will not be considered here.</p>
 <p>If operational methods were limited to the simple situations illustrated in this section, it would perhaps not be worth mentioning. Actually, the power of the operator approach appears in more complicated engineering problems, as we shall see in Chap. 6. <span class="math inline">\(\square\)</span></p>
 </section>
 </section>
@@ -1141,7 +1141,7 @@ L e^{\lambda x} = P(D) e^{\lambda x} = (D^2 + aD + bI) e^{\lambda x} = (\lambda^
 <h3 data-number="3.6.2" class="anchored" data-anchor-id="general-solution-1"><span class="header-section-number">3.6.2</span> 6–12 GENERAL SOLUTION</h3>
 <p>Factor as in the text and solve. 6. <span class="math inline">\((D^2 + 4.00D + 3.36I)y = 0\)</span> 7. <span class="math inline">\((4D^2 - I)y = 0\)</span> 8. <span class="math inline">\((D^2 + 3I)y = 0\)</span> 9. <span class="math inline">\((D^2 - 4.20D + 4.41I)y = 0\)</span> 10. <span class="math inline">\((D^2 + 4.80D + 5.76I)y = 0\)</span> 11. <span class="math inline">\((D^2 - 4.00D + 3.84I)y = 0\)</span> 12. <span class="math inline">\((D^2 + 3.0D + 2.5I)y = 0\)</span></p>
 <ol start="13" type="1">
-<li><strong>Linear operator.</strong> Illustrate the linearity of <span class="math inline">\(L\)</span> in (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-22</span></a>) by taking <span class="math inline">\(y = e^{2x}\)</span>, <span class="math inline">\(w = \cos 2x\)</span>, <span class="math inline">\(c = 4\)</span>, <span class="math inline">\(k = -6\)</span>, for <span class="math inline">\(L = D^2 + aD + bI\)</span>. Prove that <span class="math inline">\(L\)</span> is linear.</li>
+<li><strong>Linear operator.</strong> Illustrate the linearity of <span class="math inline">\(L\)</span> in (<a href="#eq-2-22" class="quarto-xref">Equation&nbsp;<span>3.22</span></a>) by taking <span class="math inline">\(y = e^{2x}\)</span>, <span class="math inline">\(w = \cos 2x\)</span>, <span class="math inline">\(c = 4\)</span>, <span class="math inline">\(k = -6\)</span>, for <span class="math inline">\(L = D^2 + aD + bI\)</span>. Prove that <span class="math inline">\(L\)</span> is linear.</li>
 <li><strong>Double root.</strong> If <span class="math inline">\(D^2 + aD + bI\)</span> has distinct roots <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span>, show that a particular solution of <span class="math inline">\((D - \lambda I)(D - \mu I)y = 0\)</span> is <span class="math inline">\(y = \frac{e^{\mu x} - e^{\lambda x}}{\mu - \lambda}\)</span>. Obtain from this a solution for a double root by letting <span class="math inline">\(\mu \to \lambda\)</span> and applying l’Hôpital’s rule.</li>
 <li><strong>Definition of linearity.</strong> Show that the definition of linearity in the text is equivalent to the following: If <span class="math inline">\(Ly\)</span> and <span class="math inline">\(Lw\)</span> exist, then <span class="math inline">\(L(y + w)\)</span> and <span class="math inline">\(L[kw]\)</span> exist for all constants <span class="math inline">\(k\)</span>, and <span class="math inline">\(L[y + w] = Ly + Lw\)</span> as well as <span class="math inline">\(L[ky] = kLy\)</span>.</li>
 </ol>
@@ -1149,10 +1149,10 @@ L e^{\lambda x} = P(D) e^{\lambda x} = (D^2 + aD + bI) e^{\lambda x} = (\lambda^
 </section>
 <section id="sec-free-oscillations" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="sec-free-oscillations"><span class="header-section-number">3.7</span> Modeling of Free Oscillations of a Mass–Spring System</h2>
-<p>Linear ODEs with constant coefficients have important applications in mechanics, as we show in this section as well as in <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>, and in electrical circuits as we show in <a href="#sec-electric-circuits" class="quarto-xref"><span class="quarto-unresolved-ref">sec-electric-circuits</span></a>. In this section we model and solve a basic mechanical system consisting of a mass on an elastic spring (a so-called “mass013spring system,” <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-33</span></a>), which moves up and down.</p>
+<p>Linear ODEs with constant coefficients have important applications in mechanics, as we show in this section as well as in <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>, and in electrical circuits as we show in <a href="#sec-electric-circuits" class="quarto-xref"><span>Section 3.17</span></a>. In this section we model and solve a basic mechanical system consisting of a mass on an elastic spring (a so-called “mass013spring system,” <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>), which moves up and down.</p>
 <section id="setting-up-the-model" class="level3" data-number="3.7.1">
 <h3 data-number="3.7.1" class="anchored" data-anchor-id="setting-up-the-model"><span class="header-section-number">3.7.1</span> Setting Up the Model</h3>
-<p>We take an ordinary coil spring that resists extension as well as compression. We suspend it vertically from a fixed support and attach a body at its lower end, for instance, an iron ball, as shown in <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-33</span></a>. We let <span class="math inline">\(y = 0\)</span> denote the position of the ball when the system is at rest (<a href="#fig-2-33b" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-33b</span></a>). Furthermore, we choose the downward direction as positive, thus regarding downward forces as positive and upward forces as negative.</p>
+<p>We take an ordinary coil spring that resists extension as well as compression. We suspend it vertically from a fixed support and attach a body at its lower end, for instance, an iron ball, as shown in <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. We let <span class="math inline">\(y = 0\)</span> denote the position of the ball when the system is at rest. Furthermore, we choose the downward direction as positive, thus regarding downward forces as positive and upward forces as negative.</p>
 <div id="fig-2-33" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-33-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1163,7 +1163,7 @@ Figure&nbsp;3.5: Fig. 33. Mechanical mass–spring system
 </figcaption>
 </figure>
 </div>
-<p>We now let the ball move, as follows. We pull it down by an amount <span class="math inline">\(y &gt; 0\)</span> (<a href="#fig-2-33c" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-33c</span></a>). This causes a spring force</p>
+<p>We now let the ball move, as follows. We pull it down by an amount <span class="math inline">\(y &gt; 0\)</span>. This causes a spring force</p>
 <p><span id="eq-2-24"><span class="math display">\[
 F_1 = -ky
 \tag{3.24}\]</span></span></p>
@@ -1181,11 +1181,11 @@ F_1 = -ky
 <p><span id="eq-2-26"><span class="math display">\[
 my'' + ky = 0.
 \tag{3.26}\]</span></span></p>
-<p>This is a homogeneous linear ODE with constant coefficients. A general solution is obtained as in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>, namely:</p>
+<p>This is a homogeneous linear ODE with constant coefficients. A general solution is obtained as in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>, namely:</p>
 <p><span id="eq-2-27"><span class="math display">\[
 y(t) = A \cos \omega_0 t + B \sin \omega_0 t
 \tag{3.27}\]</span></span></p>
-<p>where <span class="math inline">\(\omega_0 = \sqrt{k/m}\)</span>. This motion is called a <strong>harmonic oscillation</strong> (<a href="#fig-2-34" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-34</span></a>). Its frequency is <span class="math inline">\(f = \omega_0 / 2\pi\)</span> Hertz (cycles/sec) because <span class="math inline">\(\cos \omega_0 t\)</span> and <span class="math inline">\(\sin \omega_0 t\)</span> in (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27</span></a>) have the period <span class="math inline">\(2\pi/\omega_0\)</span>. The frequency <span class="math inline">\(f\)</span> is called the natural frequency of the system. (We write <span class="math inline">\(\omega_0\)</span> to reserve <span class="math inline">\(\omega\)</span> for <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>.)</p>
+<p>where <span class="math inline">\(\omega_0 = \sqrt{k/m}\)</span>. This motion is called a <strong>harmonic oscillation</strong> (<a href="#fig-2-34" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>). Its frequency is <span class="math inline">\(f = \omega_0 / 2\pi\)</span> Hertz (cycles/sec) because <span class="math inline">\(\cos \omega_0 t\)</span> and <span class="math inline">\(\sin \omega_0 t\)</span> in (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span>3.27</span></a>) have the period <span class="math inline">\(2\pi/\omega_0\)</span>. The frequency <span class="math inline">\(f\)</span> is called the natural frequency of the system. (We write <span class="math inline">\(\omega_0\)</span> to reserve <span class="math inline">\(\omega\)</span> for <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>.)</p>
 <div id="fig-2-34" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-34-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1196,7 +1196,7 @@ Figure&nbsp;3.6: Fig. 34. Typical harmonic oscillations (4) and (4*) with the sa
 </figcaption>
 </figure>
 </div>
-<p>An alternative representation of (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27</span></a>), which shows the physical characteristics of amplitude and phase shift, is</p>
+<p>An alternative representation of (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span>3.27</span></a>), which shows the physical characteristics of amplitude and phase shift, is</p>
 <p><span id="eq-2-27star"><span class="math display">\[
 y(t) = C \cos (\omega_0 t - \delta)
 \tag{3.28}\]</span></span></p>
@@ -1205,12 +1205,12 @@ y(t) = C \cos (\omega_0 t - \delta)
 <section id="example-1-harmonic-oscillation-of-an-undamped-massspring-system" class="level3" data-number="3.7.3">
 <h3 data-number="3.7.3" class="anchored" data-anchor-id="example-1-harmonic-oscillation-of-an-undamped-massspring-system"><span class="header-section-number">3.7.3</span> EXAMPLE 1 Harmonic Oscillation of an Undamped Mass–Spring System</h3>
 <p>If a mass–spring system with an iron ball of weight <span class="math inline">\(W = 98\text{ nt}\)</span> (about 22 lb) can be regarded as undamped, and the spring is such that the ball stretches it <span class="math inline">\(1.09\text{ m}\)</span> (about 43 in.), how many cycles per minute will the system execute? What will its motion be if we pull the ball down from rest by <span class="math inline">\(16\text{ cm}\)</span> (about 6 in.) and let it start with zero initial velocity?</p>
-<p><strong>Solution.</strong> Hooke’s law (<a href="#eq-2-24" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-24</span></a>) with <span class="math inline">\(W\)</span> as the force and <span class="math inline">\(1.09\text{ meter}\)</span> as the stretch gives <span class="math inline">\(W = 1.09 k\)</span>; thus <span class="math inline">\(k = W / 1.09 = 98 / 1.09 = 90\text{ nt/meter}\)</span>. The mass is <span class="math inline">\(m = W/g = 98/9.8 = 10\text{ kg}\)</span>. This gives the frequency <span class="math inline">\(\omega_0 / (2\pi) = \sqrt{k/m} / (2\pi) = 3 / (2\pi) \approx 0.48\text{ Hz} \approx 29\text{ cycles/min}\)</span>.</p>
-<p>From (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27</span></a>) and the initial conditions, <span class="math inline">\(y(0) = A = 0.16\text{ [meter]}\)</span> and <span class="math inline">\(y'(0) = \omega_0 B = 0\)</span>. Hence the motion is</p>
+<p><strong>Solution.</strong> Hooke’s law (<a href="#eq-2-24" class="quarto-xref">Equation&nbsp;<span>3.24</span></a>) with <span class="math inline">\(W\)</span> as the force and <span class="math inline">\(1.09\text{ meter}\)</span> as the stretch gives <span class="math inline">\(W = 1.09 k\)</span>; thus <span class="math inline">\(k = W / 1.09 = 98 / 1.09 = 90\text{ nt/meter}\)</span>. The mass is <span class="math inline">\(m = W/g = 98/9.8 = 10\text{ kg}\)</span>. This gives the frequency <span class="math inline">\(\omega_0 / (2\pi) = \sqrt{k/m} / (2\pi) = 3 / (2\pi) \approx 0.48\text{ Hz} \approx 29\text{ cycles/min}\)</span>.</p>
+<p>From (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span>3.27</span></a>) and the initial conditions, <span class="math inline">\(y(0) = A = 0.16\text{ [meter]}\)</span> and <span class="math inline">\(y'(0) = \omega_0 B = 0\)</span>. Hence the motion is</p>
 <p><span class="math display">\[
 y(t) = 0.16 \cos 3t\text{ [meter]} \quad (\text{or } 0.52 \cos 3t\text{ [ft]})
 \]</span></p>
-<p>(<a href="#fig-2-35" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-35</span></a>). If you have a chance of experimenting with a mass–spring system, don’t miss it. You will be surprised about the good agreement between theory and experiment, usually within a fraction of one percent if you measure carefully. <span class="math inline">\(\square\)</span></p>
+<p>(<a href="#fig-2-35" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>). If you have a chance of experimenting with a mass–spring system, don’t miss it. You will be surprised about the good agreement between theory and experiment, usually within a fraction of one percent if you measure carefully. <span class="math inline">\(\square\)</span></p>
 <div id="fig-2-35" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-35-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1228,7 +1228,7 @@ Figure&nbsp;3.7: Fig. 35. Harmonic oscillation in Example 1
 <p><span id="eq-2-28"><span class="math display">\[
 my'' + cy' + ky = 0.
 \tag{3.29}\]</span></span></p>
-<p>Physically this can be done by connecting the ball to a dashpot; see <a href="#fig-2-36" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-36</span></a>. We assume this damping force to be proportional to the velocity <span class="math inline">\(y' = dy/dt\)</span>. This is generally a good approximation for small velocities.</p>
+<p>Physically this can be done by connecting the ball to a dashpot; see <a href="#fig-2-36" class="quarto-xref">Figure&nbsp;<span>3.8</span></a>. We assume this damping force to be proportional to the velocity <span class="math inline">\(y' = dy/dt\)</span>. This is generally a good approximation for small velocities.</p>
 <div id="fig-2-36" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-36-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1240,7 +1240,7 @@ Figure&nbsp;3.8: Fig. 36. Damped system
 </figure>
 </div>
 <p>The constant <span class="math inline">\(c\)</span> is called the damping constant. Let us show that <span class="math inline">\(c\)</span> is positive. Indeed, the damping force acts against the motion; hence for a downward motion we have <span class="math inline">\(y' &gt; 0\)</span> which for positive <span class="math inline">\(c\)</span> makes <span class="math inline">\(F_2\)</span> negative (an upward force), as it should be. Similarly, for an upward motion we have <span class="math inline">\(y' &lt; 0\)</span> which makes <span class="math inline">\(F_2\)</span> positive (a downward force).</p>
-<p>The ODE (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-28</span></a>) is homogeneous linear and has constant coefficients. Hence we can solve it by the method in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>. The characteristic equation is (divide (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-28</span></a>) by <span class="math inline">\(m\)</span>)</p>
+<p>The ODE (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span>3.29</span></a>) is homogeneous linear and has constant coefficients. Hence we can solve it by the method in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>. The characteristic equation is (divide (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span>3.29</span></a>) by <span class="math inline">\(m\)</span>)</p>
 <p><span class="math display">\[
 \lambda^2 + \frac{c}{m} \lambda + \frac{k}{m} = 0.
 \]</span></p>
@@ -1255,17 +1255,17 @@ Figure&nbsp;3.8: Fig. 36. Damped system
 <li><strong>Case II.</strong> <span class="math inline">\(c^2 = 4mk\)</span>. A real double root. (<strong>Critical damping</strong>)</li>
 <li><strong>Case III.</strong> <span class="math inline">\(c^2 &lt; 4mk\)</span>. Complex conjugate roots. (<strong>Underdamping</strong>)</li>
 </ul>
-<p>They correspond to the three Cases I, II, III in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>.</p>
+<p>They correspond to the three Cases I, II, III in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>.</p>
 </section>
 <section id="discussion-of-the-three-cases" class="level3" data-number="3.7.5">
 <h3 data-number="3.7.5" class="anchored" data-anchor-id="discussion-of-the-three-cases"><span class="header-section-number">3.7.5</span> Discussion of the Three Cases</h3>
 <section id="case-i.-overdamping" class="level4" data-number="3.7.5.1">
 <h4 data-number="3.7.5.1" class="anchored" data-anchor-id="case-i.-overdamping"><span class="header-section-number">3.7.5.1</span> Case I. Overdamping</h4>
-<p>If the damping constant <span class="math inline">\(c\)</span> is so large that <span class="math inline">\(c^2 &gt; 4mk\)</span>, then <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are distinct real roots. In this case the corresponding general solution of (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-28</span></a>) is</p>
+<p>If the damping constant <span class="math inline">\(c\)</span> is so large that <span class="math inline">\(c^2 &gt; 4mk\)</span>, then <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are distinct real roots. In this case the corresponding general solution of (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span>3.29</span></a>) is</p>
 <p><span id="eq-2-30"><span class="math display">\[
 y(t) = c_1 e^{-(\alpha - \beta)t} + c_2 e^{-(\alpha + \beta)t}.
 \tag{3.31}\]</span></span></p>
-<p>We see that in this case, damping takes out energy so quickly that the body does not oscillate. For both exponents in (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-30</span></a>) are negative because <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\beta &gt; 0\)</span>, and <span class="math inline">\(\beta^2 = \alpha^2 - k/m &lt; \alpha^2 \Rightarrow \beta &lt; \alpha\)</span>. Hence both terms in (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-30</span></a>) approach zero as <span class="math inline">\(t \to \infty\)</span>. Practically speaking, after a sufficiently long time the mass will be at rest at the static equilibrium position (<span class="math inline">\(y = 0\)</span>). <a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-37</span></a> shows (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-30</span></a>) for some typical initial conditions.</p>
+<p>We see that in this case, damping takes out energy so quickly that the body does not oscillate. For both exponents in (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span>3.31</span></a>) are negative because <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\beta &gt; 0\)</span>, and <span class="math inline">\(\beta^2 = \alpha^2 - k/m &lt; \alpha^2 \Rightarrow \beta &lt; \alpha\)</span>. Hence both terms in (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span>3.31</span></a>) approach zero as <span class="math inline">\(t \to \infty\)</span>. Practically speaking, after a sufficiently long time the mass will be at rest at the static equilibrium position (<span class="math inline">\(y = 0\)</span>). <a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> shows (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span>3.31</span></a>) for some typical initial conditions.</p>
 <div id="fig-2-37" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-37-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1279,11 +1279,11 @@ Figure&nbsp;3.9: Fig. 37. Typical motions (7) in the overdamped case: (a) Positi
 </section>
 <section id="case-ii.-critical-damping" class="level4" data-number="3.7.5.2">
 <h4 data-number="3.7.5.2" class="anchored" data-anchor-id="case-ii.-critical-damping"><span class="header-section-number">3.7.5.2</span> Case II. Critical Damping</h4>
-<p>Critical damping is the border case between nonoscillatory motions (Case I) and oscillations (Case III). It occurs if the characteristic equation has a double root, that is, if <span class="math inline">\(c^2 = 4mk\)</span>, so that <span class="math inline">\(\beta = 0, \lambda_1 = \lambda_2 = -\alpha\)</span>. Then the corresponding general solution of (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-28</span></a>) is</p>
+<p>Critical damping is the border case between nonoscillatory motions (Case I) and oscillations (Case III). It occurs if the characteristic equation has a double root, that is, if <span class="math inline">\(c^2 = 4mk\)</span>, so that <span class="math inline">\(\beta = 0, \lambda_1 = \lambda_2 = -\alpha\)</span>. Then the corresponding general solution of (<a href="#eq-2-28" class="quarto-xref">Equation&nbsp;<span>3.29</span></a>) is</p>
 <p><span id="eq-2-31"><span class="math display">\[
 y(t) = (c_1 + c_2 t) e^{-\alpha t}.
 \tag{3.32}\]</span></span></p>
-<p>This solution can pass through the equilibrium position at most once because <span class="math inline">\(e^{-\alpha t}\)</span> is never zero and <span class="math inline">\(c_1 + c_2 t\)</span> can have at most one positive zero. If both <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are positive (or both negative), it has no positive zero, so that <span class="math inline">\(y\)</span> does not pass through <span class="math inline">\(0\)</span> at all. <a href="#fig-2-38" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-38</span></a> shows typical forms of (<a href="#eq-2-31" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-31</span></a>). Note that they look almost like those in <a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-37</span></a>.</p>
+<p>This solution can pass through the equilibrium position at most once because <span class="math inline">\(e^{-\alpha t}\)</span> is never zero and <span class="math inline">\(c_1 + c_2 t\)</span> can have at most one positive zero. If both <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are positive (or both negative), it has no positive zero, so that <span class="math inline">\(y\)</span> does not pass through <span class="math inline">\(0\)</span> at all. <a href="#fig-2-38" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> shows typical forms of (<a href="#eq-2-31" class="quarto-xref">Equation&nbsp;<span>3.32</span></a>). Note that they look almost like those in <a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>.</p>
 <div id="fig-2-38" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-38-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1297,7 +1297,7 @@ Figure&nbsp;3.10: Fig. 38. Critical damping [see (8)]
 </section>
 <section id="case-iii.-underdamping" class="level4" data-number="3.7.5.3">
 <h4 data-number="3.7.5.3" class="anchored" data-anchor-id="case-iii.-underdamping"><span class="header-section-number">3.7.5.3</span> Case III. Underdamping</h4>
-<p>This is the most interesting case. It occurs if the damping constant <span class="math inline">\(c\)</span> is so small that <span class="math inline">\(c^2 &lt; 4mk\)</span>. Then <span class="math inline">\(\beta\)</span> in (<a href="#eq-2-29" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-29</span></a>) is no longer real but pure imaginary, say,</p>
+<p>This is the most interesting case. It occurs if the damping constant <span class="math inline">\(c\)</span> is so small that <span class="math inline">\(c^2 &lt; 4mk\)</span>. Then <span class="math inline">\(\beta\)</span> in (<a href="#eq-2-29" class="quarto-xref">Equation&nbsp;<span>3.30</span></a>) is no longer real but pure imaginary, say,</p>
 <p><span id="eq-2-32"><span class="math display">\[
 \beta = i \omega^* \quad \text{where} \quad \omega^* = \frac{1}{2m}\sqrt{4mk - c^2} = \sqrt{\frac{k}{m} - \frac{c^2}{4m^2}} &gt; 0.
 \tag{3.33}\]</span></span></p>
@@ -1306,9 +1306,9 @@ Figure&nbsp;3.10: Fig. 38. Critical damping [see (8)]
 <p><span id="eq-2-33"><span class="math display">\[
 y(t) = e^{-\alpha t} (A \cos \omega^* t + B \sin \omega^* t) = C e^{-\alpha t} \cos (\omega^* t - \delta)
 \tag{3.34}\]</span></span></p>
-<p>where <span class="math inline">\(C^2 = A^2 + B^2\)</span> and <span class="math inline">\(\tan \delta = B/A\)</span>, as in (<a href="#eq-2-27star" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27star</span></a>).</p>
-<p>This represents <strong>damped oscillations</strong>. Their curve lies between the dashed curves <span class="math inline">\(y = C e^{-\alpha t}\)</span> and <span class="math inline">\(y = -C e^{-\alpha t}\)</span> in <a href="#fig-2-39" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-39</span></a>, touching them when <span class="math inline">\(\omega^* t - \delta\)</span> is an integer multiple of <span class="math inline">\(\pi\)</span> because these are the points at which <span class="math inline">\(\cos(\omega^* t - \delta)\)</span> equals <span class="math inline">\(1\)</span> or <span class="math inline">\(-1\)</span>.</p>
-<p>The frequency is <span class="math inline">\(\omega^* / (2\pi)\text{ Hz}\)</span>. From (<a href="#eq-2-32" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-32</span></a>) we see that the smaller <span class="math inline">\(c\)</span> is, the larger is <span class="math inline">\(\omega^*\)</span> and the more rapid the oscillations become. If <span class="math inline">\(c\)</span> approaches <span class="math inline">\(0\)</span>, then <span class="math inline">\(\omega^*\)</span> approaches <span class="math inline">\(\omega_0 = \sqrt{k/m}\)</span>, giving the harmonic oscillation (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27</span></a>), whose frequency is the natural frequency of the system.</p>
+<p>where <span class="math inline">\(C^2 = A^2 + B^2\)</span> and <span class="math inline">\(\tan \delta = B/A\)</span>, as in (<a href="#eq-2-27star" class="quarto-xref">Equation&nbsp;<span>3.28</span></a>).</p>
+<p>This represents <strong>damped oscillations</strong>. Their curve lies between the dashed curves <span class="math inline">\(y = C e^{-\alpha t}\)</span> and <span class="math inline">\(y = -C e^{-\alpha t}\)</span> in <a href="#fig-2-39" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>, touching them when <span class="math inline">\(\omega^* t - \delta\)</span> is an integer multiple of <span class="math inline">\(\pi\)</span> because these are the points at which <span class="math inline">\(\cos(\omega^* t - \delta)\)</span> equals <span class="math inline">\(1\)</span> or <span class="math inline">\(-1\)</span>.</p>
+<p>The frequency is <span class="math inline">\(\omega^* / (2\pi)\text{ Hz}\)</span>. From (<a href="#eq-2-32" class="quarto-xref">Equation&nbsp;<span>3.33</span></a>) we see that the smaller <span class="math inline">\(c\)</span> is, the larger is <span class="math inline">\(\omega^*\)</span> and the more rapid the oscillations become. If <span class="math inline">\(c\)</span> approaches <span class="math inline">\(0\)</span>, then <span class="math inline">\(\omega^*\)</span> approaches <span class="math inline">\(\omega_0 = \sqrt{k/m}\)</span>, giving the harmonic oscillation (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span>3.27</span></a>), whose frequency is the natural frequency of the system.</p>
 <div id="fig-2-39" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-39-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1363,7 +1363,7 @@ y'(t) = e^{-0.5t} [ (-0.5A + 2.96B) \cos 2.96t - (2.96A + 0.5B) \sin 2.96t ].
 <p><span class="math display">\[
 y(t) = e^{-0.5t} (0.16 \cos 2.96t + 0.027 \sin 2.96t) \approx 0.162 e^{-0.5t} \cos (2.96t - 0.17).
 \]</span></p>
-<p>We see that these damped oscillations have a smaller frequency than the harmonic oscillations in Example 1 by about 1% (since 2.96 is smaller than 3.00 by about 1.3%). Their amplitude goes to zero. See <a href="#fig-2-40" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-40</span></a>. <span class="math inline">\(\square\)</span></p>
+<p>We see that these damped oscillations have a smaller frequency than the harmonic oscillations in Example 1 by about 1% (since 2.96 is smaller than 3.00 by about 1.3%). Their amplitude goes to zero. See <a href="#fig-2-40" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. <span class="math inline">\(\square\)</span></p>
 <div id="fig-2-40" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-40-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1374,7 +1374,7 @@ Figure&nbsp;3.12: Fig. 40. The three solutions in Example 2
 </figcaption>
 </figure>
 </div>
-<p>This section concerned free motions of mass–spring systems. Their models are homogeneous linear ODEs. Nonhomogeneous linear ODEs will arise as models of forced motions, that is, motions under the influence of a “driving force.” We shall study them in <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a>, after we have learned how to solve those ODEs.</p>
+<p>This section concerned free motions of mass–spring systems. Their models are homogeneous linear ODEs. Nonhomogeneous linear ODEs will arise as models of forced motions, that is, motions under the influence of a “driving force.” We shall study them in <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a>, after we have learned how to solve those ODEs.</p>
 </section>
 </section>
 <section id="problem-set-2.4" class="level2" data-number="3.8">
@@ -1382,11 +1382,11 @@ Figure&nbsp;3.12: Fig. 40. The three solutions in Example 2
 <section id="harmonic-oscillations-undamped-motion" class="level3" data-number="3.8.1">
 <h3 data-number="3.8.1" class="anchored" data-anchor-id="harmonic-oscillations-undamped-motion"><span class="header-section-number">3.8.1</span> 1–10 HARMONIC OSCILLATIONS (UNDAMPED MOTION)</h3>
 <ol type="1">
-<li><strong>Initial value problem.</strong> Find the harmonic motion (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27</span></a>) that starts from <span class="math inline">\(y(0) = y_0\)</span> with initial velocity <span class="math inline">\(y'(0) = v_0\)</span>. Graph or sketch the solutions for <span class="math inline">\(\omega_0 = \pi\)</span>, <span class="math inline">\(y_0 = 1\)</span>, and various <span class="math inline">\(v_0\)</span> of your choice on common axes. At what <span class="math inline">\(t\)</span>-values do all these curves intersect? Why?</li>
+<li><strong>Initial value problem.</strong> Find the harmonic motion (<a href="#eq-2-27" class="quarto-xref">Equation&nbsp;<span>3.27</span></a>) that starts from <span class="math inline">\(y(0) = y_0\)</span> with initial velocity <span class="math inline">\(y'(0) = v_0\)</span>. Graph or sketch the solutions for <span class="math inline">\(\omega_0 = \pi\)</span>, <span class="math inline">\(y_0 = 1\)</span>, and various <span class="math inline">\(v_0\)</span> of your choice on common axes. At what <span class="math inline">\(t\)</span>-values do all these curves intersect? Why?</li>
 <li><strong>Frequency.</strong> If a weight of <span class="math inline">\(20\text{ nt}\)</span> (about 4.5 lb) stretches a certain spring by <span class="math inline">\(2\text{ cm}\)</span>, what will the frequency of the corresponding harmonic oscillation be? The period?</li>
 <li><strong>Frequency.</strong> How does the frequency of the harmonic oscillation change if we (i) double the mass, (ii) take a spring of twice the modulus? First find qualitative answers by physics, then look at formulas.</li>
 <li><strong>Initial velocity.</strong> Could you make a harmonic oscillation move faster by giving the body a greater initial push?</li>
-<li><strong>Springs in parallel.</strong> What are the frequencies of vibration of a body of mass <span class="math inline">\(m = 5\text{ kg}\)</span> (i) on a spring of modulus <span class="math inline">\(k_1 = 20\text{ nt/m}\)</span>, (ii) on a spring of modulus <span class="math inline">\(k_2 = 45\text{ nt/m}\)</span>, (iii) on the two springs in parallel? See <a href="#fig-2-41" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-41</span></a>.</li>
+<li><strong>Springs in parallel.</strong> What are the frequencies of vibration of a body of mass <span class="math inline">\(m = 5\text{ kg}\)</span> (i) on a spring of modulus <span class="math inline">\(k_1 = 20\text{ nt/m}\)</span>, (ii) on a spring of modulus <span class="math inline">\(k_2 = 45\text{ nt/m}\)</span>, (iii) on the two springs in parallel? See <a href="#fig-2-41" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</li>
 </ol>
 <div id="fig-2-41" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1400,7 +1400,7 @@ Figure&nbsp;3.13: Fig. 41. Parallel springs (Problem 5)
 </div>
 <ol start="6" type="1">
 <li><strong>Springs in series.</strong> If a body hangs on a spring of modulus <span class="math inline">\(k_1\)</span>, which in turn hangs on a spring of modulus <span class="math inline">\(k_2\)</span>, what is the modulus <span class="math inline">\(k\)</span> of this combination of springs?</li>
-<li><strong>Pendulum.</strong> Find the frequency of oscillation of a pendulum of length <span class="math inline">\(L\)</span> (<a href="#fig-2-42" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-42</span></a>), neglecting air resistance and the weight of the rod, and assuming the angle of displacement <span class="math inline">\(\theta\)</span> to be so small that <span class="math inline">\(\sin \theta\)</span> practically equals <span class="math inline">\(\theta\)</span>.</li>
+<li><strong>Pendulum.</strong> Find the frequency of oscillation of a pendulum of length <span class="math inline">\(L\)</span> (<a href="#fig-2-42" class="quarto-xref">Figure&nbsp;<span>3.14</span></a>), neglecting air resistance and the weight of the rod, and assuming the angle of displacement <span class="math inline">\(\theta\)</span> to be so small that <span class="math inline">\(\sin \theta\)</span> practically equals <span class="math inline">\(\theta\)</span>.</li>
 </ol>
 <div id="fig-2-42" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1413,7 +1413,7 @@ Figure&nbsp;3.14: Fig. 42. Pendulum (Problem 7)
 </figure>
 </div>
 <ol start="8" type="1">
-<li><strong>Archimedean principle.</strong> This principle states that the buoyancy force equals the weight of the water displaced by the body (partly or totally submerged). A cylindrical buoy of diameter <span class="math inline">\(60\text{ cm}\)</span> in <a href="#fig-2-43" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-43</span></a> is floating in water with its axis vertical. When depressed downward in the water and released, it vibrates with period <span class="math inline">\(2\text{ sec}\)</span>. What is its weight?</li>
+<li><strong>Archimedean principle.</strong> This principle states that the buoyancy force equals the weight of the water displaced by the body (partly or totally submerged). A cylindrical buoy of diameter <span class="math inline">\(60\text{ cm}\)</span> in <a href="#fig-2-43" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> is floating in water with its axis vertical. When depressed downward in the water and released, it vibrates with period <span class="math inline">\(2\text{ sec}\)</span>. What is its weight?</li>
 </ol>
 <div id="fig-2-43" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1426,7 +1426,7 @@ Figure&nbsp;3.15: Fig. 43. Buoy (Problem 8)
 </figure>
 </div>
 <ol start="9" type="1">
-<li><strong>Vibration of water in a U-tube.</strong> If 1 liter of water (about 1.06 US quart) is vibrating up and down under the influence of gravitation in a U-shaped tube of diameter <span class="math inline">\(2\text{ cm}\)</span> (<a href="#fig-2-44" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-44</span></a>), what is the frequency? Neglect friction.</li>
+<li><strong>Vibration of water in a U-tube.</strong> If 1 liter of water (about 1.06 US quart) is vibrating up and down under the influence of gravitation in a U-shaped tube of diameter <span class="math inline">\(2\text{ cm}\)</span> (<a href="#fig-2-44" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>), what is the frequency? Neglect friction.</li>
 </ol>
 <div id="fig-2-44" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1442,8 +1442,8 @@ Figure&nbsp;3.16: Fig. 44. Tube (Problem 9)
 <li><strong>TEAM PROJECT. Harmonic Motions of Similar Models.</strong> The unifying power of mathematical methods results to a large extent from the fact that different physical (or other) systems may have the same or very similar models. Illustrate this for the following three systems:
 <ol type="a">
 <li><strong>Pendulum clock.</strong> A clock has a 1-meter pendulum. The clock ticks once for each time the pendulum completes a full swing, returning to its original position. How many times a minute does the clock tick?</li>
-<li><strong>Flat spring.</strong> The harmonic oscillations of a flat spring (<a href="#fig-2-45" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-45</span></a>) with a body attached at one end and horizontally clamped at the other are also governed by (<a href="#eq-2-26" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-26</span></a>). Find its motions, assuming that the body weighs <span class="math inline">\(8\text{ nt}\)</span> (about 1.8 lb), the system has its static equilibrium <span class="math inline">\(1\text{ cm}\)</span> below the horizontal line, and we let it start from this position with initial velocity <span class="math inline">\(10\text{ cm/sec}\)</span>.</li>
-<li><strong>Torsional vibrations.</strong> Undamped torsional vibrations (rotations back and forth) of a wheel attached to an elastic thin rod or wire (<a href="#fig-2-46" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-46</span></a>) are governed by the equation <span class="math inline">\(I_0 \theta'' + K \theta = 0\)</span>, where <span class="math inline">\(\theta\)</span> is the angle measured from the state of equilibrium. Solve this equation for <span class="math inline">\(K/I_0 = 13.69\text{ sec}^{-2}\)</span>, initial angle <span class="math inline">\(\theta(0) = 30^\circ\text{ (= 0.5235 rad)}\)</span> and initial angular velocity <span class="math inline">\(\theta'(0) = 20^\circ/\text{sec (= 0.349 rad/sec)}\)</span>.</li>
+<li><strong>Flat spring.</strong> The harmonic oscillations of a flat spring (<a href="#fig-2-45" class="quarto-xref">Figure&nbsp;<span>3.17</span></a>) with a body attached at one end and horizontally clamped at the other are also governed by (<a href="#eq-2-26" class="quarto-xref">Equation&nbsp;<span>3.26</span></a>). Find its motions, assuming that the body weighs <span class="math inline">\(8\text{ nt}\)</span> (about 1.8 lb), the system has its static equilibrium <span class="math inline">\(1\text{ cm}\)</span> below the horizontal line, and we let it start from this position with initial velocity <span class="math inline">\(10\text{ cm/sec}\)</span>.</li>
+<li><strong>Torsional vibrations.</strong> Undamped torsional vibrations (rotations back and forth) of a wheel attached to an elastic thin rod or wire (<a href="#fig-2-46" class="quarto-xref">Figure&nbsp;<span>3.18</span></a>) are governed by the equation <span class="math inline">\(I_0 \theta'' + K \theta = 0\)</span>, where <span class="math inline">\(\theta\)</span> is the angle measured from the state of equilibrium. Solve this equation for <span class="math inline">\(K/I_0 = 13.69\text{ sec}^{-2}\)</span>, initial angle <span class="math inline">\(\theta(0) = 30^\circ\text{ (= 0.5235 rad)}\)</span> and initial angular velocity <span class="math inline">\(\theta'(0) = 20^\circ/\text{sec (= 0.349 rad/sec)}\)</span>.</li>
 </ol></li>
 </ol>
 <div id="fig-2-45" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1470,16 +1470,16 @@ Figure&nbsp;3.18: Fig. 46. Torsional vibrations
 <section id="damped-motion" class="level3" data-number="3.8.2">
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="damped-motion"><span class="header-section-number">3.8.2</span> 11–20 DAMPED MOTION</h3>
 <ol start="11" type="1">
-<li><strong>Overdamping.</strong> Show that for (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-30</span></a>) to satisfy initial conditions <span class="math inline">\(y(0) = y_0\)</span> and <span class="math inline">\(y'(0) = v_0\)</span> we must have <span class="math inline">\(c_1 = \frac{1}{2}[(1 + \alpha/\beta)y_0 + v_0/\beta]\)</span> and <span class="math inline">\(c_2 = \frac{1}{2}[(1 - \alpha/\beta)y_0 - v_0/\beta]\)</span>.</li>
-<li><strong>Overdamping.</strong> Show that in the overdamped case, the body can pass through the equilibrium position <span class="math inline">\(y = 0\)</span> at most once (<a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-37</span></a>).</li>
-<li><strong>Initial value problem.</strong> Find the critical motion (<a href="#eq-2-31" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-31</span></a>) that starts from <span class="math inline">\(y(0) = y_0\)</span> with initial velocity <span class="math inline">\(y'(0) = v_0\)</span>. Graph solution curves for <span class="math inline">\(\alpha = 1\)</span>, <span class="math inline">\(y_0 = 1\)</span>, and several <span class="math inline">\(v_0\)</span> such that (i) the curve does not intersect the <span class="math inline">\(t\)</span>-axis, (ii) it intersects it at <span class="math inline">\(t = 1, 2, \ldots, 5\)</span>, respectively.</li>
+<li><strong>Overdamping.</strong> Show that for (<a href="#eq-2-30" class="quarto-xref">Equation&nbsp;<span>3.31</span></a>) to satisfy initial conditions <span class="math inline">\(y(0) = y_0\)</span> and <span class="math inline">\(y'(0) = v_0\)</span> we must have <span class="math inline">\(c_1 = \frac{1}{2}[(1 + \alpha/\beta)y_0 + v_0/\beta]\)</span> and <span class="math inline">\(c_2 = \frac{1}{2}[(1 - \alpha/\beta)y_0 - v_0/\beta]\)</span>.</li>
+<li><strong>Overdamping.</strong> Show that in the overdamped case, the body can pass through the equilibrium position <span class="math inline">\(y = 0\)</span> at most once (<a href="#fig-2-37" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>).</li>
+<li><strong>Initial value problem.</strong> Find the critical motion (<a href="#eq-2-31" class="quarto-xref">Equation&nbsp;<span>3.32</span></a>) that starts from <span class="math inline">\(y(0) = y_0\)</span> with initial velocity <span class="math inline">\(y'(0) = v_0\)</span>. Graph solution curves for <span class="math inline">\(\alpha = 1\)</span>, <span class="math inline">\(y_0 = 1\)</span>, and several <span class="math inline">\(v_0\)</span> such that (i) the curve does not intersect the <span class="math inline">\(t\)</span>-axis, (ii) it intersects it at <span class="math inline">\(t = 1, 2, \ldots, 5\)</span>, respectively.</li>
 <li><strong>Shock absorber.</strong> What is the smallest value of the damping constant of a shock absorber in the suspension of a wheel of a car (consisting of a spring and an absorber) that will provide (theoretically) an oscillation-free ride if the mass of the car is <span class="math inline">\(2000\text{ kg}\)</span> and the spring constant equals <span class="math inline">\(4500\text{ kg/sec}^2\)</span>?</li>
-<li><strong>Frequency.</strong> Find an approximation formula for <span class="math inline">\(\omega^*\)</span> in terms of <span class="math inline">\(\omega_0\)</span> by applying the binomial theorem in (<a href="#eq-2-32" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-32</span></a>) and retaining only the first two terms. How good is the approximation in Example 2, III?</li>
+<li><strong>Frequency.</strong> Find an approximation formula for <span class="math inline">\(\omega^*\)</span> in terms of <span class="math inline">\(\omega_0\)</span> by applying the binomial theorem in (<a href="#eq-2-32" class="quarto-xref">Equation&nbsp;<span>3.33</span></a>) and retaining only the first two terms. How good is the approximation in Example 2, III?</li>
 <li><strong>Maxima.</strong> Show that the maxima of an underdamped motion occur at equidistant <span class="math inline">\(t\)</span>-values and find the distance.</li>
 <li><strong>Underdamping.</strong> Determine the values of <span class="math inline">\(t\)</span> corresponding to the maxima and minima of the oscillation <span class="math inline">\(y(t) = e^{-t} \sin t\)</span>. Check your result by graphing <span class="math inline">\(y(t)\)</span>.</li>
-<li><strong>Logarithmic decrement.</strong> Show that the ratio of two consecutive maximum amplitudes of a damped oscillation (<a href="#eq-2-33" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-33</span></a>) is constant, and the natural logarithm of this ratio, called the <strong>logarithmic decrement</strong>, equals <span class="math inline">\(\Delta = 2\pi\alpha/\omega^*\)</span>. Find <span class="math inline">\(\Delta\)</span> for the solutions of <span class="math inline">\(y'' + 2y' + 5y = 0\)</span>.</li>
+<li><strong>Logarithmic decrement.</strong> Show that the ratio of two consecutive maximum amplitudes of a damped oscillation (<a href="#eq-2-33" class="quarto-xref">Equation&nbsp;<span>3.34</span></a>) is constant, and the natural logarithm of this ratio, called the <strong>logarithmic decrement</strong>, equals <span class="math inline">\(\Delta = 2\pi\alpha/\omega^*\)</span>. Find <span class="math inline">\(\Delta\)</span> for the solutions of <span class="math inline">\(y'' + 2y' + 5y = 0\)</span>.</li>
 <li><strong>Damping constant.</strong> Consider an underdamped motion of a body of mass <span class="math inline">\(m = 0.5\text{ kg}\)</span>. If the time between two consecutive maxima is <span class="math inline">\(3\text{ sec}\)</span> and the maximum amplitude decreases to <span class="math inline">\(1/2\)</span> its initial value after 10 cycles, what is the damping constant of the system?</li>
-<li><strong>CAS PROJECT. Transition Between Cases I, II, III.</strong> Study this transition in terms of graphs of typical solutions (cf. <a href="#fig-2-47" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-47</span></a>).
+<li><strong>CAS PROJECT. Transition Between Cases I, II, III.</strong> Study this transition in terms of graphs of typical solutions (cf. <a href="#fig-2-47" class="quarto-xref">Figure&nbsp;<span>3.19</span></a>).
 <ol type="a">
 <li>Avoiding unnecessary generality is part of good modeling. Show that the initial value problems (A) and (B),</li>
 </ol>
@@ -1488,7 +1488,7 @@ Figure&nbsp;3.18: Fig. 46. Torsional vibrations
 <li>the same with different <span class="math inline">\(y(0)\)</span> and <span class="math inline">\(y'(0) \neq 0\)</span> instead of 0, will give practically as much information as a problem with other <span class="math inline">\(m, k\)</span>.</li>
 </ol>
 <ol start="2" type="a">
-<li>Consider (A). Choose suitable values of <span class="math inline">\(c\)</span>, perhaps better ones than in <a href="#fig-2-47" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-47</span></a>, for the transition from Case III to II and I. Guess <span class="math inline">\(c\)</span> for the curves in the figure.</li>
+<li>Consider (A). Choose suitable values of <span class="math inline">\(c\)</span>, perhaps better ones than in <a href="#fig-2-47" class="quarto-xref">Figure&nbsp;<span>3.19</span></a>, for the transition from Case III to II and I. Guess <span class="math inline">\(c\)</span> for the curves in the figure.</li>
 <li><strong>Time to go to rest.</strong> Theoretically, this time is infinite (why?). Practically, the system is at rest when its motion has become very small, say, less than 0.1% of the initial displacement, that is in our case,</li>
 </ol>
 <ol start="11" type="1">
@@ -1521,7 +1521,7 @@ x^2 y'' + a x y' + b y = 0
 <p><span class="math display">\[
 y = x^m
 \]</span></p>
-<p>into (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>). Differentiating, we have <span class="math inline">\(y' = m x^{m-1}\)</span> and <span class="math inline">\(y'' = m(m-1) x^{m-2}\)</span>. Substitute these expressions into (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>):</p>
+<p>into (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>). Differentiating, we have <span class="math inline">\(y' = m x^{m-1}\)</span> and <span class="math inline">\(y'' = m(m-1) x^{m-2}\)</span>. Substitute these expressions into (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>):</p>
 <p><span class="math display">\[
 x^2 m(m-1) x^{m-2} + a x m x^{m-1} + b x^m = 0,
 \]</span></p>
@@ -1532,7 +1532,7 @@ m(m-1) x^m + a m x^m + b x^m = 0.
 <p><span id="eq-2-35"><span class="math display">\[
 m^2 + (a - 1)m + b = 0.
 \tag{3.36}\]</span></span></p>
-<p>(Note: <span class="math inline">\(a - 1\)</span>, not <span class="math inline">\(a\)</span>). Hence <span class="math inline">\(y = x^m\)</span> is a solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>) if and only if <span class="math inline">\(m\)</span> is a root of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-35</span></a>). The roots of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-35</span></a>) are</p>
+<p>(Note: <span class="math inline">\(a - 1\)</span>, not <span class="math inline">\(a\)</span>). Hence <span class="math inline">\(y = x^m\)</span> is a solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>) if and only if <span class="math inline">\(m\)</span> is a root of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span>3.36</span></a>). The roots of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span>3.36</span></a>) are</p>
 <p><span id="eq-2-36"><span class="math display">\[
 m_1 = \frac{1-a}{2} + \sqrt{\frac{(1-a)^2}{4} - b}, \qquad m_2 = \frac{1-a}{2} - \sqrt{\frac{(1-a)^2}{4} - b}.
 \tag{3.37}\]</span></span></p>
@@ -1542,7 +1542,7 @@ m_1 = \frac{1-a}{2} + \sqrt{\frac{(1-a)^2}{4} - b}, \qquad m_2 = \frac{1-a}{2} -
 <p><span class="math display">\[
 y_1(x) = x^{m_1} \quad \text{and} \quad y_2(x) = x^{m_2}.
 \]</span></p>
-<p>These are linearly independent since their quotient is not constant. Hence they constitute a basis of solutions of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>) for all <span class="math inline">\(x\)</span> for which they are real. The corresponding general solution for all these <span class="math inline">\(x\)</span> is</p>
+<p>These are linearly independent since their quotient is not constant. Hence they constitute a basis of solutions of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>) for all <span class="math inline">\(x\)</span> for which they are real. The corresponding general solution for all these <span class="math inline">\(x\)</span> is</p>
 <p><span id="eq-2-37"><span class="math display">\[
 y = c_1 x^{m_1} + c_2 x^{m_2}.
 \tag{3.38}\]</span></span></p>
@@ -1554,8 +1554,8 @@ y = c_1 x^{m_1} + c_2 x^{m_2}.
 </section>
 <section id="case-ii.-a-real-double-root" class="level3" data-number="3.9.3">
 <h3 data-number="3.9.3" class="anchored" data-anchor-id="case-ii.-a-real-double-root"><span class="header-section-number">3.9.3</span> Case II. A Real Double Root</h3>
-<p>A real double root of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-35</span></a>) occurs if and only if the discriminant is zero, which means <span class="math inline">\((1 - a)^2 - 4b = 0 \Rightarrow b = \frac{1}{4}(1 - a)^2\)</span>. Then the auxiliary equation has the double root <span class="math inline">\(m_1 = m_2 = m = \frac{1 - a}{2}\)</span>.</p>
-<p>This gives one solution <span class="math inline">\(y_1 = x^m\)</span>. To find a second linearly independent solution <span class="math inline">\(y_2\)</span>, we use the method of reduction of order. We set <span class="math inline">\(y_2 = u y_1\)</span>. The formula for reduction of order in standard form (from <a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a>) is</p>
+<p>A real double root of (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span>3.36</span></a>) occurs if and only if the discriminant is zero, which means <span class="math inline">\((1 - a)^2 - 4b = 0 \Rightarrow b = \frac{1}{4}(1 - a)^2\)</span>. Then the auxiliary equation has the double root <span class="math inline">\(m_1 = m_2 = m = \frac{1 - a}{2}\)</span>.</p>
+<p>This gives one solution <span class="math inline">\(y_1 = x^m\)</span>. To find a second linearly independent solution <span class="math inline">\(y_2\)</span>, we use the method of reduction of order. We set <span class="math inline">\(y_2 = u y_1\)</span>. The formula for reduction of order in standard form (from <a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a>) is</p>
 <p><span class="math display">\[
 u = \int U dx \quad \text{where} \quad U = \frac{1}{y_1^2} e^{-\int p(x) dx}.
 \]</span></p>
@@ -1579,12 +1579,12 @@ y = (c_1 + c_2 \ln x) x^3.
 </section>
 <section id="case-iii.-complex-conjugate-roots" class="level3" data-number="3.9.5">
 <h3 data-number="3.9.5" class="anchored" data-anchor-id="case-iii.-complex-conjugate-roots"><span class="header-section-number">3.9.5</span> Case III. Complex Conjugate Roots</h3>
-<p>Complex conjugate roots occur if the discriminant in (<a href="#eq-2-36" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-36</span></a>) is negative, <span class="math inline">\((1 - a)^2 - 4b &lt; 0\)</span>. Then the roots are <span class="math inline">\(m_1 = \mu + i\nu\)</span> and <span class="math inline">\(m_2 = \mu - i\nu\)</span> where <span class="math inline">\(\mu = \frac{1-a}{2}\)</span> and <span class="math inline">\(\nu = \sqrt{b - \frac{1}{4}(1-a)^2} &gt; 0\)</span>.</p>
+<p>Complex conjugate roots occur if the discriminant in (<a href="#eq-2-36" class="quarto-xref">Equation&nbsp;<span>3.37</span></a>) is negative, <span class="math inline">\((1 - a)^2 - 4b &lt; 0\)</span>. Then the roots are <span class="math inline">\(m_1 = \mu + i\nu\)</span> and <span class="math inline">\(m_2 = \mu - i\nu\)</span> where <span class="math inline">\(\mu = \frac{1-a}{2}\)</span> and <span class="math inline">\(\nu = \sqrt{b - \frac{1}{4}(1-a)^2} &gt; 0\)</span>.</p>
 <p>These give complex solutions <span class="math inline">\(y_1 = x^{\mu + i\nu}\)</span> and <span class="math inline">\(y_2 = x^{\mu - i\nu}\)</span>. Using <span class="math inline">\(x = e^{\ln x}\)</span>, we can write <span class="math inline">\(x^{i\nu} = e^{i \nu \ln x}\)</span>. Applying Euler’s formula, we obtain</p>
 <p><span class="math display">\[
 x^{\mu + i\nu} = x^\mu (\cos(\nu \ln x) + i \sin(\nu \ln x)), \qquad x^{\mu - i\nu} = x^\mu (\cos(\nu \ln x) - i \sin(\nu \ln x)).
 \]</span></p>
-<p>As in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-constant-coefficient-odes</span></a>, by adding and subtracting these solutions (and multiplying by appropriate constants), we obtain a basis of real solutions:</p>
+<p>As in <a href="#sec-constant-coefficient-odes" class="quarto-xref"><span>Section 3.3</span></a>, by adding and subtracting these solutions (and multiplying by appropriate constants), we obtain a basis of real solutions:</p>
 <p><span id="eq-2-39"><span class="math display">\[
 y_1 = x^\mu \cos(\nu \ln x), \qquad y_2 = x^\mu \sin(\nu \ln x).
 \tag{3.40}\]</span></span></p>
@@ -1634,7 +1634,7 @@ Figure&nbsp;3.20: Fig. 49. Potential in Example 4
 <section id="problem-set-2.5" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="problem-set-2.5"><span class="header-section-number">3.10</span> PROBLEM SET 2.5</h2>
 <ol type="1">
-<li><strong>Double root.</strong> Verify directly by substitution that <span class="math inline">\(y = x^m \ln x\)</span> is a solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>) if (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-35</span></a>) has a double root, but <span class="math inline">\(y = x^{m_1}\ln x\)</span> and <span class="math inline">\(y = x^{m_2}\ln x\)</span> are not solutions if the roots <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are different.</li>
+<li><strong>Double root.</strong> Verify directly by substitution that <span class="math inline">\(y = x^m \ln x\)</span> is a solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>) if (<a href="#eq-2-35" class="quarto-xref">Equation&nbsp;<span>3.36</span></a>) has a double root, but <span class="math inline">\(y = x^{m_1}\ln x\)</span> and <span class="math inline">\(y = x^{m_2}\ln x\)</span> are not solutions if the roots <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are different.</li>
 </ol>
 <section id="general-solution-2" class="level3" data-number="3.10.1">
 <h3 data-number="3.10.1" class="anchored" data-anchor-id="general-solution-2"><span class="header-section-number">3.10.1</span> 2–11 GENERAL SOLUTION</h3>
@@ -1646,10 +1646,10 @@ Figure&nbsp;3.20: Fig. 49. Potential in Example 4
 <ol start="20" type="1">
 <li><strong>TEAM PROJECT. Double Root.</strong>
 <ol type="a">
-<li>Derive a second linearly independent solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>) by reduction of order directly (performing all steps rather than using the formula).</li>
+<li>Derive a second linearly independent solution of (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>) by reduction of order directly (performing all steps rather than using the formula).</li>
 <li>Obtain <span class="math inline">\(x^m \ln x\)</span> by considering the solutions <span class="math inline">\(x^m\)</span> and <span class="math inline">\(x^{m+s}\)</span> of a suitable Euler-Cauchy equation and letting <span class="math inline">\(s \to 0\)</span>.</li>
 <li>Verify by substitution that <span class="math inline">\(x^m \ln x\)</span> is a solution in the critical case.</li>
-<li>Transform the Euler-Cauchy equation (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-34</span></a>) into an ODE with constant coefficients by setting <span class="math inline">\(x = e^t\)</span> (for <span class="math inline">\(x &gt; 0\)</span>).</li>
+<li>Transform the Euler-Cauchy equation (<a href="#eq-2-34" class="quarto-xref">Equation&nbsp;<span>3.35</span></a>) into an ODE with constant coefficients by setting <span class="math inline">\(x = e^t\)</span> (for <span class="math inline">\(x &gt; 0\)</span>).</li>
 <li>Obtain the second solution in the critical case from that of a constant-coefficient ODE.</li>
 </ol></li>
 </ol>
@@ -1661,7 +1661,7 @@ Figure&nbsp;3.20: Fig. 49. Potential in Example 4
 <p><span id="eq-2-41"><span class="math display">\[
 y'' + p(x)y' + q(x)y = 0
 \tag{3.42}\]</span></span></p>
-<p>with continuous, but otherwise arbitrary, variable coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. This will concern the existence and form of a general solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) as well as the uniqueness of the solution of initial value problems consisting of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) and two initial conditions</p>
+<p>with continuous, but otherwise arbitrary, variable coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. This will concern the existence and form of a general solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) as well as the uniqueness of the solution of initial value problems consisting of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) and two initial conditions</p>
 <p><span id="eq-2-42"><span class="math display">\[
 y(x_0) = K_0, \quad y'(x_0) = K_1
 \tag{3.43}\]</span></span></p>
@@ -1674,7 +1674,7 @@ y = c_1 y_1 + c_2 y_2
 <p>Central to our present discussion is the following theorem.</p>
 <section id="theorem-1-existence-and-uniqueness-theorem-for-initial-value-problems" class="level3" data-number="3.11.1">
 <h3 data-number="3.11.1" class="anchored" data-anchor-id="theorem-1-existence-and-uniqueness-theorem-for-initial-value-problems"><span class="header-section-number">3.11.1</span> THEOREM 1 Existence and Uniqueness Theorem for Initial Value Problems</h3>
-<p>If <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> are continuous functions on some open interval <span class="math inline">\(I\)</span> and <span class="math inline">\(x_0\)</span> is in <span class="math inline">\(I\)</span>, then the initial value problem consisting of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) and (<a href="#eq-2-42" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-42</span></a>) has a unique solution <span class="math inline">\(y(x)\)</span> on the interval <span class="math inline">\(I\)</span>.</p>
+<p>If <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> are continuous functions on some open interval <span class="math inline">\(I\)</span> and <span class="math inline">\(x_0\)</span> is in <span class="math inline">\(I\)</span>, then the initial value problem consisting of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) and (<a href="#eq-2-42" class="quarto-xref">Equation&nbsp;<span>3.43</span></a>) has a unique solution <span class="math inline">\(y(x)\)</span> on the interval <span class="math inline">\(I\)</span>.</p>
 <p>The proof of existence uses the same prerequisites as the existence proof in <!-- TODO: replace Sec. 1.7 with actual cross-reference label -->; it can be found in Ref. [A11] listed in App. 1. Uniqueness is proved in App. 4.</p>
 </section>
 <section id="linear-independence-of-solutions" class="level3" data-number="3.11.2">
@@ -1684,11 +1684,11 @@ y = c_1 y_1 + c_2 y_2
 k_1 y_1(x) + k_2 y_2(x) = 0
 \tag{3.45}\]</span></span></p>
 <p>everywhere on <span class="math inline">\(I\)</span> implies <span class="math inline">\(k_1 = 0\)</span> and <span class="math inline">\(k_2 = 0\)</span>.</p>
-<p>We call <span class="math inline">\(y_1, y_2\)</span> <strong>linearly dependent</strong> on <span class="math inline">\(I\)</span> if (<a href="#eq-2-44" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-44</span></a>) also holds for constants <span class="math inline">\(k_1, k_2\)</span>, not both 0. In this case, and only in this case, <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are proportional on <span class="math inline">\(I\)</span>, that is, <span class="math inline">\(y_1 = k y_2\)</span> or <span class="math inline">\(y_2 = l y_1\)</span> for all <span class="math inline">\(x\)</span> on <span class="math inline">\(I\)</span>.</p>
+<p>We call <span class="math inline">\(y_1, y_2\)</span> <strong>linearly dependent</strong> on <span class="math inline">\(I\)</span> if (<a href="#eq-2-44" class="quarto-xref">Equation&nbsp;<span>3.45</span></a>) also holds for constants <span class="math inline">\(k_1, k_2\)</span>, not both 0. In this case, and only in this case, <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are proportional on <span class="math inline">\(I\)</span>, that is, <span class="math inline">\(y_1 = k y_2\)</span> or <span class="math inline">\(y_2 = l y_1\)</span> for all <span class="math inline">\(x\)</span> on <span class="math inline">\(I\)</span>.</p>
 </section>
 <section id="theorem-2-linear-dependence-and-independence-of-solutions" class="level3" data-number="3.11.3">
 <h3 data-number="3.11.3" class="anchored" data-anchor-id="theorem-2-linear-dependence-and-independence-of-solutions"><span class="header-section-number">3.11.3</span> THEOREM 2 Linear Dependence and Independence of Solutions</h3>
-<p>Let the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) have continuous coefficients <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> on an open interval <span class="math inline">\(I\)</span>. Then two solutions <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span> are linearly dependent on <span class="math inline">\(I\)</span> if and only if their <strong>Wronskian</strong></p>
+<p>Let the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) have continuous coefficients <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> on an open interval <span class="math inline">\(I\)</span>. Then two solutions <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span> are linearly dependent on <span class="math inline">\(I\)</span> if and only if their <strong>Wronskian</strong></p>
 <p><span id="eq-2-45"><span class="math display">\[
 W(y_1, y_2) = y_1 y_2' - y_2 y_1'
 \tag{3.46}\]</span></span></p>
@@ -1715,7 +1715,7 @@ k_1 (y_1(x_0) y_2'(x_0) - y_1'(x_0) y_2(x_0)) = k_1 W(y_1(x_0), y_2(x_0)) = 0.
 <p><span class="math display">\[
 y(x) = k_1 y_1(x) + k_2 y_2(x).
 \]</span></p>
-<p>Since (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) is homogeneous linear, Theorem 1 in <a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a> (the superposition principle) implies that <span class="math inline">\(y(x)\)</span> is a solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span>. From (<a href="#eq-2-46" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-46</span></a>) we see that it satisfies the initial conditions <span class="math inline">\(y(x_0) = 0, y'(x_0) = 0\)</span>. Now another solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) satisfying the same initial conditions is <span class="math inline">\(y^* \equiv 0\)</span>. Since the coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) are continuous, Theorem 1 applies and gives uniqueness, that is, <span class="math inline">\(y(x) \equiv y^*(x) \equiv 0\)</span>, written out:</p>
+<p>Since (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) is homogeneous linear, Theorem 1 in <a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a> (the superposition principle) implies that <span class="math inline">\(y(x)\)</span> is a solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span>. From (<a href="#eq-2-46" class="quarto-xref">Equation&nbsp;<span>3.47</span></a>) we see that it satisfies the initial conditions <span class="math inline">\(y(x_0) = 0, y'(x_0) = 0\)</span>. Now another solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) satisfying the same initial conditions is <span class="math inline">\(y^* \equiv 0\)</span>. Since the coefficients <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) are continuous, Theorem 1 applies and gives uniqueness, that is, <span class="math inline">\(y(x) \equiv y^*(x) \equiv 0\)</span>, written out:</p>
 <p><span class="math display">\[
 k_1 y_1(x) + k_2 y_2(x) = 0
 \]</span></p>
@@ -1723,7 +1723,7 @@ k_1 y_1(x) + k_2 y_2(x) = 0
 <ol start="3" type="a">
 <li>We prove the last statement. If <span class="math inline">\(W \equiv 0\)</span> is not true, there is some <span class="math inline">\(x_1\)</span> in <span class="math inline">\(I\)</span> where <span class="math inline">\(W(x_1) \neq 0\)</span>. If <span class="math inline">\(y_1, y_2\)</span> were linearly dependent, then <span class="math inline">\(W\)</span> would be 0 everywhere by part (a), including at <span class="math inline">\(x_1\)</span>, which contradicts <span class="math inline">\(W(x_1) \neq 0\)</span>. Thus, <span class="math inline">\(y_1, y_2\)</span> must be linearly independent. <span class="math inline">\(\square\)</span></li>
 </ol>
-<p>For calculations, the following formulas are often simpler than (<a href="#eq-2-45" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-45</span></a>):</p>
+<p>For calculations, the following formulas are often simpler than (<a href="#eq-2-45" class="quarto-xref">Equation&nbsp;<span>3.46</span></a>):</p>
 <p><span id="eq-2-47"><span class="math display">\[
 \text{(a)} \quad W(y_1, y_2) = \left( \frac{y_2}{y_1} \right)' y_1^2 \quad (y_1 \neq 0), \qquad \text{(b)} \quad W(y_1, y_2) = -\left( \frac{y_1}{y_2} \right)' y_2^2 \quad (y_2 \neq 0).
 \tag{3.48}\]</span></span></p>
@@ -1752,21 +1752,21 @@ W(e^x, x e^x) = \begin{vmatrix} e^x &amp; x e^x \\ e^x &amp; (x+1)e^x \end{vmatr
 </section>
 <section id="theorem-3-existence-of-a-general-solution" class="level3" data-number="3.11.6">
 <h3 data-number="3.11.6" class="anchored" data-anchor-id="theorem-3-existence-of-a-general-solution"><span class="header-section-number">3.11.6</span> THEOREM 3 Existence of a General Solution</h3>
-<p>If <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> are continuous on an open interval <span class="math inline">\(I\)</span>, then (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) has a general solution on <span class="math inline">\(I\)</span>.</p>
-<p><strong>PROOF</strong> By Theorem 1, the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) has a solution <span class="math inline">\(y_1\)</span> on <span class="math inline">\(I\)</span> satisfying the initial conditions <span class="math inline">\(y_1(x_0) = 1, y_1'(x_0) = 0\)</span> and a solution <span class="math inline">\(y_2\)</span> on <span class="math inline">\(I\)</span> satisfying the initial conditions <span class="math inline">\(y_2(x_0) = 0, y_2'(x_0) = 1\)</span>. The Wronskian of these two solutions has at <span class="math inline">\(x_0\)</span> the value</p>
+<p>If <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> are continuous on an open interval <span class="math inline">\(I\)</span>, then (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) has a general solution on <span class="math inline">\(I\)</span>.</p>
+<p><strong>PROOF</strong> By Theorem 1, the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) has a solution <span class="math inline">\(y_1\)</span> on <span class="math inline">\(I\)</span> satisfying the initial conditions <span class="math inline">\(y_1(x_0) = 1, y_1'(x_0) = 0\)</span> and a solution <span class="math inline">\(y_2\)</span> on <span class="math inline">\(I\)</span> satisfying the initial conditions <span class="math inline">\(y_2(x_0) = 0, y_2'(x_0) = 1\)</span>. The Wronskian of these two solutions has at <span class="math inline">\(x_0\)</span> the value</p>
 <p><span class="math display">\[
 W(y_1(x_0), y_2(x_0)) = y_1(x_0) y_2'(x_0) - y_2(x_0) y_1'(x_0) = 1 \cdot 1 - 0 \cdot 0 = 1.
 \]</span></p>
-<p>Hence, by Theorem 2, these solutions are linearly independent on <span class="math inline">\(I\)</span>. They form a basis of solutions of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span>, and <span class="math inline">\(y = c_1 y_1 + c_2 y_2\)</span> is a general solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Hence, by Theorem 2, these solutions are linearly independent on <span class="math inline">\(I\)</span>. They form a basis of solutions of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span>, and <span class="math inline">\(y = c_1 y_1 + c_2 y_2\)</span> is a general solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span>. <span class="math inline">\(\square\)</span></p>
 </section>
 <section id="theorem-4-a-general-solution-includes-all-solutions" class="level3" data-number="3.11.7">
 <h3 data-number="3.11.7" class="anchored" data-anchor-id="theorem-4-a-general-solution-includes-all-solutions"><span class="header-section-number">3.11.7</span> THEOREM 4 A General Solution Includes All Solutions</h3>
-<p>If the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) has continuous coefficients <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> on some open interval <span class="math inline">\(I\)</span>, then every solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span> is of the form</p>
+<p>If the ODE (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) has continuous coefficients <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> on some open interval <span class="math inline">\(I\)</span>, then every solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span> is of the form</p>
 <p><span class="math display">\[
 Y(x) = C_1 y_1(x) + C_2 y_2(x)
 \]</span></p>
-<p>where <span class="math inline">\(y_1, y_2\)</span> is any basis of solutions of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span> and <span class="math inline">\(C_1, C_2\)</span> are suitable constants.</p>
-<p><strong>PROOF</strong> Let <span class="math inline">\(Y(x)\)</span> be any solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>) on <span class="math inline">\(I\)</span>. We choose any <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span> and show that we can find values of <span class="math inline">\(c_1, c_2\)</span> in the general solution <span class="math inline">\(y(x) = c_1 y_1(x) + c_2 y_2(x)\)</span> such that <span class="math inline">\(y(x_0) = Y(x_0)\)</span> and <span class="math inline">\(y'(x_0) = Y'(x_0)\)</span>. That is,</p>
+<p>where <span class="math inline">\(y_1, y_2\)</span> is any basis of solutions of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span> and <span class="math inline">\(C_1, C_2\)</span> are suitable constants.</p>
+<p><strong>PROOF</strong> Let <span class="math inline">\(Y(x)\)</span> be any solution of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>) on <span class="math inline">\(I\)</span>. We choose any <span class="math inline">\(x_0\)</span> in <span class="math inline">\(I\)</span> and show that we can find values of <span class="math inline">\(c_1, c_2\)</span> in the general solution <span class="math inline">\(y(x) = c_1 y_1(x) + c_2 y_2(x)\)</span> such that <span class="math inline">\(y(x_0) = Y(x_0)\)</span> and <span class="math inline">\(y'(x_0) = Y'(x_0)\)</span>. That is,</p>
 <p><span id="eq-2-49"><span class="math display">\[
 \begin{aligned}
 c_1 y_1(x_0) + c_2 y_2(x_0) &amp;= Y(x_0) \\
@@ -1790,7 +1790,7 @@ c_2 W(y_1(x_0), y_2(x_0)) = y_1(x_0) Y'(x_0) - Y(x_0) y_1'(x_0).
 <section id="problem-set-2.6" class="level2" data-number="3.12">
 <h2 data-number="3.12" class="anchored" data-anchor-id="problem-set-2.6"><span class="header-section-number">3.12</span> PROBLEM SET 2.6</h2>
 <ol type="1">
-<li><strong>Abel’s formula.</strong> Prove Abel’s formula: <span class="math inline">\(W(y_1(x), y_2(x)) = C e^{-\int p(x) dx}\)</span> for two solutions <span class="math inline">\(y_1, y_2\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-41</span></a>). Hint: Differentiate the Wronskian <span class="math inline">\(W = y_1 y_2' - y_2 y_1\)</span> and substitute <span class="math inline">\(y_i'' = -p y_i' - q y_i\)</span> to obtain <span class="math inline">\(W' = -p W\)</span>. Solve this first-order ODE.</li>
+<li><strong>Abel’s formula.</strong> Prove Abel’s formula: <span class="math inline">\(W(y_1(x), y_2(x)) = C e^{-\int p(x) dx}\)</span> for two solutions <span class="math inline">\(y_1, y_2\)</span> of (<a href="#eq-2-41" class="quarto-xref">Equation&nbsp;<span>3.42</span></a>). Hint: Differentiate the Wronskian <span class="math inline">\(W = y_1 y_2' - y_2 y_1\)</span> and substitute <span class="math inline">\(y_i'' = -p y_i' - q y_i\)</span> to obtain <span class="math inline">\(W' = -p W\)</span>. Solve this first-order ODE.</li>
 </ol>
 <section id="basis-of-solutions.-wronskian" class="level3" data-number="3.12.1">
 <h3 data-number="3.12.1" class="anchored" data-anchor-id="basis-of-solutions.-wronskian"><span class="header-section-number">3.12.1</span> 2–8 BASIS OF SOLUTIONS. WRONSKIAN</h3>
@@ -1814,7 +1814,7 @@ c_2 W(y_1(x_0), y_2(x_0)) = y_1(x_0) Y'(x_0) - Y(x_0) y_1'(x_0).
 <li>Solve <span class="math inline">\(y'' - y = 0\)</span> (i) by exponential functions, (ii) by hyperbolic functions. How are the constants related?</li>
 <li>Prove that the solutions of a basis cannot be 0 at the same point.</li>
 <li>Prove that the solutions of a basis cannot have a maximum or minimum at the same point.</li>
-<li>Why is it likely that formulas of the form (<a href="#eq-2-47" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-47</span></a>) should exist?</li>
+<li>Why is it likely that formulas of the form (<a href="#eq-2-47" class="quarto-xref">Equation&nbsp;<span>3.48</span></a>) should exist?</li>
 <li>Sketch <span class="math inline">\(y_1(x) = x^3\)</span> if <span class="math inline">\(x \ge 0\)</span> (and <span class="math inline">\(0\)</span> if <span class="math inline">\(x &lt; 0\)</span>), and <span class="math inline">\(y_2(x) = 0\)</span> if <span class="math inline">\(x \ge 0\)</span> (and <span class="math inline">\(x^3\)</span> if <span class="math inline">\(x &lt; 0\)</span>). Show linear independence on <span class="math inline">\([-1, 1]\)</span>. What is their Wronskian? What Euler-Cauchy equation do they satisfy? Is there a contradiction to Theorem 2?</li>
 </ol></li>
 </ol>
@@ -1859,23 +1859,23 @@ L[y + \tilde{y}] = L[y] + L[\tilde{y}] = r + 0 = r.
 <section id="theorem-2-a-general-solution-of-a-nonhomogeneous-ode-includes-all-solutions" class="level3" data-number="3.13.2">
 <h3 data-number="3.13.2" class="anchored" data-anchor-id="theorem-2-a-general-solution-of-a-nonhomogeneous-ode-includes-all-solutions"><span class="header-section-number">3.13.2</span> THEOREM 2 A General Solution of a Nonhomogeneous ODE Includes All Solutions</h3>
 <p>If the coefficients <span class="math inline">\(p(x)\)</span>, <span class="math inline">\(q(x)\)</span>, and the function <span class="math inline">\(r(x)\)</span> in (1) are continuous on some open interval <span class="math inline">\(I\)</span>, then every solution of (1) on <span class="math inline">\(I\)</span> is obtained by assigning suitable values to the arbitrary constants <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> in a general solution (3) of (1) on <span class="math inline">\(I\)</span>.</p>
-<p><strong>PROOF</strong> Let <span class="math inline">\(y^*\)</span> be any solution of (1) on <span class="math inline">\(I\)</span> and <span class="math inline">\(x_0\)</span> any <span class="math inline">\(x\)</span> in <span class="math inline">\(I\)</span>. Let (3) be any general solution of (1) on <span class="math inline">\(I\)</span>. This solution exists: <span class="math inline">\(y_h = c_1 y_1 + c_2 y_2\)</span> exists by Theorem 3 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a> because of the continuity assumption, and <span class="math inline">\(y_p\)</span> exists according to a construction to be shown in <a href="#sec-variation-of-parameters" class="quarto-xref"><span class="quarto-unresolved-ref">sec-variation-of-parameters</span></a>. Now, by Theorem 1(b) just proved, the difference <span class="math inline">\(Y = y^* - y_p\)</span> is a solution of (2) on <span class="math inline">\(I\)</span>. At <span class="math inline">\(x_0\)</span> we have <span class="math display">\[
+<p><strong>PROOF</strong> Let <span class="math inline">\(y^*\)</span> be any solution of (1) on <span class="math inline">\(I\)</span> and <span class="math inline">\(x_0\)</span> any <span class="math inline">\(x\)</span> in <span class="math inline">\(I\)</span>. Let (3) be any general solution of (1) on <span class="math inline">\(I\)</span>. This solution exists: <span class="math inline">\(y_h = c_1 y_1 + c_2 y_2\)</span> exists by Theorem 3 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a> because of the continuity assumption, and <span class="math inline">\(y_p\)</span> exists according to a construction to be shown in <a href="#sec-variation-of-parameters" class="quarto-xref"><span>Section 3.19</span></a>. Now, by Theorem 1(b) just proved, the difference <span class="math inline">\(Y = y^* - y_p\)</span> is a solution of (2) on <span class="math inline">\(I\)</span>. At <span class="math inline">\(x_0\)</span> we have <span class="math display">\[
 Y(x_0) = y^*(x_0) - y_p(x_0), \qquad Y'(x_0) = y^{*'}(x_0) - y_p'(x_0).
-\]</span> Theorem 1 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a> implies that for these conditions, as for any other initial conditions in <span class="math inline">\(I\)</span>, there exists a unique particular solution of (2) obtained by assigning suitable values to <span class="math inline">\(c_1, c_2\)</span> in <span class="math inline">\(y_h\)</span>. From this and <span class="math inline">\(y^* = Y + y_p\)</span> the statement follows. <span class="math inline">\(\square\)</span></p>
+\]</span> Theorem 1 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a> implies that for these conditions, as for any other initial conditions in <span class="math inline">\(I\)</span>, there exists a unique particular solution of (2) obtained by assigning suitable values to <span class="math inline">\(c_1, c_2\)</span> in <span class="math inline">\(y_h\)</span>. From this and <span class="math inline">\(y^* = Y + y_p\)</span> the statement follows. <span class="math inline">\(\square\)</span></p>
 </section>
 <section id="method-of-undetermined-coefficients" class="level3" data-number="3.13.3">
 <h3 data-number="3.13.3" class="anchored" data-anchor-id="method-of-undetermined-coefficients"><span class="header-section-number">3.13.3</span> Method of Undetermined Coefficients</h3>
 <p>Our discussion suggests the following. To solve the nonhomogeneous ODE (1) or an initial value problem for (1), we have to solve the homogeneous ODE (2) and find any solution <span class="math inline">\(y_p\)</span> of (1), so that we obtain a general solution (3) of (1).</p>
-<p>How can we find a solution <span class="math inline">\(y_p\)</span> of (1)? One method is the so-called <strong>method of undetermined coefficients</strong>. It is much simpler than another, more general, method (given in <a href="#sec-variation-of-parameters" class="quarto-xref"><span class="quarto-unresolved-ref">sec-variation-of-parameters</span></a>). Since it applies to models of vibrational systems and electric circuits to be shown in the next two sections, it is frequently used in engineering.</p>
+<p>How can we find a solution <span class="math inline">\(y_p\)</span> of (1)? One method is the so-called <strong>method of undetermined coefficients</strong>. It is much simpler than another, more general, method (given in <a href="#sec-variation-of-parameters" class="quarto-xref"><span>Section 3.19</span></a>). Since it applies to models of vibrational systems and electric circuits to be shown in the next two sections, it is frequently used in engineering.</p>
 <p>More precisely, the method of undetermined coefficients is suitable for linear ODEs with constant coefficients <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></p>
 <p><span class="math display">\[
 y'' + ay' + by = r(x) \tag{4}
 \]</span></p>
-<p>when <span class="math inline">\(r(x)\)</span> is an exponential function, a power of <span class="math inline">\(x\)</span>, a cosine or sine, or sums or products of such functions. These functions have derivatives similar to <span class="math inline">\(r(x)\)</span> itself. This gives the idea. We choose a form for <span class="math inline">\(y_p\)</span> similar to <span class="math inline">\(r(x)\)</span>, but with unknown coefficients to be determined by substituting that <span class="math inline">\(y_p\)</span> and its derivatives into the ODE. <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-2-1</span></a> shows the choice of <span class="math inline">\(y_p\)</span> for practically important forms of <span class="math inline">\(r(x)\)</span>. Corresponding rules are as follows.</p>
+<p>when <span class="math inline">\(r(x)\)</span> is an exponential function, a power of <span class="math inline">\(x\)</span>, a cosine or sine, or sums or products of such functions. These functions have derivatives similar to <span class="math inline">\(r(x)\)</span> itself. This gives the idea. We choose a form for <span class="math inline">\(y_p\)</span> similar to <span class="math inline">\(r(x)\)</span>, but with unknown coefficients to be determined by substituting that <span class="math inline">\(y_p\)</span> and its derivatives into the ODE. <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span>3.2</span></a> shows the choice of <span class="math inline">\(y_p\)</span> for practically important forms of <span class="math inline">\(r(x)\)</span>. Corresponding rules are as follows.</p>
 <p><strong>Choice Rules for the Method of Undetermined Coefficients</strong></p>
-<p><strong>(a) Basic Rule.</strong> If <span class="math inline">\(r(x)\)</span> in (4) is one of the functions in the first column in <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-2-1</span></a>, choose <span class="math inline">\(y_p\)</span> in the same line and determine its undetermined coefficients by substituting <span class="math inline">\(y_p\)</span> and its derivatives into (4).</p>
+<p><strong>(a) Basic Rule.</strong> If <span class="math inline">\(r(x)\)</span> in (4) is one of the functions in the first column in <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span>3.2</span></a>, choose <span class="math inline">\(y_p\)</span> in the same line and determine its undetermined coefficients by substituting <span class="math inline">\(y_p\)</span> and its derivatives into (4).</p>
 <p><strong>(b) Modification Rule.</strong> If a term in your choice for <span class="math inline">\(y_p\)</span> happens to be a solution of the homogeneous ODE corresponding to (4), multiply this term by <span class="math inline">\(x\)</span> (or by <span class="math inline">\(x^2\)</span> if this solution corresponds to a double root of the characteristic equation of the homogeneous ODE).</p>
-<p><strong>(c) Sum Rule.</strong> If <span class="math inline">\(r(x)\)</span> is a sum of functions in the first column of <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-2-1</span></a>, choose for <span class="math inline">\(y_p\)</span> the sum of the functions in the corresponding lines of the second column.</p>
+<p><strong>(c) Sum Rule.</strong> If <span class="math inline">\(r(x)\)</span> is a sum of functions in the first column of <a href="#tbl-2-1" class="quarto-xref">Table&nbsp;<span>3.2</span></a>, choose for <span class="math inline">\(y_p\)</span> the sum of the functions in the corresponding lines of the second column.</p>
 <p>The Basic Rule applies when <span class="math inline">\(r(x)\)</span> is a single term. The Modification Rule helps in the indicated case, and to recognize such a case, we have to solve the homogeneous ODE first. The Sum Rule follows by noting that the sum of two solutions of (1) with <span class="math inline">\(r = r_1\)</span> and <span class="math inline">\(r = r_2\)</span> (and the same left side!) is a solution of (1) with <span class="math inline">\(r = r_1 + r_2\)</span>. (Verify!)</p>
 <p>The method is self-correcting. A false choice for <span class="math inline">\(y_p\)</span> or one with too few terms will lead to a contradiction. A choice with too many terms will give a correct result, with superfluous coefficients coming out zero.</p>
 <p>Let us illustrate Rules (a)–(c) by the typical Examples 1–3.</p>
@@ -2068,12 +2068,12 @@ Figure&nbsp;3.23: Fig. 52. Solution in Example 3
 </section>
 <section id="sec-forced-oscillations" class="level2" data-number="3.15">
 <h2 data-number="3.15" class="anchored" data-anchor-id="sec-forced-oscillations"><span class="header-section-number">3.15</span> Modeling: Forced Oscillations. Resonance</h2>
-<p>In <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a> we considered vertical motions of a mass–spring system (vibration of a mass <span class="math inline">\(m\)</span> on an elastic spring, as in <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-33</span></a> and <a href="#fig-2-53" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-53</span></a>) and modeled it by the homogeneous linear ODE</p>
+<p>In <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a> we considered vertical motions of a mass–spring system (vibration of a mass <span class="math inline">\(m\)</span> on an elastic spring, as in <a href="#fig-2-33" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> and <a href="#fig-2-53" class="quarto-xref">Figure&nbsp;<span>3.24</span></a>) and modeled it by the homogeneous linear ODE</p>
 <p><span class="math display">\[
 m y'' + c y' + k y = 0 \tag{1}
 \]</span></p>
 <p>Here <span class="math inline">\(y(t)\)</span> as a function of time <span class="math inline">\(t\)</span> is the displacement of the body of mass <span class="math inline">\(m\)</span> from rest.</p>
-<p>The mass–spring system of <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a> exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia <span class="math inline">\(m y''\)</span>, the damping force <span class="math inline">\(c y'\)</span> (if <span class="math inline">\(c &gt; 0\)</span>), and the spring force <span class="math inline">\(k y\)</span>, a restoring force.</p>
+<p>The mass–spring system of <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a> exhibited only free motion. This means no external forces (outside forces) but only internal forces controlled the motion. The internal forces are forces within the system. They are the force of inertia <span class="math inline">\(m y''\)</span>, the damping force <span class="math inline">\(c y'\)</span> (if <span class="math inline">\(c &gt; 0\)</span>), and the spring force <span class="math inline">\(k y\)</span>, a restoring force.</p>
 <div id="fig-2-53" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-53-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2096,7 +2096,7 @@ m y'' + c y' + k y = F_0 \cos \omega t \tag{2}
 <p>Its solution will reveal facts that are fundamental in engineering mathematics and allow us to model resonance.</p>
 <section id="solving-the-nonhomogeneous-ode-2" class="level3" data-number="3.15.1">
 <h3 data-number="3.15.1" class="anchored" data-anchor-id="solving-the-nonhomogeneous-ode-2"><span class="header-section-number">3.15.1</span> Solving the Nonhomogeneous ODE (2)</h3>
-<p>From <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-nonhomogeneous-odes</span></a> we know that a general solution of (2) is the sum of a general solution <span class="math inline">\(y_h\)</span> of the homogeneous ODE (1) plus any particular solution <span class="math inline">\(y_p\)</span> of (2). To find <span class="math inline">\(y_p\)</span> we use the method of undetermined coefficients (<a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-nonhomogeneous-odes</span></a>), starting from</p>
+<p>From <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span>Section 3.13</span></a> we know that a general solution of (2) is the sum of a general solution <span class="math inline">\(y_h\)</span> of the homogeneous ODE (1) plus any particular solution <span class="math inline">\(y_p\)</span> of (2). To find <span class="math inline">\(y_p\)</span> we use the method of undetermined coefficients (<a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span>Section 3.13</span></a>), starting from</p>
 <p><span class="math display">\[
 y_p(t) = a \cos \omega t + b \sin \omega t \tag{3}
 \]</span></p>
@@ -2147,7 +2147,7 @@ y(t) = y_h(t) + y_p(t) \tag{6}
 <p><span class="math display">\[
 y_p(t) = \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t = \frac{F_0}{k[1 - (\omega/\omega_0)^2]} \cos \omega t \tag{7}
 \]</span></p>
-<p>Here we must assume that <span class="math inline">\(\omega^2 \neq \omega_0^2\)</span>; physically, the frequency <span class="math inline">\(\omega/(2\pi)\)</span> [cycles/sec] of the driving force is different from the natural frequency <span class="math inline">\(\omega_0/(2\pi)\)</span> of the system, which is the frequency of the free undamped motion <a href="#eq-2-27star" class="quarto-xref">see (&nbsp;<span class="quarto-unresolved-ref ref-noprefix">eq-2-27star</span></a>. From (7) and from (<a href="#eq-2-27star" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2-27star</span></a>) in <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a> we have the general solution of the “undamped system”</p>
+<p>Here we must assume that <span class="math inline">\(\omega^2 \neq \omega_0^2\)</span>; physically, the frequency <span class="math inline">\(\omega/(2\pi)\)</span> [cycles/sec] of the driving force is different from the natural frequency <span class="math inline">\(\omega_0/(2\pi)\)</span> of the system, which is the frequency of the free undamped motion <a href="#eq-2-27star" class="quarto-xref">see (&nbsp;<span>3.28</span></a>. From (7) and from (<a href="#eq-2-27star" class="quarto-xref">Equation&nbsp;<span>3.28</span></a>) in <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a> we have the general solution of the “undamped system”</p>
 <p><span class="math display">\[
 y(t) = C \cos (\omega_0 t - \delta) + \frac{F_0}{m(\omega_0^2 - \omega^2)} \cos \omega t \tag{8}
 \]</span></p>
@@ -2175,7 +2175,7 @@ Figure&nbsp;3.25: Fig. 54. Resonance factor <span class="math inline">\(\rho(\om
 <p><span class="math display">\[
 y'' + \omega_0^2 y = \frac{F_0}{m} \cos \omega_0 t \tag{10}
 \]</span></p>
-<p>Then (7) is no longer valid, and, from the Modification Rule in <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-nonhomogeneous-odes</span></a>, we conclude that a particular solution of (10) is of the form</p>
+<p>Then (7) is no longer valid, and, from the Modification Rule in <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span>Section 3.13</span></a>, we conclude that a particular solution of (10) is of the form</p>
 <p><span class="math display">\[
 y_p(t) = t(a \cos \omega_0 t + b \sin \omega_0 t).
 \]</span></p>
@@ -2216,7 +2216,7 @@ Figure&nbsp;3.27: Fig. 56. Forced undamped oscillation when the difference of th
 </section>
 <section id="case-2.-damped-forced-oscillations" class="level3" data-number="3.15.3">
 <h3 data-number="3.15.3" class="anchored" data-anchor-id="case-2.-damped-forced-oscillations"><span class="header-section-number">3.15.3</span> Case 2. Damped Forced Oscillations</h3>
-<p>If the damping of the mass–spring system is not negligibly small, we have <span class="math inline">\(c &gt; 0\)</span> and a damping term <span class="math inline">\(c y'\)</span> in (1) and (2). Then the general solution <span class="math inline">\(y_h\)</span> of the homogeneous ODE (1) approaches zero as <span class="math inline">\(t\)</span> goes to infinity, as we know from <a href="#sec-free-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-free-oscillations</span></a>. Practically, it is zero after a sufficiently long time. Hence the “transient solution” (6) of (2), given by <span class="math inline">\(y = y_h + y_p\)</span>, approaches the “steady-state solution” <span class="math inline">\(y_p\)</span>. This proves the following.</p>
+<p>If the damping of the mass–spring system is not negligibly small, we have <span class="math inline">\(c &gt; 0\)</span> and a damping term <span class="math inline">\(c y'\)</span> in (1) and (2). Then the general solution <span class="math inline">\(y_h\)</span> of the homogeneous ODE (1) approaches zero as <span class="math inline">\(t\)</span> goes to infinity, as we know from <a href="#sec-free-oscillations" class="quarto-xref"><span>Section 3.7</span></a>. Practically, it is zero after a sufficiently long time. Hence the “transient solution” (6) of (2), given by <span class="math inline">\(y = y_h + y_p\)</span>, approaches the “steady-state solution” <span class="math inline">\(y_p\)</span>. This proves the following.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2384,7 +2384,7 @@ Figure&nbsp;3.31: Fig. 60. Typical solution curves in CAS Experiment 25
 <section id="sec-electric-circuits" class="level2" data-number="3.17">
 <h2 data-number="3.17" class="anchored" data-anchor-id="sec-electric-circuits"><span class="header-section-number">3.17</span> Modeling: Electric Circuits</h2>
 <p>Designing good models is a task the computer cannot do. Hence setting up models has become an important task in modern applied mathematics. The best way to gain experience in successful modeling is to carefully examine the modeling process in various fields and applications. Accordingly, modeling electric circuits will be profitable for all students, not just for electrical engineers and computer scientists.</p>
-<p><a href="#fig-2-61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-61</span></a> shows an RLC-circuit, as it occurs as a basic building block of large electric networks in computers and elsewhere. An RLC-circuit is obtained from an RL-circuit by adding a capacitor. Recall Example 2 on the RL-circuit in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->: The model of the RL-circuit is</p>
+<p><a href="#fig-2-61" class="quarto-xref">Figure&nbsp;<span>3.32</span></a> shows an RLC-circuit, as it occurs as a basic building block of large electric networks in computers and elsewhere. An RLC-circuit is obtained from an RL-circuit by adding a capacitor. Recall Example 2 on the RL-circuit in <!-- TODO: replace Sec. 1.5 with actual cross-reference label -->: The model of the RL-circuit is</p>
 <p><span class="math display">\[
 L I' + R I = E(t).
 \]</span></p>
@@ -2604,7 +2604,7 @@ L I'' + R I' + \frac{1}{C} I = E_0 \omega \cos \omega t
 <p><span class="math display">\[
 m y'' + c y' + k y = F_0 \cos \omega t
 \]</span></p>
-<p>are of the same form. <a href="#tbl-2-2-analogy" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-2-2-analogy</span></a> shows the analogy between the various quantities involved. The inductance <span class="math inline">\(L\)</span> corresponds to the mass <span class="math inline">\(m\)</span> and, indeed, an inductor opposes a change in current, having an “inertia effect” similar to that of a mass. The resistance <span class="math inline">\(R\)</span> corresponds to the damping constant <span class="math inline">\(c\)</span>, and a resistor causes loss of energy, just as a damping dashpot does. And so on.</p>
+<p>are of the same form. <a href="#tbl-2-2-analogy" class="quarto-xref">Table&nbsp;<span>3.4</span></a> shows the analogy between the various quantities involved. The inductance <span class="math inline">\(L\)</span> corresponds to the mass <span class="math inline">\(m\)</span> and, indeed, an inductor opposes a change in current, having an “inertia effect” similar to that of a mass. The resistance <span class="math inline">\(R\)</span> corresponds to the damping constant <span class="math inline">\(c\)</span>, and a resistor causes loss of energy, just as a damping dashpot does. And so on.</p>
 <p>This analogy is strictly quantitative in the sense that to a given mechanical system we can construct an electric circuit whose current will give the exact values of the displacement in the mechanical system when suitable scale factors are introduced.</p>
 <p>The practical importance of this analogy is almost obvious. The analogy may be used for constructing an “electrical model” of a given mechanical model, resulting in substantial savings of time and money because electric circuits are easy to assemble, and electric quantities can be measured much more quickly and accurately than mechanical ones.</p>
 <div id="tbl-2-2-analogy" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2768,8 +2768,8 @@ Figure&nbsp;3.40: Fig. 69. LC-circuit
 <p><span class="math display">\[
 y'' + p(x) y' + q(x) y = r(x) \tag{1}
 \]</span></p>
-<p>In <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a> we have seen that a general solution of (1) is the sum of a general solution <span class="math inline">\(y_h\)</span> of the corresponding homogeneous ODE and any particular solution <span class="math inline">\(y_p\)</span> of (1). To obtain <span class="math inline">\(y_p\)</span> when <span class="math inline">\(r(x)\)</span> is not too complicated, we can often use the method of undetermined coefficients, as we have shown in <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-nonhomogeneous-odes</span></a> and applied to basic engineering models in <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a> and <a href="#sec-electric-circuits" class="quarto-xref"><span class="quarto-unresolved-ref">sec-electric-circuits</span></a>.</p>
-<p>However, since this method is restricted to functions whose derivatives are of a form similar to itself (powers, exponential functions, etc.), it is desirable to have a method valid for more general ODEs (1), which we shall now develop. It is called the <strong>method of variation of parameters</strong> and is credited to Lagrange (<a href="#sec-homogeneous-linear-odes" class="quarto-xref"><span class="quarto-unresolved-ref">sec-homogeneous-linear-odes</span></a>). Here <span class="math inline">\(p, q, r\)</span> in (1) may be variable (given functions of <span class="math inline">\(x\)</span>), but we assume that they are continuous on some open interval <span class="math inline">\(I\)</span>.</p>
+<p>In <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a> we have seen that a general solution of (1) is the sum of a general solution <span class="math inline">\(y_h\)</span> of the corresponding homogeneous ODE and any particular solution <span class="math inline">\(y_p\)</span> of (1). To obtain <span class="math inline">\(y_p\)</span> when <span class="math inline">\(r(x)\)</span> is not too complicated, we can often use the method of undetermined coefficients, as we have shown in <a href="#sec-nonhomogeneous-odes" class="quarto-xref"><span>Section 3.13</span></a> and applied to basic engineering models in <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a> and <a href="#sec-electric-circuits" class="quarto-xref"><span>Section 3.17</span></a>.</p>
+<p>However, since this method is restricted to functions whose derivatives are of a form similar to itself (powers, exponential functions, etc.), it is desirable to have a method valid for more general ODEs (1), which we shall now develop. It is called the <strong>method of variation of parameters</strong> and is credited to Lagrange (<a href="ch3.html#sec-homogeneous-linear-odes" class="quarto-xref"><span>Section 4.1</span></a>). Here <span class="math inline">\(p, q, r\)</span> in (1) may be variable (given functions of <span class="math inline">\(x\)</span>), but we assume that they are continuous on some open interval <span class="math inline">\(I\)</span>.</p>
 <p>Lagrange’s method gives a particular solution of (1) on <span class="math inline">\(I\)</span> in the form:</p>
 <p><span class="math display">\[
 y_p(x) = -y_1 \int \frac{y_2 r}{W} \, dx + y_2 \int \frac{y_1 r}{W} \, dx \tag{2}
@@ -2782,7 +2782,7 @@ y'' + p(x) y' + q(x) y = 0 \tag{3}
 <p><span class="math display">\[
 W = y_1 y_2' - y_2 y_1' \tag{4}
 \]</span></p>
-<p>(see <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a>).</p>
+<p>(see <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a>).</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2807,7 +2807,7 @@ y'' + y = \sec x \tag{5}
 <p><span class="math display">\[
 W(y_1, y_2) = \cos x \cos x - \sin x (-\sin x) = \cos^2 x + \sin^2 x = 1.
 \]</span></p>
-<p>From (2), choosing zero constants of integration, we get the particular solution of the given ODE (<a href="#fig-2-70" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-70</span></a>):</p>
+<p>From (2), choosing zero constants of integration, we get the particular solution of the given ODE (<a href="#fig-2-70" class="quarto-xref">Figure&nbsp;<span>3.41</span></a>):</p>
 <p><span class="math display">\[
 y_p = -\cos x \int \sin x \sec x \, dx + \sin x \int \cos x \sec x \, dx
 \]</span></p>
@@ -2817,7 +2817,7 @@ y_p = -\cos x \int \sin x \sec x \, dx + \sin x \int \cos x \sec x \, dx
 <p><span class="math display">\[
 = \cos x \ln|\cos x| + x \sin x.
 \]</span></p>
-<p><a href="#fig-2-70" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2-70</span></a> shows <span class="math inline">\(y_p\)</span> and its first term, which is small, so that <span class="math inline">\(x \sin x\)</span> essentially determines the shape of the curve of <span class="math inline">\(y_p\)</span>. (Recall from <a href="#sec-forced-oscillations" class="quarto-xref"><span class="quarto-unresolved-ref">sec-forced-oscillations</span></a> that we have seen <span class="math inline">\(x \sin x\)</span> in connection with resonance, except for notation.) From <span class="math inline">\(y_p\)</span> and the general solution <span class="math inline">\(y_h = c_1 \cos x + c_2 \sin x\)</span> of the homogeneous ODE we obtain the answer:</p>
+<p><a href="#fig-2-70" class="quarto-xref">Figure&nbsp;<span>3.41</span></a> shows <span class="math inline">\(y_p\)</span> and its first term, which is small, so that <span class="math inline">\(x \sin x\)</span> essentially determines the shape of the curve of <span class="math inline">\(y_p\)</span>. (Recall from <a href="#sec-forced-oscillations" class="quarto-xref"><span>Section 3.15</span></a> that we have seen <span class="math inline">\(x \sin x\)</span> in connection with resonance, except for notation.) From <span class="math inline">\(y_p\)</span> and the general solution <span class="math inline">\(y_h = c_1 \cos x + c_2 \sin x\)</span> of the homogeneous ODE we obtain the answer:</p>
 <p><span class="math display">\[
 y = y_h + y_p = (c_1 + \ln|\cos x|) \cos x + (c_2 + x) \sin x. \tag{6}
 \]</span></p>
@@ -2844,7 +2844,7 @@ y_h(x) = c_1 y_1(x) + c_2 y_2(x)
 <p><span class="math display">\[
 y_p(x) = u(x) y_1(x) + v(x) y_2(x) \tag{7}
 \]</span></p>
-<p>is a particular solution of the nonhomogeneous ODE (1). Note that <span class="math inline">\(y_p\)</span> exists by Theorem 3 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a> because of the continuity of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> on <span class="math inline">\(I\)</span>. (The continuity of <span class="math inline">\(r\)</span> will be used later.)</p>
+<p>is a particular solution of the nonhomogeneous ODE (1). Note that <span class="math inline">\(y_p\)</span> exists by Theorem 3 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a> because of the continuity of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> on <span class="math inline">\(I\)</span>. (The continuity of <span class="math inline">\(r\)</span> will be used later.)</p>
 <p>We determine <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> by substituting (7) and its derivatives into (1). Differentiating (7), we obtain:</p>
 <p><span class="math display">\[
 y_p' = u' y_1 + u y_1' + v' y_2 + v y_2'
@@ -2885,7 +2885,7 @@ u'(y_1 y_2' - y_2 y_1') = -y_2 r \implies u' W = -y_2 r \implies u' = -\frac{y_2
 <p><span class="math display">\[
 v'(y_1 y_2' - y_2 y_1') = y_1 r \implies v' W = y_1 r \implies v' = \frac{y_1 r}{W}.
 \]</span></p>
-<p>Since <span class="math inline">\(y_1, y_2\)</span> form a basis, we have <span class="math inline">\(W \neq 0\)</span> (by Theorem 2 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span class="quarto-unresolved-ref">sec-existence-uniqueness</span></a>) and can divide by <span class="math inline">\(W\)</span>:</p>
+<p>Since <span class="math inline">\(y_1, y_2\)</span> form a basis, we have <span class="math inline">\(W \neq 0\)</span> (by Theorem 2 in <a href="#sec-existence-uniqueness" class="quarto-xref"><span>Section 3.11</span></a>) and can divide by <span class="math inline">\(W\)</span>:</p>
 <p><span class="math display">\[
 u' = -\frac{y_2 r}{W}, \qquad v' = \frac{y_1 r}{W} \tag{12}
 \]</span></p>

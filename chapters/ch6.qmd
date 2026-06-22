@@ -13,7 +13,8 @@ The process of solving an ODE using the Laplace transform method consists of thr
 
 **Step 3.** The solution in Step 2 is transformed back, resulting in the solution of the given problem.
 
-![Fig. 113. Solving an IVP by Laplace transforms](../images/fig-6-113.png){#fig-6-113}
+
+![Fig. 113. Solving an IVP by Laplace transforms](../images/chapter6/fig-6-113.png){#fig-6-113}
 
 The key motivation for learning about Laplace transforms is that the process of solving an ODE is simplified to an algebraic problem (and transformations). This type of mathematics that converts problems of calculus to algebraic problems is known as **operational calculus**. The Laplace transform method has two main advantages over the methods discussed in @ch-first-order-odes and <!-- TODO: replace Chaps. 2-4 with actual chapter labels -->Chaps. 2–4:
 
@@ -209,7 +210,7 @@ We now see that the inverse of the right side is the damped vibration (@fig-6-11
 
 $$f(t) = e^{-t}(3\cos 20t - 7\sin 20t). \quad \square$$
 
-![Fig. 114. Vibrations in Example 5](../images/fig-6-114.png){#fig-6-114}
+![Fig. 114. Vibrations in Example 5](../images/chapter6/fig-6-114.png){#fig-6-114}
 
 ### Existence and Uniqueness of Laplace Transforms
 
@@ -223,7 +224,7 @@ $$ |f(t)| \leq Me^{kt}. $$ {#eq-6-growth}
 
 $f(t)$ need not be continuous, but it should not be too bad. The technical term (generally used in mathematics) is **piecewise continuity**. $f(t)$ is piecewise continuous on a finite interval $a \leq t \leq b$ where $f$ is defined, if this interval can be divided into finitely many subintervals in each of which $f$ is continuous and has finite limits as $t$ approaches either endpoint of such a subinterval from the interior. This then gives finite jumps as in @fig-6-115 as the only possible discontinuities, but this suffices in most applications, and so does the following theorem.
 
-![Fig. 115. Example of a piecewise continuous function $f(t)$. (The dots mark the function values at the jumps.)](../images/fig-6-115.png){#fig-6-115}
+![Fig. 115. Example of a piecewise continuous function $f(t)$. (The dots mark the function values at the jumps.)](../images/chapter6/fig-6-115.png){#fig-6-115}
 
 ### THEOREM 3 Existence Theorem for Laplace Transforms
 
@@ -469,7 +470,7 @@ $$y(t) = \mathcal{L}^{-1}(Y) = \mathcal{L}^{-1}\left\{\frac{1}{s-1}\right\} + \m
 
 The diagram in @fig-6-116 summarizes our approach.
 
-![Fig. 116. Steps of the Laplace transform method](../images/fig-6-116.png){#fig-6-116}
+![Fig. 116. Steps of the Laplace transform method](../images/chapter6/fig-6-116.png){#fig-6-116}
 
 ### EXAMPLE 5 Comparison with the Usual Method
 
@@ -601,7 +602,7 @@ Using Theorem 3, find $f(t)$ if $\mathcal{L}(F)$ equals:
 
 $$ \mathcal{L}(f') = s\mathcal{L}(f) - f(0) - [f(a+0) - f(a-0)]e^{-as}. $$ {#eq-6-1star-ext}
 
-![Fig. 117. Formula (1*)](../images/fig-6-117.png){#fig-6-117}
+![Fig. 117. Formula (1*)](../images/chapter6/fig-6-117.png){#fig-6-117}
 
 ## Unit Step Function (Heaviside Function). Second Shifting Theorem (t-Shifting) {#sec-unit-step-function}
 
@@ -613,9 +614,9 @@ The **unit step function** or **Heaviside function** $u(t-a)$ is 0 for $t < a$, 
 
 $$ u(t-a) = \begin{cases} 0 & \text{if } t < a \\ 1 & \text{if } t > a \end{cases} \quad (a \geq 0). $$ {#eq-6-ustep}
 
-![Fig. 118. Unit step function $u(t)$](../images/fig-6-118.png){#fig-6-118}
+![Fig. 118. Unit step function $u(t)$](../images/chapter6/fig-6-118.png){#fig-6-118}
 
-![Fig. 119. Unit step function $u(t-a)$](../images/fig-6-119.png){#fig-6-119}
+![Fig. 119. Unit step function $u(t-a)$](../images/chapter6/fig-6-119.png){#fig-6-119}
 
 @fig-6-118 shows the special case $u(t)$, which has its jump at zero, and @fig-6-119 the general case $u(t-a)$ for an arbitrary positive $a$. (For Heaviside, see @sec-laplace-transform-linearity.)
 
@@ -633,9 +634,9 @@ Let $f(t) = 0$ for all negative $t$. Then $f(t-a)u(t-a)$ with $a > 0$ is $f(t)$ 
 
 @fig-6-121 shows the effect of many unit step functions, three of them in (A) and infinitely many in (B) when continued periodically to the right; this is the effect of a rectifier that clips off the negative half-waves of a sinusoidal voltage. CAUTION! Make sure that you fully understand these figures, in particular the difference between parts (B) and (C) of @fig-6-120. @fig-6-120(C) will be applied next.
 
-![Fig. 120. Effects of the unit step function: (A) Given function. (B) Switching off and on. (C) Shift.](../images/fig-6-120.png){#fig-6-120}
+![Fig. 120. Effects of the unit step function: (A) Given function. (B) Switching off and on. (C) Shift.](../images/chapter6/fig-6-120.png){#fig-6-120}
 
-![Fig. 121. Use of many unit step functions.](../images/fig-6-121.png){#fig-6-121}
+![Fig. 121. Use of many unit step functions.](../images/chapter6/fig-6-121.png){#fig-6-121}
 
 ### Time Shifting (t-Shifting): Replacing $t$ by $t - a$ in $f(t)$
 
@@ -709,7 +710,7 @@ as before. Similarly for $\mathcal{L}\{\frac{1}{2}t^2 u(t - \pi/2)\}$. Finally, 
 
 $$\mathcal{L}\left\{\cos t\, u\!\left(t-\tfrac{\pi}{2}\right)\right\} = e^{-\pi s/2}\mathcal{L}\left\{\cos\!\left(t+\tfrac{\pi}{2}\right)\right\} = e^{-\pi s/2}\mathcal{L}\{-\sin t\} = -\frac{e^{-\pi s/2}}{s^2+1}. \quad \square$$
 
-![Fig. 122. $f(t)$ in Example 1](../images/fig-6-122.png){#fig-6-122}
+![Fig. 122. $f(t)$ in Example 1](../images/chapter6/fig-6-122.png){#fig-6-122}
 
 ### EXAMPLE 2 Application of Both Shifting Theorems. Inverse Transform
 
@@ -723,7 +724,7 @@ $$f(t) = \frac{1}{\pi}\sin(\pi(t-1))u(t-1) + \frac{1}{\pi}\sin(\pi(t-2))u(t-2) +
 
 Now $\sin(\pi t - \pi) = -\sin \pi t$ and $\sin(\pi t - 2\pi) = \sin \pi t$, so that the first and second terms cancel each other when $t > 2$. Hence we obtain $f(t) = 0$ if $0 < t < 1$, $-(\sin \pi t)/\pi$ if $1 < t < 2$, $0$ if $2 < t < 3$, and $(t-3)e^{-2(t-3)}$ if $t > 3$. See @fig-6-123. $\square$
 
-![Fig. 123. $f(t)$ in Example 2](../images/fig-6-123.png){#fig-6-123}
+![Fig. 123. $f(t)$ in Example 2](../images/chapter6/fig-6-123.png){#fig-6-123}
 
 ### EXAMPLE 3 Response of an RC-Circuit to a Single Rectangular Wave
 
@@ -751,7 +752,7 @@ $$i(t) = \begin{cases} K_1 e^{-t/(RC)} & \text{if } a < t < b \\ (K_1 - K_2)e^{-
 
 where $K_1 = V_0 e^{a/(RC)}/R$ and $K_2 = V_0 e^{b/(RC)}/R$. $\square$
 
-![Fig. 124. RC-circuit, electromotive force $v(t)$, and current in Example 3](../images/fig-6-124.png){#fig-6-124}
+![Fig. 124. RC-circuit, electromotive force $v(t)$, and current in Example 3](../images/chapter6/fig-6-124.png){#fig-6-124}
 
 ### EXAMPLE 4 Response of an RLC-Circuit to a Sinusoidal Input Acting Over a Time Interval
 
@@ -808,7 +809,7 @@ $$i(t) = -0.2776(e^{-10t} - e^{-10(t-2\pi)}) + 2.6144(e^{-100t} - e^{-100(t-2\pi
 
 It goes to zero very rapidly, practically within 0.5 sec. $\square$
 
-![Fig. 125. RLC-circuit in Example 4](../images/fig-6-125.png){#fig-6-125}
+![Fig. 125. RLC-circuit in Example 4](../images/chapter6/fig-6-125.png){#fig-6-125}
 
 ### PROBLEM SET {#sec-ps-6-3}
 
@@ -865,11 +866,11 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 29. $R = 25\,\Omega$, $L = 0.1\,\text{H}$, $v = 490e^{-5t}$ V if $0 < t < 1$ and $0$ if $t > 1$
 30. $R = 10\,\Omega$, $L = 0.5\,\text{H}$, $v = 200t$ V if $0 < t < 2$ and $0$ if $t > 2$
 
-![Fig. 126. Problems 28–30](../images/fig-6-126.png){#fig-6-126}
+![Fig. 126. Problems 28–30](../images/chapter6/fig-6-126.png){#fig-6-126}
 
 31. **Discharge in RC-circuit.** Using the Laplace transform, find the charge $q(t)$ on the capacitor of capacitance $C$ in @fig-6-127 if the capacitor is charged so that its potential is $V_0$ and the switch is closed at $t = 0$.
 
-![Fig. 127. Problem 31](../images/fig-6-127.png){#fig-6-127}
+![Fig. 127. Problem 31](../images/chapter6/fig-6-127.png){#fig-6-127}
 
 **32–34 RC-CIRCUIT**
 
@@ -879,7 +880,7 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 33. $v = 0$ if $t < 2$ and $100(t-2)$ V if $t > 2$
 34. $v(t) = 100$ V if $0.5 < t < 0.6$ and $0$ otherwise. Why does $i(t)$ have jumps?
 
-![Fig. 128. Problems 32–34](../images/fig-6-128.png){#fig-6-128}
+![Fig. 128. Problems 32–34](../images/chapter6/fig-6-128.png){#fig-6-128}
 
 **35–37 LC-CIRCUIT**
 
@@ -889,7 +890,7 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 36. $L = 1$ H, $C = 0.25$ F, $v = 200(t - \frac{1}{3}t^3)$ V if $0 < t < 1$ and $0$ if $t > 1$
 37. $L = 0.5$ H, $C = 0.05$ F, $v = 78\sin t$ V if $0 < t < \pi$ and $0$ if $t > \pi$
 
-![Fig. 129. Problems 35–37](../images/fig-6-129.png){#fig-6-129}
+![Fig. 129. Problems 35–37](../images/chapter6/fig-6-129.png){#fig-6-129}
 
 **38–40 RLC-CIRCUIT**
 
@@ -899,9 +900,9 @@ Using the Laplace transform and showing the details, find the current $i(t)$ in 
 39. $R = 2\,\Omega$, $L = 1$ H, $C = 0.5$ F, $v(t) = 1$ kV if $0 < t < 2$ and $0$ if $t > 2$
 40. $R = 2\,\Omega$, $L = 1$ H, $C = 0.1$ F, $v = 255\sin t$ V if $0 < t < 2\pi$ and $0$ if $t > 2\pi$
 
-![Fig. 130. Problems 38–40](../images/fig-6-130.png){#fig-6-130}
+![Fig. 130. Problems 38–40](../images/chapter6/fig-6-130.png){#fig-6-130}
 
-![Fig. 131. Current in Problem 40](../images/fig-6-131.png){#fig-6-131}
+![Fig. 131. Current in Problem 40](../images/chapter6/fig-6-131.png){#fig-6-131}
 
 ## Short Impulses. Dirac's Delta Function. Partial Fractions {#sec-dirac-delta}
 
@@ -917,7 +918,7 @@ $$ f_k(t-a) = \begin{cases} 1/k & \text{if } a \leq t \leq a+k \\ 0 & \text{othe
 
 $$ I_k = \int_0^{\infty} f_k(t-a)\, dt = \int_a^{a+k} \frac{1}{k}\, dt = 1. $$ {#eq-6-impulse-area}
 
-![Fig. 132. The function $f_k(t-a)$ in (@eq-6-impulse-fn)](../images/fig-6-132.png){#fig-6-132}
+![Fig. 132. The function $f_k(t-a)$ in (@eq-6-impulse-fn)](../images/chapter6/fig-6-132.png){#fig-6-132}
 
 To find out what will happen if $k$ becomes smaller and smaller, we take the limit of $f_k$ as $k \to 0$ ($k > 0$). This limit is denoted by $\delta(t-a)$, that is,
 
@@ -973,7 +974,7 @@ $$y = \mathcal{L}^{-1}(F(s)e^{-s} - F(s)e^{-2s}) = f(t-1)u(t-1) - f(t-2)u(t-2)$$
 
 $$= \begin{cases} 0 & (0 < t < 1) \\ \frac{1}{2} - e^{-(t-1)} + \frac{1}{2}e^{-2(t-1)} & (1 < t < 2) \\ -e^{-(t-1)} + e^{-(t-2)} + \frac{1}{2}e^{-2(t-1)} - \frac{1}{2}e^{-2(t-2)} & (t > 2). \end{cases} \quad \square$$
 
-![Fig. 133. Square wave and response in Example 1](../images/fig-6-133.png){#fig-6-133}
+![Fig. 133. Square wave and response in Example 1](../images/chapter6/fig-6-133.png){#fig-6-133}
 
 ### EXAMPLE 2 Hammerblow Response of a Mass–Spring System
 
@@ -991,7 +992,7 @@ By Theorem 1 the inverse is
 
 $$y(t) = \mathcal{L}^{-1}(Y) = \begin{cases} 0 & \text{if } 0 < t < 1 \\ e^{-(t-1)} - e^{-2(t-1)} & \text{if } t > 1. \end{cases}$$
 
-![Fig. 134. Response to a hammerblow in Example 2](../images/fig-6-134.png){#fig-6-134}
+![Fig. 134. Response to a hammerblow in Example 2](../images/chapter6/fig-6-134.png){#fig-6-134}
 
 $y(t)$ is shown in @fig-6-134. Can you imagine how @fig-6-133 approaches @fig-6-134 as the wave becomes shorter and shorter, the area of the rectangle remaining 1? $\square$
 
@@ -1011,7 +1012,7 @@ By the first shifting theorem in @sec-laplace-transform-linearity we obtain from
 
 $$q = \mathcal{L}^{-1}(Q) = \frac{1}{99.50}e^{-10t}\sin 99.50t \quad \text{and} \quad v = \frac{q}{C} = 100.5\,e^{-10t}\sin 99.50t. \quad \square$$
 
-![Fig. 135. Network and output voltage in Example 3](../images/fig-6-135.png){#fig-6-135}
+![Fig. 135. Network and output voltage in Example 3](../images/chapter6/fig-6-135.png){#fig-6-135}
 
 ### More on Partial Fractions
 
@@ -1077,7 +1078,7 @@ $$ y(t) = e^{-t}[(3 + 2e^{\pi})\cos t + 4e^{\pi}\sin t] \quad \text{if } t > \pi
 
 @fig-6-136 shows (@eq-6-ex4-sol1) (for $0 < t < \pi$) and (@eq-6-ex4-sol2) (for $t > \pi$), a beginning vibration, which goes to zero rapidly because of the damping and the absence of a driving force after $t = \pi$. $\square$
 
-![Fig. 136. Example 4](../images/fig-6-136.png){#fig-6-136}
+![Fig. 136. Example 4](../images/chapter6/fig-6-136.png){#fig-6-136}
 
 The case of repeated complex factors $(s-\alpha)(s-\bar\alpha)^2$, which is important in connection with resonance, will be handled by "convolution" in the next section.
 
@@ -1150,17 +1151,17 @@ $$\mathcal{L}(f) = \frac{\omega(1 + e^{-\pi s/\omega})}{(s^2+\omega^2)(1 - e^{-2
 
 $$\frac{\omega}{s^2+\omega^2}\coth\frac{\pi s}{2\omega}.$$
 
-![Fig. 137. Half-wave rectification](../images/fig-6-137.png){#fig-6-137}
+![Fig. 137. Half-wave rectification](../images/chapter6/fig-6-137.png){#fig-6-137}
 
-![Fig. 138. Full-wave rectification](../images/fig-6-138.png){#fig-6-138}
+![Fig. 138. Full-wave rectification](../images/chapter6/fig-6-138.png){#fig-6-138}
 
 (d) **Saw-tooth wave.** Find the Laplace transform of the saw-tooth wave in @fig-6-139.
 
-![Fig. 139. Saw-tooth wave](../images/fig-6-139.png){#fig-6-139}
+![Fig. 139. Saw-tooth wave](../images/chapter6/fig-6-139.png){#fig-6-139}
 
 15. **Staircase function.** Find the Laplace transform of the staircase function in @fig-6-140 by noting that it is the difference of $kt/p$ and the function in 14(d).
 
-![Fig. 140. Staircase function](../images/fig-6-140.png){#fig-6-140}
+![Fig. 140. Staircase function](../images/chapter6/fig-6-140.png){#fig-6-140}
 
 ## Convolution. Integral Equations {#sec-convolution}
 
@@ -1222,7 +1223,7 @@ $$F(s)G(s) = \int_0^{\infty} e^{-s\tau}\int_0^{\tau} f(t)g(\tau-t)\, dt\, d\tau 
 
 This completes the proof. $\square$
 
-![Fig. 141. Region of integration in the $t$-$\tau$-plane in the proof of Theorem 1](../images/fig-6-141.png){#fig-6-141}
+![Fig. 141. Region of integration in the $t$-$\tau$-plane in the proof of Theorem 1](../images/chapter6/fig-6-141.png){#fig-6-141}
 
 From the definition it follows almost immediately that convolution has the properties
 
@@ -1243,7 +1244,7 @@ $(f * f)(t) \geq 0$ may not hold. For instance, Example 2 with $\omega = 1$ give
 
 $$\sin t * \sin t = -\tfrac{1}{2}t\cos t + \tfrac{1}{2}\sin t \quad \text{(@fig-6-142)}. \quad \square$$
 
-![Fig. 142. Example 3](../images/fig-6-142.png){#fig-6-142}
+![Fig. 142. Example 3](../images/chapter6/fig-6-142.png){#fig-6-142}
 
 We shall now take up the case of a complex double root (left aside in the last section in connection with partial fractions) and find the solution (the inverse transform) directly by convolution.
 
@@ -1303,7 +1304,7 @@ $$y(t) = e^{-(t-2)} - \tfrac{1}{2}e^{-2(t-2)} - (e^{-(t-1)} - \tfrac{1}{2}e^{-2(
 
 @fig-6-143 shows the input (the square wave) and the interesting output, which is zero from 0 to 1, then increases, reaches a maximum (near 2.6) after the input has become zero (why?), and finally decreases to zero in a monotone fashion. $\square$
 
-![Fig. 143. Square wave and response in Example 5](../images/fig-6-143.png){#fig-6-143}
+![Fig. 143. Square wave and response in Example 5](../images/chapter6/fig-6-143.png){#fig-6-143}
 
 ### Integral Equations
 
@@ -1667,7 +1668,7 @@ $$y_2 = 100 + 125e^{-0.12t} - 75e^{-0.04t}.$$
 
 @fig-6-144 shows the interesting plot of these functions. Can you give physical explanations for their main features? Why do they have the limit 100? Why is $y_2$ not monotone, whereas $y_1$ is? Why is $y_1$ from some time on suddenly larger than $y_2$? Etc. $\square$
 
-![Fig. 144. Mixing problem in Example 1](../images/fig-6-144.png){#fig-6-144}
+![Fig. 144. Mixing problem in Example 1](../images/chapter6/fig-6-144.png){#fig-6-144}
 
 Other systems of ODEs of practical importance can be solved by the Laplace transform method in a similar way, and eigenvalues and eigenvectors, as we had to determine them in <!-- TODO: replace Chap. 4 with actual chapter label -->Chap. 4, will come out automatically, as we have seen in Example 1.
 
@@ -1724,7 +1725,7 @@ $$i_2(t) = -\tfrac{250}{3}(1 - e^{1/4})e^{-t/2} + \tfrac{250}{21}(1 - e^{7/4})e^
 
 Can you explain physically why both currents eventually go to zero, and why $i_1(t)$ has a sharp cusp whereas $i_2(t)$ has a continuous tangent direction at $t = \frac{1}{2}$? $\square$
 
-![Fig. 145. Electrical network in Example 2](../images/fig-6-145.png){#fig-6-145}
+![Fig. 145. Electrical network in Example 2](../images/chapter6/fig-6-145.png){#fig-6-145}
 
 Systems of ODEs of higher order can be solved by the Laplace transform method in a similar fashion. As an important application, typical of many similar mechanical systems, we consider coupled vibrating masses on springs.
 
@@ -1748,7 +1749,7 @@ This system of linear algebraic equations in the unknowns $Y_1$ and $Y_2$ may be
 $$(s^2 + 2k)Y_1 - kY_2 = s + \sqrt{3k}$$
 $$-kY_1 + (s^2 + 2k)Y_2 = s - \sqrt{3k}.$$
 
-![Fig. 146. Example 3](../images/fig-6-146.png){#fig-6-146}
+![Fig. 146. Example 3](../images/chapter6/fig-6-146.png){#fig-6-146}
 
 Elimination (or Cramer's rule in <!-- TODO: replace Sec. 7.7 with actual cross-reference label -->Sec. 7.7) yields the solution, which we can expand in terms of partial fractions,
 
@@ -1763,7 +1764,7 @@ $$y_2(t) = \mathcal{L}^{-1}(Y_2) = \cos\sqrt{k}\,t - \sin\sqrt{3k}\,t.$$
 
 We see that the motion of each mass is harmonic (the system is undamped!), being the superposition of a "slow" oscillation and a "rapid" oscillation. $\square$
 
-![Fig. 147. Solutions in Example 3](../images/fig-6-147.png){#fig-6-147}
+![Fig. 147. Solutions in Example 3](../images/chapter6/fig-6-147.png){#fig-6-147}
 
 ### PROBLEM SET {#sec-ps-6-7}
 
@@ -1817,7 +1818,7 @@ Using the Laplace transform and showing the details of your work, solve the IVP:
 
 19. **Electrical network.** Using Laplace transforms, find the currents $i_1(t)$ and $i_2(t)$ in @fig-6-148, where $v(t) = 390\cos t$ and $i_1(0) = 0$, $i_2(0) = 0$. How soon will the currents practically reach their steady state?
 
-![Fig. 148. Electrical network and currents in Problem 19](../images/fig-6-148.png){#fig-6-148}
+![Fig. 148. Electrical network and currents in Problem 19](../images/chapter6/fig-6-148.png){#fig-6-148}
 
 20. **Single cosine wave.** Solve Prob. 19 when the EMF (electromotive force) is acting from 0 to $2\pi$ only. Can you do this just by looking at Prob. 19, practically without calculation?
 
@@ -1965,7 +1966,7 @@ Model and solve by the Laplace transform:
 
 $$m_1 y_1'' = -k_1 y_1 + k_2(y_2-y_1), \qquad m_2 y_2'' = -k_2(y_2-y_1) - k_3 y_2.$$
 
-![Fig. 149. System in Problems 38 and 39](../images/fig-6-149.png){#fig-6-149}
+![Fig. 149. System in Problems 38 and 39](../images/chapter6/fig-6-149.png){#fig-6-149}
 
 39. In Prob. 38, let $m_1 = m_2 = 10$ kg, $k_1 = k_3 = 20$ kg/sec$^2$, $k_2 = 40$ kg/sec$^2$. Find the solution satisfying the initial conditions $y_2(0) = 0$, $y_2'(0) = 1/2$ meter/sec, $y_1(0) = 0$, $y_1'(0) = 1$ meter/sec.
 
@@ -1973,15 +1974,15 @@ $$m_1 y_1'' = -k_1 y_1 + k_2(y_2-y_1), \qquad m_2 y_2'' = -k_2(y_2-y_1) - k_3 y_
 
 41. Find the current $i(t)$ in the RC-circuit in @fig-6-150, where $R = 10\,\Omega$, $C = 0.1$ F, $v(t) = 10t$ V if $0 < t < 4$, $v(t) = 40$ V if $t > 4$, and the initial charge on the capacitor is 0.
 
-![Fig. 150. RC-circuit](../images/fig-6-150.png){#fig-6-150}
+![Fig. 150. RC-circuit](../images/chapter6/fig-6-150.png){#fig-6-150}
 
 42. Find and graph the charge $q(t)$ and the current $i(t)$ in the LC-circuit in @fig-6-151, assuming $L = 1$ H, $C = 1$ F, $v(t) = 1 - e^{-t}$ if $0 < t < \pi$, $v(t) = 0$ if $t > \pi$, and zero initial current and charge.
 
-![Fig. 151. LC-circuit](../images/fig-6-151.png){#fig-6-151}
+![Fig. 151. LC-circuit](../images/chapter6/fig-6-151.png){#fig-6-151}
 
 43. Find the current $i(t)$ in the RLC-circuit in @fig-6-152, where $R = 160\,\Omega$, $L = 20$ H, $C = 0.002$ F, $v(t) = 37\sin 10t$ V, and current and charge at $t = 0$ are zero.
 
-![Fig. 152. RLC-circuit](../images/fig-6-152.png){#fig-6-152}
+![Fig. 152. RLC-circuit](../images/chapter6/fig-6-152.png){#fig-6-152}
 
 44. Show that, by Kirchhoff's Voltage Law (<!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9), the currents in the network in @fig-6-153 are obtained from the system
 
@@ -1989,11 +1990,11 @@ $$Li_1' + R(i_1 - i_2) = v(t), \qquad R(i_2' - i_1') + \frac{1}{C}i_2 = 0.$$
 
 Solve this system, assuming that $R = 10\,\Omega$, $L = 20$ H, $C = 0.05$ F, $v = 20$ V, $i_1(0) = 0$, $i_2(0) = 2$ A.
 
-![Fig. 153. Network in Problem 44](../images/fig-6-153.png){#fig-6-153}
+![Fig. 153. Network in Problem 44](../images/chapter6/fig-6-153.png){#fig-6-153}
 
 45. See the setup in @fig-6-154 and find the currents $i_1(t)$ and $i_2(t)$ when the switch is closed at $t = 0$. Find the limits of $i_1(t)$ and $i_2(t)$ as $t \to \infty$, (i) from the solution, (ii) directly from the given network.
 
-![Fig. 154. Network in Problem 45](../images/fig-6-154.png){#fig-6-154}
+![Fig. 154. Network in Problem 45](../images/chapter6/fig-6-154.png){#fig-6-154}
 
 ## SUMMARY: Laplace Transforms {#sec-ch6-summary}
 
