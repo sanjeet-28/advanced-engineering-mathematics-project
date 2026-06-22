@@ -1,23 +1,25 @@
 ---
-title: "CHAPTER 21: Numerics for ODEs and PDEs"
+title: "Numerics for ODEs and PDEs"
 ---
 
-Ordinary differential equations (ODEs) and partial differential equations (PDEs) play a central role in modeling problems of engineering, mathematics, physics, aeronautics, astronomy, dynamics, elasticity, biology, medicine, chemistry, environmental science, economics, and many other areas. Chapters 1–6 and 12 explained the major approaches to solving ODEs and PDEs analytically. However, in your career as an engineer, applied mathematician, or physicist you will encounter ODEs and PDEs that cannot be solved by those analytic methods or whose solutions are so difficult that other approaches are needed. It is precisely in these real-world projects that numeric methods for ODEs and PDEs are used, often as part of a software package. Indeed, numeric software has become an indispensable tool for the engineer.
+# Numerics for ODEs and PDEs {#ch-numerics-odes-pdes}
+
+Ordinary differential equations (ODEs) and partial differential equations (PDEs) play a central role in modeling problems of engineering, mathematics, physics, aeronautics, astronomy, dynamics, elasticity, biology, medicine, chemistry, environmental science, economics, and many other areas. <!-- TODO: replace Chapters 1-6 and 12 with actual chapter labels -->Chapters 1–6 and 12 explained the major approaches to solving ODEs and PDEs analytically. However, in your career as an engineer, applied mathematician, or physicist you will encounter ODEs and PDEs that cannot be solved by those analytic methods or whose solutions are so difficult that other approaches are needed. It is precisely in these real-world projects that numeric methods for ODEs and PDEs are used, often as part of a software package. Indeed, numeric software has become an indispensable tool for the engineer.
 
 This chapter is evenly divided between numerics for ODEs and numerics for PDEs. We start with ODEs and discuss, in @sec-methods-first-order-odes, methods for first-order ODEs. The main initial idea is that we can obtain approximations to the solution of such an ODE at points that are a distance $h$ apart by using the first two terms of Taylor’s formula from calculus. We use these approximations to construct the iteration formula for a method known as Euler’s method. While this method is rather unstable and of little practical use, it serves as a pedagogical tool and a starting point toward understanding more sophisticated methods such as the Runge–Kutta method and its variant the Runge–Kutta–Fehlberg (RKF) method, which are popular and useful in practice. As is usual in mathematics, one tends to generalize mathematical ideas. The methods of @sec-methods-first-order-odes are one-step methods, that is, the current approximation uses only the approximation from the previous step. Multistep methods, such as the Adams–Bashforth methods and Adams–Moulton methods, use values computed from several previous steps. We conclude numerics for ODEs with applying Runge–Kutta–Nyström methods and other methods to higher order ODEs and systems of ODEs.
 
 Numerics for PDEs are perhaps even more exciting and ingenious than those for ODEs. We first consider PDEs of the elliptic type (Laplace, Poisson). Again, Taylor’s formula serves as a starting point and lets us replace partial derivatives by difference quotients. The end result leads to a mesh and an evaluation scheme that uses the Gauss–Seidel method (here also known as Liebmann’s method). We continue with methods that use grids to solve Neumann and mixed problems (@sec-neumann-mixed-problems) and conclude with the important Crank–Nicolson method for parabolic PDEs in @sec-methods-parabolic-pdes.
 
-@sec-methods-first-order-odes and @sec-multistep-methods may be studied immediately after Chapter 1, and @sec-methods-systems-higher-order immediately after Chapters 2–4, because these sections are independent of Chapters 19 and 20. Sections 21.4–21.7 on PDEs may be studied immediately after Chapter 12 if students have some knowledge of linear systems of algebraic equations.
+@sec-methods-first-order-odes and @sec-multistep-methods may be studied immediately after <!-- TODO: replace Chapter 1 with actual chapter label -->Chapter 1, and @sec-methods-systems-higher-order immediately after <!-- TODO: replace Chapters 2-4 with actual chapter labels -->Chapters 2–4, because these sections are independent of <!-- TODO: replace Chapters 19 and 20 with actual chapter labels -->Chapters 19 and 20. @sec-methods-elliptic-pdes, @sec-neumann-mixed-problems, @sec-methods-parabolic-pdes, and @sec-methods-hyperbolic-pdes on PDEs may be studied immediately after <!-- TODO: replace Chapter 12 with actual chapter label -->Chapter 12 if students have some knowledge of linear systems of algebraic equations.
 
 **Prerequisite:** Secs. 1.1–1.5 for ODEs, Secs. 12.1–12.3, 12.5, 12.10 for PDEs.  
 **References and Answers to Problems:** App. 1 Part E (see also Parts A and C), App. 2.
 
-## 21.1 Methods for First-Order ODEs {#sec-methods-first-order-odes}
+## Methods for First-Order ODEs {#sec-methods-first-order-odes}
 
 Take a look at Sec. 1.2, where we briefly introduced Euler’s method with an example. We shall develop Euler’s method more rigorously. Pay close attention to the derivation that uses Taylor’s formula from calculus to approximate the solution to a first-order ODE at points that are a distance $h$ apart. If you understand this approach, which is typical for numerics for ODEs, then you will understand other methods more easily.
 
-From Chapter 1 we know that an ODE of the first order is of the form $F(x, y, y') = 0$ and can often be written in the explicit form $y' = f(x, y)$. An initial value problem for this equation is of the form
+From <!-- TODO: replace Chapter 1 with actual chapter label -->Chapter 1 we know that an ODE of the first order is of the form $F(x, y, y') = 0$ and can often be written in the explicit form $y' = f(x, y)$. An initial value problem for this equation is of the form
 
 $$y' = f(x, y), \quad y(x_0) = y_0$$ {#eq-sec211-1}
 
@@ -41,7 +43,7 @@ and the corresponding Euler method (or Euler–Cauchy method)
 
 $$y_{n+1} = y_n + hf(x_n, y_n) \quad (n = 0, 1, \dots)$$ {#eq-sec211-3}
 
-discussed in Sec. 1.2. Geometrically, this is an approximation of the curve of $y(x)$ by a polygon whose first side is tangent to this curve at $x_0$ (see Fig. 8 in Sec. 1.2).
+discussed in Sec. 1.2. Geometrically, this is an approximation of the curve of $y(x)$ by a polygon whose first side is tangent to this curve at $x_0$ (see <!-- TODO: replace Fig. 8 in Sec. 1.2 with actual cross-reference label -->Fig. 8 in Sec. 1.2).
 
 ### Error of the Euler Method
 Recall from calculus that Taylor’s formula with remainder has the form
@@ -94,9 +96,9 @@ $$y_{n+1} = y_n + \frac{1}{2}h[f(x_n, y_n) + f(x_{n+1}, y_{n+1}^*)]$$ {#eq-sec21
 
 Hence the improved Euler method is a predictor–corrector method: In each step we predict a value (@eq-sec211-7a) and then we correct it by (@eq-sec211-7b).
 
-In algorithmic form, using the notations $k_1 = hf(x_n, y_n)$ in (@eq-sec211-7a) and $k_2 = hf(x_{n+1}, y_{n+1}^*)$ in (@eq-sec211-7b), we can write this method as shown in Table 21.1.
+In algorithmic form, using the notations $k_1 = hf(x_n, y_n)$ in (@eq-sec211-7a) and $k_2 = hf(x_{n+1}, y_{n+1}^*)$ in (@eq-sec211-7b), we can write this method as shown in @tbl-improved-euler-heun.
 
-**Table 21.1: Improved Euler Method (Heun’s Method)**
+**Table: Improved Euler Method (Heun’s Method)** {#tbl-improved-euler-heun}
 
 ***
 ***
@@ -147,7 +149,7 @@ $$
 Apply the improved Euler method to the initial value problem (@eq-sec211-6), choosing $h = 0.2$ as in Sec. 1.2.
 
 **Solution.**  
-For the present problem we have in Table 21.1:
+For the present problem we have in @tbl-improved-euler-heun:
 $$
 \begin{aligned}
 k_1 &= 0.2(x_n + y_n) \\
@@ -156,9 +158,9 @@ y_{n+1} &= y_n + \frac{0.2}{2}(2.2x_n + 2.2y_n + 0.2) = y_n + 0.22(x_n + y_n) + 
 \end{aligned}
 $$
 
-Table 21.2 shows that our present results are much more accurate than those for Euler’s method in Table 1.1 but at the cost of more computations. $\blacksquare$
+@tbl-improved-euler-errors shows that our present results are much more accurate than those for Euler’s method in <!-- TODO: replace Table 1.1 with actual table reference -->Table 1.1 but at the cost of more computations. $\blacksquare$
 
-**Table 21.2: Improved Euler Method for (@eq-sec211-6). Errors**
+**Table: Improved Euler Method for (@eq-sec211-6). Errors** {#tbl-improved-euler-errors}
 
 | $n$ | $x_n$ | $y_n$ | Exact Values (4D) | Error of Improved Euler | Error of Euler |
 |---|---|---|---|---|---|
@@ -196,13 +198,13 @@ Since the number of steps over a fixed $x$-interval is proportional to $1/h$, th
 Since the Euler method was an attractive pedagogical tool to teach the beginning of solving first-order ODEs numerically but had its drawbacks in terms of accuracy and could even produce wrong answers, we studied the improved Euler method and thereby introduced the idea of a predictor–corrector method. Although improved Euler is better than Euler, there are better methods that are used in industrial settings. Thus the practicing engineer has to know about the Runge–Kutta methods and its variants.
 
 ### Runge–Kutta Methods (RK Methods)
-A method of great practical importance and much greater accuracy than that of the improved Euler method is the classical Runge–Kutta method of fourth order, which we call briefly the Runge–Kutta method.^1^ It is shown in Table 21.3. We see that in each step we first compute four auxiliary quantities $k_1, k_2, k_3, k_4$ and then the new value $y_{n+1}$. The method is well suited to the computer because it needs no special starting procedure, makes light demand on storage, and repeatedly uses the same straightforward computational procedure. It is numerically stable.
+A method of great practical importance and much greater accuracy than that of the improved Euler method is the classical Runge–Kutta method of fourth order, which we call briefly the Runge–Kutta method.^1^ It is shown in @tbl-classical-runge-kutta. We see that in each step we first compute four auxiliary quantities $k_1, k_2, k_3, k_4$ and then the new value $y_{n+1}$. The method is well suited to the computer because it needs no special starting procedure, makes light demand on storage, and repeatedly uses the same straightforward computational procedure. It is numerically stable.
 
 Note that, if $f$ depends only on $x$, this method reduces to Simpson’s rule of integration (Sec. 19.5). Note further that $k_1, \dots, k_4$ depend on $n$ and generally change from step to step.
 
-> ^1^ Named after the German mathematicians KARL RUNGE (Sec. 19.4) and WILHELM KUTTA (1867–1944). Runge [Math. Annalen 46 (1895), 167–178], the German mathematician KARL HEUN (1859–1929) [Zeitschr. Math. Phys. 45 (1900), 23–38], and Kutta [Zeitschr. Math. Phys. 46 (1901), 435–453] developed various similar methods. Theoretically, there are infinitely many fourth-order methods using four function values per step. The method in Table 21.3 is most popular from a practical viewpoint because of its “symmetrical” form and its simple coefficients. It was given by Kutta.
+> ^1^ Named after the German mathematicians KARL RUNGE (Sec. 19.4) and WILHELM KUTTA (1867–1944). Runge [Math. Annalen 46 (1895), 167–178], the German mathematician KARL HEUN (1859–1929) [Zeitschr. Math. Phys. 45 (1900), 23–38], and Kutta [Zeitschr. Math. Phys. 46 (1901), 435–453] developed various similar methods. Theoretically, there are infinitely many fourth-order methods using four function values per step. The method in @tbl-classical-runge-kutta is most popular from a practical viewpoint because of its “symmetrical” form and its simple coefficients. It was given by Kutta.
 
-**Table 21.3: Classical Runge–Kutta Method of Fourth Order**
+**Table: Classical Runge–Kutta Method of Fourth Order** {#tbl-classical-runge-kutta}
 
 ***
 **ALGORITHM RUNGE–KUTTA ($f, x_0, y_0, h, N$)**  
@@ -242,9 +244,9 @@ k_4 &= 0.2(x_n + 0.2 + y_n + k_3)
 \end{aligned}
 $$
 
-Table 21.4 shows the results and their errors, which are smaller by factors $10^3$ and $10^4$ than those for the two Euler methods. See also Table 21.5. We mention in passing that since the present $k_1, \dots, k_4$ are simple, operations were saved by substituting $k_1$ into $k_2$, then $k_2$ into $k_3$, etc.; the resulting formula is shown in Column 4 of Table 21.4. Keep in mind that we have four function evaluations at each step. $\blacksquare$
+@tbl-rk-applied shows the results and their errors, which are smaller by factors $10^3$ and $10^4$ than those for the two Euler methods. See also @tbl-accuracy-comparison. We mention in passing that since the present $k_1, \dots, k_4$ are simple, operations were saved by substituting $k_1$ into $k_2$, then $k_2$ into $k_3$, etc.; the resulting formula is shown in Column 4 of @tbl-rk-applied. Keep in mind that we have four function evaluations at each step. $\blacksquare$
 
-**Table 21.4: Runge–Kutta Method Applied to (@eq-sec211-6)**
+**Table: Runge–Kutta Method Applied to (@eq-sec211-6)** {#tbl-rk-applied}
 
 | $n$ | $x_n$ | $y_n$ | $y_{n+1} - y_n = 0.2214(x_n + y_n) + 0.0214$ | Exact Values (6D) $y = e^x - x - 1$ | $10^6 \times \text{Error of } y_n$ |
 |---|---|---|---|---|---|
@@ -255,9 +257,9 @@ Table 21.4 shows the results and their errors, which are smaller by factors $10^
 | 4 | 0.8 | 0.425521 | 0.292730 | 0.425541 | 20 |
 | 5 | 1.0 | 0.718251 | | 0.718282 | 31 |
 
-**Table 21.5: Comparison of the Accuracy of the Three Methods under Consideration in the Case of the Initial Value Problem (@eq-sec211-6), with $h = 0.2$**
+**Table: Comparison of the Accuracy of the Three Methods under Consideration in the Case of the Initial Value Problem (@eq-sec211-6), with $h = 0.2$** {#tbl-accuracy-comparison}
 
-| $x$ | $y = e^x - x - 1$ | Euler (Table 1.1) | Improved Euler (Table 21.2) | Runge–Kutta (Table 21.4) |
+| $x$ | $y = e^x - x - 1$ | Euler (<!-- TODO: replace Table 1.1 with actual table reference -->Table 1.1) | Improved Euler (@tbl-improved-euler-errors) | Runge–Kutta (@tbl-rk-applied) |
 |---|---|---|---|---|
 | 0.2 | 0.021403 | 0.021 | 0.0014 | 0.000003 |
 | 0.4 | 0.091825 | 0.052 | 0.0034 | 0.000007 |
@@ -266,7 +268,7 @@ Table 21.4 shows the results and their errors, which are smaller by factors $10^
 | 1.0 | 0.718282 | 0.230 | 0.0156 | 0.000031 |
 
 ### Error and Step Size Control. RKF (Runge–Kutta–Fehlberg)
-The idea of adaptive integration (Sec. 19.5) has analogs for Runge–Kutta (and other) methods. In Table 21.3 for RK (Runge–Kutta), if we compute in each step approximations $\tilde{y}$ and $\tilde{\tilde{y}}$ with step sizes $h$ and $2h$, respectively, the latter has error per step equal to $2^5 = 32$ times that of the former; however, since we have only half as many steps for $2h$, the actual factor is $2^5/2 = 16$, so that, say,
+The idea of adaptive integration (Sec. 19.5) has analogs for Runge–Kutta (and other) methods. In @tbl-classical-runge-kutta for RK (Runge–Kutta), if we compute in each step approximations $\tilde{y}$ and $\tilde{\tilde{y}}$ with step sizes $h$ and $2h$, respectively, the latter has error per step equal to $2^5 = 32$ times that of the former; however, since we have only half as many steps for $2h$, the actual factor is $2^5/2 = 16$, so that, say,
 
 $$\epsilon(2h) \approx 16\epsilon(h)$$
 
@@ -278,13 +280,13 @@ Hence the error $\epsilon = \epsilon(h)$ for step size $h$ is about
 
 $$\epsilon \approx \frac{1}{15}(\tilde{y} - \tilde{\tilde{y}})$$ {#eq-sec211-10}
 
-where $\tilde{y} - \tilde{\tilde{y}} = y(h) - y(2h)$, as said before. Table 21.6 illustrates (@eq-sec211-10) for the initial value problem
+where $\tilde{y} - \tilde{\tilde{y}} = y(h) - y(2h)$, as said before. @tbl-rk-applied-error-estimate illustrates (@eq-sec211-10) for the initial value problem
 
 $$y' = (y - x - 1)^2 + 2, \quad y(0) = 1$$ {#eq-sec211-11}
 
 the step size $h = 0.1$ and $0 \le x \le 0.4$. We see that the estimate is close to the actual error. This method of error estimation is simple but may be unstable.
 
-**Table 21.6: Runge–Kutta Method Applied to the Initial Value Problem (@eq-sec211-11) and Error Estimate (@eq-sec211-10). Exact Solution $y = \tan x + x + 1$**
+**@tbl-rk-applied-error-estimate: Runge–Kutta Method Applied to the Initial Value Problem (@eq-sec211-11) and Error Estimate (@eq-sec211-10). Exact Solution $y = \tan x + x + 1$**
 
 | $x$ | $\tilde{y}$ (Step size $h$) | $\tilde{\tilde{y}}$ (Step size $2h$) | Error Estimate (@eq-sec211-10) | Actual Error | Exact Solution (9D) |
 |---|---|---|---|---|---|
@@ -351,11 +353,11 @@ y_1 &= 1.20033467253
 $$
 and the error estimate
 $$P_1 \approx y_1 - y_1^* = 0.00000000304$$
-The exact 12S-value is $y(0.1) = 1.20033467209$. Hence the actual error of $y_1$ is $-4.4 \cdot 10^{-10}$, smaller than that in Table 21.6 by a factor of 200. $\blacksquare$
+The exact 12S-value is $y(0.1) = 1.20033467209$. Hence the actual error of $y_1$ is $-4.4 \cdot 10^{-10}$, smaller than that in @tbl-rk-applied-error-estimate by a factor of 200. $\blacksquare$
 
-Table 21.7 summarizes essential features of the methods in this section. It can be shown that these methods are numerically stable (definition in Sec. 19.1). They are one-step methods because in each step we use the data of just one preceding step, in contrast to multistep methods where in each step we use data from several preceding steps, as we shall see in the next section.
+@tbl-methods-order summarizes essential features of the methods in this section. It can be shown that these methods are numerically stable (definition in Sec. 19.1). They are one-step methods because in each step we use the data of just one preceding step, in contrast to multistep methods where in each step we use data from several preceding steps, as we shall see in the next section.
 
-**Table 21.7: Methods Considered and Their Order (= Their Global Error)**
+**Table: Methods Considered and Their Order (= Their Global Error)** {#tbl-methods-order}
 
 | Method | Function Evaluations per Step | Global Error | Local Error |
 |---|---|---|---|
@@ -390,7 +392,7 @@ Noting that $x_{n+1} = x_n + h$, taking the term $-20y_{n+1}$ to the left, and d
 
 $$y_{n+1} = \frac{y_n + 20h(x_n + h)^2 + 2h(x_n + h)}{1 + 20h}$$ {#eq-sec211-16star}
 
-The numeric results in Table 21.8 show the following:
+The numeric results in @tbl-backward-euler show the following:
 1. Stability of the backward Euler method for $h = 0.05$ and also for $h = 0.2$ with an error increase by about a factor $4$ for $h = 0.2$,
 2. Stability of the Euler method for $h = 0.05$ but instability for $h = 0.1$ (@fig-21-01),
 3. Stability of RK for $h = 0.1$ but instability for $h = 0.2$.
@@ -401,7 +403,7 @@ Stiffness will be considered further in @sec-methods-systems-higher-order in con
 
 ![Fig. 21-01: Euler method with $h = 0.1$ for the stiff ODE in Example 4 and exact solution](../images/fig-21-01.png){#fig-21-01}
 
-**Table 21.8: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK**
+**Table: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK** {#tbl-backward-euler}
 
 | $x$ | BEM $h = 0.05$ | BEM $h = 0.2$ | Euler $h = 0.05$ | Euler $h = 0.1$ | RK $h = 0.1$ | RK $h = 0.2$ | Exact |
 |---|---|---|---|---|---|---|---|
@@ -417,7 +419,7 @@ Stiffness will be considered further in @sec-methods-systems-higher-order in con
 | 0.9 | 0.81250 | | 0.80750 | -0.20000 | 0.81255 | | 0.81000 |
 | 1.0 | 1.00250 | 1.01032 | 0.99750 | 2.00000 | 1.00252 | 3168.0 | 1.00000 |
 
-### PROBLEM SET 21.1
+### PROBLEM SET {#sec-ps-21-1}
 
 #### 1–4: EULER METHOD
 Do 10 steps. Solve exactly. Compute the error. Show details.
@@ -444,7 +446,7 @@ Do 10 steps. Compare as indicated. Show details.
 15. $y' + y \tan x = \sin 2x, \quad y(0) = 1, \quad h = 0.1$
 16. Do Prob. 15 with $h = 0.2$, 5 steps, and compare the errors with those in Prob. 15.
 17. $y' = 4x^3y^2, \quad y(0) = 0.5, \quad h = 0.1$
-18. Kutta’s third-order method is defined by $y_{n+1} = y_n + \frac{1}{6}(k_1 + 4k_2 + k_3^*)$ with $k_1$ and $k_2$ as in RK (Table 21.3) and $k_3^* = hf(x_{n+1}, y_n - k_1 + 2k_2)$. Apply this method to (@eq-sec211-6) in Example 1. Choose $h = 0.2$ and do 5 steps. Compare with Table 21.5.
+18. Kutta’s third-order method is defined by $y_{n+1} = y_n + \frac{1}{6}(k_1 + 4k_2 + k_3^*)$ with $k_1$ and $k_2$ as in RK (@tbl-classical-runge-kutta) and $k_3^* = hf(x_{n+1}, y_n - k_1 + 2k_2)$. Apply this method to (@eq-sec211-6) in Example 1. Choose $h = 0.2$ and do 5 steps. Compare with @tbl-accuracy-comparison.
 19. **CAS EXPERIMENT. Euler–Cauchy vs. RK.** Consider the initial value problem
 $$y' = (y - 0.01x^2)^2 \sin(x^2) + 0.02x, \quad y(0) = 0.4$$ {#eq-sec211-17}
 (solution: $y = 1/(2.5 - S(x)) + 0.01x^2$ where $S(x)$ is the Fresnel integral (38) in App. 3.1).  
@@ -456,9 +458,9 @@ $$y' = (y - 0.01x^2)^2 \sin(x^2) + 0.02x, \quad y(0) = 0.4$$ {#eq-sec211-17}
 (b) Apply the program to Example 3 in the text (10 steps, $h = 0.1$).  
 (c) $P_n$ in (b) gives a relatively good idea of the size of the actual error. Is this typical or accidental? Find out, by experimentation with other problems, on what properties of the ODE or solution this might depend.
 
-## 21.2 Multistep Methods {#sec-multistep-methods}
+## Multistep Methods {#sec-multistep-methods}
 
-In a one-step method we compute $y_{n+1}$ using only a single step, namely, the previous value $y_n$. One-step methods are “self-starting,” they need no help to get going because they obtain $y_1$ from the initial value $y_0$, etc. All methods in Sec. 21.1 are one-step.
+In a one-step method we compute $y_{n+1}$ using only a single step, namely, the previous value $y_n$. One-step methods are “self-starting,” they need no help to get going because they obtain $y_1$ from the initial value $y_0$, etc. All methods in @sec-methods-first-order-odes are one-step.
 
 In contrast, a multistep method uses, in each step, values from two or more previous steps. These methods are motivated by the expectation that the additional information will increase accuracy and stability. But to get started, one needs values, say, $y_0, y_1, y_2, y_3$ in a 4-step method, obtained by Runge–Kutta or another accurate method. Thus, multistep methods are not self-starting. Such methods are obtained as follows.
 
@@ -541,7 +543,7 @@ This predictor–corrector method (@eq-sec212-7a), (@eq-sec212-7b) is usually ca
 
 $$P_{n+1} \approx \frac{1}{15}(y_{n+1} - y_{n+1}^*)$$
 
-as can be shown. This is the analog of (@eq-sec211-10) in Sec. 21.1.
+as can be shown. This is the analog of (@eq-sec211-10) in @sec-methods-first-order-odes.
 
 > ^3^ FOREST RAY MOULTON (1872–1952), American astronomer at the University of Chicago. For ADAMS see footnote 2.
 
@@ -557,9 +559,9 @@ $$y' = x + y, \quad y(0) = 0$$ {#eq-sec212-8}
 by (@eq-sec212-7a), (@eq-sec212-7b) on the interval $0 \le x \le 2$, choosing $h = 0.2$.
 
 **Solution.**  
-The problem is the same as in Examples 1 and 2, Sec. 21.1, so that we can compare the results. We compute starting values $y_1, y_2, y_3$ by the classical Runge–Kutta method. Then in each step we predict by (@eq-sec212-7a) and make one correction by (@eq-sec212-7b) before we execute the next step. The results are shown and compared with the exact values in Table 21.9. We see that the corrections improve the accuracy considerably. This is typical. $\blacksquare$
+The problem is the same as in Examples 1 and 2, @sec-methods-first-order-odes, so that we can compare the results. We compute starting values $y_1, y_2, y_3$ by the classical Runge–Kutta method. Then in each step we predict by (@eq-sec212-7a) and make one correction by (@eq-sec212-7b) before we execute the next step. The results are shown and compared with the exact values in @tbl-adams-moulton. We see that the corrections improve the accuracy considerably. This is typical. $\blacksquare$
 
-**Table 21.9: Adams–Moulton Method Applied to the Initial Value Problem (@eq-sec212-8); Predicted Values Computed by (@eq-sec212-7a) and Corrected Values by (@eq-sec212-7b)**
+**Table: Adams–Moulton Method Applied to the Initial Value Problem (@eq-sec212-8); Predicted Values Computed by (@eq-sec212-7a) and Corrected Values by (@eq-sec212-7b)** {#tbl-adams-moulton}
 
 | $n$ | $x_n$ | Starting $y_n$ | Predicted $y_n^*$ | Corrected $y_n$ | Exact Values | $10^6 \times \text{Error}$ |
 |---|---|---|---|---|---|---|
@@ -582,7 +584,7 @@ Whereas the Adams–Moulton formula (@eq-sec212-7a), (@eq-sec212-7b) needs only 
 
 For more details, see Refs. [E25], [E26] listed in App. 1.
 
-### PROBLEM SET 21.2
+### PROBLEM SET {#sec-ps-21-2}
 
 #### 1–10: ADAMS–MOULTON METHOD
 Solve the initial value problem by Adams–Moulton (@eq-sec212-7a), (@eq-sec212-7b), 10 steps with 1 correction per step. Solve exactly and compute the error. Use RK where no starting values are given.
@@ -604,7 +606,7 @@ $$y_{n+1} = y_n + \frac{h}{12}(5f_{n+1}^* + 8f_n - f_{n-1})$$
 14. How much can you reduce the error in Prob. 13 by halving $h$ (20 steps, $h = 0.05$)? First guess, then compute.
 (d) The classical RK method often gives the same accuracy with step $2h$ as Adams–Moulton with step $h$, so that the total number of function evaluations is the same in both cases. Illustrate this with Prob. 8. (Hence corresponding comparisons in the literature in favor of Adams–Moulton are not valid. See also Probs. 6 and 7.)
 
-## 21.3 Methods for Systems and Higher Order ODEs {#sec-methods-systems-higher-order}
+## Methods for Systems and Higher Order ODEs {#sec-methods-systems-higher-order}
 
 Initial value problems for first-order systems of ODEs are of the form
 
@@ -621,7 +623,7 @@ y_m' &= f_m(x, y_1, \dots, y_m), \quad y_m(x_0) = y_{m0}
 \end{aligned}
 $$
 
-Here, $\mathbf{f}$ is assumed to be such that the problem has a unique solution $\mathbf{y}(x)$ on some open $x$-interval containing $x_0$. Our discussion will be independent of Chapter 4 on systems.
+Here, $\mathbf{f}$ is assumed to be such that the problem has a unique solution $\mathbf{y}(x)$ on some open $x$-interval containing $x_0$. Our discussion will be independent of <!-- TODO: replace Chapter 4 with actual chapter label -->Chapter 4 on systems.
 
 Before explaining solution methods it is important to note that (@eq-sec213-1) includes initial value problems for single $m$th-order ODEs,
 
@@ -656,7 +658,7 @@ $$y'' + 2y' + 0.75y = 0, \quad y(0) = 3, \quad y'(0) = -2.5$$
 by the Euler method for systems with step $h = 0.2$ for $x$ from 0 to 1 (where $x$ is time).
 
 **Solution.**  
-The Euler method (@eq-sec211-3), Sec. 21.1, generalizes to systems in the form
+The Euler method (@eq-sec211-3), @sec-methods-first-order-odes, generalizes to systems in the form
 
 $$\mathbf{y}_{n+1} = \mathbf{y}_n + h\mathbf{f}(x_n, \mathbf{y}_n)$$ {#eq-sec213-5}
 
@@ -687,11 +689,11 @@ y_{2,n+1} &= y_{2,n} + 0.2(-2y_{2,n} - 0.75y_{1,n})
 \end{aligned}
 $$
 
-The initial conditions are $y(0) = y_1(0) = 3, y'(0) = y_2(0) = -2.5$. The calculations are shown in Table 21.10. As for single ODEs, the results would not be accurate enough for practical purposes. The example merely serves to illustrate the method because the problem can be readily solved exactly,
+The initial conditions are $y(0) = y_1(0) = 3, y'(0) = y_2(0) = -2.5$. The calculations are shown in @tbl-euler-systems. As for single ODEs, the results would not be accurate enough for practical purposes. The example merely serves to illustrate the method because the problem can be readily solved exactly,
 
 $$y = y_1 = 2e^{-0.5x} + e^{-1.5x}, \quad \text{thus} \quad y' = y_2 = -e^{-0.5x} - 1.5e^{-1.5x}$$  $\blacksquare$
 
-**Table 21.10: Euler Method for Systems in Example 1 (Mass–Spring System)**
+**Table: Euler Method for Systems in Example 1 (Mass–Spring System)** {#tbl-euler-systems}
 
 | $n$ | $x_n$ | $y_{1,n}$ | $y_1$ Exact (5D) | Error $\epsilon_1 = y_1 - y_{1,n}$ | $y_{2,n}$ | $y_2$ Exact (5D) | Error $\epsilon_2 = y_2 - y_{2,n}$ |
 |---|---|---|---|---|---|---|---|
@@ -705,7 +707,7 @@ $$y = y_1 = 2e^{-0.5x} + e^{-1.5x}, \quad \text{thus} \quad y' = y_2 = -e^{-0.5x
 ### Runge–Kutta Methods for Systems
 As for Euler methods, we obtain RK methods for an initial value problem (@eq-sec213-1) simply by writing vector formulas for vectors with $m$ components, which, for $m = 1$, reduce to the previous scalar formulas.
 
-Thus, for the classical RK method of fourth order in Table 21.3, we obtain
+Thus, for the classical RK method of fourth order in @tbl-classical-runge-kutta, we obtain
 
 $$\mathbf{y}(x_0) = \mathbf{y}_0$$ {#eq-sec213-6a}
 
@@ -756,11 +758,11 @@ For example, the second component of $\mathbf{b}$ is obtained as follows. $\math
 
 $$\mathbf{y}_{n+1} = \mathbf{y}_n + \frac{1}{6}(\mathbf{a} + 2\mathbf{b} + 2\mathbf{c} + \mathbf{d})$$ {#eq-sec213-6cstar}
 
-Table 21.11 shows the values $y(x) = y_1(x)$ of the Airy function $\text{Ai}(x)$ and of its derivative $y'(x) = y_2(x)$ as well as of the (rather small!) error of $y(x)$.  $\blacksquare$
+@tbl-rk-systems shows the values $y(x) = y_1(x)$ of the Airy function $\text{Ai}(x)$ and of its derivative $y'(x) = y_2(x)$ as well as of the (rather small!) error of $y(x)$.  $\blacksquare$
 
 > ^4^ Named after Sir GEORGE BIDELL AIRY (1801–1892), English mathematician, who is known for his work in elasticity and in PDEs.
 
-**Table 21.11: RK Method for Systems: Values $y_{1,n}(x_n)$ of the Airy Function $\text{Ai}(x)$ in Example 2**
+**Table: RK Method for Systems: Values $y_{1,n}(x_n)$ of the Airy Function $	ext{Ai}(x)$ in Example 2** {#tbl-rk-systems}
 
 | $n$ | $x_n$ | $y_{1,n}(x_n)$ | $y_1(x_n)$ Exact (8D) | $10^8 \times \text{Error of } y_1$ | $y_{2,n}(x_n)$ |
 |---|---|---|---|---|---|
@@ -813,9 +815,9 @@ k_4 &= 0.1(x_n + 0.2)(y_n + 0.2y'_n + 0.2k_2)
 \end{aligned}
 $$
 
-Table 21.12 shows the results. The accuracy is the same as in Example 2, but the work was much less. $\blacksquare$
+@tbl-rkn-applied shows the results. The accuracy is the same as in Example 2, but the work was much less. $\blacksquare$
 
-**Table 21.12: Runge–Kutta–Nyström Method Applied to Airy’s Equation, Computation of the Airy Function $y = \text{Ai}(x)$**
+**Table: Runge–Kutta–Nyström Method Applied to Airy’s Equation, Computation of the Airy Function $y = 	ext{Ai}(x)$** {#tbl-rkn-applied}
 
 | $x_n$ | $y_n$ | $y'_n$ | $y(x)$ Exact (8D) | $10^8 \times \text{Error of } y_n$ |
 |---|---|---|---|---|
@@ -829,11 +831,11 @@ Table 21.12 shows the results. The accuracy is the same as in Example 2, but the
 Our work in Examples 2 and 3 also illustrates that usefulness of methods for ODEs in the computation of values of “higher transcendental functions.”
 
 ### Backward Euler Method for Systems. Stiff Systems
-The backward Euler formula (@eq-sec211-16) in Sec. 21.1 generalizes to systems in the form
+The backward Euler formula (@eq-sec211-16) in @sec-methods-first-order-odes generalizes to systems in the form
 
 $$\mathbf{y}_{n+1} = \mathbf{y}_n + h\mathbf{f}(x_{n+1}, \mathbf{y}_{n+1}) \quad (n = 0, 1, \dots)$$ {#eq-sec213-8}
 
-This is again an implicit method, giving $\mathbf{y}_{n+1}$ implicitly for given $\mathbf{y}_n$. Hence (@eq-sec213-8) must be solved for $\mathbf{y}_{n+1}$. For a linear system this is shown in the next example. This example also illustrates that, similar to the case of a single ODE in Sec. 21.1, the method is very useful for stiff systems. These are systems of ODEs whose matrix has eigenvalues $\lambda$ of very different magnitudes, having the effect that, just as in Sec. 21.1, the step in direct methods, RK for example, cannot be increased beyond a certain threshold without losing stability. ($\lambda = -1$ and $-10$ in Example 4, but larger differences do occur in applications.)
+This is again an implicit method, giving $\mathbf{y}_{n+1}$ implicitly for given $\mathbf{y}_n$. Hence (@eq-sec213-8) must be solved for $\mathbf{y}_{n+1}$. For a linear system this is shown in the next example. This example also illustrates that, similar to the case of a single ODE in @sec-methods-first-order-odes, the method is very useful for stiff systems. These are systems of ODEs whose matrix has eigenvalues $\lambda$ of very different magnitudes, having the effect that, just as in @sec-methods-first-order-odes, the step in direct methods, RK for example, cannot be increased beyond a certain threshold without losing stability. ($\lambda = -1$ and $-10$ in Example 4, but larger differences do occur in applications.)
 
 ### EXAMPLE 4: Backward Euler Method for Systems of ODEs. Stiff Systems
 Compare the backward Euler method (@eq-sec213-8) with the Euler and the RK methods for numerically solving the initial value problem
@@ -881,9 +883,9 @@ The coefficient determinant is $D = 1 + 11h + 10h^2$, and Cramer’s rule (in Se
 
 $$\mathbf{y}_{n+1} = \frac{1}{D} \begin{pmatrix} (1 + 11h)y_{1,n} + hy_{2,n} + 10h^2 x_n + 11h^2 + 10h^3 \\ -10hy_{1,n} + y_{2,n} + 10hx_n + 11h + 10h^2 \end{pmatrix}$$
 
-Table 21.13 shows the results.
+@tbl-backward-euler-systems shows the results.
 
-**Table 21.13: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK**
+**Table: Backward Euler Method (BEM) for Example 4. Comparison with Euler and RK** {#tbl-backward-euler-systems}
 
 | $x$ | BEM $h = 0.2$ | BEM $h = 0.4$ | Euler $h = 0.1$ | Euler $h = 0.2$ | RK $h = 0.2$ | RK $h = 0.3$ | Exact |
 |---|---|---|---|---|---|---|---|
@@ -899,16 +901,16 @@ Table 21.13 shows the results.
 | 1.8 | 1.99386 | | 1.95009 | 0.93422 | 1.96535 | 3.03947 | 1.96530 |
 | 2.0 | 2.16152 | 2.18625 | 2.12158 | 3.10737 | 2.13536 | | 2.13534 |
 
-Table 21.13 shows the following:
+@tbl-backward-euler-systems shows the following:
 1. Stability of the backward Euler method for $h = 0.2$ and $0.4$ (and in fact for any $h$; try $h = 5.0$) with decreasing accuracy for increasing $h$.
 2. Stability of the Euler method for $h = 0.1$ but instability for $h = 0.2$.
 3. Stability of RK for $h = 0.2$ but instability for $h = 0.3$.
 
-Figure 452 shows the Euler method for $h = 0.18$, an interesting case with initial jumping (for about $x > 3$) but later monotone following the solution curve of $y = y_1$. See also CAS Experiment 15. $\blacksquare$
+@fig-21-02 shows the Euler method for $h = 0.18$, an interesting case with initial jumping (for about $x > 3$) but later monotone following the solution curve of $y = y_1$. See also CAS Experiment 15. $\blacksquare$
 
 ![Fig. 21-02: Euler method with $h = 0.18$ in Example 4](../images/fig-21-02.png){#fig-21-02}
 
-### PROBLEM SET 21.3
+### PROBLEM SET {#sec-ps-21-3}
 
 #### 1–6: EULER FOR SYSTEMS AND SECOND-ORDER ODEs
 Solve by the Euler method. Graph the solution in the $y_1 y_2$-plane. Calculate the errors.
@@ -925,8 +927,8 @@ Solve by the classical RK.
 8. The system in Prob. 2.
 9. The system in Prob. 1.
 10. The system in Prob. 4.
-11. **Pendulum equation.** $y'' + \sin y = 0, \quad y(\pi) = 0, \quad y'(\pi) = 1$, as a system, $h = 0.2$, 20 steps. How does your result fit into Fig. 93 in Sec. 4.5?
-12. **Bessel Function $J_0$.** $xy'' + y' + xy = 0, \quad y(1) = 0.765198, \quad y'(1) = -0.440051, \quad h = 0.5$, 5 steps. (This gives the standard solution $J_0(x)$ in Fig. 110 in Sec. 5.4.)
+11. **Pendulum equation.** $y'' + \sin y = 0, \quad y(\pi) = 0, \quad y'(\pi) = 1$, as a system, $h = 0.2$, 20 steps. How does your result fit into <!-- TODO: replace Fig. 93 with actual figure reference -->Fig. 93 in <!-- TODO: replace Sec. 4.5 with actual cross-reference label -->Sec. 4.5?
+12. **Bessel Function $J_0$.** $xy'' + y' + xy = 0, \quad y(1) = 0.765198, \quad y'(1) = -0.440051, \quad h = 0.5$, 5 steps. (This gives the standard solution $J_0(x)$ in <!-- TODO: replace Fig. 110 with actual figure reference -->Fig. 110 in <!-- TODO: replace Sec. 5.4 with actual cross-reference label -->Sec. 5.4.)
 13. Verify the formulas and calculations for the Airy equation in Example 2 of the text.
 14. **RKN.** The classical RK for a first-order ODE extends to second-order ODEs (E. J. Nyström, Acta fenn. No 13, 1925). If the ODE is $y'' = f(x, y)$, not containing $y'$, then
 $$
@@ -941,9 +943,9 @@ $$
 Apply this RKN (Runge–Kutta–Nyström) method to the Airy ODE in Example 2 with $h = 0.2$ as before, to obtain approximate values of $\text{Ai}(x)$.
 (d) Compute and graph backward Euler values for large $h$; confirm stability and investigate the error increase for growing $h$.
 
-## 21.4 Methods for Elliptic PDEs {#sec-methods-elliptic-pdes}
+## Methods for Elliptic PDEs {#sec-methods-elliptic-pdes}
 
-We have arrived at the second half of this chapter, which is devoted to numerics for partial differential equations (PDEs). As we have seen in Chapter 12, there are many applications of PDEs, such as in dynamics, elasticity, heat transfer, electromagnetic theory, quantum mechanics, and others. Selected because of their importance in applications, the PDEs covered here include the Laplace equation, the Poisson equation, the heat equation, and the wave equation. By covering these equations based on their importance in applications we also selected equations that are important for theoretical considerations. Indeed, these equations serve as models for elliptic, parabolic, and hyperbolic PDEs. For example, the Laplace equation is a representative example of an elliptic type of PDE, and so forth.
+We have arrived at the second half of this chapter, which is devoted to numerics for partial differential equations (PDEs). As we have seen in <!-- TODO: replace Chapter 12 with actual chapter label -->Chapter 12, there are many applications of PDEs, such as in dynamics, elasticity, heat transfer, electromagnetic theory, quantum mechanics, and others. Selected because of their importance in applications, the PDEs covered here include the Laplace equation, the Poisson equation, the heat equation, and the wave equation. By covering these equations based on their importance in applications we also selected equations that are important for theoretical considerations. Indeed, these equations serve as models for elliptic, parabolic, and hyperbolic PDEs. For example, the Laplace equation is a representative example of an elliptic type of PDE, and so forth.
 
 Recall, from Sec. 12.4, that a PDE is called quasilinear if it is linear in the highest derivatives. Hence a second-order quasilinear PDE in two independent variables $x, y$ is of the form
 
@@ -1192,7 +1194,7 @@ $$p_0 = 2 \sin \frac{\pi}{K}$$ {#eq-sec214-18}
 
 where $K$ is the larger of $M + 1$ and $N + 1$ (see above). Even better results can be achieved by letting $p$ vary from step to step. More details of the ADI method and variants are discussed in Ref. [E25] listed in App. 1.
 
-### PROBLEM SET 21.4
+### PROBLEM SET {#sec-ps-21-4}
 
 1. Derive (@eq-sec214-5b), (@eq-sec214-6b), and (@eq-sec214-6c).
 2. Verify the calculations in Example 1 of the text. Find out experimentally how many steps you need to obtain the solution of the linear system with an accuracy of 3S.
@@ -1224,7 +1226,7 @@ For the grid in @fig-21-06 compute the potential at the four internal points by 
 (a) Write a program for Gauss–Seidel with 16 equations in 16 unknowns, composing the matrix (@eq-sec214-13) from the indicated $4 \times 4$ submatrices and including a transformation of the vector of the boundary values into the vector $\mathbf{b}$ of $\mathbf{A}\mathbf{x} = \mathbf{b}$.  
 (b) Apply the program to the square grid in $0 \le x \le 5, \ 0 \le y \le 5$ with $h = 1$ and $u = 220$ on the upper and lower edges, $u = 110$ on the left edge and $u = -10$ on the right edge. Solve the linear system also by Gauss elimination. What accuracy is reached in the 20th Gauss–Seidel step?
 
-## 21.5 Neumann and Mixed Problems. Irregular Boundary {#sec-neumann-mixed-problems}
+## Neumann and Mixed Problems. Irregular Boundary {#sec-neumann-mixed-problems}
 
 We continue our discussion of boundary value problems for elliptic PDEs in a region $R$ in the $xy$-plane. The Dirichlet problem was studied in the last section. In solving Neumann and mixed problems (defined in the last section) we are confronted with a new situation, because there are boundary points at which the (outer) normal derivative $u_n = \partial u/\partial n$ of the solution is given, but $u$ itself is unknown since it is not given. To handle such points we need a new idea. This idea is the same for Neumann and mixed problems. Hence we may explain it in connection with one of these two types of problems. We shall do so and consider a typical example as follows.
 
@@ -1236,13 +1238,13 @@ $$\nabla^2 u = u_{xx} + u_{yy} = f(x, y) = 12xy$$
 shown in @fig-21-08a.
 
 **Solution.**  
-We use the grid shown in @fig-21-08b, where $h = 0.5$. We recall that (7) in Sec. 21.4 has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
+We use the grid shown in @fig-21-08b, where $h = 0.5$. We recall that (7) in @sec-methods-elliptic-pdes has the right side $h^2f(x, y) = 0.5^2 \cdot 12xy = 3xy$. From the formulas $u = 3y^3$ and $u_n = 6x$ given on the boundary we compute the boundary data:
 
 $$u_{31} = 0.375, \quad \frac{\partial u_{12}}{\partial n} = \frac{\partial u}{\partial y}\Big|_{12} = 6 \cdot 0.5 = 3$$
 
 $$u_{32} = 3, \quad \frac{\partial u_{22}}{\partial n} = \frac{\partial u}{\partial y}\Big|_{22} = 6 \cdot 1 = 6$$
 
-$P_{11}$ and $P_{21}$ are internal mesh points and can be handled as in the last section. Indeed, from (@eq-sec214-7), Sec. 21.4, with $h^2 = 0.25$ and $h^2 f(x, y) = 3xy$ and from the given boundary values we obtain two equations corresponding to $P_{11}$ and $P_{21}$, as follows (with $-0$ resulting from the left boundary):
+$P_{11}$ and $P_{21}$ are internal mesh points and can be handled as in the last section. Indeed, from (@eq-sec214-7), @sec-methods-elliptic-pdes, with $h^2 = 0.25$ and $h^2 f(x, y) = 3xy$ and from the given boundary values we obtain two equations corresponding to $P_{11}$ and $P_{21}$, as follows (with $-0$ resulting from the left boundary):
 
 $$
 -4u_{11} + u_{21} + u_{12} + u_{22} = 12(0.5 \cdot 0.5) \cdot \frac{1}{4} - 0 = 0.75
@@ -1320,7 +1322,7 @@ By addition,
 
 $$\nabla^2 u_O \approx \frac{2}{h^2} \left[ \frac{u_A}{a(1 + a)} + \frac{u_B}{b(1 + b)} + \frac{u_P}{1 + a} + \frac{u_Q}{1 + b} - \frac{a + b}{ab} u_O \right]$$ {#eq-sec215-5}
 
-For example, if $a = \frac{1}{2}, b = \frac{1}{2}$, instead of the stencil (see Sec. 21.4)
+For example, if $a = \frac{1}{2}, b = \frac{1}{2}$, instead of the stencil (see @sec-methods-elliptic-pdes)
 
 $$\left\{ \begin{matrix} & 1 & \\ 1 & -4 & 1 \\ & 1 & \end{matrix} \right\}$$
 
@@ -1380,7 +1382,7 @@ In practice one would use a much finer grid and solve the resulting large system
 
 ![Fig. 21-11: Region, boundary values, and grid in Example 2](../images/fig-21-11.png){#fig-21-11}
 
-### PROBLEM SET 21.5
+### PROBLEM SET {#sec-ps-21-5}
 
 #### 1–7: MIXED BOUNDARY VALUE PROBLEMS
 1. Check the values for the Poisson equation at the end of Example 1 by solving (@eq-sec215-3) by Gauss elimination.
@@ -1409,7 +1411,7 @@ In practice one would use a much finer grid and solve the resulting large system
 
 ![Fig. 21-14: Grid for Problem 16](../images/fig-21-14.png){#fig-21-14}
 
-## 21.6 Methods for Parabolic PDEs {#sec-methods-parabolic-pdes}
+## Methods for Parabolic PDEs {#sec-methods-parabolic-pdes}
 
 The last two sections concerned elliptic PDEs, and we now turn to parabolic PDEs. Recall that the definitions of elliptic, parabolic, and hyperbolic PDEs were given in @sec-methods-elliptic-pdes. There it was also mentioned that the general behavior of solutions differs from type to type, and so do the problems of practical interest. This reflects on numerics as follows. For all three types, one replaces the PDE by a corresponding difference equation, but for parabolic and hyperbolic PDEs this does not automatically guarantee the convergence of the approximate solution to the exact solution as the mesh $h \to 0$; in fact, it does not even guarantee convergence at all. For these two types of PDEs one needs additional conditions (inequalities) to assure convergence and stability, the latter meaning that small perturbations in the initial data (or small errors at any time) cause only small changes at later times.
 
@@ -1566,7 +1568,7 @@ Formula (@eq-sec216-5) with an even larger $r = 2.5$ (and $h = 0.2$ as before) g
 
 $\blacksquare$
 
-### PROBLEM SET 21.6
+### PROBLEM SET {#sec-ps-21-6}
 
 1. **Nondimensional form.** Show that the heat equation $\tilde{u}_{\tilde{t}} = c^2 \tilde{u}_{\tilde{x}\tilde{x}}, 0 \le \tilde{x} \le L$, can be transformed to the "nondimensional" standard form $u_t = u_{xx}, 0 \le x \le 1$, by setting $x = \tilde{x}/L, t = c^2 \tilde{t}/L^2, u = \tilde{u}/u_0$, where $u_0$ is any constant temperature.
 2. **Difference equation.** Derive the difference approximation (@eq-sec216-4) of the heat equation.
@@ -1574,7 +1576,7 @@ $\blacksquare$
 4. **CAS EXPERIMENT. Comparison of Methods.**
    a. Write programs for the explicit and the Crank–Nicolson methods.
    b. Apply the programs to the heat problem of a laterally insulated bar of length 1 with $u(x, 0) = \sin \pi x$ and $u(0, t) = u(1, t) = 0$ for all $t$, using $h = 0.2, k = 0.01$ for the explicit method (20 steps), $h = 0.2$ and (@eq-sec216-9) for the Crank–Nicolson method (5 steps). Obtain exact 6D-values from a series and compare.
-   c. Graph temperature curves in (b) in two figures similar to Fig. 299 in Sec. 12.7.
+   c. Graph temperature curves in (b) in two figures similar to <!-- TODO: replace Fig. 299 with actual figure reference -->Fig. 299 in <!-- TODO: replace Sec. 12.7 with actual cross-reference label -->Sec. 12.7.
    d. Experiment with smaller $h$ (0.1, 0.05, etc.) for both methods to find out to what extent accuracy increases under systematic changes of $h$ and $k$.
 
 #### 5–10: EXPLICIT METHOD
@@ -1595,7 +1597,7 @@ $\blacksquare$
 14. Solve (@eq-sec216-1)–(@eq-sec216-3) by Crank–Nicolson with $r = 1$ (5 steps), where $f(x) = x(1 - x), h = 0.1$. (Compare with Prob. 15.)
 15. Solve (@eq-sec216-1)–(@eq-sec216-3) by Crank–Nicolson with $r = 1$ (5 steps), where $f(x) = x(1 - x), h = 0.2$.
 
-## 21.7 Method for Hyperbolic PDEs {#sec-methods-hyperbolic-pdes}
+## Method for Hyperbolic PDEs {#sec-methods-hyperbolic-pdes}
 
 In this section we consider the numeric solution of problems involving hyperbolic PDEs. We explain a standard method in terms of a typical setting for the prototype of a hyperbolic PDE, the wave equation:
 
@@ -1609,9 +1611,9 @@ $$u(0, t) = u(1, t) = 0 \quad \text{(Boundary conditions)}$$ {#eq-sec217-4}
 
 Note that an equation $u_{tt} = c^2 u_{xx}$ and another $x$-interval can be reduced to the form (@eq-sec217-1) by a linear transformation of $x$ and $t$. This is similar to @sec-methods-parabolic-pdes, Prob. 1.
 
-For instance, (@eq-sec217-1)–(@eq-sec217-4) is the model of a vibrating elastic string with fixed ends at $x = 0$ and $x = 1$ (see Sec. 12.2). Although an analytic solution of the problem is given in (13), Sec. 12.4, we use the problem for explaining basic ideas of the numeric approach that are also relevant for more complicated hyperbolic PDEs.
+For instance, (@eq-sec217-1)–(@eq-sec217-4) is the model of a vibrating elastic string with fixed ends at $x = 0$ and $x = 1$ (see Sec. 12.2). Although an analytic solution of the problem is given in <!-- TODO: verify equation reference -->(13), Sec. 12.4, we use the problem for explaining basic ideas of the numeric approach that are also relevant for more complicated hyperbolic PDEs.
 
-Replacing the derivatives by difference quotients as before, we obtain from (@eq-sec217-1) [see (6) in @sec-methods-elliptic-pdes with $y = t$]
+Replacing the derivatives by difference quotients as before, we obtain from (@eq-sec217-1) [see (@eq-sec214-6a) and (@eq-sec214-6b) in @sec-methods-elliptic-pdes with $y = t$]
 
 $$\frac{1}{k^2} (u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2} (u_{i+1, j} - 2u_{ij} + u_{i-1, j})$$ {#eq-sec217-5}
 
@@ -1685,11 +1687,11 @@ These values are exact to 3D (3 decimals), the exact solution of the problem bei
 
 $$u(x, t) = \sin \pi x \cos \pi t$$
 
-The reason for the exactness follows from d'Alembert's solution (4), Sec. 12.4. (See Prob. 10, below.) $\blacksquare$
+The reason for the exactness follows from d'Alembert's solution <!-- TODO: verify equation reference -->(4), Sec. 12.4. (See Prob. 10, below.) $\blacksquare$
 
-This is the end of Chapter 21 on numerics for ODEs and PDEs, a field that continues to develop rapidly in both applications and theoretical research. Much of the activity in the field is due to the computer serving as an invaluable tool for solving large-scale and complicated practical problems as well as for testing and experimenting with innovative ideas. These ideas could be small or major improvements on existing numeric algorithms or testing new algorithms as well as other ideas.
+This is the end of @ch-numerics-odes-pdes on numerics for ODEs and PDEs, a field that continues to develop rapidly in both applications and theoretical research. Much of the activity in the field is due to the computer serving as an invaluable tool for solving large-scale and complicated practical problems as well as for testing and experimenting with innovative ideas. These ideas could be small or major improvements on existing numeric algorithms or testing new algorithms as well as other ideas.
 
-### PROBLEM SET 21.7
+### PROBLEM SET {#sec-ps-21-7}
 
 #### 1–3: VIBRATING STRING
 Using the present method, solve (@eq-sec217-1)–(@eq-sec217-4) with $h = k = 0.2$ for the given initial deflection $f(x)$ and initial velocity 0 on the given $t$-interval.
@@ -1697,17 +1699,17 @@ Using the present method, solve (@eq-sec217-1)–(@eq-sec217-4) with $h = k = 0.
 2. $f(x) = x^2 - x^3$, $0 \le t \le 2.0$
 3. $f(x) = 0.2(x - x^2)$, $0 \le t \le 2.0$
 
-4. **Another starting formula.** Show that (12) in Sec. 12.4 gives the starting formula
+4. **Another starting formula.** Show that <!-- TODO: verify equation reference -->(12) in Sec. 12.4 gives the starting formula
    $$u_{i1} = \frac{1}{2} (u_{i+1, 0} + u_{i-1, 0}) + \frac{1}{2} \int_{x_i - k}^{x_i + k} g(s) \, ds$$
    (where one can evaluate the integral numerically if necessary). In what case is this identical with (@eq-sec217-8)?
 5. **Nonzero initial displacement and speed.** Illustrate the starting procedure when both $f$ and $g$ are not identically zero, say, $f(x) = 1 - \cos 2\pi x, g(x) = x(1 - x), h = k = 0.1$, 2 time steps.
 6. Solve (1)–(3) ($h = k = 0.2, 5$ time steps) subject to $f(x) = x^2, g(x) = 2x, u_x(0, t) = 2t, u(1, t) = (1 + t)^2$.
-7. **Zero initial displacement.** If the string governed by the wave equation (1) starts from its equilibrium position with initial velocity $g(x) = \sin \pi x$, what is its displacement at time $t = 0.4$ and $x = 0.2, 0.4, 0.6, 0.8$? (Use the present method with $h = 0.2, k = 0.2$. Use (@eq-sec217-8). Compare with the exact values obtained from (12) in Sec. 12.4.)
+7. **Zero initial displacement.** If the string governed by the wave equation (1) starts from its equilibrium position with initial velocity $g(x) = \sin \pi x$, what is its displacement at time $t = 0.4$ and $x = 0.2, 0.4, 0.6, 0.8$? (Use the present method with $h = 0.2, k = 0.2$. Use (@eq-sec217-8). Compare with the exact values obtained from <!-- TODO: verify equation reference -->(12) in Sec. 12.4.)
 8. Compute approximate values in Prob. 7, using a finer grid ($h = 0.1, k = 0.1$), and notice the increase in accuracy.
 9. Compute $u$ in Prob. 5 for $t = 0.1$ and $x = 0.1, 0.2, \dots, 0.9$, using the formula in Prob. 8, and compare the values.
-10. Show that from d’Alembert’s solution (13) in Sec. 12.4 with $c = 1$ it follows that (@eq-sec217-6) in the present section gives the exact value $u_{i, j+1} = u(ih, (j + 1)h)$.
+10. Show that from d’Alembert’s solution <!-- TODO: verify equation reference -->(13) in Sec. 12.4 with $c = 1$ it follows that (@eq-sec217-6) in the present section gives the exact value $u_{i, j+1} = u(ih, (j + 1)h)$.
 
-## CHAPTER 21 REVIEW QUESTIONS AND PROBLEMS {#sec-ch21-review}
+## Review Questions and Problems {#sec-ch21-review}
 
 ### Review Questions
 1. Explain the Euler and improved Euler methods in geometrical terms. Why did we consider these methods?
@@ -1759,9 +1761,9 @@ Find the potential in @fig-21-22, using the given grid and the boundary values:
 
 35. Solve $u_t = u_{xx} \ (0 \le x \le 1, t \ge 0), u(x, 0) = x^2(1 - x), u(0, t) = u(1, t) = 0$ by Crank–Nicolson with $h = 0.2, k = 0.04, 5$ time steps.
 
-## SUMMARY OF CHAPTER 21 {#sec-ch21-summary}
+## Summary {#sec-ch21-summary}
 
-In this chapter we discussed numerics for ODEs (Secs. 21.1–21.3) and PDEs (Secs. 21.4–21.7). Methods for initial value problems
+In this chapter we discussed numerics for ODEs (@sec-methods-first-order-odes, @sec-multistep-methods, and @sec-methods-systems-higher-order) and PDEs (@sec-methods-elliptic-pdes, @sec-neumann-mixed-problems, @sec-methods-parabolic-pdes, and @sec-methods-hyperbolic-pdes). Methods for initial value problems
 
 $$y' = f(x, y), \quad y(x_0) = y_0$$ {#eq-sum21-1}
 
@@ -1775,7 +1777,7 @@ $$y_{n+1} = y_n + hf(x_n, y_n) \quad (n = 0, 1, \dots)$$ {#eq-sum21-2}
 
 Taking one more term into account, we obtain the improved Euler method. Both methods show the basic idea but are too inaccurate in most cases.
 
-Truncating after the term in $h^4$, we get the important classical Runge–Kutta (RK) method of fourth order. The crucial idea in this method is the replacement of the cumbersome evaluation of derivatives by the evaluation of $f(x, y)$ at suitable points $(x, y)$; thus in each step we first compute four auxiliary quantities (Sec. 21.1)
+Truncating after the term in $h^4$, we get the important classical Runge–Kutta (RK) method of fourth order. The crucial idea in this method is the replacement of the cumbersome evaluation of derivatives by the evaluation of $f(x, y)$ at suitable points $(x, y)$; thus in each step we first compute four auxiliary quantities (@sec-methods-first-order-odes)
 
 $$
 \begin{aligned}
@@ -1792,7 +1794,7 @@ $$y_{n+1} = y_n + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)$$ {#eq-sum21-3b}
 
 Error and step size control are possible by step halving or by RKF (Runge–Kutta–Fehlberg).
 
-The methods in Sec. 21.1 are one-step methods since they get $y_{n+1}$ from the result $y_n$ of a single step. A multistep method (Sec. 21.2) uses the values $y_n, y_{n-1}, \dots$ of several steps for computing $y_{n+1}$. Integrating cubic interpolation polynomials gives the Adams–Bashforth predictor (Sec. 21.2)
+The methods in @sec-methods-first-order-odes are one-step methods since they get $y_{n+1}$ from the result $y_n$ of a single step. A multistep method (@sec-multistep-methods) uses the values $y_n, y_{n-1}, \dots$ of several steps for computing $y_{n+1}$. Integrating cubic interpolation polynomials gives the Adams–Bashforth predictor (@sec-multistep-methods)
 
 $$y^*_{n+1} = y_n + \frac{1}{24}h(55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3})$$ {#eq-sum21-4a}
 
@@ -1814,16 +1816,16 @@ This includes single $m\text{th}$-order ODEs, which are reduced to systems. Seco
 
 Numeric methods for PDEs are obtained by replacing partial derivatives by difference quotients. This leads to approximating difference equations, for the Laplace equation to
 
-$$u_{i+1, j} + u_{i, j+1} + u_{i-1, j} + u_{i, j-1} - 4u_{ij} = 0 \quad \text{(Sec. 21.4)}$$ {#eq-sum21-5}
+$$u_{i+1, j} + u_{i, j+1} + u_{i-1, j} + u_{i, j-1} - 4u_{ij} = 0 \quad \text{(@sec-methods-elliptic-pdes)}$$ {#eq-sum21-5}
 
 for the heat equation to
 
-$$\frac{1}{k}(u_{i, j+1} - u_{ij}) = \frac{1}{h^2}(u_{i+1, j} - 2u_{ij} + u_{i-1, j}) \quad \text{(Sec. 21.6)}$$ {#eq-sum21-6}
+$$\frac{1}{k}(u_{i, j+1} - u_{ij}) = \frac{1}{h^2}(u_{i+1, j} - 2u_{ij} + u_{i-1, j}) \quad \text{(@sec-methods-parabolic-pdes)}$$ {#eq-sum21-6}
 
 and for the wave equation to
 
-$$\frac{1}{k^2}(u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2}(u_{i+1, j} - 2u_{ij} + u_{i-1, j}) \quad \text{(Sec. 21.7)}$$ {#eq-sum21-7}
+$$\frac{1}{k^2}(u_{i, j+1} - 2u_{ij} + u_{i, j-1}) = \frac{1}{h^2}(u_{i+1, j} - 2u_{ij} + u_{i-1, j}) \quad \text{(@sec-methods-hyperbolic-pdes)}$$ {#eq-sum21-7}
 
 here $h$ and $k$ are the mesh sizes of a grid in the $x$- and $y$-directions, respectively, where in (@eq-sum21-6) and (@eq-sum21-7) the variable $y$ is time $t$.
 
-These PDEs are elliptic, parabolic, and hyperbolic, respectively. Corresponding numeric methods differ, for the following reason. For elliptic PDEs we have boundary value problems, and we discussed for them the Gauss–Seidel method (also known as Liebmann’s method) and the ADI method (Secs. 21.4, 21.5). For parabolic PDEs we are given one initial condition and boundary conditions, and we discussed an explicit method and the Crank–Nicolson method (Sec. 21.6). For hyperbolic PDEs, the problems are similar but we are given a second initial condition (Sec. 21.7).
+These PDEs are elliptic, parabolic, and hyperbolic, respectively. Corresponding numeric methods differ, for the following reason. For elliptic PDEs we have boundary value problems, and we discussed for them the Gauss–Seidel method (also known as Liebmann’s method) and the ADI method (@sec-methods-elliptic-pdes, @sec-neumann-mixed-problems). For parabolic PDEs we are given one initial condition and boundary conditions, and we discussed an explicit method and the Crank–Nicolson method (@sec-methods-parabolic-pdes). For hyperbolic PDEs, the problems are similar but we are given a second initial condition (@sec-methods-hyperbolic-pdes).
