@@ -1,0 +1,124 @@
+
+
+Software  (p. 788–789)
+CHAPTER 19Numerics in General
+CHAPTER 20Numeric Linear Algebra
+CHAPTER 21Numerics for ODEs and PDEs
+787
+PA RT  E
+Numeric 
+Analysis
+Numeric  analysisor  briefly  numericscontinues  to  be  one  of  the  fastest  growing  areas
+of  engineering  mathematics.  This  is  a  natural  trend  with  the  ever  greater  availability  of
+computing  power  and  global  Internet  use.  Indeed,  good  software  implementation  of
+numerical  methods  are  readily  available.  Take  a  look  at  the  updatedlist  of Software
+starting on p. 788. It contains software for purchase (commercial software) and software
+for  free  download  (public-domain  software).  For  convenience,  we  provide  Internet
+addresses  and  phone  numbers.  The  software  list  includes  computer  algebra  systems
+(CASs),  such  as  Maple andMathematica,  along  with  the  Maple  Computer  Guide, 10th
+ed.,  and  Mathematica  Computer  Guide,  10th  ed.,  by  E.  Kreyszig  and  E.  J.  Norminton
+related to this text that teach you stepwise how to use these computer algebra systems and
+with complete engineering examples drawn from the text. Furthermore, there is scientific
+software, such as IMSL,LAPACK (free download), and scientific calculators with graphic
+capabilities such as TI-Nspire. Note that, although we have listed frequently used quality
+software, this list is by no means complete.
+In  your  career  as  an  engineer,  appplied  mathematician,  or  scientist  you  are  likely  to  use
+commercially  available  software  or  proprietary  software,  owned  by  the  company  you  work
+for, that uses numeric methods to solve engineering problems, such as modeling chemical or
+biological processes, planning ecologically sound heating systems, or computing trajectories
+of spacecraft or satellites. For example, one of the collaborators of this book (Herbert Kreyszig)
+used proprietary software to determine the value of bonds, which amounted to solving higher
+degree polynomial equations, using numeric methods discussed in Sec. 19.2.
+c19-a.qxd  11/9/10  3:39 PM  Page 787
+
+However, the   availability   of   quality   software   does   not   alleviate   your   effort   and
+responsibility  to  first  understand these  numerical  methods.  Your  effort  will  pay  off
+because,  with  your  mathematical  expertise  in  numerics,  you  will  be  able  to  plan  your
+solution  approach,  judiciously  select  and  use  the  appropriate  software,  judge  the  quality
+of software, and, perhaps, even write your own numerics software.
+Numerics  extends  your  ability  to  solve  problems  that  are  either  difficult  or  impossible
+to solve  analytically.  For  example,  certain  integrals  such  as  error  function  [see  App.  3,
+formula  (35)]  or  large  eigenvalue  problems  that  generate  high-degree  characteristic
+polynomials cannot be solved analytically. Numerics is also used to construct approximating
+polynomials through data points that were obtained from some experiments.
+Part  E  is  designed  to  give  you  a  solid  background  in  numerics.  We  present  many  numeric
+methods  as  algorithms,  which  give  these  methods  in  detailed  steps  suitable  for  software
+implementation  on  your  computer,  CAS,  or  programmable  calculator.  The  first  chapter,
+Chap. 19, covers three main areas. These are general numerics (floating point, rounding errors,
+etc.),  solving  equations  of  the  form  (using  Newton’s  method  and  other  methods),
+interpolation along with methods of numeric integration that make use of it, and differentiation.
+Chapter  20  covers  the  essentials  of  numeric  linear  algebra.  The  chapter  breaks  into  two
+parts: solving linear systems of equations by methods of Gauss, Doolittle, Cholesky, etc.
+and solving eigenvalue problems numerically. Chapter 21 again has two themes: solving
+ordinary  differential  equations  and  systems  of  ordinary  differential  equations  as  well  as
+solving partial differential equations.
+Numerics is a very active area of research as new methods are invented, existing methods
+improved   and   adapted,   and   old   methods—impractical   in   precomputer   times—are
+rediscovered.  A  main  goal  in  these  activities  is  the  development  of  well-structured
+software.  And  in  large-scale  work—millions  of  equations  or  steps  of  iterations—even
+small  algorithmic  improvements  may  have  a  large  significant  effect  on  computing  time,
+storage demand, accuracy, and stability.
+Remark on Software Use.Part E is designed in such a way as to allow compelete flexibility
+on  the  use  of  CASs,  software,  or  graphing  calculators.The  computational  requirements
+range  from  very  little  use  to  heavy  use.  The  choice  of  computer  use  is  at  the  discretion
+of  the  professor.  The  material  and  problem  sets  (except  where  clearly  indicated  such  as
+in CAS Projects, CAS Problems, or CAS Experiments, which can be omitted without loss
+of continuity) do not require the use of a CAS or software. A scientific calculator perhaps
+with graphing capabilities is all that is required.
+Software
+See also http://www.wiley.com/college/kreyszig/
+The following list will help you if you wish to find software. You may also obtain information
+on known and new software from websites such as Dr. Dobb’s Portal, from articles published
+by  the  American  Mathematical  Society(see  also  its  website  at  www.ams.org),  the  Society
+for  Industrial  and  Applied  Mathematics(SIAM,  at  www.siam.org),  the  Association  for
+Computing Machinery(ACM, at www.acm.org), or the Institute of Electrical and Electronics
+Engineers(IEEE, at www.ieee.org). Consult also your library, computer science department,
+or mathematics department.
+f
+ (x)0
+788PART ENumeric Analysis
+c19-a.qxd  11/2/10  8:20 PM  Page 788
+
+TI-Nspire.Includes TI-Nspire CAS and programmable graphic calculators. Texas Instru-
+ments,  Inc.,  Dallas,  TX.  Telephone:  1-800-842-2737  or  (972)  917-8324;  website  at
+www.education.ti.com.
+EISPACK.See LAPACK.
+GAMS(Guide  to  Available  Mathematical  Software).  Website  at  http://gams.nist.gov.
+Online cross-index of software development by NIST.
+IMSL(International   Mathematical   and   Statistical   Library).   Visual   Numerics,   Inc.,
+Houston,  TX.  Telephone:  1-800-222-4675  or  (713)  784-3131;  website  at  www.vni.com.
+Mathematical and statistical FORTRAN routines with graphics.
+LAPACK.FORTRAN 77 routines for linear algebra. This software package supersedes
+LINPACK  and  EISPACK.  You  can  download  the  routines  from  www.netlib.org/lapack.
+The LAPACK User’s Guide is available at www.netlib.org.
+LINPACKsee LAPACK
+Maple.Waterloo  Maple,  Inc.,  Waterloo,  ON,  Canada.  Telephone:  1-800-267-6583  or
+(519) 747-2373; website at www.maplesoft.com.
+Maple  Computer  Guide.For  Advanced  Engineering  Mathematics,  10th  edition.  By
+E. Kreyszig  and  E.  J.  Norminton.  John  Wiley  and  Sons,  Inc.,  Hoboken,  NJ.  Telephone:
+1-800-225-5945 or (201) 748-6000.
+Mathcad. Parametric Technology Corp. (PTC), Needham, MA. Website at www.ptc.com.
+Mathematica.Wolfram  Research,  Inc.,  Champaign,  IL.  Telephone:  1-800-965-3726  or
+(217) 398-0700; website at www.wolfram.com.
+Mathematica Computer Guide.For Advanced Engineering Mathematics, 10th edition.
+By E. Kreyszig and E. J. Norminton. John Wiley and Sons, Inc., Hoboken, NJ. Telephone:
+1-800-225-5945 or (201) 748-6000.
+Matlab.The  MathWorks,  Inc.,  Natick,  MA.  Telephone:  (508)  647-7000;  website  at
+www.mathworks.com.
+NAG.Numerical Algorithms Group, Inc., Lisle, IL. Telephone: (630) 971-2337; website
+at www.nag.com. Numeric routines in FORTRAN 77, FORTRAN 90, and C.
+NETLIB.Extensive library of public-domain software. See at www.netlib.org.
+NIST.National  Institute  of  Standards  and  Technology,  Gaithersburg,  MD.  Telephone:
+(301) 975-6478; website at www.nist.gov. For Mathematical and Computational Science
+Division telephone: (301) 975-3800. See also http://math.nist.gov.
+Numerical Recipes.Cambridge University Press, New York, NY. Telephone: 1-800-221-
+4512  or  (212)  924-3900;  website  at  www.cambridge.org/us.  Book,  3rd  ed.  (in  see
+App. 1, Ref. [E25]; source code on CD ROM in which also contains old source code
+(but not text) for (out of print) 2nd ed. C, FORTRAN 77, FORTRAN 90 as well as source
+code for (out of print) 1st ed. To order, call office at West Nyack, NY, at 1-800-872-7423
+or (845) 353-7500 or online at www.nr.com.
+FURTHER SOFTWARE IN STATISTICS.See Part G.
+C,
+C)
+PART ENumeric Analysis789
+c19-a.qxd  11/2/10  8:20 PM  Page 789
