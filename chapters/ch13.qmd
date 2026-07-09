@@ -137,9 +137,9 @@ Complex numbers satisfy the same commutative, associative, and distributive laws
 ### Complex Plane
 So far we discussed the algebraic manipulation of complex numbers. Consider the geometric representation of complex numbers, which is of great practical importance. We choose two perpendicular coordinate axes, the horizontal $x$-axis, called the real axis, and the vertical $y$-axis, called the imaginary axis. On both axes we choose the same unit of length (@fig-13-318). This is called a Cartesian coordinate system.
 
-![Fig. 318. The complex plane](../images/fig-13-318.png){#fig-13-318}
+![Fig. 318. The complex plane](../images/chapter13/fig-13-318.png){#fig-13-318}
 
-![Fig. 319. The number $4 - 3i$ in the complex plane](../images/fig-13-319.png){#fig-13-319}
+![Fig. 319. The number $4 - 3i$ in the complex plane](../images/chapter13/fig-13-319.png){#fig-13-319}
 
 We now plot a given complex number $z = x + iy$ as the point $P$ with coordinates $x, y$. The $xy$-plane in which the complex numbers are represented in this way is called the complex plane.[^2] @fig-13-319 shows an example.
 
@@ -147,9 +147,9 @@ Instead of saying "the point represented by $z$ in the complex plane" we say bri
 
 Addition and subtraction can now be visualized as illustrated in @fig-13-320 and @fig-13-321.
 
-![Fig. 320. Addition of complex numbers](../images/fig-13-320.png){#fig-13-320}
+![Fig. 320. Addition of complex numbers](../images/chapter13/fig-13-320.png){#fig-13-320}
 
-![Fig. 321. Subtraction of complex numbers](../images/fig-13-321.png){#fig-13-321}
+![Fig. 321. Subtraction of complex numbers](../images/chapter13/fig-13-321.png){#fig-13-321}
 
 ### Complex Conjugate Numbers
 The complex conjugate of a complex number $z = x + iy$ is defined by
@@ -158,7 +158,7 @@ $$
 $$
 It is obtained geometrically by reflecting the point $z$ in the real axis. @fig-13-322 shows this for $z = 5 + 2i$ and its conjugate $\bar{z} = 5 - 2i$.
 
-![Fig. 322. Complex conjugate numbers](../images/fig-13-322.png){#fig-13-322}
+![Fig. 322. Complex conjugate numbers](../images/chapter13/fig-13-322.png){#fig-13-322}
 
 The complex conjugate is important because it permits us to switch from complex to real. Indeed, by multiplication,
 $$
@@ -256,9 +256,9 @@ $$ {#eq-13-2-4}
 
 Geometrically, $\theta$ is the directed angle from the positive $x$-axis to $OP$ in @fig-13-323. Here, as in calculus, all angles are measured in radians and positive in the counterclockwise sense.
 
-![Fig. 323. Complex plane, polar form of a complex number](../images/fig-13-323.png){#fig-13-323}
+![Fig. 323. Complex plane, polar form of a complex number](../images/chapter13/fig-13-323.png){#fig-13-323}
 
-![Fig. 324. Distance between two points in the complex plane](../images/fig-13-324.png){#fig-13-324}
+![Fig. 324. Distance between two points in the complex plane](../images/chapter13/fig-13-324.png){#fig-13-324}
 
 For $z = 0$, this angle $\theta$ is undefined. (Why?) For a given $z \neq 0$, it is determined only up to integer multiples of $2\pi$, since cosine and sine are periodic with period $2\pi$. But one often wants to specify a unique value of $\arg z$ of a given $z$. For this reason one defines the **principal value** $\text{Arg } z$ (with capital A!) of $\arg z$ by the double inequality
 $$
@@ -275,7 +275,7 @@ $$
 
 Similarly, $z = 3 + 3\sqrt{3}i = 6(\cos \frac{1}{3}\pi + i \sin \frac{1}{3}\pi)$, $|z| = 6$, and $\text{Arg } z = \frac{1}{3}\pi$.
 
-![Fig. 325. Example 1](../images/fig-13-325.png){#fig-13-325}
+![Fig. 325. Example 1](../images/chapter13/fig-13-325.png){#fig-13-325}
 
 **CAUTION!** In using @eq-13-2-4, we must pay attention to the quadrant in which $z$ lies, since $\tan \theta$ has period $\pi$, so that the arguments of $z$ and $-z$ have the same tangent. Example: for $\theta_1 = \arg(1 + i)$ and $\theta_2 = \arg(-1 - i)$ we have $\tan \theta_1 = \tan \theta_2 = 1$.
 
@@ -287,7 +287,7 @@ $$ {#eq-13-2-6}
 
 which we shall use quite frequently (@fig-13-326). This inequality follows by noting that the three points $0, z_1,$ and $z_1 + z_2$ are the vertices of a triangle with sides $|z_1|, |z_2|,$ and $|z_1 + z_2|$, and one side cannot exceed the sum of the other two sides. A formal proof is left to the reader (Prob. 33). (The triangle degenerates if $z_1$ and $z_2$ lie on the same straight line through the origin.)
 
-![Fig. 326. Triangle inequality](../images/fig-13-326.png){#fig-13-326}
+![Fig. 326. Triangle inequality](../images/chapter13/fig-13-326.png){#fig-13-326}
 
 By induction we obtain from @eq-13-2-6 the generalized triangle inequality
 $$
@@ -398,11 +398,11 @@ $$
 $$ {#eq-13-2-16}
 These $n$ values are called the **$n$th roots of unity**. They lie on the circle of radius 1 and center 0, briefly called the **unit circle** (and used quite frequently!). Figures 327–329 show $\omega_0 = 1, \omega_1 = i, \omega_2 = -1, \omega_3 = -i$ for $n=4$, and the corresponding roots for $n=3$ and $n=5$.
 
-![Fig. 327. 3rd roots of unity](../images/fig-13-327.png){#fig-13-327}
+![Fig. 327. 3rd roots of unity](../images/chapter13/fig-13-327.png){#fig-13-327}
 
-![Fig. 328. 4th roots of unity](../images/fig-13-328.png){#fig-13-328}
+![Fig. 328. 4th roots of unity](../images/chapter13/fig-13-328.png){#fig-13-328}
 
-![Fig. 329. 5th roots of unity](../images/fig-13-329.png){#fig-13-329}
+![Fig. 329. 5th roots of unity](../images/chapter13/fig-13-329.png){#fig-13-329}
 
 If $\omega$ denotes the value corresponding to $k = 1$ in @eq-13-2-16, then the $n$ values of $\sqrt[n]{1}$ can be written as:
 $$
@@ -503,11 +503,11 @@ $$ {#eq-13-3-2}
 
 Similarly, the closed annulus includes the two circles, i.e., $\rho_1 \le |z - a| \le \rho_2$.
 
-![Fig. 330. Unit circle](../images/fig-13-330.png){#fig-13-330}
+![Fig. 330. Unit circle](../images/chapter13/fig-13-330.png){#fig-13-330}
 
-![Fig. 331. Circle in the complex plane](../images/fig-13-331.png){#fig-13-331}
+![Fig. 331. Circle in the complex plane](../images/chapter13/fig-13-331.png){#fig-13-331}
 
-![Fig. 332. Annulus in the complex plane](../images/fig-13-332.png){#fig-13-332}
+![Fig. 332. Annulus in the complex plane](../images/chapter13/fig-13-332.png){#fig-13-332}
 
 **Half-Planes.** By the (open) upper half-plane we mean the set of all points $z = x + iy$ such that $y > 0$. Similarly, the condition $y < 0$ defines the lower half-plane, $x > 0$ the right half-plane, and $x < 0$ the left half-plane.
 
@@ -569,7 +569,7 @@ Geometrically, if for every $z$ in that $\delta$-disk the value of $f(z)$ lies i
 
 Formally, this definition is similar to that in calculus, but there is a big difference. Whereas in the real case, $x$ can approach $x_0$ only along the real line, here $z$ may approach $z_0$ from any direction in the complex plane (@fig-13-333).
 
-![Fig. 333. Limit](../images/fig-13-333.png){#fig-13-333}
+![Fig. 333. Limit](../images/chapter13/fig-13-333.png){#fig-13-333}
 
 If a limit exists, it is unique (see Team Project 24).
 
@@ -614,7 +614,7 @@ $$
 $$ {#eq-13-3-8}
 If $\Delta y = 0$, this is $\Delta x / \Delta x = 1$ (Path I in @fig-13-334). If $\Delta x = 0$, this is $-i\Delta y / (i\Delta y) = -1$ (Path II in @fig-13-334). Thus @eq-13-3-8 approaches 1 along path I but -1 along path II. Hence, the limit as $\Delta z \to 0$ does not exist at any $z$.
 
-![Fig. 334. Paths in (5)](../images/fig-13-334.png){#fig-13-334}
+![Fig. 334. Paths in (5)](../images/chapter13/fig-13-334.png){#fig-13-334}
 
 Differentiability of a complex function is a rather severe requirement. The idea of proof (approach of $z$ from different directions) is basic and will be used again in the next section.
 
@@ -716,7 +716,7 @@ By the definition of a limit in complex (@sec-derivative-analytic-function), we 
 
 We write $\Delta z = \Delta x + i\Delta y$. Then $f(z+\Delta z) - f(z) = [u(x+\Delta x, y+\Delta y) + iv(x+\Delta x, y+\Delta y)] - [u(x, y) + iv(x, y)]$.
 
-![Fig. 335. Paths in (2)](../images/fig-13-335.png){#fig-13-335}
+![Fig. 335. Paths in (2)](../images/chapter13/fig-13-335.png){#fig-13-335}
 
 **Path I.** We let first $\Delta y = 0$ and then $\Delta x \to 0$. After $\Delta y$ is zero, $\Delta z = \Delta x$. Then @eq-13-4-2 becomes:
 $$
@@ -770,10 +770,10 @@ $$
 Now use $v_y = u_x$ and $v_x = -u_y$ in these equations to get:
 $$
 u u_x - v u_y = 0 \quad \text{(a)}
-$$
+$$ {#eq-13-4-6a}
 $$
 u u_y + v u_x = 0 \quad \text{(b)}
-$$ {#eq-13-4-6}
+$$ {#eq-13-4-6b}
 To eliminate $u_y$, multiply @eq-13-4-6a by $u$ and @eq-13-4-6b by $v$ and add. This yields $(u^2 + v^2) u_x = 0$.
 If $k^2 = u^2 + v^2 = 0$, then $f(z) = 0 = \text{const}$. If $k^2 > 0$, then $u_x = 0$. By the CR equations, $v_y = 0$. Similarly, eliminating $u_x$ gives $(u^2+v^2)u_y = 0$, so $u_y = 0$ and $v_x = 0$. Together this implies $u = \text{const}$ and $v = \text{const}$; hence $f = u + iv = \text{const}$.
 
@@ -959,7 +959,7 @@ $$
 $$ {#eq-13-5-13}
 This infinite strip is called a **fundamental region** of $e^z$ (@fig-13-336).
 
-![Fig. 336. Fundamental region of the exponential function $e^z$ in the $z$-plane](../images/fig-13-336.png){#fig-13-336}
+![Fig. 336. Fundamental region of the exponential function $e^z$ in the $z$-plane](../images/chapter13/fig-13-336.png){#fig-13-336}
 
 ### EXAMPLE 1 Function Values. Solution of Equations
 Find the values of $e^z$ at $z = 1.4 - 0.6i$ and solve $e^z = 3 + 4i$.
@@ -1060,7 +1060,7 @@ $$
 $$ {#eq-13-6-7b}
 
 ### EXAMPLE 1 Real and Imaginary Parts. Absolute Value. Periodicity
-Show that @eq-13-6-6 and @eq-13-6-7 hold.
+Show that @eq-13-6-6a and @eq-13-6-7a hold.
 **Solution.** From @eq-13-6-1,
 $$
 \cos z = \frac{1}{2}(e^{i(x+iy)} + e^{-i(x+iy)}) = \frac{1}{2} e^{-y}(\cos x + i \sin x) + \frac{1}{2} e^y(\cos x - i \sin x)
@@ -1080,9 +1080,9 @@ Since $\sin^2 x + \cos^2 x = 1$, this gives @eq-13-6-7a, and @eq-13-6-7b is obta
 
 For instance, $\cos(2 + 3i) = \cos 2 \cosh 3 - i \sin 2 \sinh 3 \approx -4.190 - 9.109i$.
 
-From @eq-13-6-6 we see that $\cos z$ and $\sin z$ are periodic with period $2\pi$. Periodicity of $\tan z$ and $\cot z$ with period $\pi$ follows.
+From @eq-13-6-6a we see that $\cos z$ and $\sin z$ are periodic with period $2\pi$. Periodicity of $\tan z$ and $\cot z$ with period $\pi$ follows.
 
-Formula @eq-13-6-7 points to an essential difference between the real and the complex cosine and sine: the complex cosine and sine are no longer bounded but approach infinity in absolute value as $y \to \pm\infty$.
+Formula @eq-13-6-7a points to an essential difference between the real and the complex cosine and sine: the complex cosine and sine are no longer bounded but approach infinity in absolute value as $y \to \pm\infty$.
 
 ### EXAMPLE 2 Solutions of Equations. Zeros of $\cos z$ and $\sin z$
 Solve (a) $\cos z = 5$, (b) $\cos z = 0$, (c) $\sin z = 0$.
@@ -1234,7 +1234,7 @@ $$
 \text{Ln } (3 - 4i) = \ln 5 + i \text{Arg }(3 - 4i) \approx 1.609 - 0.927i \quad (@fig-13-337)
 $$
 
-![Fig. 337. Some values of $\ln(3 - 4i)$ in Example 1](../images/fig-13-337.png){#fig-13-337}
+![Fig. 337. Some values of $\ln(3 - 4i)$ in Example 1](../images/chapter13/fig-13-337.png){#fig-13-337}
 
 The familiar relations for the natural logarithm continue to hold for complex values:
 $$
@@ -1276,7 +1276,7 @@ $$
 
 Each of the infinitely many functions in @eq-13-7-5 is called a **branch** of the logarithm. The negative real axis is known as a **branch cut** (@fig-13-338). The branch for $n = 0$ is called the **principal branch** of $\ln z$.
 
-![Fig. 338. Branch cut for $\ln z$](../images/fig-13-338.png){#fig-13-338}
+![Fig. 338. Branch cut for $\ln z$](../images/chapter13/fig-13-338.png){#fig-13-338}
 
 ### General Powers
 General powers of a complex number $z \neq 0$ are defined by:

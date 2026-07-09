@@ -409,9 +409,9 @@ I_2(t) &= -4e^{-2t} + 4e^{-0.8t}
 \end{aligned}
 $$ {#eq-4-25}
 
-Now comes an important idea, on which we shall elaborate further, beginning in Sec. 4.3. @fig-4-80a shows $I_1(t)$ and $I_2(t)$ as two separate curves. @fig-4-80b shows these two currents as a single curve in the $I_1I_2$-plane. This is a parametric representation with time $t$ as the parameter. It is often important to know in which sense such a curve is traced. This can be indicated by an arrow in the sense of increasing $t$, as is shown.
+Now comes an important idea, on which we shall elaborate further, beginning in Sec. 4.3. @fig-4-80(a) shows $I_1(t)$ and $I_2(t)$ as two separate curves. @fig-4-80(b) shows these two currents as a single curve in the $I_1I_2$-plane. This is a parametric representation with time $t$ as the parameter. It is often important to know in which sense such a curve is traced. This can be indicated by an arrow in the sense of increasing $t$, as is shown.
 
-The $I_1I_2$-plane is called the **phase plane** of our system (@eq-4-23), and the curve in @fig-4-80b is called a **trajectory**. We shall see that such "phase plane representations" are far more important than graphs as in @fig-4-80a because they will give a much better qualitative overall impression of the general behavior of whole families of solutions, not merely of one solution as in the present case. $\blacksquare$
+The $I_1I_2$-plane is called the **phase plane** of our system (@eq-4-23), and the curve in @fig-4-80(b) is called a **trajectory**. We shall see that such "phase plane representations" are far more important than graphs as in @fig-4-80(a) because they will give a much better qualitative overall impression of the general behavior of whole families of solutions, not merely of one solution as in the present case. $\blacksquare$
 
 ![Fig. 80: Currents in Example 2](../images/chapter4/fig-4-80.png){#fig-4-80}
 
@@ -544,7 +544,7 @@ A **solution** of (@eq-4-30) on some interval $a < t < b$ is a set of $n$ differ
 An **initial value problem** for (@eq-4-30) consists of (@eq-4-30) and $n$ given initial conditions
 $$
 y_1(t_0) = K_1, \quad y_2(t_0) = K_2, \quad \dots, \quad y_n(t_0) = K_n
-$$
+$$ {#eq-4-31}
 in vector form, $\mathbf{y}(t_0) = \mathbf{K}$, where $t_0$ is a specified value of $t$ in the interval considered and the components of $\mathbf{K} = [K_1\ \ \dots\ \ K_n]^T$ are given numbers. Sufficient conditions for the existence and uniqueness of a solution of an initial value problem (@eq-4-30), (@eq-4-31) are stated in the following theorem, which extends the theorems in Sec. 1.7 for a single equation. (For a proof, see Ref. [A7].)
 
 **THEOREM 1 Existence and Uniqueness Theorem**
@@ -680,7 +680,7 @@ Of course, we can graph solutions of this system,
 $$
 \mathbf{y}(t) = \begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix}
 $$
-as two curves over the $t$-axis, one for each component of $\mathbf{y}(t)$. (@fig-4-80a in Sec. 4.1 shows an example.) But we can also graph them as a single curve in the $y_1 y_2$-plane. This is a parametric representation (parametric equation) with parameter $t$. (See @fig-4-80b for an example. Many more follow. Parametric equations also occur in calculus.) Such a curve is called a **trajectory** (or sometimes an orbit or path) of the system. The $y_1 y_2$-plane is called the **phase plane**.^1^ If we fill the phase plane with trajectories, we obtain the so-called **phase portrait** of the system.
+as two curves over the $t$-axis, one for each component of $\mathbf{y}(t)$. (@fig-4-80(a) in Sec. 4.1 shows an example.) But we can also graph them as a single curve in the $y_1 y_2$-plane. This is a parametric representation (parametric equation) with parameter $t$. (See @fig-4-80(b) for an example. Many more follow. Parametric equations also occur in calculus.) Such a curve is called a **trajectory** (or sometimes an orbit or path) of the system. The $y_1 y_2$-plane is called the **phase plane**.^1^ If we fill the phase plane with trajectories, we obtain the so-called **phase portrait** of the system.
 
 Studies of solutions in the phase plane have become quite important, along with advances in computer graphics, because a phase portrait gives a good general qualitative impression of the entire family of solutions. Consider the following example, in which we develop such a phase portrait.
 
@@ -1086,7 +1086,7 @@ $$ {#eq-4-61}
 
 ### EXAMPLE 1 Free Undamped Pendulum. Linearization
 
-@fig-4-93a shows a pendulum consisting of a body of mass $m$ (the bob) and a rod of length $L$. Determine the locations and types of the critical points. Assume that the mass of the rod and air resistance are negligible.
+@fig-4-93(a) shows a pendulum consisting of a body of mass $m$ (the bob) and a rod of length $L$. Determine the locations and types of the critical points. Assume that the mass of the rod and air resistance are negligible.
 
 **Solution.**
 
@@ -1127,7 +1127,7 @@ y'_1 = y_2, \quad y'_2 = ky_1, \quad \text{thus} \quad \mathbf{y}' = \mathbf{Ay}
 $$
 We see that $p = 0, q = -k < 0$, and $\Delta = 4k > 0$. Hence, by Table 4.1(b), this gives a saddle point, which is always unstable. Because of periodicity, the critical points $(\pm\pi, 0), (\pm 3\pi, 0), \dots$ are all saddle points.
 
-These results agree with the impression we get from @fig-4-93b. $\blacksquare$
+These results agree with the impression we get from @fig-4-93(b). $\blacksquare$
 
 ![Fig. 93: Example 1. (a) Pendulum. (b) Solution curves $y_2(y_1)$ of (4) in the phase plane](../images/chapter4/fig-4-93.png){#fig-4-93}
 
@@ -1148,7 +1148,7 @@ We see that the critical points have the same locations as before, namely $(0, 0
 $$
 y'_1 = y_2, \quad y'_2 = -ky_1 - cy_2, \quad \text{thus} \quad \mathbf{y}' = \mathbf{Ay} = \begin{bmatrix} 0 & 1 \\ -k & -c \end{bmatrix} \mathbf{y}
 $$ {#eq-4-64}
-This is identical with the system in Example 2 of Sec. 4.4, except for the (positive!) factor $m$ (and except for the physical meaning of $y_1$). Hence for $c = 0$ (no damping) we have a center (see @fig-4-93b), for small damping we have a spiral point (see @fig-4-94), and so on.
+This is identical with the system in Example 2 of Sec. 4.4, except for the (positive!) factor $m$ (and except for the physical meaning of $y_1$). Hence for $c = 0$ (no damping) we have a center (see @fig-4-93(b)), for small damping we have a spiral point (see @fig-4-94), and so on.
 
 We now consider the critical point $(\pi, 0)$. We set $u - \pi = y_1$ and linearize:
 $$
@@ -1162,12 +1162,12 @@ For our criteria in Sec. 4.4 we calculate $p = a_{11} + a_{22} = -c$ and $q = \d
 
 This gives the following results for the critical point at $(\pi, 0)$:
 
-- **No damping.** $c = 0, \ p = 0, \ q = -k < 0, \ \Delta > 0$, a saddle point. See @fig-4-93b.
+- **No damping.** $c = 0, \ p = 0, \ q = -k < 0, \ \Delta > 0$, a saddle point. See @fig-4-93(b).
 - **Damping.** $c > 0, \ p = -c < 0, \ q = -k < 0, \ \Delta > 0$, a saddle point. See @fig-4-94.
 
 Since $\sin y_1$ is periodic with period $2\pi$, the critical points $(0, 0), (\pm 2\pi, 0), \dots$ are of the same type as $(0, 0)$, and the critical points $(\pm\pi, 0), (\pm 3\pi, 0), \dots$ are of the same type as $(\pi, 0)$, so that our task is finished.
 
-@fig-4-94 shows the trajectories in the case of damping. What we see agrees with our physical intuition. Indeed, damping means loss of energy. Hence instead of the closed trajectories of periodic solutions in @fig-4-93b we now have trajectories spiraling around one of the critical points $(0, 0), (\pm 2\pi, 0), \dots$. Even the wavy trajectories corresponding to whirly motions eventually spiral around one of these points. Furthermore, there are no more trajectories that connect critical points (as there were in the undamped case for the saddle points). $\blacksquare$
+@fig-4-94 shows the trajectories in the case of damping. What we see agrees with our physical intuition. Indeed, damping means loss of energy. Hence instead of the closed trajectories of periodic solutions in @fig-4-93(b) we now have trajectories spiraling around one of the critical points $(0, 0), (\pm 2\pi, 0), \dots$. Even the wavy trajectories corresponding to whirly motions eventually spiral around one of these points. Furthermore, there are no more trajectories that connect critical points (as there were in the undamped case for the saddle points). $\blacksquare$
 
 ![Fig. 94: Trajectories in the phase plane for the damped pendulum in Example 2](../images/chapter4/fig-4-94.png){#fig-4-94}
 
@@ -1263,7 +1263,7 @@ $$
 $$
 We see that these three terms are energies. Indeed, $y_2$ is the angular velocity, so that $Ly_2$ is the velocity and the first term is the kinetic energy. The second term (including the minus sign) is the potential energy of the pendulum, and $mL^2 C$ is its total energy, which is constant, as expected from the law of conservation of energy, because there is no damping (no loss of energy). The type of motion depends on the total energy, hence on $C$, as follows.
 
-@fig-4-93b shows trajectories for various values of $C$. These graphs continue periodically with period $2\pi$ to the left and to the right. We see that some of them are ellipse-like and closed, others are wavy, and there are two trajectories (passing through the saddle points $(\pm\pi, 0), (\pm 3\pi, 0), \dots$) that separate those two types of trajectories. From (@eq-4-69) we see that the smallest possible $C$ is $-k$; then $y_2 = 0$ and $\cos y_1 = 1$, so that the pendulum is at rest. The pendulum will change its direction of motion if there are points at which $y_2 = y'_1 = \dot{u} = 0$. Then by (@eq-4-69), $k\cos y_1 + C = 0$. If $|C| < k$, then $\cos y_1 = -C/k$ and $-1 < -C/k < 1$. Hence if $-k < C < k$, then the pendulum reverses its direction for an angle $y_1 = \pm \arccos(-C/k)$, and for these values of $C$ with $|C| < k$ the pendulum oscillates. This corresponds to the closed trajectories in the figure. However, if $C > k$, then $k\cos y_1 + C = 0$ is impossible and the pendulum makes a whirly motion that appears as a wavy trajectory in the $y_1 y_2$-plane. Finally, the value $C = k$ corresponds to the two "separating trajectories" in @fig-4-93b connecting the saddle points. $\blacksquare$
+@fig-4-93(b) shows trajectories for various values of $C$. These graphs continue periodically with period $2\pi$ to the left and to the right. We see that some of them are ellipse-like and closed, others are wavy, and there are two trajectories (passing through the saddle points $(\pm\pi, 0), (\pm 3\pi, 0), \dots$) that separate those two types of trajectories. From (@eq-4-69) we see that the smallest possible $C$ is $-k$; then $y_2 = 0$ and $\cos y_1 = 1$, so that the pendulum is at rest. The pendulum will change its direction of motion if there are points at which $y_2 = y'_1 = \dot{u} = 0$. Then by (@eq-4-69), $k\cos y_1 + C = 0$. If $|C| < k$, then $\cos y_1 = -C/k$ and $-1 < -C/k < 1$. Hence if $-k < C < k$, then the pendulum reverses its direction for an angle $y_1 = \pm \arccos(-C/k)$, and for these values of $C$ with $|C| < k$ the pendulum oscillates. This corresponds to the closed trajectories in the figure. However, if $C > k$, then $k\cos y_1 + C = 0$ is impossible and the pendulum makes a whirly motion that appears as a wavy trajectory in the $y_1 y_2$-plane. Finally, the value $C = k$ corresponds to the two "separating trajectories" in @fig-4-93(b) connecting the saddle points. $\blacksquare$
 
 The phase plane method of deriving a single first-order equation (@eq-4-68) may be of practical interest not only when (@eq-4-68) can be solved (as in Example 4) but also when a solution is not possible and we have to utilize direction fields (Sec. 1.2). We illustrate this with a very famous example:
 
@@ -1298,7 +1298,7 @@ $$
 
 ## PROBLEM SET 4.5 {#sec-4-5-problems}
 
-1. **Pendulum.** To what state (position, speed, direction of motion) do the four points of intersection of a closed trajectory with the axes in @fig-4-93b correspond? The point of intersection of a wavy curve with the $y_1$-axis?
+1. **Pendulum.** To what state (position, speed, direction of motion) do the four points of intersection of a closed trajectory with the axes in @fig-4-93(b) correspond? The point of intersection of a wavy curve with the $y_1$-axis?
 2. **Limit cycle.** What is the essential difference between a limit cycle and a closed trajectory surrounding a center?
 3. **CAS EXPERIMENT. Deformation of Limit Cycle.** Convert the van der Pol equation to a system. Graph the limit cycle and some approaching trajectories for $\mu = 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0$. Try to observe how the limit cycle changes its form continuously if you vary $\mu$ continuously. Describe in words how the limit cycle is deformed with growing $\mu$.
 
@@ -1337,3 +1337,286 @@ where usually $|b|$ is small, thus characterizing a small deviation of the resto
 
 ![Fig. 98: Trajectories in Problem 15](../images/chapter4/fig-4-98.png){#fig-4-98}
 
+def append_text(path, text):
+    with open(path, "a", encoding="utf-8") as f:
+        f.write("\n" + text + "\n")
+
+text = r"""
+## 4.6 Nonhomogeneous Linear Systems {#sec-4-6}
+
+We continue with systems of ODEs, now turning from homogeneous to **nonhomogeneous linear systems**
+$$
+\mathbf{y}' = \mathbf{A}(t)\mathbf{y} + \mathbf{g}(t)
+$$ {#eq-4-72}
+where $\mathbf{A}(t)$ is an $n \times n$ matrix and $\mathbf{g}(t) \not\equiv \mathbf{0}$ is a given vector function (a vector with $n$ components). **Solutions** are vector functions $\mathbf{y}(t)$ satisfying (@eq-4-72) on some interval $J$.
+
+The corresponding **homogeneous system** is $\mathbf{y}' = \mathbf{A}(t)\mathbf{y}$.
+
+**THEOREM 1 General Solution**
+
+If the homogeneous system corresponding to (@eq-4-72) has a fundamental matrix $\mathbf{\Phi}(t)$ on an open interval $J$ and $\mathbf{y}^{(p)}(t)$ is any particular solution of (@eq-4-72) on $J$, then every solution of (@eq-4-72) on $J$ is of the form
+$$
+\mathbf{y}(t) = \mathbf{\Phi}(t)\mathbf{c} + \mathbf{y}^{(p)}(t)
+$$ {#eq-4-73}
+where $\mathbf{c}$ is an arbitrary constant vector.
+
+**Proof.** Let $\tilde{\mathbf{y}}$ be any solution of (@eq-4-72) on $J$. Then $\tilde{\mathbf{y}} - \mathbf{y}^{(p)}$ is a solution of the homogeneous system because
+$$
+(\tilde{\mathbf{y}} - \mathbf{y}^{(p)})' = \tilde{\mathbf{y}}' - \mathbf{y}^{(p)\prime} = (\mathbf{A}\tilde{\mathbf{y}} + \mathbf{g}) - (\mathbf{A}\mathbf{y}^{(p)} + \mathbf{g}) = \mathbf{A}(\tilde{\mathbf{y}} - \mathbf{y}^{(p)})
+$$
+Since $\mathbf{\Phi}(t)$ is a fundamental matrix, by Theorem 2 of Sec. 4.1, $\tilde{\mathbf{y}} - \mathbf{y}^{(p)} = \mathbf{\Phi}(t)\mathbf{c}$ for some constant vector $\mathbf{c}$, so that $\tilde{\mathbf{y}} = \mathbf{\Phi}(t)\mathbf{c} + \mathbf{y}^{(p)}$. This proves the theorem. $\square$
+
+### Method of Undetermined Coefficients
+
+In the case of constant $\mathbf{A}$ and a "simple" $\mathbf{g}(t)$, a particular solution can be found by the **method of undetermined coefficients**. In this method, one chooses for $\mathbf{y}^{(p)}$ a form similar to $\mathbf{g}$, substitutes into the system, and equates coefficients of like terms on both sides. This is completely analogous to the scalar case discussed in Sec. 2.7.
+
+### EXAMPLE 1 Method of Undetermined Coefficients
+
+Find a solution of
+$$
+\mathbf{y}' = \mathbf{A}\mathbf{y} + \mathbf{g}
+$$
+where $\mathbf{A} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ and $\mathbf{g} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}e^{2t}$.
+
+**Solution.** We try $\mathbf{y}^{(p)} = \mathbf{u}e^{2t}$, where $\mathbf{u}$ is a constant vector. Substituting,
+$$
+2\mathbf{u}e^{2t} = \mathbf{A}\mathbf{u}e^{2t} + \mathbf{g}e^{2t}
+$$
+$$
+(2\mathbf{I} - \mathbf{A})\mathbf{u} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}
+$$
+$$
+\begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}\mathbf{u} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}
+$$
+This gives $2u_1 - u_2 = -1$ and $-u_1 + 2u_2 = 2$. Adding the equations, $u_1 + u_2 = 1$. Subtracting, $3u_1 - 3u_2 = -3$, i.e., $u_1 - u_2 = -1$. Thus $u_1 = 0, u_2 = 1$. Therefore $\mathbf{y}^{(p)} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}e^{2t}$. $\blacksquare$
+
+### Variation of Parameters
+
+A general method for solving (@eq-4-72) on an interval $J$ is **variation of parameters**, analogous to that in Sec. 2.10. Here we have a fundamental matrix $\mathbf{\Phi}(t)$ of $\mathbf{y}' = \mathbf{A}\mathbf{y}$ and we replace the constant vector $\mathbf{c}$ in $\mathbf{\Phi}(t)\mathbf{c}$ by a variable vector $\mathbf{u}(t)$, obtaining a particular solution of (@eq-4-72) in the form
+$$
+\mathbf{y}^{(p)} = \mathbf{\Phi}(t)\mathbf{u}(t)
+$$ {#eq-4-74}
+We substitute into (@eq-4-72):
+$$
+\mathbf{y}^{(p)\prime} = \mathbf{\Phi}'\mathbf{u} + \mathbf{\Phi}\mathbf{u}' = \mathbf{A}\mathbf{\Phi}\mathbf{u} + \mathbf{g}
+$$
+Since $\mathbf{\Phi}$ is a fundamental matrix of $\mathbf{y}' = \mathbf{A}\mathbf{y}$, we have $\mathbf{\Phi}' = \mathbf{A}\mathbf{\Phi}$, so that $\mathbf{\Phi}'\mathbf{u} = \mathbf{A}\mathbf{\Phi}\mathbf{u}$, and the last equation reduces to
+$$
+\mathbf{\Phi}\mathbf{u}' = \mathbf{g}
+$$
+Since $\mathbf{\Phi}$ is a fundamental matrix, $\det\mathbf{\Phi} \neq 0$, so that $\mathbf{\Phi}^{-1}$ exists, and
+$$
+\mathbf{u}' = \mathbf{\Phi}^{-1}\mathbf{g}, \quad \text{thus} \quad \mathbf{u} = \int \mathbf{\Phi}^{-1}(t)\mathbf{g}(t)\, dt
+$$
+Substituting this into (@eq-4-74), we obtain
+
+$$
+\boxed{\mathbf{y}^{(p)} = \mathbf{\Phi}(t)\int \mathbf{\Phi}^{-1}(t)\mathbf{g}(t)\, dt}
+$$ {#eq-4-75}
+
+This is the formula for variation of parameters for systems.
+
+### EXAMPLE 2 Variation of Parameters
+
+Solve the system
+$$
+\mathbf{y}' = \mathbf{A}\mathbf{y} + \mathbf{g}, \quad \mathbf{A} = \begin{bmatrix} 2 & 1 \\ 0 & 2 \end{bmatrix}, \quad \mathbf{g} = \begin{bmatrix} e^{2t} \\ 0 \end{bmatrix}
+$$
+
+**Solution.** **Step 1. Homogeneous system.** The characteristic equation of $\mathbf{A}$ is $(\lambda - 2)^2 = 0$, giving the double eigenvalue $\lambda = 2$.
+
+An eigenvector of $\mathbf{A}$ is $\mathbf{x}_1 = [1 \;\; 0]^T$. A generalized eigenvector: solve $(\mathbf{A} - 2\mathbf{I})\mathbf{x}_2 = \mathbf{x}_1$, getting $\mathbf{x}_2 = [0 \;\; 1]^T$. So
+$$
+\mathbf{y}^{(1)} = e^{2t}\begin{bmatrix}1\\0\end{bmatrix}, \quad \mathbf{y}^{(2)} = e^{2t}\!\left(\begin{bmatrix}0\\1\end{bmatrix} + t\begin{bmatrix}1\\0\end{bmatrix}\right) = e^{2t}\begin{bmatrix}t\\1\end{bmatrix}
+$$
+The fundamental matrix is
+$$
+\mathbf{\Phi} = e^{2t}\begin{bmatrix}1 & t\\0 & 1\end{bmatrix}
+$$
+**Step 2. Particular solution.** We compute $\mathbf{\Phi}^{-1}$. Since $\det\mathbf{\Phi} = e^{4t}$,
+$$
+\mathbf{\Phi}^{-1} = \frac{1}{e^{4t}} \cdot e^{2t}\begin{bmatrix}1 & -t\\0 & 1\end{bmatrix} = e^{-2t}\begin{bmatrix}1 & -t\\0 & 1\end{bmatrix}
+$$
+Then
+$$
+\mathbf{\Phi}^{-1}\mathbf{g} = e^{-2t}\begin{bmatrix}1 & -t\\0 & 1\end{bmatrix}\begin{bmatrix}e^{2t}\\0\end{bmatrix} = \begin{bmatrix}1\\0\end{bmatrix}
+$$
+Integrating, $\mathbf{u} = \begin{bmatrix}t\\0\end{bmatrix}$. Then by (@eq-4-75),
+$$
+\mathbf{y}^{(p)} = \mathbf{\Phi}\mathbf{u} = e^{2t}\begin{bmatrix}1&t\\0&1\end{bmatrix}\begin{bmatrix}t\\0\end{bmatrix} = e^{2t}\begin{bmatrix}t\\0\end{bmatrix}
+$$
+**Step 3. General solution.** From (@eq-4-73),
+$$
+\mathbf{y} = \mathbf{\Phi}\mathbf{c} + \mathbf{y}^{(p)} = e^{2t}\begin{bmatrix}1&t\\0&1\end{bmatrix}\begin{bmatrix}c_1\\c_2\end{bmatrix} + e^{2t}\begin{bmatrix}t\\0\end{bmatrix} = e^{2t}\begin{bmatrix}c_1 + c_2 t + t\\c_2\end{bmatrix}
+$$
+Thus $y_1 = (c_1 + t + c_2 t)e^{2t}$ and $y_2 = c_2 e^{2t}$. $\blacksquare$
+
+### EXAMPLE 3 Forced Oscillations
+
+Solve the system
+$$
+\mathbf{y}' = \begin{bmatrix}0&1\\-1&0\end{bmatrix}\mathbf{y} + \begin{bmatrix}0\\\cos t\end{bmatrix}
+$$ {#eq-4-76}
+**Solution.** The coefficient matrix $\mathbf{A} = \begin{bmatrix}0&1\\-1&0\end{bmatrix}$ has the characteristic equation $\lambda^2 + 1 = 0$, so $\lambda_{1,2} = \pm i$. The fundamental matrix is
+$$
+\mathbf{\Phi}(t) = \begin{bmatrix}\cos t & \sin t \\ -\sin t & \cos t\end{bmatrix}
+$$
+To apply (@eq-4-75), we need $\mathbf{\Phi}^{-1}$. We compute $\det \mathbf{\Phi} = \cos^2 t + \sin^2 t = 1$. By the standard formula,
+$$
+\mathbf{\Phi}^{-1} = \begin{bmatrix}\cos t & -\sin t \\ \sin t & \cos t\end{bmatrix}
+$$
+Then
+$$
+\mathbf{\Phi}^{-1}\mathbf{g} = \begin{bmatrix}\cos t & -\sin t \\ \sin t & \cos t\end{bmatrix}\begin{bmatrix}0\\\cos t\end{bmatrix} = \begin{bmatrix}-\sin t\cos t\\\cos^2 t\end{bmatrix} = \begin{bmatrix}-\tfrac{1}{2}\sin 2t\\ \tfrac{1}{2}(1+\cos 2t)\end{bmatrix}
+$$
+Integrating component-wise,
+$$
+\mathbf{u}(t) = \begin{bmatrix}\tfrac{1}{4}\cos 2t\\ \tfrac{1}{2}t + \tfrac{1}{4}\sin 2t\end{bmatrix}
+$$
+Applying (@eq-4-75):
+$$
+\mathbf{y}^{(p)} = \mathbf{\Phi}\mathbf{u} = \begin{bmatrix}\cos t & \sin t\\-\sin t & \cos t\end{bmatrix}\begin{bmatrix}\tfrac{1}{4}\cos 2t\\ \tfrac{1}{2}t + \tfrac{1}{4}\sin 2t\end{bmatrix}
+$$
+Expanding (using $\cos t\cos 2t + \sin t\sin 2t = \cos t$ and $-\sin t\cos 2t + \cos t \sin 2t = \sin t$):
+$$
+y_1^{(p)} = \tfrac{1}{4}\cos t + \tfrac{1}{2}t\sin t, \quad y_2^{(p)} = -\tfrac{1}{4}\sin t + \tfrac{1}{2}t\cos t + \tfrac{1}{2}\sin t = \tfrac{1}{2}t\cos t + \tfrac{1}{4}\sin t
+$$
+The general solution of (@eq-4-76) is
+$$
+\begin{aligned}
+y_1 &= (c_1 + \tfrac{1}{4})\cos t + (c_2 + \tfrac{1}{2}t)\sin t \\
+y_2 &= -(c_1 + \tfrac{1}{4})\sin t + (c_2 + \tfrac{1}{2}t)\cos t + \tfrac{1}{2}\sin t
+\end{aligned}
+$$
+The terms with $t\sin t$ and $t\cos t$ represent **resonance**, analogous to the scalar case. $\blacksquare$
+
+## PROBLEM SET 4.6 {#sec-4-6-problems}
+
+### 1–8 UNDETERMINED COEFFICIENTS
+Find a particular solution. Show all your work.
+1. $y'_1 = y_1 + y_2 + 2e^t, \quad y'_2 = y_1 + y_2 + 2t$
+2. $y'_1 = y_2 + e^{-t}, \quad y'_2 = -y_1 + t$
+3. $y'_1 = y_2 + t^2, \quad y'_2 = y_1 - 1$
+4. $y'_1 = 3y_1 - 2y_2 + e^t, \quad y'_2 = 4y_1 - y_2 - e^t$
+5. $y'_1 = y_2 + \cos 2t, \quad y'_2 = -y_1 + \sin 2t$
+6. $y'_1 = 2y_2 + 8e^t, \quad y'_2 = 2y_1 + 8e^t$
+7. $y'_1 = y_2 + 1, \quad y'_2 = y_1 + t^2$
+8. $y'_1 = y_2 + e^{2t}, \quad y'_2 = y_1 + e^{2t}$
+
+### 9–16 VARIATION OF PARAMETERS
+Solve the IVP using variation of parameters. Show all details.
+9. $\mathbf{y}' = \begin{bmatrix}0&1\\-1&0\end{bmatrix}\mathbf{y} + \begin{bmatrix}0\\e^t\end{bmatrix}, \quad \mathbf{y}(0) = \begin{bmatrix}1\\0\end{bmatrix}$
+10. $\mathbf{y}' = \begin{bmatrix}1&1\\0&1\end{bmatrix}\mathbf{y} + \begin{bmatrix}e^t\\t\end{bmatrix}$
+11. $\mathbf{y}' = \begin{bmatrix}2&-5\\1&-2\end{bmatrix}\mathbf{y} + \begin{bmatrix}\cos t\\\sin t\end{bmatrix}$
+12. $\mathbf{y}' = \begin{bmatrix}0&1\\-4&0\end{bmatrix}\mathbf{y} + \begin{bmatrix}0\\\sin 2t\end{bmatrix}, \quad \mathbf{y}(0) = \begin{bmatrix}0\\0\end{bmatrix}$
+13. $\mathbf{y}' = \begin{bmatrix}1&0\\1&1\end{bmatrix}\mathbf{y} + \begin{bmatrix}e^t\\e^t\end{bmatrix}$
+14. $\mathbf{y}' = \begin{bmatrix}0&1\\-1&0\end{bmatrix}\mathbf{y} + \begin{bmatrix}0\\\csc t\end{bmatrix}$
+15. $\mathbf{y}' = \begin{bmatrix}0&1\\-1&0\end{bmatrix}\mathbf{y} + \begin{bmatrix}0\\\sec t\end{bmatrix}$
+16. $\mathbf{y}' = \begin{bmatrix}1&1\\-1&1\end{bmatrix}\mathbf{y} + \begin{bmatrix}e^t\cos t\\e^t \sin t\end{bmatrix}$
+
+17. **Electrical network.** Find the general solution of
+$$
+\mathbf{I}' = \mathbf{A}\mathbf{I} + \mathbf{g}(t)
+$$
+where $\mathbf{A} = \begin{bmatrix}-2 & 2 \\ 2 & -2\end{bmatrix}$ and $\mathbf{g}(t) = \begin{bmatrix}6\sin t\\ 0\end{bmatrix}$.
+
+18. **Nonhomogeneous system.** Find the general solution of
+$$
+\mathbf{y}' = \begin{bmatrix}0 & 1 \\ -2 & -3\end{bmatrix}\mathbf{y} + \begin{bmatrix}e^t \\ -e^t\end{bmatrix}
+$$
+
+19. **Undetermined coefficients.** Verify that if $\mathbf{g}(t) = \mathbf{g}_1\cos\omega t + \mathbf{g}_2\sin\omega t$ and the matrix $\mathbf{A}$ has no eigenvalue $\pm i\omega$, then a particular solution of $\mathbf{y}' = \mathbf{A}\mathbf{y} + \mathbf{g}(t)$ has the form $\mathbf{y}^{(p)} = \mathbf{a}\cos\omega t + \mathbf{b}\sin\omega t$.
+
+20. **IVP.** Solve the initial value problem
+$$
+\mathbf{y}' = \begin{bmatrix}1 & -1 \\ 1 & 1\end{bmatrix}\mathbf{y} + \begin{bmatrix}e^t \\ 0\end{bmatrix}, \quad \mathbf{y}(0) = \begin{bmatrix}0 \\ 2\end{bmatrix}
+$$
+
+## Chapter 4 Review Questions and Problems {#sec-ch4-review}
+
+1. State some applications that can be modeled by systems of ODEs.
+2. What is population dynamics? Give examples.
+3. How can you transform an ODE into a system of ODEs?
+4. What are qualitative methods for systems? Why are they important?
+5. What is the phase plane? The phase plane method? A trajectory? The phase portrait of a system of ODEs?
+6. What are critical points of a system of ODEs? How did we classify them? Why are they important?
+7. What are eigenvalues? What role did they play in this chapter?
+8. What does stability mean in general? In connection with critical points? Why is stability important in engineering?
+9. What does linearization of a system mean?
+10. Review the pendulum equations and their linearizations.
+
+### 11–17 GENERAL SOLUTION. CRITICAL POINTS
+Find a general solution. Determine the kind and stability of the critical point.
+11. $y'_1 = 2y_2, \quad y'_2 = 8y_1$
+12. $y'_1 = 5y_1, \quad y'_2 = y_2$
+13. $y'_1 = -2y_1 + 5y_2, \quad y'_2 = -y_1 - 6y_2$
+14. $y'_1 = 3y_1 + 4y_2, \quad y'_2 = 3y_1 + 2y_2$
+15. $y'_1 = -3y_1 - 2y_2, \quad y'_2 = -2y_1 - 3y_2$
+16. $y'_1 = 4y_2, \quad y'_2 = -4y_1$
+17. $y'_1 = -y_1 + 2y_2, \quad y'_2 = -2y_1 - y_2$
+
+### 18–19 CRITICAL POINT
+What kind of critical point does $\mathbf{y}' = \mathbf{A}\mathbf{y}$ have if $\mathbf{A}$ has the eigenvalues
+18. $-4$ and $-2$
+19. $-2 + 3i, \quad -2 - 3i$
+
+### 20–23 NONHOMOGENEOUS SYSTEMS
+Find a general solution. Show the details of your work.
+20. $y'_1 = 2y_1 + 2y_2 + e^t, \quad y'_2 = -2y_1 - 3y_2 + e^t$
+21. $y'_1 = 4y_2, \quad y'_2 = 4y_1 + 32t^2$
+22. $y'_1 = y_1 + y_2 + \sin t, \quad y'_2 = 4y_1 + y_2$
+23. $y'_1 = y_1 + 4y_2 - 2\cos t, \quad y'_2 = y_1 + y_2 - \cos t + \sin t$
+
+24. **Mixing problem.** Tank $T_1$ in Fig. 101 initially contains 200 gal of water in which 160 lb of salt are dissolved. Tank $T_2$ initially contains 100 gal of pure water. Liquid is pumped through the system as indicated, and the mixtures are kept uniform by stirring. Find the amounts of salt $y_1(t)$ and $y_2(t)$ in $T_1$ and $T_2$, respectively.
+
+![Tanks in Problem 24](../images/chapter4/fig-4-101.png){#fig-4-101}
+
+25. **Network.** Find the currents in Fig. 102 when $R = 2.5\ \Omega$, $L = 1\text{ H}$, $C = 0.04\text{ F}$, $E(t) = 169\sin t\text{ V}$, $I_1(0) = 0$, $I_2(0) = 0$.
+
+![Network in Problem 25](../images/chapter4/fig-4-102.png){#fig-4-102}
+
+26. **Network.** Find the currents in Fig. 103 when $R = 1\ \Omega$, $L = 1.25\text{ H}$, $C = 0.2\text{ F}$, $I_1(0) = 1\text{ A}$, $I_2(0) = 1\text{ A}$.
+
+![Network in Problem 26](../images/chapter4/fig-4-103.png){#fig-4-103}
+
+### 27–30 LINEARIZATION
+Find the location and kind of all critical points of the given nonlinear system by linearization.
+27. $y'_1 = y_2, \quad y'_2 = y_1 - y_1^3$
+28. $y'_1 = \cos y_2, \quad y'_2 = 3y_1$
+29. $y'_1 = -4y_2, \quad y'_2 = \sin y_1$
+30. $y'_1 = 2y_2 + 2y_2^2, \quad y'_2 = -8y_1$
+
+## Summary of Chapter 4 {#sec-ch4-summary}
+**Systems of ODEs. Phase Plane. Qualitative Methods**
+
+Whereas single electric circuits or single mass–spring systems are modeled by single ODEs (Chap. 2), networks of several circuits, systems of several masses and springs, and other engineering problems lead to **systems of ODEs**, involving several unknown functions $y_1(t), \cdots, y_n(t)$. Of central interest are **first-order systems** (Sec. 4.2):
+$$
+\mathbf{y}' = \mathbf{f}(t, \mathbf{y}), \qquad \text{in components,} \qquad \begin{aligned} y'_1 &= f_1(t, y_1, \cdots, y_n) \\ &\ \ \vdots \\ y'_n &= f_n(t, y_1, \cdots, y_n), \end{aligned}
+$$
+to which higher order ODEs and systems of ODEs can be reduced (Sec. 4.1). In this summary we let $n = 2$, so that
+$$
+(1) \qquad \mathbf{y}' = \mathbf{f}(t, \mathbf{y}), \qquad \text{in components,} \qquad \begin{aligned} y'_1 &= f_1(t, y_1, y_2) \\ y'_2 &= f_2(t, y_1, y_2). \end{aligned}
+$$
+Then we can represent solution curves as **trajectories** in the **phase plane** (the $y_1 y_2$-plane), investigate their totality [the "**phase portrait**" of (1)], and study the kind and **stability** of the **critical points** (points at which both $f_1$ and $f_2$ are zero), and classify them as **nodes, saddle points, centers,** or **spiral points** (Secs. 4.3, 4.4). These phase plane methods are **qualitative**; with their use we can discover various general properties of solutions without actually solving the system. They are primarily used for **autonomous systems**, that is, systems in which $t$ does not occur explicitly.
+
+A **linear system** is of the form
+$$
+(2) \qquad \mathbf{y}' = \mathbf{A}\mathbf{y} + \mathbf{g}, \qquad \text{where} \qquad \mathbf{A} = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}, \quad \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}, \quad \mathbf{g} = \begin{bmatrix} g_1 \\ g_2 \end{bmatrix}.
+$$
+If $\mathbf{g} = \mathbf{0}$, the system is called **homogeneous** and is of the form
+$$
+(3) \qquad \mathbf{y}' = \mathbf{A}\mathbf{y}.
+$$
+If $a_{11}, \cdots, a_{22}$ are constants, it has solutions $\mathbf{y} = \mathbf{x} e^{\lambda t}$, where $\lambda$ is a solution of the quadratic equation
+$$
+\begin{vmatrix} a_{11} - \lambda & a_{12} \\ a_{21} & a_{22} - \lambda \end{vmatrix} = (a_{11} - \lambda)(a_{22} - \lambda) - a_{12} a_{21} = 0
+$$
+and $\mathbf{x} \neq \mathbf{0}$ has components $x_1, x_2$ determined up to a multiplicative constant by
+$$
+(a_{11} - \lambda)x_1 + a_{12} x_2 = 0.
+$$
+(These $\lambda$'s are called the **eigenvalues** and these vectors $\mathbf{x}$ **eigenvectors** of the matrix $\mathbf{A}$. Further explanation is given in Sec. 4.0.)
+
+A system (2) with $\mathbf{g} \neq \mathbf{0}$ is called **nonhomogeneous**. Its general solution is of the form $\mathbf{y} = \mathbf{y}_h + \mathbf{y}_p$, where $\mathbf{y}_h$ is a general solution of (3) and $\mathbf{y}_p$ a particular solution of (2). Methods of determining the latter are discussed in Sec. 4.6.
+
+The discussion of critical points of linear systems based on eigenvalues is summarized in Tables 4.1 and 4.2 in Sec. 4.4. It also applies to nonlinear systems if the latter are first linearized. The key theorem for this is Theorem 1 in Sec. 4.5, which also includes three famous applications, namely the pendulum and van der Pol equations and the Lotka–Volterra predator–prey population model.
