@@ -317,7 +317,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#gauss-elimination" id="toc-gauss-elimination" class="nav-link" data-scroll-target="#gauss-elimination"><span class="header-section-number">23.1.1</span> Gauss Elimination</a></li>
   <li><a href="#exm-gauss-pivoting" id="toc-exm-gauss-pivoting" class="nav-link" data-scroll-target="#exm-gauss-pivoting"><span class="header-section-number">23.1.2</span> Gauss Elimination. Partial Pivoting</a></li>
-  <li><a href="#exm-gauss-sample" id="toc-exm-gauss-sample" class="nav-link" data-scroll-target="#exm-gauss-sample"><span class="header-section-number">23.1.3</span> Gauss Elimination in Table&nbsp;<span class="quarto-unresolved-ref">tbl-gauss-algorithm</span>, Sample Computation</a></li>
+  <li><a href="#exm-gauss-sample" id="toc-exm-gauss-sample" class="nav-link" data-scroll-target="#exm-gauss-sample"><span class="header-section-number">23.1.3</span> Gauss Elimination in Table&nbsp;<span>23.1</span>, Sample Computation</a></li>
   <li><a href="#exm-small-pivots" id="toc-exm-small-pivots" class="nav-link" data-scroll-target="#exm-small-pivots"><span class="header-section-number">23.1.4</span> Difficulty with Small Pivots</a></li>
   <li><a href="#operation-count" id="toc-operation-count" class="nav-link" data-scroll-target="#operation-count"><span class="header-section-number">23.1.5</span> Operation Count</a></li>
   <li><a href="#sec-ps20-1" id="toc-sec-ps20-1" class="nav-link" data-scroll-target="#sec-ps20-1"><span class="header-section-number">23.1.6</span> Problem Set</a></li>
@@ -421,7 +421,7 @@ window.Quarto = {
 <strong>References and Answers to Problems:</strong> App. 1 Part E, App. 2.</p>
 <section id="sec-gauss-elimination" class="level2" data-number="23.1">
 <h2 data-number="23.1" class="anchored" data-anchor-id="sec-gauss-elimination"><span class="header-section-number">23.1</span> Linear Systems: Gauss Elimination</h2>
-<p>The basic method for solving systems of linear equations by Gauss elimination and back substitution was explained in <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3. If you covered <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3, you may wonder why we cover Gauss elimination again. The reason is that here we cover Gauss elimination in the setting of numerics and introduce new material such as pivoting, row scaling, and operation count. Furthermore, we give an algorithmic representation of Gauss elimination in <span class="quarto-unresolved-ref">?tbl-gauss-algorithm</span> that can be readily converted into software. We also show when Gauss elimination runs into difficulties with small pivots and what to do about it. The reader should pay close attention to the material as variants of Gauss elimination are covered in <a href="#sec-lu-factorization" class="quarto-xref"><span>Section 23.2</span></a> and, furthermore, the general problem of solving linear systems is the focus of the first half of this chapter.</p>
+<p>The basic method for solving systems of linear equations by Gauss elimination and back substitution was explained in <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3. If you covered <!-- TODO: replace Sec. 7.3 with actual cross-reference label -->Sec. 7.3, you may wonder why we cover Gauss elimination again. The reason is that here we cover Gauss elimination in the setting of numerics and introduce new material such as pivoting, row scaling, and operation count. Furthermore, we give an algorithmic representation of Gauss elimination in <a href="#tbl-gauss-algorithm" class="quarto-xref">Table&nbsp;<span>23.1</span></a> that can be readily converted into software. We also show when Gauss elimination runs into difficulties with small pivots and what to do about it. The reader should pay close attention to the material as variants of Gauss elimination are covered in <a href="#sec-lu-factorization" class="quarto-xref"><span>Section 23.2</span></a> and, furthermore, the general problem of solving linear systems is the focus of the first half of this chapter.</p>
 <p>A linear system of <span class="math inline">\(n\)</span> equations in <span class="math inline">\(n\)</span> unknowns <span class="math inline">\(x_1, \ldots, x_n\)</span> is a set of equations of the form <span id="eq-linear-system-20-1"><span class="math display">\[
 \begin{aligned}
 E_1: \quad &amp; a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
@@ -530,8 +530,14 @@ x_2 &amp;= (-7 - 2 \cdot 0.5) / 8 = -1 \\
 x_1 &amp;= (26 - 2(-1) - 8(0.5)) / 6 = 4
 \end{aligned}
 \]</span> This is the correct solution. <span class="math inline">\(\blacksquare\)</span></p>
-<p>The general algorithm for the Gauss elimination is shown in <span class="quarto-unresolved-ref">?tbl-gauss-algorithm</span>. To help explain the algorithm, we have numbered some of its lines. <span class="math inline">\(x_i\)</span> is denoted by <span class="math inline">\(x_i\)</span> for uniformity. In lines 1 and 2 we look for a possible pivot. For <span class="math inline">\(j = k, \ldots, n\)</span>, we find a row <span class="math inline">\(m\)</span> containing the element in column <span class="math inline">\(k\)</span> of greatest absolute value. If <span class="math inline">\(a_{mk} = 0\)</span>, we output “No unique solution exists” (lines 3). Otherwise, we swap row <span class="math inline">\(k\)</span> and row <span class="math inline">\(m\)</span>. In lines 4 and 5 we perform row elimination, updating the coefficient matrix and the right-hand side.</p>
-<p><strong>Table: Algorithm Gauss</strong> {#tbl-gauss-algorithm}</p>
+<p>The general algorithm for the Gauss elimination is shown in <a href="#tbl-gauss-algorithm" class="quarto-xref">Table&nbsp;<span>23.1</span></a>. To help explain the algorithm, we have numbered some of its lines. <span class="math inline">\(x_i\)</span> is denoted by <span class="math inline">\(x_i\)</span> for uniformity. In lines 1 and 2 we look for a possible pivot. For <span class="math inline">\(j = k, \ldots, n\)</span>, we find a row <span class="math inline">\(m\)</span> containing the element in column <span class="math inline">\(k\)</span> of greatest absolute value. If <span class="math inline">\(a_{mk} = 0\)</span>, we output “No unique solution exists” (lines 3). Otherwise, we swap row <span class="math inline">\(k\)</span> and row <span class="math inline">\(m\)</span>. In lines 4 and 5 we perform row elimination, updating the coefficient matrix and the right-hand side.</p>
+<div id="tbl-gauss-algorithm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gauss-algorithm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.1: Algorithm Gauss
+</figcaption>
+<div aria-describedby="tbl-gauss-algorithm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<hr>
 <p><em>ALGORITHM GAUSS</em> (<span class="math inline">\(A = [a_{jk}], \ b\)</span>)</p>
 <p>This algorithm computes a unique solution <span class="math inline">\(x = [x_j]\)</span> of the system <span class="math inline">\(Ax = b\)</span> or indicates that the system has no unique solution.</p>
 <ul>
@@ -551,10 +557,13 @@ x_1 &amp;= (26 - 2(-1) - 8(0.5)) / 6 = 4
 <li>If <span class="math inline">\(a_{nn} = 0\)</span> then OUTPUT “No unique solution exists.” Stop.</li>
 <li>Else [Start back substitution] <span class="math display">\[x_n = \frac{a_{n, n+1}}{a_{nn}}\]</span> For <span class="math inline">\(i = n-1, \ldots, 1\)</span>, do: <span class="math display">\[x_i = \frac{1}{a_{ii}}\left(a_{i, n+1} - \sum_{j=i+1}^n a_{ij}x_j\right)\]</span> End OUTPUT <span class="math inline">\(x = [x_j]\)</span>. Stop.</li>
 </ol>
-<p>End GAUSS</p>
+<p>End GAUSS ***</p>
+</div>
+</figure>
+</div>
 </section>
 <section id="exm-gauss-sample" class="level3" data-number="23.1.3">
-<h3 data-number="23.1.3" class="anchored" data-anchor-id="exm-gauss-sample"><span class="header-section-number">23.1.3</span> Gauss Elimination in <span class="quarto-unresolved-ref">?tbl-gauss-algorithm</span>, Sample Computation</h3>
+<h3 data-number="23.1.3" class="anchored" data-anchor-id="exm-gauss-sample"><span class="header-section-number">23.1.3</span> Gauss Elimination in <a href="#tbl-gauss-algorithm" class="quarto-xref">Table&nbsp;<span>23.1</span></a>, Sample Computation</h3>
 <p>In Example 1 we had <span class="math inline">\(a_{11} = 0\)</span>, so that pivoting was necessary. The greatest coefficient in Column 1 was 6. Thus in line 1, <span class="math inline">\(m = 3\)</span> and we interchanged row 1 and row 3. Then in lines 4 and 5 we computed <span class="math inline">\(m_{21} = 3/6 = 0.5\)</span> and <span class="math inline">\(m_{31} = 0/6 = 0\)</span>, and then updated rows 2 and 3. In Step 2 we had 8 as the greatest coefficient in Column 2, hence <span class="math inline">\(m = 3\)</span>. We interchanged rows 2 and 3, computed <span class="math inline">\(m_{32} = 4/8 = 0.5\)</span> in line 4, and updated row 3. This produced the triangular form used in the back substitution. <span class="math inline">\(\blacksquare\)</span></p>
 <p>If in Step <span class="math inline">\(k\)</span>, <span class="math inline">\(a_{kk} = 0\)</span>, we must pivot. If <span class="math inline">\(a_{kk}\)</span> is small, we should pivot because of roundoff error magnification that may seriously affect accuracy or even produce nonsensical results.</p>
 </section>
@@ -1244,9 +1253,15 @@ x_4^{(2)} &amp;= 0.25x_2^{(2)} + 0.25x_3^{(2)} + 25.00 = 0.25(90.625) + 0.25(65.
 </tbody>
 </table>
 <p>Hence convergence to the exact solution <span class="math inline">\(x_1 = 87.5, \ x_2 = 87.5, \ x_3 = 62.5, \ x_4 = 62.5\)</span> seems rather fast. <span class="math inline">\(\blacksquare\)</span></p>
-<p>An algorithm for the Gauss–Seidel iteration is shown in <span class="quarto-unresolved-ref">?tbl-gauss-seidel-iteration</span>. To obtain the algorithm, let us derive the general formulas for this iteration.</p>
-<p>We assume that <span class="math inline">\(a_{jj} = 1\)</span> for <span class="math inline">\(j = 1, \ldots, n\)</span>. (Note that this can be achieved if we can rearrange the equations so that no diagonal coefficient is zero; then we may divide each equation by the corresponding diagonal coefficient.) We now write <span id="eq-split-matrix-4"><span class="math display">\[A = I + L + U \tag{23.13}\]</span></span> where <span class="math inline">\(I\)</span> is the unit matrix and <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> are, respectively, lower and upper triangular matrices with zero main diagonals. If we substitute (<a href="#eq-split-matrix-4" class="quarto-xref">Equation&nbsp;<span>23.13</span></a>) into <span class="math inline">\(Ax = b\)</span>, we have <span class="math display">\[(I + L + U)x = b\]</span> Taking <span class="math inline">\(Lx\)</span> and <span class="math inline">\(Ux\)</span> to the right, we obtain, since <span class="math inline">\(Ix = x\)</span>: <span id="eq-iteration-base-5"><span class="math display">\[x = b - Lx - Ux \tag{23.14}\]</span></span> Remembering from (<a href="#eq-seidel-first-step-3" class="quarto-xref">Equation&nbsp;<span>23.12</span></a>) in Example 1 that below the main diagonal we took “new” approximations and above the main diagonal “old” ones, we obtain from (<a href="#eq-iteration-base-5" class="quarto-xref">Equation&nbsp;<span>23.14</span></a>) the desired iteration formulas: <span id="eq-seidel-matrix-6"><span class="math display">\[x^{(m+1)} = b - Lx^{(m+1)} - Ux^{(m)} \tag{23.15}\]</span></span> where <span class="math inline">\(x^{(m+1)}\)</span> is the <span class="math inline">\((m+1)\)</span>-th approximation and <span class="math inline">\(x^{(m)}\)</span> is the <span class="math inline">\(m\)</span>-th approximation. In components this gives the formula in line 1 in <span class="quarto-unresolved-ref">?tbl-gauss-seidel-iteration</span>. The matrix <span class="math inline">\(A\)</span> must satisfy <span class="math inline">\(a_{jj} \neq 0\)</span> for all <span class="math inline">\(j\)</span>. In <span class="quarto-unresolved-ref">?tbl-gauss-seidel-iteration</span> our assumption <span class="math inline">\(a_{jj} = 1\)</span> is no longer required, but is automatically taken care of by the factor <span class="math inline">\(1/a_{jj}\)</span> in line 1.</p>
-<p><strong>Table: Gauss–Seidel Iteration</strong> {#tbl-gauss-seidel-iteration}</p>
+<p>An algorithm for the Gauss–Seidel iteration is shown in <a href="#tbl-gauss-seidel-iteration" class="quarto-xref">Table&nbsp;<span>23.2</span></a>. To obtain the algorithm, let us derive the general formulas for this iteration.</p>
+<p>We assume that <span class="math inline">\(a_{jj} = 1\)</span> for <span class="math inline">\(j = 1, \ldots, n\)</span>. (Note that this can be achieved if we can rearrange the equations so that no diagonal coefficient is zero; then we may divide each equation by the corresponding diagonal coefficient.) We now write <span id="eq-split-matrix-4"><span class="math display">\[A = I + L + U \tag{23.13}\]</span></span> where <span class="math inline">\(I\)</span> is the unit matrix and <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> are, respectively, lower and upper triangular matrices with zero main diagonals. If we substitute (<a href="#eq-split-matrix-4" class="quarto-xref">Equation&nbsp;<span>23.13</span></a>) into <span class="math inline">\(Ax = b\)</span>, we have <span class="math display">\[(I + L + U)x = b\]</span> Taking <span class="math inline">\(Lx\)</span> and <span class="math inline">\(Ux\)</span> to the right, we obtain, since <span class="math inline">\(Ix = x\)</span>: <span id="eq-iteration-base-5"><span class="math display">\[x = b - Lx - Ux \tag{23.14}\]</span></span> Remembering from (<a href="#eq-seidel-first-step-3" class="quarto-xref">Equation&nbsp;<span>23.12</span></a>) in Example 1 that below the main diagonal we took “new” approximations and above the main diagonal “old” ones, we obtain from (<a href="#eq-iteration-base-5" class="quarto-xref">Equation&nbsp;<span>23.14</span></a>) the desired iteration formulas: <span id="eq-seidel-matrix-6"><span class="math display">\[x^{(m+1)} = b - Lx^{(m+1)} - Ux^{(m)} \tag{23.15}\]</span></span> where <span class="math inline">\(x^{(m+1)}\)</span> is the <span class="math inline">\((m+1)\)</span>-th approximation and <span class="math inline">\(x^{(m)}\)</span> is the <span class="math inline">\(m\)</span>-th approximation. In components this gives the formula in line 1 in <a href="#tbl-gauss-seidel-iteration" class="quarto-xref">Table&nbsp;<span>23.2</span></a>. The matrix <span class="math inline">\(A\)</span> must satisfy <span class="math inline">\(a_{jj} \neq 0\)</span> for all <span class="math inline">\(j\)</span>. In <a href="#tbl-gauss-seidel-iteration" class="quarto-xref">Table&nbsp;<span>23.2</span></a> our assumption <span class="math inline">\(a_{jj} = 1\)</span> is no longer required, but is automatically taken care of by the factor <span class="math inline">\(1/a_{jj}\)</span> in line 1.</p>
+<div id="tbl-gauss-seidel-iteration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gauss-seidel-iteration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.2: Gauss–Seidel Iteration
+</figcaption>
+<div aria-describedby="tbl-gauss-seidel-iteration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<hr>
 <p><em>ALGORITHM GAUSS–SEIDEL</em> (<span class="math inline">\(A, \ b, \ x^{(0)}, \ \varepsilon, \ N\)</span>)</p>
 <p>This algorithm computes a solution <span class="math inline">\(x\)</span> of the system <span class="math inline">\(Ax = b\)</span> given an initial approximation <span class="math inline">\(x^{(0)}\)</span>, where <span class="math inline">\(A = [a_{jk}]\)</span> is an <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(a_{jj} \neq 0, \ j = 1, \dots, n\)</span>.</p>
 <ul>
@@ -1261,7 +1276,10 @@ x_4^{(2)} &amp;= 0.25x_2^{(2)} + 0.25x_3^{(2)} + 25.00 = 0.25(90.625) + 0.25(65.
 </ol>
 <p>End</p>
 <p>OUTPUT: “No solution satisfying the tolerance condition obtained after <span class="math inline">\(N\)</span> iteration steps.” Stop. [Procedure completed unsuccessfully]</p>
-<p>End GAUSS–SEIDEL</p>
+<p>End GAUSS–SEIDEL ***</p>
+</div>
+</figure>
+</div>
 </section>
 <section id="convergence-and-matrix-norms" class="level3" data-number="23.3.3">
 <h3 data-number="23.3.3" class="anchored" data-anchor-id="convergence-and-matrix-norms"><span class="header-section-number">23.3.3</span> Convergence and Matrix Norms</h3>
@@ -1433,7 +1451,7 @@ k &amp; -2k &amp; k \\
 <div id="fig-20-01" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-01.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-01.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.1: Fig. 445: (a) Well-conditioned and (b) ill-conditioned linear system of two equations in two unknowns
@@ -1740,7 +1758,7 @@ H_3 = \begin{bmatrix}
 <div id="fig-20-02" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-02.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-02.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.2: Fig. 446: Approximate fitting of a straight line
@@ -1762,7 +1780,7 @@ a\sum x_j + b\sum x_j^2 &amp;= \sum x_j y_j
 <div id="fig-20-03" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-03.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-03.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.3: Fig. 447: Vertical distance of a point from a straight line <span class="math inline">\(y = a + bx\)</span>
@@ -1808,7 +1826,7 @@ n &amp;= 5, \quad \sum x_j = 20, \quad \sum x_j^2 = 120, \quad \sum x_j^3 = 800,
 <div id="fig-20-04" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-04.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-04.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.4: Fig. 448: Least squares parabola in Example 2
@@ -1968,7 +1986,7 @@ A = \begin{bmatrix}
 <div id="fig-20-05" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-05.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-05.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.5: Fig. 449: Gerschgorin disks in Example 1
@@ -2172,7 +2190,7 @@ A = \begin{bmatrix}
 <div id="fig-20-06" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-20-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../images/fig-20-06.png" class="img-fluid figure-img">
+<img src="../images/chapter20/fig-20-06.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23.6: Fig. 450: Householder’s method for a <span class="math inline">\(5 \times 5\)</span> matrix. <span class="math inline">\(B\)</span> is tridiagonal

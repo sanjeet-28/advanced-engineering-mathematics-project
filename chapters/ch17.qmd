@@ -34,7 +34,7 @@ Using polar forms $z = re^{i\theta}$ and $w = Re^{i\phi}$, we have $w = z^2 = r^
 $$R = r^2 \quad \text{and} \quad \phi = 2\theta.$$
 Hence circles $r = r_0$ are mapped onto circles $R = r_0^2$ and rays $\theta = \theta_0$ onto rays $\phi = 2\theta_0$. @fig-17-01 shows this for the region $1 \leq |z| \leq \frac{3}{2}, \ \pi/6 \leq \theta \leq \pi/3$, which is mapped onto the region $1 \leq |w| \leq \frac{9}{4}, \ \pi/3 \leq \phi \leq 2\pi/3$.
 
-![Fig. 378. Mapping $w = z^2$. Lines $|z| = \text{const}$, $\arg z = \text{const}$ and their images in the $w$-plane](../images/fig-17-01.png){#fig-17-01}
+![Fig. 378. Mapping $w = z^2$. Lines $|z| = \text{const}$, $\arg z = \text{const}$ and their images in the $w$-plane](../images/chapter17/fig-17-01.png){#fig-17-01}
 
 In Cartesian coordinates we have $z = x + iy$ and
 $$u = \text{Re}(z^2) = x^2 - y^2, \quad v = \text{Im}(z^2) = 2xy.$$
@@ -44,13 +44,13 @@ $$v^2 = 4c^2(c^2 - u)$$ {#eq-sec171-2}
 $$v^2 = 4k^2(k^2 + u)$$ {#eq-sec171-3}
 (see @fig-17-02).
 
-![Fig. 379. Images of $x = \text{const}$, $y = \text{const}$ under $w = z^2$](../images/fig-17-02.png){#fig-17-02}
+![Fig. 379. Images of $x = \text{const}$, $y = \text{const}$ under $w = z^2$](../images/chapter17/fig-17-02.png){#fig-17-02}
 
 ### Conformal Mapping
 
 A mapping $w = f(z)$ is called **conformal** if it preserves angles between oriented curves in magnitude as well as in sense. @fig-17-03 shows what this means. The **angle** $\alpha$ ($0 \leq \alpha \leq \pi$) between two intersecting curves $C_1$ and $C_2$ is defined to be the angle between their oriented tangents at the intersection point $z_0$. And conformality means that the images $C_1^*$ and $C_2^*$ of $C_1$ and $C_2$ make the same angle as the curves themselves in both magnitude and direction.
 
-![Fig. 380. Curves $C_1$ and $C_2$ and their respective images $C_1^*$ and $C_2^*$ under a conformal mapping $w = f(z)$](../images/fig-17-03.png){#fig-17-03}
+![Fig. 380. Curves $C_1$ and $C_2$ and their respective images $C_1^*$ and $C_2^*$ under a conformal mapping $w = f(z)$](../images/chapter17/fig-17-03.png){#fig-17-03}
 
 ### THEOREM 1 Conformality of Mapping by Analytic Functions
 The mapping $w = f(z)$ by an analytic function $f$ is conformal, except at **critical points**, that is, points at which the derivative $f'(z)$ is zero.
@@ -63,7 +63,7 @@ in the domain of $f(z)$ and to show that $w = f(z)$ rotates all tangents at a po
 $$\arg \dot{w} = \arg f' + \arg \dot{z}$$ {#eq-sec171-5}
 where $\arg \dot{z}$ gives the tangent direction of $C$. This shows that the mapping rotates *all* directions at a point $z_0$ in the domain of analyticity of $f$ through the same angle $\arg f'(z_0)$, which exists as long as $f'(z_0) \neq 0$. But this means conformality, as @fig-17-04 illustrates for an angle $\alpha$ between two curves, whose images $C_1^*$ and $C_2^*$ make the same angle (because of the rotation). $\blacksquare$
 
-![Fig. 381. Secant and tangent of the curve $C$](../images/fig-17-04.png){#fig-17-04}
+![Fig. 381. Secant and tangent of the curve $C$](../images/chapter17/fig-17-04.png){#fig-17-04}
 
 In the remainder of this section and in the next ones we shall consider various conformal mappings that are of practical interest, for instance, in modeling potential problems.
 
@@ -71,7 +71,7 @@ In the remainder of this section and in the next ones we shall consider various 
 
 The mapping $w = z^n, \ n = 2, 3, \dots$, is conformal, except at $z = 0$, where $w' = nz^{n-1} = 0$. For $n=2$ this is shown in @fig-17-01; we see that at 0 the angles are doubled. For general $n$ the angles at 0 are multiplied by a factor $n$ under the mapping. Hence the sector $0 \leq \theta \leq \pi/n$ is mapped by $z^n$ onto the upper half-plane $v \geq 0$ (see @fig-17-05).
 
-![Fig. 382. Mapping by $w = z^n$](../images/fig-17-05.png){#fig-17-05}
+![Fig. 382. Mapping by $w = z^n$](../images/chapter17/fig-17-05.png){#fig-17-05}
 
 ### EXAMPLE 3 Mapping $w = z + 1/z$. Joukowski Airfoil
 
@@ -81,7 +81,7 @@ By separating the real and imaginary parts we thus obtain
 $$u = a \cos \theta, \quad v = b \sin \theta \quad \text{where} \quad a = r + \frac{1}{r}, \quad b = r - \frac{1}{r}.$$
 Hence circles $|z| = r = \text{const} \neq 1$ are mapped onto ellipses $u^2/a^2 + v^2/b^2 = 1$. The circle $r = 1$ is mapped onto the segment $-2 \leq u \leq 2$ of the $u$-axis. See @fig-17-06.
 
-![Fig. 383. Mapping of circles to ellipses under $w = z + 1/z$](../images/fig-17-06.png){#fig-17-06}
+![Fig. 383. Mapping of circles to ellipses under $w = z + 1/z$](../images/chapter17/fig-17-06.png){#fig-17-06}
 
 Now the derivative of $w$ is
 $$w' = 1 - \frac{1}{z^2} = \frac{(z + 1)(z - 1)}{z^2}$$
@@ -89,7 +89,7 @@ which is 0 at $z = \pm 1$. These are the points at which the mapping is not conf
 
 Another interesting application of $w = z + 1/z$ (the flow around a cylinder) will be considered in <!-- TODO: replace Sec. 18.4 with actual cross-reference label -->.
 
-![Fig. 384. Joukowski airfoil](../images/fig-17-07.png){#fig-17-07}
+![Fig. 384. Joukowski airfoil](../images/chapter17/fig-17-07.png){#fig-17-07}
 
 ### EXAMPLE 4 Conformality of $w = e^z$
 
@@ -97,9 +97,9 @@ From (10) in <!-- TODO: replace Sec. 13.5 with actual cross-reference label --> 
 
 The fundamental region $-\pi < \text{Arg } z \leq \pi$ of $e^z$ in the $z$-plane is mapped bijectively and conformally onto the entire $w$-plane without the origin $w = 0$ (because $e^z = 0$ for no $z$). @fig-17-09 shows that the upper half of the fundamental region $0 < y \leq \pi$ is mapped onto the upper half-plane $0 < \arg w \leq \pi$, the left half being mapped inside the unit disk $|w| \leq 1$ and the right half outside (why?).
 
-![Fig. 385. Mapping by $w = e^z$](../images/fig-17-08.png){#fig-17-08}
+![Fig. 385. Mapping by $w = e^z$](../images/chapter17/fig-17-08.png){#fig-17-08}
 
-![Fig. 386. Mapping of the fundamental strip by $w = e^z$](../images/fig-17-09.png){#fig-17-09}
+![Fig. 386. Mapping of the fundamental strip by $w = e^z$](../images/chapter17/fig-17-09.png){#fig-17-09}
 
 ### EXAMPLE 5 Principle of Inverse Mapping. Mapping $w = \text{Ln } z$
 
@@ -222,7 +222,7 @@ The proof in this example suggests the use of $z$ and $\bar{z}$ instead of $x$ a
 
 Surprisingly, *every* linear fractional transformation has the property just proved:
 
-![Fig. 387. Mapping (Inversion) $w = 1/z$](../images/fig-17-10.png){#fig-17-10}
+![Fig. 387. Mapping (Inversion) $w = 1/z$](../images/chapter17/fig-17-10.png){#fig-17-10}
 
 ### THEOREM 1 Circles and Straight Lines
 Every linear fractional transformation (@eq-sec172-1) maps the totality of circles and straight lines in the $z$-plane onto the totality of circles and straight lines in the $w$-plane.
@@ -325,7 +325,7 @@ Using Theorem 1, we can now find linear fractional transformations of some pract
 
 **Principle.** *Prescribe three boundary points $z_1, z_2, z_3$ of the domain $D$ in the $z$-plane. Choose their images $w_1, w_2, w_3$ on the boundary of the image $D^*$ of $D$ in the $w$-plane. Obtain the mapping from (@eq-sec173-2). Make sure that $D$ is mapped onto $D^*$, not onto its complement. In the latter case, interchange two $w$-points. (Why does this help?)*
 
-![Fig. 388. Linear fractional transformation in Example 1](../images/fig-17-11.png){#fig-17-11}
+![Fig. 388. Linear fractional transformation in Example 1](../images/chapter17/fig-17-11.png){#fig-17-11}
 
 ### EXAMPLE 1 Mapping of a Half-Plane onto a Disk (@fig-17-11)
 
@@ -384,14 +384,14 @@ Taking $z_0 = \frac{1}{2}$ in (@eq-sec173-3), we obtain (verify!)
 $$w = \frac{2z - 1}{z - 2}$$
 (see @fig-17-12).
 
-![Fig. 389. Mapping in Example 5](../images/fig-17-12.png){#fig-17-12}
+![Fig. 389. Mapping in Example 5](../images/chapter17/fig-17-12.png){#fig-17-12}
 
 ### EXAMPLE 6 Mapping of an Angular Region onto the Unit Disk
 
 Certain mapping problems can be solved by combining linear fractional transformations with others. For instance, to map the angular region $D: -\pi/6 \leq \arg z \leq \pi/6$ (@fig-17-13) onto the unit disk $|w| \leq 1$, we may map $D$ by $Z = z^3$ onto the right $Z$-half-plane and then the latter onto the disk by
 $$w = i\frac{Z - 1}{Z + 1}, \quad \text{combined} \quad w = i\frac{z^3 - 1}{z^3 + 1}.$$
 
-![Fig. 390. Mapping in Example 6](../images/fig-17-13.png){#fig-17-13}
+![Fig. 390. Mapping in Example 6](../images/chapter17/fig-17-13.png){#fig-17-13}
 
 This is the end of our discussion of linear fractional transformations. In the next section we turn to conformal mappings by other analytic functions (sine, cosine, etc.).
 
@@ -433,7 +433,7 @@ We shall now cover mappings by trigonometric and hyperbolic analytic functions. 
 $$w = u + iv = \sin z = \sin x \cosh y + i \cos x \sinh y$$ {#eq-sec174-1}
 (<!-- TODO: replace Sec. 13.6 with actual cross-reference label -->).
 
-![Fig. 391. Mapping $w = u + iv = \sin z$](../images/fig-17-14.png){#fig-17-14}
+![Fig. 391. Mapping $w = u + iv = \sin z$](../images/chapter17/fig-17-14.png){#fig-17-14}
 
 Hence
 $$u = \sin x \cosh y, \quad v = \cos x \sinh y.$$ {#eq-sec174-2}
@@ -444,7 +444,7 @@ Exceptions are the vertical lines $x = -\frac{1}{2}\pi, \ \frac{1}{2}\pi$, which
 
 @fig-17-15 illustrates this further. The upper and lower sides of the rectangle are mapped onto semi-ellipses and the vertical sides onto $-\cosh 1 \leq u \leq -1$ and $1 \leq u \leq \cosh 1 \ (v = 0)$, respectively. An application to a potential problem will be given in Prob. 3 of <!-- TODO: replace Sec. 18.2 with actual cross-reference label -->.
 
-![Fig. 392. Mapping by $w = \sin z$](../images/fig-17-15.png){#fig-17-15}
+![Fig. 392. Mapping by $w = \sin z$](../images/chapter17/fig-17-15.png){#fig-17-15}
 
 ### Cosine Function
 The mapping $w = \cos z$ could be discussed independently, but since
@@ -469,7 +469,7 @@ On the upper boundary of the strip, $y = \pi$, and since $\sin \pi = 0$ and $\co
 
 This mapping in @fig-17-16 has applications in potential theory, as we shall see in Prob. 12 of <!-- TODO: replace Sec. 18.3 with actual cross-reference label -->.
 
-![Fig. 393. Mapping by $w = \cosh z$](../images/fig-17-16.png){#fig-17-16}
+![Fig. 393. Mapping by $w = \cosh z$](../images/chapter17/fig-17-16.png){#fig-17-16}
 
 ### Tangent Function
 @fig-17-17 shows the mapping of a vertical infinite strip onto the unit circle by $w = \tan z$, accomplished in three steps as suggested by the representation (<!-- TODO: replace Sec. 13.6 with actual cross-reference label -->)
@@ -490,7 +490,7 @@ From the $W$-plane we get to the $w$-plane simply by a clockwise rotation throug
 
 Together we have shown that $w = \tan z$ maps $S: -\pi/4 < \text{Re } z < \pi/4$ onto the unit disk $|w| < 1$, with the four quarters of $S$ mapped as indicated in @fig-17-17. This mapping is conformal and one-to-one.
 
-![Fig. 394. Mapping by $w = \tan z$](../images/fig-17-17.png){#fig-17-17}
+![Fig. 394. Mapping by $w = \tan z$](../images/chapter17/fig-17-17.png){#fig-17-17}
 
 ### PROBLEM SET {#sec-ps-17-4}
 
@@ -540,7 +540,7 @@ Find and sketch or graph the image of the given region under the mapping $w = \c
 24. Find and sketch the image of the region $2 \leq |z| \leq 3, \ \pi/4 \leq \theta \leq \pi/2$ under the mapping $w = \text{Ln } z$.
 25. Show that $w = \text{Ln } \frac{z - 1}{z + 1}$ maps the upper half-plane onto the horizontal strip $0 \leq \text{Im } w \leq \pi$ as shown in @fig-17-18.
 
-![Problem 25](../images/fig-17-18.png){#fig-17-18}
+![Problem 25](../images/chapter17/fig-17-18.png){#fig-17-18}
 
 ## Riemann Surfaces (Optional) {#sec-riemann-surfaces}
 
@@ -556,7 +556,7 @@ By interchanging the roles of the variables $z$ and $w$ it follows that the doub
 $$w = \sqrt{z}$$ {#eq-sec175-2}
 becomes single-valued on the Riemann surface in @fig-17-19 (left), that is, a function in the usual sense. We can let the upper sheet correspond to the principal value of $\sqrt{z}$. Its image is the right $w$-half-plane. The other sheet is then mapped onto the left $w$-half-plane.
 
-![Fig. 395. Riemann surfaces](../images/fig-17-19.png){#fig-17-19}
+![Fig. 395. Riemann surfaces](../images/chapter17/fig-17-19.png){#fig-17-19}
 
 Similarly, the triple-valued relation $w = \sqrt[3]{z}$ becomes single-valued on the three-sheeted Riemann surface in @fig-17-19 (right), which also has a branch point at $z = 0$.
 

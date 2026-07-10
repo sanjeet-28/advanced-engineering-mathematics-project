@@ -166,8 +166,8 @@ This is the correct solution. $\blacksquare$
 
 The general algorithm for the Gauss elimination is shown in @tbl-gauss-algorithm. To help explain the algorithm, we have numbered some of its lines. $x_i$ is denoted by $x_i$ for uniformity. In lines 1 and 2 we look for a possible pivot. For $j = k, \ldots, n$, we find a row $m$ containing the element in column $k$ of greatest absolute value. If $a_{mk} = 0$, we output "No unique solution exists" (lines 3). Otherwise, we swap row $k$ and row $m$. In lines 4 and 5 we perform row elimination, updating the coefficient matrix and the right-hand side.
 
-**Table: Algorithm Gauss** {#tbl-gauss-algorithm}
-
+::: {#tbl-gauss-algorithm}
+***
 *ALGORITHM GAUSS* ($A = [a_{jk}], \ b$)
 
 This algorithm computes a unique solution $x = [x_j]$ of the system $Ax = b$ or indicates that the system has no unique solution.
@@ -199,6 +199,10 @@ End
    OUTPUT $x = [x_j]$. Stop.
 
 End GAUSS
+***
+
+Algorithm Gauss
+:::
 
 ### Gauss Elimination in @tbl-gauss-algorithm, Sample Computation {#exm-gauss-sample}
 
@@ -982,8 +986,8 @@ Remembering from (@eq-seidel-first-step-3) in Example 1 that below the main diag
 $$x^{(m+1)} = b - Lx^{(m+1)} - Ux^{(m)}$$ {#eq-seidel-matrix-6}
 where $x^{(m+1)}$ is the $(m+1)$-th approximation and $x^{(m)}$ is the $m$-th approximation. In components this gives the formula in line 1 in @tbl-gauss-seidel-iteration. The matrix $A$ must satisfy $a_{jj} \neq 0$ for all $j$. In @tbl-gauss-seidel-iteration our assumption $a_{jj} = 1$ is no longer required, but is automatically taken care of by the factor $1/a_{jj}$ in line 1.
 
-**Table: Gauss–Seidel Iteration** {#tbl-gauss-seidel-iteration}
-
+::: {#tbl-gauss-seidel-iteration}
+***
 *ALGORITHM GAUSS–SEIDEL* ($A, \ b, \ x^{(0)}, \ \varepsilon, \ N$)
 
 This algorithm computes a solution $x$ of the system $Ax = b$ given an initial approximation $x^{(0)}$, where $A = [a_{jk}]$ is an $n \times n$ matrix with $a_{jj} \neq 0, \ j = 1, \dots, n$.
@@ -1006,6 +1010,10 @@ End
 OUTPUT: "No solution satisfying the tolerance condition obtained after $N$ iteration steps." Stop. [Procedure completed unsuccessfully]
 
 End GAUSS–SEIDEL
+***
+
+Gauss–Seidel Iteration
+:::
 
 ### Convergence and Matrix Norms
 
@@ -1237,7 +1245,7 @@ These concepts are qualitative. We would certainly regard a magnification of ina
 
 Let us now turn to linear systems. @fig-20-01 explains that ill-conditioning occurs if and only if the two equations $Ax = b$ give two nearly parallel lines, so that their intersection point (the solution of the system) moves substantially if we raise or lower a line just a little. For larger systems the situation is similar in principle, although geometry no longer helps. We shall see that we may regard ill-conditioning as an approach to singularity of the matrix.
 
-![Fig. 445: (a) Well-conditioned and (b) ill-conditioned linear system of two equations in two unknowns](../images/fig-20-01.png){#fig-20-01}
+![Fig. 445: (a) Well-conditioned and (b) ill-conditioned linear system of two equations in two unknowns](../images/chapter20/fig-20-01.png){#fig-20-01}
 
 ### An Ill-Conditioned System {#exm-ill-conditioned}
 
@@ -1609,7 +1617,7 @@ Let us begin with a motivation. If we require strict equality $f(x_j) = y_j$ and
 $$( -1.3, \ 0.103 ), \quad ( -0.1, \ 1.099 ), \quad ( 0.2, \ 0.808 ), \quad ( 1.3, \ 1.897 )$$ {#eq-four-points-1}
 there corresponds the interpolation polynomial (@fig-20-02), but if we graph the points, we see that they lie nearly on a straight line. Hence if these values are obtained in an experiment and thus involve an experimental error, and if the nature of the experiment suggests a linear relation, we better fit a straight line through the points (@fig-20-02). Such a line may be useful for predicting values to be expected for other values of $x$. A widely used principle for fitting straight lines is the **method of least squares** by Gauss and Legendre. In the present situation it may be formulated as follows.
 
-![Fig. 446: Approximate fitting of a straight line](../images/fig-20-02.png){#fig-20-02}
+![Fig. 446: Approximate fitting of a straight line](../images/chapter20/fig-20-02.png){#fig-20-02}
 
 **Method of Least Squares.** The straight line
 $$y = a + bx$$ {#eq-least-squares-line-2}
@@ -1633,7 +1641,7 @@ a\sum x_j + b\sum x_j^2 &= \sum x_j y_j
 $$ {#eq-normal-equations-4}
 These equations are called the **normal equations** of our problem.
 
-![Fig. 447: Vertical distance of a point from a straight line $y = a + bx$](../images/fig-20-03.png){#fig-20-03}
+![Fig. 447: Vertical distance of a point from a straight line $y = a + bx$](../images/chapter20/fig-20-03.png){#fig-20-03}
 
 ### Straight Line {#exm-least-squares-line}
 
@@ -1696,7 +1704,7 @@ Solving them we obtain the quadratic least squares parabola (@fig-20-04)
 $$y = 5.11429 - 1.41429x + 0.21429x^2$$
 $\blacksquare$
 
-![Fig. 448: Least squares parabola in Example 2](../images/fig-20-04.png){#fig-20-04}
+![Fig. 448: Least squares parabola in Example 2](../images/chapter20/fig-20-04.png){#fig-20-04}
 
 For a general polynomial (@eq-least-squares-poly-5) the normal equations form a linear system of equations in the unknowns $b_0, \dots, b_m$. When its matrix $M$ is nonsingular, we can solve the system by Cholesky's method (@sec-lu-factorization) because then $M$ is positive definite (and symmetric). When the equations are nearly linearly dependent, the normal equations may become ill-conditioned and should be replaced by other methods; see [E5], Sec. 5.7, listed in App. 1.
 
@@ -1928,7 +1936,7 @@ Since $A$ is symmetric, it follows from Theorem 5, @sec-eigenvalue-problems, tha
 
 It is interesting that here the Gerschgorin disks form two disjoint sets, namely, $D_1 \cup D_3$, which contains two eigenvalues, and $D_2$, which contains one eigenvalue. This is typical, as the following theorem shows. $\blacksquare$
 
-![Fig. 449: Gerschgorin disks in Example 1](../images/fig-20-05.png){#fig-20-05}
+![Fig. 449: Gerschgorin disks in Example 1](../images/chapter20/fig-20-05.png){#fig-20-05}
 
 ::: {#thm-gerschgorin-disjoint}
 ## Gerschgorin disks (disjoint sets)
@@ -2215,7 +2223,7 @@ In step $k$ we create zeros in Row $k$ and Column $k$ below the subdiagonal entr
 $$A^{(k)} = P^{(k)}A^{(k-1)}P^{(k)}$$
 After $n-2$ steps, we obtain a tridiagonal matrix $B = A^{(n-2)}$ (@fig-20-06).
 
-![Fig. 450: Householder's method for a $5 \times 5$ matrix. $B$ is tridiagonal](../images/fig-20-06.png){#fig-20-06}
+![Fig. 450: Householder's method for a $5 \times 5$ matrix. $B$ is tridiagonal](../images/chapter20/fig-20-06.png){#fig-20-06}
 
 ### QR-Method
 
