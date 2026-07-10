@@ -110,7 +110,7 @@ t = \frac{x_1^2 + 9x_2^2}{2x_1^2 + 54x_2^2}
 $$
 Starting from $\mathbf{x}_0 = 6\mathbf{i} + 3\mathbf{j}$, we compute the values in @tbl-steepest-descent, which are shown in @fig-22-01. @fig-22-01 suggests that in the case of slimmer ellipses (“a long narrow valley”), convergence would be poor. You may confirm this by replacing the coefficient 3 in (@eq-sec221-4) with a large coefficient. For more sophisticated descent and other methods, some of them also applicable to vector functions of vector variables, we refer to the references listed in Part F of App. 1; see also [E25]. $\blacksquare$
 
-![Fig. 22-01: Method of steepest descent in Example 1](../images/fig-22-01.png){#fig-22-01}
+![Fig. 22-01: Method of steepest descent in Example 1](../images/chapter22/fig-22-01.png){#fig-22-01}
 
 | $n$ | $x_1$ | $x_2$ | $t$ | $1 - 2t$ | $1 - 6t$ |
 |---|---|---|---|---|---|
@@ -184,7 +184,7 @@ z_{\max} = 40 \cdot 10 + 88 \cdot 5 = \$840
 $$
 is obtained by producing twice as many S heaters as L heaters. $\blacksquare$
 
-![Fig. 22-02: Linear programming in Example 1](../images/fig-22-02.png){#fig-22-02}
+![Fig. 22-02: Linear programming in Example 1](../images/chapter22/fig-22-02.png){#fig-22-02}
 
 Note well that the problem in Example 1 or similar optimization problems cannot be solved by setting certain partial derivatives equal to zero, because crucial to such problems is the region in which the control variables are allowed to vary.
 
@@ -626,7 +626,7 @@ x_1 = 4.5, \quad x_2 = 3.5, \quad x_3 = 3.5, \quad x_4 = 0, \quad x_5 = 0, \quad
 $$
 This is $B: (4.5, 3.5)$ in @fig-22-03. Since Row 1 has no negative entries, we have reached the maximum daily profit $z_{\max} = \$1725$.
 
-![Fig. 22-03: Example 1, where A is degenerate](../images/fig-22-03.png){#fig-22-03}
+![Fig. 22-03: Example 1, where A is degenerate](../images/chapter22/fig-22-03.png){#fig-22-03}
 
 ### Difficulties in Starting
 As a second kind of difficulty, it may sometimes be hard to find a basic feasible solution to start from. In such a case the idea of an **artificial variable** (or several such variables) is helpful. We explain this method in terms of a typical example.
@@ -758,7 +758,7 @@ $$ {#eq-sec224-t4prime}
 
 This corresponds to $x_1 = 3, x_2 = 1$ (point $C$ in @fig-22-04), $x_3 = 1.5, x_4 = 0, x_5 = 0$. This is the maximum $f_{\max} = f(3, 1) = 7$. $\blacksquare$
 
-![Fig. 22-04: Feasibility region in Example 2](../images/fig-22-04.png){#fig-22-04}
+![Fig. 22-04: Feasibility region in Example 2](../images/chapter22/fig-22-04.png){#fig-22-04}
 
 We have reached the end of our discussion on linear programming. We have presented the simplex method in great detail as this method has many beautiful applications and works well on most practical problems. Indeed, problems of optimization appear in civil engineering, chemical engineering, environmental engineering, management science, logistics, strategic planning, operations management, industrial engineering, finance, and other areas. Furthermore, the simplex method allows your problem to be scaled up from a small modeling attempt to a larger modeling attempt, by adding more constraints and variables, thereby making your model more realistic. The area of optimization is an active field of development and research and optimization methods, besides the simplex method, are being explored and experimented with.
 
