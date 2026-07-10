@@ -4,7 +4,7 @@ subtitle: "Tenth Edition"
 author: "Erwin Kreyszig"
 ---
 
-![Book Cover](../images/cover.png){#fig-cover}
+![Book Cover](cover.png){#fig-cover}
 
 ---
 

@@ -45,9 +45,9 @@ $$
 $$
 (see @fig-14-01). Here we use a dot since a prime denotes the derivative with respect to $z$.
 
-![Fig. 339. Tangent vector $\dot{z}(t)$ of a curve $C$ in the complex plane given by $z(t)$. The arrowhead on the curve indicates the positive sense (sense of increasing $t$)](../images/fig-14-01.png){#fig-14-01}
+![Fig. 339. Tangent vector $\dot{z}(t)$ of a curve $C$ in the complex plane given by $z(t)$. The arrowhead on the curve indicates the positive sense (sense of increasing $t$)](../images/chapter14/fig-14-01.png){#fig-14-01}
 
-![Fig. 340. Complex line integral](../images/fig-14-02.png){#fig-14-02}
+![Fig. 340. Complex line integral](../images/chapter14/fig-14-02.png){#fig-14-02}
 
 ### Definition of the Complex Line Integral
 
@@ -89,7 +89,7 @@ $$
 \int_C f(z) \, dz = \int_{C_1} f(z) \, dz + \int_{C_2} f(z) \, dz.
 $$ {#eq-14-1-6}
 
-![Fig. 341. Partitioning of path [formula (6)]](../images/fig-14-03.png){#fig-14-03}
+![Fig. 341. Partitioning of path [formula (6)]](../images/chapter14/fig-14-03.png){#fig-14-03}
 
 ### Existence of the Complex Line Integral
 
@@ -191,7 +191,7 @@ $$ {#eq-14-1-11}
 This is a very important result that we shall need quite often.
 
 **Solution.**  
-(A) We may represent the unit circle $C$ in @fig-14-330 of <!-- TODO: replace Sec. 13.3 with actual cross-reference label --> by
+(A) We may represent the unit circle $C$ in @fig-13-330 of <!-- TODO: replace Sec. 13.3 with actual cross-reference label --> by
 $$
 z(t) = \cos t + i \sin t = e^{it} \quad (0 \le t \le 2\pi),
 $$
@@ -209,7 +209,7 @@ Simple connectedness is essential in Theorem 1. Equation @eq-14-1-9 in Theorem 1
 ### EXAMPLE 6 Integral of $1/z^m$ with Integer Power $m$
 Let $f(z) = (z - z_0)^m$ where $m$ is an integer and $z_0$ a constant. Integrate counterclockwise around the circle $C$ of radius $\rho$ with center at $z_0$ (see @fig-14-04).
 
-![Fig. 342. Path in Example 6](../images/fig-14-04.png){#fig-14-04}
+![Fig. 342. Path in Example 6](../images/chapter14/fig-14-04.png){#fig-14-04}
 
 **Solution.** We may represent $C$ in the form
 $$
@@ -237,7 +237,7 @@ $$ {#eq-14-1-12}
 ### EXAMPLE 7 Integral of a Nonanalytic Function. Dependence on Path
 Integrate $f(z) = \text{Re } z = x$ from 0 to $1 + 2i$ (a) along $C^*$ in @fig-14-05, (b) along $C$ consisting of $C_1$ and $C_2$.
 
-![Fig. 343. Paths in Example 7](../images/fig-14-05.png){#fig-14-05}
+![Fig. 343. Paths in Example 7](../images/chapter14/fig-14-05.png){#fig-14-05}
 
 **Solution.**  
 (a) $C^*$ can be represented by $z(t) = t + 2it \quad (0 \le t \le 1)$. Hence $\dot{z}(t) = 1 + 2i$ and $f[z(t)] = x(t) = t$ on $C^*$. We now calculate
@@ -279,7 +279,7 @@ $$
 \int_C z^2 \, dz, \quad C \text{ the straight-line segment from 0 to } 1+i \text{ (see @fig-14-06).}
 $$
 
-![Fig. 344. Path in Example 8](../images/fig-14-06.png){#fig-14-06}
+![Fig. 344. Path in Example 8](../images/chapter14/fig-14-06.png){#fig-14-06}
 
 **Solution.** $L = \sqrt{2}$ and $|f(z)| = |z^2| \le 2$ on $C$ gives by @eq-14-1-13
 $$
@@ -349,13 +349,13 @@ Let us continue our discussion of simple connectedness which we started in @sec-
 
 1. **A simple closed path** is a closed path (defined in @sec-line-integral) that does not intersect or touch itself as shown in @fig-14-07. For example, a circle is simple, but a curve shaped like an 8 is not simple.
 
-![Fig. 345. Closed paths](../images/fig-14-07.png){#fig-14-07}
+![Fig. 345. Closed paths](../images/chapter14/fig-14-07.png){#fig-14-07}
 
 2. **A simply connected domain** $D$ in the complex plane is a domain (<!-- TODO: replace Sec. 13.3 with actual cross-reference label -->) such that every simple closed path in $D$ encloses only points of $D$. Examples: The interior of a circle ("open disk"), ellipse, or any simple closed curve. A domain that is not simply connected is called **multiply connected**. Examples: An annulus (<!-- TODO: replace Sec. 13.3 with actual cross-reference label -->), a disk without the center, for example, $0 < |z| < 1$. See also @fig-14-08.
 
 More precisely, a bounded domain $D$ (that is, a domain that lies entirely in some circle about the origin) is called **$p$-fold connected** if its boundary consists of $p$ closed connected sets without common points. These sets can be curves, segments, or single points (such as $z = 0$ for $0 < |z| < 1$, for which $p = 2$). Thus, $D$ has $p - 1$ "holes," where "hole" may also mean a segment or even a single point. Hence an annulus is doubly connected ($p = 2$).
 
-![Fig. 346. Simply and multiply connected domains](../images/fig-14-08.png){#fig-14-08}
+![Fig. 346. Simply and multiply connected domains](../images/chapter14/fig-14-08.png){#fig-14-08}
 
 ### THEOREM 1 Cauchy’s Integral Theorem
 If $f(z)$ is analytic in a simply connected domain $D$, then for every simple closed path $C$ in $D$,
@@ -364,7 +364,7 @@ $$
 $$ {#eq-14-2-1}
 See @fig-14-09.
 
-![Fig. 347. Cauchy’s integral theorem](../images/fig-14-09.png){#fig-14-09}
+![Fig. 347. Cauchy’s integral theorem](../images/chapter14/fig-14-09.png){#fig-14-09}
 
 Before we prove the theorem, let us consider some examples in order to really understand what is going on. A simple closed path is sometimes called a **contour** and an integral over such a path a **contour integral**. Thus, @eq-14-2-1 and our examples involve contour integrals.
 
@@ -433,17 +433,17 @@ $$
 $$ {#eq-14-2-2}
 (see @fig-14-10). This proves the theorem for paths that have only the endpoints in common. For paths that have finitely many further common points, apply the present argument to each “loop” (portions of $C_1$ and $C_2$ between consecutive common points; four loops in @fig-14-12). For paths with infinitely many common points we would need additional argumentation not to be presented here. $\square$
 
-![Fig. 348. Formula (2)](../images/fig-14-10.png){#fig-14-10}
+![Fig. 348. Formula (2)](../images/chapter14/fig-14-10.png){#fig-14-10}
 
-![Fig. 349. Formula (2')](../images/fig-14-11.png){#fig-14-11}
+![Fig. 349. Formula (2')](../images/chapter14/fig-14-11.png){#fig-14-11}
 
-![Fig. 350. Paths with more common points](../images/fig-14-12.png){#fig-14-12}
+![Fig. 350. Paths with more common points](../images/chapter14/fig-14-12.png){#fig-14-12}
 
 ### Principle of Deformation of Path
 
 This idea is related to path independence. We may imagine that the path $C_2$ in @eq-14-2-2 was obtained from $C_1$ by continuously moving $C_1$ (with ends fixed!) until it coincides with $C_2$. @fig-14-13 shows two of the infinitely many intermediate paths for which the integral always retains its value (because of Theorem 2). Hence we may impose a continuous deformation of the path of an integral, keeping the ends fixed. As long as our deforming path always contains only points at which $f(z)$ is analytic, the integral retains the same value. This is called the **principle of deformation of path**.
 
-![Fig. 351. Continuous deformation of path](../images/fig-14-13.png){#fig-14-13}
+![Fig. 351. Continuous deformation of path](../images/chapter14/fig-14-13.png){#fig-14-13}
 
 ### EXAMPLE 6 A Basic Result: Integral of Integer Powers
 From Example 6 in @sec-line-integral and the principle of deformation of path it follows that
@@ -496,7 +496,7 @@ $$
 
 The relationship between $F(z)$ and any other indefinite integral $G(z)$ of $f(z)$ is as in real calculus: $G(z) = F(z) + C$, where $C$ is a constant. (Prove it). This follows because their difference has a derivative that is identically zero, which implies that it must be a constant. (See Example 3 in <!-- TODO: replace Sec. 13.4 with actual cross-reference label -->).
 
-![Fig. 352. Path of integration](../images/fig-14-14.png){#fig-14-14}
+![Fig. 352. Path of integration](../images/chapter14/fig-14-14.png){#fig-14-14}
 
 ### Cauchy’s Theorem for Multiply Connected Domains
 
@@ -506,7 +506,7 @@ $$
 $$ {#eq-14-2-6}
 both integrals being taken counterclockwise (or both clockwise, and regardless of whether the boundary curves are simple or not, though we assume them to be simple for convenience).
 
-![Fig. 353. Paths in (6)](../images/fig-14-15.png){#fig-14-15}
+![Fig. 353. Paths in (6)](../images/chapter14/fig-14-15.png){#fig-14-15}
 
 **PROOF** By two cuts $C_a$ and $C_b$ (see @fig-14-16) we cut $D$ into two simply connected domains $D_1$ and $D_2$ in which and on whose boundaries $f(z)$ is analytic. By Cauchy’s integral theorem the integral over the entire boundary of $D_1$ (taken in the sense of the arrows in @fig-14-16) is zero, and so is the integral over the boundary of $D_2$, and thus their sum. In this sum the integrals over the cuts $C_a$ and $C_b$ are taken twice, but in opposite directions—this is the key—and we are left with the integrals over $C_1$ (counterclockwise) and $C_2$ (clockwise; see @fig-14-16); hence by reversing the integration over $C_2$ (to counterclockwise) we have
 $$
@@ -519,9 +519,9 @@ $$
 \oint_{C_1} f(z) \, dz = \oint_{C_2} f(z) \, dz + \oint_{C_3} f(z) \, dz.
 $$ {#eq-14-2-7}
 
-![Fig. 354. Doubly connected domain](../images/fig-14-16.png){#fig-14-16}
+![Fig. 354. Doubly connected domain](../images/chapter14/fig-14-16.png){#fig-14-16}
 
-![Fig. 355. Triply connected domain](../images/fig-14-17.png){#fig-14-17}
+![Fig. 355. Triply connected domain](../images/chapter14/fig-14-17.png){#fig-14-17}
 
 ## PROBLEM SET 14.2 {#sec-problem-set-14-2}
 
@@ -578,7 +578,7 @@ $$
 $$ {#eq-14-3-1star}
 See @fig-14-18.
 
-![Fig. 356. Cauchy’s integral formula](../images/fig-14-18.png){#fig-14-18}
+![Fig. 356. Cauchy’s integral formula](../images/chapter14/fig-14-18.png){#fig-14-18}
 
 **PROOF** By assumption, $f(z)$ is analytic in $D$. Hence the integrand $f(z)/(z - z_0)$ is analytic in $D$ except at $z_0$. By @eq-14-2-6 in @sec-cauchy-integral-theorem, we can replace $C$ by a small circle $K$ of radius $r$ and center $z_0$ (see @fig-14-19), without altering the value of the integral. Since $f(z)$ is analytic, it is continuous at $z_0$. Hence, an $\epsilon > 0$ being given, we can find a $\delta > 0$ such that $|f(z) - f(z_0)| < \epsilon$ for all $z$ in the disk $|z - z_0| < \delta$. We choose $r < \delta$. We can now write $f(z) = f(z_0) + [f(z) - f(z_0)]$. Substituting this into the integral over $K$, we obtain
 $$
@@ -590,7 +590,7 @@ $$
 $$
 Since $\epsilon > 0$ was arbitrary, this integral must be zero. This proves (1). $\square$
 
-![Fig. 357. Proof of Cauchy’s integral formula](../images/fig-14-19.png){#fig-14-19}
+![Fig. 357. Proof of Cauchy’s integral formula](../images/chapter14/fig-14-19.png){#fig-14-19}
 
 ### EXAMPLE 1 Cauchy’s Integral Formula
 $$
@@ -611,7 +611,7 @@ g(z) = \frac{z^2 + 1}{z^2 - 1} = \frac{z^2 + 1}{(z - 1)(z + 1)}
 $$
 counterclockwise around each of the four circles in @fig-14-20.
 
-![Fig. 358. Example 3](../images/fig-14-20.png){#fig-14-20}
+![Fig. 358. Example 3](../images/chapter14/fig-14-20.png){#fig-14-20}
 
 **Solution.**  
 (a) The circle $|z - 1| = 1$ encloses $z_0 = 1$ but not $z_0 = -1$. Hence the integrand is analytic except at $z_0 = 1$ in the disk. We write the integrand in the form
@@ -650,7 +650,7 @@ f(z_0) = \frac{1}{2\pi i} \oint_{C_1} \frac{f(z)}{z - z_0} \, dz - \frac{1}{2\pi
 $$ {#eq-14-3-3}
 where both integrals are taken counterclockwise.
 
-![Fig. 359. Formula (3) multiple boundaries](../images/fig-14-21.png){#fig-14-21}
+![Fig. 359. Formula (3) multiple boundaries](../images/chapter14/fig-14-21.png){#fig-14-21}
 
 ## PROBLEM SET 14.3 {#sec-problem-set-14-3}
 
@@ -700,7 +700,7 @@ f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz \qua
 $$ {#eq-14-4-3}
 where $C$ is any simple closed path in $D$ that encloses $z_0$ and whose interior belongs to $D$; and we integrate counterclockwise around $C$ (see @fig-14-22).
 
-![Fig. 360. Theorem 1 and its proof](../images/fig-14-22.png){#fig-14-22}
+![Fig. 360. Theorem 1 and its proof](../images/chapter14/fig-14-22.png){#fig-14-22}
 
 **PROOF** We prove @eq-14-4-1 and leave the general proof by induction to the reader. By definition of the derivative,
 $$

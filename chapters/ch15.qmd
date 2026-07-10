@@ -38,9 +38,9 @@ geometrically, all terms $z_n$ with $n \ge N$ lie in the open disk of radius $\e
 
 A **divergent sequence** is one that does not converge.
 
-![Fig. 361. Convergent complex sequence](../images/fig-15-01.png){#fig-15-01}
+![Fig. 361. Convergent complex sequence](../images/chapter15/fig-15-01.png){#fig-15-01}
 
-![Fig. 362. Convergent real sequence](../images/fig-15-02.png){#fig-15-02}
+![Fig. 362. Convergent real sequence](../images/chapter15/fig-15-02.png){#fig-15-02}
 
 ### EXAMPLE 1 Convergent and Divergent Sequences
 The sequence $\{i^n / n\} = \{i, -1/2, -i/3, 1/4, \dots\}$ is convergent with limit 0.  
@@ -57,7 +57,7 @@ $$
 ### THEOREM 1 Sequences of the Real and the Imaginary Parts
 *A sequence $z_1, z_2, \dots, z_n, \dots$ of complex numbers $z_n = x_n + i y_n$ (where $n = 1, 2, \dots$) converges to $c = a + ib$ if and only if the sequence of the real parts $x_1, x_2, \dots$ converges to $a$ and the sequence of the imaginary parts $y_1, y_2, \dots$ converges to $b$.*
 
-**PROOF** Convergence $z_n 	o c = a + ib$ implies convergence $x_n 	o a$ and $y_n 	o b$ because if $|z_n - c| < \epsilon$, then $z_n$ lies within the circle of radius $\epsilon$ about $c = a + ib$, so that (@fig-15-03a)
+**PROOF** Convergence $z_n 	o c = a + ib$ implies convergence $x_n 	o a$ and $y_n 	o b$ because if $|z_n - c| < \epsilon$, then $z_n$ lies within the circle of radius $\epsilon$ about $c = a + ib$, so that (@fig-15-03)
 $$
 |x_n - a| < \epsilon, \quad |y_n - b| < \epsilon.
 $$
@@ -65,9 +65,9 @@ Conversely, if $x_n 	o a$ and $y_n 	o b$ as $n 	o \infty$, then for a given $\ep
 $$
 |x_n - a| < rac{\epsilon}{2}, \quad |y_n - b| < rac{\epsilon}{2}.
 $$
-These two inequalities imply that $z_n = x_n + i y_n$ lies in a square with center $c$ and side $\epsilon$. Hence, $z_n$ must lie within a circle of radius $\epsilon$ with center $c$ (@fig-15-03b). $\square$
+These two inequalities imply that $z_n = x_n + i y_n$ lies in a square with center $c$ and side $\epsilon$. Hence, $z_n$ must lie within a circle of radius $\epsilon$ with center $c$ (@fig-15-03). $\square$
 
-![Fig. 363. Proof of Theorem 1](../images/fig-15-03.png){#fig-15-03}
+![Fig. 363. Proof of Theorem 1](../images/chapter15/fig-15-03.png){#fig-15-03}
 
 
 ### Series
@@ -250,7 +250,7 @@ s_n = 1 + rac{1}{4} + \dots + rac{1}{n^2} \le 1 + \int_1^n rac{dx}{x^2} = 2 -
 $$
 so that $s_1, s_2, \dots$ is a bounded sequence and is monotone increasing (since the terms of the series are all positive); both properties together are sufficient for the convergence of the real sequence $s_1, s_2, \dots$. (In calculus this is proved by the so-called integral test, whose idea we have used.) $\square$
 
-![Fig. 364. Convergence of the series $1 + 1/4 + 1/9 + 1/16 + \dots$](../images/fig-15-04.png){#fig-15-04}
+![Fig. 364. Convergence of the series $1 + 1/4 + 1/9 + 1/16 + \dots$](../images/chapter15/fig-15-04.png){#fig-15-04}
 
 ### EXAMPLE 4 Ratio Test
 Is the following series convergent or divergent? (First guess, then calculate.)
@@ -414,7 +414,7 @@ $$ $\square$
 eq z_0$, it converges absolutely for every $z$ closer to $z_0$ than $z_1$, that is, $|z - z_0| < |z_1 - z_0|$. See @fig-15-05.*  
 *(c) If @eq-15-2-1 diverges at $z_2$, it diverges for every $z$ farther away from $z_0$ than $z_2$. See @fig-15-05.*
 
-![Fig. 365. Theorem 1 convergence and divergence regions](../images/fig-15-05.png){#fig-15-05}
+![Fig. 365. Theorem 1 convergence and divergence regions](../images/chapter15/fig-15-05.png){#fig-15-05}
 
 **PROOF** (a) For $z = z_0$ the series reduces to the single term $a_0$.  
 (b) Convergence at $z = z_1$ gives by Theorem 3 in @sec-sequences-series-tests $a_n (z_1 - z_0)^n 	o 0$ as $n 	o \infty$. This implies boundedness in absolute value,
@@ -456,7 +456,7 @@ $$ {#eq-15-2-5}
 
 No general statements can be made about the convergence of a power series @eq-15-2-1 on the circle of convergence itself. The series @eq-15-2-1 may converge at some or all or none of the points. Details will not be important to us. Hence a simple example may just give us the idea.
 
-![Fig. 366. Circle of convergence](../images/fig-15-06.png){#fig-15-06}
+![Fig. 366. Circle of convergence](../images/chapter15/fig-15-06.png){#fig-15-06}
 
 ### EXAMPLE 4 Behavior on the Circle of Convergence
 On the circle of convergence (radius $R = 1$ in all three series),
@@ -799,7 +799,7 @@ $$
 ight)}.
 $$ {#eq-15-4-7}
 
-![Fig. 367. Contours for Cauchy formula in Taylor's theorem](../images/fig-15-07.png){#fig-15-07}
+![Fig. 367. Contours for Cauchy formula in Taylor's theorem](../images/chapter15/fig-15-07.png){#fig-15-07}
 
 For later use we note that since $z^*$ is on $C$ while $z$ is inside $C$, we have
 $$
@@ -1213,7 +1213,7 @@ $$
 $$
 and we see that for a given $\epsilon$ ($< 1$) we cannot find an $N$ depending only on $\epsilon$ such that $|R_n| < \epsilon$ for all $n \ge N(\epsilon)$ and all $x$, say, in the interval $0 < x < 1$. $\square$
 
-![Fig. 368. Partial sums in Example 2](../images/fig-15-08.png){#fig-15-08}
+![Fig. 368. Partial sums in Example 2](../images/chapter15/fig-15-08.png){#fig-15-08}
 
 ### Termwise Integration
 
@@ -1325,7 +1325,7 @@ where $k$ is a suitable constant, and $k \sum 1/m$ diverges.  $\square$
 ## PROBLEM SET 15.5 {#sec-problem-set-15-5}
 
 1. **CAS EXPERIMENT. Graphs of Partial Sums.**
-   (a) **@fig-15-368.** Produce this exciting figure (cf. @fig-15-08) using your CAS. Add further curves, say, those of $s_{256}$, $s_{1024}$, etc. on the same screen.
+   (a) **@fig-15-08.** Produce this exciting figure (cf. @fig-15-08) using your CAS. Add further curves, say, those of $s_{256}$, $s_{1024}$, etc. on the same screen.
    (b) **Power series.** Study the nonuniformity of convergence experimentally by graphing partial sums near the endpoints of the convergence interval for real $z = x$.
 
 ### 2–9 POWER SERIES
@@ -1357,9 +1357,9 @@ Prove that the series converges uniformly in the indicated region.
     (b) **Termwise differentiation.** Derive Theorem 4 from Theorem 3.  
     (c) **Subregions.** Prove that uniform convergence of a series in a region $G$ implies uniform convergence in any portion of $G$. Is the converse true?  
     (d) **Example 2.** Find the precise region of convergence of the series in Example 2 with $x$ replaced by a complex variable $z$.  
-    (e) **@fig-15-369.** Show that $x^2 \sum_{m=1}^{\infty} (1 + x^2)^{-m} = 1$ if $x \neq 0$ and $0$ if $x = 0$. Verify by computation that the partial sums $s_1, s_2, s_3$ look as shown in @fig-15-369.
+    (e) **@fig-15-09.** Show that $x^2 \sum_{m=1}^{\infty} (1 + x^2)^{-m} = 1$ if $x \neq 0$ and $0$ if $x = 0$. Verify by computation that the partial sums $s_1, s_2, s_3$ look as shown in @fig-15-09.
 
-![Fig. 369. Sum $s$ and partial sums in Team Project 18(e)](../images/fig-15-09.png){#fig-15-09}
+![Fig. 369. Sum $s$ and partial sums in Team Project 18(e)](../images/chapter15/fig-15-09.png){#fig-15-09}
 
 ### 19–20 HEAT EQUATION
 Show that (9) in <!-- TODO: replace Sec. 12.6 with actual cross-reference label --> with coefficients (10) is a solution of the heat equation for $t > 0$, assuming that $f(x)$ is continuous on the interval $0 \le x \le L$ and has one-sided derivatives at all interior points of that interval. Proceed as follows.
