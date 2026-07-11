@@ -2,19 +2,19 @@
 title: "First-Order ODEs"
 ---
 
-This chapter begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem. The simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives. These unknown functions will usually be denoted by $y(x)$ or $y(t)$ when the independent variable denotes time $t$. The chapter ends with a study of the existence and uniqueness of solutions of ODEs in @sec-existence-uniqueness.
+This Chapter begins the study of ordinary differential equations (ODEs) by deriving them from physical or other problems (modeling), solving them by standard mathematical methods, and interpreting solutions and their graphs in terms of a given problem. The simplest ODEs to be discussed are ODEs of the first order because they involve only the first derivative of the unknown function and no higher derivatives. These unknown functions will usually be denoted by $y(x)$ or $y(t)$ when the independent variable denotes time $t$. The chapter ends with a study of the existence and uniqueness of solutions of ODEs in @sec-existence-uniqueness.
 
 Understanding the basics of ODEs requires solving problems by hand (paper and pencil, or typing on your computer, but first without the aid of a CAS). In doing so, you will gain an important conceptual understanding and feel for the basic terms, such as ODEs, direction field, and initial value problem. If you wish, you can use your Computer Algebra System (CAS) for checking solutions.
 
-**COMMENT.** Numerics for first-order ODEs can be studied immediately after this chapter. See @sec-methods-first-order-odes and @sec-multistep-methods, which are independent of other sections on numerics.
+**COMMENT.** Numerics for first-order ODEs can be studied immediately after this chapter. See <!-- TODO: replace Secs. 21.1-21.2 with actual cross-reference label -->Secs. 21.1-21.2, which are independent of other sections on numerics.
 
 **Prerequisite:** Integral calculus.
-**Sections that may be omitted in a shorter course:** @sec-orthogonal-trajectories, @sec-existence-uniqueness.
+**Sections that may be omitted in a shorter course:** 1.6, 1.7.
 **References and Answers to Problems:** App. 1 Part A, and App. 2.
 
 ## Basic Concepts. Modeling {#sec-basic-concepts-modeling}
 
-![Modeling, solving, interpreting](../images/chapter1/fig-1-1.png){#fig-1-1}
+![Fig. 1. Modeling, solving, interpreting](../images/chapter1/fig-1-1.png){#fig-1-1}
 
 If we want to solve an engineering problem (usually of a physical nature), we first have to formulate the problem as a mathematical expression in terms of variables, functions, and equations. Such an expression is known as a mathematical model of the given problem. The process of setting up a model, solving it mathematically, and interpreting the result in physical or other terms is called mathematical modeling or, briefly, modeling.
 
@@ -22,7 +22,7 @@ Modeling needs experience, which we shall gain by discussing various examples an
 
 Now many physical concepts, such as velocity and acceleration, are derivatives. Hence a model is very often an equation containing derivatives of an unknown function. Such a model is called a differential equation. Of course, we then want to find a solution (a function that satisfies the equation), explore its properties, graph it, find values of it, and interpret it in physical terms so that we can understand the behavior of the physical system in our given problem. However, before we can turn to methods of solution, we must first define some basic concepts needed throughout this chapter.
 
-![Some applications of differential equations](../images/chapter1/fig-1-2.png){#fig-1-2}
+![Fig. 2. Some applications of differential equations](../images/chapter1/fig-1-2.png){#fig-1-2}
 
 An ordinary differential equation (ODE) is an equation that contains one or several derivatives of an unknown function, which we usually call $y(x)$ (or sometimes $y(t)$ if the independent variable is time $t$). The equation may also contain $y$ itself, known functions of $x$ (or $t$), and constants. For example,
 
@@ -36,7 +36,7 @@ are ordinary differential equations (ODEs). Here, as in calculus, $y'$ denotes $
 
 $$\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$$
 
-PDEs have important engineering applications, but they are more complicated than ODEs; they will be considered in @sec-basic-concepts-pdes.
+PDEs have important engineering applications, but they are more complicated than ODEs; they will be considered in <!-- TODO: replace Chap. 12 with actual chapter label -->Chap. 12.
 
 An ODE is said to be of order $n$ if the $n$th derivative of the unknown function $y$ is the highest derivative of $y$ in the equation. The concept of order gives a useful classification into ODEs of first order, second order, and so on. Thus, (@eq-1) is of first order, (@eq-2) of second order, and (@eq-3) of third order.
 
@@ -56,44 +56,35 @@ A function
 
 $$y = h(x)$$
 
-is called a solution of a given ODE @eq-4 on some open interval $a < x < b$ if $h(x)$ is defined and differentiable throughout the interval and is such that the equation becomes an identity if $y$ and $y'$ are replaced with $h$ and $h'$ respectively. The curve (the graph) of $h$ is called a solution curve.
+is called a solution of a given ODE (4) on some open interval $a < x < b$ if $h(x)$ is defined and differentiable throughout the interval and is such that the equation becomes an identity if $y$ and $y'$ are replaced with $h$ and $h'$ respectively. The curve (the graph) of $h$ is called a solution curve.
 
 Here, open interval $a < x < b$ means that the endpoints $a$ and $b$ are not regarded as points belonging to the interval. Also, $a < x < b$ includes infinite intervals $-\infty < x < b$, $a < x < \infty$, $-\infty < x < \infty$ (the real line) as special cases.
 
-::: {#exm-verification-of-solution}
 ### EXAMPLE 1 Verification of Solution
 
 Verify that $y = c/x$ ($c$ an arbitrary constant) is a solution of the ODE $xy' = -y$ for all $x \neq 0$. Indeed, differentiate $y = c/x$ to get $y' = -c/x^2$. Multiply this by $x$, obtaining $xy' = -c/x$; thus, $xy' = -y$, the given ODE.
 
-:::
-
-::: {#exm-solution-by-calculus}
 ### EXAMPLE 2 Solution by Calculus. Solution Curves
 
 The ODE $y' = dy/dx = \cos x$ can be solved directly by integration on both sides. Indeed, using calculus, we obtain $y = \int \cos x \, dx = \sin x + c$, where $c$ is an arbitrary constant. This is a family of solutions. Each value of $c$, for instance, 2.75 or 0 or -8, gives one of these curves. @fig-1-3 shows some of them, for $c = -3, -2, -1, 0, 1, 2, 3, 4$.
 
-![Solutions $y = \sin x + c$ of the ODE $y' = \cos x$](../images/chapter1/fig-1-3.png){#fig-1-3}
+![Fig. 3. Solutions $y = \sin x + c$ of the ODE $y' = \cos x$](../images/chapter1/fig-1-3.png){#fig-1-3}
 
-:::
-
-::: {#exm-exponential-growth-decay}
 ### EXAMPLE 3 (A) Exponential Growth. (B) Exponential Decay
 
 From calculus we know that $y = ce^{0.2t}$ has the derivative
 
 $$y' = \frac{dy}{dt} = 0.2e^{0.2t} = 0.2y$$
 
-Hence $y$ is a solution of $y' = 0.2y$ (@fig-1-4a). This ODE is of the form $y' = ky$. With positive-constant $k$ it can model exponential growth, for instance, of colonies of bacteria or populations of animals. It also applies to humans for small populations in a large country (e.g., the United States in early times) and is then known as Malthus's law.^1^ We shall say more about this topic in @sec-linear-odes.
+Hence $y$ is a solution of $y' = 0.2y$ (Fig. 4A). This ODE is of the form $y' = ky$. With positive-constant $k$ it can model exponential growth, for instance, of colonies of bacteria or populations of animals. It also applies to humans for small populations in a large country (e.g., the United States in early times) and is then known as Malthus's law.^1^ We shall say more about this topic in @sec-linear-odes.
 
-(B) Similarly, $y' = -0.2y$ (with a minus on the right) has the solution $y = ce^{-0.2t}$ (@fig-1-4b) modeling exponential decay, as, for instance, of a radioactive substance (see @exm-radioactivity-exponential-decay).
+(B) Similarly, $y' = -0.2y$ (with a minus on the right) has the solution $y = ce^{-0.2t}$ (@fig-1-4b) modeling exponential decay, as, for instance, of a radioactive substance (see Example 5).
 
-![Solutions of $y' = 0.2y$ in @exm-exponential-growth-decay (exponential growth)](../images/chapter1/fig-1-4a.png){#fig-1-4a}
+![Fig. 4A. Solutions of $y' = 0.2y$ in Example 3 (exponential growth)](../images/chapter1/fig-1-4a.png){#fig-1-4a}
 
-![Solutions of $y' = -0.2y$ in @exm-exponential-growth-decay (exponential decay)](../images/chapter1/fig-1-4b.png){#fig-1-4b}
+![Fig. 4B. Solutions of $y' = -0.2y$ in Example 3 (exponential decay)](../images/chapter1/fig-1-4b.png){#fig-1-4b}
 
 > ^1^ Named after the English pioneer in classic economics, THOMAS ROBERT MALTHUS (1766-1834).
-
-:::
 
 We see that each ODE in these examples has a solution that contains an arbitrary constant $c$. Such a solution containing an arbitrary constant $c$ is called a general solution of the ODE.
 
@@ -111,22 +102,18 @@ In most cases the unique solution of a given problem, hence a particular solutio
 
 $$y' = f(x,y), \quad y(x_0) = y_0$$ {#eq-5}
 
-::: {#exm-initial-value-problem}
 ### EXAMPLE 4 Initial Value Problem
 
 Solve the initial value problem
 
 $$y' = \frac{dy}{dx} = 3y, \quad y(0) = 5.7$$
 
-**Solution.** The general solution is $y(x) = ce^{3x}$; see @exm-exponential-growth-decay. From this solution and the initial condition we obtain $y(0) = ce^0 = c = 5.7$. Hence the initial value problem has the solution $y(x) = 5.7e^{3x}$. This is a particular solution.
-
-:::
+**Solution.** The general solution is $y(x) = ce^{3x}$; see Example 3. From this solution and the initial condition we obtain $y(0) = ce^0 = c = 5.7$. Hence the initial value problem has the solution $y(x) = 5.7e^{3x}$. This is a particular solution.
 
 The general importance of modeling to the engineer and physicist was emphasized at the beginning of this section. We shall now consider a basic physical problem that will show the details of the typical steps of modeling. Step 1: the transition from the physical situation (the physical system) to its mathematical formulation (its mathematical model); Step 2: the solution by a mathematical method; and Step 3: the physical interpretation of the result. This may be the easiest way to obtain a first idea of the nature and purpose of differential equations and their applications. Realize at the outset that your computer (your CAS) may perhaps give you a hand in Step 2, but Steps 1 and 3 are basically your work.
 
 And Step 2 requires a solid knowledge and good understanding of solution methods available to you—you have to choose the method for your work by hand or by the computer. Keep this in mind, and always check computer results for errors (which may arise, for instance, from false inputs).
 
-::: {#exm-radioactivity-exponential-decay}
 ### EXAMPLE 5 Radioactivity. Exponential Decay
 
 Given an amount of a radioactive substance, say, 0.5 g (gram), find the amount present at any later time.
@@ -139,7 +126,7 @@ $$
 \frac{dy}{dt} = -ky
 $$ {#eq-6}
 
-where the constant $k$ is positive, so that, because of the minus, we do get decay (as in (B) of @exm-exponential-growth-decay). The value of $k$ is known from experiments for various radioactive substances (e.g., $k \approx 1.4 \cdot 10^{-11} \text{ sec}^{-1}$, approximately, for radium $_{88}^{226}\text{Ra}$).
+where the constant $k$ is positive, so that, because of the minus, we do get decay (as in [B] of Example 3). The value of $k$ is known from experiments for various radioactive substances (e.g., $k \approx 1.4 \cdot 10^{-11} \text{ sec}^{-1}$, approximately, for radium $_{88}^{226}\text{Ra}$).
 
 Now the given initial amount is 0.5 g, and we can call the corresponding instant $t = 0$. Then we have the initial condition $y(0) = 0.5$. This is the instant at which our observation of the process begins. It motivates the term initial condition (which, however, is also used when the independent variable is not time or when we choose a $t$ other than $t = 0$). Hence the mathematical model of the physical process is the initial value problem
 
@@ -167,9 +154,7 @@ $$
 
 **Step 3. Interpretation of result.** Formula (@eq-9) gives the amount of radioactive substance at time $t$. It starts from the correct initial amount and decreases with time because $k$ is positive. The limit of $y$ as $t \to \infty$ is zero.
 
-![Radioactivity (Exponential decay, $y = 0.5e^{-kt}$, with $k = 1.5$ as an example)](../images/chapter1/fig-1-5.png){#fig-1-5}
-
-:::
+![Fig. 5. Radioactivity (Exponential decay, $y = 0.5e^{-kt}$, with $k = 1.5$ as an example)](../images/chapter1/fig-1-5.png){#fig-1-5}
 
 ## PROBLEM SET {#sec-ps-1-1}
 
@@ -197,12 +182,12 @@ Solve the ODE by integration or by remembering a differentiation formula.
 15. Find two constant solutions of the ODE in Prob. 13 by inspection.
 16. **Singular solution.** An ODE may sometimes have an additional solution that cannot be obtained from the general solution and is then called a **singular solution**. The ODE $y'^2 - xy' + y = 0$ is of this kind. Show by differentiation and substitution that it has the general solution $y = cx - c^2$ and the singular solution $y = x^2/4$. Explain @fig-1-6.
 
-![Particular solutions and singular solution in Problem 16](../images/chapter1/fig-1-6.png){#fig-1-6}
+![Fig. 6. Particular solutions and singular solution in Problem 16](../images/chapter1/fig-1-6.png){#fig-1-6}
 
 ### 17–20 MODELING, APPLICATIONS
 These problems will give you a first impression of modeling. Many more problems on modeling follow throughout this chapter.
 
-17. **Half-life.** The *half-life* measures exponential decay. It is the time in which half of the given amount of radioactive substance will disappear. What is the half-life of $_{88}^{226}\text{Ra}$ (in years) in @exm-radioactivity-exponential-decay?
+17. **Half-life.** The *half-life* measures exponential decay. It is the time in which half of the given amount of radioactive substance will disappear. What is the half-life of $_{88}^{226}\text{Ra}$ (in years) in Example 5?
 18. **Half-life.** Radium $_{88}^{224}\text{Ra}$ has a half-life of about 3.6 days.
     (a) Given 1 gram, how much will still be present after 1 day?
     (b) After 1 year?
@@ -240,7 +225,7 @@ $$ {#eq-sec12-2}
 
 obtained by a CAS (Computer Algebra System) and some approximate solution curves fitted in.
 
-![Direction field of $y' = y + x$, with three approximate solution curves passing through $(0, 1)$, $(0, 0)$, $(0, -1)$, respectively](../images/chapter1/fig-1-7.png){#fig-1-7}
+![Fig. 7. Direction field of $y' = y + x$, with three approximate solution curves passing through $(0, 1)$, $(0, 0)$, $(0, -1)$, respectively](../images/chapter1/fig-1-7.png){#fig-1-7}
 
 If you have no CAS, first draw a few level curves $f(x, y) = \text{const}$ of $f(x, y)$, then parallel lineal elements along each such curve (which is also called an **isocline**, meaning a curve of equal inclination), and finally draw approximation curves fit to the lineal elements.
 
@@ -252,7 +237,7 @@ Given an ODE (@eq-sec12-1) and an initial value $y(x_0) = y_0$, **Euler's method
 
 $$
 \begin{aligned}
-y_1 &= y_0 + hf(x_0, y_0) \quad \text{(@fig-1-8)} \\
+y_1 &= y_0 + hf(x_0, y_0) \quad \text{(Fig. 8)} \\
 y_2 &= y_1 + hf(x_1, y_1), \quad \text{etc.}
 \end{aligned}
 $$
@@ -265,9 +250,9 @@ $$
 
 where the step $h$ equals, e.g., 0.1 or 0.2 (as in @tbl-euler-method) or a smaller value for greater accuracy.
 
-![First Euler step, showing a solution curve, its tangent at $(x_0, y_0)$, step $h$ and increment $hf(x_0, y_0)$ in the formula for $y_1$](../images/chapter1/fig-1-8.png){#fig-1-8}
+![Fig. 8. First Euler step, showing a solution curve, its tangent at $(x_0, y_0)$, step $h$ and increment $hf(x_0, y_0)$ in the formula for $y_1$](../images/chapter1/fig-1-8.png){#fig-1-8}
 
-Table 1.1 shows the computation of $n = 5$ steps with step $h = 0.2$ for the ODE (@eq-sec12-2) and initial condition $y(0) = 0$, corresponding to the middle curve in the direction field. We shall solve the ODE exactly in @sec-linear-odes. For the time being, verify that the initial value problem has the solution $y = e^x - x - 1$. The solution curve and the values in @tbl-euler-method are shown in @fig-1-9. These values are rather inaccurate. The errors $y(x_n) - y_n$ are shown in @tbl-euler-method as well as in @fig-1-9. Decreasing $h$ would improve the values, but would soon require an impractical amount of computation. Much better methods of a similar nature will be discussed in @sec-methods-first-order-odes.
+Table 1.1 shows the computation of $n = 5$ steps with step $h = 0.2$ for the ODE (@eq-sec12-2) and initial condition $y(0) = 0$, corresponding to the middle curve in the direction field. We shall solve the ODE exactly in @sec-linear-odes. For the time being, verify that the initial value problem has the solution $y = e^x - x - 1$. The solution curve and the values in @tbl-euler-method are shown in @fig-1-9. These values are rather inaccurate. The errors $y(x_n) - y_n$ are shown in @tbl-euler-method as well as in @fig-1-9. Decreasing $h$ would improve the values, but would soon require an impractical amount of computation. Much better methods of a similar nature will be discussed in <!-- TODO: replace Sec. 21.1 with actual cross-reference label -->Sec. 21.1.
 
 
 | $n$ | $x_n$ | $y_n$ | $y(x_n)$ | Error |
@@ -281,7 +266,7 @@ Table 1.1 shows the computation of $n = 5$ steps with step $h = 0.2$ for the ODE
 : Euler method for $y' = y + x, \ y(0) = 0$ with step $h = 0.2$ for $x = 0, \dots, 1.0$ {#tbl-euler-method}
 
 
-![Euler method: Approximate values in @tbl-euler-method and solution curve](../images/chapter1/fig-1-9.png){#fig-1-9}
+![Fig. 9. Euler method: Approximate values in Table 1.1 and solution curve](../images/chapter1/fig-1-9.png){#fig-1-9}
 
 ## PROBLEM SET {#sec-ps-1-2}
 
@@ -319,7 +304,7 @@ Model the motion of a body $B$ on a straight line with velocity as given, $y(t)$
     (d) Graph the direction field of $y' = -\frac{1}{2}y$ and some solutions of your choice. How do they behave? Why do they decrease for $y > 0$?
 
 ### 17–20 EULER'S METHOD
-This is the simplest method to explain numerically solving an ODE, more precisely, an initial value problem (IVP). (More accurate methods based on the same principle are explained in @sec-methods-first-order-odes.) Using the method, to get a feel for numerics as well as for the nature of IVPs, solve the IVP numerically with a PC or a calculator, 10 steps. Graph the computed values and the solution curve on the same coordinate axes.
+This is the simplest method to explain numerically solving an ODE, more precisely, an initial value problem (IVP). (More accurate methods based on the same principle are explained in <!-- TODO: replace Sec. 21.1 with actual cross-reference label -->Sec. 21.1.) Using the method, to get a feel for numerics as well as for the nature of IVPs, solve the IVP numerically with a PC or a calculator, 10 steps. Graph the computed values and the solution curve on the same coordinate axes.
 
 17. $y' = y, \quad y(0) = 1, \quad h = 0.1$
 18. $y' = y, \quad y(0) = 1, \quad h = 0.01$
@@ -350,7 +335,6 @@ $$ {#eq-sec13-3}
 
 If $f$ and $g$ are continuous functions, the integrals in (@eq-sec13-3) exist, and by evaluating them we obtain a general solution of (@eq-sec13-1). This method of solving ODEs is called the **method of separating variables**, and (@eq-sec13-1) is called a **separable equation**, because in (@eq-sec13-3) the variables are now separated: $x$ appears only on the right and $y$ only on the left.
 
-::: {#exm-separable-ode-1}
 ### EXAMPLE 1 Separable ODE
 
 The ODE $y' = 1 + y^2$ is separable because it can be written
@@ -363,18 +347,12 @@ By integration, $\arctan y = x + c$ or $y = \tan (x + c)$.
 
 It is very important to introduce the constant of integration immediately when the integration is performed. If we wrote $\arctan y = x$, then $y = \tan x$, and then introduced $c$, we would have obtained $y = \tan x + c$, which is not a solution (when $c \neq 0$). Verify this.
 
-:::
-
-::: {#exm-separable-ode-2}
 ### EXAMPLE 2 Separable ODE
 
 The ODE $y' = (x + 1)e^{-x}y^2$ is separable; we obtain $y^{-2} \, dy = (x + 1)e^{-x} \, dx$.
 
 By integration, $-y^{-1} = -(x + 2)e^{-x} + c$, or $y = \frac{1}{(x + 2)e^{-x} - c}$.
 
-:::
-
-::: {#exm-ivp-bell-shaped-curve}
 ### EXAMPLE 3 Initial Value Problem (IVP). Bell-Shaped Curve
 
 Solve
@@ -391,22 +369,19 @@ $$
 
 This is the general solution. From it and the initial condition, $y(0) = ce^0 = c = 1.8$. Hence the IVP has the solution $y = 1.8e^{-x^2}$. This is a particular solution, representing a bell-shaped curve (@fig-1-10).
 
-![Solution in @exm-ivp-bell-shaped-curve (bell-shaped curve)](../images/chapter1/fig-1-10.png){#fig-1-10}
-
-:::
+![Fig. 10. Solution in Example 3 (bell-shaped curve)](../images/chapter1/fig-1-10.png){#fig-1-10}
 
 ### Modeling
 
 The importance of modeling was emphasized in @sec-basic-concepts-modeling, and separable equations yield various useful models. Let us discuss this in terms of some typical examples.
 
-::: {#exm-radiocarbon-dating}
 ### EXAMPLE 4 Radiocarbon Dating^2^
 
 In September 1991 the famous Iceman (Oetzi), a mummy from the Neolithic period of the Stone Age found in the ice of the Oetztal Alps (hence the name “Oetzi”) in Southern Tyrolia near the Austrian–Italian border, caused a scientific sensation. When did Oetzi approximately live and die if the ratio of carbon $^{14}_{\phantom{0}6}\text{C}$ to carbon $^{12}_{\phantom{0}6}\text{C}$ in this mummy is 52.5% of that of a living organism?
 
 **Physical Information.** In the atmosphere and in living organisms, the ratio of radioactive carbon (made radioactive by cosmic rays) to ordinary carbon is constant. When an organism dies, its absorption of $^{14}_{\phantom{0}6}\text{C}$ by breathing and eating terminates. Hence one can estimate the age of a fossil by comparing the radioactive carbon ratio in the fossil with that in the atmosphere. To do this, one needs to know the half-life of $^{14}_{\phantom{0}6}\text{C}$, which is 5715 years (*CRC Handbook of Chemistry and Physics*, 83rd ed., Boca Raton: CRC Press, 2002, page 11–52, line 9).
 
-**Solution. Modeling.** Radioactive decay is governed by the ODE $y' = ky$ (see @sec-basic-concepts-modeling, @exm-radioactivity-exponential-decay). By separation and integration (where $t$ is time and $y_0$ is the initial ratio of $^{14}_{\phantom{0}6}\text{C}$ to $^{12}_{\phantom{0}6}\text{C}$):
+**Solution. Modeling.** Radioactive decay is governed by the ODE $y' = ky$ (see @sec-basic-concepts-modeling, Example 5). By separation and integration (where $t$ is time and $y_0$ is the initial ratio of $^{14}_{\phantom{0}6}\text{C}$ to $^{12}_{\phantom{0}6}\text{C}$):
 
 $$
 \frac{dy}{y} = k \, dt, \quad \ln |y| = kt + c, \quad y = y_0 e^{kt} \quad (y_0 = e^c).
@@ -428,9 +403,6 @@ Other methods show that radiocarbon dating values are usually too small. Accordi
 
 > ^2^ Method by WILLARD FRANK LIBBY (1908–1980), American chemist, who was awarded for this work the 1960 Nobel Prize in chemistry.
 
-:::
-
-::: {#exm-mixing-problem}
 ### EXAMPLE 5 Mixing Problem
 
 Mixing problems occur quite frequently in chemical industry. We explain here how to solve the basic model involving a single tank. The tank in @fig-1-11 contains 1000 gal of water in which initially 100 lb of salt is dissolved. Brine runs in at a rate of 10 gal/min, and each gallon contains 5 lb of dissolved salt. The mixture in the tank is kept uniform by stirring. Brine runs out at 10 gal/min. Find the amount of salt in the tank at any time $t$.
@@ -463,11 +435,8 @@ This function shows an exponential approach to the limit 5000 lb; see @fig-1-11.
 
 The model discussed becomes more realistic in problems on pollutants in lakes (see @sec-ps-1-5, Prob. 35) or drugs in organs. These types of problems are more difficult because the mixing may be imperfect and the flow rates (in and out) may be different and known only very roughly.
 
-![Mixing problem in @exm-mixing-problem](../images/chapter1/fig-1-11.png){#fig-1-11}
+![Fig. 11. Mixing problem in Example 5](../images/chapter1/fig-1-11.png){#fig-1-11}
 
-:::
-
-::: {#exm-heating-office-building}
 ### EXAMPLE 6 Heating an Office Building (Newton’s Law of Cooling³)
 
 Suppose that in winter the daytime temperature in a certain office building is maintained at 70°F. The heating is shut off at 10 P.M. and turned on again at 6 A.M. On a certain day the temperature inside the building at 2 A.M. was found to be 65°F. The outside temperature was 50°F at 10 P.M. and had dropped to 40°F by 6 A.M. What was the temperature inside the building when the heat was turned on at 6 A.M.?
@@ -510,13 +479,10 @@ $$
 
 Hence the temperature in the building dropped 9°F, a result that looks reasonable.
 
-![Particular solution (temperature) in @exm-heating-office-building](../images/chapter1/fig-1-12.png){#fig-1-12}
+![Fig. 12. Particular solution (temperature) in Example 6](../images/chapter1/fig-1-12.png){#fig-1-12}
 
 > ³Sir ISAAC NEWTON (1642–1727), great English physicist and mathematician, became a professor at Cambridge in 1669 and Master of the Mint in 1699. He and the German mathematician and philosopher GOTTFRIED WILHELM LEIBNIZ (1646–1716) invented (independently) the differential and integral calculus. Newton discovered many basic physical laws and created the method of investigating physical problems by means of calculus. His *Philosophiae naturalis principia mathematica* (*Mathematical Principles of Natural Philosophy*, 1687) contains the development of classical mechanics. His work is of greatest importance to both mathematics and physics.
 
-:::
-
-::: {#exm-leaking-tank}
 ### EXAMPLE 7 Leaking Tank. Outflow of Water Through a Hole (Torricelli’s Law)
 
 This is another prototype engineering problem that leads to an ODE. It concerns the outflow of water from a cylindrical tank with a hole at the bottom (@fig-1-13). You are asked to find the height of the water in the tank at any time if the tank has diameter 2 m, the hole has diameter 1 cm, and the initial height of the water when the hole is opened is 2.25 m. When will the tank be empty?
@@ -585,11 +551,9 @@ Here you see distinctly the *importance of the choice of units*—we have been w
 
 **Step 5. Checking.** Check the result.
 
-![Outflow from a cylindrical tank (“leaking tank”). Torricelli’s law](../images/chapter1/fig-1-13.png){#fig-1-13}
+![Fig. 13. Example 7. Outflow from a cylindrical tank (“leaking tank”). Torricelli’s law](../images/chapter1/fig-1-13.png){#fig-1-13}
 
 > ⁴EVANGELISTA TORRICELLI (1608–1647), Italian physicist, pupil and successor of GALILEO GALILEI (1564–1642) at Florence. The “contraction factor” 0.600 was introduced by J. C. BORDA in 1766 because the stream has a smaller cross section than the area of the hole.
-
-:::
 
 ### Extended Method: Reduction to Separable Form
 
@@ -607,13 +571,12 @@ $$
 y = ux \qquad \text{and by product differentiation} \qquad y' = u'x + u.
 $$ {#eq-sec13-9b}
 
-Substitution into @eq-sec13-8d then gives $u'x + u = f(u)$ or $u'x = f(u) - u$. We see that if $f(u) - u \neq 0$, this can be separated:
+Substitution into $y' = f(y/x)$ then gives $u'x + u = f(u)$ or $u'x = f(u) - u$. We see that if $f(u) - u \neq 0$, this can be separated:
 
 $$
 \frac{du}{f(u) - u} = \frac{dx}{x}.
 $$ {#eq-sec13-10b}
 
-::: {#exm-reduction-separable-form}
 ### EXAMPLE 8 Reduction to Separable Form
 
 Solve
@@ -648,9 +611,7 @@ $$
 
 This general solution represents a family of circles passing through the origin with centers on the $x$-axis.
 
-![General solution (family of circles) in @exm-reduction-separable-form](../images/chapter1/fig-1-14.png){#fig-1-14}
-
-:::
+![Fig. 14. General solution (family of circles) in Example 8](../images/chapter1/fig-1-14.png){#fig-1-14}
 
 ## PROBLEM SET {#sec-ps-1-3}
 
@@ -680,7 +641,7 @@ Solve the IVP. Show the steps of derivation, beginning with the general solution
 15. $y' = -4x/y, \quad y(2) = 3$
 16. $y' = (x + y - 2)^2, \quad y(0) = 2 \quad (\text{Set } v = x + y - 2)$
 17. $xy' = y + 3x^4 \cos^2(y/x), \quad y(1) = 0 \quad (\text{Set } y/x = u)$
-18. **Particular solution.** Introduce limits of integration in (@eq-sec13-3) such that $y$ obtained from @eq-sec13-3 satisfies the initial condition $y(x_0) = y_0$.
+18. **Particular solution.** Introduce limits of integration in (@eq-sec13-3) such that $y$ obtained from (3) satisfies the initial condition $y(x_0) = y_0$.
 
 ### 19–36 MODELING, APPLICATIONS
 
@@ -688,7 +649,7 @@ Solve the IVP. Show the steps of derivation, beginning with the general solution
 20. **Another population model.**
     (a) If the birth rate and death rate of the number of bacteria are proportional to the number of bacteria present, what is the population as a function of time.
     (b) What is the limiting situation for increasing time? Interpret it.
-21. **Radiocarbon dating.** What should be the $^{14}_{\phantom{0}6}\text{C}$ content (in percent of $y_0$) of a fossilized tree that is claimed to be 3000 years old? (See @exm-radiocarbon-dating.)
+21. **Radiocarbon dating.** What should be the $^{14}_{\phantom{0}6}\text{C}$ content (in percent of $y_0$) of a fossilized tree that is claimed to be 3000 years old? (See Example 4.)
 22. **Linear accelerators** are used in physics for accelerating charged particles. Suppose that an alpha particle enters an accelerator and undergoes a constant acceleration that increases the speed of the particle from $10^3 \text{ m/sec}$ to $10^4 \text{ m/sec}$ in $10^{-3} \text{ sec}$. Find the acceleration $a$ and the distance traveled during that period of $10^{-3} \text{ sec}$.
 23. **Boyle–Mariotte’s law for ideal gases.⁵** Experiments show for a gas at low pressure $p$ (and constant temperature) the rate of change of the volume $V(p)$ equals $-V/p$. Solve the model.
 
@@ -706,11 +667,11 @@ Solve the IVP. Show the steps of derivation, beginning with the general solution
 
     > ⁶CHARLES AUGUSTIN DE COULOMB (1736–1806), French physicist and engineer.
 
-    ![Problem 32](../images/chapter1/fig-1-15.png){#fig-1-15}
+    ![Fig. 15. Problem 32](../images/chapter1/fig-1-15.png){#fig-1-15}
 
 33. **Rope.** To tie a boat in a harbor, how many times must a rope be wound around a bollard (a vertical rough cylindrical post fixed on the ground) so that a man holding one end of the rope can resist a force exerted by the boat 1000 times greater than the man can exert? First guess. Experiments show that the change $\Delta S$ of the force $S$ in a small portion of the rope is proportional to $S$ and to the small angle $\Delta \phi$ in @fig-1-16. Take the proportionality constant 0.15. The result should surprise you!
 
-    ![Problem 33](../images/chapter1/fig-1-16.png){#fig-1-16}
+    ![Fig. 16. Problem 33](../images/chapter1/fig-1-16.png){#fig-1-16}
 
 34. **TEAM PROJECT. Family of Curves.** A family of curves can often be characterized as the general solution of $y' = f(x, y)$.
     (a) Show that for the circles with center at the origin we get $y' = -x/y$.
@@ -797,7 +758,7 @@ $$
 \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}.
 $$ {#eq-sec14-5}
 
-This condition is not only necessary but also sufficient for (@eq-sec14-1) to be an exact differential equation. (We shall prove this in @sec-path-independence-line-integrals in another context. Some calculus books, for instance, [GenRef 12] in App. 1, also contain a proof.)
+This condition is not only necessary but also sufficient for (@eq-sec14-1) to be an exact differential equation. (We shall prove this in <!-- TODO: replace Sec. 10.2 with actual cross-reference label -->Sec. 10.2 in another context. Some calculus books, for instance, [GenRef 12] in App. 1, also contain a proof.)
 
 If (@eq-sec14-1) is exact, the function $u(x, y)$ can be found by inspection or in the following systematic way. From (@eq-sec14-4)a we have by integration with respect to $x$
 
@@ -805,7 +766,7 @@ $$
 u = \int M \, dx + k(y);
 $$ {#eq-sec14-6}
 
-in this integration, $y$ is to be regarded as a constant, and $k(y)$ plays the role of a “constant” of integration. To determine $k(y)$, we derive $\partial u/\partial y$ from (@eq-sec14-6), use (@eq-sec14-4)b to get $dk/dy$, and integrate $dk/dy$ to get $k$. (See @exm-exact-ode, below.)
+in this integration, $y$ is to be regarded as a constant, and $k(y)$ plays the role of a “constant” of integration. To determine $k(y)$, we derive $\partial u/\partial y$ from (@eq-sec14-6), use (@eq-sec14-4)b to get $dk/dy$, and integrate $dk/dy$ to get $k$. (See Example 1, below.)
 
 Formula (@eq-sec14-6) was obtained from (@eq-sec14-4)a. Instead of (@eq-sec14-4)a we may equally well use (@eq-sec14-4)b. Then, instead of (@eq-sec14-6), we first have by integration with respect to $y$
 
@@ -815,7 +776,6 @@ $$ {#eq-sec14-6star}
 
 To determine $l(x)$, we derive $\partial u/\partial x$ from (@eq-sec14-6star), use (@eq-sec14-4)a to get $dl/dx$, and integrate. We illustrate all this by the following typical examples.
 
-::: {#exm-exact-ode}
 ### EXAMPLE 1 An Exact ODE
 
 Solve
@@ -870,9 +830,6 @@ $$ {#eq-sec14-9}
 
 This completes the check.
 
-:::
-
-::: {#exm-initial-value-problem-exact}
 ### EXAMPLE 2 An Initial Value Problem
 
 Solve the initial value problem
@@ -887,13 +844,10 @@ $$
 u = -\int \sin y \cosh x \, dy + l(x) = \cos y \cosh x + l(x).
 $$
 
-From this, $\partial u/\partial x = \cos y \sinh x + dl/dx = M = \cos y \sinh x + 1$. Hence $dl/dx = 1$. By integration, $l(x) = x + c^*$. This gives the general solution $u(x, y) = \cos y \cosh x + x = c$. From the initial condition, $\cos 2 \cosh 1 + 1 = 0.358 = c$. Hence the answer is $\cos y \cosh x + x = 0.358$. @fig-1-17 shows the particular solutions for $c = 0, 0.358$ (thicker curve), 1, 2, 3. Check that the answer satisfies the ODE. (Proceed as in @exm-exact-ode.) Also check that the initial condition is satisfied.
+From this, $\partial u/\partial x = \cos y \sinh x + dl/dx = M = \cos y \sinh x + 1$. Hence $dl/dx = 1$. By integration, $l(x) = x + c^*$. This gives the general solution $u(x, y) = \cos y \cosh x + x = c$. From the initial condition, $\cos 2 \cosh 1 + 1 = 0.358 = c$. Hence the answer is $\cos y \cosh x + x = 0.358$. @fig-1-17 shows the particular solutions for $c = 0, 0.358$ (thicker curve), 1, 2, 3. Check that the answer satisfies the ODE. (Proceed as in Example 1.) Also check that the initial condition is satisfied.
 
-![Particular solutions in @exm-initial-value-problem-exact](../images/chapter1/fig-1-17.png){#fig-1-17}
+![Fig. 17. Particular solutions in Example 2](../images/chapter1/fig-1-17.png){#fig-1-17}
 
-:::
-
-::: {#exm-breakdown-nonexactness}
 ### EXAMPLE 3 WARNING! Breakdown in the Case of Nonexactness
 
 The equation $-y \, dx + x \, dy = 0$ is not exact because $M = -y$ and $N = x$, so that in (@eq-sec14-5), $\partial M/\partial y = -1$ but $\partial N/\partial x = 1$. Let us show that in such a case the present method does not work. From (@eq-sec14-6),
@@ -904,11 +858,9 @@ $$
 
 Now, $\partial u/\partial y$ should equal $N = x$, by (@eq-sec14-4)b. However, this is impossible because $k(y)$ can depend only on $y$. Try (@eq-sec14-6star); it will also fail. Solve the equation by another method that we have discussed.
 
-:::
-
 ### Reduction to Exact Form. Integrating Factors
 
-The ODE in @exm-breakdown-nonexactness is $-y \, dx + x \, dy = 0$. It is not exact. However, if we multiply it by $1/x^2$, we get an exact equation [check exactness by (@eq-sec14-5)!],
+The ODE in Example 3 is $-y \, dx + x \, dy = 0$. It is not exact. However, if we multiply it by $1/x^2$, we get an exact equation [check exactness by (@eq-sec14-5)!],
 
 $$
 \frac{-y \, dx + x \, dy}{x^2} = -\frac{y}{x^2} \, dx + \frac{1}{x} \, dy = d\left(\frac{y}{x}\right) = 0.
@@ -930,7 +882,6 @@ $$ {#eq-sec14-13}
 
 that is exact, so we can solve it as just discussed. Such a function $F(x, y)$ is then called an **integrating factor** of (@eq-sec14-12).
 
-::: {#exm-integrating-factor}
 ### EXAMPLE 4 Integrating Factor
 
 The integrating factor in (@eq-sec14-11) is $F = 1/x^2$. Hence in this case the exact equation (@eq-sec14-13) is
@@ -946,8 +897,6 @@ It is remarkable that we can readily find other integrating factors for the equa
 $$
 \frac{-y \, dx + x \, dy}{y^2} = d\left(\frac{x}{y}\right), \quad \frac{-y \, dx + x \, dy}{xy} = -d\left(\ln \frac{x}{y}\right), \quad \frac{-y \, dx + x \, dy}{x^2 + y^2} = d\left(\arctan \frac{y}{x}\right).
 $$ {#eq-sec14-14}
-
-:::
 
 ### How to Find Integrating Factors
 
@@ -979,7 +928,6 @@ $$ {#eq-sec14-16}
 
 This proves the following theorem.
 
-::: {#thm-integrating-factor-x}
 ### THEOREM 1 Integrating Factor $F(x)$
 
 If (@eq-sec14-12) is such that the right side $R$ of (@eq-sec14-16) depends only on $x$, then (@eq-sec14-12) has an integrating factor $F = F(x)$, which is obtained by integrating (@eq-sec14-16) and taking exponents on both sides.
@@ -987,8 +935,6 @@ If (@eq-sec14-12) is such that the right side $R$ of (@eq-sec14-16) depends only
 $$
 F(x) = \exp \int R(x) \, dx.
 $$ {#eq-sec14-17}
-
-:::
 
 Similarly, if $F^* = F^*(y)$, then instead of (@eq-sec14-16) we get
 
@@ -998,7 +944,6 @@ $$ {#eq-sec14-18}
 
 and we have the companion
 
-::: {#thm-integrating-factor-y}
 ### THEOREM 2 Integrating Factor $F^*(y)$
 
 If (@eq-sec14-12) is such that the right side $R^*$ of (@eq-sec14-18) depends only on $y$, then (@eq-sec14-12) has an integrating factor $F^* = F^*(y)$, which is obtained from (@eq-sec14-18) in the form
@@ -1007,12 +952,9 @@ $$
 F^*(y) = \exp \int R^*(y) \, dy.
 $$ {#eq-sec14-19}
 
-:::
-
-::: {#exm-integrating-factor-application}
 ### EXAMPLE 5 Application of Theorems 1 and 2. Initial Value Problem
 
-Using @thm-integrating-factor-x or @thm-integrating-factor-y, find an integrating factor and solve the initial value problem
+Using Theorem 1 or 2, find an integrating factor and solve the initial value problem
 
 $$
 (e^{x+y} + ye^y) \, dx + (xe^y - 1) \, dy = 0, \quad y(0) = -1.
@@ -1024,13 +966,13 @@ $$
 \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(e^{x+y} + ye^y) = e^{x+y} + e^y + ye^y \qquad \text{but} \qquad \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(xe^y - 1) = e^y.
 $$
 
-**Step 2. Integrating factor. General solution.** @thm-integrating-factor-x fails because $R$ [the right side of (@eq-sec14-16)] depends on both $x$ and $y$.
+**Step 2. Integrating factor. General solution.** Theorem 1 fails because $R$ [the right side of (@eq-sec14-16)] depends on both $x$ and $y$.
 
 $$
 R = \frac{1}{Q}\left(\frac{\partial P}{\partial y} - \frac{\partial Q}{\partial x}\right) = \frac{1}{xe^y - 1}(e^{x+y} + e^y + ye^y - e^y).
 $$
 
-Try @thm-integrating-factor-y. The right side of (@eq-sec14-18) is
+Try Theorem 2. The right side of (@eq-sec14-18) is
 
 $$
 R^* = \frac{1}{P}\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) = \frac{1}{e^{x+y} + ye^y}(e^y - e^{x+y} - e^y - ye^y) = -1.
@@ -1064,9 +1006,7 @@ $$
 
 **Step 4. Checking.** Check by substitution that the answer satisfies the given equation as well as the initial condition.
 
-![Particular solutions in @exm-integrating-factor-application](../images/chapter1/fig-1-18.png){#fig-1-18}
-
-:::
+![Fig. 18. Particular solutions in Example 5](../images/chapter1/fig-1-18.png){#fig-1-18}
 
 ## PROBLEM SET {#sec-ps-1-4}
 
@@ -1091,9 +1031,9 @@ Test for exactness. If exact, solve. If not, use an integrating factor as given 
 
 16. **TEAM PROJECT. Solution by Several Methods.** Show this as indicated. Compare the amount of work.
     (a) $e^y(\sinh x \, dx + \cosh x \, dy) = 0$ as an exact ODE and by separation.
-    (b) $(1 - 2x) \cos y \, dx + dy/\cos y = 0$ by @thm-integrating-factor-y and by separation.
-    (c) $(x^2 + y^2) \, dx - 2xy \, dy = 0$ by @thm-integrating-factor-x or @thm-integrating-factor-y and by separation with $v = y/x$.
-    (d) $3x^2 y \, dx + 4x^3 \, dy = 0$ by @thm-integrating-factor-x and @thm-integrating-factor-y and by separation.
+    (b) $(1 - 2x) \cos y \, dx + dy/\cos y = 0$ by Theorem 2 and by separation.
+    (c) $(x^2 + y^2) \, dx - 2xy \, dy = 0$ by Theorem 1 or 2 and by separation with $v = y/x$.
+    (d) $3x^2 y \, dx + 4x^3 \, dy = 0$ by Theorems 1 and 2 and by separation.
     (e) Search the text and the problems for further ODEs that can be solved by more than one of the methods discussed so far. Make a list of these ODEs. Find further cases of your own.
 
 17. **WRITING PROJECT. Working Backward.** Working backward from the solution to the problem is useful in many areas. Euler, Lagrange, and other great masters did it. To get additional insight into the idea of integrating factors, start from a $u(x, y)$ of your choice, find $du = 0$, destroy exactness by division by some $F(x, y)$, and see what ODEs solvable by integrating factors you can get. Can you proceed systematically, beginning with the simplest $F(x, y)$?
@@ -1104,7 +1044,7 @@ Test for exactness. If exact, solve. If not, use an integrating factor as given 
     dy - y^2 \sin x \, dx = 0
     $$ {#eq-sec14-21}
 
-    (a) Show that (@eq-sec14-21) is not exact. Find an integrating factor using either @thm-integrating-factor-x or @thm-integrating-factor-y. Solve (@eq-sec14-21).
+    (a) Show that (@eq-sec14-21) is not exact. Find an integrating factor using either Theorem 1 or 2. Solve (@eq-sec14-21).
     (b) Solve (@eq-sec14-21) by separating variables. Is this simpler than (a)?
     (c) Graph the seven particular solutions satisfying the following initial conditions (see figure below).
 
@@ -1160,7 +1100,7 @@ $$ {#eq-sec15-3}
 
 ### Nonhomogeneous Linear ODE
 
-We now solve (@eq-sec15-1) in the case that $r(x)$ in (@eq-sec15-1) is not everywhere zero in the interval $J$ considered. Then the ODE (@eq-sec15-1) is called **nonhomogeneous**. It turns out that in this case, (@eq-sec15-1) has a pleasant property; namely, it has an integrating factor depending only on $x$. We can find this factor by @thm-integrating-factor-x in @sec-exact-odes or we can proceed directly, as follows. We multiply (@eq-sec15-1) by $F(x)$, obtaining
+We now solve (@eq-sec15-1) in the case that $r(x)$ in (@eq-sec15-1) is not everywhere zero in the interval $J$ considered. Then the ODE (@eq-sec15-1) is called **nonhomogeneous**. It turns out that in this case, (@eq-sec15-1) has a pleasant property; namely, it has an integrating factor depending only on $x$. We can find this factor by Theorem 1 in the previous section or we can proceed directly, as follows. We multiply (@eq-sec15-1) by $F(x)$, obtaining
 
 $$
 F y' + p F y = r F.
@@ -1196,7 +1136,7 @@ $$
 y(x) = e^{-h} \left[ \int e^h r \, dx + c \right], \quad h = \int p(x) \, dx.
 $$ {#eq-sec15-4}
 
-This reduces solving (@eq-sec15-1) to the generally simpler task of evaluating integrals. For ODEs for which this is still difficult, you may have to use a numeric method for integrals from @sec-numeric-integration or for the ODE itself from @sec-methods-first-order-odes. We mention that $h$ has nothing to do with $h$ in Euler's method and that the constant of integration in $h$ does not matter; see Prob. 2.
+This reduces solving (@eq-sec15-1) to the generally simpler task of evaluating integrals. For ODEs for which this is still difficult, you may have to use a numeric method for integrals from <!-- TODO: replace Sec. 19.5 with actual cross-reference label -->Sec. 19.5 or for the ODE itself from <!-- TODO: replace Sec. 21.1 with actual cross-reference label -->Sec. 21.1. We mention that $h$ has nothing to do with $h$ in Euler's method and that the constant of integration in $h$ does not matter; see Prob. 2.
 
 The structure of (@eq-sec15-4) is interesting. The only quantity depending on a given initial condition is $c$. Accordingly, writing (@eq-sec15-4) as a sum of two terms,
 
@@ -1210,7 +1150,6 @@ $$
 \text{Total Output} = \text{Response to the Input } r + \text{Response to the Initial Data}.
 $$ {#eq-sec15-5}
 
-::: {#exm-linear-ode-general-ivp}
 ### EXAMPLE 1 First-Order ODE, General Solution, Initial Value Problem
 
 Solve the initial value problem
@@ -1245,16 +1184,13 @@ $$
 
 Here $3 \cos x$ is the response to the initial data, and $-2 \cos^2 x$ is the response to the input $\sin 2x$.
 
-:::
-
-::: {#exm-electric-circuit}
 ### EXAMPLE 2 Electric Circuit
 
 Model the RL-circuit in @fig-1-19 and solve the resulting ODE for the current $I(t)$ A (amperes), where $t$ is time. Assume that the circuit contains as an EMF (electromotive force) a battery of $E = 48 \text{ V}$ (volts), which is constant, a resistor of $R = 11\ \Omega$ (ohms), and an inductor of $L = 0.1 \text{ H}$ (henrys), and that the current is initially zero.
 
 **Physical Laws.** A current $I$ in the circuit causes a voltage drop $RI$ across the resistor (Ohm's law) and a voltage drop $L(dI/dt)$ across the inductor, and the sum of these two voltage drops equals the EMF (Kirchhoff's Voltage Law, KVL).
 
-> **Remark.** In general, KVL states that “The voltage (the electromotive force EMF) impressed on a closed loop is equal to the sum of the voltage drops across all the other elements of the loop.” For Kirchhoff’s Current Law (KCL) and historical information, see footnote 7 in @sec-electric-circuits.
+> **Remark.** In general, KVL states that “The voltage (the electromotive force EMF) impressed on a closed loop is equal to the sum of the voltage drops across all the other elements of the loop.” For Kirchhoff’s Current Law (KCL) and historical information, see footnote 7 in <!-- TODO: replace Sec. 2.9 with actual cross-reference label -->Sec. 2.9.
 
 **Solution.** According to these laws the model of the RL-circuit is $L I' + R I = E(t)$, in standard form
 
@@ -1282,11 +1218,8 @@ $$
 I = \frac{E}{R}(1 - e^{-(R/L)t}), \quad \text{thus} \quad I = \frac{48}{11}(1 - e^{-110t}).
 $$ {#eq-sec15-8}
 
-![RL-circuit](../images/chapter1/fig-1-19.png){#fig-1-19}
+![Fig. 19. RL-circuit](../images/chapter1/fig-1-19.png){#fig-1-19}
 
-:::
-
-::: {#exm-hormone-level}
 ### EXAMPLE 3 Hormone Level
 
 Assume that the level of a certain hormone in the blood of a patient varies with time. Suppose that the time rate of change is the difference between a sinusoidal input of a 24-hour period from the thyroid gland and a continuous removal rate proportional to the level present. Set up a model for the hormone level in the blood and find its general solution. Find the particular solution satisfying a suitable initial condition.
@@ -1324,9 +1257,7 @@ $$
 
 with the steady-state part as before. To plot $y_{\text{part}}$ we must specify values for the constants, say, $A = B = 1$, $K = 0.05$. @fig-1-20 shows this solution. Notice that the transition period is relatively short (although $K$ is small), and the curve soon looks sinusoidal; this is the response to the input $1 + \cos (\pi t / 12)$.
 
-![Particular solution in @exm-hormone-level](../images/chapter1/fig-1-20.png){#fig-1-20}
-
-:::
+![Fig. 20. Particular solution in Example 3](../images/chapter1/fig-1-20.png){#fig-1-20}
 
 ### Reduction to Linear Form. Bernoulli Equation
 
@@ -1364,7 +1295,6 @@ $$ {#eq-sec15-10}
 
 For further ODEs reducible to linear form, see Ince’s classic [A11] listed in App. 1. See also Team Project 30 in Problem Set 1.5.
 
-::: {#exm-logistic-equation}
 ### EXAMPLE 4 Logistic Equation
 
 Solve the following Bernoulli equation, known as the **logistic equation** (or **Verhulst equation**⁸):
@@ -1407,13 +1337,11 @@ $$ {#eq-sec15-12}
 
 Directly from (@eq-sec15-11) we see that $y \equiv 0$ ($y(t) = 0$ for all $t$) is also a solution.
 
-![Logistic population model. Curves @eq-sec15-8 in @exm-logistic-equation with $A/B = 4$](../images/chapter1/fig-1-21.png){#fig-1-21}
-
-:::
+![Fig. 21. Logistic population model. Curves (9) in Example 4 with $A/B = 4$](../images/chapter1/fig-1-21.png){#fig-1-21}
 
 ### Population Dynamics
 
-The logistic equation (@eq-sec15-11) plays an important role in population dynamics, a field that models the evolution of populations of plants, animals, or humans over time $t$. If $B = 0$, then (@eq-sec15-11) is $y' = dy/dt = Ay$. In this case its solution (@eq-sec15-12) is $y = (1/c)e^{At}$ and gives exponential growth, as for a small population in a large country (the United States in early times!). This is called **Malthus's law**. (See also @exm-exponential-growth-decay in @sec-basic-concepts-modeling.)
+The logistic equation (@eq-sec15-11) plays an important role in population dynamics, a field that models the evolution of populations of plants, animals, or humans over time $t$. If $B = 0$, then (@eq-sec15-11) is $y' = dy/dt = Ay$. In this case its solution (@eq-sec15-12) is $y = (1/c)e^{At}$ and gives exponential growth, as for a small population in a large country (the United States in early times!). This is called **Malthus's law**. (See also Example 3 in @sec-basic-concepts-modeling.)
 
 The term $-By^2$ in (@eq-sec15-11) is a “braking term” that prevents the population from growing without bound. Indeed, if we write $y' = Ay(1 - \frac{B}{A}y)$, we see that if $y < A/B$, then $y' > 0$, so that an initially small population keeps growing as long as $y < A/B$. But if $y > A/B$, then $y' < 0$, and the population is decreasing as long as $y > A/B$. The limit is the same in both cases, namely, $A/B$. See @fig-1-21.
 
@@ -1427,18 +1355,15 @@ and is called an **autonomous ODE**. Thus the logistic equation (@eq-sec15-11) i
 
 Equation (@eq-sec15-13) has constant solutions, called **equilibrium solutions** or **equilibrium points**. These are determined by the zeros of $f(y)$ because $y = \text{const}$ gives $y' = 0$ by (@eq-sec15-13); hence $f(y) = 0$. These zeros are known as **critical points** of (@eq-sec15-13). An equilibrium solution is called **stable** if solutions close to it for some $t$ remain close to it for all further $t$. It is called **unstable** if solutions initially close to it do not remain close to it as $t$ increases. For instance, in Fig. 21, $y = 0$ is an unstable equilibrium solution, and $y = A/B$ is a stable one. Note that (@eq-sec15-11) has the critical points $y = 0$ and $y = A/B$.
 
-::: {#exm-stable-unstable-equilibrium}
 ### EXAMPLE 5 Stable and Unstable Equilibrium Solutions. “Phase Line Plot”
 
 The ODE $y' = (y - 1)(y - 2)$ has the stable equilibrium solution $y_1 = 1$ and the unstable $y_2 = 2$, as the direction field in @fig-1-22 suggests. The values $y_1$ and $y_2$ are the zeros of the parabola $f(y) = (y - 1)(y - 2)$ in the figure. Now, since the ODE is autonomous, we can “condense” the direction field to a “phase line plot” giving $y_1$ and $y_2$ and the direction (upward or downward) of the arrows in the field, and thus giving information about the stability or instability of the equilibrium solutions.
 
-![Direction field, phase line, and parabola $f(y)$](../images/chapter1/fig-1-22.png){#fig-1-22}
+![Fig. 22. Example 5. (A) Direction field. (B) “Phase line”. (C) Parabola $f(y)$](../images/chapter1/fig-1-22.png){#fig-1-22}
 
 A few further population models will be discussed in the problem set. For some more details of population dynamics, see C. W. Clark, *Mathematical Bioeconomics: The Mathematics of Conservation*, 3rd ed. Hoboken, NJ: Wiley, 2010.
 
 Further applications of linear ODEs follow in the next section.
-
-:::
 
 ## PROBLEM SET {#sec-ps-1-5}
 
@@ -1525,7 +1450,7 @@ Explain the effect of the transformation by writing it as $y = Y + v$, $v = 1/u$
 37. **Harvesting.** In Prob. 36 find and graph the solution satisfying $y(0) = 2$ when (for simplicity) $A = B = 1$ and $H = 0.2$. What is the limit? What does it mean? What if there were no fishing?
 38. **Intermittent harvesting.** In Prob. 36 assume that you fish for 3 years, then fishing is banned for the next 3 years. Thereafter you start again. And so on. This is called intermittent harvesting. Describe qualitatively how the population will develop if intermitting is continued periodically. Find and graph the solution for the first 9 years, assuming that $A = B = 1, H = 0.2$, and $y(0) = 2$.
 
-    ![Fish population in Problem 38](../images/chapter1/fig-1-23.png){#fig-1-23}
+    ![Fig. 23. Fish population in Problem 38](../images/chapter1/fig-1-23.png){#fig-1-23}
 
 39. **Extinction vs. unlimited growth.** If in a population the death rate is proportional to the population, and the birth rate is proportional to the chance encounters of meeting mates for reproduction, what will the model be? Without solving, find out what will eventually happen to a small initial population. To a large one. Then solve the model.
 40. **Air circulation.** In a room containing $20,000\text{ ft}^3$ of air, $600\text{ ft}^3$ of fresh air flows in per minute, and the mixture (made practically uniform by circulating fans) is exhausted at a rate of 600 cubic feet per minute (cfm). What is the amount of fresh air $y(t)$ at any time if $y(0) = 0$? After what time will 90% of the air be fresh?
@@ -1544,7 +1469,7 @@ $$
 \frac{1}{2}x^2 + y^2 = c \qquad (c > 0)
 $$ {#eq-sec16-1}
 
-and illustrated in @fig-1-24. We assume that this family of ellipses represents electric equipotential curves between the two black ellipses (equipotential surfaces between two elliptic cylinders in space, of which @fig-1-24 shows a cross-section). We seek the orthogonal trajectories, the curves of electric force. Equation (@eq-sec16-1) is a one-parameter family with parameter $c$. Each value of $c$ corresponds to one of these ellipses.
+and illustrated in @fig-1-24. We assume that this family of ellipses represents electric equipotential curves between the two black ellipses (equipotential surfaces between two elliptic cylinders in space, of which Fig. 24 shows a cross-section). We seek the orthogonal trajectories, the curves of electric force. Equation (@eq-sec16-1) is a one-parameter family with parameter $c$. Each value of $c$ corresponds to one of these ellipses.
 
 **Step 1. Find an ODE for which the given family is a general solution.** Of course, this ODE must no longer contain the parameter $c$. Differentiating (@eq-sec16-1), we have $x + 2yy' = 0$. Hence the ODE of the given curves is
 
@@ -1568,7 +1493,7 @@ $$
 
 This is the family of orthogonal trajectories, the quadratic parabolas along which electrons or other charged particles (of very small mass) would move in the electric field between the black ellipses (elliptic cylinders).
 
-![Electrostatic field between two ellipses (elliptic cylinders in space): Elliptic equipotential curves (equipotential surfaces) and orthogonal trajectories (parabolas)](../images/chapter1/fig-1-24.png){#fig-1-24}
+![Fig. 24. Electrostatic field between two ellipses (elliptic cylinders in space): Elliptic equipotential curves (equipotential surfaces) and orthogonal trajectories (parabolas)](../images/chapter1/fig-1-24.png){#fig-1-24}
 
 ## PROBLEM SET {#sec-ps-1-6}
 
@@ -1595,11 +1520,11 @@ Sketch or graph some of the given curves. Guess what their OTs may look like. Fi
 11. **Electric field.** Let the electric equipotential lines (curves of constant potential) between two concentric cylinders with the $z$-axis in space be given by $u(x, y) = x^2 + y^2 = c$ (these are circular cylinders in the $xyz$-space). Using the method in the text, find their orthogonal trajectories (the curves of electric force).
 12. **Electric field.** The lines of electric force of two opposite charges of the same strength at $(-1, 0)$ and $(1, 0)$ are the circles through $(-1, 0)$ and $(1, 0)$. Show that these circles are given by $x^2 + (y - c)^2 = 1 + c^2$. Show that the equipotential lines (which are orthogonal trajectories of those circles) are the circles given by $(x + c^*)^2 + y^2 = c^{*2} - 1$ (dashed in @fig-1-25).
 
-    ![Electric field in Problem 12](../images/chapter1/fig-1-25.png){#fig-1-25}
+    ![Fig. 25. Electric field in Problem 12](../images/chapter1/fig-1-25.png){#fig-1-25}
 
 13. **Temperature field.** Let the isotherms (curves of constant temperature) in a body in the upper half-plane be given by $4x^2 + 9y^2 = c \ (y > 0)$. Find the orthogonal trajectories (the curves along which heat will flow in regions filled with heat-conducting material and free of heat sources or heat sinks).
 14. **Conic sections.** Find the conditions under which the orthogonal trajectories of families of ellipses $x^2/a^2 + y^2/b^2 = c$ are again conic sections. Illustrate your result graphically by sketches or by using your CAS. What happens if $a = 0$? If $b = 0$?
-15. **Cauchy–Riemann equations.** Show that for a family $u(x, y) = c = \text{const}$ the orthogonal trajectories $v(x, y) = c^* = \text{const}$ can be obtained from the following Cauchy–Riemann equations (which are basic in complex analysis in @sec-complex-representation) and use them to find the orthogonal trajectories of $e^x \sin y = \text{const}$. (Here, subscripts denote partial derivatives.)
+15. **Cauchy–Riemann equations.** Show that for a family $u(x, y) = c = \text{const}$ the orthogonal trajectories $v(x, y) = c^* = \text{const}$ can be obtained from the following Cauchy–Riemann equations (which are basic in complex analysis in <!-- TODO: replace Chap. 13 with actual chapter label -->Chap. 13) and use them to find the orthogonal trajectories of $e^x \sin y = \text{const}$. (Here, subscripts denote partial derivatives.)
     $$
     u_x = v_y, \qquad u_y = -v_x.
     $$
@@ -1631,7 +1556,6 @@ Theorems that state such conditions are called **existence theorems** and **uniq
 
 Of course, for our simple examples, we need no theorems because we can solve these examples by inspection; however, for complicated ODEs such theorems may be of considerable practical importance. Even when you are sure that your physical or other system behaves uniquely, occasionally your model may be oversimplified and may not give a faithful picture of reality.
 
-::: {#thm-existence}
 ### THEOREM 1 Existence Theorem
 
 Let the right side $f(x, y)$ of the ODE in the initial value problem
@@ -1654,13 +1578,10 @@ $$ {#eq-sec17-2}
 
 Then the initial value problem (@eq-sec17-1) has at least one solution $y(x)$. This solution exists at least for all $x$ in the subinterval $|x - x_0| < \alpha$ of the interval $|x - x_0| < a$; here, $\alpha$ is the smaller of the two numbers $a$ and $b/K$.
 
-:::
-
-![Rectangle R in the existence and uniqueness theorems](../images/chapter1/fig-1-26.png){#fig-1-26}
+![Fig. 26. Rectangle R in the existence and uniqueness theorems](../images/chapter1/fig-1-26.png){#fig-1-26}
 
 (Example of Boundedness. The function $f(x, y) = x^2 + y^2$ is bounded (with $K = 2$) in the square $|x| \le 1, |y| \le 1$. The function $f(x, y) = \tan(x + y)$ is not bounded for $|x + y| \le \pi/2$. Explain!)
 
-::: {#thm-uniqueness}
 ### THEOREM 2 Uniqueness Theorem
 
 Let $f$ and its partial derivative $\partial f/\partial y$ be continuous for all $(x, y)$ in the rectangle $R$ (@fig-1-26) and bounded, say,
@@ -1669,27 +1590,24 @@ $$
 \text{(a)} \quad |f(x, y)| \le K, \qquad \text{(b)} \quad \left|\frac{\partial f}{\partial y}(x, y)\right| \le M \qquad \text{for all } (x, y) \text{ in } R.
 $$ {#eq-sec17-3}
 
-Then the initial value problem (@eq-sec17-1) has at most one solution $y(x)$. Thus, by @thm-existence, the problem has precisely one solution. This solution exists at least for all $x$ in that subinterval $|x - x_0| < \alpha$.
-
-:::
+Then the initial value problem (@eq-sec17-1) has at most one solution $y(x)$. Thus, by Theorem 1, the problem has precisely one solution. This solution exists at least for all $x$ in that subinterval $|x - x_0| < \alpha$.
 
 ### Understanding These Theorems
 
-These two theorems (@thm-existence and @thm-uniqueness) take care of almost all practical cases. @thm-existence says that if $f(x, y)$ is continuous in some region in the $xy$-plane containing the point $(x_0, y_0)$, then the initial value problem (@eq-sec17-1) has at least one solution.
+These two theorems take care of almost all practical cases. Theorem 1 says that if $f(x, y)$ is continuous in some region in the $xy$-plane containing the point $(x_0, y_0)$, then the initial value problem (@eq-sec17-1) has at least one solution.
 
-@thm-uniqueness says that if, moreover, the partial derivative of $f$ with respect to $y$ exists and is continuous in that region, then (@eq-sec17-1) can have at most one solution; hence, by @thm-existence, it has precisely one solution.
+Theorem 2 says that if, moreover, the partial derivative of $f$ with respect to $y$ exists and is continuous in that region, then (@eq-sec17-1) can have at most one solution; hence, by Theorem 1, it has precisely one solution.
 
 Read again what you have just read—these are entirely new ideas in our discussion.
 
-Proofs of @thm-existence and @thm-uniqueness are beyond the level of this book (see Ref. [A11] in App. 1); however, the following remarks and examples may help you to a good understanding of the theorems.
+Proofs of these theorems are beyond the level of this book (see Ref. [A11] in App. 1); however, the following remarks and examples may help you to a good understanding of the theorems.
 
-Since $y' = f(x, y)$, the condition (@eq-sec17-2) implies that $|y'| \le K$; that is, the slope of any solution curve $y(x)$ in $R$ is at least $-K$ and at most $K$. Hence a solution curve that passes through the point $(x_0, y_0)$ must lie in the colored region in @fig-1-27 bounded by the lines $l_1$ and $l_2$ whose slopes are $-K$ and $K$, respectively. Depending on the form of $R$, two different cases may arise. In the first case, shown in @fig-1-27(a), we have $b/K \ge a$ and therefore $\alpha = a$ in @thm-existence, which then asserts that the solution exists for all $x$ between $x_0 - a$ and $x_0 + a$. In the second case, shown in @fig-1-27(b), we have $b/K < a$. Therefore, $\alpha = b/K < a$ and all we can conclude from @thm-existence and @thm-uniqueness is that the solution exists for all $x$ between $x_0 - b/K$ and $x_0 + b/K$. For larger or smaller $x$'s the solution curve may leave the rectangle $R$, and since nothing is assumed about $f$ outside $R$, nothing can be concluded about the solution for those larger or smaller $x$'s; that is, for such $x$'s the solution may or may not exist—we don't know.
+Since $y' = f(x, y)$, the condition (@eq-sec17-2) implies that $|y'| \le K$; that is, the slope of any solution curve $y(x)$ in $R$ is at least $-K$ and at most $K$. Hence a solution curve that passes through the point $(x_0, y_0)$ must lie in the colored region in @fig-1-27 bounded by the lines $l_1$ and $l_2$ whose slopes are $-K$ and $K$, respectively. Depending on the form of $R$, two different cases may arise. In the first case, shown in @fig-1-27(a), we have $b/K \ge a$ and therefore $\alpha = a$ in the existence theorem, which then asserts that the solution exists for all $x$ between $x_0 - a$ and $x_0 + a$. In the second case, shown in @fig-1-27(b), we have $b/K < a$. Therefore, $\alpha = b/K < a$ and all we can conclude from the theorems is that the solution exists for all $x$ between $x_0 - b/K$ and $x_0 + b/K$. For larger or smaller $x$'s the solution curve may leave the rectangle $R$, and since nothing is assumed about $f$ outside $R$, nothing can be concluded about the solution for those larger or smaller $x$'s; that is, for such $x$'s the solution may or may not exist—we don't know.
 
-![The condition (2) of @thm-existence. (a) First case. (b) Second case](../images/chapter1/fig-1-27.png){#fig-1-27}
+![Fig. 27. The condition (2) of the existence theorem. (a) First case. (b) Second case](../images/chapter1/fig-1-27.png){#fig-1-27}
 
-Let us illustrate our discussion with a simple example. We shall see that our choice of a rectangle $R$ with a large base (a long $x$-interval) will lead to the case in @fig-1-27(b).
+Let us illustrate our discussion with a simple example. We shall see that our choice of a rectangle $R$ with a large base (a long $x$-interval) will lead to the case in Fig. 27b.
 
-::: {#exm-choice-of-rectangle}
 ### EXAMPLE 1 Choice of a Rectangle
 
 Consider the initial value problem $y' = 1 + y^2, \ y(0) = 0$ and take the rectangle $R; |x| < 5, |y| < 3$. Then $|f(x, y)| = |1 + y^2| \le K = 10$, and
@@ -1700,9 +1618,7 @@ $$
 
 Indeed, the solution of the problem is $y = \tan x$ (see @sec-separable-odes, Example 1). This solution is discontinuous at $\pm \pi/2$, and there is no continuous solution valid in the entire interval $|x| < 5$ from which we started.
 
-:::
-
-The conditions in @thm-existence and @thm-uniqueness are sufficient conditions rather than necessary ones, and can be lessened. In particular, by the mean value theorem of differential calculus we have
+The conditions in the two theorems are sufficient conditions rather than necessary ones, and can be lessened. In particular, by the mean value theorem of differential calculus we have
 
 $$
 f(x, y_2) - f(x, y_1) = (y_2 - y_1)\frac{\partial f}{\partial y}\bigg|_{y = \tilde{y}}
@@ -1714,9 +1630,8 @@ $$
 |f(x, y_2) - f(x, y_1)| \le M |y_2 - y_1|.
 $$ {#eq-sec17-4}
 
-It can be shown that (@eq-sec17-3)b may be replaced by the weaker condition (@eq-sec17-4), which is known as a **Lipschitz condition**.^[RUDOLF LIPSCHITZ (1832–1903), German mathematician. Lipschitz and similar conditions are important in modern theories, for instance, in partial differential equations.] However, continuity of $f(x, y)$ is not enough to guarantee the uniqueness of the solution. This may be illustrated by the following @exm-nonuniqueness.
+It can be shown that (@eq-sec17-3)b may be replaced by the weaker condition (@eq-sec17-4), which is known as a **Lipschitz condition**.^[RUDOLF LIPSCHITZ (1832–1903), German mathematician. Lipschitz and similar conditions are important in modern theories, for instance, in partial differential equations.] However, continuity of $f(x, y)$ is not enough to guarantee the uniqueness of the solution. This may be illustrated by the following example.
 
-::: {#exm-nonuniqueness}
 ### EXAMPLE 2 Nonuniqueness
 
 The initial value problem $y' = 2\sqrt{|y|}, \ y(0) = 0$ has the two solutions
@@ -1733,22 +1648,20 @@ $$ {#eq-sec17-5}
 
 and this can be made as large as we please by choosing $y_2$ sufficiently small, whereas (@eq-sec17-4) requires that the quotient on the left side of (@eq-sec17-5) should not exceed a fixed constant $M$. $\blacksquare$
 
-:::
-
 ## PROBLEM SET {#sec-ps-1-7}
 
-1. **Linear ODE.** If $p$ and $r$ in $y' + p(x)y = r(x)$ are continuous for all $x$ in an interval $|x - x_0| \le a$, show that in this ODE $f(x, y)$ satisfies the conditions of @thm-existence and @thm-uniqueness, so that a corresponding initial value problem has a unique solution. Do you actually need @thm-existence and @thm-uniqueness for this ODE?
-2. **Existence?** Does the initial value problem $(x - 2)y' = y, \ y(2) = 1$ have a solution? Does your result contradict @thm-existence or @thm-uniqueness?
-3. **Vertical strip.** If the assumptions of @thm-existence and @thm-uniqueness are satisfied not merely in a rectangle but in a vertical infinite strip $|x - x_0| < a$, in what interval will the solution of (@eq-sec17-1) exist?
+1. **Linear ODE.** If $p$ and $r$ in $y' + p(x)y = r(x)$ are continuous for all $x$ in an interval $|x - x_0| \le a$, show that in this ODE $f(x, y)$ satisfies the conditions of our present theorems, so that a corresponding initial value problem has a unique solution. Do you actually need these theorems for this ODE?
+2. **Existence?** Does the initial value problem $(x - 2)y' = y, \ y(2) = 1$ have a solution? Does your result contradict our present theorems?
+3. **Vertical strip.** If the assumptions of Theorems 1 and 2 are satisfied not merely in a rectangle but in a vertical infinite strip $|x - x_0| < a$, in what interval will the solution of (@eq-sec17-1) exist?
 4. **Change of initial condition.** What happens in Prob. 2 if you replace $y(2) = 1$ with $y(2) = k$?
-5. **Length of $x$-interval.** In most cases the solution of an initial value problem (@eq-sec17-1) exists in an $x$-interval larger than that guaranteed by @thm-existence and @thm-uniqueness. Show this fact for $y' = 2y^2, \ y(1) = 1$ by finding the best possible $\alpha$ (choosing $b$ optimally) and comparing the result with the actual solution.
+5. **Length of $x$-interval.** In most cases the solution of an initial value problem (@eq-sec17-1) exists in an $x$-interval larger than that guaranteed by the present theorems. Show this fact for $y' = 2y^2, \ y(1) = 1$ by finding the best possible $\alpha$ (choosing $b$ optimally) and comparing the result with the actual solution.
 6. **CAS PROJECT. Picard Iteration.** (a) Show that by integrating the ODE in (@eq-sec17-1) and observing the initial condition you obtain
 
     $$
     y(x) = y_0 + \int_{x_0}^{x} f(t, y(t)) \, dt.
     $$ {#eq-sec17-6}
 
-    This form (@eq-sec17-6) of (@eq-sec17-1) suggests **Picard's Iteration Method**^[EMILE PICARD (1856–1941), French mathematician, also known for his important contributions to complex analysis (see @sec-singularities-zeros for his famous theorem). Picard used his method to prove @thm-existence and @thm-uniqueness as well as the convergence of the sequence (@eq-sec17-7) to the solution of (@eq-sec17-1). In precomputer times, the iteration was of little practical value because of the integrations.] which is defined by
+    This form (@eq-sec17-6) of (@eq-sec17-1) suggests **Picard's Iteration Method**^[EMILE PICARD (1856–1941), French mathematician, also known for his important contributions to complex analysis (see <!-- TODO: replace Sec. 16.2 with actual cross-reference label -->Sec. 16.2 for his famous theorem). Picard used his method to prove Theorems 1 and 2 as well as the convergence of the sequence (@eq-sec17-7) to the solution of (@eq-sec17-1). In precomputer times, the iteration was of little practical value because of the integrations.] which is defined by
 
     $$
     y_n(x) = y_0 + \int_{x_0}^{x} f(t, y_{n-1}(t)) \, dt, \qquad n = 1, 2, \ldots.
@@ -1759,9 +1672,9 @@ and this can be made as large as we please by choosing $y_2$ sufficiently small,
     (c) Apply the iteration to $y' = 2y^2, \ y(0) = 1$. Also solve the problem exactly.
     (d) Find all solutions of $y' = 2\sqrt{y}, \ y(1) = 0$. Which of them does Picard's iteration approximate?
     (e) Experiment with the conjecture that Picard's iteration converges to the solution of the problem for any initial choice of $y$ in the integrand in (@eq-sec17-7) (leaving $y_0$ outside the integral as it is). Begin with a simple ODE and see what happens. When you are reasonably sure, take a slightly more complicated ODE and give it a try.
-7. **Maximum $\alpha$.** What is the largest possible $\alpha$ in @exm-choice-of-rectangle in the text?
+7. **Maximum $\alpha$.** What is the largest possible $\alpha$ in Example 1 in the text?
 8. **Lipschitz condition.** Show that for a linear ODE $y' + p(x)y = r(x)$ with continuous $p$ and $r$ in $|x - x_0| \le a$ a Lipschitz condition holds. This is remarkable because it means that for a linear ODE the continuity of $f(x, y)$ guarantees not only the existence but also the uniqueness of the solution of an initial value problem. (Of course, this also follows directly from (@eq-sec15-4) in @sec-linear-odes.)
-9. **Common points.** Can two solution curves of the same ODE have a common point in a rectangle in which the assumptions of @thm-existence and @thm-uniqueness are satisfied?
+9. **Common points.** Can two solution curves of the same ODE have a common point in a rectangle in which the assumptions of the present theorems are satisfied?
 10. **Three possible cases.** Find all initial conditions such that $(x^2 - x)y' = (2x - 1)y$ has no solution, precisely one solution, and more than one solution.
 
 ## Chapter Review Questions and Problems {#sec-ch1-review}
@@ -1810,7 +1723,7 @@ Solve the IVP. Indicate the method used. Show the details of your work.
 27. **Exponential growth.** If the growth rate of a culture of bacteria is proportional to the number of bacteria present and after 1 day is 1.25 times the original number, within what interval of time will the number of bacteria (a) double, (b) triple?
 28. **Mixing problem.** The tank in @fig-1-28 contains 80 lb of salt dissolved in 500 gal of water. The inflow per minute is 20 lb of salt dissolved in 20 gal of water. The outflow is 20 gal/min of the uniform mixture. Find $y(t)$ and the time when the salt content in the tank reaches 95% of its limiting value (as $t \to \infty$).
 
-    ![Tank in Problem 28](../images/chapter1/fig-1-28.png){#fig-1-28}
+    ![Fig. 28. Tank in Problem 28](../images/chapter1/fig-1-28.png){#fig-1-28}
 
 29. **Half-life.** If in a reactor, uranium ${}^{237}_{\ 97}\text{U}$ loses 10% of its weight within one day, what is its half-life? How long would it take for 99% of the original amount to disappear?
 30. **Newton's law of cooling.** A metal bar whose temperature is $20°\text{C}$ is placed in boiling water. How long does it take to heat the bar to practically $100°\text{C}$, say, to $99.9°\text{C}$, if the temperature of the bar after 1 min of heating is $51.5°\text{C}$? First guess, then calculate.
@@ -1865,4 +1778,4 @@ Applications and modeling are discussed throughout the chapter, in particular in
 
 **Picard's existence and uniqueness theorems** are explained in @sec-existence-uniqueness (and Picard's iteration in @sec-ps-1-7).
 
-Numeric methods for first-order ODEs can be studied in @sec-methods-first-order-odes and @sec-multistep-methods immediately after this chapter, as indicated in the chapter opening.
+Numeric methods for first-order ODEs can be studied in <!-- TODO: replace Secs. 21.1 and 21.2 with actual cross-reference label -->Secs. 21.1 and 21.2 immediately after this chapter, as indicated in the chapter opening.
